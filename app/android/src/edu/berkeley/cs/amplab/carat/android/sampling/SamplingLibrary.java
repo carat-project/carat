@@ -132,6 +132,17 @@ public final class SamplingLibrary {
     private static final String TAG="FeaturesPowerConsumption";
          
     public static final int UUID_LENGTH = 16;
+    public static final String UUID_PREFIX="ley-tab2-10p1-";
+    public static final String UUID_PREFIX_2="ley-mrazrmaxx-";
+    /*
+    01234567890123456
+    ley-tab2-10p1-rnd
+    ley-mrazrmaxx-rnd
+    */
+    /*Galaxy Tab 2 10.1 - Android Version 4.0.3*/
+    /*Motorolla Razr Maxx - Android Version 2.3.6*/
+
+    
 
     /** Library class, prevent instantiation */
     private SamplingLibrary() {
@@ -184,7 +195,7 @@ public final class SamplingLibrary {
                 else
                     hexString.append(hx);
             }
-            String uuid = hexString.toString().substring(0, UUID_LENGTH);
+            String uuid = UUID_PREFIX+hexString.toString().substring(0, UUID_LENGTH-UUID_PREFIX_2.length());
             //FlurryAgent.logEvent("ANDROID_ID=" + aID +" UUID=" + uuid);
             return uuid;
         } catch (NoSuchAlgorithmException e) {
@@ -1496,11 +1507,7 @@ public final class SamplingLibrary {
         // Construct sample and return it in the end
         Sample mySample = new Sample();
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean newUuid = p.getBoolean(CaratApplication.PREFERENCE_NEW_UUID, false);
-        if (newUuid)
-            mySample.setUuId(SamplingLibrary.getUuid(context));
-        else
-            mySample.setUuId(SamplingLibrary.getAndroidId(context));
+        mySample.setUuId(SamplingLibrary.getUuid(context));
         mySample.setTriggeredBy(action);
         // required always
         long now = System.currentTimeMillis();
