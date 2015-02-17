@@ -4,17 +4,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HTTP;
 import org.codehaus.jackson.map.ObjectMapper;
-
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -38,6 +37,7 @@ public class ClickTracking {
         }
     }
 
+    @SuppressLint("InlinedApi")
     private static String POST(String url, Action action) {
         InputStream inputStream = null;
         String result = "";
@@ -56,7 +56,7 @@ public class ClickTracking {
 
             Log.d(TAG, "JSON=\n" + json);
             // 5. set json to StringEntity
-            StringEntity se = new StringEntity(json, HTTP.UTF_8);
+            StringEntity se = new StringEntity(json, StandardCharsets.UTF_8);
 
             // 6. set httpPost Entity
             httpPost.setEntity(se);

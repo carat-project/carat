@@ -8,14 +8,13 @@ import android.graphics.Paint.Style;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import android.R;
 
 /**
  * View to Draw pie.
  */
 public class BatteryLayoutView extends LinearLayout {
 
-    private static final String TAG = "BatteryLayout";
+    //private static final String TAG = "BatteryLayout";
 
     private Bitmap fullPie = null;
 
@@ -75,6 +74,6 @@ public class BatteryLayoutView extends LinearLayout {
         p.setTextSize(100);
         p.setStyle(Style.FILL);
         drawBattery();
-        this.setBackground(new BitmapDrawable(fullPie));
+        this.setBackground(new BitmapDrawable(getResources(), fullPie));
     }
 }

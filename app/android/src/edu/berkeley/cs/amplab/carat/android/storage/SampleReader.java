@@ -424,7 +424,8 @@ public class SampleReader {
         }
     }
 	
-	private static String origStr(String clean){
+	@SuppressWarnings("deprecation")
+    private static String origStr(String clean){
         try {
             return URLDecoder.decode(clean, "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -433,7 +434,8 @@ public class SampleReader {
         return URLDecoder.decode(clean);
     }
 	
-	private static String cleanStr(String dirty){
+	@SuppressWarnings("deprecation")
+    private static String cleanStr(String dirty){
 		if (dirty == null)
 			return null;
 		/*
