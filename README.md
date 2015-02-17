@@ -1,6 +1,6 @@
 # Carat Project: Android and iOS Applications
 
-For details, visit http://carat.cs.berkeley.edu/
+For details, visit http://carat.cs.helsinki.fi
 
 ## Build instructions for Android
 
