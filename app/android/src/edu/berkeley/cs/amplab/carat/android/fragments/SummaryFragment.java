@@ -113,8 +113,8 @@ public class SummaryFragment extends ExtendedTitleFragment {
     public void scheduleRefresh(final View inflatedView) {
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
-
-                if (((MainActivity) getActivity()).isStatsDataAvailable()) {
+            	MainActivity main = (MainActivity) getActivity();
+                if (main != null && main.isStatsDataAvailable()) {
                     drawPieChart(inflatedView);
                 }
 
