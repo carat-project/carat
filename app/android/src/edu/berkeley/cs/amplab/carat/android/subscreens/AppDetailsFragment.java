@@ -1,6 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android.subscreens;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.fragments.ExtendedTitleFragment;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.ui.DrawView;
@@ -18,7 +18,14 @@ import edu.berkeley.cs.amplab.carat.android.utils.Tracker;
 import edu.berkeley.cs.amplab.carat.thrift.DetailScreenReport;
 import edu.berkeley.cs.amplab.carat.thrift.Reports;
 
-public class AppDetailsFragment extends ExtendedTitleFragment {
+public class AppDetailsFragment extends Fragment {
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (fullObject != null)
+			getActivity().setTitle(fullObject.getAppName());
+	}
 
 	private SimpleHogBug fullObject;
 	private boolean isApp = false;
