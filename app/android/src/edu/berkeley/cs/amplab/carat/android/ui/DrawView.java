@@ -117,7 +117,7 @@ public class DrawView extends View {
 		this.evWithout = fullObject.getExpectedValueWithout();
 		this.errorWo = fullObject.getErrorWithout();
 
-		Tracker tracker = Tracker.getInstance();
+		Tracker tracker = Tracker.getInstance(getContext());
 		// the field "type" should be set BEFORE calling this tracking method
 		tracker.trackUser(label, fullObject);
 		

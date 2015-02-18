@@ -13,7 +13,7 @@ public class WebViewFragment extends ExtendedTitleFragment {
 
 	private String fileName;
 	private static WebViewFragment instance = null;
-	Tracker tracker = Tracker.getInstance();
+	Tracker tracker = Tracker.getInstance(getActivity());
 	
 	public static WebViewFragment getInstance(String fileName) {
 		if (instance == null)
@@ -27,7 +27,7 @@ public class WebViewFragment extends ExtendedTitleFragment {
 		View view = inflater.inflate(R.layout.webview, container, false);
 		LocalizedWebView webview = (LocalizedWebView) view.findViewById(R.id.webView);
         webview.loadUrl("file:///android_asset/" + fileName + ".html");
-		tracker.trackUser(fileName);
+		tracker.trackUser(fileName, getActivity().getTitle());
 		// onCreateView() should return the view resulting from inflating the
 		// layout file
 		return view;

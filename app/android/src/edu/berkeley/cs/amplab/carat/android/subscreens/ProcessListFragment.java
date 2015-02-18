@@ -32,8 +32,8 @@ public class ProcessListFragment extends ExtendedTitleFragment {
                 .getRunningAppInfo(getActivity());
         lv.setAdapter(new ProcessInfoAdapter(getActivity(), searchResults));
         
-        Tracker tracker = Tracker.getInstance();
-		tracker.trackUser("ProcessList");
+        Tracker tracker = Tracker.getInstance(getActivity());
+		tracker.trackUser("ProcessList", getActivity().getTitle());
         
 		return view;
 	}

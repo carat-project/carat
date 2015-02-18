@@ -102,9 +102,9 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		CaratApplication.setMain(this);
-		tracker = Tracker.getInstance();
+		tracker = Tracker.getInstance(this);
 		// track user clicks (taps)
-		tracker.trackUser("caratstarted");
+		tracker.trackUser("caratstarted", getTitle());
 		
 		if (!CaratApplication.isInternetAvailable()) {
 			EnableInternetDialogFragment dialog = new EnableInternetDialogFragment();
@@ -410,7 +410,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		// Log.i(TAG, "Resumed. Refreshing UI");
-		tracker.trackUser("caratresumed");
+		tracker.trackUser("caratresumed", getTitle());
 
 		// if statistics data for the summary fragment is not already fetched,
 		// and the device has an Internet connection, fetch statistics and then refresh the summary fragment
@@ -443,7 +443,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onPause() {
 		// Log.i(TAG, "Paused");
-		tracker.trackUser("caratpaused");
+		tracker.trackUser("caratpaused", getTitle());
 		SamplingLibrary.resetRunningProcessInfo();
 		super.onPause();
 	}
@@ -451,7 +451,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public void finish() {
 		// Log.d(TAG, "Finishing up");
-		tracker.trackUser("caratstopped");
+		tracker.trackUser("caratstopped", getTitle());
 		super.finish();
 	}
 

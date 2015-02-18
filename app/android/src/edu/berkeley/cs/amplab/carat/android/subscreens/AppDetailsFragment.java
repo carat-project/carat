@@ -80,7 +80,7 @@ public class AppDetailsFragment extends Fragment {
 		} else { // isOS or isModel
 			Reports reports = CaratApplication.storage.getReports();
 			if (reports != null) {
-				Tracker tracker = Tracker.getInstance();
+				Tracker tracker = Tracker.getInstance(getActivity());
 				if (isOs) {
 					setOsWidgets(detailsPage, drawView, reports, tracker);
 				} else { // isModel
@@ -108,7 +108,7 @@ public class AppDetailsFragment extends Fragment {
 				detailsPage);
 
 		Log.v("OsInfo", "Os score: " + os.getScore());
-		tracker.trackUser("osInfo");
+		tracker.trackUser("osInfo", getActivity().getTitle());
 	}
 
 	private void setModelWidgets(View detailsPage, DrawView drawView, Reports reports, Tracker tracker) {
@@ -120,7 +120,7 @@ public class AppDetailsFragment extends Fragment {
 				detailsPage);
 
 		Log.v("ModelInfo", "Model score: " + model.getScore());
-		tracker.trackUser("deviceInfo");
+		tracker.trackUser("deviceInfo",  getActivity().getTitle());
 	}
 
 	private void setBenefitWidget(View detailsPage) {

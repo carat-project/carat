@@ -61,7 +61,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		 */
 		
 		// we use the tracker in the following two methods, so instantiate it here
-		tracker = Tracker.getInstance();
+		tracker = Tracker.getInstance(getActivity());
 		
 		setSharePreferenceIntent();
 		setFeedbackPreferenceIntent();
@@ -112,7 +112,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		// set the created intent as our preference (view) object's intent
 		preference.setIntent(intent);
 		
-		tracker.trackSharing();
+		tracker.trackSharing(getActivity().getTitle());
 	}
 
 	
@@ -147,7 +147,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		
 		preference.setIntent(intent);
 		
-		tracker.trackFeedback(os, model);
+		tracker.trackFeedback(os, model,  getActivity().getTitle());
 	}
 
 	@Override
