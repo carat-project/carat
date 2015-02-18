@@ -58,14 +58,10 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
 		if (input == null)
 			return;
 
-		SharedPreferences p = a.getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
-		String hogThresh = p.getString(a.getString(R.string.hog_hide_threshold), "10");
-		int thresh = Integer.parseInt(hogThresh);
 		for (SimpleHogBug item : input) {
 			if (item == null)
 				continue;
 			
-			int[] benefit = item.getBenefit();
 			// TODO other filter conditions?
 			// Limit max number of items?
 			String appName = item.getAppName();
@@ -84,7 +80,7 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
 			if (addFakeItem && appName.equals(FAKE_ITEM))
 			    result.add(item);
 			// Filter out if benefit is too small
-			if (SamplingLibrary.isRunning(a.getApplicationContext(), appName) && (benefit[0] > 0 || benefit[1] > thresh)) {
+			if (SamplingLibrary.isRunning(a.getApplicationContext(), appName)) {
 				result.add(item);
 			}
 		}

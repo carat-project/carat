@@ -27,12 +27,6 @@ public class HogsBugsAdapter extends BaseAdapter {
 
     public HogsBugsAdapter(CaratApplication caratApplication, SimpleHogBug[] results) {
         this.a = caratApplication;
-
-        Context appContext = caratApplication.getApplicationContext();
-        SharedPreferences p = a.getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
-        String hogThresh = p.getString(a.getString(R.string.hog_hide_threshold), "10");
-        int thresh = Integer.parseInt(hogThresh);
-        Log.d("HogBugAdapter", "hog threshold: "+thresh+"m");
         
         // Skip system apps
         int items = 0;
@@ -46,13 +40,7 @@ public class HogsBugsAdapter extends BaseAdapter {
 //                if (SpecialAppCases.isSpecialApp(appName)) 
                 if (appName.equals(Constants.CARAT_PACKAGE_NAME) || appName.equals(Constants.CARAT_OLD))
     				continue;
-                /*
-    			 * This must be handled by Carat data storage.
-                if (!SamplingLibrary.isHidden(appContext, appName))*/
-                int[] benefit = app.getBenefit();
-                // this is going to also filter out any hogs/bugs with less than 1 min benefit.
-                if (benefit[0] > 0 || benefit[1] > thresh)
-                    items++;
+                items++;
             }
         allBugsOrHogs = new SimpleHogBug[items];
         int i = 0;
@@ -71,14 +59,13 @@ public class HogsBugsAdapter extends BaseAdapter {
                 /*
     			 * This must be handled by Carat data storage.
     			 * */
-                if (/*!SamplingLibrary.isHidden(appContext, appName)
-                        &&*/ i < allBugsOrHogs.length && (benefit[0] > 0 || benefit[1] > thresh)) {
+                if (i < allBugsOrHogs.length) {
                     allBugsOrHogs[i] = b;
                     i++;
                 }
             }
         Arrays.sort(allBugsOrHogs);
-        mInflater = LayoutInflater.from(appContext);
+        mInflater = LayoutInflater.from(a);
     }
 
     public int getCount() {

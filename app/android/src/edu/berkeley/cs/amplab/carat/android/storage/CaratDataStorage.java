@@ -391,7 +391,7 @@ public class CaratDataStorage {
         }
         if (bugData == null || bugData.get() == null)
             return null;
-        return bugData.get();
+        return refilter(bugData.get());
     }
 
     /**
@@ -403,7 +403,7 @@ public class CaratDataStorage {
         }
         if (hogData == null || hogData.get() == null)
             return null;
-        return hogData.get();
+        return refilter(hogData.get());
     }
     
     public SimpleHogBug[] getSettingsReport() {
@@ -445,6 +445,30 @@ public class CaratDataStorage {
         }
     }
 
+    
+	private SimpleHogBug[] refilter(SimpleHogBug[] list) {
+		List<SimpleHogBug> result = new LinkedList<SimpleHogBug>();
+
+		SharedPreferences p = a.getSharedPreferences(
+				Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+		String hogThresh = p
+				.getString(
+						a.getString(edu.berkeley.cs.amplab.carat.android.R.string.hog_hide_threshold),
+						"10");
+		int thresh = Integer.parseInt(hogThresh);
+
+		int size = list.length;
+		for (int i = 0; i < size; ++i) {
+			int[] benefit = list[i].getBenefit();
+			// this is going to also filter out any hogs/bugs with less than 1
+			// min benefit.
+			if (benefit[0] > 0 || benefit[1] > thresh)
+				result.add(list[i]);
+		}
+
+		return result.toArray(new SimpleHogBug[result.size()]);
+	}
+    
     /**
      * For Settings, we need more than a boolean here.
      * @param list the list of bugs or hogs received from the server.
@@ -454,10 +478,6 @@ public class CaratDataStorage {
     private SimpleHogBug[] convertAndFilter(List<HogsBugs> list, boolean isBug) {
         if (list == null)
             return null;
-       
-        SharedPreferences p = a.getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
-        String hogThresh = p.getString(a.getString(edu.berkeley.cs.amplab.carat.android.R.string.hog_hide_threshold), "10");
-        int thresh = Integer.parseInt(hogThresh);
         
         List<SimpleHogBug> result = new LinkedList<SimpleHogBug>();
         int size = list.size();
@@ -484,10 +504,7 @@ public class CaratDataStorage {
             /*result[i].setyVals(convert(item.getYVals()));
             result[i].setxValsWithout(convert(item.getXValsWithout()));
             result[i].setyValsWithout(convert(item.getYValsWithout()));*/
-            int[] benefit = h.getBenefit();
-            // this is going to also filter out any hogs/bugs with less than 1 min benefit.
-            if (benefit[0] > 0 || benefit[1] > thresh)
-            	result.add(h);
+            result.add(h);
         }
         return result.toArray(new SimpleHogBug[result.size()]);
     }

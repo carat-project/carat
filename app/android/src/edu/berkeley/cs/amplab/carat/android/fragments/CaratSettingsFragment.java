@@ -76,7 +76,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 			@Override
 			public boolean onPreferenceChange(Preference preference,
 					Object newValue) {
-				Log.d(TAG, preference.getKey() + " changed to " + newValue +" of type: " + newValue.getClass());
+				//Log.d(TAG, preference.getKey() + " changed to " + newValue +" of type: " + newValue.getClass());
 		        SharedPreferences p = getActivity().getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
 		        p.edit().putString(getString(R.string.hog_hide_threshold), newValue.toString()).commit();
 				return true;
