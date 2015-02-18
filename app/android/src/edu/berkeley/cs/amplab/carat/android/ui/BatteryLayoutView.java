@@ -58,7 +58,8 @@ public class BatteryLayoutView extends LinearLayout {
 
     private Paint p;
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         // TODO Auto-generated method stub
         super.onSizeChanged(w, h, oldw, oldh);
@@ -74,6 +75,14 @@ public class BatteryLayoutView extends LinearLayout {
         p.setTextSize(100);
         p.setStyle(Style.FILL);
         drawBattery();
-        this.setBackground(new BitmapDrawable(getResources(), fullPie));
+        /**
+         * Hack: simulator of 2.3.3 crashes without this
+         */
+		int sdk = android.os.Build.VERSION.SDK_INT;
+		if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+			this.setBackgroundDrawable(new BitmapDrawable(getResources(), fullPie));
+		} else {
+			this.setBackground(new BitmapDrawable(getResources(), fullPie));
+		}
     }
 }
