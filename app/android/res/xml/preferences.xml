@@ -13,13 +13,12 @@
     
     <ListPreference
         android:enabled="true"
-        android:key="@string/hog_hide_threshold"
         android:persistent="true"
+        android:key="@string/hog_hide_threshold"
         android:defaultValue="10"
         android:entries="@array/hog_thresh_list"
         android:entryValues="@array/hog_thresh_minutes"
-        android:title="@string/hog_thresh"
-        />
+        android:title="@string/hog_thresh" />
     
     <Preference 
         android:enabled="true"

@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,11 +57,15 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
 	private void acceptHogsOrBugs(SimpleHogBug[] input, ArrayList<SimpleHogBug> result) {
 		if (input == null)
 			return;
+
+		SharedPreferences p = a.getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+		String hogThresh = p.getString(a.getString(R.string.hog_hide_threshold), "10");
+		int thresh = Integer.parseInt(hogThresh);
 		for (SimpleHogBug item : input) {
 			if (item == null)
 				continue;
-			double benefit = 100.0 / item.getExpectedValueWithout() - 100.0
-					/ item.getExpectedValue();
+			
+			int[] benefit = item.getBenefit();
 			// TODO other filter conditions?
 			// Limit max number of items?
 			String appName = item.getAppName();
@@ -77,7 +84,7 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
 			if (addFakeItem && appName.equals(FAKE_ITEM))
 			    result.add(item);
 			// Filter out if benefit is too small
-			if (SamplingLibrary.isRunning(a.getApplicationContext(), appName) && benefit > 60) {
+			if (SamplingLibrary.isRunning(a.getApplicationContext(), appName) && (benefit[0] > 0 || benefit[1] > thresh)) {
 				result.add(item);
 			}
 		}
