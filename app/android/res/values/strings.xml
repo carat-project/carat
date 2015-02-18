@@ -208,6 +208,29 @@ delete these from your file.
     <string name="deviceinfo">About this device</string>
     <string name="osinfo">About this OS version</string>
     <string name="processlist">Running processes</string>
+    
+    <!-- Hog threshold values visible to user -->
+    <string-array name="hog_thresh_list">
+        <item>Show all</item>
+        <item>5m</item>
+        <item>10m</item>
+        <item>20m</item>
+        <item>1h</item>
+    </string-array>
+    
+    <!-- Hog threshold values used by the system, do not translate -->
+        <string-array name="hog_thresh_minutes">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>60</item>
+    </string-array>
+    
+    <string name="hog_thresh">Hide hogs and bugs with impact less than:</string>
+    
+    <string name="hog_hide_threshold">hoghidethreshold</string>
+    <string name="wifi_only_key">wifionly</string>
 </resources>
 
 

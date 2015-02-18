@@ -3,8 +3,10 @@ package edu.berkeley.cs.amplab.carat.android.lists;
 import java.util.Arrays;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,11 @@ public class HogsBugsAdapter extends BaseAdapter {
         this.a = caratApplication;
 
         Context appContext = caratApplication.getApplicationContext();
+        SharedPreferences p = a.getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+        String hogThresh = p.getString(a.getString(R.string.hog_hide_threshold), "10");
+        int thresh = Integer.parseInt(hogThresh);
+        Log.d("HogBugAdapter", "hog threshold: "+thresh+"m");
+        
         // Skip system apps
         int items = 0;
         if (results != null)
@@ -39,8 +46,12 @@ public class HogsBugsAdapter extends BaseAdapter {
 //                if (SpecialAppCases.isSpecialApp(appName)) 
                 if (appName.equals(Constants.CARAT_PACKAGE_NAME) || appName.equals(Constants.CARAT_OLD))
     				continue;
-                // the "dialer" app still shows up. no idea why!
-                if (!SamplingLibrary.isHidden(appContext, appName))
+                /*
+    			 * This must be handled by Carat data storage.
+                if (!SamplingLibrary.isHidden(appContext, appName))*/
+                int[] benefit = app.getBenefit();
+                // this is going to also filter out any hogs/bugs with less than 1 min benefit.
+                if (benefit[0] > 0 || benefit[1] > thresh)
                     items++;
             }
         allBugsOrHogs = new SimpleHogBug[items];
@@ -55,8 +66,13 @@ public class HogsBugsAdapter extends BaseAdapter {
                         || appName.equals(Constants.CARAT_OLD))
                     continue;
                 // Apparently the number of items changes from "items" above?
-                if (!SamplingLibrary.isHidden(appContext, appName)
-                        && i < allBugsOrHogs.length) {
+                
+                int[] benefit = b.getBenefit();
+                /*
+    			 * This must be handled by Carat data storage.
+    			 * */
+                if (/*!SamplingLibrary.isHidden(appContext, appName)
+                        &&*/ i < allBugsOrHogs.length && (benefit[0] > 0 || benefit[1] > thresh)) {
                     allBugsOrHogs[i] = b;
                     i++;
                 }

@@ -281,28 +281,6 @@ public class CaratApplication extends Application {
 		}
 		return jscore;
 	}
-
-	public static void refreshBugs() {
-		if (bugsActivity != null) {
-			main.runOnUiThread(new Runnable() {
-				public void run() {
-					bugsActivity.refresh();
-				}
-
-			});
-		}
-	}
-
-	public static void refreshHogs() {
-		if (hogsActivity != null) {
-			main.runOnUiThread(new Runnable() {
-				public void run() {
-					hogsActivity.refresh();
-				}
-
-			});
-		}
-	}
 	
 	/**
 	 * Return titles from the drawer items array.
@@ -391,7 +369,7 @@ public class CaratApplication extends Application {
 				Context co = getApplicationContext();
 				// TODO: using a shared preferences object might cause problem in different OS versions. replace with a private one. see MainActivity.AsyncTask.doInBackground().
 				final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(co);
-				final boolean useWifiOnly = p.getBoolean(Constants.WIFI_ONLY_PREFERENCE_KEY, false);
+				final boolean useWifiOnly = p.getBoolean(getString(R.string.wifi_only_key), false);
 				Log.d(TAG, "Wi-Fi only: "+ useWifiOnly);
 				String networkStatus = SamplingLibrary.getNetworkStatus(getApplicationContext());
 				String networkType = SamplingLibrary.getNetworkType(co);

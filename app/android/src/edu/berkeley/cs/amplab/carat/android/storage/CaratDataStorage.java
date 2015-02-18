@@ -14,6 +14,7 @@ import java.util.List;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -453,6 +454,11 @@ public class CaratDataStorage {
     private SimpleHogBug[] convertAndFilter(List<HogsBugs> list, boolean isBug) {
         if (list == null)
             return null;
+       
+        SharedPreferences p = a.getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+        String hogThresh = p.getString(a.getString(edu.berkeley.cs.amplab.carat.android.R.string.hog_hide_threshold), "10");
+        int thresh = Integer.parseInt(hogThresh);
+        
         List<SimpleHogBug> result = new LinkedList<SimpleHogBug>();
         int size = list.size();
         for (int i = 0; i < size; ++i) {
@@ -478,7 +484,10 @@ public class CaratDataStorage {
             /*result[i].setyVals(convert(item.getYVals()));
             result[i].setxValsWithout(convert(item.getXValsWithout()));
             result[i].setyValsWithout(convert(item.getYValsWithout()));*/
-            result.add(h);
+            int[] benefit = h.getBenefit();
+            // this is going to also filter out any hogs/bugs with less than 1 min benefit.
+            if (benefit[0] > 0 || benefit[1] > thresh)
+            	result.add(h);
         }
         return result.toArray(new SimpleHogBug[result.size()]);
     }

@@ -69,9 +69,11 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
 //			if (SpecialAppCases.isSpecialApp(appName))
 			if (appName.equals(Constants.CARAT_PACKAGE_NAME) || appName.equals(Constants.CARAT_OLD))
 				continue;
-			if (SamplingLibrary.isHidden(a.getApplicationContext(), appName))
+			/*
+			 * This must be handled by Carat data storage.
+			 * if (SamplingLibrary.isHidden(a.getApplicationContext(), appName))
 			    continue;
-			
+			*/
 			if (addFakeItem && appName.equals(FAKE_ITEM))
 			    result.add(item);
 			// Filter out if benefit is too small
