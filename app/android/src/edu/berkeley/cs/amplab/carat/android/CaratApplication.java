@@ -392,6 +392,7 @@ public class CaratApplication extends Application {
 				// TODO: using a shared preferences object might cause problem in different OS versions. replace with a private one. see MainActivity.AsyncTask.doInBackground().
 				final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(co);
 				final boolean useWifiOnly = p.getBoolean(Constants.WIFI_ONLY_PREFERENCE_KEY, false);
+				Log.d(TAG, "Wi-Fi only: "+ useWifiOnly);
 				String networkStatus = SamplingLibrary.getNetworkStatus(getApplicationContext());
 				String networkType = SamplingLibrary.getNetworkType(co);
 
