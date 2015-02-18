@@ -114,7 +114,7 @@ public class SummaryFragment extends ExtendedTitleFragment {
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
 
-                if (mMainActivity.isStatsDataAvailable()) {
+                if (((MainActivity) getActivity()).isStatsDataAvailable()) {
                     drawPieChart(inflatedView);
                 }
 
