@@ -8,7 +8,6 @@ import android.content.pm.PackageInfo;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
-import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
@@ -18,7 +17,6 @@ public class Tracker {
 
 	private static Tracker instance = null;
 	private String uuid = null;
-	private SharedPreferences p = null;
 	private Context context = null;
 	
 	public static Tracker getInstance(Context c) {
@@ -30,7 +28,7 @@ public class Tracker {
 	
 	public Tracker(Context c){
 		this.context = c;
-		this.p = PreferenceManager.getDefaultSharedPreferences(c);
+		SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(c);
 		this.uuid = p.getString(CaratApplication.getRegisteredUuid(), "UNKNOWN");
 	}
 
@@ -40,60 +38,60 @@ public class Tracker {
 	 * otherwise you get NullPointerException
 	 */
 	public void trackUser(String label, SimpleHogBug fullObject) {
-		PackageInfo pak = SamplingLibrary.getPackageInfo(context, fullObject.getAppName());
-		if (p != null) {
-			HashMap<String, String> options = new HashMap<String, String>();
-			options.put("status", CaratApplication.getMainActivity().getTitle().toString());
-			options.put("type", fullObject.getType().toString());
-			if (pak != null) {
-				options.put("app", pak.packageName);
-				options.put("version", pak.versionName);
-				options.put("versionCode", pak.versionCode + "");
-				options.put("label", label);
-			}
-			options.put("benefit", fullObject.getBenefitText().replace('\u00B1', '+'));
-			ClickTracking.track(uuid, "samplesview", options, CaratApplication.getMainActivity());
+		PackageInfo pak = SamplingLibrary.getPackageInfo(context,
+				fullObject.getAppName());
+		HashMap<String, String> options = new HashMap<String, String>();
+		String title = CaratApplication.getMainActivity().getTitle().toString();
+		options.put("type", fullObject.getType().toString());
+		if (pak != null) {
+			options.put("app", pak.packageName);
+			options.put("version", pak.versionName);
+			options.put("versionCode", pak.versionCode + "");
+			options.put("label", label);
 		}
+		options.put("benefit",
+				fullObject.getBenefitText().replace('\u00B1', '+'));
+		track("samplesview", title, options);
 	}
 
 	public void trackUser(String whatIsGettingDone, CharSequence title) {
 		Log.d("Tracker.trackUser", whatIsGettingDone);
-		if (p != null) {
-			String uuId = p.getString(CaratApplication.getRegisteredUuid(), "UNKNOWN");
-			HashMap<String, String> options = new HashMap<String, String>();
-			options.put("status", title.toString());
-			ClickTracking.track(uuId, whatIsGettingDone, options, context);
-		}
+		HashMap<String, String> options = new HashMap<String, String>();
+		track(whatIsGettingDone, title.toString(), options);
 	}
 	
 	public void trackSharing(CharSequence title) {
-		if (p != null) {
-			HashMap<String, String> options = new HashMap<String, String>();
-			options.put("status", title.toString());
-			options.put("sharetext", context.getString(R.string.myjscoreis) + " " + CaratApplication.getJscore());
-			ClickTracking.track(uuid, "caratshared", options, context);
-		}
+		HashMap<String, String> options = new HashMap<String, String>();
+		options.put("sharetext", context.getString(R.string.myjscoreis) + " " + CaratApplication.getJscore());
+		track("caratshared", title.toString(), options);
 	}
 	
 	public void trackFeedback(String os, String model, CharSequence title) {
-		if (p != null) {
-			HashMap<String, String> options = new HashMap<String, String>();
-			options.put("os", os);
-			options.put("model", model);
-			SimpleHogBug[] b = CaratApplication.storage.getBugReport();
-			int len = 0;
-			if (b != null)
-				len = b.length;
-			options.put("bugs", len + "");
-			b = CaratApplication.storage.getHogReport();
-			len = 0;
-			if (b != null)
-				len = b.length;
-			options.put("hogs", len + "");
-			options.put("status", title.toString());
-			options.put("sharetext", context.getString(R.string.myjscoreis) + " " + CaratApplication.getJscore());
-			ClickTracking.track(uuid, "feedbackbutton", options, context);
-		}
+		HashMap<String, String> options = new HashMap<String, String>();
+		options.put("os", os);
+		options.put("model", model);
+		SimpleHogBug[] b = CaratApplication.storage.getBugReport();
+		int len = 0;
+		if (b != null)
+			len = b.length;
+		options.put("bugs", len + "");
+		b = CaratApplication.storage.getHogReport();
+		len = 0;
+		if (b != null)
+			len = b.length;
+		options.put("hogs", len + "");
+		options.put("sharetext", context.getString(R.string.myjscoreis) + " " + CaratApplication.getJscore());
+		track("feedbackbutton", title.toString(), options);
 	}
-
+	
+	/**
+	 * Helper that calls ClickTracking with the required arguments, and also sets `title` as the `status`.
+	 * @param action The action being tracked
+	 * @param title The title of the app at this time
+	 * @param options Other options
+	 */
+	private void track(String action, String title, HashMap<String, String> options){
+		options.put("status", title);
+		ClickTracking.track(uuid, action, options, context);
+	}
 }

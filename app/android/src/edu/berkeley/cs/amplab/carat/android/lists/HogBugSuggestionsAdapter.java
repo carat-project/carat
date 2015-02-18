@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -72,14 +70,9 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
 //			if (SpecialAppCases.isSpecialApp(appName))
 			if (appName.equals(Constants.CARAT_PACKAGE_NAME) || appName.equals(Constants.CARAT_OLD))
 				continue;
-			/*
-			 * This must be handled by Carat data storage.
-			 * if (SamplingLibrary.isHidden(a.getApplicationContext(), appName))
-			    continue;
-			*/
+			
 			if (addFakeItem && appName.equals(FAKE_ITEM))
 			    result.add(item);
-			// Filter out if benefit is too small
 			if (SamplingLibrary.isRunning(a.getApplicationContext(), appName)) {
 				result.add(item);
 			}
