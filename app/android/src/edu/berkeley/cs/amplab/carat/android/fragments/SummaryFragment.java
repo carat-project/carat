@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,7 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 
 /**
  * 
- * @author Javad Sadeqzadeh
+ * @author Javad Sadeqzadeh, Eemil Lagerspetz
  *
  */
 public class SummaryFragment extends ExtendedTitleFragment {
@@ -78,7 +79,9 @@ public class SummaryFragment extends ExtendedTitleFragment {
     }
 
     public void scheduleRefresh() {
-        getActivity().runOnUiThread(new Runnable() {
+        FragmentActivity a = getActivity();
+        if (a != null) 
+        	a.runOnUiThread(new Runnable() {
             public void run() {
                 View v = getView();
                 if (v != null){
@@ -107,7 +110,6 @@ public class SummaryFragment extends ExtendedTitleFragment {
                 }
             }
         });
-
     }
 
     public void scheduleRefresh(final View inflatedView) {

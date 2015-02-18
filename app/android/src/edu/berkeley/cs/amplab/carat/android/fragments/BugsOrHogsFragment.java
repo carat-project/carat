@@ -56,7 +56,7 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = null;
-		if (isBugs && CaratApplication.storage.getBugReport().length == 0) {
+		if (isBugs && (CaratApplication.storage.getBugReport() == null || CaratApplication.storage.getBugReport().length == 0)) {
 			root = inflater.inflate(R.layout.emptybugsonly, container, false);
 			return root;
 		} else {

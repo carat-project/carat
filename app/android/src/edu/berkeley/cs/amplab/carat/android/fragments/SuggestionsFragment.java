@@ -21,6 +21,7 @@ import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.lists.HogBugSuggestionsAdapter;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
+import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.subscreens.KillAppFragment;
 import edu.berkeley.cs.amplab.carat.android.ui.LocalizedWebView;
@@ -33,7 +34,9 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	if (CaratApplication.storage.getHogReport().length == 0 && CaratApplication.storage.getBugReport().length == 0) {
+    	CaratDataStorage s = CaratApplication.storage;
+    	
+    	if ((s.getHogReport() == null || s.getHogReport().length == 0) && (s.getBugReport() == null || s.getBugReport().length == 0)) {
     		root = inflater.inflate(R.layout.emptyactions, container, false);
     		return root;
     	}
