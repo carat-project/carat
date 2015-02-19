@@ -247,7 +247,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
     	hogReport = CaratApplication.storage.getHogReport();
     	bugReport = CaratApplication.storage.getBugReport();
     	
-    	if (hogReport.length == 0 && bugReport.length == 0) 
+    	if (hogReport == null || bugReport == null || (hogReport.length == 0 && bugReport.length == 0)) 
     		return;
     	
         CaratApplication caratAppllication = (CaratApplication) CaratApplication.getMainActivity().getApplication();

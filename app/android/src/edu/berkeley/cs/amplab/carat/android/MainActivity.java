@@ -276,6 +276,23 @@ public class MainActivity extends ActionBarActivity {
 	        finish();
 	}
 	
+	
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		/* 
+		 * FIXME: Don't save anything for now.
+		 * This fixes some crashes with the backstack, but needs to be fixed in the long run.
+		 * 
+		 * What we should do here is:
+		 * 1. Save which Fragment, and which subscreen the user is looking at
+		 * 2. Save the data shown by that fragment
+		 * 3. Then in onCreate, read those fields and set them after initializing the app normally
+		 */
+		
+		//super.onSaveInstanceState(outState);
+	}
+
 	@Override
 	public void setTitle(CharSequence title) {
 		getSupportActionBar().setTitle(title);
@@ -519,7 +536,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		transaction.replace(R.id.content_frame, fragment, FRAGMENT_TAG)
 					.addToBackStack(FRAGMENT_TAG)
-					.commit();
+					.commitAllowingStateLoss();
 		mDrawerToggle.setDrawerIndicatorEnabled(showDrawerIndicator);
 	}
 	

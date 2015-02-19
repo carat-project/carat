@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +36,6 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
  */
 public class SummaryFragment extends ExtendedTitleFragment {
     // private final String TAG = "SummaryFragment";
-    private MainActivity mMainActivity = CaratApplication.getMainActivity();
     private PieChart mChart;
 
     @Override
@@ -79,7 +77,7 @@ public class SummaryFragment extends ExtendedTitleFragment {
     }
 
     public void scheduleRefresh() {
-        FragmentActivity a = getActivity();
+        final MainActivity a = (MainActivity) getActivity();
         if (a != null) 
         	a.runOnUiThread(new Runnable() {
             public void run() {
@@ -89,7 +87,7 @@ public class SummaryFragment extends ExtendedTitleFragment {
                 Button green = (Button) v.findViewById(R.id.active_bl);
                 green.setText(batteryLife);
                 }
-                if (mMainActivity.isStatsDataAvailable() && v != null) {
+                if (a.isStatsDataAvailable() && v != null) {
                     drawPieChart(v);
                 }
 
@@ -174,12 +172,15 @@ public class SummaryFragment extends ExtendedTitleFragment {
     private class CountClickListener implements OnClickListener {
         @Override
         public void onClick(View v) {
-            if (v == v.getRootView().findViewById(R.id.summary_hogs_count)) {
-                mMainActivity.replaceFragment(mMainActivity.getHogsFragment(), mMainActivity.getFragmentTag(4), true);
-            } else if (v == v.getRootView().findViewById(R.id.active_bl)) {
-                mMainActivity.replaceFragment(mMainActivity.getMydeviceFragment(), mMainActivity.getFragmentTag(2), true);
-            }else
-                mMainActivity.replaceFragment(mMainActivity.getBugsFragment(), mMainActivity.getFragmentTag(3), true);
+        	final MainActivity a = (MainActivity) getActivity();
+        	if (a != null) {
+	            if (v == v.getRootView().findViewById(R.id.summary_hogs_count)) {
+	                a.replaceFragment(a.getHogsFragment(), a.getFragmentTag(4), true);
+	            } else if (v == v.getRootView().findViewById(R.id.active_bl)) {
+	                a.replaceFragment(a.getMydeviceFragment(), a.getFragmentTag(2), true);
+	            }else
+	                a.replaceFragment(a.getBugsFragment(), a.getFragmentTag(3), true);
+	        }
         }
     }
 
@@ -221,23 +222,28 @@ public class SummaryFragment extends ExtendedTitleFragment {
         // enable / disable drawing of x- and y-values
         // mChart.setDrawYValues(false);
         // mChart.setDrawXValues(false);
-
-        mChart.setData(generatePieData());
-        Legend l = mChart.getLegend();
-        l.setPosition(LegendPosition.NONE);
+        PieData d = generatePieData();
+        if (d != null){
+        	mChart.setData(d);
+        	Legend l = mChart.getLegend();
+        	l.setPosition(LegendPosition.NONE);
+        }
     }
 
     protected PieData generatePieData() {
+    	final MainActivity a = (MainActivity) getActivity();
+    	if (a == null)
+    		return null;
         ArrayList<Entry> entries = new ArrayList<Entry>();
         ArrayList<String> xVals = new ArrayList<String>();
 
         xVals.add(getString(R.string.chart_wellbehaved));
         xVals.add(getString(R.string.chart_hogs));
         xVals.add(getString(R.string.chart_bugs));
-
-        int wellbehaved = mMainActivity.mWellbehaved;
-        int hogs = mMainActivity.mHogs;
-        int bugs = mMainActivity.mBugs;
+        
+        int wellbehaved = a.mWellbehaved;
+        int hogs = a.mHogs;
+        int bugs = a.mBugs;
 
         entries.add(new Entry((float) (wellbehaved), 1));
         entries.add(new Entry((float) (hogs), 2));
