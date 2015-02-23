@@ -30,6 +30,7 @@ public class SamplerService extends IntentService {
     
     @Override
     protected void onHandleIntent(Intent intent) {
+    	Sampler sampler = Sampler.getInstance();
 
 		// At this point SimpleWakefulReceiver is still holding a wake lock
 		// for us. We can do whatever we need to here and then tell it that
@@ -74,7 +75,6 @@ public class SamplerService extends IntentService {
 				 * intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
 				 * intentFilter.addDataScheme("package"); // add addDataScheme
 				 */
-				Sampler sampler = Sampler.getInstance();
 				// Unregister, since Carat may have been started multiple times
 				// since reboot
 				try {
@@ -88,7 +88,8 @@ public class SamplerService extends IntentService {
         }
         
         wl.release();
-        Sampler.completeWakefulIntent(intent);
+        if (sampler != null)
+        	Sampler.completeWakefulIntent(intent);
     }
 
     /**
