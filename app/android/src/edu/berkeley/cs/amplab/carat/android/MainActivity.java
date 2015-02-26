@@ -256,20 +256,22 @@ public class MainActivity extends ActionBarActivity {
 		
 		// If we will pop a top level screen, show drawer indicator again
 		int stackTop = manager.getBackStackEntryCount()-1;
-		
-		BackStackEntry entry = manager.getBackStackEntryAt(stackTop);
-		String name = entry.getName();
-		String[] titles = CaratApplication.getTitles();
-		boolean found = false;
-		for (String t: titles){
-			if (!found)
-				found = t.equals(name);
+		if (manager != null && stackTop >= 0) {
+			// The implementation sets entry count to 0 if the stack is null.
+			BackStackEntry entry = manager.getBackStackEntryAt(stackTop);
+			String name = entry.getName();
+			String[] titles = CaratApplication.getTitles();
+			boolean found = false;
+			for (String t : titles) {
+				if (!found)
+					found = t.equals(name);
+			}
+			if (found) {
+				// Restore menu
+				mDrawerToggle.setDrawerIndicatorEnabled(true);
+			}
 		}
-		if (found){
-			// Restore menu
-			mDrawerToggle.setDrawerIndicatorEnabled(true);
-		}
-		if (stackTop > 0 ) {
+		if (stackTop >= 0 ) {
 	        // If there are back-stack entries, replace the fragment (go to the fragment)
 	        manager.popBackStack();
 	    }else
@@ -337,8 +339,8 @@ public class MainActivity extends ActionBarActivity {
 
 	public void setTitleNormal() {
 		setFullVersion();
-		if (CaratApplication.storage != null) {
-			long s = CaratApplication.storage.getSamplesReported();
+		if (CaratApplication.getStorage() != null) {
+			long s = CaratApplication.getStorage().getSamplesReported();
 			Log.d("setTitleNormal", "number of samples reported=" + String.valueOf(s));
 			if (s > 0) {
 				mTitle = fullVersion + " - "+ s + " " + getString(R.string.samplesreported);
@@ -534,10 +536,12 @@ public class MainActivity extends ActionBarActivity {
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		
-		transaction.replace(R.id.content_frame, fragment, FRAGMENT_TAG)
-					.addToBackStack(FRAGMENT_TAG)
-					.commitAllowingStateLoss();
-		mDrawerToggle.setDrawerIndicatorEnabled(showDrawerIndicator);
+		if (!isDestroyed()) {
+			// Crash fix.
+			transaction.replace(R.id.content_frame, fragment, FRAGMENT_TAG)
+					.addToBackStack(FRAGMENT_TAG).commitAllowingStateLoss();
+			mDrawerToggle.setDrawerIndicatorEnabled(showDrawerIndicator);
+		}
 	}
 	
 	/**
