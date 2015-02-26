@@ -151,7 +151,8 @@ public class SampleReader {
     public static final Sample readSample(Object data) {
         Sample s = null;
         if (data != null && data instanceof HashMap<?, ?>) {
-            HashMap<String, String> m = (HashMap<String, String>) data;
+            @SuppressWarnings("unchecked")
+			HashMap<String, String> m = (HashMap<String, String>) data;
             s = new Sample();
             NetworkDetails n = new NetworkDetails();
             BatteryDetails bd = new BatteryDetails();

@@ -2,8 +2,6 @@ package edu.berkeley.cs.amplab.carat.android.lists;
 
 import java.util.Arrays;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -54,8 +52,6 @@ public class HogsBugsAdapter extends BaseAdapter {
                         || appName.equals(Constants.CARAT_OLD))
                     continue;
                 // Apparently the number of items changes from "items" above?
-                
-                int[] benefit = b.getBenefit();
                 /*
     			 * This must be handled by Carat data storage.
     			 * */
@@ -83,7 +79,7 @@ public class HogsBugsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.hog, null);
+            convertView = mInflater.inflate(R.layout.hog, parent);
             holder = new ViewHolder();
             holder.appIcon = (ImageView) convertView.findViewById(R.id.appIcon);
             holder.txtName = (TextView) convertView.findViewById(R.id.appName);
