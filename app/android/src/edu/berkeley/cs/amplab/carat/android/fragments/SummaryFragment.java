@@ -72,7 +72,8 @@ public class SummaryFragment extends ExtendedTitleFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("SummaryFragment", "onResume called");
+        if (Constants.DEBUG)
+            Log.d("SummaryFragment", "onResume called");
         scheduleRefresh();
     }
 

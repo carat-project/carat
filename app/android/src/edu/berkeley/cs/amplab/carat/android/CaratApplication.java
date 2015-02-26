@@ -359,7 +359,8 @@ public class CaratApplication extends Application {
 				// TODO: using a shared preferences object might cause problem in different OS versions. replace with a private one. see MainActivity.AsyncTask.doInBackground().
 				final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(co);
 				final boolean useWifiOnly = p.getBoolean(getString(R.string.wifi_only_key), false);
-				Log.d(TAG, "Wi-Fi only: "+ useWifiOnly);
+				if (Constants.DEBUG)
+				    Log.d(TAG, "Wi-Fi only: "+ useWifiOnly);
 				String networkStatus = SamplingLibrary.getNetworkStatus(getApplicationContext());
 				String networkType = SamplingLibrary.getNetworkType(co);
 
@@ -463,7 +464,8 @@ public class CaratApplication extends Application {
 	
 	public static void setReportData() {
 		final Reports r = getStorage().getReports();
-		Log.d(TAG, "Got reports.");
+		if (Constants.DEBUG)
+		    Log.d(TAG, "Got reports.");
 		long freshness = CaratApplication.getStorage().getFreshness();
 		long l = System.currentTimeMillis() - freshness;
 		final long h = l / 3600000;
@@ -472,7 +474,8 @@ public class CaratApplication extends Application {
 		double error = 0;
 
 		if (r != null) {
-			Log.d(TAG, "r (reports) not null.");
+		    if (Constants.DEBUG)
+		        Log.d(TAG, "r (reports) not null.");
 			// Try exact battery life
 			if (r.jScoreWith != null) {
 				// Log.d(TAG, "jscoreWith not null.");
@@ -482,7 +485,8 @@ public class CaratApplication extends Application {
 					error = 100 / (exp + r.jScoreWith.error);
 				} else if (r.getModel() != null) {
 					exp = r.getModel().expectedValue;
-					Log.d(TAG, "Model expected value: " + exp);
+					if (Constants.DEBUG)
+					    Log.d(TAG, "Model expected value: " + exp);
 					if (exp > 0.0) {
 						bl = 100 / exp;
 						error = 100 / (exp + r.getModel().error);

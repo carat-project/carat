@@ -83,7 +83,8 @@ public class SampleSender {
     
                                     tries = 2;
                                     // FlurryAgent.logEvent("UploadSamples");
-                                    Log.d(TAG, "Uploaded " + success
+                                    if (Constants.DEBUG)
+                                        Log.d(TAG, "Uploaded " + success
                                             + " samples out of " + map.size());
                                     if (success > 0)
                                         CaratApplication.getStorage().samplesReported(success);
@@ -100,8 +101,8 @@ public class SampleSender {
                                     long lastSampleTime = (long) last.getTimestamp() * 1000; // in currentTimeMillis
                                     SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
                                     Date resultdate = new Date(lastSampleTime);
-                                    
-                                    Log.d(TAG,
+                                    if (Constants.DEBUG)
+                                        Log.d(TAG,
                                             "Deleting " + success
                                                     + " samples older than "
                                                     + sdf.format(resultdate));

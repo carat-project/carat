@@ -374,7 +374,8 @@ public final class SamplingLibrary {
 		while (keys.hasMoreElements()) {
 			String k = (String) keys.nextElement();
 			String v = list.getProperty(k);
-			Log.d("PROPS", k + "=" + v);
+			if (Constants.DEBUG)
+			    Log.d("PROPS", k + "=" + v);
 		}
 	}
 
@@ -787,13 +788,15 @@ public final class SamplingLibrary {
              * disabled.
              */
             if (disabled) {
-                Log.i(STAG, "DISABLED: " + processName);
+                if (Constants.DEBUG)
+                    Log.i(STAG, "DISABLED: " + processName);
                 Editor e = PreferenceManager.getDefaultSharedPreferences(c.getApplicationContext()).edit();
                 e.putBoolean(SamplingLibrary.DISABLED + processName, true).commit();
             }
             return disabled;
         } catch (NameNotFoundException e) {
-            Log.d(STAG, "Could not find app info for: "+processName);
+            if (Constants.DEBUG)
+                Log.d(STAG, "Could not find app info for: "+processName);
         }
 	    return false;
 	}
@@ -1961,11 +1964,12 @@ public final class SamplingLibrary {
 
 	public static Sample getSample(Context context, Intent intent, String lastBatteryState) {
 		final String TAG = "SamplingLibrary.getSample";
-		Log.d(TAG, "getSample() was invoked.");
+		if (Constants.DEBUG)
+		    Log.d(TAG, "getSample() was invoked.");
 
 		String action = intent.getAction();
-
-		Log.d(TAG, "action = " + action);
+		if (Constants.DEBUG)
+		    Log.d(TAG, "action = " + action);
 
 		// Construct sample and return it in the end
 		Sample mySample = new Sample();

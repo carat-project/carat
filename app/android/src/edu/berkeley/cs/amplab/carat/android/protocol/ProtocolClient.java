@@ -11,7 +11,7 @@ import org.apache.thrift.transport.TTransportException;
 
 import android.content.Context;
 import android.util.Log;
-
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.thrift.CaratService;
 
 /**
@@ -49,8 +49,8 @@ public class ProtocolClient {
                     if (properties.containsKey("ADDRESS"))
                         SERVER_ADDRESS = properties.getProperty("ADDRESS",
                                 "server.caratproject.com");
-
-                    Log.d(TAG, "Set address=" + SERVER_ADDRESS + " port="
+                    if (Constants.DEBUG)
+                        Log.d(TAG, "Set address=" + SERVER_ADDRESS + " port="
                             + SERVER_PORT);
                 } else
                     Log.e(TAG, "Could not open server property file!");
@@ -73,7 +73,8 @@ public class ProtocolClient {
     }
     
     public static CaratService.Client open(Context c) throws NumberFormatException, TTransportException {
-    	Log.d("ProtocolClient", "trying to get an instance of CaratProtocol.");
+        if (Constants.DEBUG)
+            Log.d("ProtocolClient", "trying to get an instance of CaratProtocol.");
         return getInstance(c);
     }
     

@@ -89,7 +89,8 @@ public class AppDetailsFragment extends Fragment {
 				// common piece of code for both OS and Model
 				setBenefitWidget(detailsPage);
 			}
-			Log.d("NullReports", "Reports are null!!!");
+			if (Constants.DEBUG)
+			    Log.d("NullReports", "Reports are null!!!");
 		}
 		// common piece of code for App, OS, and Model
 		setDescriptionWidgets(detailsPage);

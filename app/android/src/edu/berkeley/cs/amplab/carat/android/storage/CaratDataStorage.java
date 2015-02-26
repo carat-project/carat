@@ -194,7 +194,8 @@ public class CaratDataStorage {
 
     public long readFreshness() {
         String s = readText(FRESHNESS);
-        Log.d("CaratDataStorage", "Read freshness: " + s);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read freshness: " + s);
         if (s != null)
             return Long.parseLong(s);
         else
@@ -203,7 +204,8 @@ public class CaratDataStorage {
 
     public Reports readReports() {
         Object o = readObject(FILENAME);
-        Log.d("CaratDataStorage", "Read Reports: " + o);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read Reports: " + o);
         if (o != null) {
             caratData = new WeakReference<Reports>((Reports) o);
             return (Reports) o;
@@ -221,7 +223,8 @@ public class CaratDataStorage {
     
     public long readBlacklistFreshness() {
         String s = readText(BLACKLIST_FRESHNESS);
-        Log.d("CaratDataStorage", "Read freshness: " + s);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read freshness: " + s);
         if (s != null)
             return Long.parseLong(s);
         else
@@ -234,7 +237,8 @@ public class CaratDataStorage {
     
     public long readQuickHogsFreshness() {
         String s = readText(QUICKHOGS_FRESHNESS);
-        Log.d("CaratDataStorage", "Read freshness: " + s);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read freshness: " + s);
         if (s != null)
             return Long.parseLong(s);
         else
@@ -359,7 +363,8 @@ public class CaratDataStorage {
  
     public long readSamplesReported() {
         String s = readText(SAMPLES_REPORTED);
-        Log.d("CaratDataStorage", "Read samples reported: " + s);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read samples reported: " + s);
         // here is the bug. s is null!
         if (s != null)
             return Long.parseLong(s);

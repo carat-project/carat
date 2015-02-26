@@ -1,5 +1,6 @@
 package edu.berkeley.cs.amplab.carat.android.ui;
 
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -16,7 +17,8 @@ public class FixedViewFlipper extends ViewFlipper {
         try {
             super.onDetachedFromWindow();
         } catch (Exception e) {
-            Log.d("MyViewFlipper", "Stopped a viewflipper crash");
+            if (Constants.DEBUG)
+                Log.d("MyViewFlipper", "Stopped a viewflipper crash");
             stopFlipping();
         }
     }

@@ -258,10 +258,10 @@ public class MainActivity extends ActionBarActivity {
 		FragmentManager manager = getSupportFragmentManager();
 		int stackTop = manager.getBackStackEntryCount()-1;
 		
-		if (debug)
+		if (Constants.DEBUG)
 			Log.d("CaratMain", "stackTop="+stackTop);
 		if (stackTop <= 0){
-			if (debug)
+		    if (Constants.DEBUG)
 				Log.d("CaratMain", "stack empty, quit.");
 			finish();
 			// Apparently finish does not always return.
@@ -270,7 +270,7 @@ public class MainActivity extends ActionBarActivity {
 		// The implementation sets entry count to 0 if the stack is null.
 		BackStackEntry entry = null;
 		String name = null;
-		if (debug){
+		if (Constants.DEBUG) {
 			 entry = manager.getBackStackEntryAt(stackTop);
 			 name = entry.getName();
 			Log.d("CaratMain", "stack entry to pop=" + name);
@@ -291,7 +291,7 @@ public class MainActivity extends ActionBarActivity {
 		    // This is valid because we quit if stackTop <= 0, and just set the indicator above if it's 1.
 			entry = manager.getBackStackEntryAt(stackTop-1);
 			name = entry.getName();
-			if (debug)
+			if (Constants.DEBUG)
                 Log.d("CaratMain", "current stack entry=" + name);
             String[] titles = CaratApplication.getTitles();
             boolean found = false;
@@ -300,7 +300,7 @@ public class MainActivity extends ActionBarActivity {
                     found = t.equals(name);
             }
             if (found) {
-                if (debug)
+                if (Constants.DEBUG)
                     Log.d("CaratMain", "Found " + name + " in " + Arrays.toString(titles));
                 // Restore menu
                 mDrawerToggle.setDrawerIndicatorEnabled(true);
@@ -371,7 +371,8 @@ public class MainActivity extends ActionBarActivity {
 		setFullVersion();
 		if (CaratApplication.getStorage() != null) {
 			long s = CaratApplication.getStorage().getSamplesReported();
-			Log.d("setTitleNormal", "number of samples reported=" + String.valueOf(s));
+			if (Constants.DEBUG)
+			    Log.d("setTitleNormal", "number of samples reported=" + String.valueOf(s));
 			if (s > 0) {
 				mTitle = fullVersion + " - "+ s + " " + getString(R.string.samplesreported);
 			} else {

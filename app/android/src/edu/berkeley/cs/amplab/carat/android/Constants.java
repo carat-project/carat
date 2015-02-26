@@ -4,6 +4,8 @@ import android.app.AlarmManager;
 import android.graphics.Color;
 
 public class Constants {
+    // Whether to output debug messages.
+    public static final boolean DEBUG = false;
 
 	// Report Freshness timeout. Default: 15 minutes
 	// public static final long FRESHNESS_TIMEOUT = 30 * 1000;

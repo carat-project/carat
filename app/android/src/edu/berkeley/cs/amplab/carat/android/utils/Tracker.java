@@ -8,6 +8,7 @@ import android.content.pm.PackageInfo;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
@@ -55,7 +56,8 @@ public class Tracker {
 	}
 
 	public void trackUser(String whatIsGettingDone, CharSequence title) {
-		Log.d("Tracker.trackUser", whatIsGettingDone);
+	    if (Constants.DEBUG)
+	        Log.d("Tracker.trackUser", whatIsGettingDone);
 		HashMap<String, String> options = new HashMap<String, String>();
 		track(whatIsGettingDone, title.toString(), options);
 	}

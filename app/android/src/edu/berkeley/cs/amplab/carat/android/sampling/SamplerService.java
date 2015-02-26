@@ -144,10 +144,12 @@ public class SamplerService extends IntentService {
 				this.getSample(context, intent, lastSample, sampleDB);
 				notify(context);
 			} else {
-				Log.d(TAG, "NO battery percentage change. currentBatteryLevel=" + SamplingLibrary.getCurrentBatteryLevel());
+			    if (Constants.DEBUG)
+			        Log.d(TAG, "NO battery percentage change. currentBatteryLevel=" + SamplingLibrary.getCurrentBatteryLevel());
 			}
 		} else {
-			Log.d(TAG, "current battery level = 0");
+		    if (Constants.DEBUG)
+		        Log.d(TAG, "current battery level = 0");
 		}
 	}
 

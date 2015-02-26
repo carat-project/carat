@@ -17,6 +17,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import android.util.Log;
 
 
@@ -41,7 +42,8 @@ public class JsonParser {
             // Read content & Log
             inputStream = httpEntity.getContent();
         } catch (UnknownHostException e0) {
-        	Log.d("JsonParser", "Unable to connect to the statstics server (no Internet on the device! is Wifi or mobile data on?), " + e0.toString());
+            if (Constants.DEBUG)
+                Log.d("JsonParser", "Unable to connect to the statstics server (no Internet on the device! is Wifi or mobile data on?), " + e0.toString());
         	return "";
         } catch (UnsupportedEncodingException e1) {
             Log.e("UnsupportedEncodingException", e1.toString());
