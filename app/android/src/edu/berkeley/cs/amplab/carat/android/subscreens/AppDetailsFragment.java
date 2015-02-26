@@ -78,7 +78,7 @@ public class AppDetailsFragment extends Fragment {
 			drawView.setParams(fullObject, detailsPage);
 			setBenefitTextView(detailsPage, fullObject.getBenefitText());
 		} else { // isOS or isModel
-			Reports reports = CaratApplication.storage.getReports();
+			Reports reports = CaratApplication.getStorage().getReports();
 			if (reports != null) {
 				Tracker tracker = Tracker.getInstance(getActivity());
 				if (isOs) {

@@ -38,7 +38,7 @@ public class CaratDataStorage {
     public static final String SAMPLES_REPORTED = "carat-samples-reported.dat";
     
     public static final String FRESHNESS = "carat-freshness.dat";
-    private Application a = null;
+    private Context a = null;
 
     private long freshness = 0;
     private long blacklistFreshness = 0;
@@ -52,7 +52,7 @@ public class CaratDataStorage {
     private WeakReference<List<String>> blacklistedApps = null;
     private WeakReference<List<String>> blacklistedGlobs = null;
 
-    public CaratDataStorage(Application a) {
+    public CaratDataStorage(Context a) {
         this.a = a;
         freshness = readFreshness();
         blacklistFreshness = readBlacklistFreshness();
@@ -269,7 +269,8 @@ public class CaratDataStorage {
      * 
      * @return a list of blacklisted apps
      */
-    public List<String> readBlacklist() {
+    @SuppressWarnings("unchecked")
+	public List<String> readBlacklist() {
         Object o = readObject(BLACKLIST_FILE);
         //Log.d("CaratDataStorage", "Read blacklist: " + o);
         if (o != null) {
@@ -294,7 +295,8 @@ public class CaratDataStorage {
      * 
      * @return a list of blacklisted expressions
      */
-    public List<String> readGloblist() {
+    @SuppressWarnings("unchecked")
+	public List<String> readGloblist() {
         Object o = readObject(GLOBLIST_FILE);
         //Log.d("CaratDataStorage", "Read glob blacklist: " + o);
         if (o != null) {
@@ -380,6 +382,16 @@ public class CaratDataStorage {
             return caratData.get();
         else
             return readReports();
+    }
+    
+    public boolean bugsIsEmpty() {
+    	SimpleHogBug[] bugs = getBugReport();
+    	return bugs == null || bugs.length == 0;
+    }
+    
+    public boolean hogsIsEmpty() {
+    	SimpleHogBug[] hogs = getHogReport();
+    	return hogs == null || hogs.length == 0;
     }
 
     /**

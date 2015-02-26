@@ -93,9 +93,9 @@ public class SummaryFragment extends ExtendedTitleFragment {
 
                 int hogsCount = 0;
                 int bugsCount = 0;
-                if (CaratApplication.storage != null && v != null) {
-                    SimpleHogBug[] h = CaratApplication.storage.getHogReport();
-                    SimpleHogBug[] b = CaratApplication.storage.getBugReport();
+                if (CaratApplication.getStorage() != null && v != null) {
+                    SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+                    SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
                     if (h != null)
                         hogsCount = h.length;
                     if (b != null)
@@ -120,14 +120,12 @@ public class SummaryFragment extends ExtendedTitleFragment {
 
                 int hogsCount = 0;
                 int bugsCount = 0;
-                if (CaratApplication.storage != null) {
-                    SimpleHogBug[] h = CaratApplication.storage.getHogReport();
-                    SimpleHogBug[] b = CaratApplication.storage.getBugReport();
-                    if (h != null)
-                        hogsCount = h.length;
-                    if (b != null)
-                        bugsCount = b.length;
-                }
+				SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+				SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
+				if (h != null)
+					hogsCount = h.length;
+				if (b != null)
+					bugsCount = b.length;
                 Button hogsCountTv = (Button) inflatedView.findViewById(R.id.summary_hogs_count);
                 hogsCountTv.setText(hogsCount + " " + getString(R.string.hogs));
 

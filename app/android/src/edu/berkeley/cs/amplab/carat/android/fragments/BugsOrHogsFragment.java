@@ -56,7 +56,7 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = null;
-		if (isBugs && (CaratApplication.storage.getBugReport() == null || CaratApplication.storage.getBugReport().length == 0)) {
+		if (isBugs && CaratApplication.getStorage().bugsIsEmpty()) {
 			root = inflater.inflate(R.layout.emptybugsonly, container, false);
 			return root;
 		} else {
@@ -154,8 +154,6 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 
 	@Override
 	public void onDetach() {
-		CaratApplication.setBugs(null);
-		CaratApplication.setHogs(null);
 		super.onDetach();
 	}
 
@@ -165,19 +163,15 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 		CaratApplication app = (CaratApplication) getActivity().getApplication();
 		final ListView lv = (ListView) getActivity().findViewById(android.R.id.list);
 		if (isBugs) {
-			if (CaratApplication.storage.getBugReport().length == 0)
+			if (CaratApplication.getStorage().bugsIsEmpty())
 				return;
-			else lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.storage.getBugReport()));
+			else lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.getStorage().getBugReport()));
 		} else
-			lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.storage.getHogReport()));
+			lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.getStorage().getHogReport()));
 	}
 
 	@Override
 	public void onResume() {
-		if (isBugs)
-			CaratApplication.setBugs(this);
-		else
-			CaratApplication.setHogs(this);
 		refresh();
 		super.onResume();
 	}

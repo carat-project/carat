@@ -201,7 +201,7 @@ public class CommunicationManager {
 		// Do not refresh if not connected
 		if (!SamplingLibrary.networkAvailable(a.getApplicationContext()))
 			return;
-		if (System.currentTimeMillis() - CaratApplication.storage.getFreshness() < Constants.FRESHNESS_TIMEOUT)
+		if (System.currentTimeMillis() - CaratApplication.getStorage().getFreshness() < Constants.FRESHNESS_TIMEOUT)
 			return;
 		// Establish connection
 		if (register) {
@@ -273,7 +273,7 @@ public class CommunicationManager {
 		success = refreshHogReports(uuId, model);
 
 		boolean bl = true;
-		if (System.currentTimeMillis() - CaratApplication.storage.getBlacklistFreshness() < Constants.FRESHNESS_TIMEOUT_BLACKLIST)
+		if (System.currentTimeMillis() - CaratApplication.getStorage().getBlacklistFreshness() < Constants.FRESHNESS_TIMEOUT_BLACKLIST)
 			bl = false;
 
 		if (success) {
@@ -288,7 +288,7 @@ public class CommunicationManager {
 		
 		// NOTE: Check for having a J-Score, and in case there is none, send the
 		// new message
-		Reports r = CaratApplication.storage.getReports();
+		Reports r = CaratApplication.getStorage().getReports();
 		if (r == null || r.jScoreWith == null || r.jScoreWith.expectedValue <= 0) {
 			success = getQuickHogsAndMaybeRegister(uuId, OS, model);
 			if (success)
@@ -302,12 +302,12 @@ public class CommunicationManager {
 			refreshQuestionnaireLink();
 		}
 
-		CaratApplication.storage.writeFreshness();
+		CaratApplication.getStorage().writeFreshness();
 		Log.d(TAG, "Wrote freshness");
 	}
 
 	private boolean refreshMainReports(String uuid, String os, String model) {
-		if (System.currentTimeMillis() - CaratApplication.storage.getFreshness() < Constants.FRESHNESS_TIMEOUT)
+		if (System.currentTimeMillis() - CaratApplication.getStorage().getFreshness() < Constants.FRESHNESS_TIMEOUT)
 			return false;
 		CaratService.Client instance = null;
 		try {
@@ -319,7 +319,7 @@ public class CommunicationManager {
 				Log.d("CommunicationManager.refreshMainReports()",
 						"got the main report (action list)" + ", model=" + r.getModel() 
 						+ ", jscore=" + r.getJScore() + ". Storing the report in the databse");
-				CaratApplication.storage.writeReports(r);
+				CaratApplication.getStorage().writeReports(r);
 			} else {
 				Log.d("CommunicationManager.refreshMainReports()", 
 						"the fetched MAIN report is null");
@@ -336,7 +336,7 @@ public class CommunicationManager {
 	}
 
 	private boolean refreshBugReports(String uuid, String model) {
-		if (System.currentTimeMillis() - CaratApplication.storage.getFreshness() < Constants.FRESHNESS_TIMEOUT)
+		if (System.currentTimeMillis() - CaratApplication.getStorage().getFreshness() < Constants.FRESHNESS_TIMEOUT)
 			return false;
 		CaratService.Client instance = null;
 		try {
@@ -345,7 +345,7 @@ public class CommunicationManager {
 			// Assume multiple invocations, do not close
 			// ProtocolClient.close();
 			if (r != null) {
-				CaratApplication.storage.writeBugReport(r);
+				CaratApplication.getStorage().writeBugReport(r);
 				Log.d("CommunicationManager.refreshBugReports()", 
 						"got the bug list: " + r.getHbList().toString());
 			} else {
@@ -362,7 +362,7 @@ public class CommunicationManager {
 	}
 
 	private boolean refreshHogReports(String uuid, String model) {
-		if (System.currentTimeMillis() - CaratApplication.storage.getFreshness() < Constants.FRESHNESS_TIMEOUT)
+		if (System.currentTimeMillis() - CaratApplication.getStorage().getFreshness() < Constants.FRESHNESS_TIMEOUT)
 			return false;
 		CaratService.Client instance = null;
 		try {
@@ -372,7 +372,7 @@ public class CommunicationManager {
 			// Assume multiple invocations, do not close
 			// ProtocolClient.close();
 			if (r != null) {
-				CaratApplication.storage.writeHogReport(r);
+				CaratApplication.getStorage().writeHogReport(r);
 				Log.d("CommunicationManager.refreshHogReports()", 
 						"got the hog list: " + r.getHbList().toString());
 			} else {
@@ -443,17 +443,17 @@ public class CommunicationManager {
 						rd.close();
 						Log.v(TAG, "Downloaded blacklist: " + blacklist);
 						Log.v(TAG, "Downloaded globlist: " + globlist);
-						CaratApplication.storage.writeBlacklist(blacklist);
+						CaratApplication.getStorage().writeBlacklist(blacklist);
 						// List of *something or something* expressions:
 						if (globlist.size() > 0)
-							CaratApplication.storage.writeGloblist(globlist);
+							CaratApplication.getStorage().writeGloblist(globlist);
 
 					}
 				} catch (Throwable th) {
 					Log.e(TAG, "Could not retrieve blacklist!", th);
 				}
 				// So we don't try again too often.
-				CaratApplication.storage.writeBlacklistFreshness();
+				CaratApplication.getStorage().writeBlacklistFreshness();
 			}
 		}.start();
 	}
@@ -472,9 +472,9 @@ public class CommunicationManager {
 						s = rd.readLine();
 						rd.close();
 						if (s != null && s.length() > 7 && s.startsWith("http"))
-							CaratApplication.storage.writeQuestionnaireUrl(s);
+							CaratApplication.getStorage().writeQuestionnaireUrl(s);
 						else
-							CaratApplication.storage.writeQuestionnaireUrl(" ");
+							CaratApplication.getStorage().writeQuestionnaireUrl(" ");
 					}
 				} catch (Throwable th) {
 					Log.e(TAG, "Could not retrieve blacklist!", th);
@@ -484,7 +484,7 @@ public class CommunicationManager {
 	}
 
 	private boolean getQuickHogsAndMaybeRegister(String uuid, String os, String model) {
-		if (System.currentTimeMillis() - CaratApplication.storage.getQuickHogsFreshness() < Constants.FRESHNESS_TIMEOUT_QUICKHOGS)
+		if (System.currentTimeMillis() - CaratApplication.getStorage().getQuickHogsFreshness() < Constants.FRESHNESS_TIMEOUT_QUICKHOGS)
 			return false;
 		CaratService.Client instance = null;
 		try {
@@ -502,8 +502,8 @@ public class CommunicationManager {
 			// Assume multiple invocations, do not close
 			// ProtocolClient.close();
 			if (r != null) {
-				CaratApplication.storage.writeHogReport(r);
-				CaratApplication.storage.writeQuickHogsFreshness();
+				CaratApplication.getStorage().writeHogReport(r);
+				CaratApplication.getStorage().writeQuickHogsFreshness();
 			}
 			// Assume freshness written by caller.
 			// s.writeFreshness();

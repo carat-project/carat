@@ -86,7 +86,7 @@ public class SampleSender {
                                     Log.d(TAG, "Uploaded " + success
                                             + " samples out of " + map.size());
                                     if (success > 0)
-                                        CaratApplication.storage.samplesReported(success);
+                                        CaratApplication.getStorage().samplesReported(success);
                                     Sample last = map.get(map.lastKey());
                                     
 									/*

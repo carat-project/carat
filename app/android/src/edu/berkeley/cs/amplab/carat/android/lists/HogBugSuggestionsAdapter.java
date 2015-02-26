@@ -96,7 +96,7 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
         // acceptDisableAutoSync(results);
         if (results.isEmpty())
             helpCaratCollectMoreData(results);
-        String url = CaratApplication.storage.getQuestionnaireUrl(); 
+        String url = CaratApplication.getStorage().getQuestionnaireUrl(); 
         boolean questionnaireEnabled = url != null && url.length() > 7; // http://
         if (questionnaireEnabled)
             questionnaire(results);

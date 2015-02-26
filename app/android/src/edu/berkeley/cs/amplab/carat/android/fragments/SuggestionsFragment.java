@@ -34,9 +34,9 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	CaratDataStorage s = CaratApplication.storage;
+    	CaratDataStorage s = CaratApplication.getStorage();
     	
-    	if ((s.getHogReport() == null || s.getHogReport().length == 0) && (s.getBugReport() == null || s.getBugReport().length == 0)) {
+    	if (s.hogsIsEmpty() && s.bugsIsEmpty()) {
     		root = inflater.inflate(R.layout.emptyactions, container, false);
     		return root;
     	}
@@ -226,7 +226,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
         String caratId = Uri.encode(p.getString(CaratApplication.getRegisteredUuid(), ""));
         String os = Uri.encode(SamplingLibrary.getOsVersion());
         String model = Uri.encode(SamplingLibrary.getModel());
-        String url = CaratApplication.storage.getQuestionnaireUrl();
+        String url = CaratApplication.getStorage().getQuestionnaireUrl();
         if (url != null && url.length() > 7 && url.startsWith("http")) { // http://
             url = url.replace("caratid", caratId).replace("caratos", os).replace("caratmodel", model);
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -244,10 +244,10 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 
     public void refresh() {
     	SimpleHogBug[] hogReport, bugReport;
-    	hogReport = CaratApplication.storage.getHogReport();
-    	bugReport = CaratApplication.storage.getBugReport();
+    	hogReport = CaratApplication.getStorage().getHogReport();
+    	bugReport = CaratApplication.getStorage().getBugReport();
     	
-    	if (hogReport == null || bugReport == null || (hogReport.length == 0 && bugReport.length == 0)) 
+    	if (CaratApplication.getStorage().hogsIsEmpty() || CaratApplication.getStorage().bugsIsEmpty()) 
     		return;
     	
         CaratApplication caratAppllication = (CaratApplication) CaratApplication.getMainActivity().getApplication();

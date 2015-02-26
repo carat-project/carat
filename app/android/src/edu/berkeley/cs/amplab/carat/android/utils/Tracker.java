@@ -70,12 +70,12 @@ public class Tracker {
 		HashMap<String, String> options = new HashMap<String, String>();
 		options.put("os", os);
 		options.put("model", model);
-		SimpleHogBug[] b = CaratApplication.storage.getBugReport();
+		SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
 		int len = 0;
 		if (b != null)
 			len = b.length;
 		options.put("bugs", len + "");
-		b = CaratApplication.storage.getHogReport();
+		b = CaratApplication.getStorage().getHogReport();
 		len = 0;
 		if (b != null)
 			len = b.length;

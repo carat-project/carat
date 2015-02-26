@@ -139,7 +139,7 @@ public class SettingsSuggestionsFragment extends ExtendedTitleFragment implement
         String caratId = Uri.encode(p.getString(CaratApplication.getRegisteredUuid(), ""));
         String os = Uri.encode(SamplingLibrary.getOsVersion());
         String model = Uri.encode(SamplingLibrary.getModel());
-        String url = CaratApplication.storage.getQuestionnaireUrl();
+        String url = CaratApplication.getStorage().getQuestionnaireUrl();
         if (url != null && url.length() > 7 && url.startsWith("http")) { // http://
             url = url.replace("caratid", caratId).replace("caratos", os).replace("caratmodel", model);
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -156,7 +156,7 @@ public class SettingsSuggestionsFragment extends ExtendedTitleFragment implement
     public void refresh() {
         CaratApplication caratAppllication = (CaratApplication) CaratApplication.getMainActivity().getApplication();
         final ListView lv = (ListView) rootView.findViewById(android.R.id.list);
-        lv.setAdapter(new SettingsSuggestionAdapter(caratAppllication, CaratApplication.storage.getSettingsReport()));
+        lv.setAdapter(new SettingsSuggestionAdapter(caratAppllication, CaratApplication.getStorage().getSettingsReport()));
     }
 
     @Override
