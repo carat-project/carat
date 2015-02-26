@@ -79,7 +79,7 @@ public class HogsBugsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.hog, parent);
+            convertView = mInflater.inflate(R.layout.hog, null);
             holder = new ViewHolder();
             holder.appIcon = (ImageView) convertView.findViewById(R.id.appIcon);
             holder.txtName = (TextView) convertView.findViewById(R.id.appName);
