@@ -17,7 +17,6 @@ import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.SparseArray;
-import edu.berkeley.cs.amplab.carat.android.fragments.BugsOrHogsFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.SuggestionsFragment;
 import edu.berkeley.cs.amplab.carat.android.model_classes.MyDeviceData;
 import edu.berkeley.cs.amplab.carat.android.protocol.CommunicationManager;
@@ -65,7 +64,7 @@ public class CaratApplication extends Application {
     }
 	
 	// NOTE: This needs to be initialized before CommunicationManager.
-	public static CaratDataStorage storage = null;
+	private static CaratDataStorage storage = null;
 	// NOTE: The CommunicationManager requires a working instance of
 	// CaratDataStorage.
 	public CommunicationManager commManager = null;
@@ -73,8 +72,6 @@ public class CaratApplication extends Application {
 	// Activity pointers so that all activity UIs can be updated with a callback
 	// to CaratApplication
 	static MainActivity main = null;
-	private static BugsOrHogsFragment bugsActivity = null;
-	private static BugsOrHogsFragment hogsActivity = null;
 	private static SuggestionsFragment actionList = null;
 	// The Sampler samples the battery level when it changes.
 	private static Sampler sampler = null;
@@ -121,7 +118,7 @@ public class CaratApplication extends Application {
 			}
 		}.start();
 		
-		storage = new CaratDataStorage(this);
+		setStorage(new CaratDataStorage(this));
 
 		new Thread() {
 			private IntentFilter intentFilter;
@@ -274,7 +271,7 @@ public class CaratApplication extends Application {
 
 
 	public static int getJscore() {
-		final Reports reports = storage.getReports();
+		final Reports reports = getStorage().getReports();
 		int jscore = 0;
 		if (reports != null) {
 			jscore = ((int) (reports.getJScore() * 100));
@@ -345,14 +342,6 @@ public class CaratApplication extends Application {
 
 	public static void setMain(MainActivity mainActivity) {
 		main = mainActivity;
-	}
-
-	public static void setBugs(BugsOrHogsFragment bugsOrHogsFragment) {
-		bugsActivity = bugsOrHogsFragment;
-	}
-
-	public static void setHogs(BugsOrHogsFragment bugsOrHogsFragment) {
-		hogsActivity = bugsOrHogsFragment;
 	}
 
 	public static void setActionList(SuggestionsFragment suggestionsFragment) {
@@ -473,9 +462,9 @@ public class CaratApplication extends Application {
 
 	
 	public static void setReportData() {
-		final Reports r = storage.getReports();
+		final Reports r = getStorage().getReports();
 		Log.d(TAG, "Got reports.");
-		long freshness = CaratApplication.storage.getFreshness();
+		long freshness = CaratApplication.getStorage().getFreshness();
 		long l = System.currentTimeMillis() - freshness;
 		final long h = l / 3600000;
 		final long min = (l - h * 3600000) / 60000;
@@ -539,5 +528,21 @@ public class CaratApplication extends Application {
 		String caratId = p.getString(Constants.REGISTERED_UUID, "0");
 		
 		myDeviceData.setAllFields(freshness, h, min, caratId, blS);
+	}
+
+	/**
+	 * @return the storage
+	 */
+	public static CaratDataStorage getStorage() {
+		if (storage == null)
+			storage = new CaratDataStorage(CaratApplication.getContext());
+		return storage;
+	}
+
+	/**
+	 * @param storage the storage to set
+	 */
+	public static void setStorage(CaratDataStorage storage) {
+		CaratApplication.storage = storage;
 	}		
 }

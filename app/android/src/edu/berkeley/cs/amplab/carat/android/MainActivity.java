@@ -252,6 +252,8 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	@Override
 	public void onBackPressed() {
+		 if (isDestroyed())
+			 return;
 		FragmentManager manager = getSupportFragmentManager();
 		
 		// If we will pop a top level screen, show drawer indicator again
@@ -741,6 +743,7 @@ public class MainActivity extends ActionBarActivity {
 	/**
 	 * Handle physical menu button (e.g. Samsung devices).
 	 */
+	@SuppressLint("RtlHardcoded")
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_MENU) {
             boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
