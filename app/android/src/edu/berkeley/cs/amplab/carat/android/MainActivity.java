@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
@@ -71,14 +72,14 @@ public class MainActivity extends ActionBarActivity {
 	private CharSequence mTitle;
 	private String[] mDrawerItems;
 
-	// Log tag
-	// private static final String TAG = "MainActivity";
+    // Log tag
+    // private static final String TAG = "MainActivity";
 
-	public static final String ACTION_BUGS = "bugs",
-							   ACTION_HOGS = "hogs";
+    public static final String ACTION_BUGS = "bugs", ACTION_HOGS = "hogs";
 
 	// Key File
 	private static final String FLURRY_KEYFILE = "flurry.properties";
+	private static final boolean debug = false;
 	
 	private String fullVersion = null;
 	
@@ -255,29 +256,56 @@ public class MainActivity extends ActionBarActivity {
 		 if (isDestroyed())
 			 return;
 		FragmentManager manager = getSupportFragmentManager();
-		
-		// If we will pop a top level screen, show drawer indicator again
 		int stackTop = manager.getBackStackEntryCount()-1;
-		if (manager != null && stackTop >= 0) {
-			// The implementation sets entry count to 0 if the stack is null.
-			BackStackEntry entry = manager.getBackStackEntryAt(stackTop);
-			String name = entry.getName();
-			String[] titles = CaratApplication.getTitles();
-			boolean found = false;
-			for (String t : titles) {
-				if (!found)
-					found = t.equals(name);
-			}
-			if (found) {
-				// Restore menu
-				mDrawerToggle.setDrawerIndicatorEnabled(true);
+		
+		if (debug)
+			Log.d("CaratMain", "stackTop="+stackTop);
+		if (stackTop <= 0){
+			if (debug)
+				Log.d("CaratMain", "stack empty, quit.");
+			finish();
+			// Apparently finish does not always return.
+			return;
+		}
+		// The implementation sets entry count to 0 if the stack is null.
+		BackStackEntry entry = null;
+		String name = null;
+		if (debug){
+			 entry = manager.getBackStackEntryAt(stackTop);
+			 name = entry.getName();
+			Log.d("CaratMain", "stack entry to pop=" + name);
+			Log.d("CaratMain", "popped.");
+		}
+		// If there are back-stack entries, replace the fragment (go to the fragment)
+		manager.popBackStack();
+		
+		/*
+		 * Handle menu/back arrow at the top of the screen If we have popped to
+		 * a top level screen, show drawer indicator again
+		 */
+		
+		// Last frag is always top-level:
+		if (stackTop == 1)
+			mDrawerToggle.setDrawerIndicatorEnabled(true);
+		else {
+		    // This is valid because we quit if stackTop <= 0, and just set the indicator above if it's 1.
+			entry = manager.getBackStackEntryAt(stackTop-1);
+			name = entry.getName();
+			if (debug)
+                Log.d("CaratMain", "current stack entry=" + name);
+            String[] titles = CaratApplication.getTitles();
+            boolean found = false;
+            for (String t : titles) {
+                if (!found)
+                    found = t.equals(name);
+            }
+            if (found) {
+                if (debug)
+                    Log.d("CaratMain", "Found " + name + " in " + Arrays.toString(titles));
+                // Restore menu
+                mDrawerToggle.setDrawerIndicatorEnabled(true);
 			}
 		}
-		if (stackTop >= 0 ) {
-	        // If there are back-stack entries, replace the fragment (go to the fragment)
-	        manager.popBackStack();
-	    }else
-	        finish();
 	}
 	
 	
