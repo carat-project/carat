@@ -1,6 +1,5 @@
 package edu.berkeley.cs.amplab.carat.android.ui;
 
-import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -8,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
@@ -27,6 +27,8 @@ public class DrawView extends View {
 	private String appName = null;
 	private Drawable icon;
 
+    private MainActivity main = null;
+
 	public String getAppName() {
 		return this.appName;
 	}
@@ -35,8 +37,9 @@ public class DrawView extends View {
 		return benefit;
 	}
 	
-	public DrawView(Context context) {
+	public DrawView(MainActivity context) {
 		super(context);
+		this.main  = context;
 	}
 
 	public Constants.Type getType() {
@@ -92,22 +95,21 @@ public class DrawView extends View {
 
 		this.type = type;
 		this.appName = appName;
-		this.icon = CaratApplication.iconForApp(CaratApplication.getMainActivity(), "Carat");
+		this.icon = CaratApplication.iconForApp(main, "Carat");
 		setFields(parent, false);
 	}
 	
 	public void setParams(SimpleHogBug fullObject, View parent) {
 		String ver = "";
-		Context activity = CaratApplication.getMainActivity();
-		String label = CaratApplication.labelForApp(activity, fullObject.getAppName());
-		PackageInfo pak = SamplingLibrary.getPackageInfo(activity, fullObject.getAppName());
+		String label = CaratApplication.labelForApp(main, fullObject.getAppName());
+		PackageInfo pak = SamplingLibrary.getPackageInfo(main, fullObject.getAppName());
 		if (pak != null) {
 			ver = pak.versionName;
 			if (ver == null)
 				ver = pak.versionCode + "";
 		}
 		this.appName = label + " " + ver;
-		this.icon = CaratApplication.iconForApp(activity, fullObject.getAppName());
+		this.icon = CaratApplication.iconForApp(main, fullObject.getAppName());
 		this.type = fullObject.getType();
 		this.benefit = fullObject.getBenefitText();
 		this.sampleCount = fullObject.getSamples();
@@ -117,7 +119,7 @@ public class DrawView extends View {
 		this.evWithout = fullObject.getExpectedValueWithout();
 		this.errorWo = fullObject.getErrorWithout();
 
-		Tracker tracker = Tracker.getInstance(getContext());
+		Tracker tracker = Tracker.getInstance(main);
 		// the field "type" should be set BEFORE calling this tracking method
 		tracker.trackUser(label, fullObject);
 		

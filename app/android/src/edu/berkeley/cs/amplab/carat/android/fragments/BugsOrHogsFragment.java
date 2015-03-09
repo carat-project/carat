@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.lists.HogsBugsAdapter;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
@@ -100,7 +101,7 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 	private void initEnergyDetails(View root, ViewGroup container) {
 		LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		detailPage = inflater.inflate(R.layout.graph, container);
-		w = new DrawView(getActivity());
+		w = new DrawView((MainActivity) getActivity());
 
 		OnClickListener detailViewer = new OnClickListener() {
 			@Override
@@ -142,7 +143,7 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 				Object o = lv.getItemAtPosition(position);
 				SimpleHogBug fullObject = (SimpleHogBug) o;
 				AppDetailsFragment fragment = AppDetailsFragment.getInstance(Constants.Type.BUG, fullObject, isBugs);
-				CaratApplication.getMainActivity().replaceFragment(fragment, "App Detail", false);
+				((MainActivity) getActivity()).replaceFragment(fragment, "App Detail", false);
 			}
 		});
 	}

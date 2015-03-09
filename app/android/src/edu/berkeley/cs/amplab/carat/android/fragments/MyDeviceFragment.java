@@ -26,8 +26,7 @@ import edu.berkeley.cs.amplab.carat.android.subscreens.ProcessListFragment;
  * 
  */
 public class MyDeviceFragment extends ExtendedTitleFragment {
-
-	private final MainActivity mMainActivity = CaratApplication.getMainActivity();
+    
 	long[] lastPoint = null;  // related to the CPU usage bar
 	AppDetailsFragment detailsFragment;
 	// private final String TAG = "mydeviceFragment"; // for logging (debugging)
@@ -103,7 +102,7 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
         	@Override
             public void onClick(View v) {
             	ProcessListFragment fragment = ProcessListFragment.getInstance(); 
-            	CaratApplication.getMainActivity().replaceFragment(fragment, getString(R.string.processlist), false);
+            	((MainActivity) getActivity()).replaceFragment(fragment, getString(R.string.processlist), false);
             }            
         });
 	}
@@ -193,7 +192,9 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
 		}
 		@Override
 		public void onClick(View v) {
-			mMainActivity.showHTMLFile(screenName, title, false);
+		    MainActivity m = ((MainActivity) getActivity());
+		    if (m != null)
+		        m.showHTMLFile(screenName, title, false);
 		}
 	}
     
@@ -241,7 +242,7 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
      */
     public void showOsInfo() {
     	detailsFragment = AppDetailsFragment.getInstance(Constants.Type.OS, null, false); 
-    	CaratApplication.getMainActivity().replaceFragment(detailsFragment, getString(R.string.osinfo), false);
+    	((MainActivity) getActivity()).replaceFragment(detailsFragment, getString(R.string.osinfo), false);
     }
 
     /**
@@ -249,7 +250,7 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
      */
     public void showDeviceInfo() {
     	detailsFragment = AppDetailsFragment.getInstance(Constants.Type.MODEL, null, false); 
-    	CaratApplication.getMainActivity().replaceFragment(detailsFragment, getString(R.string.deviceinfo), false);
+    	((MainActivity) getActivity()).replaceFragment(detailsFragment, getString(R.string.deviceinfo), false);
     }
 
     /**

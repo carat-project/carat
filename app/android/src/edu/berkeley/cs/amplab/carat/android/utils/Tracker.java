@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
@@ -18,17 +19,17 @@ public class Tracker {
 
 	private static Tracker instance = null;
 	private String uuid = null;
-	private Context context = null;
+	private MainActivity main = null;
 	
-	public static Tracker getInstance(Context c) {
+	public static Tracker getInstance(MainActivity c) {
 		if (instance == null) {
 			instance = new Tracker(c);
 		}
 		return instance;
 	}
 	
-	public Tracker(Context c){
-		this.context = c;
+	private Tracker(MainActivity c){
+		this.main = c;
 		SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(c);
 		this.uuid = p.getString(CaratApplication.getRegisteredUuid(), "UNKNOWN");
 	}
@@ -39,10 +40,10 @@ public class Tracker {
 	 * otherwise you get NullPointerException
 	 */
 	public void trackUser(String label, SimpleHogBug fullObject) {
-		PackageInfo pak = SamplingLibrary.getPackageInfo(context,
+		PackageInfo pak = SamplingLibrary.getPackageInfo(main,
 				fullObject.getAppName());
 		HashMap<String, String> options = new HashMap<String, String>();
-		String title = CaratApplication.getMainActivity().getTitle().toString();
+		String title = main.getTitle().toString();
 		options.put("type", fullObject.getType().toString());
 		if (pak != null) {
 			options.put("app", pak.packageName);
@@ -64,7 +65,7 @@ public class Tracker {
 	
 	public void trackSharing(CharSequence title) {
 		HashMap<String, String> options = new HashMap<String, String>();
-		options.put("sharetext", context.getString(R.string.myjscoreis) + " " + CaratApplication.getJscore());
+		options.put("sharetext", main.getString(R.string.myjscoreis) + " " + CaratApplication.getJscore());
 		track("caratshared", title.toString(), options);
 	}
 	
@@ -82,7 +83,7 @@ public class Tracker {
 		if (b != null)
 			len = b.length;
 		options.put("hogs", len + "");
-		options.put("sharetext", context.getString(R.string.myjscoreis) + " " + CaratApplication.getJscore());
+		options.put("sharetext", main.getString(R.string.myjscoreis) + " " + CaratApplication.getJscore());
 		track("feedbackbutton", title.toString(), options);
 	}
 	
@@ -94,6 +95,6 @@ public class Tracker {
 	 */
 	private void track(String action, String title, HashMap<String, String> options){
 		options.put("status", title);
-		ClickTracking.track(uuid, action, options, context);
+		ClickTracking.track(uuid, action, options, main);
 	}
 }

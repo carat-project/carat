@@ -28,7 +28,6 @@ import edu.berkeley.cs.amplab.carat.android.ui.LocalizedWebView;
 
 public class SuggestionsFragment extends ExtendedTitleFragment implements Serializable{
     private static final long serialVersionUID = -6034269327947014085L;
-    final MainActivity mMainActivity = CaratApplication.getMainActivity();
     // private static final String TAG = "CaratSuggestions";
     private View root;
 
@@ -49,12 +48,13 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+			    MainActivity m = ((MainActivity) getActivity());
 				Object o = lv.getItemAtPosition(position);
 				SimpleHogBug fullObject = (SimpleHogBug) o;
 				final String raw = fullObject.getAppName();
 				// Log.v(TAG, "Showing kill view for " + raw);
 				if (raw.equals("OsUpgrade"))
-					mMainActivity.showHTMLFile("upgradeos", getString(R.string.upgradeosinfo), false);
+					m.showHTMLFile("upgradeos", getString(R.string.upgradeosinfo), false);
 				//				else if (raw.equals(getString(R.string.dimscreen)))
 				//					GoToDisplayScreen();
 				//				else if (raw.equals(getString(R.string.disablewifi)))
@@ -76,7 +76,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 				//				else if (raw.equals(getString(R.string.disableautomaticsync)))
 				//					GoToSyncScreen();
 				else if (raw.equals(getString(R.string.helpcarat))) {
-					mMainActivity.showHTMLFile("collectdata", getString(R.string.collectdatainfo), false);
+					m.showHTMLFile("collectdata", getString(R.string.collectdatainfo), false);
 				} else if (raw.equals(getString(R.string.questionnaire))) {
 					openQuestionnaire();
 				} else {
@@ -114,7 +114,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 				Fragment fragment = new KillAppFragment();
 				fragment.setArguments(args);
 
-				CaratApplication.getMainActivity().replaceFragment(fragment, getString(R.string.kill)+" "+raw, false);
+				((MainActivity) getActivity()).replaceFragment(fragment, getString(R.string.kill)+" "+raw, false);
 
 				/*
 				 * if (raw.equals("Disable bluetooth")) { double benefitOther =
@@ -247,12 +247,11 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
     	hogReport = CaratApplication.getStorage().getHogReport();
     	bugReport = CaratApplication.getStorage().getBugReport();
     	
-    	if (CaratApplication.getStorage().hogsIsEmpty() || CaratApplication.getStorage().bugsIsEmpty()) 
+    	if (CaratApplication.getStorage().hogsIsEmpty() && CaratApplication.getStorage().bugsIsEmpty()) 
     		return;
     	
-        CaratApplication caratAppllication = (CaratApplication) CaratApplication.getMainActivity().getApplication();
         final ListView lv = (ListView) root.findViewById(android.R.id.list);
-        lv.setAdapter(new HogBugSuggestionsAdapter(caratAppllication, hogReport, bugReport));
+        lv.setAdapter(new HogBugSuggestionsAdapter((CaratApplication) getActivity().getApplication(), hogReport, bugReport));
     }
 
     @Override

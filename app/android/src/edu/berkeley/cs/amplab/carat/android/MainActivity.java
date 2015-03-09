@@ -543,7 +543,7 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	@SuppressLint("NewApi")
 	private void getStatsFromServer() {
-		PrefetchData prefetchData = new PrefetchData();
+		PrefetchData prefetchData = new PrefetchData(this);
 		// run this asyncTask in a new thread [from the thread pool] (run in parallel to other asyncTasks)
 		// (do not wait for them to finish, it takes a long time)
 		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
@@ -656,7 +656,12 @@ public class MainActivity extends ActionBarActivity {
     //  };
 	
 	public class PrefetchData extends AsyncTask<Void, Void, Void> {
+	    
+	    private MainActivity a = null;
 
+        public PrefetchData(MainActivity a){
+	        this.a = a;
+	    }
 		String serverResponseJson = null;
 		private final String TAG = "PrefetchData";
 		
@@ -748,7 +753,7 @@ public class MainActivity extends ActionBarActivity {
 			try {
 				// important: getField() can only get PUBLIC fields. 
 				// For private fields, use another method: getDeclaredField(fieldName)
-				field = /*currentClass.*/ CaratApplication.getMainActivity().getClass().getField(fieldName);
+				field = a.getClass().getField(fieldName);
 			} catch(NoSuchFieldException e) {
 				// Log.e(TAG, "NoSuchFieldException when trying to get a reference to the field: " + fieldName);
 			}
@@ -759,7 +764,7 @@ public class MainActivity extends ActionBarActivity {
 					jsonObject = jsonArray.getJSONObject(objIdx);
 					if (jsonObject != null && jsonObject.getString("value") != null && jsonObject.getString("value") != "") {
 						res = Integer.parseInt(jsonObject.getString("value"));
-						field.set(CaratApplication.getMainActivity()/*this*/, res);
+						field.set(a, res);
 					} else { 
 						// Log.e(TAG, "json object (server response) is null: jsonArray(" + objIdx + ")=null (or ='')");
 					}

@@ -61,7 +61,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		 */
 		
 		// we use the tracker in the following two methods, so instantiate it here
-		tracker = Tracker.getInstance(getActivity());
+		tracker = Tracker.getInstance((MainActivity) getActivity());
 		
 		setSharePreferenceIntent();
 		setFeedbackPreferenceIntent();
@@ -124,7 +124,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		
-		MainActivity mainActivity = CaratApplication.getMainActivity();
+		MainActivity mainActivity = ((MainActivity) getActivity());
 		Context context = mainActivity.getApplicationContext();
 		SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 		

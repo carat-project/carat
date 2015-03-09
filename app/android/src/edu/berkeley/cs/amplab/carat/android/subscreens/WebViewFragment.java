@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.fragments.ExtendedTitleFragment;
 import edu.berkeley.cs.amplab.carat.android.ui.LocalizedWebView;
@@ -13,7 +14,7 @@ public class WebViewFragment extends ExtendedTitleFragment {
 
 	private String fileName;
 	private static WebViewFragment instance = null;
-	Tracker tracker = Tracker.getInstance(getActivity());
+	Tracker tracker = Tracker.getInstance((MainActivity) getActivity());
 	
 	public static WebViewFragment getInstance(String fileName) {
 		if (instance == null)

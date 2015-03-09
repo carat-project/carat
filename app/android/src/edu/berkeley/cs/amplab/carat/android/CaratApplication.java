@@ -203,10 +203,6 @@ public class CaratApplication extends Application {
 		return s;
 	}
 
-	public static MainActivity getMainActivity() {
-		return main;
-	}
-
 	public static String translatedPriority(String importanceString) {
 		if (main != null) {
 			if (importanceString == null)
@@ -340,7 +336,7 @@ public class CaratApplication extends Application {
 		}
 	}
 
-	public static void setMain(MainActivity mainActivity) {
+	protected static void setMain(MainActivity mainActivity) {
 		main = mainActivity;
 	}
 
@@ -528,7 +524,7 @@ public class CaratApplication extends Application {
 		 */ 
 		
 		SharedPreferences p = PreferenceManager
-				.getDefaultSharedPreferences(getMainActivity());
+				.getDefaultSharedPreferences(getContext());
 		String caratId = p.getString(Constants.REGISTERED_UUID, "0");
 		
 		myDeviceData.setAllFields(freshness, h, min, caratId, blS);

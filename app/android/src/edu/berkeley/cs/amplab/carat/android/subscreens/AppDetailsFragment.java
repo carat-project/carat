@@ -33,7 +33,6 @@ public class AppDetailsFragment extends Fragment {
 	private double ev, error, evWithout, errorWo;
 	private int samplesCount, samplesCountWithout;
 	private static AppDetailsFragment instance = null;
-	private final MainActivity mMainActivity = CaratApplication.getMainActivity();
 
 	/*
 	 * @Param type the type of the details we would like to display. Supported
@@ -72,7 +71,7 @@ public class AppDetailsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View detailsPage = inflater.inflate(R.layout.graph, container, false);
-		DrawView drawView = new DrawView(getActivity());
+		DrawView drawView = new DrawView((MainActivity) getActivity());
 
 		if (isApp) {
 			drawView.setParams(fullObject, detailsPage);
@@ -80,7 +79,7 @@ public class AppDetailsFragment extends Fragment {
 		} else { // isOS or isModel
 			Reports reports = CaratApplication.getStorage().getReports();
 			if (reports != null) {
-				Tracker tracker = Tracker.getInstance(getActivity());
+				Tracker tracker = Tracker.getInstance((MainActivity) getActivity());
 				if (isOs) {
 					setOsWidgets(detailsPage, drawView, reports, tracker);
 				} else { // isModel
@@ -146,13 +145,17 @@ public class AppDetailsFragment extends Fragment {
 		moreinfo.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				mMainActivity.showHTMLFile("detailinfo", getString(R.string.moreinfo), false);
+			    MainActivity m = ((MainActivity) getActivity());
+			    if (m != null)
+			        m.showHTMLFile("detailinfo", getString(R.string.moreinfo), false);
 			}
 		});
 		benefit.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				mMainActivity.showHTMLFile("detailinfo", getString(R.string.moreinfo), false);
+			    MainActivity m = ((MainActivity) getActivity());
+                if (m != null)
+                    m.showHTMLFile("detailinfo", getString(R.string.moreinfo), false);
 			}
 		});
 	}
