@@ -19,6 +19,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -253,7 +254,7 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	@Override
 	public void onBackPressed() {
-		 if (isDestroyed())
+	    if(Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2 && isDestroyed())
 			 return;
 		FragmentManager manager = getSupportFragmentManager();
 		int stackTop = manager.getBackStackEntryCount()-1;
@@ -567,7 +568,7 @@ public class MainActivity extends ActionBarActivity {
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		
-		if (!isDestroyed()) {
+		if (Build.VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2 || !isDestroyed()) {
 			// Crash fix.
 			transaction.replace(R.id.content_frame, fragment, FRAGMENT_TAG)
 					.addToBackStack(FRAGMENT_TAG).commitAllowingStateLoss();

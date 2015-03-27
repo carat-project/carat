@@ -88,7 +88,7 @@ public class SamplerService extends IntentService {
         }
         
         wl.release();
-        if (sampler != null)
+        if (sampler != null && intent != null)
         	Sampler.completeWakefulIntent(intent);
     }
 
