@@ -6,7 +6,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Properties;
 
 import org.json.JSONArray;
@@ -33,7 +32,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -785,25 +783,12 @@ public class MainActivity extends ActionBarActivity {
             if (drawerOpen) {
                 mDrawerLayout.closeDrawers();
             } else {
-            	// FIXME: Gravity.Start is not available in API Level 8, so hack below.
-            	int grav = Gravity.TOP|Gravity.LEFT;
-            	if (isRTL())
-            		grav = Gravity.TOP|Gravity.RIGHT;
-                mDrawerLayout.openDrawer(grav);
+            	// FIXME: Gravity.Start is not available in API Level 8, so use compat
+                mDrawerLayout.openDrawer(GravityCompat.START);
             }
             return true;
         } else {
             return super.onKeyUp(keyCode, event);
         }
     }
-	
-	private static boolean isRTL() {
-	    return isRTL(Locale.getDefault());
-	}
-
-	private static boolean isRTL(Locale locale) {
-	    final int directionality = Character.getDirectionality(locale.getDisplayName().charAt(0));
-	    return directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT ||
-	           directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC;
-	}
 }
