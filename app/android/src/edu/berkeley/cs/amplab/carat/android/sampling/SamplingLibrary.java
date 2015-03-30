@@ -1889,7 +1889,8 @@ public final class SamplingLibrary {
 	public static String getTimeZone(Context context) {
 		Calendar cal = Calendar.getInstance();
 		TimeZone tz = cal.getTimeZone();
-		return tz.getDisplayName();
+		return tz.getID();
+		//return tz.getDisplayName();
 	}
 
 	/**
