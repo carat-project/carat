@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.fragments.ExtendedTitleFragment;
 import edu.berkeley.cs.amplab.carat.android.lists.ProcessInfoAdapter;
@@ -32,8 +33,8 @@ public class ProcessListFragment extends ExtendedTitleFragment {
                 .getRunningAppInfo(getActivity());
         lv.setAdapter(new ProcessInfoAdapter(getActivity(), searchResults));
         
-        Tracker tracker = Tracker.getInstance();
-		tracker.trackUser("ProcessList");
+        Tracker tracker = Tracker.getInstance((MainActivity) getActivity());
+		tracker.trackUser("ProcessList", getActivity().getTitle());
         
 		return view;
 	}

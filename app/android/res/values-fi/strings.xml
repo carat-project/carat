@@ -178,6 +178,17 @@
     <string name="deviceinfo">Laitteen tilastotietoja</string>
     <string name="osinfo">KJ-version tilastotietoja</string>
     <string name="processlist">Käynnissä olevat sovellukset</string>
+    
+    <!-- Hog threshold values -->
+    <string-array name="hog_thresh_list">
+        <item>Näytä kaikki</item>
+        <item>vaikutus &lt; 5m</item>
+        <item>vaikutus &lt; 10m</item>
+        <item>vaikutus &lt; 20m</item>
+        <item>vaikutus &lt; 1h</item>
+    </string-array>
+    
+    <string name="hog_thresh">Piilota sovellukset joiden vaikutus on pieni</string>
 </resources>
 
 

@@ -1,6 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android.fragments;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -16,7 +17,7 @@ public class EnableInternetDialogFragment extends DialogFragment {
         builder.setMessage(R.string.dialog_text)
                .setPositiveButton(R.string.dialog_enable, new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
-                       CaratApplication.getMainActivity().GoToWifiScreen();
+                       ((MainActivity) getActivity()).GoToWifiScreen();
                    }
                })
                .setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {

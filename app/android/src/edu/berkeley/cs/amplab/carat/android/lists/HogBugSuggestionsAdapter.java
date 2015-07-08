@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,11 +55,11 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
 	private void acceptHogsOrBugs(SimpleHogBug[] input, ArrayList<SimpleHogBug> result) {
 		if (input == null)
 			return;
+
 		for (SimpleHogBug item : input) {
 			if (item == null)
 				continue;
-			double benefit = 100.0 / item.getExpectedValueWithout() - 100.0
-					/ item.getExpectedValue();
+			
 			// TODO other filter conditions?
 			// Limit max number of items?
 			String appName = item.getAppName();
@@ -69,13 +70,10 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
 //			if (SpecialAppCases.isSpecialApp(appName))
 			if (appName.equals(Constants.CARAT_PACKAGE_NAME) || appName.equals(Constants.CARAT_OLD))
 				continue;
-			if (SamplingLibrary.isHidden(a.getApplicationContext(), appName))
-			    continue;
 			
 			if (addFakeItem && appName.equals(FAKE_ITEM))
 			    result.add(item);
-			// Filter out if benefit is too small
-			if (SamplingLibrary.isRunning(a.getApplicationContext(), appName) && benefit > 60) {
+			if (SamplingLibrary.isRunning(a.getApplicationContext(), appName)) {
 				result.add(item);
 			}
 		}
@@ -98,7 +96,7 @@ public class HogBugSuggestionsAdapter extends BaseAdapter {
         // acceptDisableAutoSync(results);
         if (results.isEmpty())
             helpCaratCollectMoreData(results);
-        String url = CaratApplication.storage.getQuestionnaireUrl(); 
+        String url = CaratApplication.getStorage().getQuestionnaireUrl(); 
         boolean questionnaireEnabled = url != null && url.length() > 7; // http://
         if (questionnaireEnabled)
             questionnaire(results);

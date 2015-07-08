@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.lists.HogsBugsAdapter;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
@@ -56,7 +57,7 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = null;
-		if (isBugs && CaratApplication.storage.getBugReport().length == 0) {
+		if (isBugs && CaratApplication.getStorage().bugsIsEmpty()) {
 			root = inflater.inflate(R.layout.emptybugsonly, container, false);
 			return root;
 		} else {
@@ -100,7 +101,7 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 	private void initEnergyDetails(View root, ViewGroup container) {
 		LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		detailPage = inflater.inflate(R.layout.graph, container);
-		w = new DrawView(getActivity());
+		w = new DrawView((MainActivity) getActivity());
 
 		OnClickListener detailViewer = new OnClickListener() {
 			@Override
@@ -142,7 +143,7 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 				Object o = lv.getItemAtPosition(position);
 				SimpleHogBug fullObject = (SimpleHogBug) o;
 				AppDetailsFragment fragment = AppDetailsFragment.getInstance(Constants.Type.BUG, fullObject, isBugs);
-				CaratApplication.getMainActivity().replaceFragment(fragment, fullObject.getAppName(), false);
+				((MainActivity) getActivity()).replaceFragment(fragment, "App Detail", false);
 			}
 		});
 	}
@@ -154,8 +155,6 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 
 	@Override
 	public void onDetach() {
-		CaratApplication.setBugs(null);
-		CaratApplication.setHogs(null);
 		super.onDetach();
 	}
 
@@ -165,19 +164,15 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 		CaratApplication app = (CaratApplication) getActivity().getApplication();
 		final ListView lv = (ListView) getActivity().findViewById(android.R.id.list);
 		if (isBugs) {
-			if (CaratApplication.storage.getBugReport().length == 0)
+			if (CaratApplication.getStorage().bugsIsEmpty())
 				return;
-			else lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.storage.getBugReport()));
+			else lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.getStorage().getBugReport()));
 		} else
-			lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.storage.getHogReport()));
+			lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.getStorage().getHogReport()));
 	}
 
 	@Override
 	public void onResume() {
-		if (isBugs)
-			CaratApplication.setBugs(this);
-		else
-			CaratApplication.setHogs(this);
 		refresh();
 		super.onResume();
 	}

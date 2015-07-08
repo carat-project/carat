@@ -4,6 +4,8 @@ import android.app.AlarmManager;
 import android.graphics.Color;
 
 public class Constants {
+    // Whether to output debug messages.
+    public static final boolean DEBUG = false;
 
 	// Report Freshness timeout. Default: 15 minutes
 	// public static final long FRESHNESS_TIMEOUT = 30 * 1000;
@@ -25,7 +27,6 @@ public class Constants {
 	// if you change the preference key of any of our preference widgets (in
 	// res/xml/preferences.xml),
 	// update the following constants as well
-	public static final String WIFI_ONLY_PREFERENCE_KEY = "wifiOnlyPrefKey";
 	public static final String SHARE_PREFERENCE_KEY = "sharePrefKey";
 	public static final String FEEDBACK_PREFERENCE_KEY = "feedbackPrefKey";
 	

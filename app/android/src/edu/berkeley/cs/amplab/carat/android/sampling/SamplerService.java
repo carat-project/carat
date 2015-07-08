@@ -30,6 +30,7 @@ public class SamplerService extends IntentService {
     
     @Override
     protected void onHandleIntent(Intent intent) {
+    	Sampler sampler = Sampler.getInstance();
 
 		// At this point SimpleWakefulReceiver is still holding a wake lock
 		// for us. We can do whatever we need to here and then tell it that
@@ -74,7 +75,6 @@ public class SamplerService extends IntentService {
 				 * intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
 				 * intentFilter.addDataScheme("package"); // add addDataScheme
 				 */
-				Sampler sampler = Sampler.getInstance();
 				// Unregister, since Carat may have been started multiple times
 				// since reboot
 				try {
@@ -88,7 +88,8 @@ public class SamplerService extends IntentService {
         }
         
         wl.release();
-        Sampler.completeWakefulIntent(intent);
+        if (sampler != null && intent != null)
+        	Sampler.completeWakefulIntent(intent);
     }
 
     /**
@@ -143,10 +144,12 @@ public class SamplerService extends IntentService {
 				this.getSample(context, intent, lastSample, sampleDB);
 				notify(context);
 			} else {
-				Log.d(TAG, "NO battery percentage change. currentBatteryLevel=" + SamplingLibrary.getCurrentBatteryLevel());
+			    if (Constants.DEBUG)
+			        Log.d(TAG, "NO battery percentage change. currentBatteryLevel=" + SamplingLibrary.getCurrentBatteryLevel());
 			}
 		} else {
-			Log.d(TAG, "current battery level = 0");
+		    if (Constants.DEBUG)
+		        Log.d(TAG, "current battery level = 0");
 		}
 	}
 

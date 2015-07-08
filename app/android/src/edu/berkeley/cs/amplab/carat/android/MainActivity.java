@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Properties;
 
 import org.json.JSONArray;
@@ -18,6 +18,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -31,7 +32,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -71,14 +71,14 @@ public class MainActivity extends ActionBarActivity {
 	private CharSequence mTitle;
 	private String[] mDrawerItems;
 
-	// Log tag
-	// private static final String TAG = "MainActivity";
+    // Log tag
+    // private static final String TAG = "MainActivity";
 
-	public static final String ACTION_BUGS = "bugs",
-							   ACTION_HOGS = "hogs";
+    public static final String ACTION_BUGS = "bugs", ACTION_HOGS = "hogs";
 
 	// Key File
 	private static final String FLURRY_KEYFILE = "flurry.properties";
+	private static final boolean debug = false;
 	
 	private String fullVersion = null;
 	
@@ -102,9 +102,9 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		CaratApplication.setMain(this);
-		tracker = Tracker.getInstance();
+		tracker = Tracker.getInstance(this);
 		// track user clicks (taps)
-		tracker.trackUser("caratstarted");
+		tracker.trackUser("caratstarted", getTitle());
 		
 		if (!CaratApplication.isInternetAvailable()) {
 			EnableInternetDialogFragment dialog = new EnableInternetDialogFragment();
@@ -252,30 +252,78 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	@Override
 	public void onBackPressed() {
+	    if(Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2 && isDestroyed())
+			 return;
 		FragmentManager manager = getSupportFragmentManager();
-		
-		// If we will pop a top level screen, show drawer indicator again
 		int stackTop = manager.getBackStackEntryCount()-1;
 		
-		BackStackEntry entry = manager.getBackStackEntryAt(stackTop);
-		String name = entry.getName();
-		String[] titles = CaratApplication.getTitles();
-		boolean found = false;
-		for (String t: titles){
-			if (!found)
-				found = t.equals(name);
+		if (Constants.DEBUG)
+			Log.d("CaratMain", "stackTop="+stackTop);
+		if (stackTop <= 0){
+		    if (Constants.DEBUG)
+				Log.d("CaratMain", "stack empty, quit.");
+			finish();
+			// Apparently finish does not always return.
+			return;
 		}
-		if (found){
-			// Restore menu
+		// The implementation sets entry count to 0 if the stack is null.
+		BackStackEntry entry = null;
+		String name = null;
+		if (Constants.DEBUG) {
+			 entry = manager.getBackStackEntryAt(stackTop);
+			 name = entry.getName();
+			Log.d("CaratMain", "stack entry to pop=" + name);
+			Log.d("CaratMain", "popped.");
+		}
+		// If there are back-stack entries, replace the fragment (go to the fragment)
+		manager.popBackStack();
+		
+		/*
+		 * Handle menu/back arrow at the top of the screen If we have popped to
+		 * a top level screen, show drawer indicator again
+		 */
+		
+		// Last frag is always top-level:
+		if (stackTop == 1)
 			mDrawerToggle.setDrawerIndicatorEnabled(true);
+		else {
+		    // This is valid because we quit if stackTop <= 0, and just set the indicator above if it's 1.
+			entry = manager.getBackStackEntryAt(stackTop-1);
+			name = entry.getName();
+			if (Constants.DEBUG)
+                Log.d("CaratMain", "current stack entry=" + name);
+            String[] titles = CaratApplication.getTitles();
+            boolean found = false;
+            for (String t : titles) {
+                if (!found)
+                    found = t.equals(name);
+            }
+            if (found) {
+                if (Constants.DEBUG)
+                    Log.d("CaratMain", "Found " + name + " in " + Arrays.toString(titles));
+                // Restore menu
+                mDrawerToggle.setDrawerIndicatorEnabled(true);
+			}
 		}
-		if (stackTop > 0 ) {
-	        // If there are back-stack entries, replace the fragment (go to the fragment)
-	        manager.popBackStack();
-	    }else
-	        finish();
 	}
 	
+	
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		/* 
+		 * FIXME: Don't save anything for now.
+		 * This fixes some crashes with the backstack, but needs to be fixed in the long run.
+		 * 
+		 * What we should do here is:
+		 * 1. Save which Fragment, and which subscreen the user is looking at
+		 * 2. Save the data shown by that fragment
+		 * 3. Then in onCreate, read those fields and set them after initializing the app normally
+		 */
+		
+		//super.onSaveInstanceState(outState);
+	}
+
 	@Override
 	public void setTitle(CharSequence title) {
 		getSupportActionBar().setTitle(title);
@@ -320,9 +368,10 @@ public class MainActivity extends ActionBarActivity {
 
 	public void setTitleNormal() {
 		setFullVersion();
-		if (CaratApplication.storage != null) {
-			long s = CaratApplication.storage.getSamplesReported();
-			Log.d("setTitleNormal", "number of samples reported=" + String.valueOf(s));
+		if (CaratApplication.getStorage() != null) {
+			long s = CaratApplication.getStorage().getSamplesReported();
+			if (Constants.DEBUG)
+			    Log.d("setTitleNormal", "number of samples reported=" + String.valueOf(s));
 			if (s > 0) {
 				mTitle = fullVersion + " - "+ s + " " + getString(R.string.samplesreported);
 			} else {
@@ -410,7 +459,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		// Log.i(TAG, "Resumed. Refreshing UI");
-		tracker.trackUser("caratresumed");
+		tracker.trackUser("caratresumed", getTitle());
 
 		// if statistics data for the summary fragment is not already fetched,
 		// and the device has an Internet connection, fetch statistics and then refresh the summary fragment
@@ -443,7 +492,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onPause() {
 		// Log.i(TAG, "Paused");
-		tracker.trackUser("caratpaused");
+		tracker.trackUser("caratpaused", getTitle());
 		SamplingLibrary.resetRunningProcessInfo();
 		super.onPause();
 	}
@@ -451,7 +500,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public void finish() {
 		// Log.d(TAG, "Finishing up");
-		tracker.trackUser("caratstopped");
+		tracker.trackUser("caratstopped", getTitle());
 		super.finish();
 	}
 
@@ -493,7 +542,7 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	@SuppressLint("NewApi")
 	private void getStatsFromServer() {
-		PrefetchData prefetchData = new PrefetchData();
+		PrefetchData prefetchData = new PrefetchData(this);
 		// run this asyncTask in a new thread [from the thread pool] (run in parallel to other asyncTasks)
 		// (do not wait for them to finish, it takes a long time)
 		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
@@ -517,10 +566,12 @@ public class MainActivity extends ActionBarActivity {
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		
-		transaction.replace(R.id.content_frame, fragment, FRAGMENT_TAG)
-					.addToBackStack(FRAGMENT_TAG)
-					.commit();
-		mDrawerToggle.setDrawerIndicatorEnabled(showDrawerIndicator);
+		if (Build.VERSION.SDK_INT < VERSION_CODES.JELLY_BEAN_MR2 || !isDestroyed()) {
+			// Crash fix.
+			transaction.replace(R.id.content_frame, fragment, FRAGMENT_TAG)
+					.addToBackStack(FRAGMENT_TAG).commitAllowingStateLoss();
+			mDrawerToggle.setDrawerIndicatorEnabled(showDrawerIndicator);
+		}
 	}
 	
 	/**
@@ -604,7 +655,12 @@ public class MainActivity extends ActionBarActivity {
     //  };
 	
 	public class PrefetchData extends AsyncTask<Void, Void, Void> {
+	    
+	    private MainActivity a = null;
 
+        public PrefetchData(MainActivity a){
+	        this.a = a;
+	    }
 		String serverResponseJson = null;
 		private final String TAG = "PrefetchData";
 		
@@ -696,7 +752,7 @@ public class MainActivity extends ActionBarActivity {
 			try {
 				// important: getField() can only get PUBLIC fields. 
 				// For private fields, use another method: getDeclaredField(fieldName)
-				field = /*currentClass.*/ CaratApplication.getMainActivity().getClass().getField(fieldName);
+				field = a.getClass().getField(fieldName);
 			} catch(NoSuchFieldException e) {
 				// Log.e(TAG, "NoSuchFieldException when trying to get a reference to the field: " + fieldName);
 			}
@@ -707,7 +763,7 @@ public class MainActivity extends ActionBarActivity {
 					jsonObject = jsonArray.getJSONObject(objIdx);
 					if (jsonObject != null && jsonObject.getString("value") != null && jsonObject.getString("value") != "") {
 						res = Integer.parseInt(jsonObject.getString("value"));
-						field.set(CaratApplication.getMainActivity()/*this*/, res);
+						field.set(a, res);
 					} else { 
 						// Log.e(TAG, "json object (server response) is null: jsonArray(" + objIdx + ")=null (or ='')");
 					}
@@ -720,31 +776,19 @@ public class MainActivity extends ActionBarActivity {
 	/**
 	 * Handle physical menu button (e.g. Samsung devices).
 	 */
+	@SuppressLint("RtlHardcoded")
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_MENU) {
             boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
             if (drawerOpen) {
                 mDrawerLayout.closeDrawers();
             } else {
-            	// FIXME: Gravity.Start is not available in API Level 8, so hack below.
-            	int grav = Gravity.TOP|Gravity.LEFT;
-            	if (isRTL())
-            		grav = Gravity.TOP|Gravity.RIGHT;
-                mDrawerLayout.openDrawer(grav);
+            	// FIXME: Gravity.Start is not available in API Level 8, so use compat
+                mDrawerLayout.openDrawer(GravityCompat.START);
             }
             return true;
         } else {
             return super.onKeyUp(keyCode, event);
         }
     }
-	
-	private static boolean isRTL() {
-	    return isRTL(Locale.getDefault());
-	}
-
-	private static boolean isRTL(Locale locale) {
-	    final int directionality = Character.getDirectionality(locale.getDisplayName().charAt(0));
-	    return directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT ||
-	           directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC;
-	}
 }

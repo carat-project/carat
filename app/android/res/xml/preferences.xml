@@ -3,12 +3,22 @@
 
     <org.jraf.android.backport.switchwidget.SwitchPreference
         android:enabled="true"
-        android:key="wifiOnlyPreferenceKey"
+        android:persistent="true"
+        android:key="@string/wifi_only_key"
         android:title="@string/wifionly"
         switchpref:asb_switchTextOff="@string/off"
         switchpref:asb_switchTextOn="@string/on"
         switchpref:asb_summaryOff="@string/summary_off"
         switchpref:asb_summaryOn="@string/summary_on" />
+    
+    <ListPreference
+        android:enabled="true"
+        android:persistent="true"
+        android:key="@string/hog_hide_threshold"
+        android:defaultValue="10"
+        android:entries="@array/hog_thresh_list"
+        android:entryValues="@array/hog_thresh_minutes"
+        android:title="@string/hog_thresh" />
     
     <Preference 
         android:enabled="true"

@@ -6,8 +6,8 @@ package edu.berkeley.cs.amplab.carat.android.ui;
 import java.io.IOException;
 import java.util.Locale;
 
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -63,8 +63,8 @@ public class LocalizedWebView extends WebView {
         String black = c.getString(R.string.blackBackground);
         if (black != null && black.equals("true"))
             setBackgroundColor(0);
-
-        Log.d(TAG, "Opening url=" + url);
+        if (Constants.DEBUG)
+            Log.d(TAG, "Opening url=" + url);
         if (!url.startsWith("file:///android_asset/")) {
             super.loadUrl(url);
             return;
@@ -79,7 +79,8 @@ public class LocalizedWebView extends WebView {
         }
 
         String lang = l.getLanguage();
-        Log.d(TAG, "Lang=" + lang);
+        if (Constants.DEBUG)
+            Log.d(TAG, "Lang=" + lang);
         if (lang == null || lang.length() <= 0) {
             super.loadUrl(url);
             return;
@@ -87,7 +88,8 @@ public class LocalizedWebView extends WebView {
 
         String localizedPath = lang + "/" + fname;
         String localizedUrl = "file:///android_asset/" + localizedPath;
-        Log.d(TAG, "localizedUrl=" + localizedUrl);
+        if (Constants.DEBUG)
+            Log.d(TAG, "localizedUrl=" + localizedUrl);
 
         try {
             String[] langFiles = c.getAssets().list(lang);

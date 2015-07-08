@@ -14,6 +14,7 @@ import java.util.List;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -37,7 +38,7 @@ public class CaratDataStorage {
     public static final String SAMPLES_REPORTED = "carat-samples-reported.dat";
     
     public static final String FRESHNESS = "carat-freshness.dat";
-    private Application a = null;
+    private Context a = null;
 
     private long freshness = 0;
     private long blacklistFreshness = 0;
@@ -51,7 +52,7 @@ public class CaratDataStorage {
     private WeakReference<List<String>> blacklistedApps = null;
     private WeakReference<List<String>> blacklistedGlobs = null;
 
-    public CaratDataStorage(Application a) {
+    public CaratDataStorage(Context a) {
         this.a = a;
         freshness = readFreshness();
         blacklistFreshness = readBlacklistFreshness();
@@ -193,7 +194,8 @@ public class CaratDataStorage {
 
     public long readFreshness() {
         String s = readText(FRESHNESS);
-        Log.d("CaratDataStorage", "Read freshness: " + s);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read freshness: " + s);
         if (s != null)
             return Long.parseLong(s);
         else
@@ -202,7 +204,8 @@ public class CaratDataStorage {
 
     public Reports readReports() {
         Object o = readObject(FILENAME);
-        Log.d("CaratDataStorage", "Read Reports: " + o);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read Reports: " + o);
         if (o != null) {
             caratData = new WeakReference<Reports>((Reports) o);
             return (Reports) o;
@@ -220,7 +223,8 @@ public class CaratDataStorage {
     
     public long readBlacklistFreshness() {
         String s = readText(BLACKLIST_FRESHNESS);
-        Log.d("CaratDataStorage", "Read freshness: " + s);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read freshness: " + s);
         if (s != null)
             return Long.parseLong(s);
         else
@@ -233,7 +237,8 @@ public class CaratDataStorage {
     
     public long readQuickHogsFreshness() {
         String s = readText(QUICKHOGS_FRESHNESS);
-        Log.d("CaratDataStorage", "Read freshness: " + s);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read freshness: " + s);
         if (s != null)
             return Long.parseLong(s);
         else
@@ -268,7 +273,8 @@ public class CaratDataStorage {
      * 
      * @return a list of blacklisted apps
      */
-    public List<String> readBlacklist() {
+    @SuppressWarnings("unchecked")
+	public List<String> readBlacklist() {
         Object o = readObject(BLACKLIST_FILE);
         //Log.d("CaratDataStorage", "Read blacklist: " + o);
         if (o != null) {
@@ -293,7 +299,8 @@ public class CaratDataStorage {
      * 
      * @return a list of blacklisted expressions
      */
-    public List<String> readGloblist() {
+    @SuppressWarnings("unchecked")
+	public List<String> readGloblist() {
         Object o = readObject(GLOBLIST_FILE);
         //Log.d("CaratDataStorage", "Read glob blacklist: " + o);
         if (o != null) {
@@ -356,7 +363,8 @@ public class CaratDataStorage {
  
     public long readSamplesReported() {
         String s = readText(SAMPLES_REPORTED);
-        Log.d("CaratDataStorage", "Read samples reported: " + s);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read samples reported: " + s);
         // here is the bug. s is null!
         if (s != null)
             return Long.parseLong(s);
@@ -380,6 +388,16 @@ public class CaratDataStorage {
         else
             return readReports();
     }
+    
+    public boolean bugsIsEmpty() {
+    	SimpleHogBug[] bugs = getBugReport();
+    	return bugs == null || bugs.length == 0;
+    }
+    
+    public boolean hogsIsEmpty() {
+    	SimpleHogBug[] hogs = getHogReport();
+    	return hogs == null || hogs.length == 0;
+    }
 
     /**
      * @return the bug reports
@@ -390,7 +408,7 @@ public class CaratDataStorage {
         }
         if (bugData == null || bugData.get() == null)
             return null;
-        return bugData.get();
+        return refilter(bugData.get());
     }
 
     /**
@@ -402,7 +420,7 @@ public class CaratDataStorage {
         }
         if (hogData == null || hogData.get() == null)
             return null;
-        return hogData.get();
+        return refilter(hogData.get());
     }
     
     public SimpleHogBug[] getSettingsReport() {
@@ -444,6 +462,30 @@ public class CaratDataStorage {
         }
     }
 
+    
+	private SimpleHogBug[] refilter(SimpleHogBug[] list) {
+		List<SimpleHogBug> result = new LinkedList<SimpleHogBug>();
+
+		SharedPreferences p = a.getSharedPreferences(
+				Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+		String hogThresh = p
+				.getString(
+						a.getString(edu.berkeley.cs.amplab.carat.android.R.string.hog_hide_threshold),
+						"10");
+		int thresh = Integer.parseInt(hogThresh);
+
+		int size = list.length;
+		for (int i = 0; i < size; ++i) {
+			int[] benefit = list[i].getBenefit();
+			// this is going to also filter out any hogs/bugs with less than 1
+			// min benefit.
+			if (benefit[0] > 0 || benefit[1] > thresh)
+				result.add(list[i]);
+		}
+
+		return result.toArray(new SimpleHogBug[result.size()]);
+	}
+    
     /**
      * For Settings, we need more than a boolean here.
      * @param list the list of bugs or hogs received from the server.
@@ -453,6 +495,7 @@ public class CaratDataStorage {
     private SimpleHogBug[] convertAndFilter(List<HogsBugs> list, boolean isBug) {
         if (list == null)
             return null;
+        
         List<SimpleHogBug> result = new LinkedList<SimpleHogBug>();
         int size = list.size();
         for (int i = 0; i < size; ++i) {

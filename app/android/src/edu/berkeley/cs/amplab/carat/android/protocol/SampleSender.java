@@ -47,7 +47,7 @@ public class SampleSender {
     
             final SharedPreferences p = PreferenceManager
                     .getDefaultSharedPreferences(c);
-            final boolean useWifiOnly = p.getBoolean(Constants.WIFI_ONLY_PREFERENCE_KEY, false);
+            final boolean useWifiOnly = p.getBoolean(c.getString(R.string.wifi_only_key), false);
             Log.i("wifi-preference-SampleSender", String.valueOf(useWifiOnly));
     
             boolean connected = (!useWifiOnly && networkStatus == SamplingLibrary.NETWORKSTATUS_CONNECTED)
@@ -83,10 +83,11 @@ public class SampleSender {
     
                                     tries = 2;
                                     // FlurryAgent.logEvent("UploadSamples");
-                                    Log.d(TAG, "Uploaded " + success
+                                    if (Constants.DEBUG)
+                                        Log.d(TAG, "Uploaded " + success
                                             + " samples out of " + map.size());
                                     if (success > 0)
-                                        CaratApplication.storage.samplesReported(success);
+                                        CaratApplication.getStorage().samplesReported(success);
                                     Sample last = map.get(map.lastKey());
                                     
 									/*
@@ -100,8 +101,8 @@ public class SampleSender {
                                     long lastSampleTime = (long) last.getTimestamp() * 1000; // in currentTimeMillis
                                     SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
                                     Date resultdate = new Date(lastSampleTime);
-                                    
-                                    Log.d(TAG,
+                                    if (Constants.DEBUG)
+                                        Log.d(TAG,
                                             "Deleting " + success
                                                     + " samples older than "
                                                     + sdf.format(resultdate));

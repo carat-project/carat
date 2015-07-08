@@ -151,7 +151,8 @@ public class SampleReader {
     public static final Sample readSample(Object data) {
         Sample s = null;
         if (data != null && data instanceof HashMap<?, ?>) {
-            HashMap<String, String> m = (HashMap<String, String>) data;
+            @SuppressWarnings("unchecked")
+			HashMap<String, String> m = (HashMap<String, String>) data;
             s = new Sample();
             NetworkDetails n = new NetworkDetails();
             BatteryDetails bd = new BatteryDetails();
@@ -424,7 +425,8 @@ public class SampleReader {
         }
     }
 	
-	private static String origStr(String clean){
+	@SuppressWarnings("deprecation")
+    private static String origStr(String clean){
         try {
             return URLDecoder.decode(clean, "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -433,7 +435,8 @@ public class SampleReader {
         return URLDecoder.decode(clean);
     }
 	
-	private static String cleanStr(String dirty){
+	@SuppressWarnings("deprecation")
+    private static String cleanStr(String dirty){
 		if (dirty == null)
 			return null;
 		/*

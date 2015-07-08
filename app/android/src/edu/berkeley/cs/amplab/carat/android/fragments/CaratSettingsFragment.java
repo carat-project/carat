@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceManager;
 //important: the following import command imports the class from a library project, not from android.preference.PreferenceFragment
 import android.support.v4.preference.PreferenceFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,8 @@ import edu.berkeley.cs.amplab.carat.android.utils.Tracker;
 
 
 public class CaratSettingsFragment extends PreferenceFragment {
+	
+	private final String TAG = "CaratSettings";
 	
 	Tracker tracker = null;
 
@@ -57,10 +61,27 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		 */
 		
 		// we use the tracker in the following two methods, so instantiate it here
-		tracker = Tracker.getInstance();
+		tracker = Tracker.getInstance((MainActivity) getActivity());
 		
 		setSharePreferenceIntent();
 		setFeedbackPreferenceIntent();
+		
+		/**
+		 * It seems I need to do this one manually.
+		 * -Eemil
+		 */
+		Preference hogthresh = findPreference(getString(R.string.hog_hide_threshold));
+		hogthresh.setOnPreferenceChangeListener(new OnPreferenceChangeListener(){
+
+			@Override
+			public boolean onPreferenceChange(Preference preference,
+					Object newValue) {
+				//Log.d(TAG, preference.getKey() + " changed to " + newValue +" of type: " + newValue.getClass());
+		        SharedPreferences p = getActivity().getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+		        p.edit().putString(getString(R.string.hog_hide_threshold), newValue.toString()).commit();
+				return true;
+			}
+		});
 	}
 	
 	@Override
@@ -91,7 +112,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		// set the created intent as our preference (view) object's intent
 		preference.setIntent(intent);
 		
-		tracker.trackSharing();
+		tracker.trackSharing(getActivity().getTitle());
 	}
 
 	
@@ -103,7 +124,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		
-		MainActivity mainActivity = CaratApplication.getMainActivity();
+		MainActivity mainActivity = ((MainActivity) getActivity());
 		Context context = mainActivity.getApplicationContext();
 		SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 		
@@ -126,7 +147,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		
 		preference.setIntent(intent);
 		
-		tracker.trackFeedback(os, model);
+		tracker.trackFeedback(os, model,  getActivity().getTitle());
 	}
 
 	@Override

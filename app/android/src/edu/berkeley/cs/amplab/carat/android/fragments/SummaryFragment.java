@@ -31,12 +31,11 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 
 /**
  * 
- * @author Javad Sadeqzadeh
+ * @author Javad Sadeqzadeh, Eemil Lagerspetz
  *
  */
 public class SummaryFragment extends ExtendedTitleFragment {
     // private final String TAG = "SummaryFragment";
-    private MainActivity mMainActivity = CaratApplication.getMainActivity();
     private PieChart mChart;
 
     @Override
@@ -73,12 +72,15 @@ public class SummaryFragment extends ExtendedTitleFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("SummaryFragment", "onResume called");
+        if (Constants.DEBUG)
+            Log.d("SummaryFragment", "onResume called");
         scheduleRefresh();
     }
 
     public void scheduleRefresh() {
-        getActivity().runOnUiThread(new Runnable() {
+        final MainActivity a = (MainActivity) getActivity();
+        if (a != null) 
+        	a.runOnUiThread(new Runnable() {
             public void run() {
                 View v = getView();
                 if (v != null){
@@ -86,15 +88,15 @@ public class SummaryFragment extends ExtendedTitleFragment {
                 Button green = (Button) v.findViewById(R.id.active_bl);
                 green.setText(batteryLife);
                 }
-                if (mMainActivity.isStatsDataAvailable() && v != null) {
+                if (a.isStatsDataAvailable() && v != null) {
                     drawPieChart(v);
                 }
 
                 int hogsCount = 0;
                 int bugsCount = 0;
-                if (CaratApplication.storage != null && v != null) {
-                    SimpleHogBug[] h = CaratApplication.storage.getHogReport();
-                    SimpleHogBug[] b = CaratApplication.storage.getBugReport();
+                if (CaratApplication.getStorage() != null && v != null) {
+                    SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+                    SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
                     if (h != null)
                         hogsCount = h.length;
                     if (b != null)
@@ -107,27 +109,24 @@ public class SummaryFragment extends ExtendedTitleFragment {
                 }
             }
         });
-
     }
 
     public void scheduleRefresh(final View inflatedView) {
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
-
-                if (mMainActivity.isStatsDataAvailable()) {
+            	MainActivity main = (MainActivity) getActivity();
+                if (main != null && main.isStatsDataAvailable()) {
                     drawPieChart(inflatedView);
                 }
 
                 int hogsCount = 0;
                 int bugsCount = 0;
-                if (CaratApplication.storage != null) {
-                    SimpleHogBug[] h = CaratApplication.storage.getHogReport();
-                    SimpleHogBug[] b = CaratApplication.storage.getBugReport();
-                    if (h != null)
-                        hogsCount = h.length;
-                    if (b != null)
-                        bugsCount = b.length;
-                }
+				SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+				SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
+				if (h != null)
+					hogsCount = h.length;
+				if (b != null)
+					bugsCount = b.length;
                 Button hogsCountTv = (Button) inflatedView.findViewById(R.id.summary_hogs_count);
                 hogsCountTv.setText(hogsCount + " " + getString(R.string.hogs));
 
@@ -172,12 +171,15 @@ public class SummaryFragment extends ExtendedTitleFragment {
     private class CountClickListener implements OnClickListener {
         @Override
         public void onClick(View v) {
-            if (v == v.getRootView().findViewById(R.id.summary_hogs_count)) {
-                mMainActivity.replaceFragment(mMainActivity.getHogsFragment(), mMainActivity.getFragmentTag(4), true);
-            } else if (v == v.getRootView().findViewById(R.id.active_bl)) {
-                mMainActivity.replaceFragment(mMainActivity.getMydeviceFragment(), mMainActivity.getFragmentTag(2), true);
-            }else
-                mMainActivity.replaceFragment(mMainActivity.getBugsFragment(), mMainActivity.getFragmentTag(3), true);
+        	final MainActivity a = (MainActivity) getActivity();
+        	if (a != null) {
+	            if (v == v.getRootView().findViewById(R.id.summary_hogs_count)) {
+	                a.replaceFragment(a.getHogsFragment(), a.getFragmentTag(4), true);
+	            } else if (v == v.getRootView().findViewById(R.id.active_bl)) {
+	                a.replaceFragment(a.getMydeviceFragment(), a.getFragmentTag(2), true);
+	            }else
+	                a.replaceFragment(a.getBugsFragment(), a.getFragmentTag(3), true);
+	        }
         }
     }
 
@@ -219,23 +221,28 @@ public class SummaryFragment extends ExtendedTitleFragment {
         // enable / disable drawing of x- and y-values
         // mChart.setDrawYValues(false);
         // mChart.setDrawXValues(false);
-
-        mChart.setData(generatePieData());
-        Legend l = mChart.getLegend();
-        l.setPosition(LegendPosition.NONE);
+        PieData d = generatePieData();
+        if (d != null){
+        	mChart.setData(d);
+        	Legend l = mChart.getLegend();
+        	l.setPosition(LegendPosition.NONE);
+        }
     }
 
     protected PieData generatePieData() {
+    	final MainActivity a = (MainActivity) getActivity();
+    	if (a == null)
+    		return null;
         ArrayList<Entry> entries = new ArrayList<Entry>();
         ArrayList<String> xVals = new ArrayList<String>();
 
         xVals.add(getString(R.string.chart_wellbehaved));
         xVals.add(getString(R.string.chart_hogs));
         xVals.add(getString(R.string.chart_bugs));
-
-        int wellbehaved = mMainActivity.mWellbehaved;
-        int hogs = mMainActivity.mHogs;
-        int bugs = mMainActivity.mBugs;
+        
+        int wellbehaved = a.mWellbehaved;
+        int hogs = a.mHogs;
+        int bugs = a.mBugs;
 
         entries.add(new Entry((float) (wellbehaved), 1));
         entries.add(new Entry((float) (hogs), 2));

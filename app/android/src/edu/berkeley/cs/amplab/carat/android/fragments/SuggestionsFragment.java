@@ -21,19 +21,21 @@ import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.lists.HogBugSuggestionsAdapter;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
+import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.subscreens.KillAppFragment;
 import edu.berkeley.cs.amplab.carat.android.ui.LocalizedWebView;
 
 public class SuggestionsFragment extends ExtendedTitleFragment implements Serializable{
     private static final long serialVersionUID = -6034269327947014085L;
-    final MainActivity mMainActivity = CaratApplication.getMainActivity();
     // private static final String TAG = "CaratSuggestions";
     private View root;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	if (CaratApplication.storage.getHogReport().length == 0 && CaratApplication.storage.getBugReport().length == 0) {
+    	CaratDataStorage s = CaratApplication.getStorage();
+    	
+    	if (s.hogsIsEmpty() && s.bugsIsEmpty()) {
     		root = inflater.inflate(R.layout.emptyactions, container, false);
     		return root;
     	}
@@ -46,12 +48,13 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+			    MainActivity m = ((MainActivity) getActivity());
 				Object o = lv.getItemAtPosition(position);
 				SimpleHogBug fullObject = (SimpleHogBug) o;
 				final String raw = fullObject.getAppName();
 				// Log.v(TAG, "Showing kill view for " + raw);
 				if (raw.equals("OsUpgrade"))
-					mMainActivity.showHTMLFile("upgradeos", getString(R.string.upgradeosinfo), false);
+					m.showHTMLFile("upgradeos", getString(R.string.upgradeosinfo), false);
 				//				else if (raw.equals(getString(R.string.dimscreen)))
 				//					GoToDisplayScreen();
 				//				else if (raw.equals(getString(R.string.disablewifi)))
@@ -73,7 +76,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 				//				else if (raw.equals(getString(R.string.disableautomaticsync)))
 				//					GoToSyncScreen();
 				else if (raw.equals(getString(R.string.helpcarat))) {
-					mMainActivity.showHTMLFile("collectdata", getString(R.string.collectdatainfo), false);
+					m.showHTMLFile("collectdata", getString(R.string.collectdatainfo), false);
 				} else if (raw.equals(getString(R.string.questionnaire))) {
 					openQuestionnaire();
 				} else {
@@ -111,7 +114,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 				Fragment fragment = new KillAppFragment();
 				fragment.setArguments(args);
 
-				CaratApplication.getMainActivity().replaceFragment(fragment, getString(R.string.kill)+" "+raw, false);
+				((MainActivity) getActivity()).replaceFragment(fragment, getString(R.string.kill)+" "+raw, false);
 
 				/*
 				 * if (raw.equals("Disable bluetooth")) { double benefitOther =
@@ -223,7 +226,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
         String caratId = Uri.encode(p.getString(CaratApplication.getRegisteredUuid(), ""));
         String os = Uri.encode(SamplingLibrary.getOsVersion());
         String model = Uri.encode(SamplingLibrary.getModel());
-        String url = CaratApplication.storage.getQuestionnaireUrl();
+        String url = CaratApplication.getStorage().getQuestionnaireUrl();
         if (url != null && url.length() > 7 && url.startsWith("http")) { // http://
             url = url.replace("caratid", caratId).replace("caratos", os).replace("caratmodel", model);
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -241,15 +244,14 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 
     public void refresh() {
     	SimpleHogBug[] hogReport, bugReport;
-    	hogReport = CaratApplication.storage.getHogReport();
-    	bugReport = CaratApplication.storage.getBugReport();
+    	hogReport = CaratApplication.getStorage().getHogReport();
+    	bugReport = CaratApplication.getStorage().getBugReport();
     	
-    	if (hogReport.length == 0 && bugReport.length == 0) 
+    	if (CaratApplication.getStorage().hogsIsEmpty() && CaratApplication.getStorage().bugsIsEmpty()) 
     		return;
     	
-        CaratApplication caratAppllication = (CaratApplication) CaratApplication.getMainActivity().getApplication();
         final ListView lv = (ListView) root.findViewById(android.R.id.list);
-        lv.setAdapter(new HogBugSuggestionsAdapter(caratAppllication, hogReport, bugReport));
+        lv.setAdapter(new HogBugSuggestionsAdapter((CaratApplication) getActivity().getApplication(), hogReport, bugReport));
     }
 
     @Override

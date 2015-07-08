@@ -374,7 +374,8 @@ public final class SamplingLibrary {
 		while (keys.hasMoreElements()) {
 			String k = (String) keys.nextElement();
 			String v = list.getProperty(k);
-			Log.d("PROPS", k + "=" + v);
+			if (Constants.DEBUG)
+			    Log.d("PROPS", k + "=" + v);
 		}
 	}
 
@@ -719,13 +720,13 @@ public final class SamplingLibrary {
 		 * Blacklist: Key chain, google partner set up, package installer,
 		 * package access helper
 		 */
-		if (CaratApplication.storage != null) {
-			List<String> blacklist = CaratApplication.storage.getBlacklist();
+		if (CaratApplication.getStorage() != null) {
+			List<String> blacklist = CaratApplication.getStorage().getBlacklist();
 			if (blacklist != null && blacklist.size() > 0 && processName != null && blacklist.contains(processName)) {
 				return true;
 			}
 
-			blacklist = CaratApplication.storage.getGloblist();
+			blacklist = CaratApplication.getStorage().getGloblist();
 			if (blacklist != null && blacklist.size() > 0 && processName != null) {
 				for (String glob : blacklist) {
 					if (glob == null)
@@ -787,13 +788,15 @@ public final class SamplingLibrary {
              * disabled.
              */
             if (disabled) {
-                Log.i(STAG, "DISABLED: " + processName);
+                if (Constants.DEBUG)
+                    Log.i(STAG, "DISABLED: " + processName);
                 Editor e = PreferenceManager.getDefaultSharedPreferences(c.getApplicationContext()).edit();
                 e.putBoolean(SamplingLibrary.DISABLED + processName, true).commit();
             }
             return disabled;
         } catch (NameNotFoundException e) {
-            Log.d(STAG, "Could not find app info for: "+processName);
+            if (Constants.DEBUG)
+                Log.d(STAG, "Could not find app info for: "+processName);
         }
 	    return false;
 	}
@@ -1886,7 +1889,8 @@ public final class SamplingLibrary {
 	public static String getTimeZone(Context context) {
 		Calendar cal = Calendar.getInstance();
 		TimeZone tz = cal.getTimeZone();
-		return tz.getDisplayName();
+		return tz.getID();
+		//return tz.getDisplayName();
 	}
 
 	/**
@@ -1961,11 +1965,12 @@ public final class SamplingLibrary {
 
 	public static Sample getSample(Context context, Intent intent, String lastBatteryState) {
 		final String TAG = "SamplingLibrary.getSample";
-		Log.d(TAG, "getSample() was invoked.");
+		if (Constants.DEBUG)
+		    Log.d(TAG, "getSample() was invoked.");
 
 		String action = intent.getAction();
-
-		Log.d(TAG, "action = " + action);
+		if (Constants.DEBUG)
+		    Log.d(TAG, "action = " + action);
 
 		// Construct sample and return it in the end
 		Sample mySample = new Sample();

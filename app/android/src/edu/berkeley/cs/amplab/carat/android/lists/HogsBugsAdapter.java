@@ -2,9 +2,9 @@ package edu.berkeley.cs.amplab.carat.android.lists;
 
 import java.util.Arrays;
 
-import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +25,7 @@ public class HogsBugsAdapter extends BaseAdapter {
 
     public HogsBugsAdapter(CaratApplication caratApplication, SimpleHogBug[] results) {
         this.a = caratApplication;
-
-        Context appContext = caratApplication.getApplicationContext();
+        
         // Skip system apps
         int items = 0;
         if (results != null)
@@ -39,9 +38,7 @@ public class HogsBugsAdapter extends BaseAdapter {
 //                if (SpecialAppCases.isSpecialApp(appName)) 
                 if (appName.equals(Constants.CARAT_PACKAGE_NAME) || appName.equals(Constants.CARAT_OLD))
     				continue;
-                // the "dialer" app still shows up. no idea why!
-                if (!SamplingLibrary.isHidden(appContext, appName))
-                    items++;
+                items++;
             }
         allBugsOrHogs = new SimpleHogBug[items];
         int i = 0;
@@ -55,14 +52,16 @@ public class HogsBugsAdapter extends BaseAdapter {
                         || appName.equals(Constants.CARAT_OLD))
                     continue;
                 // Apparently the number of items changes from "items" above?
-                if (!SamplingLibrary.isHidden(appContext, appName)
-                        && i < allBugsOrHogs.length) {
+                /*
+    			 * This must be handled by Carat data storage.
+    			 * */
+                if (i < allBugsOrHogs.length) {
                     allBugsOrHogs[i] = b;
                     i++;
                 }
             }
         Arrays.sort(allBugsOrHogs);
-        mInflater = LayoutInflater.from(appContext);
+        mInflater = LayoutInflater.from(a);
     }
 
     public int getCount() {

@@ -19,6 +19,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.provider.BaseColumns;
 import android.util.Log;
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.thrift.Sample;
 
 /**
@@ -233,7 +234,8 @@ public class CaratSampleDB {
                     }
                 }
                 sb.append(")");
-                Log.d("CaratSampleDB",
+                if (Constants.DEBUG)
+                    Log.d("CaratSampleDB",
                         "Deleting where rowid in " + sb.toString());
                 ret = delete("rowid in " + sb.toString(), null);
 
@@ -329,8 +331,8 @@ public class CaratSampleDB {
                 if (db == null || !db.isOpen()) {
                     db = helper.getWritableDatabase();
                 }
-                
-                Log.d(TAG, "CaratSampleDB.putSample(). About to save a sample to the DB. "
+                if (Constants.DEBUG)
+                    Log.d(TAG, "CaratSampleDB.putSample(). About to save a sample to the DB. "
                 		+ "uuid=" + s.uuId
                 		+ ", timestamp=" + s.timestamp
                 		+ ", timezone=" + s.timeZone
@@ -387,7 +389,8 @@ public class CaratSampleDB {
      * @return rowId or -1 if failed
      */
     private long addSample(Sample s) {
-    	Log.d("CaratSampleDB.addSample()", "The sample's battery level=" + s.getBatteryLevel());
+        if (Constants.DEBUG)
+            Log.d("CaratSampleDB.addSample()", "The sample's battery level=" + s.getBatteryLevel());
     	
         ContentValues initialValues = new ContentValues();
         initialValues.put(COLUMN_TIMESTAMP, s.timestamp);

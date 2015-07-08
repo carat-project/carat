@@ -14,7 +14,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -38,6 +40,7 @@ public class ClickTracking {
         }
     }
 
+    @SuppressLint("InlinedApi")
     private static String POST(String url, Action action) {
         InputStream inputStream = null;
         String result = "";
@@ -53,8 +56,8 @@ public class ClickTracking {
             String json = "";
             ObjectMapper mapper = new ObjectMapper();
             json = mapper.writeValueAsString(action);
-
-            Log.d(TAG, "JSON=\n" + json);
+            if (Constants.DEBUG)
+                Log.d(TAG, "JSON=\n" + json);
             // 5. set json to StringEntity
             StringEntity se = new StringEntity(json, HTTP.UTF_8);
 
