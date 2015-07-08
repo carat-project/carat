@@ -1696,7 +1696,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Muhammad Haris (2YA6548F88)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1729,7 +1730,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Carat;
-				PROVISIONING_PROFILE = "50d7b4b7-e12f-416b-9d06-6769342e0806";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/BuildHeaders/";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/** $(PROJECT_DIR)/Pods/BuildHeaders/";
 			};
@@ -1743,7 +1744,8 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Muhammad Haris (2YA6548F88)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1772,7 +1774,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Carat;
-				PROVISIONING_PROFILE = "50d7b4b7-e12f-416b-9d06-6769342e0806";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/BuildHeaders/ $(PROJECT_DIR)/Pods/BuildHeaders/";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/** $(PROJECT_DIR)/Pods/BuildHeaders/";
@@ -1805,7 +1807,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Muhammad Haris (2YA6548F88)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1834,7 +1837,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Carat;
-				PROVISIONING_PROFILE = "50d7b4b7-e12f-416b-9d06-6769342e0806";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/BuildHeaders/";
 				VALIDATE_PRODUCT = YES;
 			};
