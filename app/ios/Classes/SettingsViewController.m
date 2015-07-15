@@ -14,6 +14,7 @@
 #import "CoreDataManager.h"
 #import "UIDeviceHardware.h"
 #import "Flurry.h"
+#import <MessageUI/MessageUI.h>
 
 typedef NS_ENUM(NSUInteger, SettingsCellID) {
 	kSettingsCellWifiSwitch = 0,
@@ -146,12 +147,84 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
 }
 
 -(void) _reportFeedback{
+
+    /* create mail subject */
+    NSString *subject = [NSString stringWithFormat:@"[Carat IOS] Feedback from (device) (os)"];
+    
+    /* define email address */
+    NSString *mail = [NSString stringWithFormat:@"Carat Team <carat@cs.helsinki.fi>"];
+    
+    NSDictionary *memoryInfo = [Utilities getMemoryInfo];
+    
+    NSString* memoryUsed = @"Not available";
+    NSString* memoryActive = @"Not available";
+    
+    if (memoryInfo) {
+        float frac_used = [memoryInfo[kMemoryUsed] floatValue];
+        float frac_active = [memoryInfo[kMemoryActive] floatValue];
+        memoryUsed = [NSString stringWithFormat:@"%.02f%%",frac_used*100];
+        memoryActive = [NSString stringWithFormat:@"%.02f%%",frac_active*100];
+    }
+    
+    float Jscore = (MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
+    NSString *JscoreStr = @"N/A";
+    if(Jscore > 0)
+        JscoreStr = [NSString stringWithFormat:@"%.0f", Jscore];
+    
+    // Device info
+    UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
+    
+    NSString *messageBody = [NSString stringWithFormat:
+                             @"Carat ID: %s\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@", [[[Globals instance] getUUID] UTF8String], JscoreStr, [UIDevice currentDevice].systemVersion,[h platformString], memoryUsed, memoryActive];
+    
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *kmail = [[MFMailComposeViewController alloc] init];
+        kmail.mailComposeDelegate = self;
+        [kmail setSubject:subject];
+        [kmail setMessageBody:messageBody isHTML:NO];
+        [kmail setToRecipients:@[mail]];
+        
+        [self presentViewController:kmail animated:YES completion:NULL];
+    }
+    else
+    {
+        NSLog(@"This device cannot send email");
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result) {
+        case MFMailComposeResultSent:
+            NSLog(@"You sent the email.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"You saved a draft of this email");
+            break;
+        case MFMailComposeResultCancelled:
+            NSLog(@"You cancelled sending this email.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed:  An error occurred when trying to compose this email");
+            break;
+        default:
+            NSLog(@"An error occurred when trying to compose this email");
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void) _reportFeedback_old{
 	id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.berkeley.edu" name:@"Carat"];
 
 	SZShareOptions *options = [SZShareUtils userShareOptions];
 	options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
 		emailData.subject = @"Battery Diagnosis with Carat";
-		emailData.recepients = [NSArray arrayWithObject:@"Carat Team <carat@cs.helsinki.fi>"];
+        // Socialize is all about sharing to who you want to, so prefilled recipient doesn't exist! We need to use Apple's app instead.
+        
+		//emailData. = [NSArray arrayWithObject:@"Carat Team <carat@cs.helsinki.fi>"];
 		//        NSString *appURL = [emailData.propagationInfo objectForKey:@"http://bit.ly/xurpWS"];
 		//        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
 		//        id<SZEntity> entity = emailData.share.entity;
