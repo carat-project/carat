@@ -1448,7 +1448,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "UC Berkeley";
+				ORGANIZATIONNAME = "University of Helsinki";
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = QA5XMCRV5M;
