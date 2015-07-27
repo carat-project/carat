@@ -205,6 +205,13 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
     }
     else
     {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This device cannot send email"
+                                                        message:@"Please set up email on your phone to send feedback."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
         NSLog(@"This device cannot send email");
     }
 }
@@ -232,54 +239,6 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
--(void) _reportFeedback_old{
-    id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.berkeley.edu" name:@"Carat"];
-    
-    SZShareOptions *options = [SZShareUtils userShareOptions];
-    options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
-        emailData.subject = @"Battery Diagnosis with Carat";
-        // Socialize is all about sharing to who you want to, so prefilled recipient doesn't exist! We need to use Apple's app instead.
-        
-        //emailData. = [NSArray arrayWithObject:@"Carat Team <carat@cs.helsinki.fi>"];
-        //        NSString *appURL = [emailData.propagationInfo objectForKey:@"http://bit.ly/xurpWS"];
-        //        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
-        //        id<SZEntity> entity = emailData.share.entity;
-        NSDictionary *memoryInfo = [Utilities getMemoryInfo];
-        
-        NSString* memoryUsed = @"Not available";
-        NSString* memoryActive = @"Not available";
-        
-        if (memoryInfo) {
-            float frac_used = [memoryInfo[kMemoryUsed] floatValue];
-            float frac_active = [memoryInfo[kMemoryActive] floatValue];
-            memoryUsed = [NSString stringWithFormat:@"%.02f%%",frac_used*100];
-            memoryActive = [NSString stringWithFormat:@"%.02f%%",frac_active*100];
-        }
-        float Jscore = (MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
-        Jscore = ceil(14.5);
-        NSString *JscoreStr = @"N/A";
-        if(Jscore > 0)
-            JscoreStr = [NSString stringWithFormat:@"%.0f", Jscore];
-        
-        // Device info
-        UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
-        
-        NSString *messageBody = [NSString stringWithFormat:
-                                 @"Carat ID: %s\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@", [[[Globals instance] getUUID] UTF8String], JscoreStr, [UIDevice currentDevice].systemVersion,[h platformString], memoryUsed, memoryActive];
-        
-        emailData.messageBody = messageBody;
-    };
-    
-    [SZShareUtils shareViaEmailWithViewController:self options:options entity:entity success:^(id<SocializeShare> share) {
-        DLog(@"success reporting feedback");
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        [self.tableView reloadData];
-        DLog(@"failed reporting feedback");
-    }];
-    [Flurry logEvent:@"reportFeedback"];
-}
-
 #pragma mark - sharing
 
 - (void)shareHandler {
@@ -289,7 +248,7 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
 }
 
 - (void)showShareDialog {
-    id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.berkeley.edu" name:@"Carat"];
+    id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.helsinki.fi" name:@"Carat"];
     
     SZShareOptions *options = [SZShareUtils userShareOptions];
     
@@ -299,13 +258,13 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
         
         if (network == SZSocialNetworkFacebook) {
             [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life!"] forKey:@"message"];
-            [postData.params setObject:@"http://carat.cs.berkeley.edu" forKey:@"link"];
+            [postData.params setObject:@"http://carat.cs.helsinki.fi" forKey:@"link"];
             [postData.params setObject:@"Carat: Collaborative Energy Diagnosis" forKey:@"caption"];
             [postData.params setObject:@"Carat" forKey:@"name"];
             [postData.params setObject:@"Carat is a free app that tells you what is using up your battery, whether that's normal, and what you can do about it." forKey:@"description"];
-            [postData.params setObject:@"http://carat.cs.berkeley.edu/img/icon144.png" forKey:@"picture"];
+            [postData.params setObject:@"http://carat.cs.helsinki.fi/img/icon144.png" forKey:@"picture"];
         } else if (network == SZSocialNetworkTwitter) {
-            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life! bit.ly/xurpWS"] forKey:@"status"];
+            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life! http://is.gd/caratweb"] forKey:@"status"];
         }
         
     };
@@ -318,7 +277,7 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
         //        id<SZEntity> entity = emailData.share.entity;
         NSString *appName = emailData.share.application.name;
         
-        emailData.messageBody = [NSString stringWithFormat:@"Check out this free app called %@ that tells you what is using up your mobile device's battery, whether that's normal, and what you can do about it: http://bit.ly/xurpWS\n\n\n", appName];
+        emailData.messageBody = [NSString stringWithFormat:@"Check out this free app called %@ that tells you what is using up your mobile device's battery, whether that's normal, and what you can do about it: http://is.gd/caratweb\n\n\n", appName];
     };
     
     options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
@@ -327,7 +286,7 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
         //        id<SZEntity> entity = smsData.share.entity;
         NSString *appName = smsData.share.application.name;
         
-        smsData.body = [NSString stringWithFormat:@"Check out this free app called %@ that helps improve your mobile device's battery life: bit.ly/xurpWS", appName];
+        smsData.body = [NSString stringWithFormat:@"Check out this free app called %@ that helps improve your mobile device's battery life: http://is.gd/caratweb", appName];
     };
     
     [SZShareUtils showShareDialogWithViewController:self options:options entity:entity completion:^(NSArray *shares) {
