@@ -3,7 +3,8 @@
 //  Carat
 //
 //  Created by Muhammad Haris on 06/02/15.
-//  Copyright (c) 2015 UC Berkeley. All rights reserved.
+//  Authors Muhammad Haris, Eemil Lagerspetz
+//  Copyright (c) 2015 University of Helsinki. All rights reserved.
 //
 
 #import "SettingsViewController.h"
@@ -17,36 +18,39 @@
 #import <MessageUI/MessageUI.h>
 
 typedef NS_ENUM(NSUInteger, SettingsCellID) {
-	kSettingsCellWifiSwitch = 0,
-	kSettingsCellFeeback = 1,
-	kSettingsCellAbout = 2
+    kSettingsCellWifiSwitch,
+    kSettingsCellFeeback,
+    kSettingsCellShare,
+    globalStats,
+    kSettingsCellAbout,
+    numberOfSettings
 };
 
 @interface SettingsViewController ()<UITableViewDataSource, UITableViewDelegate>
-	@property (nonatomic, retain) IBOutlet UITableView* tableView;
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
 @end
 
 @implementation SettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self) {
-		self.title = @"Settings";
-		self.tabBarItem.image = [UIImage imageNamed:@"settings"];
-	}
-	return self;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.title = @"Settings";
+        self.tabBarItem.image = [UIImage imageNamed:@"settings"];
+    }
+    return self;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-
-	[self.navigationController setNavigationBarHidden:YES animated:YES];
-	[super viewWillAppear:YES];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [super viewWillAppear:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,98 +60,110 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 3;
+    return numberOfSettings;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	return self.title;
+    return self.title;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-	UIView *hView = [[[UIView alloc] initWithFrame: CGRectZero] autorelease];
-	hView.backgroundColor = [UIColor clearColor];
-
-	UILabel *hLabel=[[[UILabel alloc] initWithFrame: CGRectMake(10, 30, tableView.bounds.size.width, 20)] autorelease];
-
-	hLabel.backgroundColor = [UIColor clearColor];
-	hLabel.shadowColor = [UIColor whiteColor];
-	hLabel.shadowOffset = CGSizeMake(0.5,1);
-	hLabel.textColor = [UIColor blackColor];
-	hLabel.font = [UIFont boldSystemFontOfSize:15];
-	hLabel.text = self.title;
-
-	[hView addSubview:hLabel];
-
-	return hView;
+    UIView *hView = [[[UIView alloc] initWithFrame: CGRectZero] autorelease];
+    hView.backgroundColor = [UIColor clearColor];
+    
+    UILabel *hLabel=[[[UILabel alloc] initWithFrame: CGRectMake(10, 30, tableView.bounds.size.width, 20)] autorelease];
+    
+    hLabel.backgroundColor = [UIColor clearColor];
+    hLabel.shadowColor = [UIColor whiteColor];
+    hLabel.shadowOffset = CGSizeMake(0.5,1);
+    hLabel.textColor = [UIColor blackColor];
+    hLabel.font = [UIFont boldSystemFontOfSize:15];
+    hLabel.text = self.title;
+    
+    [hView addSubview:hLabel];
+    
+    return hView;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 60.0f;
+    return 60.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-	static NSString *MyIdentifier = @"SettingsItemCell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-	if (cell == nil) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
-	}
-	cell.textLabel.textColor = [tableView separatorColor];
-	switch (indexPath.row) {
-  case kSettingsCellWifiSwitch:
-			cell.textLabel.text = @"Use Wifi Only";
-			//add a switch
-			UISwitch *wifiSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
-			wifiSwitch.onTintColor = [tableView separatorColor];
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-			cell.accessoryView = wifiSwitch;
-			[wifiSwitch setOn:isUsingWifiOnly animated:NO];
-			[wifiSwitch addTarget:self action:@selector(wifiSwitchToggled:) forControlEvents:UIControlEventValueChanged];
-
-			break;
-  case kSettingsCellFeeback:
-			cell.textLabel.text = @"Feedback";
-			break;
-  case kSettingsCellAbout:
-			cell.textLabel.text = @"About";
-			break;
-  default:
-			break;
-	}
-
-	return cell;
+    
+    static NSString *MyIdentifier = @"SettingsItemCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
+    }
+    cell.textLabel.textColor = [tableView separatorColor];
+    switch (indexPath.row) {
+        case kSettingsCellWifiSwitch:
+            cell.textLabel.text = @"Use Wifi Only";
+            //add a switch
+            UISwitch *wifiSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+            wifiSwitch.onTintColor = [tableView separatorColor];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryView = wifiSwitch;
+            [wifiSwitch setOn:isUsingWifiOnly animated:NO];
+            [wifiSwitch addTarget:self action:@selector(wifiSwitchToggled:) forControlEvents:UIControlEventValueChanged];
+            
+            break;
+        case globalStats:
+            cell.textLabel.text = @"Carat Global Statistics";
+            break;
+        case kSettingsCellShare:
+            cell.textLabel.text = @"Share Carat";
+            break;
+        case kSettingsCellFeeback:
+            cell.textLabel.text = @"Feedback";
+            break;
+        case kSettingsCellAbout:
+            cell.textLabel.text = @"About";
+            break;
+        default:
+            break;
+    }
+    
+    return cell;
 }
 
 // loads the selected detail view
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	switch (indexPath.row) {
-  case kSettingsCellFeeback:
-			[self _reportFeedback];
-			break;
-  case kSettingsCellAbout:
-			[self _presentAboutViewController];
-			break;
-  default:
-			break;
-	}
-
+    switch (indexPath.row) {
+        case kSettingsCellShare:
+            [self shareHandler];
+            break;
+        case globalStats:
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://carat.cs.helsinki.fi/statistics"]];
+            break;
+        case kSettingsCellFeeback:
+            [self _reportFeedback];
+            break;
+        case kSettingsCellAbout:
+            [self _presentAboutViewController];
+            break;
+        default:
+            break;
+    }
+    
 }
 - (void) wifiSwitchToggled:(id)sender {
-	UISwitch* switchControl = sender;
-	BOOL useWifiOnly = switchControl.on ? YES: NO;
-	[[NSUserDefaults standardUserDefaults] setBool:useWifiOnly forKey:kUseWifiOnly];
-	NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
+    UISwitch* switchControl = sender;
+    BOOL useWifiOnly = switchControl.on ? YES: NO;
+    [[NSUserDefaults standardUserDefaults] setBool:useWifiOnly forKey:kUseWifiOnly];
+    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
 }
 
 -(void) _presentAboutViewController{
-	AboutViewController *aboutView = [[[AboutViewController alloc] initWithNibName:@"AboutView" bundle:nil] autorelease];
-	[self.navigationController pushViewController:aboutView animated:YES];
+    AboutViewController *aboutView = [[[AboutViewController alloc] initWithNibName:@"AboutView" bundle:nil] autorelease];
+    [self.navigationController pushViewController:aboutView animated:YES];
 }
 
 -(void) _reportFeedback{
-
+    
     /* create mail subject */
     NSString *subject = [NSString stringWithFormat:@"[Carat IOS] Feedback from (device) (os)"];
     
@@ -217,62 +233,119 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
 }
 
 -(void) _reportFeedback_old{
-	id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.berkeley.edu" name:@"Carat"];
-
-	SZShareOptions *options = [SZShareUtils userShareOptions];
-	options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
-		emailData.subject = @"Battery Diagnosis with Carat";
+    id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.berkeley.edu" name:@"Carat"];
+    
+    SZShareOptions *options = [SZShareUtils userShareOptions];
+    options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
+        emailData.subject = @"Battery Diagnosis with Carat";
         // Socialize is all about sharing to who you want to, so prefilled recipient doesn't exist! We need to use Apple's app instead.
         
-		//emailData. = [NSArray arrayWithObject:@"Carat Team <carat@cs.helsinki.fi>"];
-		//        NSString *appURL = [emailData.propagationInfo objectForKey:@"http://bit.ly/xurpWS"];
-		//        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
-		//        id<SZEntity> entity = emailData.share.entity;
-		NSDictionary *memoryInfo = [Utilities getMemoryInfo];
+        //emailData. = [NSArray arrayWithObject:@"Carat Team <carat@cs.helsinki.fi>"];
+        //        NSString *appURL = [emailData.propagationInfo objectForKey:@"http://bit.ly/xurpWS"];
+        //        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
+        //        id<SZEntity> entity = emailData.share.entity;
+        NSDictionary *memoryInfo = [Utilities getMemoryInfo];
+        
+        NSString* memoryUsed = @"Not available";
+        NSString* memoryActive = @"Not available";
+        
+        if (memoryInfo) {
+            float frac_used = [memoryInfo[kMemoryUsed] floatValue];
+            float frac_active = [memoryInfo[kMemoryActive] floatValue];
+            memoryUsed = [NSString stringWithFormat:@"%.02f%%",frac_used*100];
+            memoryActive = [NSString stringWithFormat:@"%.02f%%",frac_active*100];
+        }
+        float Jscore = (MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
+        Jscore = ceil(14.5);
+        NSString *JscoreStr = @"N/A";
+        if(Jscore > 0)
+            JscoreStr = [NSString stringWithFormat:@"%.0f", Jscore];
+        
+        // Device info
+        UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
+        
+        NSString *messageBody = [NSString stringWithFormat:
+                                 @"Carat ID: %s\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@", [[[Globals instance] getUUID] UTF8String], JscoreStr, [UIDevice currentDevice].systemVersion,[h platformString], memoryUsed, memoryActive];
+        
+        emailData.messageBody = messageBody;
+    };
+    
+    [SZShareUtils shareViaEmailWithViewController:self options:options entity:entity success:^(id<SocializeShare> share) {
+        DLog(@"success reporting feedback");
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        [self.tableView reloadData];
+        DLog(@"failed reporting feedback");
+    }];
+    [Flurry logEvent:@"reportFeedback"];
+}
 
-		NSString* memoryUsed = @"Not available";
-		NSString* memoryActive = @"Not available";
+#pragma mark - sharing
 
-		if (memoryInfo) {
-			float frac_used = [memoryInfo[kMemoryUsed] floatValue];
-			float frac_active = [memoryInfo[kMemoryActive] floatValue];
-			memoryUsed = [NSString stringWithFormat:@"%.02f%%",frac_used*100];
-			memoryActive = [NSString stringWithFormat:@"%.02f%%",frac_active*100];
-		}
-		float Jscore = (MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
-		Jscore = ceil(14.5);
-		NSString *JscoreStr = @"N/A";
-		if(Jscore > 0)
-			JscoreStr = [NSString stringWithFormat:@"%.0f", Jscore];
+- (void)shareHandler {
+    [self showShareDialog];
+    
+    [Flurry logEvent:@"selectedSpreadTheWord"];
+}
 
-		// Device info
-		UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
-
-		NSString *messageBody = [NSString stringWithFormat:
-								 @"Carat ID: %s\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@", [[[Globals instance] getUUID] UTF8String], JscoreStr, [UIDevice currentDevice].systemVersion,[h platformString], memoryUsed, memoryActive];
-
-		emailData.messageBody = messageBody;
-	};
-
-	[SZShareUtils shareViaEmailWithViewController:self options:options entity:entity success:^(id<SocializeShare> share) {
-		DLog(@"success reporting feedback");
-		[self.tableView reloadData];
-	} failure:^(NSError *error) {
-		[self.tableView reloadData];
-		DLog(@"failed reporting feedback");
-	}];
-	[Flurry logEvent:@"reportFeedback"];
+- (void)showShareDialog {
+    id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.berkeley.edu" name:@"Carat"];
+    
+    SZShareOptions *options = [SZShareUtils userShareOptions];
+    
+    // http://developers.facebook.com/docs/reference/api/link/
+    
+    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+        
+        if (network == SZSocialNetworkFacebook) {
+            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life!"] forKey:@"message"];
+            [postData.params setObject:@"http://carat.cs.berkeley.edu" forKey:@"link"];
+            [postData.params setObject:@"Carat: Collaborative Energy Diagnosis" forKey:@"caption"];
+            [postData.params setObject:@"Carat" forKey:@"name"];
+            [postData.params setObject:@"Carat is a free app that tells you what is using up your battery, whether that's normal, and what you can do about it." forKey:@"description"];
+            [postData.params setObject:@"http://carat.cs.berkeley.edu/img/icon144.png" forKey:@"picture"];
+        } else if (network == SZSocialNetworkTwitter) {
+            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life! bit.ly/xurpWS"] forKey:@"status"];
+        }
+        
+    };
+    
+    options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
+        emailData.subject = @"Battery Diagnosis with Carat";
+        
+        //        NSString *appURL = [emailData.propagationInfo objectForKey:@"http://bit.ly/xurpWS"];
+        //        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
+        //        id<SZEntity> entity = emailData.share.entity;
+        NSString *appName = emailData.share.application.name;
+        
+        emailData.messageBody = [NSString stringWithFormat:@"Check out this free app called %@ that tells you what is using up your mobile device's battery, whether that's normal, and what you can do about it: http://bit.ly/xurpWS\n\n\n", appName];
+    };
+    
+    options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
+        //        NSString *appURL = [smsData.propagationInfo objectForKey:@"application_url"];
+        //        NSString *entityURL = [smsData.propagationInfo objectForKey:@"entity_url"];
+        //        id<SZEntity> entity = smsData.share.entity;
+        NSString *appName = smsData.share.application.name;
+        
+        smsData.body = [NSString stringWithFormat:@"Check out this free app called %@ that helps improve your mobile device's battery life: bit.ly/xurpWS", appName];
+    };
+    
+    [SZShareUtils showShareDialogWithViewController:self options:options entity:entity completion:^(NSArray *shares) {
+        DLog(@"Created %d shares: %@", [shares count], shares);
+    } cancellation:^{
+        DLog(@"Share creation cancelled");
+    }];
 }
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -160,18 +160,14 @@
     ActionItemCell *selectedCell = (ActionItemCell *)[tableView cellForRowAtIndexPath:indexPath];
     [selectedCell setSelected:NO animated:YES];
     
-    if (selectedCell.actionType == ActionTypeSpreadTheWord) {
+    /*if (selectedCell.actionType == ActionTypeSpreadTheWord) {
         [self shareHandler];
-    } else if (selectedCell.actionType == ActionTypeGlobalStats){
-        // Open url here:
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://carat.cs.helsinki.fi/statistics"]];
-        
-    } else {
+    } else*/
         InstructionViewController *ivController = [[InstructionViewController alloc] initWithNibName:@"InstructionView" actionType:selectedCell.actionType];
         [self.navigationController pushViewController:ivController animated:YES];
         [ivController release];
         [Flurry logEvent:@"selectedInstructionView"];
-    }
+    //}
 }
 
 - (void) updateNetworkStatus:(NSNotification *) notice
@@ -189,63 +185,6 @@
 			[[CoreDataManager instance] updateLocalReportsFromServer];
 		}
 	}
-}
-
-#pragma mark - sharing
-
-- (void)shareHandler {
-    [self showShareDialog];
-    
-    [Flurry logEvent:@"selectedSpreadTheWord"];
-}
-
-- (void)showShareDialog {
-    id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.berkeley.edu" name:@"Carat"];
-    
-    SZShareOptions *options = [SZShareUtils userShareOptions];
-    
-    // http://developers.facebook.com/docs/reference/api/link/
-    
-    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
-        
-        if (network == SZSocialNetworkFacebook) {
-            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life!"] forKey:@"message"];
-            [postData.params setObject:@"http://carat.cs.berkeley.edu" forKey:@"link"];
-            [postData.params setObject:@"Carat: Collaborative Energy Diagnosis" forKey:@"caption"];
-            [postData.params setObject:@"Carat" forKey:@"name"];
-            [postData.params setObject:@"Carat is a free app that tells you what is using up your battery, whether that's normal, and what you can do about it." forKey:@"description"];
-            [postData.params setObject:@"http://carat.cs.berkeley.edu/img/icon144.png" forKey:@"picture"];
-        } else if (network == SZSocialNetworkTwitter) {
-            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life! bit.ly/xurpWS"] forKey:@"status"];
-        }
-        
-    };
-    
-    options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
-        emailData.subject = @"Battery Diagnosis with Carat";
-
-//        NSString *appURL = [emailData.propagationInfo objectForKey:@"http://bit.ly/xurpWS"];
-//        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
-//        id<SZEntity> entity = emailData.share.entity;
-        NSString *appName = emailData.share.application.name;
-
-		emailData.messageBody = [NSString stringWithFormat:@"Check out this free app called %@ that tells you what is using up your mobile device's battery, whether that's normal, and what you can do about it: http://bit.ly/xurpWS\n\n\n", appName];
-	};
-    
-    options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
-//        NSString *appURL = [smsData.propagationInfo objectForKey:@"application_url"];
-//        NSString *entityURL = [smsData.propagationInfo objectForKey:@"entity_url"];
-//        id<SZEntity> entity = smsData.share.entity;
-        NSString *appName = smsData.share.application.name;
-        
-        smsData.body = [NSString stringWithFormat:@"Check out this free app called %@ that helps improve your mobile device's battery life: bit.ly/xurpWS", appName];
-    };
-    
-    [SZShareUtils showShareDialogWithViewController:self options:options entity:entity completion:^(NSArray *shares) {
-        DLog(@"Created %d shares: %@", [shares count], shares);
-    } cancellation:^{
-        DLog(@"Share creation cancelled");
-    }];
 }
 
 #pragma mark - View lifecycle
@@ -455,23 +394,14 @@
     }
         
     // sharing Action
-    tmpAction = [[ActionObject alloc] init];
+    /*tmpAction = [[ActionObject alloc] init];
     [tmpAction setActionText:@"Help Spread the Word"];
     [tmpAction setActionType:ActionTypeSpreadTheWord];
     [tmpAction setActionBenefit:-2];
     [tmpAction setActionError:-2];
     [myList addObject:tmpAction];
     [tmpAction release];
-
-    // sharing Action
-    tmpAction = [[ActionObject alloc] init];
-    [tmpAction setActionText:@"Check out Carat Global Statistics"];
-    [tmpAction setActionType:ActionTypeGlobalStats];
-    [tmpAction setActionBenefit:-3];
-    [tmpAction setActionError:-2];
-    [myList addObject:tmpAction];
-    [tmpAction release];
-
+*/
     //the "key" is the *name* of the @property as a string.  So you can also sort by @"label" if you'd like
     [myList sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"actionBenefit" ascending:NO]]];
     
