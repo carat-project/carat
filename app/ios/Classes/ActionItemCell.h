@@ -13,11 +13,13 @@
 {
     IBOutlet UILabel *actionString;
     IBOutlet UILabel *actionValue;
+    IBOutlet UILabel *actionHeader;
     ActionType actionType;
 }
 
 @property (retain, nonatomic) IBOutlet UILabel *actionString;
 @property (retain, nonatomic) IBOutlet UILabel *actionValue;
+@property (retain, nonatomic) IBOutlet UILabel *actionHeader;
 @property (nonatomic) ActionType actionType;
 
 @end

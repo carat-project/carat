@@ -129,10 +129,13 @@
 	if (act.actionBenefit == -1) {
 		cell.actionValue.text = @"better Carat results!";
 		cell.actionType = ActionTypeCollectData;
-	}
-	else if (act.actionBenefit == -2) { // already filtered out benefits < 60 seconds
+	} else if (act.actionBenefit == -2) { // already filtered out benefits < 60 seconds
         cell.actionValue.text = @"+100 karma!";
         cell.actionType = ActionTypeSpreadTheWord;
+    } else if (act.actionBenefit == -3) {
+        cell.actionValue.text = @"See top Hogs and devices";
+        cell.actionType = ActionTypeGlobalStats;
+        cell.actionHeader.text = @"";
     }
 	else {
         cell.actionValue.text = [NSString stringWithFormat:@"%@ ± %@", [Utilities doubleAsTimeNSString:act.actionBenefit], [Utilities doubleAsTimeNSString:act.actionError]];
@@ -159,9 +162,11 @@
     
     if (selectedCell.actionType == ActionTypeSpreadTheWord) {
         [self shareHandler];
-    }
-
-	else {
+    } else if (selectedCell.actionType == ActionTypeGlobalStats){
+        // Open url here:
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://carat.cs.helsinki.fi/statistics"]];
+        
+    } else {
         InstructionViewController *ivController = [[InstructionViewController alloc] initWithNibName:@"InstructionView" actionType:selectedCell.actionType];
         [self.navigationController pushViewController:ivController animated:YES];
         [ivController release];
@@ -454,6 +459,15 @@
     [tmpAction setActionText:@"Help Spread the Word"];
     [tmpAction setActionType:ActionTypeSpreadTheWord];
     [tmpAction setActionBenefit:-2];
+    [tmpAction setActionError:-2];
+    [myList addObject:tmpAction];
+    [tmpAction release];
+
+    // sharing Action
+    tmpAction = [[ActionObject alloc] init];
+    [tmpAction setActionText:@"Check out Carat Global Statistics"];
+    [tmpAction setActionType:ActionTypeGlobalStats];
+    [tmpAction setActionBenefit:-3];
     [tmpAction setActionError:-2];
     [myList addObject:tmpAction];
     [tmpAction release];
