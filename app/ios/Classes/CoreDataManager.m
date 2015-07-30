@@ -368,7 +368,7 @@ static NSMutableDictionary * daemonsList = nil;
                                                  contents:nil 
                                                attributes:nil])
     {
-        DLog(@"%s Could not create daemon cache. %@", __PRETTY_FUNCTION__, error);
+        DLog(@"%s Could not create daemon cache.", __PRETTY_FUNCTION__);
         return;
     }
     
