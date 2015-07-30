@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 ShareThis. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "STDeviceSettings.h"
 #import "STIdentifierFactory.h"
 #import "STReachability.h"
