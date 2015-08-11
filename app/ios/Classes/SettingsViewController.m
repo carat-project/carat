@@ -58,6 +58,15 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL) canShare {
+    // A system version of 7.0 or greater is required to use Socialize.
+    NSString *reqSysVer = @"7.0";
+    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+    if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending)
+        return YES;
+    return NO;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return numberOfSettings;
@@ -115,7 +124,11 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
             cell.textLabel.text = @"Carat Global Statistics";
             break;
         case kSettingsCellShare:
-            cell.textLabel.text = @"Share Carat";
+            if ([self canShare])
+                cell.textLabel.text = @"Share Carat";
+            else{
+                cell.textLabel.text = @"iOS 7.0 Required for Sharing";
+            }
             break;
         case kSettingsCellFeeback:
             cell.textLabel.text = @"Feedback";
@@ -134,7 +147,20 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case kSettingsCellShare:
-            [self shareHandler];
+            if ([self canShare])
+                [self shareHandler];
+            else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"iOS 7.0 required"
+                                                                message:@"iOS 7.0 or greater is required for sharing."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                [alert release];
+                NSLog(@"Trying to share with ioS < 7.0.");
+                
+                }
+            
             break;
         case globalStats:
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://carat.cs.helsinki.fi/statistics"]];
@@ -150,6 +176,7 @@ typedef NS_ENUM(NSUInteger, SettingsCellID) {
     }
     
 }
+
 - (void) wifiSwitchToggled:(id)sender {
     UISwitch* switchControl = sender;
     BOOL useWifiOnly = switchControl.on ? YES: NO;
