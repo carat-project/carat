@@ -257,6 +257,10 @@ public class MainActivity extends ActionBarActivity {
 		FragmentManager manager = getSupportFragmentManager();
 		int stackTop = manager.getBackStackEntryCount()-1;
 		
+		if (drawerOpen) {
+            mDrawerLayout.closeDrawers();
+        }
+		
 		if (Constants.DEBUG)
 			Log.d("CaratMain", "stackTop="+stackTop);
 		if (stackTop <= 0){
@@ -307,8 +311,20 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 	
-	
-	
+	/**
+	 * Close the Action drawer (menu) if it was open.
+	 * Return true if it was open and now closed.
+	 * @return true if the action drawer was open and now closed.
+	 */
+	private boolean closeDrawerIfOpen() {
+		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        if (drawerOpen) {
+            mDrawerLayout.closeDrawers();
+            return true;
+        }else
+        	return false;
+	}
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		/* 
@@ -779,10 +795,7 @@ public class MainActivity extends ActionBarActivity {
 	@SuppressLint("RtlHardcoded")
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_MENU) {
-            boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-            if (drawerOpen) {
-                mDrawerLayout.closeDrawers();
-            } else {
+            if (!closeDrawerIfOpen()){
             	// FIXME: Gravity.Start is not available in API Level 8, so use compat
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
