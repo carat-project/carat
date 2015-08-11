@@ -49,7 +49,6 @@
 		AB99EB0114EA6C130008E440 /* upgradeos.html in Resources */ = {isa = PBXBuildFile; fileRef = AB99EB0014EA6C130008E440 /* upgradeos.html */; };
 		AB99EB0414EA6CCD0008E440 /* deviceselect.png in Resources */ = {isa = PBXBuildFile; fileRef = AB99EB0214EA6CCD0008E440 /* deviceselect.png */; };
 		AB99EB0514EA6CCD0008E440 /* updatecheck.png in Resources */ = {isa = PBXBuildFile; fileRef = AB99EB0314EA6CCD0008E440 /* updatecheck.png */; };
-		AB9B57F3148EC51C004F92F2 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9B57F2148EC51C004F92F2 /* libCorePlot-CocoaTouch.a */; };
 		AB9B580B148FEA10004F92F2 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9B580A148FEA10004F92F2 /* 37x-Checkmark.png */; };
 		AB9B580D148FF31D004F92F2 /* 37x-X.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9B580C148FF31D004F92F2 /* 37x-X.png */; };
 		ABAAA9FB161F7A0400504A9E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABAAA9F9161F79D600504A9E /* MapKit.framework */; };
@@ -690,7 +689,6 @@
 				ABAAA9FB161F7A0400504A9E /* MapKit.framework in Frameworks */,
 				ABD31903148EC41C000A8DC7 /* QuartzCore.framework in Frameworks */,
 				C75488E619963D04007A01CF /* libFlurry_5.0.0.a in Frameworks */,
-				AB9B57F3148EC51C004F92F2 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				ABD318EC148D8733000A8DC7 /* MessageUI.framework in Frameworks */,
 				ABD318EA148D8703000A8DC7 /* Security.framework in Frameworks */,
 				C18E106E1466591A0028095B /* CoreData.framework in Frameworks */,
