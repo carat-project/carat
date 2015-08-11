@@ -29,3 +29,5 @@ lint.xml
 .settings
 *.iml
 .idea
+#Android Studio stuff
+out
