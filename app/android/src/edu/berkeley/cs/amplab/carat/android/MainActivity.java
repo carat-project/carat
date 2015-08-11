@@ -257,9 +257,8 @@ public class MainActivity extends ActionBarActivity {
 		FragmentManager manager = getSupportFragmentManager();
 		int stackTop = manager.getBackStackEntryCount()-1;
 		
-		if (drawerOpen) {
-            mDrawerLayout.closeDrawers();
-        }
+		if (closeDrawerIfOpen())
+			return;
 		
 		if (Constants.DEBUG)
 			Log.d("CaratMain", "stackTop="+stackTop);
