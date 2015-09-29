@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/build/intermediates/bundles/debug/res/values-land/values-land.xml -->
+    <eat-comment/>
+    <dimen name="preference_widget_width">72dp</dimen>
+</resources>

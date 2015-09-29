@@ -1,0 +1,174 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From CaratApp:
+* .gitignore
+* .idea\
+* .idea\.name
+* .idea\compiler.xml
+* .idea\copyright\
+* .idea\copyright\profiles_settings.xml
+* .idea\encodings.xml
+* .idea\libraries\
+* .idea\libraries\libthrift_0_9_2.xml
+* .idea\libraries\libthrift_0_9_2__2_.xml
+* .idea\libraries\slf4j_api_1_5_8.xml
+* .idea\libraries\slf4j_api_1_5_8__2_.xml
+* .idea\misc.xml
+* .idea\modules.xml
+* .idea\scopes\
+* .idea\scopes\scope_settings.xml
+* .idea\thriftCompiler.xml
+* .idea\vcs.xml
+* .idea\workspace.xml
+* CaratApp.iml
+* README.md
+* THRIFT-LICENSE.txt
+* THRIFT-NOTICE.txt
+* android.iml
+* ic_launcher.png
+* ic_launcher_transp.xcf
+* ic_notify.png
+* icon-generator.sh
+* out\
+* out\production\
+* out\production\HoloGraphLibrary\
+* out\production\HoloGraphLibrary\com\
+* out\production\HoloGraphLibrary\com\echo\
+* out\production\HoloGraphLibrary\com\echo\holographlibrary\
+* out\production\HoloGraphLibrary\com\echo\holographlibrary\LineGraph.java.orig
+* proguard-project.txt
+* thrift-android.patch
+From MPChartLib:
+* .gitignore
+* build.gradle
+* ic_launcher-web.png
+* pom.xml
+* proguard-project.txt
+From android-support-v4-preferencefragment:
+* .gitignore
+* LICENSE
+* README.md
+* build.gradle
+* gradle.properties
+* gradle\
+* gradle\wrapper\
+* gradle\wrapper\gradle-wrapper.jar
+* gradle\wrapper\gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* maven-repository\
+* maven-repository\com\
+* maven-repository\com\android\
+* maven-repository\com\android\support\
+* maven-repository\com\android\support\support-v4-preferencefragment\
+* maven-repository\com\android\support\support-v4-preferencefragment\1.0.0\
+* maven-repository\com\android\support\support-v4-preferencefragment\1.0.0\support-v4-preferencefragment-1.0.0.aar
+* maven-repository\com\android\support\support-v4-preferencefragment\1.0.0\support-v4-preferencefragment-1.0.0.aar.md5
+* maven-repository\com\android\support\support-v4-preferencefragment\1.0.0\support-v4-preferencefragment-1.0.0.aar.sha1
+* maven-repository\com\android\support\support-v4-preferencefragment\1.0.0\support-v4-preferencefragment-1.0.0.pom
+* maven-repository\com\android\support\support-v4-preferencefragment\1.0.0\support-v4-preferencefragment-1.0.0.pom.md5
+* maven-repository\com\android\support\support-v4-preferencefragment\1.0.0\support-v4-preferencefragment-1.0.0.pom.sha1
+* maven-repository\com\android\support\support-v4-preferencefragment\maven-metadata.xml
+* maven-repository\com\android\support\support-v4-preferencefragment\maven-metadata.xml.md5
+* maven-repository\com\android\support\support-v4-preferencefragment\maven-metadata.xml.sha1
+From android-switch-backport:
+* build.gradle
+* build.xml
+* library.iml
+* pom.xml
+* proguard-project.txt
+* proguard-rules.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:19.1.0
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+android-support-v7-appcompat => [com.android.support:appcompat-v7:19.1.0]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In MPChartLib:
+* AndroidManifest.xml => mPChartLib\src\main\AndroidManifest.xml
+* libs\nineoldandroids-2.4.0-2.jar => mPChartLib\libs\nineoldandroids-2.4.0-2.jar
+* src\ => mPChartLib\src\main\java\
+In android-support-v4-preferencefragment:
+* AndroidManifest.xml => androidsupportv4preferencefragment\src\main\AndroidManifest.xml
+* res\ => androidsupportv4preferencefragment\src\main\res\
+* src\ => androidsupportv4preferencefragment\src\main\java\
+* src\.readme => androidsupportv4preferencefragment\src\main\resources\.readme
+In android-switch-backport:
+* AndroidManifest.xml => androidswitchbackport\src\main\AndroidManifest.xml
+* res\ => androidswitchbackport\src\main\res\
+* src\ => androidswitchbackport\src\main\java\
+In CaratApp:
+* AndroidManifest.xml => caratApp\src\main\AndroidManifest.xml
+* assets\ => caratApp\src\main\assets\
+* libs\commons-codec-1.6.jar => caratApp\libs\commons-codec-1.6.jar
+* libs\commons-logging-1.1.1.jar => caratApp\libs\commons-logging-1.1.1.jar
+* libs\FlurryAgent.jar => caratApp\libs\FlurryAgent.jar
+* libs\httpclient-4.2.5.jar => caratApp\libs\httpclient-4.2.5.jar
+* libs\httpcore-4.2.4.jar => caratApp\libs\httpcore-4.2.4.jar
+* libs\jackson-core-asl-1.9.4.jar => caratApp\libs\jackson-core-asl-1.9.4.jar
+* libs\jackson-mapper-asl-1.9.11.jar => caratApp\libs\jackson-mapper-asl-1.9.11.jar
+* libs\javax.annotation.jar => caratApp\libs\javax.annotation.jar
+* libs\junit-4.4.jar => caratApp\libs\junit-4.4.jar
+* libs\libthrift-0.9.2.jar => caratApp\libs\libthrift-0.9.2.jar
+* libs\log4j-1.2.14.jar => caratApp\libs\log4j-1.2.14.jar
+* libs\servlet-api-2.5.jar => caratApp\libs\servlet-api-2.5.jar
+* libs\slf4j-android-1.6.1-RC1.jar => caratApp\libs\slf4j-android-1.6.1-RC1.jar
+* res\ => caratApp\src\main\res\
+* src\ => caratApp\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

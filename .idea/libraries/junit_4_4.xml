@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="junit-4.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/caratApp/libs/junit-4.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/src/main/res/values-sw320dp/dimens.xml -->
+    <eat-comment/>
+    <dimen name="preference_fragment_padding_bottom">0dp</dimen>
+    <dimen name="preference_fragment_padding_side">16dp</dimen>
+</resources>

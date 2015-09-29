@@ -1,0 +1,11 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.tutorial.HogsTutorialFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+</FrameLayout>
+<!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/fragment_hogs_tutorial.xml -->

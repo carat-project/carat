@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="log4j-1.2.14">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/caratApp/libs/log4j-1.2.14.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="javax.annotation">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/caratApp/libs/javax.annotation.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
