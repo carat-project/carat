@@ -63,7 +63,7 @@
     <color name="black">#000000</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="blue">#FF0000FF</color>
+    <color name="blue">#203E5F</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
@@ -93,9 +93,9 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="cyan">#0099CC</color>
-    <color name="darkblue">#2E61E1</color>
+    <color name="darkblue">#122134</color>
     <color name="darkcyan">#33B5E5</color>
-    <color name="darkgray">#2E3235</color>
+    <color name="darkgray">#454545</color>
     <color name="darkgray2">#808080</color>
     <color name="darkgreen">#127112</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
@@ -114,7 +114,7 @@
     <color name="dim_foreground_material_light">#ff323232</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="gray">#585858</color>
+    <color name="gray">#B4B4B4</color>
     <color name="green">#00D978</color>
     <color name="green_light">#FF99CC00</color>
     <color name="greencarat">#669900</color>
@@ -128,7 +128,8 @@
     <eat-comment/>
     <color name="hogsOrange">#F0471F</color>
     <color name="lightblue">#86CBE1</color>
-    <color name="lightgray">#AAAAAA</color>
+    <color name="lightgray">#F5F5F5</color>
+    <color name="lightorange">#FEE5B1</color>
     <color name="lightsilver">#E3E3E3</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -141,7 +142,7 @@
     <color name="material_deep_teal_500">#ff009688</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="orange">#FFFFBB33</color>
+    <color name="orange">#F7A71B</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
@@ -155,7 +156,7 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="purple">#FFAA66CC</color>
-    <color name="red">#FFFF0000</color>
+    <color name="red">#F33535</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="ripple_material_dark">#4dffffff</color>
@@ -469,6 +470,7 @@
     <string name="samples">Samples:</string>
     <string name="samplesWithout">Samples without:</string>
     <string name="samplesreported">Samples reported</string>
+    <string name="save_accept_eula">save_accept_eula</string>
     <string name="screensettings">Screen Settings</string>
     <string name="share">Share …</string>
     <string name="sharetext1">Carat is improving my battery life. My J-Score is</string>
@@ -508,13 +510,17 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_tutorial">TutorialActivity</string>
     <string name="tutorial_accept">ACCEPT</string>
-    <string name="tutorial_eula_text"/>
-    <string name="tutorial_fragment_bugs_message"/>
-    <string name="tutorial_fragment_bugs_title"/>
-    <string name="tutorial_fragment_hogs_message"/>
-    <string name="tutorial_fragment_hogs_title"/>
-    <string name="tutorial_fragment_main_message"/>
-    <string name="tutorial_fragment_main_title"/>
+    <string name="tutorial_eula_text">By proceeding you accept the EULA and privacy policy.</string>
+    <string name="tutorial_fragment_bugs_message">Bugs are apps that use a lot of energy on a small
+        number of devices, including yours. Restarting a buggy app may improve battery life.</string>
+    <string name="tutorial_fragment_bugs_title">BUGS</string>
+    <string name="tutorial_fragment_hogs_message">Hogs are apps that are correlated with higher
+        energy use across many devices. Closing hogs may improve battery life.</string>
+    <string name="tutorial_fragment_hogs_title">HOGS</string>
+    <string name="tutorial_fragment_main_message">Carat is a research project of the University of Helsinki,
+        originally created in collaboration with the AMP Lab at UC Berkeley,
+        that helps detect and diagnose battery problems, giving you personalized recommendations.</string>
+    <string name="tutorial_fragment_main_title">Carat Collaborative Energy Diagnosis</string>
     <string name="ulogo">University of Helsinki Logo</string>
     <string name="unknown">Unknown</string>
     <string name="updated">(Updated </string>
@@ -535,6 +541,20 @@
     <string name="withsimilarapps">With similar apps</string>
     <string name="zero">0</string>
     <string name="zeroh">0h 0m 0s</string>
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AcceptButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/button_rounded_gray</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:paddingRight">40dp</item>
+    </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
@@ -1475,14 +1495,23 @@
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
-    <style name="LargeBlackText">
+    <style name="ButtonTextStyle">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
+    <style name="LargeBlackText"/>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/themes.xml -->
     <eat-comment/>
     <style name="LightBackground" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:textColor">#2E3235</item>
         <item name="android:background">@color/lightsilver</item>
+    </style>
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="MediumWhiteText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -1640,6 +1669,12 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="SmallGrayText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="SmallWhiteText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -1866,17 +1901,17 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="button" parent="@android:style/Widget.Button">
-        <item name="android:gravity"> center_vertical|center_horizontal </item>
-        <item name="android:textColor"> @color/white </item>
-        <item name="android:shadowColor"> #FF000000 </item>
-        <item name="android:shadowDx"> 0 </item>
-        <item name="android:shadowDy"> -1 </item>
-        <item name="android:shadowRadius"> 0.2 </item>
-        <item name="android:textSize"> 16sp </item>
-        <item name="android:textStyle"> bold </item>
-        <item name="android:background"> @drawable/button </item>
-        <item name="android:focusable"> true </item>
-        <item name="android:clickable"> true </item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">0.2</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/themes.xml -->
     <eat-comment/>

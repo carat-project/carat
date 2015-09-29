@@ -109,4 +109,6 @@ public class Constants {
 		Color.rgb(55, 145, 120), //dark green */
     };
 
+	public static final int REQUESTCODE_ACCEPT_EULA = 16401;
+
 }

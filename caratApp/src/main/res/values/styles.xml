@@ -2,40 +2,52 @@
 
     <!-- custom button style -->
     <style name="button" parent="@android:style/Widget.Button">
-        <item name="android:gravity"> center_vertical|center_horizontal </item>
-        <item name="android:textColor"> @color/white </item>
-        <item name="android:shadowColor"> #FF000000 </item>
-        <item name="android:shadowDx"> 0 </item>
-        <item name="android:shadowDy"> -1 </item>
-        <item name="android:shadowRadius"> 0.2 </item>
-        <item name="android:textSize"> 16sp </item>
-        <item name="android:textStyle"> bold </item>
-        <item name="android:background"> @drawable/button </item>
-        <item name="android:focusable"> true </item>
-        <item name="android:clickable"> true </item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">0.2</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
     </style>
 
-    <style name="LargeBlackText">
+    <style name="AcceptButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/button_rounded_gray</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:paddingRight">40dp</item>
     </style>
+
+    <style name="LargeBlackText"></style>
 
     <style name="SmallGrayText">
-        <item name="android:textSize"> 14sp </item>
-        <item name="android:textColor"> @color/gray </item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray</item>
     </style>
 
     <style name="MediumWhiteText">
-        <item name="android:textSize"> 24sp </item>
-        <item name="android:textColor"> @color/white </item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="SmallWhiteText">
-        <item name="android:textSize"> 16sp </item>
-        <item name="android:textColor"> @color/white </item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="ButtonTextStyle">
-        <item name="android:textSize"> 28sp </item>
-        <item name="android:textColor"> @color/white </item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>

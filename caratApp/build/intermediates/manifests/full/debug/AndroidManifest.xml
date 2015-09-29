@@ -128,7 +128,8 @@
 
         <activity
             android:name="edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity"
-            android:label="@string/title_activity_tutorial" >
+            android:label="@string/title_activity_tutorial"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
     </application>
 

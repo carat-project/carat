@@ -28,6 +28,8 @@
     <string name="title_activity_tutorial">TutorialActivity</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <string name="save_accept_eula">save_accept_eula</string>
+
     <!--
 These are the same for all languages. When translating,
 delete these from your file.

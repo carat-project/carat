@@ -2,8 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.tutorial.MainTutorialFragment"
-    android:background="@drawable/tutorial_main_bg">
+    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.tutorial.MainTutorialFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:src="@drawable/tutorial_main_bg" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,46 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:paddingBottom="50dp"
         android:layout_centerInParent="true"
         android:text="@string/tutorial_fragment_main_message"
         style="@style/SmallWhiteText"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:background="@color/blue"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <Button
-            android:id="@+id/tutorial_main_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="25dp"
-            android:background="@color/orange"
-            android:text="@string/tutorial_accept"
-            style="@style/ButtonTextStyle"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tutorial_main_button"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:text="@string/tutorial_eula_text"
-            style="@style/SmallGrayText"/>
-
-    </RelativeLayout>
 
 </RelativeLayout>

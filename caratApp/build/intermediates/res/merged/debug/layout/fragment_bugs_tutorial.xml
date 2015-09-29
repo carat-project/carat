@@ -1,9 +1,38 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.tutorial.BugsTutorialFragment"
-    android:background="@drawable/tutorial_bugs_bg">
+    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.tutorial.BugsTutorialFragment">
 
-</FrameLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:src="@drawable/tutorial_bugs_bg" />
+
+    <TextView
+        style="@style/MediumWhiteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bugs_message"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:text="@string/tutorial_fragment_bugs_title" />
+
+    <TextView
+        android:id="@+id/bugs_message"
+        style="@style/SmallWhiteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingBottom="130dp"
+        android:text="@string/tutorial_fragment_bugs_message" />
+
+
+</RelativeLayout>
 <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/fragment_bugs_tutorial.xml -->

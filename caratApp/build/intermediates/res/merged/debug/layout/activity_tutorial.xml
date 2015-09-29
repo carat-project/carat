@@ -2,16 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity"
     android:orientation="vertical"
-    android:weightSum="10">
+    android:weightSum="10"
+    tools:context="edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="8">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/tutorial_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp">
+            <ImageView
+                android:id="@+id/page_indicator_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/dot_selected"/>
+            <ImageView
+                android:id="@+id/page_indicator_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/dot"/>
+            <ImageView
+                android:id="@+id/page_indicator_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/dot"/>
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,23 +54,19 @@
             android:id="@+id/tutorial_accept_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="10dp"
-            android:background="@color/orange"
+            android:layout_marginTop="5dp"
             android:text="@string/tutorial_accept"
-            android:textSize="30sp"
-            android:textColor="@color/white"/>
+            style="@style/AcceptButtonStyle"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tutorial_accept_button"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/tutorial_eula_text"
             style="@style/SmallGrayText"/>

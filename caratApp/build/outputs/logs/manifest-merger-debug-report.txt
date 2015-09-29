@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:2:1-133:12
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:2:1-134:12
 	package
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:3:5-51
 		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
@@ -90,7 +90,7 @@ ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManif
 	android:name
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:36:30-85
 application
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:38:5-131:19
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:38:5-132:19
 MERGED from [android_carat:androidswitchbackport:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidswitchbackport\unspecified\AndroidManifest.xml:35:5-20
 MERGED from [android_carat:androidsupportv4preferencefragment:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidsupportv4preferencefragment\unspecified\AndroidManifest.xml:24:5-20
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
@@ -205,8 +205,10 @@ ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManif
 	android:name
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:121:25-78
 activity#edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:127:9-130:20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:127:9-131:20
 	android:label
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:129:13-60
+	android:theme
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:130:13-69
 	android:name
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:128:13-56

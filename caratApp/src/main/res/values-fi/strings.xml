@@ -7,15 +7,18 @@
     <string name="jscore_title"></string>
 
     <!-- TUTORIAL -->
-    <string name="tutorial_accept">HYVÄKSY</string>
-    <string name="tutorial_eula_text"></string>
-    <string name="tutorial_fragment_main_title"></string>
-    <string name="tutorial_fragment_main_message"></string>
-    <string name="tutorial_fragment_bugs_title"></string>
-    <string name="tutorial_fragment_bugs_message"></string>
-    <string name="tutorial_fragment_hogs_title"></string>
-    <string name="tutorial_fragment_hogs_message"></string>
-
+    <string name="tutorial_accept">ACCEPT</string>
+    <string name="tutorial_eula_text">By proceeding you accept the EULA and privacy policy.</string>
+    <string name="tutorial_fragment_main_title">Carat Collaborative Energy Diagnosis</string>
+    <string name="tutorial_fragment_main_message">Carat is a research project of the University of Helsinki,
+        originally created in collaboration with the AMP Lab at UC Berkeley,
+        that helps detect and diagnose battery problems, giving you personalized recommendations.</string>
+    <string name="tutorial_fragment_bugs_title">BUGS</string>
+    <string name="tutorial_fragment_bugs_message">Bugs are apps that use a lot of energy on a small
+        number of devices, including yours. Restarting a buggy app may improve battery life.</string>
+    <string name="tutorial_fragment_hogs_title">HOGS</string>
+    <string name="tutorial_fragment_hogs_message">Hogs are apps that are correlated with higher
+        energy use across many devices. Closing hogs may improve battery life.</string>
     <!-- MENU -->
     <string name="action_settings">Asetukset</string>
 

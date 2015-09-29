@@ -30,9 +30,7 @@ import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 
 /**
- * 
  * @author Javad Sadeqzadeh, Eemil Lagerspetz
- *
  */
 public class SummaryFragment extends ExtendedTitleFragment {
     // private final String TAG = "SummaryFragment";
@@ -79,54 +77,54 @@ public class SummaryFragment extends ExtendedTitleFragment {
 
     public void scheduleRefresh() {
         final MainActivity a = (MainActivity) getActivity();
-        if (a != null) 
-        	a.runOnUiThread(new Runnable() {
-            public void run() {
-                View v = getView();
-                if (v != null){
-                String batteryLife = CaratApplication.myDeviceData.getBatteryLife();
-                Button green = (Button) v.findViewById(R.id.active_bl);
-                green.setText(batteryLife);
-                }
-                if (a.isStatsDataAvailable() && v != null) {
-                    drawPieChart(v);
-                }
+        if (a != null)
+            a.runOnUiThread(new Runnable() {
+                public void run() {
+                    View v = getView();
+                    if (v != null) {
+                        String batteryLife = CaratApplication.myDeviceData.getBatteryLife();
+                        Button green = (Button) v.findViewById(R.id.active_bl);
+                        green.setText(batteryLife);
+                    }
+                    if (a.isStatsDataAvailable() && v != null) {
+                        drawPieChart(v);
+                    }
 
-                int hogsCount = 0;
-                int bugsCount = 0;
-                if (CaratApplication.getStorage() != null && v != null) {
-                    SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
-                    SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
-                    if (h != null)
-                        hogsCount = h.length;
-                    if (b != null)
-                        bugsCount = b.length;
-                    Button hogsCountTv = (Button) v.findViewById(R.id.summary_hogs_count);
-                    hogsCountTv.setText(hogsCount + " " + getString(R.string.hogs));
+                    int hogsCount = 0;
+                    int bugsCount = 0;
+                    if (CaratApplication.getStorage() != null && v != null) {
+                        SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+                        SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
+                        if (h != null)
+                            hogsCount = h.length;
+                        if (b != null)
+                            bugsCount = b.length;
+                        Button hogsCountTv = (Button) v.findViewById(R.id.summary_hogs_count);
+                        hogsCountTv.setText(hogsCount + " " + getString(R.string.hogs));
 
-                    Button bugsCountTv = (Button) v.findViewById(R.id.summary_bugs_count);
-                    bugsCountTv.setText(bugsCount + " " + getString(R.string.bugs));
+                        Button bugsCountTv = (Button) v.findViewById(R.id.summary_bugs_count);
+                        bugsCountTv.setText(bugsCount + " " + getString(R.string.bugs));
+                    }
                 }
-            }
-        });
+            });
     }
 
     public void scheduleRefresh(final View inflatedView) {
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
-            	MainActivity main = (MainActivity) getActivity();
+                MainActivity main = (MainActivity) getActivity();
                 if (main != null && main.isStatsDataAvailable()) {
                     drawPieChart(inflatedView);
                 }
 
                 int hogsCount = 0;
                 int bugsCount = 0;
-				SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
-				SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
-				if (h != null)
-					hogsCount = h.length;
-				if (b != null)
-					bugsCount = b.length;
+                SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+                SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
+                if (h != null)
+                    hogsCount = h.length;
+                if (b != null)
+                    bugsCount = b.length;
                 Button hogsCountTv = (Button) inflatedView.findViewById(R.id.summary_hogs_count);
                 hogsCountTv.setText(hogsCount + " " + getString(R.string.hogs));
 
@@ -145,7 +143,7 @@ public class SummaryFragment extends ExtendedTitleFragment {
 
         Button bugsCount = (Button) inflatedView.findViewById(R.id.summary_bugs_count);
         bugsCount.setOnClickListener(l);
-        
+
         Button green = (Button) inflatedView.findViewById(R.id.active_bl);
         green.setOnClickListener(l);
         
@@ -164,22 +162,21 @@ public class SummaryFragment extends ExtendedTitleFragment {
 
     /**
      * Concisely handle clicks on the hogs/bugs text items.
-     * 
-     * @author Eemil Lagerspetz
      *
+     * @author Eemil Lagerspetz
      */
     private class CountClickListener implements OnClickListener {
         @Override
         public void onClick(View v) {
-        	final MainActivity a = (MainActivity) getActivity();
-        	if (a != null) {
-	            if (v == v.getRootView().findViewById(R.id.summary_hogs_count)) {
-	                a.replaceFragment(a.getHogsFragment(), a.getFragmentTag(4), true);
-	            } else if (v == v.getRootView().findViewById(R.id.active_bl)) {
-	                a.replaceFragment(a.getMydeviceFragment(), a.getFragmentTag(2), true);
-	            }else
-	                a.replaceFragment(a.getBugsFragment(), a.getFragmentTag(3), true);
-	        }
+            final MainActivity a = (MainActivity) getActivity();
+            if (a != null) {
+                if (v == v.getRootView().findViewById(R.id.summary_hogs_count)) {
+                    a.replaceFragment(a.getHogsFragment(), a.getFragmentTag(4), true);
+                } else if (v == v.getRootView().findViewById(R.id.active_bl)) {
+                    a.replaceFragment(a.getMydeviceFragment(), a.getFragmentTag(2), true);
+                } else
+                    a.replaceFragment(a.getBugsFragment(), a.getFragmentTag(3), true);
+            }
         }
     }
 
@@ -222,24 +219,24 @@ public class SummaryFragment extends ExtendedTitleFragment {
         // mChart.setDrawYValues(false);
         // mChart.setDrawXValues(false);
         PieData d = generatePieData();
-        if (d != null){
-        	mChart.setData(d);
-        	Legend l = mChart.getLegend();
-        	l.setPosition(LegendPosition.NONE);
+        if (d != null) {
+            mChart.setData(d);
+            Legend l = mChart.getLegend();
+            l.setPosition(LegendPosition.NONE);
         }
     }
 
     protected PieData generatePieData() {
-    	final MainActivity a = (MainActivity) getActivity();
-    	if (a == null)
-    		return null;
+        final MainActivity a = (MainActivity) getActivity();
+        if (a == null)
+            return null;
         ArrayList<Entry> entries = new ArrayList<Entry>();
         ArrayList<String> xVals = new ArrayList<String>();
 
         xVals.add(getString(R.string.chart_wellbehaved));
         xVals.add(getString(R.string.chart_hogs));
         xVals.add(getString(R.string.chart_bugs));
-        
+
         int wellbehaved = a.mWellbehaved;
         int hogs = a.mHogs;
         int bugs = a.mBugs;
