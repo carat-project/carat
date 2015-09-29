@@ -15,7 +15,7 @@
 #import "STGeo.h"
 
 //set to 1 to use IDFA, 0 to use IDFV and set IDFA String to "UNAVAILABLE"
-#define SHOULD_USE_IDFA 0
+#define SHOULD_USE_IDFA 1
 
 @implementation STDeviceSettings
 

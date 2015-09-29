@@ -10,7 +10,7 @@
 #import "NSData+Base64.h"
 
 //set to 1 to use it, 0 to use IDFV instead
-#define SHOULD_USE_IDFA 0
+#define SHOULD_USE_IDFA 1
 
 @implementation SZIdentifierUtils
 
