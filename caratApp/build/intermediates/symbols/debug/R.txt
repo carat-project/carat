@@ -498,7 +498,7 @@ int drawable ic_tab_hogs 0x7f020054
 int drawable ic_tab_mydevice 0x7f020055
 int drawable infoicon 0x7f020056
 int drawable infoicon_dark 0x7f020057
-int drawable notification_template_icon_bg 0x7f02006e
+int drawable notification_template_icon_bg 0x7f020071
 int drawable phone 0x7f020058
 int drawable phone_light 0x7f020059
 int drawable switch_bg_disabled_holo_dark 0x7f02005a
@@ -520,7 +520,10 @@ int drawable switch_thumb_pressed_holo_dark 0x7f020069
 int drawable switch_thumb_pressed_holo_light 0x7f02006a
 int drawable switch_track_holo_dark 0x7f02006b
 int drawable switch_track_holo_light 0x7f02006c
-int drawable twologo 0x7f02006d
+int drawable tutorial_bugs_bg 0x7f02006d
+int drawable tutorial_hogs_bg 0x7f02006e
+int drawable tutorial_main_bg 0x7f02006f
+int drawable twologo 0x7f020070
 int id aboutView 0x7f0d004f
 int id action0 0x7f0d0089
 int id actionName 0x7f0d0057

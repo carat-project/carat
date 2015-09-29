@@ -1682,7 +1682,7 @@ containing a value of this type.
         public static final int ic_tab_mydevice=0x7f020055;
         public static final int infoicon=0x7f020056;
         public static final int infoicon_dark=0x7f020057;
-        public static final int notification_template_icon_bg=0x7f02006e;
+        public static final int notification_template_icon_bg=0x7f020071;
         public static final int phone=0x7f020058;
         public static final int phone_light=0x7f020059;
         public static final int switch_bg_disabled_holo_dark=0x7f02005a;
@@ -1704,7 +1704,10 @@ containing a value of this type.
         public static final int switch_thumb_pressed_holo_light=0x7f02006a;
         public static final int switch_track_holo_dark=0x7f02006b;
         public static final int switch_track_holo_light=0x7f02006c;
-        public static final int twologo=0x7f02006d;
+        public static final int tutorial_bugs_bg=0x7f02006d;
+        public static final int tutorial_hogs_bg=0x7f02006e;
+        public static final int tutorial_main_bg=0x7f02006f;
+        public static final int twologo=0x7f020070;
     }
     public static final class id {
         public static final int aboutView=0x7f0d004f;

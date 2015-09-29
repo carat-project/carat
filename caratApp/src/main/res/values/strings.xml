@@ -8,13 +8,17 @@
 
     <!-- TUTORIAL -->
     <string name="tutorial_accept">ACCEPT</string>
-    <string name="tutorial_eula_text"></string>
-    <string name="tutorial_fragment_main_title"></string>
-    <string name="tutorial_fragment_main_message"></string>
-    <string name="tutorial_fragment_bugs_title"></string>
-    <string name="tutorial_fragment_bugs_message"></string>
-    <string name="tutorial_fragment_hogs_title"></string>
-    <string name="tutorial_fragment_hogs_message"></string>
+    <string name="tutorial_eula_text">By proceeding you accept the EULA and privacy policy.</string>
+    <string name="tutorial_fragment_main_title">Carat Collaborative Energy Diagnosis</string>
+    <string name="tutorial_fragment_main_message">Carat is a research project of the University of Helsinki,
+        originally created in collaboration with the AMP Lab at UC Berkeley,
+        that helps detect and diagnose battery problems, giving you personalized recommendations.</string>
+    <string name="tutorial_fragment_bugs_title">BUGS</string>
+    <string name="tutorial_fragment_bugs_message">Bugs are apps that use a lot of energy on a small
+        number of devices, including yours. Restarting a buggy app may improve battery life.</string>
+    <string name="tutorial_fragment_hogs_title">HOGS</string>
+    <string name="tutorial_fragment_hogs_message">Hogs are apps that are correlated with higher
+        energy use across many devices. Closing hogs may improve battery life.</string>
 
     <!-- MENU -->
     <string name="action_settings">Settings</string>
@@ -23,14 +27,14 @@
     <string name="title_activity_carat">CaratActivity</string>
     <string name="title_activity_tutorial">TutorialActivity</string>
     <string name="title_activity_main">MainActivity</string>
-    
+
     <!--
 These are the same for all languages. When translating,
 delete these from your file.
     -->
     <string name="app_name">Carat</string>
     <string name="version_name">1.12</string>
-       
+
     <string name="jsna">N/A</string>
     <string name="fake_id">0</string>
     <string name="fake_os">4.0.3</string>
@@ -52,7 +56,7 @@ delete these from your file.
     <!-- <string name="confidence">Confidence:</string> -->
 
     <!-- These will be different -->
-    
+
     <string name="jscore">Your J-Score:</string>
     <string name="batterylife">Active Battery Life:</string>
     <string name="caratid">Carat ID:</string>
@@ -78,7 +82,7 @@ delete these from your file.
     <string name="checkbackEmptyBugs">Please check back in a week.</string>
     <string name="checkbackEmptyBugs2">If your apps are behaving normally, there will be no bugs here.</string>
     <string name="checkbackEmptyBugs3">When an app starts to use significantly more energy on your device than on others, it will show up here.</string>
-   
+
     <string name="copied">Copied:</string>
     <string name="helpcarat">Help Carat collect data</string>
     <string name="questionnaire">Please help us improve Carat</string>
@@ -92,7 +96,7 @@ delete these from your file.
     <string name="sharetext2">!\nWhat\'s yours?\nFind out here: \nhttp://carat.cs.berkeley.edu/</string>
     <string name="myjscoreis">My J-Score is</string>
     <string name="appmanager">App Manager</string>
-    
+
     <!-- Navigation drawer items (tabs) -->
     <string-array name="drawer_items">
         <item>Summary</item>
@@ -103,7 +107,7 @@ delete these from your file.
         <item>Carat Settings</item>
         <item>About</item>
     </string-array>
-    
+
     <!-- Updating etc -->
 
     <string name="samplesreported">Samples reported</string>
@@ -185,24 +189,24 @@ delete these from your file.
     <string name="error">Error:</string>
     <string name="significance">Significance:</string>
     <string name="best">Already best</string>
-    
+
     <!-- The pie chart -->
     <string name="chart_wellbehaved">Well-behaved</string>
     <string name="chart_hogs">Hogs</string>
     <string name="chart_bugs">Bugs</string>
-    
+
     <!-- The dialog to enable Internet -->
     <string name="dialog_text">Carat needs an Internet connection to update your personalized reports.</string>
     <string name="dialog_enable">Enable Wifi</string>
     <string name="dialog_cancel">Cancel</string>
-    
+
     <!-- error messages -->
     <string name="connection_error">Offline. Click to turn on Wifi.</string>
-    
+
     <!-- Navigation Drawer -->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    
+
     <string name="summary_unavailable_title">Nothing to show yet</string>
     <string name="summary_unavailable_text">This screen will be updated as soon as the data is received from server.</string>
     <string name="summary_your_device_has">Your Apps</string>
@@ -214,7 +218,7 @@ delete these from your file.
     <string name="morestatsat">More at carat.cs.helsinki.fi/statistics</string>
     <!-- Does not need translation -->
     <string name="statsurl">http://carat.cs.helsinki.fi/statistics/</string>
-    
+
     <!-- Carat settings screen -->
     <!-- switch backport strings -->
     <string name="off">OFF</string>
@@ -231,7 +235,7 @@ delete these from your file.
     <string name="deviceinfo">About this device</string>
     <string name="osinfo">About this OS version</string>
     <string name="processlist">Running processes</string>
-    
+
     <!-- Hog threshold values visible to user -->
     <string-array name="hog_thresh_list">
         <item>Show all</item>
@@ -240,7 +244,7 @@ delete these from your file.
         <item>impact &lt; 20m</item>
         <item>impact &lt; 1h</item>
     </string-array>
-    
+
     <!-- Hog threshold values used by the system, do not translate -->
     <string-array name="hog_thresh_minutes">
         <item>0</item>
@@ -249,18 +253,18 @@ delete these from your file.
         <item>20</item>
         <item>60</item>
     </string-array>
-    
+
     <string name="hog_thresh">Hide apps with a small impact</string>
-    
+
     <string name="hog_hide_threshold">hoghidethreshold</string>
     <string name="wifi_only_key">wifionly</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="hello_world">Hello world!</string>
 </resources>
 
 
-<!--  <item>App Recommendation</item>  
-	  <string name="action_websearch">Search</string> -->
+    <!--  <item>App Recommendation</item>
+          <string name="action_websearch">Search</string> -->
