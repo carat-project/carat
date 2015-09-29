@@ -13,22 +13,19 @@
         android:background="@drawable/chart_background">
 
         <TextView
-            android:id="@+id/jscore_value"
-            style="@style/GiganticBlackText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/jscore_value" />
-
-        <TextView
             android:id="@+id/jscore_title"
             style="@style/SmallGrayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/jscore_value"
+            android:layout_alignBottom="@+id/jscore_progress_circle"
             android:layout_centerHorizontal="true"
-            android:paddingTop="10dp"
             android:text="@string/jscore_title" />
+
+        <edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay
+            android:id="@+id/jscore_progress_circle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true" />
 
         <TextView
             android:id="@+id/updated_text"
@@ -53,9 +50,9 @@
             style="@style/LargeBlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/battery_value"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:layout_above="@+id/battery_value"
             android:text="@string/active_battery_life" />
 
         <TextView
@@ -64,8 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="@string/battery_life_value" />
 
         <Button
@@ -99,6 +96,7 @@
             android:paddingRight="10dp">
 
             <ImageView
+                android:id="@+id/bugs_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -131,6 +129,7 @@
             android:paddingRight="5dp">
 
             <ImageView
+                android:id="@+id/hogs_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -163,6 +162,7 @@
             android:paddingRight="5dp">
 
             <ImageView
+                android:id="@+id/globe_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -195,6 +195,7 @@
             android:paddingRight="5dp">
 
             <ImageView
+                android:id="@+id/actions_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"

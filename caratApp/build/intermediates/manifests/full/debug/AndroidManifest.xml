@@ -5,7 +5,7 @@
     android:versionName="@string/version_name" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="10"
         android:targetSdkVersion="21" />
 
     <!-- For reading the 10 recently used apps (to show the number of bugs/hogs among them (in the summary screen)). -->
