@@ -79,11 +79,13 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tutorial_accept_button) {
-            Intent returnIntent = new Intent();
+            /*Intent returnIntent = new Intent();
             setResult(RESULT_OK, returnIntent);
             SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
             p.edit().putBoolean(getString(R.string.save_accept_eula), true).commit();
-            finish();
+            finish(); */
+            Intent i = new Intent(this, DashboardActivity.class);
+            startActivity(i);
         }
     }
 

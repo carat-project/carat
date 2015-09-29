@@ -3,8 +3,6 @@
 
     <!-- NEW -->
 
-    <string name="dashboard_updated_text"></string>
-    <string name="jscore_title"></string>
 
     <!-- TUTORIAL -->
     <string name="tutorial_accept">ACCEPT</string>
@@ -27,9 +25,26 @@
     <string name="title_activity_carat">CaratActivity</string>
     <string name="title_activity_tutorial">TutorialActivity</string>
     <string name="title_activity_main">MainActivity</string>
-
     <string name="save_accept_eula">save_accept_eula</string>
 
+    <!-- DASHBOARD -->
+    <string name="jscore_value">69</string>
+    <string name="jscore_title">J-score</string>
+    <string name="dashboard_updated_text">Updated just now</string>
+
+    <string name="bugs_amount">7</string>
+    <string name="hogs_amount">4</string>
+    <string name="view">VIEW</string>
+    <string name="actions_amount">4</string>
+
+    <string name="bugs">BUGS</string>
+    <string name="hogs">HOGS</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="actions">ACTIONS</string>
+
+    <string name="active_battery_life">Active Battery Life</string>
+    <string name="battery_life_value">10h 23m</string>
+    <string name="my_device">MY DEVICE</string>
     <!--
 These are the same for all languages. When translating,
 delete these from your file.
@@ -215,8 +230,6 @@ delete these from your file.
     <string name="summary_conjunction">and</string>
     <string name="summary_screen_title">Carat Statistics</string>
     <string name="summary_chart_center_text">Other\nApps</string>
-    <string name="hogs">Hogs</string>
-    <string name="bugs">Bugs</string>
     <string name="morestatsat">More at carat.cs.helsinki.fi/statistics</string>
     <!-- Does not need translation -->
     <string name="statsurl">http://carat.cs.helsinki.fi/statistics/</string>
@@ -265,6 +278,7 @@ delete these from your file.
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
 </resources>
 
 

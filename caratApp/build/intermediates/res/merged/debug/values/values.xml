@@ -345,6 +345,9 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
+    <string name="actions">ACTIONS</string>
+    <string name="actions_amount">4</string>
+    <string name="active_battery_life">Active Battery Life</string>
     <string name="ago">ago)</string>
     <string name="alogo">AmpLab Logo</string>
     <string name="app_name">Carat</string>
@@ -358,6 +361,7 @@
     <string name="back_button_label">Back</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="battery_life_value">10h 23m</string>
     <string name="batterylife">Active Battery Life:</string>
     <string name="batterylifeinfo">Active Battery Life</string>
     <string name="benefitdefault">1d 9h 15m 40s</string>
@@ -365,7 +369,8 @@
     <string name="blackBackground">false</string>
     <string name="blacklist">Blacklist</string>
     <string name="bluetoothsettings">Bluetooth Settings</string>
-    <string name="bugs">Bugs</string>
+    <string name="bugs">BUGS</string>
+    <string name="bugs_amount">7</string>
     <string name="caratid">Carat ID:</string>
     <string name="chart_bugs">Bugs</string>
     <string name="chart_hogs">Hogs</string>
@@ -381,7 +386,7 @@
     <string name="connection_error">Offline. Click to turn on Wifi.</string>
     <string name="copied">Copied:</string>
     <string name="cpu">CPU Usage:</string>
-    <string name="dashboard_updated_text"/>
+    <string name="dashboard_updated_text">Updated just now</string>
     <string name="default_type">Foreground App</string>
     <string name="dev">Device model:</string>
     <string name="deviceinfo">About this device</string>
@@ -415,10 +420,12 @@
     <string name="helpcarat">Help Carat collect data</string>
     <string name="hog_hide_threshold">hoghidethreshold</string>
     <string name="hog_thresh">Hide apps with a small impact</string>
-    <string name="hogs">Hogs</string>
+    <string name="hogs">HOGS</string>
+    <string name="hogs_amount">4</string>
     <string name="information">Information</string>
     <string name="jscore">Your J-Score:</string>
-    <string name="jscore_title"/>
+    <string name="jscore_title">J-score</string>
+    <string name="jscore_value">69</string>
     <string name="jscoreinfo">What is a J-Score?</string>
     <string name="jsna">N/A</string>
     <string name="kill">Kill</string>
@@ -432,6 +439,7 @@
     <string name="model">Model</string>
     <string name="moreinfo">More Information</string>
     <string name="morestatsat">More at carat.cs.helsinki.fi/statistics</string>
+    <string name="my_device">MY DEVICE</string>
     <string name="myjscoreis">My J-Score is</string>
     <string name="neverupdated">(Never updated)</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
@@ -485,6 +493,7 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="soundsettings">Sound Settings</string>
+    <string name="statistics">STATISTICS</string>
     <string name="statsurl">http://carat.cs.helsinki.fi/statistics/</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -507,6 +516,7 @@
     <eat-comment/>
     <string name="syncsettings">Sync Settings</string>
     <string name="title_activity_carat">CaratActivity</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_tutorial">TutorialActivity</string>
     <string name="tutorial_accept">ACCEPT</string>
@@ -530,6 +540,7 @@
     <string name="updatingreports">Updating reports</string>
     <string name="upgradeosinfo">Upgrading the OS</string>
     <string name="version_name">1.12</string>
+    <string name="view">VIEW</string>
     <string name="viewprocess">View Process List</string>
     <string name="wifi_only_key">wifionly</string>
     <string name="wifionly">Use WiFi only</string>
@@ -1499,7 +1510,24 @@
         <item name="android:textSize">28sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
-    <style name="LargeBlackText"/>
+    <style name="GiganticBlackText">
+        <item name="android:textSize">60sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="LargeBlackText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="LargeBoldBlackText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="LargeOrangeText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/themes.xml -->
     <eat-comment/>
     <style name="LightBackground" parent="AppBaseTheme">
@@ -1509,9 +1537,30 @@
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
+    <style name="MediumBlackText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="MediumBoldBlackText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="MediumWhiteText">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="MyDeviceButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/button_rounded_orange</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingRight">30dp</item>
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>

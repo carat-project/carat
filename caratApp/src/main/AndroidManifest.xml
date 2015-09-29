@@ -33,7 +33,9 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Required for getting the "gps" location provider for system settings tab -->
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Required for getting the "gps" location provider for system settings tab -->
     <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
     <application
         android:name=".CaratApplication"
@@ -127,7 +129,11 @@
         <activity
             android:name=".activities.TutorialActivity"
             android:label="@string/title_activity_tutorial"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activities.DashboardActivity"
+            android:label="@string/title_activity_dashboard" >
         </activity>
     </application>
 
