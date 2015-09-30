@@ -22,6 +22,9 @@
     <!-- MENU -->
     <string name="action_settings">Asetukset</string>
 
+    <string name="bugs">BUGIA</string>
+    <string name="hogs">HOGIA</string>
+
     <!-- These will be different -->
 	
     <string name="jscore">J-Scoresi:</string>
@@ -180,8 +183,6 @@
     <string name="summary_conjunction">ja</string>
     <string name="summary_screen_title">Carat-tilastoja</string>
     <string name="summary_chart_center_text">Muut-\nsovellukset</string>
-    <string name="hogs">Hogia</string>
-    <string name="bugs">Bugia</string>
     <string name="morestatsat">Lisää: carat.cs.helsinki.fi/statistics</string>
     
     <!-- Carat settings screen -->

@@ -47,7 +47,7 @@
     <string name="best">Jo paras</string>
     <string name="blacklist">Poistolista</string>
     <string name="bluetoothsettings">Bluetooth-asetukset</string>
-    <string name="bugs">Bugia</string>
+    <string name="bugs">BUGIA</string>
     <string name="chart_bugs">Bugit</string>
     <string name="chart_hogs">Hogit</string>
     <string name="chart_wellbehaved">Hyvin käyttäytyvät</string>
@@ -90,7 +90,7 @@
     <string name="finishing">näkymää</string>
     <string name="helpcarat">Auta Caratia keräämään dataa</string>
     <string name="hog_thresh">Piilota sovellukset joiden vaikutus on pieni</string>
-    <string name="hogs">Hogia</string>
+    <string name="hogs">HOGIA</string>
     <string name="information">tieto</string>
     <string name="jscore">J-Scoresi:</string>
     <string name="jscore_title"/>

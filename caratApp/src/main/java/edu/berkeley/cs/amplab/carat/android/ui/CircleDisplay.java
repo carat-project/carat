@@ -22,12 +22,6 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 
 import java.text.DecimalFormat;
 
-/**
- * Simple custom-view for displaying values (with and without animation) and
- * selecting values onTouch().
- *
- * @author Philipp Jahoda
- */
 @SuppressLint("NewApi")
 public class CircleDisplay extends View implements OnGestureListener {
 
@@ -112,7 +106,7 @@ public class CircleDisplay extends View implements OnGestureListener {
 
         mArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mArcPaint.setStyle(Style.FILL);
-        mArcPaint.setColor(Color.rgb(192, 255, 140));
+        mArcPaint.setColor(Color.rgb(97, 65, 11));
 
         mInnerCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mInnerCirclePaint.setStyle(Style.FILL);

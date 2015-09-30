@@ -45,6 +45,17 @@
     <string name="active_battery_life">Active Battery Life</string>
     <string name="battery_life_value">10h 23m</string>
     <string name="my_device">MY DEVICE</string>
+
+    <!-- MENU -->
+    <string name="menu_wifi_only">Use Wifi only</string>
+    <string name="menu_hide_apps">Hide apps with a small impact</string>
+    <string name="menu_feedback">Give feedback</string>
+    <string name="menu_about">About</string>
+
+
+
+
+
     <!--
 These are the same for all languages. When translating,
 delete these from your file.
@@ -278,7 +289,7 @@ delete these from your file.
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_dashboard">DASHBOARD</string>
 </resources>
 
 

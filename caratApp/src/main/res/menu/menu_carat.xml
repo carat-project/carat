@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity">
+    <item
+        android:id="@+id/action_wifi_only"
+        android:orderInCategory="100"
+        android:title="@string/menu_wifi_only"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_hide_apps"
+        android:orderInCategory="100"
+        android:title="@string/menu_hide_apps"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_feedback"
+        android:orderInCategory="100"
+        android:title="@string/menu_feedback"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:title="@string/menu_about"
+        app:showAsAction="never" />
+</menu>

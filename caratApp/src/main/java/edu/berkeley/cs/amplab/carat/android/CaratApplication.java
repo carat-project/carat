@@ -414,7 +414,7 @@ public class CaratApplication extends Application {
 
 					// do this regardless
 					setReportData();
-					
+
 					setActionProgress(90, getString(R.string.finishing), false);
 				}
 				CaratApplication.setActionFinished();
