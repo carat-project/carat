@@ -12,19 +12,23 @@
 #import "CaratProtocol.h"
 #import "CoreDataManager.h"
 #import "Globals.h"
+#import "AppColors.h"
 #import "CommunicationManager.h"
 #import "Thrift/transport/TSocketClient.h"
 #import "Thrift/protocol/TBinaryProtocol.h"
+#import "DashBoardViewController.h"
 
 @interface CaratAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, CLLocationManagerDelegate> {
     UIWindow *window;
-    UITabBarController *tabBarController;
+//    UITabBarController *tabBarController;
+    DashBoardViewController *dashBoardViewController;
     CLLocationManager *locationManager;
     UIBackgroundTaskIdentifier bgTask;
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UITabBarController *tabBarController;
+//@property (strong, nonatomic) UITabBarController *tabBarController;
+@property (strong, nonatomic) DashBoardViewController *dashBoardViewController;
 
 - (BOOL)proceedWithConsent;
 - (BOOL)acquireConsentWithCallbackTarget:(CaratAppDelegate *)delegate withSelector:(SEL)selector;

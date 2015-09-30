@@ -24,7 +24,8 @@
 @implementation CaratAppDelegate
 
 @synthesize window = _window;
-@synthesize tabBarController = _tabBarController;
+//@synthesize tabBarController = _tabBarController;
+@synthesize dashBoardViewController = _dashBoardViewController;
 
 #pragma mark -
 #pragma mark utility
@@ -62,7 +63,14 @@ void onUncaughtException(NSException *exception)
 - (id) init {
     if (self = [super init]) {
         // custom init code
+        [[UINavigationBar appearance] setBarTintColor:C_ORANGE];
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : C_WHITE}];
+        /*
+        [self.navigationController.navigationBar
+         setTitleTextAttributes:];
+         */
     }
+    
     return self;
 }
 
@@ -96,11 +104,18 @@ void onUncaughtException(NSException *exception)
 // called when the user has accepted the EULA
 - (BOOL)proceedWithConsent {
     DLog(@"Proceeding with consent");
-    if (self.window == nil) self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    [self startStoryboard];
+/*
+    if (self.window == nil)
+        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
+    //self.dashBoardViewController = [[DashBoardViewController alloc] init];
+ 
     UIViewController *viewController0, *viewController1, *viewController2, *viewController3, *viewController4;
-
     UINavigationController *navController0, *navController1, *navController2, *navController3, *navController4;
+    
     viewController0 = [[ActionViewController alloc] initWithNibName:@"ActionView" bundle:nil];
+    
     navController0 = [[UINavigationController alloc] initWithRootViewController:viewController0];
     navController0.navigationBar.translucent = NO;
     navController0.navigationBarHidden = YES;
@@ -122,19 +137,22 @@ void onUncaughtException(NSException *exception)
 	navController4.navigationBar.translucent = NO;
 	navController4.navigationBarHidden = YES;
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-   self.tabBarController.tabBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = NO;
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController0, navController1, navController2, navController3, navController4, nil];
+*/
+    //self.window.rootViewController = self.tabBarController;
+    //self.window.rootViewController = self.dashBoardViewController;
 
+    //[self.window makeKeyAndVisible];
 
-
-    self.window.rootViewController = self.tabBarController;
-    [self.window makeKeyAndVisible];
-    DLog(@"Set root view controller; is nil? %@",
-         self.tabBarController==nil ? @"yes" : @"no");
+    
+    
+    //DLog(@"Set root view controller; is nil? %@", self.dashBoardViewController==nil ? @"yes" : @"no");
     // Fixme: What is this? Not used.
 	//UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , 20 ,20)];
 
 	 // views have been added to hierarchy, so they can be released
+    /*
     [viewController0 release];
     [viewController1 release];
     [viewController2 release];
@@ -144,7 +162,7 @@ void onUncaughtException(NSException *exception)
     [navController1 release];
     [navController2 release];
     [navController3 release];
-    
+    */
     // Override point for customization after application launch.
     if (locationManager == nil && [CLLocationManager significantLocationChangeMonitoringAvailable]) {
         locationManager = [[CLLocationManager alloc] init];
@@ -165,6 +183,7 @@ void onUncaughtException(NSException *exception)
     [[CoreDataManager instance] generateSaveRegistration];
     
     // Analytics
+    /*
     [Flurry startSession:@"4XITISYNWHTBTL4E533E"];
     [Flurry logAllPageViewsForTarget:self.tabBarController];
     [Flurry logAllPageViewsForTarget:navController0];
@@ -172,6 +191,7 @@ void onUncaughtException(NSException *exception)
     [Flurry logAllPageViewsForTarget:navController2];
     [Flurry logAllPageViewsForTarget:navController3];
     [Flurry setUserID:[[Globals instance] getUUID]];
+    */
     
     // set the socialize api key and secret, app registered here: http://www.getsocialize.com/apps/
     [Socialize storeConsumerKey:@"8d0ddf53-fac1-48b1-ab25-b8c819455124"];
@@ -185,6 +205,19 @@ void onUncaughtException(NSException *exception)
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     
     return YES;
+}
+
+- (void)startStoryboard
+{
+    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    //UIViewController *mainViewController = [storyboard instantiateInitialViewController];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"dashBoardViewControllerStoryboardID"];
+
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -26,6 +26,11 @@
 		66D41BCB1A8F8EF800044C66 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D41BCA1A8F8EF800044C66 /* settings.png */; };
 		66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15051A2A6A8E00153746 /* infoButton@2x.png */; };
 		66EC15081A2A6A8E00153746 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15061A2A6A8E00153746 /* infoButton.png */; };
+		894F09FF1BBBF28B00B092BD /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F09FE1BBBF28B00B092BD /* ScoreView.m */; settings = {ASSET_TAGS = (); }; };
+		89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89685C751BBAA8440078C4C6 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		89685C781BBAAF720078C4C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89685C771BBAAF720078C4C6 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		89685C7F1BBAB44B0078C4C6 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89685C7E1BBAB44B0078C4C6 /* BaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		89685C821BBABA2C0078C4C6 /* DashBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89685C811BBABA2C0078C4C6 /* DashBoardViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AB244AF814E10D660055FCD6 /* ActionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB244AF714E10D660055FCD6 /* ActionItemCell.xib */; };
 		AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */; };
 		AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF6144E1E520090CC09 /* CaratAppDelegate.m */; };
@@ -181,13 +186,23 @@
 		661955B31A740E2D00865B2E /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		6622E46F1A852C14004A7EDF /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		6622E4701A852C14004A7EDF /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		6622E4711A852C14004A7EDF /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		6622E4711A852C14004A7EDF /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsView.xib; path = Classes/SettingsView.xib; sourceTree = "<group>"; };
 		6676D13A1A4DDCDB0002FC1F /* CaratConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratConstants.h; sourceTree = "<group>"; };
 		6676D13B1A4DDCDB0002FC1F /* CaratConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaratConstants.m; sourceTree = "<group>"; };
 		66D41BCA1A8F8EF800044C66 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		66EC15051A2A6A8E00153746 /* infoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoButton@2x.png"; sourceTree = "<group>"; };
 		66EC15061A2A6A8E00153746 /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoButton.png; sourceTree = "<group>"; };
 		79232538B6627BDD4D603C66 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		894F09FA1BBBBB8500B092BD /* AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppColors.h; sourceTree = "<group>"; };
+		894F09FB1BBBC33400B092BD /* AppLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLayout.h; sourceTree = "<group>"; };
+		894F09FD1BBBF28B00B092BD /* ScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreView.h; sourceTree = "<group>"; };
+		894F09FE1BBBF28B00B092BD /* ScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreView.m; sourceTree = "<group>"; };
+		89685C751BBAA8440078C4C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		89685C771BBAAF720078C4C6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		89685C7D1BBAB44B0078C4C6 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		89685C7E1BBAB44B0078C4C6 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		89685C801BBABA2C0078C4C6 /* DashBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashBoardViewController.h; sourceTree = "<group>"; };
+		89685C811BBABA2C0078C4C6 /* DashBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashBoardViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Carat-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Carat-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		8F35504DFD1C0120ECC89B4A /* Pods.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods/Pods.ad hoc.xcconfig"; sourceTree = "<group>"; };
 		AB105EBB14EDCA57000DB145 /* ProcessListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessListViewController.h; sourceTree = "<group>"; };
@@ -710,6 +725,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				894F09F91BBBBB2400B092BD /* Constants */,
 				C7547EAA19963CFD007A01CF /* Globals.h */,
 				C7547EAB19963CFD007A01CF /* Globals.m */,
 				C14F5C34145BDA9900087F74 /* AsyncUdpSocket.h */,
@@ -719,7 +735,6 @@
 				1D3623240D0F684500981E51 /* CaratAppDelegate.h */,
 				6622E46F1A852C14004A7EDF /* SettingsViewController.h */,
 				6622E4701A852C14004A7EDF /* SettingsViewController.m */,
-				6622E4711A852C14004A7EDF /* SettingsView.xib */,
 				AB41CDF6144E1E520090CC09 /* CaratAppDelegate.m */,
 				AB41CDF1144E1AF60090CC09 /* UIDeviceProc.h */,
 				AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */,
@@ -789,6 +804,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6622E4711A852C14004A7EDF /* SettingsView.xib */,
 				8D1107310486CEB800E47090 /* Carat-Info.plist */,
 				ABEC9B6714F1D9FF005CE813 /* license.txt */,
 				ABA3A10214E4A560009B3D33 /* html */,
@@ -806,6 +822,7 @@
 				C7547F4419963CFD007A01CF /* InstructionView.xib */,
 				C7547F2B19963CFD007A01CF /* DetailView.xib */,
 				AB41CE15144F78450090CC09 /* img */,
+				89685C751BBAA8440078C4C6 /* Images.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -831,6 +848,36 @@
 				E4A720DBC61F40BDB6246B59 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		894F09F91BBBBB2400B092BD /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				894F09FA1BBBBB8500B092BD /* AppColors.h */,
+				894F09FB1BBBC33400B092BD /* AppLayout.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		894F09FC1BBBF17600B092BD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				894F09FD1BBBF28B00B092BD /* ScoreView.h */,
+				894F09FE1BBBF28B00B092BD /* ScoreView.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		89685C791BBAB3030078C4C6 /* NewUI */ = {
+			isa = PBXGroup;
+			children = (
+				89685C7D1BBAB44B0078C4C6 /* BaseViewController.h */,
+				89685C7E1BBAB44B0078C4C6 /* BaseViewController.m */,
+				89685C801BBABA2C0078C4C6 /* DashBoardViewController.h */,
+				89685C811BBABA2C0078C4C6 /* DashBoardViewController.m */,
+				894F09FC1BBBF17600B092BD /* Components */,
+			);
+			path = NewUI;
 			sourceTree = "<group>";
 		};
 		AB1E7AB814D0BF420010617A /* UIDeviceHardware */ = {
@@ -965,6 +1012,7 @@
 		ABD317C91487FD1C000A8DC7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				89685C791BBAB3030078C4C6 /* NewUI */,
 				C7547EBB19963CFD007A01CF /* ProcessItemCell.h */,
 				C7547EBC19963CFD007A01CF /* ProcessItemCell.m */,
 				C7547EC119963CFD007A01CF /* ReportItemCell.h */,
@@ -999,8 +1047,9 @@
 				C7547E2219963CFD007A01CF /* ActionItemCell.m */,
 				C7547E2319963CFD007A01CF /* ActionObject.h */,
 				C7547E2419963CFD007A01CF /* ActionObject.m */,
+				89685C771BBAAF720078C4C6 /* Main.storyboard */,
 			);
-			name = UI;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		ABF64FE614C8D8DE00C21D8E /* PGTableWithEmptyView */ = {
@@ -1454,7 +1503,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "University of Helsinki";
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
@@ -1518,6 +1567,7 @@
 				C7547E0D19963CCD007A01CF /* icon152.png in Resources */,
 				66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */,
 				ABC07A14148569F200FCC2C2 /* ReportItemCell.xib in Resources */,
+				89685C781BBAAF720078C4C6 /* Main.storyboard in Resources */,
 				ABC07A161485828A00FCC2C2 /* amplab_logo.png in Resources */,
 				66EC15081A2A6A8E00153746 /* infoButton.png in Resources */,
 				C75488C319963D04007A01CF /* Default-Portrait.png in Resources */,
@@ -1542,6 +1592,7 @@
 				AB9525B014EA1B6F00343418 /* killapp.html in Resources */,
 				C75488C619963D04007A01CF /* Default-Portrait~ipad.png in Resources */,
 				C7548CC119963ED0007A01CF /* Icon-40@2x.png in Resources */,
+				89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */,
 				C75488BE19963D04007A01CF /* Default-568h@2x.png in Resources */,
 				661955B01A73FE4200865B2E /* jscoreinfo.html in Resources */,
 				C704AE601A03B90200E4F13C /* icon57.png in Resources */,
@@ -1604,6 +1655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894F09FF1BBBF28B00B092BD /* ScoreView.m in Sources */,
 				C7E31C2F1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				C74130D319EDC72D00A1E8CE /* ProcessListViewController.h in Sources */,
 				C74130D419EDC72D00A1E8CE /* ProcessListViewController.m in Sources */,
@@ -1617,6 +1669,7 @@
 				C754889B19963D04007A01CF /* SDWebImageDownloader.m in Sources */,
 				C74130CC19EDC6EA00A1E8CE /* SDWebImageDownloaderDelegate.h in Sources */,
 				C754889C19963D04007A01CF /* SDWebImageManager.m in Sources */,
+				89685C821BBABA2C0078C4C6 /* DashBoardViewController.m in Sources */,
 				C74130CE19EDC6EA00A1E8CE /* SDWebImageManagerDelegate.h in Sources */,
 				C754889D19963D04007A01CF /* SDWebImagePrefetcher.m in Sources */,
 				C74130D019EDC6EA00A1E8CE /* UIButton+WebCache.h in Sources */,
@@ -1661,6 +1714,7 @@
 				C754887D19963D03007A01CF /* ConsentViewController.m in Sources */,
 				C75488B819963D04007A01CF /* UIImageDoNotCache.m in Sources */,
 				C1D52F391465F85A008D6D09 /* TSocketClient.m in Sources */,
+				89685C7F1BBAB44B0078C4C6 /* BaseViewController.m in Sources */,
 				C1D52F3A1465F85A008D6D09 /* TTransportException.m in Sources */,
 				C754887E19963D03007A01CF /* CopyLabel.m in Sources */,
 				C754888419963D03007A01CF /* CoreDataRegistration.m in Sources */,
@@ -1735,6 +1789,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.carat;
 				PRODUCT_NAME = Carat;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/BuildHeaders/";
@@ -1779,6 +1834,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.carat;
 				PRODUCT_NAME = Carat;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
@@ -1842,6 +1898,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.carat;
 				PRODUCT_NAME = Carat;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/BuildHeaders/";
@@ -1855,6 +1912,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eemil Lagerspetz (K5L69FXDVN)";
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "DEBUG_MODE=1";
 				GCC_THUMB_SUPPORT = NO;
