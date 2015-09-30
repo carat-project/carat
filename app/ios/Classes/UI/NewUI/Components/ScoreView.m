@@ -22,7 +22,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
+        self.opaque = NO;
+        //self.backgroundColor = [UIColor whiteColor];
         
         // Determine our start and stop angles for the arc (in radians)
         startAngle = M_PI * 1.5;
@@ -42,21 +44,55 @@
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     
     // Create our arc, with the correct angles
+    CGFloat radius = (rect.size.width/2.0f)-2;
+    NSLog(@"radius: %f", radius);
+    int textSize = radius * 0.75;
+    NSLog(@"textSize: %d", textSize);
+    int textSizeSmall = textSize/3.0f;
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextAddEllipseInRect(ctx, rect);
+    CGContextSetFillColor(ctx, CGColorGetComponents([C_WHITE CGColor]));
+    CGContextFillPath(ctx);
+
     [bezierPath addArcWithCenter:CGPointMake(rect.size.width / 2, rect.size.height / 2)
-                          radius:130
+                          radius: radius
                       startAngle:startAngle
                         endAngle:(endAngle - startAngle) * (_score / 99.0) + startAngle
                        clockwise:YES];
     
     // Set the display for the path, and stroke it
-    bezierPath.lineWidth = 20;
-    [[UIColor redColor] setStroke];
+    bezierPath.lineWidth = 4;
+    [C_ORANGE_LIGHT setStroke];
     [bezierPath stroke];
     
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:textSize]};
+    // NSString class method: boundingRectWithSize:options:attributes:context is
+    // available only on ios7.0 sdk.
+    CGRect scoreSize = [textContent boundingRectWithSize:CGSizeMake(radius, CGFLOAT_MAX)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:attributes
+                                              context:nil];
+    
+    attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:textSizeSmall]};
+    // NSString class method: boundingRectWithSize:options:attributes:context is
+    // available only on ios7.0 sdk.
+    CGRect labelTextSize = [_title boundingRectWithSize:CGSizeMake(radius, CGFLOAT_MAX)
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:attributes
+                                                 context:nil];
+    
+
     // Text Drawing
-    CGRect textRect = CGRectMake((rect.size.width / 2.0) - 71/2.0, (rect.size.height / 2.0) - 45/2.0, 71, 45);
+    CGRect textRect = CGRectMake((rect.size.width / 2.0) - scoreSize.size.width/2.0, (rect.size.height / 2.0) - scoreSize.size.height/2.0, scoreSize.size.width, scoreSize.size.height);
+    CGRect labelRect = CGRectMake((rect.size.width / 2.0) - labelTextSize.size.width/2.0, CGRectGetMaxY(textRect), labelTextSize.size.width, labelTextSize.size.height);
+    
     [[UIColor blackColor] setFill];
-    [textContent drawInRect: textRect withFont: [UIFont fontWithName: @"Helvetica-Bold" size: 42.5] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    [textContent drawInRect: textRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: textSize] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    
+    [C_LIGHT_GRAY setFill];
+    [_title drawInRect: labelRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: textSizeSmall] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
 }
 
 

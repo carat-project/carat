@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppColors.h"
 
 @interface ScoreView : UIView
 

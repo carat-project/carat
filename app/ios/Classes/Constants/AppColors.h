@@ -20,7 +20,7 @@ alpha:((c)&0xFF)/255.0]
 #define C_BLACK_BLUE    COLOR(0x122134ff)
 #define C_DARK_BLUE     COLOR(0x203e5fff)
 #define C_ORANGE        COLOR(0xf7a71bff)
-#define C_LIGHT_ORANGE  COLOR(0xfee5b1ff)
+#define C_ORANGE_LIGHT  COLOR(0xfee5b1ff)
 #define C_WHITE_DARK    COLOR(0xf5f5f5ff)
 #define C_WHITE         COLOR(0xffffffff)
 #define C_RED           COLOR(0xf33535ff)

@@ -24,13 +24,22 @@
     [self.view addSubview:navbar];
     
     UIImage *img = [UIImage imageNamed:@"chart_image"];
+    CGFloat topImgHeight = (int)((UI_WINDOW_HEIGHT- UI_TOP_NAVIGATION_BAR_HEIGHT)*0.3f);
     UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
-    imageView.frame = CGRectMake(0,  UI_TOP_NAVIGATION_BAR_HEIGHT, UI_SCREEN_W, (int)((UI_WINDOW_HEIGHT- UI_TOP_NAVIGATION_BAR_HEIGHT)*0.3f));
+    imageView.frame = CGRectMake(0,  UI_TOP_NAVIGATION_BAR_HEIGHT, UI_SCREEN_W, topImgHeight);
     [self.view addSubview:imageView];
 
-    ScoreView *scoreView = [[ScoreView alloc] initWithFrame:self.view.bounds];
+    CGFloat scoreTop = UI_TOP_NAVIGATION_BAR_HEIGHT + topImgHeight * 0.1f;
+    CGFloat scoreEdge = topImgHeight * 0.75f;
+    CGFloat scoreBottom   = scoreTop + scoreEdge;
+    CGFloat scoreLeft = (UI_SCREEN_W - scoreEdge)/2.0f;
+    CGFloat scoreRight = scoreLeft + scoreEdge;
+   
+    
+    ScoreView *scoreView = [[ScoreView alloc] initWithFrame:CGRectMake(scoreLeft, scoreTop, scoreEdge, scoreEdge)];
     [scoreView setScore: 60];
-    [self.view addSubview:m_webView];
+    [scoreView setTitle: @"J-score"];
+    [self.view addSubview:scoreView];
 }
 
 #pragma mark -
