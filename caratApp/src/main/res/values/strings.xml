@@ -52,8 +52,8 @@
     <string name="menu_feedback">Give feedback</string>
     <string name="menu_about">About</string>
 
-
-
+    <!-- BUGS -->
+    <string name="what_are_these_numbers">What are these numbers?</string>
 
 
     <!--

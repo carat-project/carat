@@ -42,6 +42,7 @@ import android.widget.Toast;
 
 import com.flurry.android.FlurryAgent;
 
+import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
 import edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity;
 import edu.berkeley.cs.amplab.carat.android.fragments.AboutFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.BugsOrHogsFragment;
@@ -118,6 +119,9 @@ public class MainActivity extends ActionBarActivity {
         if (p.getBoolean(getResources().getString(R.string.save_accept_eula), false)) {
             Intent i = new Intent(this, TutorialActivity.class);
             this.startActivityForResult(i, Constants.REQUESTCODE_ACCEPT_EULA);
+        } else {
+            Intent i = new Intent(this, DashboardActivity.class);
+            startActivity(i);
         }
 
         setContentView(R.layout.activity_main);

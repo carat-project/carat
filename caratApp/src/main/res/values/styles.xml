@@ -103,6 +103,7 @@
         <!-- Support library compatibility -->
         <item name="background">@color/blue</item>
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>
+        <item name="homeAsUpIndicator">@drawable/back_arrow</item>
     </style>
 
     <!-- ActionBar title text -->

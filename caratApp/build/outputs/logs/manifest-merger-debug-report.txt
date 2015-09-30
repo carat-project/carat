@@ -18,12 +18,12 @@ ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManif
 MERGED from [android_carat:androidswitchbackport:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidswitchbackport\unspecified\AndroidManifest.xml:31:5-33:41
 MERGED from [android_carat:androidsupportv4preferencefragment:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidsupportv4preferencefragment\unspecified\AndroidManifest.xml:20:5-22:40
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
 MERGED from [android_carat:mPChartLib:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\mPChartLib\unspecified\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:9:9-38
@@ -94,11 +94,11 @@ ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManif
 MERGED from [android_carat:androidswitchbackport:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidswitchbackport\unspecified\AndroidManifest.xml:35:5-20
 MERGED from [android_carat:androidsupportv4preferencefragment:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidsupportv4preferencefragment\unspecified\AndroidManifest.xml:24:5-20
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
 	android:enabled
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:43:9-31

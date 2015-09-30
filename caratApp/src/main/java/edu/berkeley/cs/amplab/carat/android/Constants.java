@@ -111,4 +111,11 @@ public class Constants {
 
 	public static final int REQUESTCODE_ACCEPT_EULA = 16401;
 
+	// FRAGMENT TAGS
+	public static final String FRAGMENT_BUGS_TAG = "fragment_bugs";
+	public static final String FRAGMENT_HOGS_TAG = "fragment_hogs";
+	public static final String FRAGMENT_GLOBAL_TAG = "fragment_global";
+	public static final String FRAGMENT_ACTIONS_TAG = "fragment_actions";
+	public static final String FRAGMENT_MY_DEVICE_TAG = "fragment_my_device";
+
 }

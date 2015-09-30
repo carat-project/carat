@@ -8,21 +8,21 @@ package org.jraf.android.backport.switchwidget;
 
 public final class R {
 	public static final class attr {
-		public static final int asb_disableDependentsState = 0x7f01005d;
-		public static final int asb_summaryOff = 0x7f01005a;
-		public static final int asb_summaryOn = 0x7f010059;
-		public static final int asb_switchMinWidth = 0x7f01004e;
-		public static final int asb_switchPadding = 0x7f01004f;
-		public static final int asb_switchPreferenceStyle = 0x7f010051;
-		public static final int asb_switchStyle = 0x7f010050;
-		public static final int asb_switchTextAppearance = 0x7f01004d;
-		public static final int asb_switchTextOff = 0x7f01005c;
-		public static final int asb_switchTextOn = 0x7f01005b;
-		public static final int asb_textOff = 0x7f01004b;
-		public static final int asb_textOn = 0x7f01004a;
-		public static final int asb_thumb = 0x7f010048;
-		public static final int asb_thumbTextPadding = 0x7f01004c;
-		public static final int asb_track = 0x7f010049;
+		public static final int asb_disableDependentsState = 0x7f01005c;
+		public static final int asb_summaryOff = 0x7f010059;
+		public static final int asb_summaryOn = 0x7f010058;
+		public static final int asb_switchMinWidth = 0x7f01004d;
+		public static final int asb_switchPadding = 0x7f01004e;
+		public static final int asb_switchPreferenceStyle = 0x7f010050;
+		public static final int asb_switchStyle = 0x7f01004f;
+		public static final int asb_switchTextAppearance = 0x7f01004c;
+		public static final int asb_switchTextOff = 0x7f01005b;
+		public static final int asb_switchTextOn = 0x7f01005a;
+		public static final int asb_textOff = 0x7f01004a;
+		public static final int asb_textOn = 0x7f010049;
+		public static final int asb_thumb = 0x7f010047;
+		public static final int asb_thumbTextPadding = 0x7f01004b;
+		public static final int asb_track = 0x7f010048;
 	}
 	public static final class color {
 		public static final int background_holo_light = 0x7f0c0009;
@@ -35,48 +35,48 @@ public final class R {
 	}
 	public static final class dimen {
 		public static final int preference_icon_minWidth = 0x7f080012;
-		public static final int preference_item_padding_inner = 0x7f08004c;
-		public static final int preference_item_padding_side = 0x7f08004d;
+		public static final int preference_item_padding_inner = 0x7f080049;
+		public static final int preference_item_padding_side = 0x7f08004a;
 		public static final int preference_widget_width = 0x7f080006;
 	}
 	public static final class drawable {
-		public static final int switch_bg_disabled_holo_dark = 0x7f020063;
-		public static final int switch_bg_disabled_holo_light = 0x7f020064;
-		public static final int switch_bg_focused_holo_dark = 0x7f020065;
-		public static final int switch_bg_focused_holo_light = 0x7f020066;
-		public static final int switch_bg_holo_dark = 0x7f020067;
-		public static final int switch_bg_holo_light = 0x7f020068;
-		public static final int switch_inner_holo_dark = 0x7f020069;
-		public static final int switch_inner_holo_light = 0x7f02006a;
-		public static final int switch_thumb_activated_holo_dark = 0x7f02006b;
-		public static final int switch_thumb_activated_holo_light = 0x7f02006c;
-		public static final int switch_thumb_disabled_holo_dark = 0x7f02006d;
-		public static final int switch_thumb_disabled_holo_light = 0x7f02006e;
-		public static final int switch_thumb_holo_dark = 0x7f02006f;
-		public static final int switch_thumb_holo_light = 0x7f020070;
-		public static final int switch_thumb_holo_light_v2 = 0x7f020071;
-		public static final int switch_thumb_pressed_holo_dark = 0x7f020072;
-		public static final int switch_thumb_pressed_holo_light = 0x7f020073;
-		public static final int switch_track_holo_dark = 0x7f020074;
-		public static final int switch_track_holo_light = 0x7f020075;
+		public static final int switch_bg_disabled_holo_dark = 0x7f020064;
+		public static final int switch_bg_disabled_holo_light = 0x7f020065;
+		public static final int switch_bg_focused_holo_dark = 0x7f020066;
+		public static final int switch_bg_focused_holo_light = 0x7f020067;
+		public static final int switch_bg_holo_dark = 0x7f020068;
+		public static final int switch_bg_holo_light = 0x7f020069;
+		public static final int switch_inner_holo_dark = 0x7f02006a;
+		public static final int switch_inner_holo_light = 0x7f02006b;
+		public static final int switch_thumb_activated_holo_dark = 0x7f02006c;
+		public static final int switch_thumb_activated_holo_light = 0x7f02006d;
+		public static final int switch_thumb_disabled_holo_dark = 0x7f02006e;
+		public static final int switch_thumb_disabled_holo_light = 0x7f02006f;
+		public static final int switch_thumb_holo_dark = 0x7f020070;
+		public static final int switch_thumb_holo_light = 0x7f020071;
+		public static final int switch_thumb_holo_light_v2 = 0x7f020072;
+		public static final int switch_thumb_pressed_holo_dark = 0x7f020073;
+		public static final int switch_thumb_pressed_holo_light = 0x7f020074;
+		public static final int switch_track_holo_dark = 0x7f020075;
+		public static final int switch_track_holo_light = 0x7f020076;
 	}
 	public static final class id {
-		public static final int switchWidget = 0x7f0d00ae;
+		public static final int switchWidget = 0x7f0d00a2;
 	}
 	public static final class layout {
-		public static final int preference = 0x7f030033;
-		public static final int preference_widget_switch = 0x7f030035;
+		public static final int preference = 0x7f030031;
+		public static final int preference_widget_switch = 0x7f030033;
 	}
 	public static final class string {
-		public static final int switch_off = 0x7f0600c1;
-		public static final int switch_on = 0x7f0600c2;
+		public static final int switch_off = 0x7f0600c0;
+		public static final int switch_on = 0x7f0600c1;
 	}
 	public static final class style {
-		public static final int Preference_SwitchPreference = 0x7f0900b3;
-		public static final int TextAppearance_Holo_Light_Widget_Switch = 0x7f0900e0;
-		public static final int TextAppearance_Holo_Widget_Switch = 0x7f0900e1;
-		public static final int Widget_Holo_CompoundButton_Switch = 0x7f090139;
-		public static final int Widget_Holo_Light_CompoundButton_Switch = 0x7f09013a;
+		public static final int Preference_SwitchPreference = 0x7f0900aa;
+		public static final int TextAppearance_Holo_Light_Widget_Switch = 0x7f0900d7;
+		public static final int TextAppearance_Holo_Widget_Switch = 0x7f0900d8;
+		public static final int Widget_Holo_CompoundButton_Switch = 0x7f090130;
+		public static final int Widget_Holo_Light_CompoundButton_Switch = 0x7f090131;
 	}
 	public static final class styleable {
 		public static final int[] Android = { 0x01010095, 0x01010096, 0x01010097, 0x01010098, 0x01010099, 0x0101009a, 0x0101009b };
@@ -87,11 +87,11 @@ public final class R {
 		public static final int Android_android_textSize = 0;
 		public static final int Android_android_textStyle = 2;
 		public static final int Android_android_typeface = 1;
-		public static final int[] Switch = { 0x7f010048, 0x7f010049, 0x7f01004a, 0x7f01004b, 0x7f01004c, 0x7f01004d, 0x7f01004e, 0x7f01004f };
-		public static final int[] SwitchBackportTheme = { 0x7f010050, 0x7f010051 };
+		public static final int[] Switch = { 0x7f010047, 0x7f010048, 0x7f010049, 0x7f01004a, 0x7f01004b, 0x7f01004c, 0x7f01004d, 0x7f01004e };
+		public static final int[] SwitchBackportTheme = { 0x7f01004f, 0x7f010050 };
 		public static final int SwitchBackportTheme_asb_switchPreferenceStyle = 1;
 		public static final int SwitchBackportTheme_asb_switchStyle = 0;
-		public static final int[] SwitchPreference = { 0x7f010059, 0x7f01005a, 0x7f01005b, 0x7f01005c, 0x7f01005d };
+		public static final int[] SwitchPreference = { 0x7f010058, 0x7f010059, 0x7f01005a, 0x7f01005b, 0x7f01005c };
 		public static final int SwitchPreference_asb_disableDependentsState = 4;
 		public static final int SwitchPreference_asb_summaryOff = 1;
 		public static final int SwitchPreference_asb_summaryOn = 0;

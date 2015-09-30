@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.BugsFragment"
+    android:background="@color/gray" >
+
+    <ExpandableListView
+        android:id="@+id/expandable_bugs_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ExpandableListView>
+
+</LinearLayout>
