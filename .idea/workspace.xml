@@ -110,13 +110,13 @@
       <file leaf-file-name="bug_hog_list_child_item.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/bug_hog_list_child_item.xml">
           <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="39" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
+            <state vertical-scroll-proportion="-3.1343284">
+              <caret line="178" column="32" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
               <folding>
-                <element signature="e#2713#2730#0" expanded="true" />
-                <element signature="e#4090#4105#0" expanded="true" />
-                <element signature="e#5292#5316#0" expanded="true" />
-                <element signature="e#6102#6134#0" expanded="true" />
+                <element signature="e#2791#2808#0" expanded="true" />
+                <element signature="e#4128#4143#0" expanded="true" />
+                <element signature="e#5532#5556#0" expanded="true" />
+                <element signature="e#6905#6937#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -128,8 +128,8 @@
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875">
-              <caret line="55" column="65" selection-start-line="55" selection-start-column="65" selection-end-line="55" selection-end-column="65" />
+            <state vertical-scroll-proportion="-7.71875">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -3977,6 +3977,7 @@
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="SearchEverywhereHistoryKey" value="drawview&#9;PSI&#9;JAVA://edu.berkeley.cs.amplab.carat.android.ui.DrawView" />
     <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ePassi_Android/sporttipassi-payment-point-teliasonera" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -4189,7 +4190,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32302406" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4206,7 +4207,7 @@
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15234822" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973261" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973261" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -4720,21 +4721,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875">
-          <caret line="55" column="65" selection-start-line="55" selection-start-column="65" selection-end-line="55" selection-end-column="65" />
+        <state vertical-scroll-proportion="-7.71875">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/bug_hog_list_child_item.xml">
       <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="39" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
+        <state vertical-scroll-proportion="-3.1343284">
+          <caret line="178" column="32" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
           <folding>
-            <element signature="e#2713#2730#0" expanded="true" />
-            <element signature="e#4090#4105#0" expanded="true" />
-            <element signature="e#5292#5316#0" expanded="true" />
-            <element signature="e#6102#6134#0" expanded="true" />
+            <element signature="e#2791#2808#0" expanded="true" />
+            <element signature="e#4128#4143#0" expanded="true" />
+            <element signature="e#5532#5556#0" expanded="true" />
+            <element signature="e#6905#6937#0" expanded="true" />
           </folding>
         </state>
       </provider>

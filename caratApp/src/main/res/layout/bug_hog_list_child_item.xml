@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="300dp"
+    android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="5">
 
@@ -9,8 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp">
 
@@ -18,38 +17,38 @@
             android:id="@+id/process_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="10dp"
             android:layout_alignParentLeft="true"
             android:layout_gravity="center_vertical|left"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_launcher"/>
+            android:paddingRight="10dp"
+            android:src="@drawable/ic_launcher" />
 
         <TextView
             android:id="@+id/process_name"
+            style="@style/MediumBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Facebook"
-            style="@style/MediumBlackText"
-            android:paddingBottom="5dp"
-            android:layout_alignTop="@+id/process_icon"
             android:layout_alignLeft="@+id/process_improvement"
-            android:layout_alignStart="@+id/process_improvement" />
+            android:layout_alignStart="@+id/process_improvement"
+            android:layout_alignTop="@+id/process_icon"
+            android:paddingBottom="5dp"
+            android:text="Facebook" />
 
         <TextView
             android:id="@+id/process_improvement"
+            style="@style/SmallGrayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/process_name"
             android:layout_toRightOf="@id/process_icon"
-            android:text="Expected Improvement: 1h 42m"
-            style="@style/SmallGrayText"/>
+            android:text="Expected Improvement: 1h 42m" />
 
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="center_vertical|right"
             android:src="@drawable/collapse_up"
-            android:layout_alignTop="@+id/process_name"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -59,71 +58,76 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingRight="15dp"
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/samples_title"
+            style="@style/MediumBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|left"
-            style="@style/MediumBlackText"
-            android:text="@string/samples"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical|left"
+            android:text="@string/samples" />
 
         <TextView
             android:id="@+id/samples_amount"
+            style="@style/MediumBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            style="@style/MediumBlackText"
-            android:text="256"
-            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:text="256" />
 
         <View
             android:id="@+id/view"
-            android:layout_alignParentBottom="true"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
             android:background="@color/gray" />
 
-        </RelativeLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingRight="15dp"
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/error_title"
+            style="@style/MediumBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/MediumBlackText"
-            android:text="@string/error"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/error" />
 
         <TextView
             android:id="@+id/error_amount"
+            style="@style/MediumBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/MediumBlackText"
-            android:text="49m"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/error_title"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:text="49m" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray" />
 
     </RelativeLayout>
 
@@ -131,44 +135,60 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingRight="15dp"
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/samples_without_title"
+            style="@style/MediumBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical|left"
-            style="@style/MediumBlackText"
-            android:text="@string/samplesWithout"/>
+            android:text="@string/samplesWithout" />
 
         <TextView
             android:id="@+id/samples_without_amount"
+            style="@style/MediumBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical|right"
-            style="@style/MediumBlackText"
-            android:text="256342"/>
+            android:text="256342" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-
-            <TextView
-                android:id="@+id/what_are_these_numbers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|left"
-                style="@style/MediumBlackText"
-                android:text="@string/what_are_these_numbers"/>
-
-        </RelativeLayout>
+        <View
+            android:id="@+id/view2"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray" />
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/what_are_these_numbers"
+            style="@style/MediumBlackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/what_are_these_numbers" />
+
+    </RelativeLayout>
 
 
 </LinearLayout>
