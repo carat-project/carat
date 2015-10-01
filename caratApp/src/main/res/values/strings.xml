@@ -54,7 +54,8 @@
 
     <!-- BUGS -->
     <string name="what_are_these_numbers">What are these numbers?</string>
-
+    <string name="bug_list_message">Bugs are apps that use a lot of energy on a small number of devices, including yours.
+        Restarting a buggy app may improve battery life.</string>
 
     <!--
 These are the same for all languages. When translating,

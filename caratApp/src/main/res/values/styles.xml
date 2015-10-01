@@ -98,7 +98,6 @@
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/darkblue</item>
         <item name="android:textColor">@color/white</item>
-        <item name="elevation">0dp</item>
 
         <!-- Support library compatibility -->
         <item name="background">@color/blue</item>

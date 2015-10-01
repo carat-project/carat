@@ -363,6 +363,8 @@
     <string name="blackBackground">false</string>
     <string name="blacklist">Blacklist</string>
     <string name="bluetoothsettings">Bluetooth Settings</string>
+    <string name="bug_list_message">Bugs are apps that use a lot of energy on a small number of devices, including yours.
+        Restarting a buggy app may improve battery life.</string>
     <string name="bugs">BUGS</string>
     <string name="bugs_amount">7</string>
     <string name="caratid">Carat ID:</string>
@@ -535,6 +537,7 @@
     <string name="version_name">1.12</string>
     <string name="view">VIEW</string>
     <string name="viewprocess">View Process List</string>
+    <string name="what_are_these_numbers">What are these numbers?</string>
     <string name="wifi_only_key">wifionly</string>
     <string name="wifionly">Use WiFi only</string>
     <string name="wifionlyused">Using WiFi only</string>
@@ -583,7 +586,6 @@
         <item name="actionBarStyle">@style/MyActionBar</item>
         <item name="actionBarTabTextStyle">@style/SmallWhiteText</item>
         <item name="actionMenuTextColor">@color/white</item>
-        <item name="android:windowContentOverlay">@null</item>
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
@@ -1545,7 +1547,6 @@
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/darkblue</item>
         <item name="android:textColor">@color/white</item>
-        <item name="elevation">0dp</item>
 
         <!-- Support library compatibility -->
         <item name="background">@color/blue</item>
