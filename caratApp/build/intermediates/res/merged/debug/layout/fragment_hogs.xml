@@ -5,6 +5,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="edu.berkeley.cs.amplab.carat.android.fragments.HogsFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:weightSum="100">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:background="@color/lightgray"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/hog_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@drawable/gray_hog_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/hog_icon"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="@string/hog_list_message"
+            style="@style/SmallGrayText"/>
+
+    </RelativeLayout>
+
+    <ExpandableListView
+        android:layout_weight="85"
+        android:id="@+id/expandable_hogs_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:groupIndicator="@null"></ExpandableListView>
 
 </LinearLayout><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/fragment_hogs.xml -->

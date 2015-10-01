@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -24,12 +25,17 @@ import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
 public class DashboardFragment extends Fragment implements View.OnClickListener {
 
     private DashboardActivity dashboardActivity;
-    private LinearLayout ll;
+    private RelativeLayout ll;
+    private RelativeLayout shareBar;
     private ImageView bugButton;
     private ImageView hogButton;
     private ImageView globeButton;
     private ImageView actionsButton;
     private Button myDeviceButton;
+    private ImageView shareButton;
+    private TextView bugAmountText;
+    private TextView hogAmountText;
+    private TextView actionsAmountText;
     private TextView batteryText;
     private CircleDisplay cd;
 
@@ -42,7 +48,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ll = (LinearLayout) inflater.inflate(R.layout.fragment_dashboard, container, false);
+        ll = (RelativeLayout) inflater.inflate(R.layout.fragment_dashboard, container, false);
         initViewRefs();
         initListeners();
         generateJScoreCircle();
@@ -56,13 +62,26 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         setValues();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        shareButton.setVisibility(View.VISIBLE);
+        shareBar.setVisibility(View.GONE);
+    }
+
     private void initViewRefs() {
+        shareBar = (RelativeLayout) ll.findViewById(R.id.share_bar);
+        shareBar.setVisibility(View.GONE);
         bugButton = (ImageView) ll.findViewById(R.id.bugs_button);
         hogButton = (ImageView) ll.findViewById(R.id.hogs_button);
         globeButton = (ImageView) ll.findViewById(R.id.globe_button);
         actionsButton = (ImageView) ll.findViewById(R.id.actions_button);
         myDeviceButton = (Button) ll.findViewById(R.id.my_device_button);
+        shareButton = (ImageView) ll.findViewById(R.id.share_button);
         batteryText = (TextView) ll.findViewById(R.id.battery_value);
+        bugAmountText = (TextView) ll.findViewById(R.id.bugs_amount);
+        hogAmountText = (TextView) ll.findViewById(R.id.hogs_amount);
+        actionsAmountText = (TextView) ll.findViewById(R.id.actions_amount);
     }
 
     private void initListeners() {
@@ -71,6 +90,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         globeButton.setOnClickListener(this);
         actionsButton.setOnClickListener(this);
         myDeviceButton.setOnClickListener(this);
+        shareButton.setOnClickListener(this);
     }
 
     private void generateJScoreCircle() {
@@ -87,14 +107,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
 
     private void setValues() {
-        batteryText.setText(dashboardActivity.getBatteryLife());
-
         if (dashboardActivity.getJScore() == -1 || dashboardActivity.getJScore() == 0) {
             cd.setCustomText(new String[]{"N", "/", "A"});
         } else {
             cd.showValue((float) dashboardActivity.getJScore(), 99f, false);
         }
-
+        batteryText.setText(dashboardActivity.getBatteryLife());
+        bugAmountText.setText(dashboardActivity.getBugAmount());
+        hogAmountText.setText(dashboardActivity.getHogAmount());
+        actionsAmountText.setText(dashboardActivity.getActionsAmount());
     }
 
     @Override
@@ -119,6 +140,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.my_device_button:
                 MyDeviceFragment myDeviceFragment = new MyDeviceFragment();
                 dashboardActivity.replaceFragment(myDeviceFragment, Constants.FRAGMENT_MY_DEVICE_TAG);
+                break;
+            case R.id.share_button:
+                shareButton.setVisibility(View.GONE);
+                shareBar.setVisibility(View.VISIBLE);
+                break;
+            case R.id.hide_button:
+                shareButton.setVisibility(View.VISIBLE);
+                shareBar.setVisibility(View.GONE);
                 break;
             default:
                 break;

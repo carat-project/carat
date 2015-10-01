@@ -415,6 +415,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="helpcarat">Help Carat collect data</string>
     <string name="hog_hide_threshold">hoghidethreshold</string>
+    <string name="hog_list_message">Hogs are apps that are correlated with higher energy use across
+        many devices. Closing hogs may improve battery life.</string>
     <string name="hog_thresh">Hide apps with a small impact</string>
     <string name="hogs">HOGS</string>
     <string name="hogs_amount">4</string>

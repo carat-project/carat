@@ -1,6 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android.ui.adapters;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,19 +28,22 @@ import edu.berkeley.cs.amplab.carat.thrift.Reports;
 /**
  * Created by Valto on 30.9.2015.
  */
-public class ExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener {
+public class ExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
+        ExpandableListView.OnChildClickListener {
 
     private LayoutInflater mInflater;
     private CaratApplication a = null;
     private SimpleHogBug[] allBugsOrHogs = null;
     private ExpandableListView lv;
-    private int previousGroup;
+    private ImageView collapseIcon;
+    private ArrayList<ImageView> collapseTags;
 
     public ExpandListAdapter(ExpandableListView lv, CaratApplication caratApplication, SimpleHogBug[] results) {
-        previousGroup = -1;
+        collapseTags = new ArrayList<>();
         this.a = caratApplication;
         this.lv = lv;
         this.lv.setOnGroupExpandListener(this);
+        this.lv.setOnChildClickListener(this);
         int items = 0;
         if (results != null)
             for (SimpleHogBug app : results) {
@@ -139,7 +143,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements Expa
         if (item == null)
             return convertView;
 
-        setItemViews(convertView, item);
+        setItemViews(convertView, item, groupPosition);
 
         return convertView;
     }
@@ -169,11 +173,11 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements Expa
 
     }
 
-    private void setItemViews(View v, SimpleHogBug item) {
+    private void setItemViews(View v, SimpleHogBug item, int groupPosition) {
         ImageView processIcon = (ImageView) v.findViewById(R.id.process_icon);
         TextView processName = (TextView) v.findViewById(R.id.process_name);
         TextView processImprovement = (TextView) v.findViewById(R.id.process_improvement);
-        ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+        collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
 
         processIcon.setImageDrawable(CaratApplication.iconForApp(a.getApplicationContext(),
                 item.getAppName()));
@@ -181,13 +185,36 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements Expa
                 item.getAppName()));
         processImprovement.setText(item.getBenefitText());
         collapseIcon.setImageResource(R.drawable.collapse_down);
+        collapseIcon.setTag(groupPosition);
+        collapseTags.add(collapseIcon);
 
     }
 
+    // TODO COLLAPSE IMAGES NOT WORKING
     @Override
     public void onGroupExpand(int groupPosition) {
-        if(groupPosition != previousGroup)
-            lv.collapseGroup(previousGroup);
-        previousGroup = groupPosition;
+        for (ImageView iV : collapseTags) {
+            if (groupPosition == (int) iV.getTag()) {
+                iV.setImageResource(R.drawable.collapse_up);
+            }
+        }
+    }
+
+    @Override
+    public void onGroupCollapsed(int groupPosition) {
+        for (ImageView iV : collapseTags) {
+            if (groupPosition == (int) iV.getTag()) {
+                iV.setImageResource(R.drawable.collapse_down);
+            }
+        }
+    }
+
+    @Override
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+       /* v.findFocus()
+        if (v.findViewById(R.id.what_are_these_numbers)) {
+
+        }*/
+        return true;
     }
 }

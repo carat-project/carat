@@ -59,14 +59,11 @@ public class BugsFragment extends Fragment {
             Log.e("BugsOrHogsFragment", "unable to get activity");
         CaratApplication app = (CaratApplication) getActivity().getApplication();
         final ExpandableListView lv = (ExpandableListView) ll.findViewById(R.id.expandable_bugs_list);
-        lv.setAdapter(new ExpandListAdapter(lv, app, CaratApplication.getStorage().getHogReport()));
-       /*if (isBugs) {
-            if (CaratApplication.getStorage().bugsIsEmpty())
-                return;
-            else lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.getStorage().getBugReport()));
+        if (CaratApplication.getStorage().bugsIsEmpty()) {
+            return;
         } else {
-           lv.setAdapter(new HogsBugsAdapter(app, CaratApplication.getStorage().getHogReport()));
-       } */
+            lv.setAdapter(new ExpandListAdapter(lv, app, CaratApplication.getStorage().getBugReport()));
+        }
 
     }
 

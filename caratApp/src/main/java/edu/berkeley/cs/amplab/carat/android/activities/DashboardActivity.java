@@ -19,24 +19,23 @@ import edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment;
 public class DashboardActivity extends ActionBarActivity {
 
     private String batteryLife;
+    private String bugAmount, hogAmount, actionsAmount;
     private int jScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setValues();
         getStatsFromServer();
-        setJScore();
-        setBatteryLife();
         setContentView(R.layout.activity_dashboard);
-        DashboardFragment dashboardFragment = new DashboardFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_holder, dashboardFragment).commit();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        DashboardFragment dashboardFragment = new DashboardFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_holder, dashboardFragment).commit();
     }
 
     @Override
@@ -79,6 +78,13 @@ public class DashboardActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void setValues() {
+        setJScore();
+        setBatteryLife();
+        setBugAmount();
+        setHogAmount();
+        setActionsAmount();
+    }
     public void setUpActionBar(int resId, boolean canGoBack) {
         getSupportActionBar().setIcon(R.drawable.back_arrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(canGoBack);
@@ -100,6 +106,31 @@ public class DashboardActivity extends ActionBarActivity {
 
     public int getJScore() {
         return jScore;
+    }
+
+    public String getBugAmount() {
+        return bugAmount;
+    }
+
+    public void setBugAmount() {
+        bugAmount = String.valueOf(CaratApplication.getStorage().getBugReport().length);
+    }
+
+    public String getHogAmount() {
+        return hogAmount;
+    }
+
+    public void setHogAmount() {
+        String.valueOf(CaratApplication.getStorage().getHogReport().length);
+    }
+
+    public String getActionsAmount() {
+        return actionsAmount;
+    }
+
+    // TODO GET ACTIONS
+    public void setActionsAmount() {
+        actionsAmount = "4";
     }
 
     public void replaceFragment(Fragment fragment, String tag) {

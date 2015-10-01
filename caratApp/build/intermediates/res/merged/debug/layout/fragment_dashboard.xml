@@ -1,226 +1,321 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="100"
     tools:context="edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="30"
-        android:background="@drawable/chart_background">
-
-        <TextView
-            android:id="@+id/jscore_title"
-            style="@style/SmallGrayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/jscore_progress_circle"
-            android:layout_centerHorizontal="true"
-            android:text="@string/jscore_title" />
-
-        <edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay
-            android:id="@+id/jscore_progress_circle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true" />
-
-        <TextView
-            android:id="@+id/updated_text"
-            style="@style/SmallGrayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
-            android:text="@string/dashboard_updated_text" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="35"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/battery_life_title"
-            style="@style/LargeBlackText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/battery_value"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:text="@string/active_battery_life" />
-
-        <TextView
-            android:id="@+id/battery_value"
-            style="@style/LargeBoldBlackText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:text="@string/battery_life_value" />
-
-        <Button
-            android:id="@+id/my_device_button"
-            style="@style/MyDeviceButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/battery_value"
-            android:layout_centerHorizontal="true"
-            android:text="@string/my_device" />
-
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="35"
-        android:background="@color/lightgray"
-        android:gravity="bottom"
-        android:orientation="horizontal"
-        android:paddingBottom="20dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:weightSum="4">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
 
-        <LinearLayout
-            android:id="@+id/bugs_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-
-            <ImageView
-                android:id="@+id/bugs_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/dashboard_bug_icon" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:background="@drawable/chart_background">
 
             <TextView
-                style="@style/LargeOrangeText"
+                android:id="@+id/jscore_title"
+                style="@style/SmallGrayText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:text="@string/bugs_amount" />
+                android:layout_alignBottom="@+id/jscore_progress_circle"
+                android:layout_centerHorizontal="true"
+                android:text="@string/jscore_title" />
 
             <TextView
-                style="@style/MediumBlackText"
+                android:id="@+id/updated_text"
+                style="@style/SmallGrayText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/bugs" />
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:text="@string/dashboard_updated_text" />
 
-        </LinearLayout>
+            <edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay
+                android:id="@+id/jscore_progress_circle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="35"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/battery_life_title"
+                style="@style/LargeBlackText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/battery_value"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/active_battery_life" />
+
+            <TextView
+                android:id="@+id/battery_value"
+                style="@style/LargeBoldBlackText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/battery_life_value" />
+
+            <Button
+                android:id="@+id/my_device_button"
+                style="@style/MyDeviceButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/battery_value"
+                android:layout_centerHorizontal="true"
+                android:text="@string/my_device" />
+
+        </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/hogs_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="35"
+            android:background="@color/lightgray"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp">
+            android:paddingRight="5dp"
+            android:weightSum="4">
 
-            <ImageView
-                android:id="@+id/hogs_button"
+            <LinearLayout
+                android:id="@+id/bugs_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/dashboard_hog_icon" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-            <TextView
-                style="@style/LargeOrangeText"
+                <ImageView
+                    android:id="@+id/bugs_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/dashboard_bug_icon" />
+
+                <TextView
+                    android:id="@+id/bugs_amount"
+                    style="@style/LargeOrangeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/bugs_amount" />
+
+                <TextView
+                    style="@style/MediumBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/bugs" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/hogs_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:text="@string/hogs_amount" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
-            <TextView
-                style="@style/MediumBlackText"
+                <ImageView
+                    android:id="@+id/hogs_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/dashboard_hog_icon" />
+
+                <TextView
+                    android:id="@+id/hogs_amount"
+                    style="@style/LargeOrangeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/hogs_amount" />
+
+                <TextView
+                    style="@style/MediumBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/hogs" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/globe_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/hogs" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/globe_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/dashboard_globe_icon" />
 
-        <LinearLayout
-            android:id="@+id/globe_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
+                <TextView
+                    style="@style/LargeOrangeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/view" />
 
-            <ImageView
-                android:id="@+id/globe_button"
+                <TextView
+                    style="@style/MediumBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/statistics" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/actions_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/dashboard_globe_icon" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
-            <TextView
-                style="@style/LargeOrangeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:text="@string/view" />
+                <ImageView
+                    android:id="@+id/actions_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/dashboard_actions_icon" />
 
-            <TextView
-                style="@style/MediumBlackText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/statistics" />
+                <TextView
+                    android:id="@+id/actions_amount"
+                    style="@style/LargeOrangeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/actions_amount" />
 
-        </LinearLayout>
+                <TextView
+                    style="@style/MediumBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/actions" />
 
-        <LinearLayout
-            android:id="@+id/actions_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
-
-            <ImageView
-                android:id="@+id/actions_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/dashboard_actions_icon" />
-
-            <TextView
-                style="@style/LargeOrangeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:text="@string/actions_amount" />
-
-            <TextView
-                style="@style/MediumBlackText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/actions" />
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/fragment_dashboard.xml -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="27"
+            android:gravity="right|bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/share_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitCenter"
+                android:paddingRight="20dp"
+                android:src="@drawable/share_icon"
+                 />
+
+            <RelativeLayout
+                android:id="@+id/share_bar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/orange"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/facebook_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/twitter_icon"
+                    android:src="@drawable/facebook_icon"/>
+
+                <ImageView
+                    android:id="@+id/twitter_icon"
+                    android:layout_width="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:layout_height="50dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/twitter_icon"/>
+
+                <ImageView
+                    android:id="@+id/email_icon"
+                    android:layout_width="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:layout_height="50dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/twitter_icon"
+                    android:src="@drawable/email_icon"/>
+
+                <ImageView
+                    android:id="@+id/hide_button"
+                    android:layout_width="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:layout_height="50dp"
+                    android:paddingRight="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@android:drawable/ic_menu_delete"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"></LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/fragment_dashboard.xml -->
