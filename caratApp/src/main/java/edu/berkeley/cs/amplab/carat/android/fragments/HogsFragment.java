@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
@@ -21,7 +22,10 @@ import edu.berkeley.cs.amplab.carat.android.ui.adapters.ExpandListAdapter;
 public class HogsFragment extends Fragment {
 
     private DashboardActivity dashboardActivity;
-    private LinearLayout ll;
+    private LinearLayout mainFrame;
+    private RelativeLayout hogsHeader;
+    private LinearLayout noHogsLayout;
+    private ExpandableListView expandableListView;
 
     @Override
     public void onAttach(Activity activity) {
@@ -32,8 +36,8 @@ public class HogsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ll = (LinearLayout) inflater.inflate(R.layout.fragment_hogs, container, false);
-        return ll;
+        mainFrame = (LinearLayout) inflater.inflate(R.layout.fragment_hogs, container, false);
+        return mainFrame;
     }
 
     @Override
@@ -45,15 +49,31 @@ public class HogsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        initViewRefs();
         refresh();
     }
 
-    public void refresh() {
+    private void initViewRefs() {
+        noHogsLayout = (LinearLayout) mainFrame.findViewById(R.id.empty_hogs_layout);
+        hogsHeader = (RelativeLayout) mainFrame.findViewById(R.id.hogs_header);
+        expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_hogs_list);
+    }
+
+    private void refresh() {
         if (getActivity() == null)
             Log.e("BugsOrHogsFragment", "unable to get activity");
         CaratApplication app = (CaratApplication) getActivity().getApplication();
-        final ExpandableListView lv = (ExpandableListView) ll.findViewById(R.id.expandable_hogs_list);
-            lv.setAdapter(new ExpandListAdapter(lv, app, CaratApplication.getStorage().getHogReport()));
+        if (CaratApplication.getStorage().hogsIsEmpty()) {
+            noHogsLayout.setVisibility(View.VISIBLE);
+            hogsHeader.setVisibility(View.GONE);
+            expandableListView.setVisibility(View.GONE);
+            return;
+        } else {
+            noHogsLayout.setVisibility(View.GONE);
+            hogsHeader.setVisibility(View.VISIBLE);
+            expandableListView.setVisibility(View.VISIBLE);
+            expandableListView.setAdapter(new ExpandListAdapter(expandableListView, app, CaratApplication.getStorage().getHogReport()));
+        }
 
     }
 

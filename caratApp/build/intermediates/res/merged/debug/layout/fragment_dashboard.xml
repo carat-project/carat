@@ -16,14 +16,11 @@
             android:layout_weight="30"
             android:background="@drawable/chart_background">
 
-            <TextView
-                android:id="@+id/jscore_title"
-                style="@style/SmallGrayText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/jscore_progress_circle"
-                android:layout_centerHorizontal="true"
-                android:text="@string/jscore_title" />
+            <edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay
+                android:id="@+id/jscore_progress_circle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true" />
 
             <TextView
                 android:id="@+id/updated_text"
@@ -34,12 +31,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"
                 android:text="@string/dashboard_updated_text" />
-
-            <edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay
-                android:id="@+id/jscore_progress_circle"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true" />
 
         </RelativeLayout>
 
@@ -303,7 +294,7 @@
                     android:paddingRight="20dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:src="@android:drawable/ic_menu_delete"/>
+                    android:src="@drawable/close"/>
 
             </RelativeLayout>
 

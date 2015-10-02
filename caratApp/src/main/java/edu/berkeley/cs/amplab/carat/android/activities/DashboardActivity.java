@@ -172,11 +172,11 @@ public class DashboardActivity extends ActionBarActivity {
             prefetchData.execute();
     }
 
-    public void shareInFacebook() {
+    public void shareOnFacebook() {
 
     }
 
-    public void shareInTwitter() {
+    public void shareOnTwitter() {
 
     }
 

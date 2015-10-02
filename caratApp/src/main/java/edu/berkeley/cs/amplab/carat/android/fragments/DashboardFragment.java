@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
@@ -33,10 +35,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private ImageView actionsButton;
     private Button myDeviceButton;
     private ImageView shareButton;
+    private ImageView facebookButton;
+    private ImageView twitterButton;
+    private ImageView emailButton;
+    private ImageView closeButton;
     private TextView bugAmountText;
     private TextView hogAmountText;
     private TextView actionsAmountText;
     private TextView batteryText;
+    private TextView updatedText;
     private CircleDisplay cd;
 
     @Override
@@ -49,9 +56,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ll = (RelativeLayout) inflater.inflate(R.layout.fragment_dashboard, container, false);
-        initViewRefs();
-        initListeners();
-        generateJScoreCircle();
         return ll;
     }
 
@@ -59,14 +63,18 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         dashboardActivity.setUpActionBar(R.string.title_activity_dashboard, getFragmentManager().getBackStackEntryCount() > 0);
-        setValues();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        initViewRefs();
+        initListeners();
+        generateJScoreCircle();
         shareButton.setVisibility(View.VISIBLE);
         shareBar.setVisibility(View.GONE);
+        setValues();
     }
 
     private void initViewRefs() {
@@ -82,6 +90,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         bugAmountText = (TextView) ll.findViewById(R.id.bugs_amount);
         hogAmountText = (TextView) ll.findViewById(R.id.hogs_amount);
         actionsAmountText = (TextView) ll.findViewById(R.id.actions_amount);
+        updatedText = (TextView) ll.findViewById(R.id.updated_text);
+        facebookButton = (ImageView) ll.findViewById(R.id.facebook_icon);
+        twitterButton = (ImageView) ll.findViewById(R.id.twitter_icon);
+        emailButton = (ImageView) ll.findViewById(R.id.email_icon);
+        closeButton = (ImageView) ll.findViewById(R.id.hide_button);
+
     }
 
     private void initListeners() {
@@ -91,13 +105,17 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         actionsButton.setOnClickListener(this);
         myDeviceButton.setOnClickListener(this);
         shareButton.setOnClickListener(this);
+        facebookButton.setOnClickListener(this);
+        twitterButton.setOnClickListener(this);
+        emailButton.setOnClickListener(this);
+        closeButton.setOnClickListener(this);
     }
 
     private void generateJScoreCircle() {
         cd = (CircleDisplay) ll.findViewById(R.id.jscore_progress_circle);
         cd.setValueWidthPercent(10f);
-        cd.setTextSize(30f);
-        cd.setColor(Color.rgb(97, 65, 11));
+        cd.setTextSize(40f);
+        cd.setColor(Color.argb(255, 247, 167, 27));
         cd.setDrawText(true);
         cd.setDrawInnerCircle(true);
         cd.setFormatDigits(0);
@@ -116,6 +134,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         bugAmountText.setText(dashboardActivity.getBugAmount());
         hogAmountText.setText(dashboardActivity.getHogAmount());
         actionsAmountText.setText(dashboardActivity.getActionsAmount());
+        updatedText.setText(dashboardActivity.getLastUpdated());
     }
 
     @Override
@@ -148,6 +167,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.hide_button:
                 shareButton.setVisibility(View.VISIBLE);
                 shareBar.setVisibility(View.GONE);
+                break;
+            case R.id.facebook_icon:
+                dashboardActivity.shareOnFacebook();
+                break;
+            case R.id.twitter_icon:
+                dashboardActivity.shareOnTwitter();
+                break;
+            case R.id.email_icon:
+                dashboardActivity.shareViaEmail();
                 break;
             default:
                 break;

@@ -64,6 +64,9 @@
 <string name="hog_list_message">Hogs are apps that are correlated with higher energy use across
         many devices. Closing hogs may improve battery life.</string>
 
+    <string name="no_hogs_title">ASD</string>
+    <string name="no_hogs_message">ASDASDLOL</string>
+
 
     <!--
 These are the same for all languages. When translating,

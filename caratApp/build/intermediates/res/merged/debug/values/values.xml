@@ -451,6 +451,8 @@
     <eat-comment/>
     <string name="no_bugs_message">ASDASDLOL</string>
     <string name="no_bugs_title">ASD</string>
+    <string name="no_hogs_message">ASDASDLOL</string>
+    <string name="no_hogs_title">ASD</string>
     <string name="notrunning">not running</string>
     <string name="notsupported">is not supported on this device, sorry.</string>
     <string name="off">OFF</string>
