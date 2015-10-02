@@ -167,6 +167,10 @@ public class CircleDisplay extends View implements OnGestureListener {
             setupBox();
         }
 
+        if (mCustomText != null) {
+            mDimAlpha = 100;
+        }
+
         drawWholeCircle(canvas);
 
         drawValue(canvas);

@@ -56,6 +56,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ll = (RelativeLayout) inflater.inflate(R.layout.fragment_dashboard, container, false);
+        initViewRefs();
+        initListeners();
+        generateJScoreCircle();
         return ll;
     }
 
@@ -69,15 +72,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onResume() {
         super.onResume();
-        initViewRefs();
-        initListeners();
-        generateJScoreCircle();
         shareButton.setVisibility(View.VISIBLE);
         shareBar.setVisibility(View.GONE);
         setValues();
     }
 
     private void initViewRefs() {
+        cd = (CircleDisplay) ll.findViewById(R.id.jscore_progress_circle);
         shareBar = (RelativeLayout) ll.findViewById(R.id.share_bar);
         shareBar.setVisibility(View.GONE);
         bugButton = (ImageView) ll.findViewById(R.id.bugs_button);
@@ -112,7 +113,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
 
     private void generateJScoreCircle() {
-        cd = (CircleDisplay) ll.findViewById(R.id.jscore_progress_circle);
         cd.setValueWidthPercent(10f);
         cd.setTextSize(40f);
         cd.setColor(Color.argb(255, 247, 167, 27));

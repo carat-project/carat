@@ -461,7 +461,7 @@ public final class SamplingLibrary {
 			// Log.v("meminfo", "Load: " + load + " 1:" + toks[1]);
 			int inact = Integer.parseInt(toks[1]);
 			reader.close();
-			return new int[] { total - free, free, inact, act };
+			return new int[] { free, total, act, inact };
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}

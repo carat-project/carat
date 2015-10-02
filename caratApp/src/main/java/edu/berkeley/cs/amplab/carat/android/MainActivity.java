@@ -121,6 +121,8 @@ public class MainActivity extends ActionBarActivity {
 
         // !p.blaa after testing
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        getStatsFromServer();
         if (p.getBoolean(getResources().getString(R.string.save_accept_eula), false)) {
             Intent i = new Intent(this, TutorialActivity.class);
             this.startActivityForResult(i, Constants.REQUESTCODE_ACCEPT_EULA);
@@ -135,7 +137,7 @@ public class MainActivity extends ActionBarActivity {
         setTitleNormal();
 
         // read and load the preferences specified in our xml preference file
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+
 
         // Log.d(TAG, "about to initialize fragments");
         preInittializeFragments();
@@ -496,15 +498,15 @@ public class MainActivity extends ActionBarActivity {
         /**
          * This may take minutes, so refresh summary frag here again.
          */
-        /*
+
         new Thread() {
             public void run() {
                 ((CaratApplication) getApplication()).refreshUi();
                 // This should only run if we are on that tab, so onResume of SummaryFragment should be enough.
-                //refreshSummaryFragment();
+                refreshSummaryFragment();
             }
         }.start();
-        */
+
         super.onResume();
     }
 

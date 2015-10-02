@@ -33,16 +33,25 @@ public class DashboardActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.statusbar_color));
-        };
+        }
+        ;
         super.onCreate(savedInstanceState);
-        setValues();
-        getStatsFromServer();
         setContentView(R.layout.activity_dashboard);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
     protected void onResume() {
+        new Thread() {
+            public void run() {
+                ((CaratApplication) getApplication()).refreshUi();
+                // This should only run if we are on that tab, so onResume of SummaryFragment should be enough.
+                //refreshSummaryFragment();
+            }
+        }.start();
         super.onResume();
+        setValues();
         fragmentManager = getSupportFragmentManager();
         DashboardFragment dashboardFragment = new DashboardFragment();
         fragmentManager.beginTransaction()
@@ -141,7 +150,12 @@ public class DashboardActivity extends ActionBarActivity {
     }
 
     public void setBugAmount() {
-        bugAmount = String.valueOf(CaratApplication.getStorage().getBugReport().length);
+        if (CaratApplication.getStorage().getBugReport() != null) {
+            bugAmount = String.valueOf(CaratApplication.getStorage().getBugReport().length);
+        } else {
+            bugAmount = "0";
+        }
+
     }
 
     public String getHogAmount() {
@@ -149,7 +163,11 @@ public class DashboardActivity extends ActionBarActivity {
     }
 
     public void setHogAmount() {
-        hogAmount = String.valueOf(CaratApplication.getStorage().getHogReport().length);
+        if (CaratApplication.getStorage().getHogReport() != null) {
+            hogAmount = String.valueOf(CaratApplication.getStorage().getHogReport().length);
+        } else {
+            hogAmount = "0";
+        }
     }
 
     public String getActionsAmount() {
