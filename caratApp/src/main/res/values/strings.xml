@@ -67,6 +67,9 @@
     <string name="no_hogs_title">ASD</string>
     <string name="no_hogs_message">ASDASDLOL</string>
 
+    <!-- MY DEVICE -->
+    <string name="your_jscore_title">YOUR J-SCORE</string>
+
 
     <!--
 These are the same for all languages. When translating,
