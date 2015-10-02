@@ -485,7 +485,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         // Log.i(TAG, "Resumed. Refreshing UI");
-        tracker.trackUser("caratresumed", getTitle());
+      //  tracker.trackUser("caratresumed", getTitle());
 
         // if statistics data for the summary fragment is not already fetched,
         // and the device has an Internet connection, fetch statistics and then refresh the summary fragment
@@ -496,6 +496,7 @@ public class MainActivity extends ActionBarActivity {
         /**
          * This may take minutes, so refresh summary frag here again.
          */
+        /*
         new Thread() {
             public void run() {
                 ((CaratApplication) getApplication()).refreshUi();
@@ -503,6 +504,7 @@ public class MainActivity extends ActionBarActivity {
                 //refreshSummaryFragment();
             }
         }.start();
+        */
         super.onResume();
     }
 

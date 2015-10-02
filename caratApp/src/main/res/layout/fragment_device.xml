@@ -154,8 +154,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="6"
                     android:layout_marginBottom="10dp"
+                    android:layout_weight="6"
                     android:orientation="vertical">
 
                     <TextView
@@ -180,8 +180,8 @@
                     android:layout_height="0dp"
                     android:layout_weight="3"
                     android:gravity="bottom"
-                    android:paddingRight="15dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingRight="15dp">
 
                     <Button
                         android:id="@+id/process_list_button"
@@ -202,6 +202,8 @@
             android:layout_height="0dp"
             android:layout_weight="35"
             android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:weightSum="3">
 
             <RelativeLayout
@@ -216,6 +218,39 @@
                     android:layout_alignParentTop="true"
                     android:background="@color/lightgray" />
 
+                <SurfaceView
+                    android:id="@+id/memory_used_surface"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/memory_used_info_button"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@+id/memory_used_title" />
+
+                <TextView
+                    android:id="@+id/memory_used_title"
+                    style="@style/LargeBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="5dp"
+                    android:text="@string/memory_used_title" />
+
+                <Button
+                    android:id="@+id/memory_used_info_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/InfoButtonStyle"
+                    android:text="i"
+                    android:layout_alignBottom="@+id/memory_used_surface"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
 
             </RelativeLayout>
 
@@ -224,6 +259,38 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
+                <SurfaceView
+                    android:id="@+id/memory_active_surface"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/memory_active_button"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@+id/memory_active_title" />
+
+                <TextView
+                    android:id="@+id/memory_active_title"
+                    style="@style/LargeBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="5dp"
+                    android:text="@string/memory_active_title" />
+
+                <Button
+                    android:id="@+id/memory_active_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/InfoButtonStyle"
+                    android:text="i"
+                    android:layout_alignBottom="@+id/memory_active_surface"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
 
@@ -232,6 +299,38 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
+                <SurfaceView
+                    android:id="@+id/cpu_usage_surface"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/cpu_usage_button"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@+id/cpu_usage_title" />
+
+                <TextView
+                    style="@style/LargeBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="5dp"
+                    android:text="@string/cpu_usage_title"
+                    android:id="@+id/cpu_usage_title" />
+
+                <Button
+                    android:id="@+id/cpu_usage_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/InfoButtonStyle"
+                    android:text="i"
+                    android:layout_alignBottom="@+id/cpu_usage_surface"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
 
@@ -239,7 +338,7 @@
 
     </LinearLayout>
 
-
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -257,6 +356,6 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp" />
         </LinearLayout>
-    </LinearLayout>
+    </LinearLayout> -->
 
 </RelativeLayout>
