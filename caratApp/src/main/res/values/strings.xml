@@ -69,6 +69,15 @@
 
     <!-- MY DEVICE -->
     <string name="your_jscore_title">YOUR J-SCORE</string>
+    <string name="carat_id_title">Carat ID</string>
+    <string name="os_version_title">OS Versio</string>
+    <string name="device_model_title">Device model</string>
+    <string name="device_usage_title">DEVICE USAGE</string>
+    <string name="what_are_jscore_numbers">What are j-score numbers?</string>
+    <string name="process_list_title">PROCESS LIST</string>
+    <string name="memory_used_title">Memory used</string>
+    <string name="memory_active_title">Memory active</string>
+    <string name="cpu_usage_title">CPU usage</string>
 
 
     <!--

@@ -157,7 +157,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 dashboardActivity.replaceFragment(actionsFragment, Constants.FRAGMENT_ACTIONS_TAG);
                 break;
             case R.id.my_device_button:
-                MyDeviceFragment myDeviceFragment = new MyDeviceFragment();
+                DeviceFragment myDeviceFragment = new DeviceFragment();
                 dashboardActivity.replaceFragment(myDeviceFragment, Constants.FRAGMENT_MY_DEVICE_TAG);
                 break;
             case R.id.share_button:
@@ -165,8 +165,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 shareBar.setVisibility(View.VISIBLE);
                 break;
             case R.id.hide_button:
-                shareButton.setVisibility(View.VISIBLE);
                 shareBar.setVisibility(View.GONE);
+                shareButton.setVisibility(View.VISIBLE);
                 break;
             case R.id.facebook_icon:
                 dashboardActivity.shareOnFacebook();

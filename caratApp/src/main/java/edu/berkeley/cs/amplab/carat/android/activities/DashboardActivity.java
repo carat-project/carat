@@ -12,12 +12,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.EnableInternetDialogFragment;
+import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 
 public class DashboardActivity extends ActionBarActivity {
 
@@ -29,6 +31,9 @@ public class DashboardActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.statusbar_color));
+        };
         super.onCreate(savedInstanceState);
         setValues();
         getStatsFromServer();
@@ -51,6 +56,10 @@ public class DashboardActivity extends ActionBarActivity {
         inflater.inflate(R.menu.menu_carat, menu);
         return super.onCreateOptionsMenu(menu);
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
     }
 
     @Override
@@ -88,9 +97,12 @@ public class DashboardActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        SamplingLibrary.resetRunningProcessInfo();
         if (fragmentManager != null) {
+            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             fragmentManager = null;
         }
+
     }
 
     private void setValues() {
@@ -213,6 +225,7 @@ public class DashboardActivity extends ActionBarActivity {
             fragmentManager.popBackStack();
         }
     }
+
 
 }
 

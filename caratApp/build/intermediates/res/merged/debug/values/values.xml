@@ -44,6 +44,9 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="actionbar_color">#F8B03A</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="background">#FFFFFFFF</color>
@@ -168,6 +171,7 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="silver">#DDDDDD</color>
+    <color name="statusbar_color">#F7A71B</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
@@ -367,6 +371,7 @@
         Restarting a buggy app may improve battery life.</string>
     <string name="bugs">BUGS</string>
     <string name="bugs_amount">7</string>
+    <string name="carat_id_title">Carat ID</string>
     <string name="caratid">Carat ID:</string>
     <string name="chart_bugs">Bugs</string>
     <string name="chart_hogs">Hogs</string>
@@ -382,9 +387,12 @@
     <string name="connection_error">Offline. Click to turn on Wifi.</string>
     <string name="copied">Copied:</string>
     <string name="cpu">CPU Usage:</string>
+    <string name="cpu_usage_title">CPU usage</string>
     <string name="dashboard_updated_text">Updated just now</string>
     <string name="default_type">Foreground App</string>
     <string name="dev">Device model:</string>
+    <string name="device_model_title">Device model</string>
+    <string name="device_usage_title">DEVICE USAGE</string>
     <string name="deviceinfo">About this device</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_enable">Enable Wifi</string>
@@ -431,6 +439,8 @@
     <string name="killed">killed</string>
     <string name="locationsettings">Location Settings</string>
     <string name="memactive">Memory active:</string>
+    <string name="memory_active_title">Memory active</string>
+    <string name="memory_used_title">Memory used</string>
     <string name="memoryinfo">Memory Information</string>
     <string name="memused">Memory used:</string>
     <string name="menu_about">About</string>
@@ -461,6 +471,7 @@
     <string name="onothermodels">On other models</string>
     <string name="opening">Opening </string>
     <string name="os">OS</string>
+    <string name="os_version_title">OS Versio</string>
     <string name="osinfo">About this OS version</string>
     <string name="osupgrade">Upgrade the OS</string>
     <string name="osver">OS version:</string>
@@ -473,6 +484,7 @@
     <string name="priorityservice">Service</string>
     <string name="prioritysuggestion">Suggestion</string>
     <string name="priorityvisible">Visible App</string>
+    <string name="process_list_title">PROCESS LIST</string>
     <string name="processlist">Running processes</string>
     <string name="questionnaire">Please help us improve Carat</string>
     <string name="questionnaire2">Answer a questionnaire (takes 5–10 minutes)</string>
@@ -543,6 +555,7 @@
     <string name="version_name">1.12</string>
     <string name="view">VIEW</string>
     <string name="viewprocess">View Process List</string>
+    <string name="what_are_jscore_numbers">What are j-score numbers?</string>
     <string name="what_are_these_numbers">What are these numbers?</string>
     <string name="wifi_only_key">wifionly</string>
     <string name="wifionly">Use WiFi only</string>
@@ -552,6 +565,7 @@
     <string name="withos">With</string>
     <string name="withotheroses">With other OS</string>
     <string name="withsimilarapps">With similar apps</string>
+    <string name="your_jscore_title">YOUR J-SCORE</string>
     <string name="zero">0</string>
     <string name="zeroh">0h 0m 0s</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
@@ -1551,13 +1565,14 @@
         <item name="android:textColor">@color/white</item>
     </style>
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/darkblue</item>
+        <item name="android:background">@color/actionbar_color</item>
         <item name="android:textColor">@color/white</item>
 
         <!-- Support library compatibility -->
-        <item name="background">@color/blue</item>
+        <item name="background">@color/actionbar_color</item>
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>
         <item name="homeAsUpIndicator">@drawable/back_arrow</item>
+        <item name="colorPrimaryDark">@color/statusbar_color</item>
     </style>
     <style name="MyActionBarTabText" parent="@style/Widget.AppCompat.ActionBar.TabText">
         <item name="android:textColor">@color/white</item>
@@ -1687,6 +1702,18 @@
         <item name="android:widgetLayout">@layout/preference_widget_switch</item>
         <item name="asb_switchTextOn">@string/switch_on</item>
         <item name="asb_switchTextOff">@string/switch_off</item>
+    </style>
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="ProcessListButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/button_rounded_orange</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>

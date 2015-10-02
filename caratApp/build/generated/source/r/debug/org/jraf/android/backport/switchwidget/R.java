@@ -25,13 +25,13 @@ public final class R {
 		public static final int asb_track = 0x7f010048;
 	}
 	public static final class color {
-		public static final int background_holo_light = 0x7f0c0009;
-		public static final int bright_foreground_disabled_holo_dark = 0x7f0c000e;
-		public static final int bright_foreground_holo_dark = 0x7f0c0011;
-		public static final int dim_foreground_disabled_holo_dark = 0x7f0c0020;
-		public static final int dim_foreground_holo_dark = 0x7f0c0023;
-		public static final int primary_text_holo_dark = 0x7f0c005f;
-		public static final int secondary_text_holo_dark = 0x7f0c0060;
+		public static final int background_holo_light = 0x7f0c000a;
+		public static final int bright_foreground_disabled_holo_dark = 0x7f0c000f;
+		public static final int bright_foreground_holo_dark = 0x7f0c0012;
+		public static final int dim_foreground_disabled_holo_dark = 0x7f0c0021;
+		public static final int dim_foreground_holo_dark = 0x7f0c0024;
+		public static final int primary_text_holo_dark = 0x7f0c0061;
+		public static final int secondary_text_holo_dark = 0x7f0c0062;
 	}
 	public static final class dimen {
 		public static final int preference_icon_minWidth = 0x7f080012;
@@ -61,22 +61,22 @@ public final class R {
 		public static final int switch_track_holo_light = 0x7f020080;
 	}
 	public static final class id {
-		public static final int switchWidget = 0x7f0d00c0;
+		public static final int switchWidget = 0x7f0d00c4;
 	}
 	public static final class layout {
 		public static final int preference = 0x7f030034;
 		public static final int preference_widget_switch = 0x7f030036;
 	}
 	public static final class string {
-		public static final int switch_off = 0x7f0600c6;
-		public static final int switch_on = 0x7f0600c7;
+		public static final int switch_off = 0x7f0600ce;
+		public static final int switch_on = 0x7f0600cf;
 	}
 	public static final class style {
 		public static final int Preference_SwitchPreference = 0x7f0900aa;
-		public static final int TextAppearance_Holo_Light_Widget_Switch = 0x7f0900d7;
-		public static final int TextAppearance_Holo_Widget_Switch = 0x7f0900d8;
-		public static final int Widget_Holo_CompoundButton_Switch = 0x7f090130;
-		public static final int Widget_Holo_Light_CompoundButton_Switch = 0x7f090131;
+		public static final int TextAppearance_Holo_Light_Widget_Switch = 0x7f0900d8;
+		public static final int TextAppearance_Holo_Widget_Switch = 0x7f0900d9;
+		public static final int Widget_Holo_CompoundButton_Switch = 0x7f090131;
+		public static final int Widget_Holo_Light_CompoundButton_Switch = 0x7f090132;
 	}
 	public static final class styleable {
 		public static final int[] Android = { 0x01010095, 0x01010096, 0x01010097, 0x01010098, 0x01010099, 0x0101009a, 0x0101009b };

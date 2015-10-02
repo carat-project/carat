@@ -9,26 +9,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal|bottom"
-        android:orientation="vertical"
-        android:weightSum="100">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="90">
-
-            <edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay
-                android:id="@+id/jscore_progress_circle"
-                android:layout_width="140dp"
-                android:layout_height="140dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="100">
 
@@ -59,6 +39,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="19">
@@ -66,30 +47,89 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="5">
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/LargeBlackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/carat_id_title" />
+
+                    <TextView
+                        android:id="@+id/carat_id_value"
+                        style="@style/SmallGrayText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="saoijf98j23902jf" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="5">
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/LargeBlackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/os_version_title" />
+
+                    <TextView
+                        android:id="@+id/os_version_value"
+                        style="@style/SmallGrayText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5.0.1" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="5">
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/LargeBlackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/device_model_title" />
+
+                    <TextView
+                        android:id="@+id/device_model_value"
+                        style="@style/SmallGrayText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nexus 5" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="5">
+                    android:layout_weight="5"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/LargeBoldBlackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/device_usage_title" />
 
                 </LinearLayout>
+
 
             </LinearLayout>
 
@@ -101,25 +141,57 @@
                 android:weightSum="19">
 
                 <TextView
+                    style="@style/SmallGrayText"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="6">
+                    android:layout_weight="5"
+                    android:gravity="bottom"
+                    android:paddingBottom="7dp"
+                    android:text="@string/what_are_jscore_numbers">
 
                 </TextView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="6">
+                    android:layout_weight="6"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/LargeBlackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/active_battery_life" />
+
+                    <TextView
+                        android:id="@+id/battery_value"
+                        style="@style/LargeBoldBlackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/battery_life_value" />
 
                 </LinearLayout>
 
-                <Button
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="5">
+                    android:layout_weight="3"
+                    android:gravity="bottom"
+                    android:paddingRight="15dp"
+                    android:orientation="vertical">
 
-                </Button>
+                    <Button
+                        android:id="@+id/process_list_button"
+                        style="@style/ProcessListButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/battery_value"
+                        android:layout_weight="3"
+                        android:text="@string/process_list_title"></Button>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -137,6 +209,13 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/lightgray" />
+
 
             </RelativeLayout>
 
@@ -158,6 +237,26 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="89">
+
+            <edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay
+                android:id="@+id/jscore_progress_circle"
+                android:layout_width="120dp"
+                android:layout_height="120dp" />
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
