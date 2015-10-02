@@ -9,15 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-
-import java.util.HashMap;
+import android.widget.RelativeLayout;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
-import edu.berkeley.cs.amplab.carat.android.lists.HogsBugsAdapter;
-import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.ui.adapters.ExpandListAdapter;
 
 /**
@@ -26,7 +22,10 @@ import edu.berkeley.cs.amplab.carat.android.ui.adapters.ExpandListAdapter;
 public class BugsFragment extends Fragment {
 
     private DashboardActivity dashboardActivity;
-    private LinearLayout ll;
+    private LinearLayout mainFrame;
+    private LinearLayout noBugsLayout;
+    private RelativeLayout bugsHeader;
+    private ExpandableListView expandableListView;
 
     @Override
     public void onAttach(Activity activity) {
@@ -38,8 +37,8 @@ public class BugsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ll = (LinearLayout) inflater.inflate(R.layout.fragment_bugs, container, false);
-        return ll;
+        mainFrame = (LinearLayout) inflater.inflate(R.layout.fragment_bugs, container, false);
+        return mainFrame;
     }
 
     @Override
@@ -51,18 +50,30 @@ public class BugsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        initViewRefs();
         refresh();
     }
 
-    public void refresh() {
+    private void initViewRefs() {
+        noBugsLayout = (LinearLayout) mainFrame.findViewById(R.id.empty_bugs_layout);
+        bugsHeader = (RelativeLayout) mainFrame.findViewById(R.id.bugs_header);
+        expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_bugs_list);
+    }
+
+    private void refresh() {
         if (getActivity() == null)
             Log.e("BugsOrHogsFragment", "unable to get activity");
         CaratApplication app = (CaratApplication) getActivity().getApplication();
-        final ExpandableListView lv = (ExpandableListView) ll.findViewById(R.id.expandable_bugs_list);
         if (CaratApplication.getStorage().bugsIsEmpty()) {
+            noBugsLayout.setVisibility(View.VISIBLE);
+            bugsHeader.setVisibility(View.GONE);
+            expandableListView.setVisibility(View.GONE);
             return;
         } else {
-            lv.setAdapter(new ExpandListAdapter(lv, app, CaratApplication.getStorage().getBugReport()));
+            noBugsLayout.setVisibility(View.GONE);
+            bugsHeader.setVisibility(View.VISIBLE);
+            expandableListView.setVisibility(View.VISIBLE);
+            expandableListView.setAdapter(new ExpandListAdapter(expandableListView, app, CaratApplication.getStorage().getBugReport()));
         }
 
     }

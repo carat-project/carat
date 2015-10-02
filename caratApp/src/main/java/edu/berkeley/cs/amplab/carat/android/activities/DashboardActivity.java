@@ -1,6 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,14 +14,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment;
+import edu.berkeley.cs.amplab.carat.android.fragments.EnableInternetDialogFragment;
 
 public class DashboardActivity extends ActionBarActivity {
 
     private String batteryLife;
     private String bugAmount, hogAmount, actionsAmount;
     private int jScore;
+
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +38,11 @@ public class DashboardActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        fragmentManager = getSupportFragmentManager();
         DashboardFragment dashboardFragment = new DashboardFragment();
-        getSupportFragmentManager().beginTransaction()
+        fragmentManager.beginTransaction()
                 .add(R.id.fragment_holder, dashboardFragment).commit();
+
     }
 
     @Override
@@ -50,7 +57,7 @@ public class DashboardActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch(id) {
+        switch (id) {
             case R.id.action_wifi_only:
                 break;
             case R.id.action_hide_apps:
@@ -60,14 +67,14 @@ public class DashboardActivity extends ActionBarActivity {
             case R.id.action_about:
                 break;
             case android.R.id.home:
-                FragmentManager fm = getSupportFragmentManager();
-                if (fm.getBackStackEntryCount() > 0) {
-                    if (fm.getBackStackEntryCount() == 1) {
-                        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                    }
-                    fm.popBackStack();
+                if (fragmentManager.getBackStackEntryCount() > 0) {
+                    fragmentManager.popBackStack();
+                } else {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }
                 return true;
+            default:
+                break;
 
         }
 
@@ -78,6 +85,14 @@ public class DashboardActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (fragmentManager != null) {
+            fragmentManager = null;
+        }
+    }
+
     private void setValues() {
         setJScore();
         setBatteryLife();
@@ -85,6 +100,7 @@ public class DashboardActivity extends ActionBarActivity {
         setHogAmount();
         setActionsAmount();
     }
+
     public void setUpActionBar(int resId, boolean canGoBack) {
         getSupportActionBar().setIcon(R.drawable.back_arrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(canGoBack);
@@ -121,7 +137,7 @@ public class DashboardActivity extends ActionBarActivity {
     }
 
     public void setHogAmount() {
-        String.valueOf(CaratApplication.getStorage().getHogReport().length);
+        hogAmount = String.valueOf(CaratApplication.getStorage().getHogReport().length);
     }
 
     public String getActionsAmount() {
@@ -137,7 +153,6 @@ public class DashboardActivity extends ActionBarActivity {
         // use a fragment tag, so that later on we can find the currently displayed fragment
         final String FRAGMENT_TAG = tag;
         // replace the fragment, using a fragment transaction
-        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2 || !isDestroyed()) {
@@ -157,5 +172,48 @@ public class DashboardActivity extends ActionBarActivity {
             prefetchData.execute();
     }
 
+    public void shareInFacebook() {
+
+    }
+
+    public void shareInTwitter() {
+
+    }
+
+    public void shareViaEmail() {
+
+    }
+
+    public String getLastUpdated() {
+        String lastUpdated;
+        long lastUpdateTime = CaratApplication.myDeviceData.getLastReportsTimeMillis();
+        long min = CaratApplication.myDeviceData.getFreshnessMinutes();
+        long hour = CaratApplication.myDeviceData.getFreshnessHours();
+
+        if (lastUpdateTime <= 0)
+            lastUpdated = getString(R.string.neverupdated);
+        else if (min == 0)
+            lastUpdated = getString(R.string.updatedjustnow);
+        else
+            lastUpdated = getString(R.string.updated)
+                    + " " + hour + "h " + min + "m " + getString(R.string.ago);
+
+        return lastUpdated;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (fragmentManager.getBackStackEntryCount() == 0) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        } else {
+            fragmentManager.popBackStack();
+        }
+    }
+
 }
+
 

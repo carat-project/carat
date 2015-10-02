@@ -108,7 +108,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     private void setValues() {
         if (dashboardActivity.getJScore() == -1 || dashboardActivity.getJScore() == 0) {
-            cd.setCustomText(new String[]{"N", "/", "A"});
+            cd.setCustomText(new String[]{"N/A"});
         } else {
             cd.showValue((float) dashboardActivity.getJScore(), 99f, false);
         }

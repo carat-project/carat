@@ -449,6 +449,8 @@
     <string name="next_button_label">Next</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="no_bugs_message">ASDASDLOL</string>
+    <string name="no_bugs_title">ASD</string>
     <string name="notrunning">not running</string>
     <string name="notsupported">is not supported on this device, sorry.</string>
     <string name="off">OFF</string>

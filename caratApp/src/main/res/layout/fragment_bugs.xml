@@ -9,6 +9,7 @@
     android:weightSum="100">
 
     <RelativeLayout
+        android:id="@+id/bugs_header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="15"
@@ -39,5 +40,37 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:groupIndicator="@null"></ExpandableListView>
+
+    <LinearLayout
+        android:id="@+id/empty_bugs_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:orientation="vertical"
+        android:layout_weight="100"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/empty_bugs_icon"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MediumBoldBlackText"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="@string/no_bugs_title"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/MediumBlackText"
+            android:text="@string/no_bugs_message"/>
+
+    </LinearLayout>
 
 </LinearLayout>
