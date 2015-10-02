@@ -7,4 +7,11 @@
     tools:context="edu.berkeley.cs.amplab.carat.android.fragments.ActionsFragment"
     android:background="@color/white">
 
+    <ExpandableListView
+        android:id="@+id/actions_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ExpandableListView>
+
 </LinearLayout><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/fragment_actions.xml -->

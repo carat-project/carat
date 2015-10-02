@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
-import edu.berkeley.cs.amplab.carat.android.ui.adapters.ExpandListAdapter;
+import edu.berkeley.cs.amplab.carat.android.ui.adapters.HogBugExpandListAdapter;
 
 /**
  * Created by Valto on 30.9.2015.
@@ -73,7 +73,7 @@ public class BugsFragment extends Fragment {
             noBugsLayout.setVisibility(View.GONE);
             bugsHeader.setVisibility(View.VISIBLE);
             expandableListView.setVisibility(View.VISIBLE);
-            expandableListView.setAdapter(new ExpandListAdapter(expandableListView, app, CaratApplication.getStorage().getBugReport()));
+            expandableListView.setAdapter(new HogBugExpandListAdapter(expandableListView, app, CaratApplication.getStorage().getBugReport()));
         }
 
     }
