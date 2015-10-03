@@ -104,7 +104,14 @@ void onUncaughtException(NSException *exception)
 // called when the user has accepted the EULA
 - (BOOL)proceedWithConsent {
     DLog(@"Proceeding with consent");
-    [self startStoryboard];
+    //[self startStoryboard];
+    if (self.window == nil){
+        self.dashBoardViewController = [[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil];
+        
+        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+        self.window.rootViewController = self.dashBoardViewController;
+        [self.window makeKeyAndVisible];
+    }
 /*
     if (self.window == nil)
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];

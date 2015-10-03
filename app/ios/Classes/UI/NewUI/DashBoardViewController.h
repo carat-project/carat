@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 #import "ScoreView.h"
+#import "ShareView.h"
+#import "LanguageUtil.h"
 
 @interface DashBoardViewController : BaseViewController
 

@@ -27,6 +27,11 @@
 		66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15051A2A6A8E00153746 /* infoButton@2x.png */; };
 		66EC15081A2A6A8E00153746 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15061A2A6A8E00153746 /* infoButton.png */; };
 		894F09FF1BBBF28B00B092BD /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F09FE1BBBF28B00B092BD /* ScoreView.m */; settings = {ASSET_TAGS = (); }; };
+		894F34931BC0414B00E0702A /* LanguageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F34921BC0414B00E0702A /* LanguageUtil.m */; settings = {ASSET_TAGS = (); }; };
+		894F34951BC042E700E0702A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 894F34941BC042E700E0702A /* InfoPlist.strings */; settings = {ASSET_TAGS = (); }; };
+		895265CC1BBD00CB00F54FEC /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 895265CB1BBD00CB00F54FEC /* ShareView.m */; settings = {ASSET_TAGS = (); }; };
+		895265CF1BBD031700F54FEC /* ShareBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 895265CE1BBD031700F54FEC /* ShareBar.m */; settings = {ASSET_TAGS = (); }; };
+		895265D11BBD3CBD00F54FEC /* DashBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895265D01BBD3CBD00F54FEC /* DashBoardViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89685C751BBAA8440078C4C6 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		89685C781BBAAF720078C4C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89685C771BBAAF720078C4C6 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		89685C7F1BBAB44B0078C4C6 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89685C7E1BBAB44B0078C4C6 /* BaseViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -197,6 +202,14 @@
 		894F09FB1BBBC33400B092BD /* AppLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLayout.h; sourceTree = "<group>"; };
 		894F09FD1BBBF28B00B092BD /* ScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreView.h; sourceTree = "<group>"; };
 		894F09FE1BBBF28B00B092BD /* ScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreView.m; sourceTree = "<group>"; };
+		894F34911BC0414B00E0702A /* LanguageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageUtil.h; sourceTree = "<group>"; };
+		894F34921BC0414B00E0702A /* LanguageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageUtil.m; sourceTree = "<group>"; };
+		894F34941BC042E700E0702A /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		895265CA1BBD00CB00F54FEC /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
+		895265CB1BBD00CB00F54FEC /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
+		895265CD1BBD031700F54FEC /* ShareBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareBar.h; sourceTree = "<group>"; };
+		895265CE1BBD031700F54FEC /* ShareBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareBar.m; sourceTree = "<group>"; };
+		895265D01BBD3CBD00F54FEC /* DashBoardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashBoardViewController.xib; sourceTree = "<group>"; };
 		89685C751BBAA8440078C4C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89685C771BBAAF720078C4C6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		89685C7D1BBAB44B0078C4C6 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -725,6 +738,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				894F34901BC0405500E0702A /* Utils */,
 				894F09F91BBBBB2400B092BD /* Constants */,
 				C7547EAA19963CFD007A01CF /* Globals.h */,
 				C7547EAB19963CFD007A01CF /* Globals.m */,
@@ -823,6 +837,7 @@
 				C7547F2B19963CFD007A01CF /* DetailView.xib */,
 				AB41CE15144F78450090CC09 /* img */,
 				89685C751BBAA8440078C4C6 /* Images.xcassets */,
+				894F34941BC042E700E0702A /* InfoPlist.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -864,8 +879,21 @@
 			children = (
 				894F09FD1BBBF28B00B092BD /* ScoreView.h */,
 				894F09FE1BBBF28B00B092BD /* ScoreView.m */,
+				895265CA1BBD00CB00F54FEC /* ShareView.h */,
+				895265CB1BBD00CB00F54FEC /* ShareView.m */,
+				895265CD1BBD031700F54FEC /* ShareBar.h */,
+				895265CE1BBD031700F54FEC /* ShareBar.m */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		894F34901BC0405500E0702A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				894F34911BC0414B00E0702A /* LanguageUtil.h */,
+				894F34921BC0414B00E0702A /* LanguageUtil.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		89685C791BBAB3030078C4C6 /* NewUI */ = {
@@ -873,6 +901,7 @@
 			children = (
 				89685C7D1BBAB44B0078C4C6 /* BaseViewController.h */,
 				89685C7E1BBAB44B0078C4C6 /* BaseViewController.m */,
+				895265D01BBD3CBD00F54FEC /* DashBoardViewController.xib */,
 				89685C801BBABA2C0078C4C6 /* DashBoardViewController.h */,
 				89685C811BBABA2C0078C4C6 /* DashBoardViewController.m */,
 				894F09FC1BBBF17600B092BD /* Components */,
@@ -1573,6 +1602,7 @@
 				C75488C319963D04007A01CF /* Default-Portrait.png in Resources */,
 				C75488D619963D04007A01CF /* 32-iphone.png in Resources */,
 				C75488D119963D04007A01CF /* icon144.png in Resources */,
+				894F34951BC042E700E0702A /* InfoPlist.strings in Resources */,
 				ABC07A1B14859C7100FCC2C2 /* about.png in Resources */,
 				ABC07A2014859E7600FCC2C2 /* AboutView.xib in Resources */,
 				ABC07A331486C21A00FCC2C2 /* 53-house.png in Resources */,
@@ -1580,6 +1610,7 @@
 				AB9B580B148FEA10004F92F2 /* 37x-Checkmark.png in Resources */,
 				AB9B580D148FF31D004F92F2 /* 37x-X.png in Resources */,
 				C75488D019963D04007A01CF /* icon120.png in Resources */,
+				895265D11BBD3CBD00F54FEC /* DashBoardViewController.xib in Resources */,
 				AB7A112D14E06520004D155C /* ActionView.xib in Resources */,
 				AB244AF814E10D660055FCD6 /* ActionItemCell.xib in Resources */,
 				C75488BC19963D04007A01CF /* ConsentView.xib in Resources */,
@@ -1661,6 +1692,7 @@
 				C74130D419EDC72D00A1E8CE /* ProcessListViewController.m in Sources */,
 				C754889419963D04007A01CF /* ProcessItemCell.m in Sources */,
 				C74130C519EDC6EA00A1E8CE /* SDImageCache.h in Sources */,
+				895265CC1BBD00CB00F54FEC /* ShareView.m in Sources */,
 				C74130C619EDC6EA00A1E8CE /* SDImageCache.m in Sources */,
 				C74130C719EDC6EA00A1E8CE /* SDImageCacheDelegate.h in Sources */,
 				C74130C819EDC6EA00A1E8CE /* SDWebImageCompat.h in Sources */,
@@ -1683,11 +1715,13 @@
 				28216C970DB411BC00E5133A /* BugReportViewController.m in Sources */,
 				AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */,
 				C754889219963D04007A01CF /* MBProgressHUD.m in Sources */,
+				895265CF1BBD031700F54FEC /* ShareBar.m in Sources */,
 				AB41CDFD144E3B990090CC09 /* Reachability.m in Sources */,
 				AB41CE06144F56D40090CC09 /* CaratAppDelegate_iPhone.m in Sources */,
 				AB41CE09144F56E90090CC09 /* CaratAppDelegate_iPad.m in Sources */,
 				AB7999121455C1C5000AE9FE /* HogReportViewController.m in Sources */,
 				6676D13C1A4DDCDB0002FC1F /* CaratConstants.m in Sources */,
+				894F34931BC0414B00E0702A /* LanguageUtil.m in Sources */,
 				AB7999151455C23E000AE9FE /* CurrentViewController.m in Sources */,
 				C14F5C30145BD4D300087F74 /* AsyncSocket.m in Sources */,
 				C14F5C36145BDA9900087F74 /* AsyncUdpSocket.m in Sources */,
