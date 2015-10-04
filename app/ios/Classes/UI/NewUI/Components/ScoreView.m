@@ -74,7 +74,6 @@
                                               options:NSStringDrawingUsesLineFragmentOrigin
                                            attributes:attributes
                                               context:nil];
-    
     attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:textSizeSmall]};
     // NSString class method: boundingRectWithSize:options:attributes:context is
     // available only on ios7.0 sdk.
@@ -84,15 +83,39 @@
                                                  context:nil];
     
 
-    // Text Drawing
     CGRect textRect = CGRectMake((rect.size.width / 2.0) - scoreSize.size.width/2.0, (rect.size.height / 2.0) - scoreSize.size.height/2.0, scoreSize.size.width, scoreSize.size.height);
     CGRect labelRect = CGRectMake((rect.size.width / 2.0) - labelTextSize.size.width/2.0, CGRectGetMaxY(textRect), labelTextSize.size.width, labelTextSize.size.height);
     
     [[UIColor blackColor] setFill];
-    [textContent drawInRect: textRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: textSize] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+// Text Drawing
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:textSize];
     
-    [C_LIGHT_GRAY setFill];
-    [_title drawInRect: labelRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: textSizeSmall] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+    /// Make a copy of the default paragraph style
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    attributes = @{ NSFontAttributeName: font,
+                    NSParagraphStyleAttributeName: paragraphStyle};
+    
+    [textContent drawInRect:textRect withAttributes:attributes];
+
+    font = [UIFont fontWithName:@"HelveticaNeue" size:textSizeSmall];
+    
+    attributes = @{ NSFontAttributeName: font,
+                    NSParagraphStyleAttributeName: paragraphStyle,
+                    NSForegroundColorAttributeName: C_LIGHT_GRAY};
+    [_title drawInRect:labelRect withAttributes:attributes];
+    
+   
+    /*
+     Deprecated
+     [textContent drawInRect: textRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: textSize] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+     
+     [C_LIGHT_GRAY setFill];
+
+     [_title drawInRect: labelRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: textSizeSmall] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+     */
 }
 
 

@@ -26,9 +26,12 @@
 		66D41BCB1A8F8EF800044C66 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D41BCA1A8F8EF800044C66 /* settings.png */; };
 		66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15051A2A6A8E00153746 /* infoButton@2x.png */; };
 		66EC15081A2A6A8E00153746 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15061A2A6A8E00153746 /* infoButton.png */; };
+		8948F9CD1BC17E16002A27BD /* DashboardNavigationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8948F9CC1BC17E16002A27BD /* DashboardNavigationButton.xib */; settings = {ASSET_TAGS = (); }; };
+		8948F9D01BC182F9002A27BD /* DashboardNavigationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948F9CF1BC182F9002A27BD /* DashboardNavigationButton.m */; settings = {ASSET_TAGS = (); }; };
+		8948F9D21BC19A3F002A27BD /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8948F9D11BC19A3F002A27BD /* TutorialViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		8948F9D51BC19A67002A27BD /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8948F9D41BC19A67002A27BD /* TutorialViewController.m */; settings = {ASSET_TAGS = (); }; };
 		894F09FF1BBBF28B00B092BD /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F09FE1BBBF28B00B092BD /* ScoreView.m */; settings = {ASSET_TAGS = (); }; };
-		894F34931BC0414B00E0702A /* LanguageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 894F34921BC0414B00E0702A /* LanguageUtil.m */; settings = {ASSET_TAGS = (); }; };
-		894F34951BC042E700E0702A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 894F34941BC042E700E0702A /* InfoPlist.strings */; settings = {ASSET_TAGS = (); }; };
+		894F34951BC042E700E0702A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 894F34941BC042E700E0702A /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
 		895265CC1BBD00CB00F54FEC /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 895265CB1BBD00CB00F54FEC /* ShareView.m */; settings = {ASSET_TAGS = (); }; };
 		895265CF1BBD031700F54FEC /* ShareBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 895265CE1BBD031700F54FEC /* ShareBar.m */; settings = {ASSET_TAGS = (); }; };
 		895265D11BBD3CBD00F54FEC /* DashBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895265D01BBD3CBD00F54FEC /* DashBoardViewController.xib */; settings = {ASSET_TAGS = (); }; };
@@ -198,13 +201,17 @@
 		66EC15051A2A6A8E00153746 /* infoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoButton@2x.png"; sourceTree = "<group>"; };
 		66EC15061A2A6A8E00153746 /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoButton.png; sourceTree = "<group>"; };
 		79232538B6627BDD4D603C66 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8948F9CC1BC17E16002A27BD /* DashboardNavigationButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardNavigationButton.xib; sourceTree = "<group>"; };
+		8948F9CE1BC182F9002A27BD /* DashboardNavigationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardNavigationButton.h; sourceTree = "<group>"; };
+		8948F9CF1BC182F9002A27BD /* DashboardNavigationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardNavigationButton.m; sourceTree = "<group>"; };
+		8948F9D11BC19A3F002A27BD /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
+		8948F9D31BC19A67002A27BD /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		8948F9D41BC19A67002A27BD /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		894F09FA1BBBBB8500B092BD /* AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppColors.h; sourceTree = "<group>"; };
 		894F09FB1BBBC33400B092BD /* AppLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLayout.h; sourceTree = "<group>"; };
 		894F09FD1BBBF28B00B092BD /* ScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreView.h; sourceTree = "<group>"; };
 		894F09FE1BBBF28B00B092BD /* ScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreView.m; sourceTree = "<group>"; };
-		894F34911BC0414B00E0702A /* LanguageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageUtil.h; sourceTree = "<group>"; };
-		894F34921BC0414B00E0702A /* LanguageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageUtil.m; sourceTree = "<group>"; };
-		894F34941BC042E700E0702A /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		894F34941BC042E700E0702A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		895265CA1BBD00CB00F54FEC /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		895265CB1BBD00CB00F54FEC /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		895265CD1BBD031700F54FEC /* ShareBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareBar.h; sourceTree = "<group>"; };
@@ -738,7 +745,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				894F34901BC0405500E0702A /* Utils */,
 				894F09F91BBBBB2400B092BD /* Constants */,
 				C7547EAA19963CFD007A01CF /* Globals.h */,
 				C7547EAB19963CFD007A01CF /* Globals.m */,
@@ -837,7 +843,7 @@
 				C7547F2B19963CFD007A01CF /* DetailView.xib */,
 				AB41CE15144F78450090CC09 /* img */,
 				89685C751BBAA8440078C4C6 /* Images.xcassets */,
-				894F34941BC042E700E0702A /* InfoPlist.strings */,
+				894F34941BC042E700E0702A /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -883,17 +889,14 @@
 				895265CB1BBD00CB00F54FEC /* ShareView.m */,
 				895265CD1BBD031700F54FEC /* ShareBar.h */,
 				895265CE1BBD031700F54FEC /* ShareBar.m */,
+				8948F9CC1BC17E16002A27BD /* DashboardNavigationButton.xib */,
+				8948F9CE1BC182F9002A27BD /* DashboardNavigationButton.h */,
+				8948F9CF1BC182F9002A27BD /* DashboardNavigationButton.m */,
+				8948F9D11BC19A3F002A27BD /* TutorialViewController.xib */,
+				8948F9D31BC19A67002A27BD /* TutorialViewController.h */,
+				8948F9D41BC19A67002A27BD /* TutorialViewController.m */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		894F34901BC0405500E0702A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				894F34911BC0414B00E0702A /* LanguageUtil.h */,
-				894F34921BC0414B00E0702A /* LanguageUtil.m */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		89685C791BBAB3030078C4C6 /* NewUI */ = {
@@ -1579,6 +1582,7 @@
 				C7548BBF19963D04007A01CF /* procmanager2.png in Resources */,
 				C704AE621A03B90200E4F13C /* twologo.png in Resources */,
 				2840D7CE1179279E00D7F93C /* ReportView.xib in Resources */,
+				8948F9D21BC19A3F002A27BD /* TutorialViewController.xib in Resources */,
 				AB41CE1C1450BC060090CC09 /* hog.png in Resources */,
 				C75488D519963D04007A01CF /* icon76.png in Resources */,
 				AB41CE2E145229FE0090CC09 /* CurrentView.xib in Resources */,
@@ -1602,8 +1606,9 @@
 				C75488C319963D04007A01CF /* Default-Portrait.png in Resources */,
 				C75488D619963D04007A01CF /* 32-iphone.png in Resources */,
 				C75488D119963D04007A01CF /* icon144.png in Resources */,
-				894F34951BC042E700E0702A /* InfoPlist.strings in Resources */,
+				894F34951BC042E700E0702A /* Localizable.strings in Resources */,
 				ABC07A1B14859C7100FCC2C2 /* about.png in Resources */,
+				8948F9CD1BC17E16002A27BD /* DashboardNavigationButton.xib in Resources */,
 				ABC07A2014859E7600FCC2C2 /* AboutView.xib in Resources */,
 				ABC07A331486C21A00FCC2C2 /* 53-house.png in Resources */,
 				C75488E219963D04007A01CF /* InstructionView.xib in Resources */,
@@ -1696,6 +1701,7 @@
 				C74130C619EDC6EA00A1E8CE /* SDImageCache.m in Sources */,
 				C74130C719EDC6EA00A1E8CE /* SDImageCacheDelegate.h in Sources */,
 				C74130C819EDC6EA00A1E8CE /* SDWebImageCompat.h in Sources */,
+				8948F9D51BC19A67002A27BD /* TutorialViewController.m in Sources */,
 				C74130C919EDC6EA00A1E8CE /* SDWebImageDecoder.h in Sources */,
 				C74130CA19EDC6EA00A1E8CE /* SDWebImageDecoder.m in Sources */,
 				C754889B19963D04007A01CF /* SDWebImageDownloader.m in Sources */,
@@ -1704,6 +1710,7 @@
 				89685C821BBABA2C0078C4C6 /* DashBoardViewController.m in Sources */,
 				C74130CE19EDC6EA00A1E8CE /* SDWebImageManagerDelegate.h in Sources */,
 				C754889D19963D04007A01CF /* SDWebImagePrefetcher.m in Sources */,
+				8948F9D01BC182F9002A27BD /* DashboardNavigationButton.m in Sources */,
 				C74130D019EDC6EA00A1E8CE /* UIButton+WebCache.h in Sources */,
 				C74130D119EDC6EA00A1E8CE /* UIButton+WebCache.m in Sources */,
 				C754889F19963D04007A01CF /* UIImageView+WebCache.m in Sources */,
@@ -1721,7 +1728,6 @@
 				AB41CE09144F56E90090CC09 /* CaratAppDelegate_iPad.m in Sources */,
 				AB7999121455C1C5000AE9FE /* HogReportViewController.m in Sources */,
 				6676D13C1A4DDCDB0002FC1F /* CaratConstants.m in Sources */,
-				894F34931BC0414B00E0702A /* LanguageUtil.m in Sources */,
 				AB7999151455C23E000AE9FE /* CurrentViewController.m in Sources */,
 				C14F5C30145BD4D300087F74 /* AsyncSocket.m in Sources */,
 				C14F5C36145BDA9900087F74 /* AsyncUdpSocket.m in Sources */,

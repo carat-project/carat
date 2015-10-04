@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "ScoreView.h"
 #import "ShareView.h"
-#import "LanguageUtil.h"
+#import "DashboardNavigationButton.h"
 
 @interface DashBoardViewController : BaseViewController
 
