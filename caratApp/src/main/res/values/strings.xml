@@ -3,6 +3,18 @@
 
     <!-- NEW -->
 
+    <!-- EXPLANATIONS -->
+    <string name="jscore_explanation">J-Score is adsasdasdasdadsadsadadsadadsadsadsadasd</string>
+    <string name="memory_used_explanation">Memory used VOUVOUVOU</string>
+    <string name="memory_active_explanation">Memory active Memory active Memory active Memory active
+        Memory active Memory active Memory active Memory active Memory active </string>
+    <string name="cpu_usage_explanation">BUUJAA! asdsadsa asdsadsa asdsadsa
+        asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa </string>
+    <string name="jscore_dialog_title">J-SCORE</string>
+    <string name="what_are_these_numbers_title">What are these numbers?</string>
+    <string name="what_are_these_numbers_explanation">Expected benefit is the amount of battery life
+        that fixing the hog/bug is expected to yield. Fixing hogs means killing the app and using
+        it less, while fixing a bug may mean just...</string>
 
     <!-- TUTORIAL -->
     <string name="tutorial_accept">ACCEPT</string>
@@ -57,8 +69,10 @@
     <string name="bug_list_message">Bugs are apps that use a lot of energy on a small number of devices, including yours.
         Restarting a buggy app may improve battery life.</string>
 
-    <string name="no_bugs_title">ASD</string>
-    <string name="no_bugs_message">ASDASDLOL</string>
+    <string name="no_bugs_title">You have no bugs.</string>
+    <string name="no_bugs_message">Please check back in a week.\n\n
+        If your apps are behaving normally, there will be no bugs here.\n\n
+        When an app starts to use significantly more energy on your device than on others, it will show up here.</string>
 
     <!-- HOGS -->
     <string name="hog_list_message">Hogs are apps that are correlated with higher energy use across
@@ -114,6 +128,10 @@
         single energy anomaly.</string>
     <string name="global_general_popular_title">POPULAR DEVICE MODELS</string>
     <string name="global_general_android">Android</string>
+
+    <!-- ACTIONS -->
+    <string name="stop_app_title">STOP</string>
+    <string name="app_category_title">Foreground App</string>
 
     <!--
 These are the same for all languages. When translating,

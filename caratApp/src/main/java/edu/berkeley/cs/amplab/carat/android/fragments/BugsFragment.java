@@ -74,7 +74,8 @@ public class BugsFragment extends Fragment {
             noBugsLayout.setVisibility(View.GONE);
             bugsHeader.setVisibility(View.VISIBLE);
             expandableListView.setVisibility(View.VISIBLE);
-            expandableListView.setAdapter(new HogBugExpandListAdapter(expandableListView, app, CaratApplication.getStorage().getBugReport()));
+            expandableListView.setAdapter(new HogBugExpandListAdapter((DashboardActivity)getActivity(),
+                    expandableListView, app, CaratApplication.getStorage().getBugReport()));
         }
 
     }

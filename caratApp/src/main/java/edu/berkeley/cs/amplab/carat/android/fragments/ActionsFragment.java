@@ -131,7 +131,8 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
         }
 
         expandableListView = (ExpandableListView) ll.findViewById(R.id.actions_list_view);
-        expandableListView.setAdapter(new ActionsExpandListAdapter((CaratApplication) getActivity().getApplication(),
+        expandableListView.setAdapter(new ActionsExpandListAdapter(dashboardActivity,
+                expandableListView, (CaratApplication) getActivity().getApplication(),
                 hogReport, bugReport));
     }
 

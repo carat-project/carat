@@ -19,12 +19,13 @@ import org.w3c.dom.Text;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
 
 /**
  * Created by Valto on 30.9.2015.
  */
-public class DashboardFragment extends Fragment implements View.OnClickListener {
+public class DashboardFragment extends Fragment implements View.OnClickListener, CircleDisplay.SelectionListener {
 
     private DashboardActivity dashboardActivity;
     private RelativeLayout ll;
@@ -110,6 +111,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         twitterButton.setOnClickListener(this);
         emailButton.setOnClickListener(this);
         closeButton.setOnClickListener(this);
+        cd.setOnClickListener(this);
     }
 
     private void generateJScoreCircle() {
@@ -119,7 +121,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         cd.setDrawText(true);
         cd.setDrawInnerCircle(true);
         cd.setFormatDigits(0);
-        cd.setTouchEnabled(true);
+        cd.setTouchEnabled(false);
         cd.setUnit("");
         cd.setStepSize(1f);
     }
@@ -140,6 +142,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.jscore_progress_circle:
+                BaseDialog dialog = new BaseDialog(getContext(),
+                        getString(R.string.jscore_dialog_title),
+                        getString(R.string.jscore_explanation));
+                dialog.showDialog();
+                break;
             case R.id.bugs_button:
                 BugsFragment bugsFragment = new BugsFragment();
                 dashboardActivity.replaceFragment(bugsFragment, Constants.FRAGMENT_BUGS_TAG);
@@ -180,5 +188,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onSelectionUpdate(float val, float maxval) {
+
+    }
+
+    @Override
+    public void onValueSelected(float val, float maxval) {
+
     }
 }

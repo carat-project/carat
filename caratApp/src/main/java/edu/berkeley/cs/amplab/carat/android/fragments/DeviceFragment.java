@@ -21,6 +21,7 @@ import android.widget.TextView;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
 
@@ -56,6 +57,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     private float memoryActiveConverted = 0;
     private float cpuUsageConverted = 0;
     private long[] lastPoint = null;
+    private BaseDialog dialog;
 
 
     @Override
@@ -107,7 +109,10 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     }
 
     private void initListeners() {
-
+        cd.setOnClickListener(this);
+        memoryUsedButton.setOnClickListener(this);
+        memoryActiveButton.setOnClickListener(this);
+        cpuUsageButton.setOnClickListener(this);
     }
 
 
@@ -118,7 +123,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         cd.setDrawText(true);
         cd.setDrawInnerCircle(true);
         cd.setFormatDigits(0);
-        cd.setTouchEnabled(true);
+        cd.setTouchEnabled(false);
         cd.setUnit("");
         cd.setStepSize(1f);
     }
@@ -154,7 +159,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
                 if (lastPoint == null) {
                     lastPoint = currentPoint;
                 } else {
-                    cpu = (float)SamplingLibrary.getUsage(lastPoint, currentPoint);
+                    cpu = (float) SamplingLibrary.getUsage(lastPoint, currentPoint);
                 }
                 cpuUsageConverted = cpu;
 
@@ -172,7 +177,32 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
+            case R.id.jscore_progress_circle:
+                dialog = new BaseDialog(getContext(),
+                        getString(R.string.jscore_dialog_title),
+                        getString(R.string.jscore_explanation));
+                dialog.showDialog();
+                break;
+            case R.id.memory_used_info_button:
+                dialog = new BaseDialog(getContext(),
+                        getString(R.string.memory_used_title),
+                        getString(R.string.memory_used_explanation));
+                dialog.showDialog();
+                break;
+            case R.id.memory_active_button:
+                dialog = new BaseDialog(getContext(),
+                        getString(R.string.memory_active_title),
+                        getString(R.string.memory_active_explanation));
+                dialog.showDialog();
+                break;
+            case R.id.cpu_usage_button:
+                dialog = new BaseDialog(getContext(),
+                        getString(R.string.cpu_usage_title),
+                        getString(R.string.cpu_usage_explanation));
+                dialog.showDialog();
+                break;
+            default:
+                break;
         }
     }
 

@@ -23,7 +23,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import java.text.DecimalFormat;
 
 @SuppressLint("NewApi")
-public class CircleDisplay extends View implements OnGestureListener {
+public class CircleDisplay extends View implements OnGestureListener, View.OnClickListener {
 
     private static final String LOG_TAG = "CircleDisplay";
 
@@ -795,6 +795,11 @@ public class CircleDisplay extends View implements OnGestureListener {
         dist = (float) Math.sqrt(Math.pow(xDist, 2.0) + Math.pow(yDist, 2.0));
 
         return dist;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     /**

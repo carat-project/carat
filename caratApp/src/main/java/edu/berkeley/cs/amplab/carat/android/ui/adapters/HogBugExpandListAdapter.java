@@ -1,5 +1,6 @@
 package edu.berkeley.cs.amplab.carat.android.ui.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,26 +15,30 @@ import java.util.Arrays;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
+import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 
 /**
  * Created by Valto on 30.9.2015.
  */
 public class HogBugExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener {
+        ExpandableListView.OnChildClickListener, View.OnClickListener {
 
     private LayoutInflater mInflater;
     private CaratApplication a = null;
     private SimpleHogBug[] allBugsOrHogs = null;
     private ExpandableListView lv;
     private ImageView collapseIcon;
+    private DashboardActivity dashboardActivity;
     private ArrayList<ImageView> collapseTags;
 
-    public HogBugExpandListAdapter(ExpandableListView lv, CaratApplication caratApplication, SimpleHogBug[] results) {
+    public HogBugExpandListAdapter(DashboardActivity dashboardActivity, ExpandableListView lv, CaratApplication caratApplication, SimpleHogBug[] results) {
         collapseTags = new ArrayList<>();
         this.a = caratApplication;
         this.lv = lv;
         this.lv.setOnGroupExpandListener(this);
+        this.dashboardActivity = dashboardActivity;
         this.lv.setOnChildClickListener(this);
         int items = 0;
         if (results != null)
@@ -162,6 +167,8 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
         samplesWithoutValue.setText(String.valueOf(item.getSamplesWithout()));
         whatAreTheseNumbers.setText(R.string.what_are_these_numbers);
 
+        whatAreTheseNumbers.setOnClickListener(this);
+
     }
 
     private void setItemViews(View v, SimpleHogBug item, int groupPosition) {
@@ -202,10 +209,18 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
 
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-       /* v.findFocus()
-        if (v.findViewById(R.id.what_are_these_numbers)) {
-
-        }*/
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.what_are_these_numbers:
+                BaseDialog dialog = new BaseDialog(dashboardActivity,
+                        dashboardActivity.getString(R.string.what_are_these_numbers_title),
+                        dashboardActivity.getString(R.string.what_are_these_numbers_explanation));
+                dialog.showDialog();
+                break;
+        }
     }
 }
