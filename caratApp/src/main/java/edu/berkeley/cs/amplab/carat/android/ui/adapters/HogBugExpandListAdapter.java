@@ -1,7 +1,5 @@
 package edu.berkeley.cs.amplab.carat.android.ui.adapters;
 
-import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +8,13 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.model_classes.HogBug;
-import edu.berkeley.cs.amplab.carat.android.model_classes.HogBugDetails;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
-import edu.berkeley.cs.amplab.carat.thrift.Reports;
 
 /**
  * Created by Valto on 30.9.2015.
@@ -132,7 +123,7 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
         if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) a.getApplicationContext()
                     .getSystemService(a.getApplicationContext().LAYOUT_INFLATER_SERVICE);
-            convertView = inf.inflate(R.layout.bug_hog_list_item, null);
+            convertView = inf.inflate(R.layout.bug_hog_list_header, null);
         }
 
         if (allBugsOrHogs == null || groupPosition < 0

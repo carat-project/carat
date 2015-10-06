@@ -52,6 +52,7 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         ll = (LinearLayout) inflater.inflate(R.layout.fragment_actions, container, false);
         return ll;
         /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

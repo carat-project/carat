@@ -30,8 +30,8 @@ public final class R {
 		public static final int bright_foreground_holo_dark = 0x7f0c0012;
 		public static final int dim_foreground_disabled_holo_dark = 0x7f0c0021;
 		public static final int dim_foreground_holo_dark = 0x7f0c0024;
-		public static final int primary_text_holo_dark = 0x7f0c0061;
-		public static final int secondary_text_holo_dark = 0x7f0c0062;
+		public static final int primary_text_holo_dark = 0x7f0c0062;
+		public static final int secondary_text_holo_dark = 0x7f0c0063;
 	}
 	public static final class dimen {
 		public static final int preference_icon_minWidth = 0x7f080012;
@@ -61,15 +61,15 @@ public final class R {
 		public static final int switch_track_holo_light = 0x7f020081;
 	}
 	public static final class id {
-		public static final int switchWidget = 0x7f0d00ce;
+		public static final int switchWidget = 0x7f0d00db;
 	}
 	public static final class layout {
-		public static final int preference = 0x7f030034;
-		public static final int preference_widget_switch = 0x7f030036;
+		public static final int preference = 0x7f030036;
+		public static final int preference_widget_switch = 0x7f030038;
 	}
 	public static final class string {
-		public static final int switch_off = 0x7f0600ce;
-		public static final int switch_on = 0x7f0600cf;
+		public static final int switch_off = 0x7f0600e7;
+		public static final int switch_on = 0x7f0600e8;
 	}
 	public static final class style {
 		public static final int Preference_SwitchPreference = 0x7f0900ab;

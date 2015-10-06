@@ -6,7 +6,8 @@
     android:orientation="vertical"
     tools:context="edu.berkeley.cs.amplab.carat.android.fragments.BugsFragment"
     android:background="@color/white"
-    android:weightSum="100">
+    android:weightSum="100"
+    android:clickable="true">
 
     <RelativeLayout
         android:id="@+id/bugs_header"

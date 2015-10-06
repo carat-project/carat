@@ -37,6 +37,7 @@ public class BugsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         mainFrame = (LinearLayout) inflater.inflate(R.layout.fragment_bugs, container, false);
         return mainFrame;
     }

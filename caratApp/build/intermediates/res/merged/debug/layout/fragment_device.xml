@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:clickable="true"
     tools:context="edu.berkeley.cs.amplab.carat.android.fragments.DeviceFragment">
 
     <LinearLayout
@@ -237,11 +238,11 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:paddingRight="25dp"
                     android:layout_below="@+id/memory_used_title"
-                    android:scaleType="fitXY"
                     android:layout_toLeftOf="@+id/memory_used_info_button"
-                    android:src="@drawable/progress_bar"/>
+                    android:paddingRight="25dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/progress_bar" />
 
                 <TextView
                     android:id="@+id/memory_used_title"
@@ -290,11 +291,11 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:paddingRight="25dp"
                     android:layout_below="@+id/memory_active_title"
-                    android:scaleType="fitXY"
                     android:layout_toLeftOf="@+id/memory_active_button"
-                    android:src="@drawable/progress_bar"/>
+                    android:paddingRight="25dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/progress_bar" />
 
                 <TextView
                     android:id="@+id/memory_active_title"
@@ -342,11 +343,11 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:paddingRight="25dp"
                     android:layout_below="@+id/cpu_usage_title"
-                    android:scaleType="fitXY"
                     android:layout_toLeftOf="@+id/cpu_usage_button"
-                    android:src="@drawable/progress_bar"/>
+                    android:paddingRight="25dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/progress_bar" />
 
                 <TextView
                     android:id="@+id/cpu_usage_title"

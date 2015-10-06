@@ -68,10 +68,6 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainFrame = (RelativeLayout) inflater.inflate(R.layout.fragment_device, container, false);
-        initViewRefs();
-        generateJScoreCircle();
-        initListeners();
-        setValues();
         return mainFrame;
     }
 
@@ -84,6 +80,10 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     @Override
     public void onResume() {
         super.onResume();
+        initViewRefs();
+        generateJScoreCircle();
+        initListeners();
+        setValues();
     }
 
     private void initViewRefs() {
@@ -150,18 +150,18 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
             public void run() {
                 long[] currentPoint = SamplingLibrary.readUsagePoint();
 
-                double cpu = 0;
+                float cpu = 0;
                 if (lastPoint == null) {
                     lastPoint = currentPoint;
                 } else {
-                    cpu = SamplingLibrary.getUsage(lastPoint, currentPoint);
+                    cpu = (float)SamplingLibrary.getUsage(lastPoint, currentPoint);
                 }
-                cpuUsageConverted = (float) cpu;
-                Log.d("debug", "*** " + cpu);
-                drawMemoryValues();
+                cpuUsageConverted = cpu;
 
             }
         });
+        drawMemoryValues();
+
     }
 
     private void drawMemoryValues() {
@@ -213,12 +213,14 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
                 r = new RectF(0, 0, memoryActiveConverted * canvas.getWidth(), canvas.getHeight());
                 break;
             case 2:
-                r = new RectF(0, 0, cpuUsageConverted * canvas.getWidth(), canvas.getHeight());
+                r = new RectF(0, 0, 0.3f * canvas.getWidth(), canvas.getHeight());
+                //r = new RectF(0, 0, cpuUsageConverted * canvas.getWidth(), canvas.getHeight());
                 break;
             default:
                 r = new RectF(0, 0, 0, 0);
                 break;
         }
+        Log.d("debug", "*** CPU: " + cpuUsageConverted);
         canvas.drawColor(Color.argb(255, 180, 180, 180));
         Paint paint = new Paint();
         paint.setARGB(255, 75, 200, 127);

@@ -61,7 +61,7 @@
     <string name="no_bugs_message">ASDASDLOL</string>
 
     <!-- HOGS -->
-<string name="hog_list_message">Hogs are apps that are correlated with higher energy use across
+    <string name="hog_list_message">Hogs are apps that are correlated with higher energy use across
         many devices. Closing hogs may improve battery life.</string>
 
     <string name="no_hogs_title">ASD</string>
@@ -79,6 +79,41 @@
     <string name="memory_active_title">Memory active</string>
     <string name="cpu_usage_title">CPU usage</string>
 
+    <!-- ABOUT -->
+    <string name="about_general_title">Carat</string>
+    <string name="about_general_message">General about</string>
+    <string name="about_general_child_message">loremimpsaudiasmdaoploremimpsaudiasmdaop
+        loremimpsaudiasmdaoploremimpsaudiasmdaoploremimpsaudiasmdaoploremimpsaudiasmdaop</string>
+    <string name="about_actions_title">Actions</string>
+    <string name="about_actions_message">How to use Carat</string>
+    <string name="about_actions_child_message"></string>
+    <string name="about_bugs_title">Bugs</string>
+    <string name="about_bugs_message">See your bugs</string>
+    <string name="about_bugs_child_message">Bugs are apps that use a lot of energy on a small number
+        of devices, including yours. Restarting a buggy app may improve battery life.</string>
+    <string name="about_hogs_title">Hogs</string>
+    <string name="about_hogs_message">See your hogs</string>
+    <string name="about_hogs_child_message">Hogs are apps that are correlated with higher energy use across
+        many devices. Closing hogs may improve battery life.</string>
+    <string name="about_collect_title">Collect Data</string>
+    <string name="about_collect_message">Info what and how Carat collects data</string>
+    <string name="about_collect_child_message"></string>
+    <string name="about_battery_title">Active Battery Life</string>
+    <string name="about_battery_message"></string>
+    <string name="about_battery_child_message"></string>
+
+    <!-- GLOBAL RESULTS -->
+    <string name="global_general_statistics">GENERAL STATISTICS</string>
+    <string name="global_general_all_message">Out of 431,882 installed applications, 9 are energy-intensive
+        (Hogs in the Carat App) and 4 are energy anomalies (Bugs).</string>
+    <string name="global_general_android_message">Out of 295,665 installed Android applications,
+        12 are energy-intensive and 4 are energy anomalies.</string>
+    <string name="global_general_ios_message">Out of 136,217 installed iOS applications,
+        2 are energy-intensive and 4 are energy anomalies.</string>
+    <string name="global_general_users_message">Out of 644,024 users, 49 have at least a
+        single energy anomaly.</string>
+    <string name="global_general_popular_title">POPULAR DEVICE MODELS</string>
+    <string name="global_general_android">Android</string>
 
     <!--
 These are the same for all languages. When translating,

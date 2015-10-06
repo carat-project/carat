@@ -2,8 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:clickable="true"
+    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -242,10 +243,9 @@
                 android:id="@+id/share_button"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_marginRight="20dp"
                 android:scaleType="fitCenter"
-                android:paddingRight="20dp"
-                android:src="@drawable/share_icon"
-                 />
+                android:src="@drawable/share_icon" />
 
             <RelativeLayout
                 android:id="@+id/share_bar"
@@ -258,44 +258,44 @@
                     android:id="@+id/facebook_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:scaleType="fitCenter"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="30dp"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="30dp"
                     android:layout_toLeftOf="@+id/twitter_icon"
-                    android:src="@drawable/facebook_icon"/>
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/facebook_icon" />
 
                 <ImageView
                     android:id="@+id/twitter_icon"
                     android:layout_width="wrap_content"
-                    android:scaleType="fitCenter"
                     android:layout_height="50dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/twitter_icon"/>
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/twitter_icon" />
 
                 <ImageView
                     android:id="@+id/email_icon"
                     android:layout_width="wrap_content"
-                    android:scaleType="fitCenter"
                     android:layout_height="50dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_toRightOf="@+id/twitter_icon"
-                    android:src="@drawable/email_icon"/>
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/email_icon" />
 
                 <ImageView
                     android:id="@+id/hide_button"
                     android:layout_width="wrap_content"
-                    android:scaleType="fitCenter"
                     android:layout_height="50dp"
-                    android:paddingRight="20dp"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/close"/>
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/close" />
 
             </RelativeLayout>
 

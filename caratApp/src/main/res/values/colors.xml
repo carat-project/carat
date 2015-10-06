@@ -26,6 +26,7 @@
     <color name="lightgray">#F5F5F5</color>
     <color name="actionbar_color">#F8B03A</color>
     <color name="statusbar_color">#F7A71B</color>
+    <color name="yellow">#FFC600</color>
 </resources>
 
 <!-- 	<color name="green">#FF00FF00</color> -->

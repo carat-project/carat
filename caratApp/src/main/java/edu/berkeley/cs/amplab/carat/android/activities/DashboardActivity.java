@@ -15,8 +15,11 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
+import edu.berkeley.cs.amplab.carat.android.fragments.AboutFragment;
+import edu.berkeley.cs.amplab.carat.android.fragments.BugsFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.EnableInternetDialogFragment;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
@@ -83,6 +86,8 @@ public class DashboardActivity extends ActionBarActivity {
             case R.id.action_feedback:
                 break;
             case R.id.action_about:
+                AboutFragment aboutFragment = new AboutFragment();
+                replaceFragment(aboutFragment, Constants.FRAGMENT_ABOUT_TAG);
                 break;
             case android.R.id.home:
                 if (fragmentManager.getBackStackEntryCount() > 0) {

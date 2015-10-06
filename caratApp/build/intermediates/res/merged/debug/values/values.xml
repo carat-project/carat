@@ -190,6 +190,9 @@
     <eat-comment/>
     <color name="with">#f3b14d</color>
     <color name="without">#007777</color>
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="yellow">#FFC600</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
     <declare-styleable name="ActionBarLayout"><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ActionMenuItemView"><attr name="android:minWidth"/></declare-styleable>
@@ -342,6 +345,27 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="about_actions_child_message"/>
+    <string name="about_actions_message">How to use Carat</string>
+    <string name="about_actions_title">Actions</string>
+    <string name="about_battery_child_message"/>
+    <string name="about_battery_message"/>
+    <string name="about_battery_title">Active Battery Life</string>
+    <string name="about_bugs_child_message">Bugs are apps that use a lot of energy on a small number
+        of devices, including yours. Restarting a buggy app may improve battery life.</string>
+    <string name="about_bugs_message">See your bugs</string>
+    <string name="about_bugs_title">Bugs</string>
+    <string name="about_collect_child_message"/>
+    <string name="about_collect_message">Info what and how Carat collects data</string>
+    <string name="about_collect_title">Collect Data</string>
+    <string name="about_general_child_message">loremimpsaudiasmdaoploremimpsaudiasmdaop
+        loremimpsaudiasmdaoploremimpsaudiasmdaoploremimpsaudiasmdaoploremimpsaudiasmdaop</string>
+    <string name="about_general_message">General about</string>
+    <string name="about_general_title">Carat</string>
+    <string name="about_hogs_child_message">Hogs are apps that are correlated with higher energy use across
+        many devices. Closing hogs may improve battery life.</string>
+    <string name="about_hogs_message">See your hogs</string>
+    <string name="about_hogs_title">Hogs</string>
     <string name="action_settings">Settings</string>
     <string name="actions">ACTIONS</string>
     <string name="actions_amount">4</string>
@@ -419,6 +443,17 @@
     <string name="feedback">Give feedback (email)</string>
     <string name="feedbackfrom">Feedback from a</string>
     <string name="finishing">Finishing up</string>
+    <string name="global_general_all_message">Out of 431,882 installed applications, 9 are energy-intensive
+        (Hogs in the Carat App) and 4 are energy anomalies (Bugs).</string>
+    <string name="global_general_android">Android</string>
+    <string name="global_general_android_message">Out of 295,665 installed Android applications,
+        12 are energy-intensive and 4 are energy anomalies.</string>
+    <string name="global_general_ios_message">Out of 136,217 installed iOS applications,
+        2 are energy-intensive and 4 are energy anomalies.</string>
+    <string name="global_general_popular_title">POPULAR DEVICE MODELS</string>
+    <string name="global_general_statistics">GENERAL STATISTICS</string>
+    <string name="global_general_users_message">Out of 644,024 users, 49 have at least a
+        single energy anomaly.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_world">Hello world!</string>
     <string name="helpcarat">Help Carat collect data</string>
