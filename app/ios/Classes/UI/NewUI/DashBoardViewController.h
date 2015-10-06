@@ -11,6 +11,13 @@
 #import "ShareView.h"
 #import "DashboardNavigationButton.h"
 
+#import "TutorialViewController.h"
+#import "BugsViewController.h"
+#import "HogsViewController.h"
+#import "StatisticsViewController.h"
+#import "ActionsViewController.h"
+#import "MyScoreViewController.h"
+
 @interface DashBoardViewController : BaseViewController
 
 @end

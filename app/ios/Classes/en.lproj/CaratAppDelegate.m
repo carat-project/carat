@@ -19,6 +19,7 @@
 #import "BugReportViewController.h"
 #import "ConsentViewController.h"
 #import "SettingsViewController.h"
+#import "BugsViewController.h"
 #import <Socialize/Socialize.h>
 
 @implementation CaratAppDelegate
@@ -107,6 +108,9 @@ void onUncaughtException(NSException *exception)
     //[self startStoryboard];
     if (self.window == nil){
         self.dashBoardViewController = [[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil];
+        
+        //TutorialViewController *tut = [[TutorialViewController alloc] initWithNibName:@"TutorialViewController" bundle:nil];
+        //BugsViewController *bug = [[BugsViewController alloc] initWithNibName:@"BugsViewController" bundle:nil];
         
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
         self.window.rootViewController = self.dashBoardViewController;

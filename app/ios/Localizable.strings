@@ -14,3 +14,24 @@
 "MyDevice"="My Device";
 "View"="View";
 //DashBoard ends
+//Tutorial starts
+"MainTitle"="Carat Collaborative Energy Diagnosis";
+"MainDesc"="Carat is a research project of the University of Helsinki, originally created in collaboration with the AMP Lab at UC Berkeley, that helps detect and diagnose battery problems, giving you personalized recommendations.";
+"BugsDesc"="Bugs are apps that use a lot of energy on a small number of devices, including yours. Restarting a buggy app may improve battery life.";
+"HogsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Closing hogs may improve battery life.";
+"Accept"="Accept";
+"AcceptInfo"="By proceeding you accept EULA and privacy policy.";
+//Tutorial ends
+//My Device starts
+"titleScore"="YOUR J-SCORE";
+"CaratID"="Carat ID";
+"InfoJscoreLabel"="What are j-score numbers?";
+"OSversion"="OS version";
+//"BatteryLifeLabel"="Active Battery Life" dashboard
+"DeviceModel"="Device model";
+"ProcessList"="PROCESS LIST";
+"DeviceUsage"="DEVICE USAGE";
+“MemoryUsed”=“Memory used”;
+“MemoryActive”=“Memory active”;
+“CPUUsage”=“CPU Usage”;
+//My Device ends

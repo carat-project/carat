@@ -21,23 +21,37 @@
     _batteryLife = [UILabel new];
     _batteryLifeTime = [UILabel new];
     
-    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, UI_SCREEN_W, UI_TOP_NAVIGATION_BAR_HEIGHT)];
+    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 20, UI_SCREEN_W, UI_TOP_NAVIGATION_BAR_HEIGHT)];
     //do something like background color, title, etc you self
     UINavigationItem *navItem = [UINavigationItem alloc];
     navItem.title = @"Dashboard";
+    
+    UIImage *moreImage = [UIImage imageNamed:@"more_icon"];
+    UIButton *more = [UIButton buttonWithType:UIButtonTypeCustom];
+    more.bounds = CGRectMake( 0, 0, 17, 17);
+    [more setImage:moreImage forState:UIControlStateNormal];
+    [more addTarget:self action:@selector(moreIconPressed)forControlEvents: UIControlEventTouchUpInside];
+    UIBarButtonItem *moreButton = [[UIBarButtonItem alloc] initWithCustomView:more];
 
+    /*
+    [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"more_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(moreIconPressed)];
+     */
+    navItem.rightBarButtonItem = moreButton;
+    navItem.rightBarButtonItem.customView.frame = CGRectMake(UI_SCREEN_W-50, 15, 20,20);
+    
+    navbar.tintColor = C_WHITE;
     [navbar pushNavigationItem:navItem animated:false];
 
     [self.view addSubview:navbar];
     
     UIImage *img = [UIImage imageNamed:@"chart_image"];
-    CGFloat oneThirdHeight = ((UI_WINDOW_HEIGHT- UI_TOP_NAVIGATION_BAR_HEIGHT)*0.33f);
+    CGFloat oneThirdHeight = ((UI_WINDOW_HEIGHT- UI_TOP_NAVIGATION_BAR_HEIGHT - 20)*0.33f);
     UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
-    imageView.frame = CGRectMake(0,  UI_TOP_NAVIGATION_BAR_HEIGHT, UI_SCREEN_W, oneThirdHeight);
+    imageView.frame = CGRectMake(0,  UI_TOP_NAVIGATION_BAR_HEIGHT+20, UI_SCREEN_W, oneThirdHeight);
     NSLog(@"topImgHeight: %f CGRectGetMaxY(imageView.frame): %f", oneThirdHeight, CGRectGetMaxY(imageView.frame));
     [self.view addSubview:imageView];
 
-    CGFloat scoreTop = UI_TOP_NAVIGATION_BAR_HEIGHT + oneThirdHeight * 0.1f;
+    CGFloat scoreTop = UI_TOP_NAVIGATION_BAR_HEIGHT + 20 + oneThirdHeight * 0.1f;
     CGFloat scoreEdge = oneThirdHeight * 0.7f;
     CGFloat scoreLeft = (UI_SCREEN_W - scoreEdge)/2.0f;
    
@@ -83,6 +97,8 @@
     _myDeviceBtn.backgroundColor = C_ORANGE_LIGHT;
     [_myDeviceBtn setTitle:buttonText forState:UIControlStateNormal];
     [_myDeviceBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [_myDeviceBtn addTarget:self action:@selector(showMyScoreController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_myDeviceBtn];
     
     CGFloat buttonWidth = UI_SCREEN_W/4.0f;
@@ -112,7 +128,22 @@
     [self.view addSubview:hogsButton];
     [self.view addSubview:statisticsButton];
     [self.view addSubview:actionsButton];
+    
+    [self addCustomButtonOnNavBar];
 }
+
+- (void)addCustomButtonOnNavBar
+{
+    
+    
+}
+
+-(void)moreIconPressed
+{
+    NSLog(@"moreIcon pressed");
+    [self showTutorialController];
+}
+
 
 -(void)setTextLabel:(UILabel*) label text:(NSString *)text top:(CGFloat)top
 {
@@ -149,5 +180,53 @@
     [super viewWillAppear:animated];
     
 }
+
+-(void) showTutorialController
+{
+    TutorialViewController *controler = [[TutorialViewController alloc]initWithNibName:@"TutorialViewController" bundle:nil];
+    [self presentViewController:controler animated: YES completion:nil];
+    [controler release];
+}
+-(void) showBugsController
+{
+    BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
+    [self presentViewController:controler animated: YES completion:nil];
+    [controler release];
+}
+-(void) showHogsController
+{
+    HogsViewController *controler = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
+    [self presentViewController:controler animated: YES completion:nil];
+    [controler release];
+}
+-(void) showStatisticsController
+{
+    StatisticsViewController *controler = [[StatisticsViewController alloc]initWithNibName:@"StatisticsViewController" bundle:nil];
+    [self presentViewController:controler animated: YES completion:nil];
+    [controler release];
+}
+-(void) showActionsController
+{
+    ActionsViewController *controler = [[ActionsViewController alloc]initWithNibName:@"ActionsViewController" bundle:nil];
+    [self presentViewController:controler animated: YES completion:nil];
+    [controler release];
+}
+-(void) showMyScoreController
+{
+    MyScoreViewController *controler = [[MyScoreViewController alloc]initWithNibName:@"MyScoreViewController" bundle:nil];
+    [self presentViewController:controler animated: YES completion:nil];
+    [controler release];
+
+}
+
+
+- (void)dealloc {
+    [_batteryLife release];
+    [_batteryLifeTime release];
+    [_myDeviceBtn release];
+
+    [super dealloc];
+}
+
 
 @end

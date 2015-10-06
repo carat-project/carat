@@ -1,27 +1,36 @@
 //
-//  TutorialViewController.m
+//  BugsViewController.m
 //  Carat
 //
-//  Created by Jarno Petteri Laitinen on 04/10/15.
+//  Created by Jarno Petteri Laitinen on 06/10/15.
 //  Copyright © 2015 University of Helsinki. All rights reserved.
 //
 
-#import "TutorialViewController.h"
+#import "BugsViewController.h"
 
-@interface TutorialViewController ()
+@interface BugsViewController ()
 
 @end
 
-@implementation TutorialViewController
+@implementation BugsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)showMessage
+{
+    UIAlertView *helloWorldAlert = [[UIAlertView alloc]
+                                    initWithTitle:@"My First App" message:@"Hello, World!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display the Hello World Message
+    [helloWorldAlert show];
 }
 
 /*

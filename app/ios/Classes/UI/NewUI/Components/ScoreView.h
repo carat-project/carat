@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "AppColors.h"
 
+IB_DESIGNABLE
 @interface ScoreView : UIView
+
+@property (nonatomic) IBInspectable NSInteger score;
+@property (nonatomic, retain) IBInspectable NSString *scoreTitle;
 
 - (void)setTitle:(NSString*)title;
 - (void)setScore:(int) score;
