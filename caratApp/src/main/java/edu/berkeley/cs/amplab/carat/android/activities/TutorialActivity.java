@@ -1,19 +1,12 @@
 package edu.berkeley.cs.amplab.carat.android.activities;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,7 +14,6 @@ import android.widget.ImageView;
 import java.util.List;
 import java.util.Vector;
 
-import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.fragments.tutorial.BugsTutorialFragment;
@@ -88,7 +80,7 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
             SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
             p.edit().putBoolean(getString(R.string.save_accept_eula), true).commit();
             finish(); */
-            Intent i = new Intent(this, DashboardActivity.class);
+            Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         }
     }

@@ -55,7 +55,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <receiver
             android:name=".sampling.BootReceiver"
             android:enabled="true"
@@ -131,11 +130,6 @@
             android:name=".activities.TutorialActivity"
             android:label="@string/title_activity_tutorial"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activities.DashboardActivity"
-            android:label="@string/title_activity_dashboard"
             android:screenOrientation="portrait">
         </activity>
     </application>

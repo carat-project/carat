@@ -140,7 +140,7 @@ public class AppDetailsFragment extends Fragment {
 	 * value (at top), the description screen shows up
 	 */
 	private void setDescriptionWidgets(View detailsPage) {
-		View moreinfo = detailsPage.findViewById(R.id.jscore_info);
+		/*View moreinfo = detailsPage.findViewById(R.id.jscore_info);
 		View benefit = detailsPage.findViewById(R.id.benefit);
 		moreinfo.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -157,7 +157,7 @@ public class AppDetailsFragment extends Fragment {
                 if (m != null)
                     m.showHTMLFile("detailinfo", getString(R.string.moreinfo), false);
 			}
-		});
+		});*/
 	}
 	
 	private void setDetails(DetailScreenReport obj, DetailScreenReport objWithout) {

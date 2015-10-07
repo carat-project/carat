@@ -169,14 +169,14 @@ public class SummaryFragment extends ExtendedTitleFragment {
         @Override
         public void onClick(View v) {
             final MainActivity a = (MainActivity) getActivity();
-            if (a != null) {
+            /* if (a != null) {
                 if (v == v.getRootView().findViewById(R.id.summary_hogs_count)) {
                     a.replaceFragment(a.getHogsFragment(), a.getFragmentTag(4), true);
                 } else if (v == v.getRootView().findViewById(R.id.active_bl)) {
                     a.replaceFragment(a.getMydeviceFragment(), a.getFragmentTag(2), true);
                 } else
                     a.replaceFragment(a.getBugsFragment(), a.getFragmentTag(3), true);
-            }
+            } */
         }
     }
 
@@ -237,7 +237,7 @@ public class SummaryFragment extends ExtendedTitleFragment {
         xVals.add(getString(R.string.chart_hogs));
         xVals.add(getString(R.string.chart_bugs));
 
-        int wellbehaved = a.mWellbehaved;
+        int wellbehaved = 1;
         int hogs = a.mHogs;
         int bugs = a.mBugs;
 

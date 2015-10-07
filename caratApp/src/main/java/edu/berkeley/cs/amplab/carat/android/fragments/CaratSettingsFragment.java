@@ -9,7 +9,6 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceManager;
 //important: the following import command imports the class from a library project, not from android.preference.PreferenceFragment
 import android.support.v4.preference.PreferenceFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -141,9 +140,9 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "carat@cs.helsinki.fi" });
 		intent.putExtra(Intent.EXTRA_SUBJECT, "[carat] [Android] " + getString(R.string.feedbackfrom) + " "
 				+ model);
-		intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.os) + ": " + os + "\n"
+		/*intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.os) + ": " + os + "\n"
 				+ getString(R.string.model) + ": " + model + "\nCarat ID: " + uuId + "\nJ-Score: " + jscore + "\n"
-				+ mainActivity.getFullVersion() + "\n");
+				+ mainActivity.getFullVersion() + "\n"); */
 		
 		preference.setIntent(intent);
 		

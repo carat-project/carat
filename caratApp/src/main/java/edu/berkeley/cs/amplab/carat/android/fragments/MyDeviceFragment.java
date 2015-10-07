@@ -67,7 +67,7 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
         handleMemoryInfoClick(rootView);
         handleOsClick(rootView);
         handleDeviceClick(rootView);
-        handleProcessesButtonClick(rootView);
+        //handleProcessesButtonClick(rootView);
 	}
     
     private void setTextViews() {
@@ -97,7 +97,7 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
 	 * when the "view processes" button is clicked
 	 * @param rootView the current fragment's view (inflated using a layout inflater)
 	 */
-	private void handleProcessesButtonClick(View rootView) {
+	/*private void handleProcessesButtonClick(View rootView) {
 		rootView.findViewById(R.id.view_processes_button).setOnClickListener(new View.OnClickListener(){
         	@Override
             public void onClick(View v) {
@@ -105,7 +105,7 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
             	((MainActivity) getActivity()).replaceFragment(fragment, getString(R.string.processlist), false);
             }            
         });
-	}
+	}*/
 
 	/**
 	 * show battery consumptions statistics of the current OS version
@@ -193,8 +193,7 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
 		@Override
 		public void onClick(View v) {
 		    MainActivity m = ((MainActivity) getActivity());
-		    if (m != null)
-		        m.showHTMLFile(screenName, title, false);
+
 		}
 	}
     
@@ -242,7 +241,7 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
      */
     public void showOsInfo() {
     	detailsFragment = AppDetailsFragment.getInstance(Constants.Type.OS, null, false); 
-    	((MainActivity) getActivity()).replaceFragment(detailsFragment, getString(R.string.osinfo), false);
+    	//((MainActivity) getActivity()).replaceFragment(detailsFragment, getString(R.string.osinfo), false);
     }
 
     /**
@@ -250,13 +249,10 @@ public class MyDeviceFragment extends ExtendedTitleFragment {
      */
     public void showDeviceInfo() {
     	detailsFragment = AppDetailsFragment.getInstance(Constants.Type.MODEL, null, false); 
-    	((MainActivity) getActivity()).replaceFragment(detailsFragment, getString(R.string.deviceinfo), false);
+    	//((MainActivity) getActivity()).replaceFragment(detailsFragment, getString(R.string.deviceinfo), false);
     }
 
-    /**
-     * Set the device model and OS version text views
-     * @param root
-     */
+
     private void setModelAndVersion() {
         // Device model
         String model = SamplingLibrary.getModel();

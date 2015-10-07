@@ -1,6 +1,5 @@
 package edu.berkeley.cs.amplab.carat.android.fragments;
 
-import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import android.app.AlertDialog;

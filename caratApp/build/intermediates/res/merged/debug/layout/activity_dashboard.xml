@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity">
+    tools:context="edu.berkeley.cs.amplab.carat.android.MainActivity">
 
    <FrameLayout
        android:id="@+id/fragment_holder"

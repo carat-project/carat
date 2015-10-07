@@ -2,7 +2,6 @@ package edu.berkeley.cs.amplab.carat.android.utils;
 
 import java.util.HashMap;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.preference.PreferenceManager;

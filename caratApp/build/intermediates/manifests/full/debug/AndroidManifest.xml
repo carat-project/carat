@@ -133,11 +133,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
-        <activity
-            android:name="edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity"
-            android:label="@string/title_activity_dashboard"
-            android:screenOrientation="portrait" >
-        </activity>
     </application>
 
 </manifest>

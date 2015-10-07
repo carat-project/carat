@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.ui.adapters.HogBugExpandListAdapter;
 
 /**
@@ -21,7 +21,7 @@ import edu.berkeley.cs.amplab.carat.android.ui.adapters.HogBugExpandListAdapter;
  */
 public class BugsFragment extends Fragment {
 
-    private DashboardActivity dashboardActivity;
+    private MainActivity mainActivity;
     private LinearLayout mainFrame;
     private LinearLayout noBugsLayout;
     private RelativeLayout bugsHeader;
@@ -30,7 +30,7 @@ public class BugsFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.dashboardActivity = (DashboardActivity) activity;
+        this.mainActivity = (MainActivity) activity;
 
     }
 
@@ -50,7 +50,7 @@ public class BugsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        dashboardActivity.setUpActionBar(R.string.bugs, true);
+        mainActivity.setUpActionBar(R.string.bugs, true);
         initViewRefs();
         refresh();
     }
@@ -74,7 +74,7 @@ public class BugsFragment extends Fragment {
             noBugsLayout.setVisibility(View.GONE);
             bugsHeader.setVisibility(View.VISIBLE);
             expandableListView.setVisibility(View.VISIBLE);
-            expandableListView.setAdapter(new HogBugExpandListAdapter((DashboardActivity)getActivity(),
+            expandableListView.setAdapter(new HogBugExpandListAdapter((MainActivity)getActivity(),
                     expandableListView, app, CaratApplication.getStorage().getBugReport()));
         }
 

@@ -17,7 +17,7 @@ import java.io.Serializable;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
@@ -32,14 +32,14 @@ import edu.berkeley.cs.amplab.carat.android.ui.adapters.ActionsExpandListAdapter
 public class ActionsFragment extends ExtendedTitleFragment implements Serializable {
     private static final long serialVersionUID = -6034269327947014085L;
 
-    private DashboardActivity dashboardActivity;
+    private MainActivity mainActivity;
     private LinearLayout mainFrame;
     private ExpandableListView expandableListView;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.dashboardActivity = (DashboardActivity) activity;
+        this.mainActivity = (MainActivity) activity;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
     @Override
     public void onResume() {
         super.onResume();
-        dashboardActivity.setUpActionBar(R.string.actions, true);
+        mainActivity.setUpActionBar(R.string.actions, true);
         initViewRefs();
         refresh();
     }
@@ -80,7 +80,7 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
         }
 
         expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_actions_list);
-        expandableListView.setAdapter(new ActionsExpandListAdapter(dashboardActivity,
+        expandableListView.setAdapter(new ActionsExpandListAdapter(mainActivity,
                 expandableListView, (CaratApplication) getActivity().getApplication(),
                 hogReport, bugReport));
     }

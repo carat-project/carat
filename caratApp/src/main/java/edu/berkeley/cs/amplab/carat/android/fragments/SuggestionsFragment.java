@@ -48,40 +48,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-			    MainActivity m = ((MainActivity) getActivity());
-				Object o = lv.getItemAtPosition(position);
-				SimpleHogBug fullObject = (SimpleHogBug) o;
-				final String raw = fullObject.getAppName();
-				// Log.v(TAG, "Showing kill view for " + raw);
-				if (raw.equals("OsUpgrade"))
-					m.showHTMLFile("upgradeos", getString(R.string.upgradeosinfo), false);
-				//				else if (raw.equals(getString(R.string.dimscreen)))
-				//					GoToDisplayScreen();
-				//				else if (raw.equals(getString(R.string.disablewifi)))
-				//					GoToWifiScreen();
-				//				else if (raw.equals(getString(R.string.disablegps)))
-				//					GoToLocSevScreen();
-				//				else if (raw.equals(getString(R.string.disablebluetooth)))
-				//					GoToBluetoothScreen();
-				//				else if (raw.equals(getString(R.string.disablehapticfeedback)))
-				//					GoToSoundScreen();
-				//				else if (raw.equals(getString(R.string.automaticbrightness)))
-				//					GoToDisplayScreen();
-				//				else if (raw.equals(getString(R.string.disablenetwork)))
-				//					GoToMobileNetworkScreen();
-				//				else if (raw.equals(getString(R.string.disablevibration)))
-				//					GoToSoundScreen();
-				//				else if (raw.equals(getString(R.string.shortenscreentimeout)))
-				//					GoToDisplayScreen();
-				//				else if (raw.equals(getString(R.string.disableautomaticsync)))
-				//					GoToSyncScreen();
-				else if (raw.equals(getString(R.string.helpcarat))) {
-					m.showHTMLFile("collectdata", getString(R.string.collectdatainfo), false);
-				} else if (raw.equals(getString(R.string.questionnaire))) {
-					openQuestionnaire();
-				} else {
-					displayKillAppFragment(fullObject, raw);
-				}
+
 			}
 
 			/*
@@ -114,7 +81,7 @@ public class SuggestionsFragment extends ExtendedTitleFragment implements Serial
 				Fragment fragment = new KillAppFragment();
 				fragment.setArguments(args);
 
-				((MainActivity) getActivity()).replaceFragment(fragment, getString(R.string.kill)+" "+raw, false);
+				//((MainActivity) getActivity()).replaceFragment(fragment, getString(R.string.kill)+" "+raw, false);
 
 				/*
 				 * if (raw.equals("Disable bluetooth")) { double benefitOther =

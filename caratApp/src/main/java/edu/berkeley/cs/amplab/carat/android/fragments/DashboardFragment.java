@@ -10,16 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
+import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
 
 /**
@@ -27,7 +26,7 @@ import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
  */
 public class DashboardFragment extends Fragment implements View.OnClickListener, CircleDisplay.SelectionListener {
 
-    private DashboardActivity dashboardActivity;
+    private MainActivity mainActivity;
     private RelativeLayout ll;
     private RelativeLayout shareBar;
     private ImageView bugButton;
@@ -50,7 +49,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.dashboardActivity = (DashboardActivity) activity;
+        this.mainActivity = (MainActivity) activity;
     }
 
     @Override
@@ -71,7 +70,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onResume() {
         super.onResume();
-        dashboardActivity.setUpActionBar(R.string.title_activity_dashboard, false);
+        mainActivity.setUpActionBar(R.string.title_activity_dashboard, false);
         shareButton.setVisibility(View.VISIBLE);
         shareBar.setVisibility(View.GONE);
         setValues();
@@ -126,16 +125,16 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     }
 
     private void setValues() {
-        if (dashboardActivity.getJScore() == -1 || dashboardActivity.getJScore() == 0) {
+        if (mainActivity.getJScore() == -1 || mainActivity.getJScore() == 0) {
             cd.setCustomText(new String[]{"N/A"});
         } else {
-            cd.showValue((float) dashboardActivity.getJScore(), 99f, false);
+            cd.showValue((float) mainActivity.getJScore(), 99f, false);
         }
-        batteryText.setText(dashboardActivity.getBatteryLife());
-        bugAmountText.setText(dashboardActivity.getBugAmount());
-        hogAmountText.setText(dashboardActivity.getHogAmount());
-        actionsAmountText.setText(dashboardActivity.getActionsAmount());
-        updatedText.setText(dashboardActivity.getLastUpdated());
+        batteryText.setText(mainActivity.getBatteryLife());
+        bugAmountText.setText(mainActivity.getBugAmount());
+        hogAmountText.setText(mainActivity.getHogAmount());
+        actionsAmountText.setText(mainActivity.getActionsAmount());
+        updatedText.setText(mainActivity.getLastUpdated());
     }
 
     @Override
@@ -149,23 +148,23 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                 break;
             case R.id.bugs_button:
                 BugsFragment bugsFragment = new BugsFragment();
-                dashboardActivity.replaceFragment(bugsFragment, Constants.FRAGMENT_BUGS_TAG);
+                mainActivity.replaceFragment(bugsFragment, Constants.FRAGMENT_BUGS_TAG);
                 break;
             case R.id.hogs_button:
                 HogsFragment hogsFragment = new HogsFragment();
-                dashboardActivity.replaceFragment(hogsFragment, Constants.FRAGMENT_HOGS_TAG);
+                mainActivity.replaceFragment(hogsFragment, Constants.FRAGMENT_HOGS_TAG);
                 break;
             case R.id.globe_button:
                 GlobalFragment globalFragment = new GlobalFragment();
-                dashboardActivity.replaceFragment(globalFragment, Constants.FRAGMENT_GLOBAL_TAG);
+                mainActivity.replaceFragment(globalFragment, Constants.FRAGMENT_GLOBAL_TAG);
                 break;
             case R.id.actions_button:
                 ActionsFragment actionsFragment = new ActionsFragment();
-                dashboardActivity.replaceFragment(actionsFragment, Constants.FRAGMENT_ACTIONS_TAG);
+                mainActivity.replaceFragment(actionsFragment, Constants.FRAGMENT_ACTIONS_TAG);
                 break;
             case R.id.my_device_button:
                 DeviceFragment myDeviceFragment = new DeviceFragment();
-                dashboardActivity.replaceFragment(myDeviceFragment, Constants.FRAGMENT_MY_DEVICE_TAG);
+                mainActivity.replaceFragment(myDeviceFragment, Constants.FRAGMENT_MY_DEVICE_TAG);
                 break;
             case R.id.share_button:
                 shareButton.setVisibility(View.GONE);
@@ -176,13 +175,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                 shareButton.setVisibility(View.VISIBLE);
                 break;
             case R.id.facebook_icon:
-                dashboardActivity.shareOnFacebook();
+                mainActivity.shareOnFacebook();
                 break;
             case R.id.twitter_icon:
-                dashboardActivity.shareOnTwitter();
+                mainActivity.shareOnTwitter();
                 break;
             case R.id.email_icon:
-                dashboardActivity.shareViaEmail();
+                mainActivity.shareViaEmail();
                 break;
             default:
                 break;
@@ -197,5 +196,31 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onValueSelected(float val, float maxval) {
 
+    }
+
+    public void scheduleRefresh() {
+        if (mainActivity != null)
+            mainActivity.runOnUiThread(new Runnable() {
+                public void run() {
+                    View v = getView();
+                    if (v != null) {
+                        String batteryLife = CaratApplication.myDeviceData.getBatteryLife();
+                        batteryText.setText(batteryLife);
+                    }
+
+                    int hogsCount = 0;
+                    int bugsCount = 0;
+                    if (CaratApplication.getStorage() != null && v != null) {
+                        SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+                        SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
+                        if (h != null)
+                            hogsCount = h.length;
+                        if (b != null)
+                            bugsCount = b.length;
+                        hogAmountText.setText(String.valueOf(hogsCount));
+                        bugAmountText.setText(String.valueOf(bugsCount));
+                    }
+                }
+            });
     }
 }

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:2:1-143:12
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:2:1-137:12
 	package
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:3:5-51
 		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
@@ -90,7 +90,7 @@ ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManif
 	android:name
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:36:30-85
 application
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:40:5-141:19
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:40:5-135:19
 MERGED from [android_carat:androidswitchbackport:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidswitchbackport\unspecified\AndroidManifest.xml:35:5-20
 MERGED from [android_carat:androidsupportv4preferencefragment:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidsupportv4preferencefragment\unspecified\AndroidManifest.xml:24:5-20
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
@@ -133,94 +133,86 @@ ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManif
 	android:name
 		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:55:27-74
 receiver#edu.berkeley.cs.amplab.carat.android.sampling.BootReceiver
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:59:9-67:20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:58:9-66:20
 	android:enabled
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:61:13-35
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:60:13-35
 	android:label
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:63:13-48
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:62:13-48
 	android:exported
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:62:13-36
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:61:13-36
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:60:13-50
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:59:13-50
 intent-filter#android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:64:13-66:29
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:63:13-65:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:65:17-79
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:64:17-79
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:65:25-76
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:64:25-76
 receiver#edu.berkeley.cs.amplab.carat.android.sampling.Sampler
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:68:9-112:20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:67:9-111:20
 	android:enabled
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:70:13-35
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:69:13-35
 	android:label
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:72:13-42
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:71:13-42
 	android:exported
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:71:13-36
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:70:13-36
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:69:13-45
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:68:13-45
 intent-filter#android.intent.action.ACTION_POWER_CONNECTED+android.intent.action.ACTION_POWER_DISCONNECTED+android.intent.action.PACKAGE_REMOVED+android.intent.action.TIMEZONE_CHANGED+edu.berkeley.cs.amplab.carat.android.ACTION_SAMPLE
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:73:13-111:29
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:72:13-110:29
 action#android.intent.action.TIMEZONE_CHANGED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:98:17-81
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:97:17-81
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:98:25-78
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:97:25-78
 action#android.intent.action.PACKAGE_REMOVED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:99:17-80
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:98:17-80
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:99:25-77
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:98:25-77
 data
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:101:17-50
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:100:17-50
 	android:scheme
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:101:23-47
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:100:23-47
 action#android.intent.action.ACTION_POWER_CONNECTED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:107:17-87
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:106:17-87
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:107:25-84
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:106:25-84
 action#android.intent.action.ACTION_POWER_DISCONNECTED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:108:17-90
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:107:17-90
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:108:25-87
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:107:25-87
 action#edu.berkeley.cs.amplab.carat.android.ACTION_SAMPLE
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:110:17-93
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:109:17-93
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:110:25-90
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:109:25-90
 service#edu.berkeley.cs.amplab.carat.android.sampling.SamplerService
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:114:9-116:47
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:113:9-115:47
 	android:label
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:116:13-44
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:115:13-44
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:115:13-52
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:114:13-52
 receiver#edu.berkeley.cs.amplab.carat.android.sampling.InstallReceiver
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:118:9-128:20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:117:9-127:20
 	android:label
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:120:13-57
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:119:13-57
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:119:13-53
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:118:13-53
 intent-filter#android.intent.action.PACKAGE_ADDED+android.intent.action.PACKAGE_REMOVED+android.intent.action.PACKAGE_REPLACED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:121:13-127:29
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:120:13-126:29
 action#android.intent.action.PACKAGE_ADDED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:122:17-78
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:121:17-78
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:122:25-75
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:121:25-75
 action#android.intent.action.PACKAGE_REPLACED
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:124:17-81
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:123:17-81
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:124:25-78
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:123:25-78
 activity#edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:130:9-135:20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:129:9-134:20
 	android:screenOrientation
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:134:13-49
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:133:13-49
 	android:label
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:132:13-60
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:131:13-60
 	android:theme
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:133:13-69
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:132:13-69
 	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:131:13-56
-activity#edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity
-ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:136:9-140:20
-	android:screenOrientation
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:139:13-49
-	android:label
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:138:13-61
-	android:name
-		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:137:13-57
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:130:13-56

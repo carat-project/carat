@@ -43,7 +43,7 @@ public class SettingsSuggestionsFragment extends ExtendedTitleFragment implement
 				final String actionName = fullObject.getAppName();
 				// Log.v(TAG, "Showing view for " + actionName);
 				
-				if (actionName.equals("OsUpgrade") && m != null)
+				/*if (actionName.equals("OsUpgrade") && m != null)
 					m.showHTMLFile("upgradeos", getString(R.string.upgradeosinfo), false);
 				else if (actionName.equals(getString(R.string.dimscreen)))
 					GoToDisplayScreen(m);
@@ -70,7 +70,7 @@ public class SettingsSuggestionsFragment extends ExtendedTitleFragment implement
 				else if (actionName.equals(getString(R.string.helpcarat)))
 					m.showHTMLFile("collectdata", getString(R.string.collectdatainfo), false);
 				else if (actionName.equals(getString(R.string.questionnaire)))
-					openQuestionnaire();
+					openQuestionnaire(); */
 			}
 
 		});

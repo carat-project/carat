@@ -2,26 +2,22 @@ package edu.berkeley.cs.amplab.carat.android.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.model_classes.AboutItem;
-import edu.berkeley.cs.amplab.carat.android.ui.LocalizedWebView;
 import edu.berkeley.cs.amplab.carat.android.ui.adapters.AboutExpandListAdapter;
-import edu.berkeley.cs.amplab.carat.android.ui.adapters.HogBugExpandListAdapter;
 
 public class AboutFragment extends ExtendedTitleFragment {
-    private DashboardActivity dashboardActivity;
+    private MainActivity mainActivity;
     private LinearLayout mainFrame;
     private ExpandableListView expandableListView;
     private ArrayList<AboutItem> allAboutItems = new ArrayList<>();
@@ -29,7 +25,7 @@ public class AboutFragment extends ExtendedTitleFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.dashboardActivity = (DashboardActivity) activity;
+        this.mainActivity = (MainActivity) activity;
 
     }
 
@@ -49,7 +45,7 @@ public class AboutFragment extends ExtendedTitleFragment {
     @Override
     public void onResume() {
         super.onResume();
-        dashboardActivity.setUpActionBar(R.string.about, true);
+        mainActivity.setUpActionBar(R.string.about, true);
         setAboutItems();
         initViewRefs();
     }

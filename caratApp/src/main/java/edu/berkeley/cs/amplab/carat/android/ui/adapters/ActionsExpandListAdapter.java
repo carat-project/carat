@@ -6,11 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.media.Image;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -26,16 +22,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
-import edu.berkeley.cs.amplab.carat.android.Constants;
-import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
-import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
-import edu.berkeley.cs.amplab.carat.android.model_classes.HogBug;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
-import edu.berkeley.cs.amplab.carat.android.subscreens.KillAppFragment;
 
 /**
  * Created by Valto on 2.10.2015.
@@ -49,7 +40,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private LayoutInflater mInflater;
     private ExpandableListView lv;
     private ImageView collapseIcon;
-    private DashboardActivity dashboardActivity;
+    private MainActivity mainActivity;
     private Button killAppButton;
 
     private ImageView processIcon;
@@ -64,7 +55,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     private boolean locker = true;
 
-    public ActionsExpandListAdapter(DashboardActivity dashboardActivity, ExpandableListView lv, CaratApplication caratApplication,
+    public ActionsExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication,
                                     SimpleHogBug[] hogReport, SimpleHogBug[] bugReport) {
 
         this.caratApplication = caratApplication;
@@ -72,7 +63,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         this.bugReport = bugReport;
         this.lv = lv;
         this.lv.setOnGroupExpandListener(this);
-        this.dashboardActivity = dashboardActivity;
+        this.mainActivity = mainActivity;
         this.lv.setOnChildClickListener(this);
 
         for (SimpleHogBug s : hogReport) {
@@ -224,17 +215,17 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     public void killApp(SimpleHogBug fullObject) {
         final String raw = fullObject.getAppName();
-        final PackageInfo pak = SamplingLibrary.getPackageInfo(dashboardActivity, raw);
-        final String label = CaratApplication.labelForApp(dashboardActivity, raw);
+        final PackageInfo pak = SamplingLibrary.getPackageInfo(mainActivity, raw);
+        final String label = CaratApplication.labelForApp(mainActivity, raw);
 
         if (raw.equals("OsUpgrade")) {
             //m.showHTMLFile("upgradeos", dashboardActivity.getString(R.string.upgradeosinfo), false);
-        } else if (raw.equals(dashboardActivity.getString(R.string.helpcarat))) {
+        } else if (raw.equals(mainActivity.getString(R.string.helpcarat))) {
             //m.showHTMLFile("collectdata", dashboardActivity.getString(R.string.collectdatainfo), false);
-        } else if (raw.equals(dashboardActivity.getString(R.string.questionnaire))) {
+        } else if (raw.equals(mainActivity.getString(R.string.questionnaire))) {
             //openQuestionnaire();
         } else {
-            SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(dashboardActivity);
+            SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(mainActivity);
             if (p != null) {
                 String uuId = p.getString(CaratApplication.getRegisteredUuid(), "UNKNOWN");
                 HashMap<String, String> options = new HashMap<String, String>();
@@ -250,7 +241,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
             killAppButton.setEnabled(false);
             killAppButton.setText(caratApplication.getString(R.string.killed));
-            SamplingLibrary.killApp(dashboardActivity, raw, label);
+            SamplingLibrary.killApp(mainActivity, raw, label);
 
         }
     }

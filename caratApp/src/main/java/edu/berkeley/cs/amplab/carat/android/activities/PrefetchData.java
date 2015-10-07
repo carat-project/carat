@@ -14,6 +14,7 @@ import java.lang.reflect.Field;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.utils.JsonParser;
 
 public class PrefetchData extends AsyncTask<Void, Void, Void> {
@@ -23,9 +24,9 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
             mHogs = Constants.VALUE_NOT_AVAILABLE,
             mBugs = Constants.VALUE_NOT_AVAILABLE;
 
-    private DashboardActivity a = null;
+    private MainActivity a = null;
 
-    public PrefetchData(DashboardActivity a) {
+    public PrefetchData(MainActivity a) {
         this.a = a;
     }
 
@@ -103,7 +104,7 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
         // sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
         // Log.d(TAG, "asyncTask.onPstExecute(). mWellbehaved=" + mWellbehaved);
         // TODO REFRESH SUMMARY FRAGMENT
-        //refreshSummaryFragment();
+        a.refreshSummaryFragment();
     }
 
     /**

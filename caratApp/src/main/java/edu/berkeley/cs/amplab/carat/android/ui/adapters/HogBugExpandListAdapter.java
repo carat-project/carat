@@ -1,6 +1,5 @@
 package edu.berkeley.cs.amplab.carat.android.ui.adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import java.util.Arrays;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 
@@ -30,15 +29,15 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
     private SimpleHogBug[] allBugsOrHogs = null;
     private ExpandableListView lv;
     private ImageView collapseIcon;
-    private DashboardActivity dashboardActivity;
+    private MainActivity mainActivity;
     private ArrayList<ImageView> collapseTags;
 
-    public HogBugExpandListAdapter(DashboardActivity dashboardActivity, ExpandableListView lv, CaratApplication caratApplication, SimpleHogBug[] results) {
+    public HogBugExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication, SimpleHogBug[] results) {
         collapseTags = new ArrayList<>();
         this.a = caratApplication;
         this.lv = lv;
         this.lv.setOnGroupExpandListener(this);
-        this.dashboardActivity = dashboardActivity;
+        this.mainActivity = mainActivity;
         this.lv.setOnChildClickListener(this);
         int items = 0;
         if (results != null)
@@ -187,7 +186,6 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
         collapseTags.add(collapseIcon);
 
     }
-
     // TODO COLLAPSE IMAGES NOT WORKING
     @Override
     public void onGroupExpand(int groupPosition) {
@@ -216,9 +214,9 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.what_are_these_numbers:
-                BaseDialog dialog = new BaseDialog(dashboardActivity,
-                        dashboardActivity.getString(R.string.what_are_these_numbers_title),
-                        dashboardActivity.getString(R.string.what_are_these_numbers_explanation));
+                BaseDialog dialog = new BaseDialog(mainActivity,
+                        mainActivity.getString(R.string.what_are_these_numbers_title),
+                        mainActivity.getString(R.string.what_are_these_numbers_explanation));
                 dialog.showDialog();
                 break;
         }

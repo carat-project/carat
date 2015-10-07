@@ -7,7 +7,6 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,21 +15,18 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
-import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 
 /**
  * Created by Valto on 30.9.2015.
  */
 public class GlobalFragment extends Fragment implements Runnable {
 
-    private DashboardActivity dashboardActivity;
+    private MainActivity mainActivity;
     private ScrollView mainFrame;
     private boolean locker = true;
 
@@ -55,7 +51,7 @@ public class GlobalFragment extends Fragment implements Runnable {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.dashboardActivity = (DashboardActivity) activity;
+        this.mainActivity = (MainActivity) activity;
     }
 
     @Override
@@ -73,7 +69,7 @@ public class GlobalFragment extends Fragment implements Runnable {
     @Override
     public void onResume() {
         super.onResume();
-        dashboardActivity.setUpActionBar(R.string.global_results, true);
+        mainActivity.setUpActionBar(R.string.global_results, true);
         initViewRefs();
         initListeners();
         setValues();

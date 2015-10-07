@@ -14,13 +14,12 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
-import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
+import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
@@ -30,7 +29,7 @@ import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
  */
 public class DeviceFragment extends Fragment implements View.OnClickListener, Runnable {
 
-    private DashboardActivity dashboardActivity;
+    private MainActivity mainActivity;
     private RelativeLayout mainFrame;
     private CircleDisplay cd;
 
@@ -63,7 +62,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.dashboardActivity = (DashboardActivity) activity;
+        this.mainActivity = (MainActivity) activity;
     }
 
     @Override
@@ -81,7 +80,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     @Override
     public void onResume() {
         super.onResume();
-        dashboardActivity.setUpActionBar(R.string.my_device, true);
+        mainActivity.setUpActionBar(R.string.my_device, true);
         initViewRefs();
         generateJScoreCircle();
         initListeners();
@@ -129,16 +128,16 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     }
 
     private void setValues() {
-        if (dashboardActivity.getJScore() == -1 || dashboardActivity.getJScore() == 0) {
+        if (mainActivity.getJScore() == -1 || mainActivity.getJScore() == 0) {
             cd.setCustomText(new String[]{"N/A"});
         } else {
-            cd.showValue((float) dashboardActivity.getJScore(), 99f, false);
+            cd.showValue((float) mainActivity.getJScore(), 99f, false);
         }
 
         osVersion.setText(SamplingLibrary.getOsVersion());
         deviceModel.setText(SamplingLibrary.getModel());
         caratID.setText(CaratApplication.myDeviceData.getCaratId());
-        batteryLife.setText(dashboardActivity.getBatteryLife());
+        batteryLife.setText(mainActivity.getBatteryLife());
 
         setMemoryValues();
 
