@@ -15,7 +15,7 @@
 
         <Button
             android:id="@+id/stop_app_button"
-            style="@style/MyDeviceButtonStyle"
+            style="@style/StopAppButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -40,12 +40,12 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="40dp">
 
                 <SurfaceView
-                    android:id="@+id/memory_active_surface"
+                    android:id="@+id/progress_surface"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp" />
 
@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
-                    android:src="@drawable/progress_bar" />
+                    android:src="@drawable/progress_bar_small" />
 
             </RelativeLayout>
 
@@ -67,6 +67,7 @@
         android:padding="15dp">
 
         <TextView
+            android:id="@+id/samples_title"
             style="@style/LargeBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

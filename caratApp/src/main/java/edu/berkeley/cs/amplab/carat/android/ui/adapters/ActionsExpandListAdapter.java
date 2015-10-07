@@ -2,11 +2,18 @@ package edu.berkeley.cs.amplab.carat.android.ui.adapters;
 
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -24,6 +31,7 @@ import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
+import edu.berkeley.cs.amplab.carat.android.model_classes.HogBug;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
@@ -33,7 +41,7 @@ import edu.berkeley.cs.amplab.carat.android.subscreens.KillAppFragment;
  * Created by Valto on 2.10.2015.
  */
 public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener, View.OnClickListener {
+        ExpandableListView.OnChildClickListener, View.OnClickListener, Runnable {
 
     private CaratApplication caratApplication;
     private SimpleHogBug[] hogReport, bugReport;
@@ -49,7 +57,12 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private TextView processImprovement;
     private TextView samplesAmount;
     private TextView appCategory;
+    private SurfaceHolder progressSurfaceHolder;
+    private Thread drawingThread;
 
+    private SurfaceView progressSurface;
+
+    private boolean locker = true;
 
     public ActionsExpandListAdapter(DashboardActivity dashboardActivity, ExpandableListView lv, CaratApplication caratApplication,
                                     SimpleHogBug[] hogReport, SimpleHogBug[] bugReport) {
@@ -90,7 +103,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) caratApplication.getApplicationContext()
                     .getSystemService(caratApplication.getApplicationContext().LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.bug_hog_list_child_item, null);
+            convertView = infalInflater.inflate(R.layout.actions_list_child_item, null);
         }
 
         SimpleHogBug item = allReports.get(groupPosition);
@@ -155,10 +168,9 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         samplesAmount = (TextView) v.findViewById(R.id.samples_amount);
         killAppButton = (Button) v.findViewById(R.id.stop_app_button);
         appCategory = (TextView) v.findViewById(R.id.app_category);
-
         samplesText.setText(R.string.samples);
         samplesAmount.setText(String.valueOf(item.getSamples()));
-
+        drawProgress(v, item);
         killAppButton.setOnClickListener(this);
 
     }
@@ -176,6 +188,13 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         processImprovement.setText(item.getBenefitText());
         collapseIcon.setImageResource(R.drawable.collapse_down);
         collapseIcon.setTag(groupPosition);
+    }
+
+    private void drawProgress(View v, SimpleHogBug item) {
+        progressSurface = (SurfaceView) v.findViewById(R.id.progress_surface);
+        progressSurfaceHolder = progressSurface.getHolder();
+        drawingThread = new Thread(this);
+        drawingThread.start();
     }
 
     // TODO COLLAPSE IMAGES NOT WORKING
@@ -234,5 +253,26 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             SamplingLibrary.killApp(dashboardActivity, raw, label);
 
         }
+    }
+
+    @Override
+    public void run() {
+        while (locker) {
+            if (!progressSurfaceHolder.getSurface().isValid()) {
+                continue;
+            }
+            Canvas c = progressSurfaceHolder.lockCanvas();
+            draw(c);
+            progressSurfaceHolder.unlockCanvasAndPost(c);
+            locker = false;
+        }
+    }
+
+    private void draw(Canvas canvas) {
+        RectF r = new RectF(0, 0, canvas.getWidth(), canvas.getHeight());
+        canvas.drawColor(Color.argb(255, 180, 180, 180));
+        Paint paint = new Paint();
+        paint.setARGB(255, 75, 200, 127);
+        canvas.drawRect(r, paint);
     }
 }

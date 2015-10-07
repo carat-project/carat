@@ -149,6 +149,7 @@ public class DashboardActivity extends ActionBarActivity implements View.OnClick
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_title);
         backArrow = (ImageView) getSupportActionBar().getCustomView().findViewById(R.id.back_arrow);
+        backArrow.setOnClickListener(this);
         actionBarTitle.setText(resId);
         if (canGoBack) {
             backArrow.setVisibility(View.VISIBLE);
@@ -259,18 +260,6 @@ public class DashboardActivity extends ActionBarActivity implements View.OnClick
         return lastUpdated;
     }
 
-    public void onBackArrowClick() {
-        if (fragmentManager.getBackStackEntryCount() == 1) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-        } else {
-            fragmentManager.popBackStack();
-        }
-    }
-
     @Override
     public void onBackPressed() {
         if (fragmentManager.getBackStackEntryCount() == 0) {
@@ -287,7 +276,17 @@ public class DashboardActivity extends ActionBarActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-
+        if (v.getId() == R.id.back_arrow) {
+            if (fragmentManager.getBackStackEntryCount() == 0) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            } else {
+                fragmentManager.popBackStack();
+            }
+        }
     }
 }
 

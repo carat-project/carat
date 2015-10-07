@@ -6,28 +6,21 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.Serializable;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
-import edu.berkeley.cs.amplab.carat.android.Constants;
-import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.activities.DashboardActivity;
-import edu.berkeley.cs.amplab.carat.android.lists.HogBugSuggestionsAdapter;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
-import edu.berkeley.cs.amplab.carat.android.subscreens.KillAppFragment;
 import edu.berkeley.cs.amplab.carat.android.ui.LocalizedWebView;
 import edu.berkeley.cs.amplab.carat.android.ui.adapters.ActionsExpandListAdapter;
 
@@ -40,7 +33,7 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
     private static final long serialVersionUID = -6034269327947014085L;
 
     private DashboardActivity dashboardActivity;
-    private LinearLayout ll;
+    private LinearLayout mainFrame;
     private ExpandableListView expandableListView;
 
     @Override
@@ -57,8 +50,8 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        ll = (LinearLayout) inflater.inflate(R.layout.fragment_actions, container, false);
-        return ll;
+        mainFrame = (LinearLayout) inflater.inflate(R.layout.fragment_actions, container, false);
+        return mainFrame;
 
     }
 
@@ -71,7 +64,7 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
     }
 
     private void initViewRefs() {
-        expandableListView = (ExpandableListView) ll.findViewById(R.id.expandable_actions_list);
+        expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_actions_list);
     }
 
     public void refresh() {
@@ -86,7 +79,7 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
             return;
         }
 
-        expandableListView = (ExpandableListView) ll.findViewById(R.id.expandable_actions_list);
+        expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_actions_list);
         expandableListView.setAdapter(new ActionsExpandListAdapter(dashboardActivity,
                 expandableListView, (CaratApplication) getActivity().getApplication(),
                 hogReport, bugReport));
