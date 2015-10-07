@@ -36,6 +36,6 @@
         </view>
     </objects>
     <resources>
-        <image name="measurebar_top" width="275" height="54"/>
+        <image name="measurebar_top" width="272" height="29"/>
     </resources>
 </document>

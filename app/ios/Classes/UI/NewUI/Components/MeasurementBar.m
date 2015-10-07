@@ -46,6 +46,8 @@
     // Determine our start and stop angles for the arc (in radians)
     UIView *view = nil;
     _measureTopImg = [UIImage imageNamed:@"measurebar_top"];
+    _largerBarColor = C_RED;
+    _smallerBarColor = C_ORANGE;
     [self setBackgroundColor:C_LIGHT_GRAY];
     
     /*
@@ -73,22 +75,21 @@
     //[super drawRect:rect];
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    if(_secondMeasureValue > 0){
-        CGRect rectangle = [self getDrawRectangle:_secondMeasureValue];
-        CGContextSetFillColor(ctx, CGColorGetComponents([C_RED CGColor]));
-        CGContextSetStrokeColor(ctx, CGColorGetComponents([C_RED CGColor]));
+    if(_largerMeasureValue > 0){
+        CGRect rectangle = [self getDrawRectangle:_largerMeasureValue];
+        CGContextSetFillColor(ctx, CGColorGetComponents([_largerBarColor CGColor]));
+        CGContextSetStrokeColor(ctx, CGColorGetComponents([_largerBarColor CGColor]));
         CGContextFillRect(ctx, rectangle);
     }
-    if(_firstMeasureValue > 0){
-        CGRect rectangle = [self getDrawRectangle:_firstMeasureValue];
-        CGContextSetFillColor(ctx, CGColorGetComponents([C_ORANGE CGColor]));
-        CGContextSetStrokeColor(ctx, CGColorGetComponents([C_ORANGE CGColor]));
+    if(_smallerMeasureValue > 0){
+        CGRect rectangle = [self getDrawRectangle:_smallerMeasureValue];
+        CGContextSetFillColor(ctx, CGColorGetComponents([_smallerBarColor CGColor]));
+        CGContextSetStrokeColor(ctx, CGColorGetComponents([_smallerBarColor CGColor]));
         CGContextFillRect(ctx, rectangle);
     }
     
-    UIImage *img = [UIImage imageNamed:@"measurebar_top"];
     CGRect imgRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    [img drawInRect:imgRect];
+    [_measureTopImg drawInRect:imgRect];
     
     /*
 //    UIGraphicsPushContext(ctx);
@@ -137,6 +138,9 @@
 
 - (void)dealloc {
     [_measureTopImg release];
+    [_largerBarColor release];
+    [_smallerBarColor release];
+    
     [super dealloc];
 }
 @end
