@@ -345,6 +345,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="about">ABOUT</string>
     <string name="about_actions_child_message"/>
     <string name="about_actions_message">How to use Carat</string>
     <string name="about_actions_title">Actions</string>
@@ -369,9 +370,11 @@
     <string name="action_settings">Settings</string>
     <string name="actions">ACTIONS</string>
     <string name="actions_amount">4</string>
+    <string name="actions_list_message">BLAABLAA</string>
     <string name="active_battery_life">Active Battery Life</string>
     <string name="ago">ago)</string>
     <string name="alogo">AmpLab Logo</string>
+    <string name="app_category_title">Foreground App</string>
     <string name="app_name">Carat</string>
     <string name="appicon">App Icon</string>
     <string name="appmanager">App Manager</string>
@@ -456,6 +459,7 @@
     <string name="global_general_statistics">GENERAL STATISTICS</string>
     <string name="global_general_users_message">Out of 644,024 users, 49 have at least a
         single energy anomaly.</string>
+    <string name="global_results">GLOBAL RESULTS</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_world">Hello world!</string>
     <string name="helpcarat">Help Carat collect data</string>
@@ -501,6 +505,8 @@
     <string name="next_button_label">Next</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="no_actions_message">VIESTI:DSADSA</string>
+    <string name="no_actions_title">NOACTIONS:D</string>
     <string name="no_bugs_message">Please check back in a week.\n\n
         If your apps are behaving normally, there will be no bugs here.\n\n
         When an app starts to use significantly more energy on your device than on others, it will show up here.</string>
@@ -557,6 +563,7 @@
     <string name="soundsettings">Sound Settings</string>
     <string name="statistics">STATISTICS</string>
     <string name="statsurl">http://carat.cs.helsinki.fi/statistics/</string>
+    <string name="stop_app_title">STOP</string>
     <string name="summary_chart_center_text">Other\nApps</string>
     <string name="summary_conjunction">and</string>
     <string name="summary_off">Wifi + Mobile Data</string>
@@ -1633,6 +1640,7 @@
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>
         <item name="homeAsUpIndicator">@drawable/back_arrow</item>
         <item name="colorPrimaryDark">@color/statusbar_color</item>
+        <item name="popupTheme">@style/PopupStyle</item>
     </style>
     <style name="MyActionBarTabText" parent="@style/Widget.AppCompat.ActionBar.TabText">
         <item name="android:textColor">@color/white</item>
@@ -1754,6 +1762,11 @@
         <!-- SearchView attributes -->
         <item name="android:autoCompleteTextViewStyle">@style/Widget.AppCompat.Light.AutoCompleteTextView</item>
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
+    </style>
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="PopupStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/orange</item>
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>

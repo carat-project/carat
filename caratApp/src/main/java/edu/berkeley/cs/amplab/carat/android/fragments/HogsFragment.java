@@ -43,12 +43,12 @@ public class HogsFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        dashboardActivity.setUpActionBar(R.string.hogs, getFragmentManager().getBackStackEntryCount() > 0);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        dashboardActivity.setUpActionBar(R.string.hogs, true);
         initViewRefs();
         refresh();
     }

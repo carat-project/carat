@@ -66,13 +66,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        dashboardActivity.setUpActionBar(R.string.title_activity_dashboard, getFragmentManager().getBackStackEntryCount() > 0);
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        dashboardActivity.setUpActionBar(R.string.title_activity_dashboard, false);
         shareButton.setVisibility(View.VISIBLE);
         shareBar.setVisibility(View.GONE);
         setValues();

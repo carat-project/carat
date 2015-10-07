@@ -45,12 +45,12 @@ public class BugsFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        dashboardActivity.setUpActionBar(R.string.bugs, getFragmentManager().getBackStackEntryCount() > 0);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        dashboardActivity.setUpActionBar(R.string.bugs, true);
         initViewRefs();
         refresh();
     }

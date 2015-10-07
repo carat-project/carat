@@ -128,6 +128,7 @@
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>
         <item name="homeAsUpIndicator">@drawable/back_arrow</item>
         <item name="colorPrimaryDark">@color/statusbar_color</item>
+        <item name="popupTheme">@style/PopupStyle</item>
     </style>
 
     <!-- ActionBar title text -->
@@ -145,4 +146,7 @@
         <!-- The textColor property is backward compatible with the Support Library -->
     </style>
 
+    <style name="PopupStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/orange</item>
+    </style>
 </resources>

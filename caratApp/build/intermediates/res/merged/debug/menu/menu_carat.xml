@@ -6,7 +6,9 @@
         android:id="@+id/action_wifi_only"
         android:orderInCategory="100"
         android:title="@string/menu_wifi_only"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:checkable="true"
+        android:checked="false"/>
 
     <item
         android:id="@+id/action_hide_apps"

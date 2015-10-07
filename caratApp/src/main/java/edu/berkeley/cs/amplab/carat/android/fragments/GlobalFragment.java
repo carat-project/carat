@@ -68,12 +68,12 @@ public class GlobalFragment extends Fragment implements Runnable {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        dashboardActivity.setUpActionBar(R.string.global_results, true);
         initViewRefs();
         initListeners();
         setValues();

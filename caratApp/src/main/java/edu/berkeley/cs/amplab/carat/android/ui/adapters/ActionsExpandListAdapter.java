@@ -45,7 +45,10 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private Button killAppButton;
 
     private ImageView processIcon;
+    private TextView processName;
+    private TextView processImprovement;
     private TextView samplesAmount;
+    private TextView appCategory;
 
 
     public ActionsExpandListAdapter(DashboardActivity dashboardActivity, ExpandableListView lv, CaratApplication caratApplication,
@@ -149,20 +152,21 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     private void setViewsInChild(View v, SimpleHogBug item) {
         TextView samplesText = (TextView) v.findViewById(R.id.samples_title);
-        TextView samplesValue = (TextView) v.findViewById(R.id.samples_amount);
+        samplesAmount = (TextView) v.findViewById(R.id.samples_amount);
         killAppButton = (Button) v.findViewById(R.id.stop_app_button);
+        appCategory = (TextView) v.findViewById(R.id.app_category);
 
         samplesText.setText(R.string.samples);
-        samplesValue.setText(String.valueOf(item.getSamples()));
+        samplesAmount.setText(String.valueOf(item.getSamples()));
 
         killAppButton.setOnClickListener(this);
 
     }
 
     private void setItemViews(View v, SimpleHogBug item, int groupPosition) {
-        ImageView processIcon = (ImageView) v.findViewById(R.id.process_icon);
-        TextView processName = (TextView) v.findViewById(R.id.process_name);
-        TextView processImprovement = (TextView) v.findViewById(R.id.process_improvement);
+        processIcon = (ImageView) v.findViewById(R.id.process_icon);
+        processName = (TextView) v.findViewById(R.id.process_name);
+        processImprovement = (TextView) v.findViewById(R.id.process_improvement);
         collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
 
         processIcon.setImageDrawable(CaratApplication.iconForApp(caratApplication.getApplicationContext(),
@@ -193,7 +197,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.stop_app_button:
-                killApp();
+                // TODO KILL APP GET ITEM
+                // killApp();
                 break;
         }
     }

@@ -117,6 +117,7 @@
     <string name="about_battery_child_message"></string>
 
     <!-- GLOBAL RESULTS -->
+    <string name="global_results">GLOBAL RESULTS</string>
     <string name="global_general_statistics">GENERAL STATISTICS</string>
     <string name="global_general_all_message">Out of 431,882 installed applications, 9 are energy-intensive
         (Hogs in the Carat App) and 4 are energy anomalies (Bugs).</string>
@@ -132,6 +133,11 @@
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>
     <string name="app_category_title">Foreground App</string>
+    <string name="actions_list_message">BLAABLAA</string>
+    <string name="no_actions_title">NOACTIONS:D</string>
+    <string name="no_actions_message">VIESTI:DSADSA</string>
+
+    <string name="about">ABOUT</string>
 
     <!--
 These are the same for all languages. When translating,

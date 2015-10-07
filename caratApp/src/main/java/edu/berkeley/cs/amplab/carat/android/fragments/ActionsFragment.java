@@ -49,73 +49,29 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
         this.dashboardActivity = (DashboardActivity) activity;
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         ll = (LinearLayout) inflater.inflate(R.layout.fragment_actions, container, false);
         return ll;
-        /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                MainActivity m = ((MainActivity) getActivity());
-                Object o = lv.getItemAtPosition(position);
-                SimpleHogBug fullObject = (SimpleHogBug) o;
-                final String raw = fullObject.getAppName();
-                if (raw.equals("OsUpgrade"))
-                    m.showHTMLFile("upgradeos", getString(R.string.upgradeosinfo), false);
-                else if (raw.equals(getString(R.string.helpcarat))) {
-                    m.showHTMLFile("collectdata", getString(R.string.collectdatainfo), false);
-                } else if (raw.equals(getString(R.string.questionnaire))) {
-                    openQuestionnaire();
-                } else {
-                    displayKillAppFragment(fullObject, raw);
-                }
-            }
-
-            private void displayKillAppFragment(SimpleHogBug fullObject, final String raw) {
-                Bundle args = new Bundle();
-                args.putString("raw", raw);
-
-                Constants.Type type = fullObject.getType();
-                if (type == Constants.Type.BUG) {
-                    args.putBoolean("isBug", true);
-                    args.putBoolean("isHog", false);
-                    args.putBoolean("isOther", false);
-                } else if (type == Constants.Type.HOG) {
-                    args.putBoolean("isHog", true);
-                    args.putBoolean("isBug", false);
-                    args.putBoolean("isOther", false);
-                }
-                if (type == Constants.Type.OTHER) {
-                    args.putString("appPriority", fullObject.getAppPriority());
-                } else {
-                    args.putString("appPriority", CaratApplication.translatedPriority(fullObject.getAppPriority()));
-                }
-
-                args.putString("benefit", fullObject.getBenefitText());
-
-                Fragment fragment = new KillAppFragment();
-                fragment.setArguments(args);
-
-                ((MainActivity) getActivity()).replaceFragment(fragment, getString(R.string.kill) + " " + raw, false);
-
-            }
-        }); */
-
-        //initUpgradeOsView(ll);
 
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        dashboardActivity.setUpActionBar(R.string.actions, true);
         initViewRefs();
         refresh();
     }
 
     private void initViewRefs() {
-        expandableListView = (ExpandableListView) ll.findViewById(R.id.actions_list_view);
+        expandableListView = (ExpandableListView) ll.findViewById(R.id.expandable_actions_list);
     }
 
     public void refresh() {
@@ -130,7 +86,7 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
             return;
         }
 
-        expandableListView = (ExpandableListView) ll.findViewById(R.id.actions_list_view);
+        expandableListView = (ExpandableListView) ll.findViewById(R.id.expandable_actions_list);
         expandableListView.setAdapter(new ActionsExpandListAdapter(dashboardActivity,
                 expandableListView, (CaratApplication) getActivity().getApplication(),
                 hogReport, bugReport));

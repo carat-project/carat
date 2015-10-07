@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -24,11 +28,14 @@ import edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.EnableInternetDialogFragment;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 
-public class DashboardActivity extends ActionBarActivity {
+public class DashboardActivity extends ActionBarActivity implements View.OnClickListener {
 
     private String batteryLife;
     private String bugAmount, hogAmount, actionsAmount;
     private int jScore;
+
+    private TextView actionBarTitle;
+    private ImageView backArrow;
 
     private FragmentManager fragmentManager;
 
@@ -66,6 +73,11 @@ public class DashboardActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_carat, menu);
+        if (menu.findItem(R.id.action_wifi_only).isChecked()) {
+            menu.findItem(R.id.action_wifi_only).setChecked(true);
+        } else {
+            menu.findItem(R.id.action_wifi_only).setChecked(false);
+        }
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -80,6 +92,11 @@ public class DashboardActivity extends ActionBarActivity {
 
         switch (id) {
             case R.id.action_wifi_only:
+                if (item.isChecked()) {
+                    item.setChecked(false);
+                } else {
+                    item.setChecked(true);
+                }
                 break;
             case R.id.action_hide_apps:
                 break;
@@ -128,10 +145,16 @@ public class DashboardActivity extends ActionBarActivity {
     }
 
     public void setUpActionBar(int resId, boolean canGoBack) {
-        getSupportActionBar().setIcon(R.drawable.back_arrow);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(canGoBack);
-        getSupportActionBar().setDisplayShowHomeEnabled(canGoBack);
-        getSupportActionBar().setTitle(resId);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar);
+        actionBarTitle = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_title);
+        backArrow = (ImageView) getSupportActionBar().getCustomView().findViewById(R.id.back_arrow);
+        actionBarTitle.setText(resId);
+        if (canGoBack) {
+            backArrow.setVisibility(View.VISIBLE);
+        } else {
+            backArrow.setVisibility(View.GONE);
+        }
     }
 
     private void setJScore() {
@@ -236,6 +259,18 @@ public class DashboardActivity extends ActionBarActivity {
         return lastUpdated;
     }
 
+    public void onBackArrowClick() {
+        if (fragmentManager.getBackStackEntryCount() == 1) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        } else {
+            fragmentManager.popBackStack();
+        }
+    }
+
     @Override
     public void onBackPressed() {
         if (fragmentManager.getBackStackEntryCount() == 0) {
@@ -250,6 +285,10 @@ public class DashboardActivity extends ActionBarActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
 
 

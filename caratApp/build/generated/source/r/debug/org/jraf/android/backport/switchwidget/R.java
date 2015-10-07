@@ -61,22 +61,22 @@ public final class R {
 		public static final int switch_track_holo_light = 0x7f020081;
 	}
 	public static final class id {
-		public static final int switchWidget = 0x7f0d00db;
+		public static final int switchWidget = 0x7f0d00e2;
 	}
 	public static final class layout {
-		public static final int preference = 0x7f030036;
-		public static final int preference_widget_switch = 0x7f030038;
+		public static final int preference = 0x7f030039;
+		public static final int preference_widget_switch = 0x7f03003b;
 	}
 	public static final class string {
-		public static final int switch_off = 0x7f0600ec;
-		public static final int switch_on = 0x7f0600ed;
+		public static final int switch_off = 0x7f0600f3;
+		public static final int switch_on = 0x7f0600f4;
 	}
 	public static final class style {
-		public static final int Preference_SwitchPreference = 0x7f0900ab;
-		public static final int TextAppearance_Holo_Light_Widget_Switch = 0x7f0900d9;
-		public static final int TextAppearance_Holo_Widget_Switch = 0x7f0900da;
-		public static final int Widget_Holo_CompoundButton_Switch = 0x7f090132;
-		public static final int Widget_Holo_Light_CompoundButton_Switch = 0x7f090133;
+		public static final int Preference_SwitchPreference = 0x7f0900ac;
+		public static final int TextAppearance_Holo_Light_Widget_Switch = 0x7f0900da;
+		public static final int TextAppearance_Holo_Widget_Switch = 0x7f0900db;
+		public static final int Widget_Holo_CompoundButton_Switch = 0x7f090133;
+		public static final int Widget_Holo_Light_CompoundButton_Switch = 0x7f090134;
 	}
 	public static final class styleable {
 		public static final int[] Android = { 0x01010095, 0x01010096, 0x01010097, 0x01010098, 0x01010099, 0x0101009a, 0x0101009b };
