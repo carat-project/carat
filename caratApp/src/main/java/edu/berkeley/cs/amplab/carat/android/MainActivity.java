@@ -284,9 +284,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return actionsAmount;
     }
 
-    // TODO GET ACTIONS
     public void setActionsAmount() {
-        actionsAmount = "4";
+        int sum = 0;
+        if (CaratApplication.getStorage().getBugReport() != null) {
+            sum = CaratApplication.getStorage().getBugReport().length;
+        }
+        if (CaratApplication.getStorage().getHogReport() != null) {
+            sum += CaratApplication.getStorage().getHogReport().length;
+        }
+        actionsAmount = String.valueOf(sum);
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
