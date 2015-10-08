@@ -50,8 +50,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private TextView actionBarTitle;
     private ImageView backArrow;
-
-    private FragmentManager fragmentManager;
     private DashboardFragment dashboardFragment;
 
     private Tracker tracker;
@@ -91,6 +89,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
 
         setContentView(R.layout.activity_dashboard);
+        dashboardFragment = new DashboardFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_holder, dashboardFragment).commit();
 
     }
 
@@ -139,10 +140,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         super.onResume();
         setValues();
-        fragmentManager = getSupportFragmentManager();
-        dashboardFragment = new DashboardFragment();
-        fragmentManager.beginTransaction()
-                .add(R.id.fragment_holder, dashboardFragment).commit();
 
     }
 
@@ -186,8 +183,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 replaceFragment(aboutFragment, Constants.FRAGMENT_ABOUT_TAG);
                 break;
             case android.R.id.home:
-                if (fragmentManager.getBackStackEntryCount() > 0) {
-                    fragmentManager.popBackStack();
+                if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                    getSupportFragmentManager().popBackStack();
                 } else {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }
@@ -208,10 +205,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onPause() {
         super.onPause();
         SamplingLibrary.resetRunningProcessInfo();
-        if (fragmentManager != null) {
-            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            fragmentManager = null;
-        }
 
     }
 
@@ -238,8 +231,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void refreshSummaryFragment() {
-        if (fragmentManager != null) {
-            if (fragmentManager.getBackStackEntryCount() == 0) {
+        if (getSupportFragmentManager() != null) {
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
                 dashboardFragment.scheduleRefresh();
             }
         }
@@ -304,10 +297,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void replaceFragment(Fragment fragment, String tag) {
         final String FRAGMENT_TAG = tag;
 
-        boolean fragmentPopped = fragmentManager.popBackStackImmediate(FRAGMENT_TAG, 0);
+        boolean fragmentPopped = getSupportFragmentManager().popBackStackImmediate(FRAGMENT_TAG, 0);
 
         if (!fragmentPopped) {
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2 || !isDestroyed()) {
                 transaction.replace(R.id.fragment_holder, fragment, FRAGMENT_TAG)
@@ -413,14 +406,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        if (fragmentManager.getBackStackEntryCount() == 0) {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
         } else {
-            fragmentManager.popBackStack();
+            getSupportFragmentManager().popBackStack();
         }
     }
 
@@ -428,14 +421,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.back_arrow) {
-            if (fragmentManager.getBackStackEntryCount() == 0) {
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
             } else {
-                fragmentManager.popBackStack();
+                getSupportFragmentManager().popBackStack();
             }
         }
     }

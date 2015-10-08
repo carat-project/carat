@@ -53,7 +53,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     private SurfaceView progressSurface;
 
-    private boolean locker = true;
+    private boolean locker;
 
     public ActionsExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication,
                                     SimpleHogBug[] hogReport, SimpleHogBug[] bugReport) {
@@ -161,6 +161,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         appCategory = (TextView) v.findViewById(R.id.app_category);
         samplesText.setText(R.string.samples);
         samplesAmount.setText(String.valueOf(item.getSamples()));
+        locker = true;
         drawProgress(v, item);
         killAppButton.setOnClickListener(this);
 

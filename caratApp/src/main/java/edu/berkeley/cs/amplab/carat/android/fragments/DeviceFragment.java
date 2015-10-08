@@ -53,7 +53,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     private TextView caratID;
     private TextView batteryLife;
 
-    private boolean locker = true;
+    private boolean locker;
     private float memoryUsedConverted = 0;
     private float memoryActiveConverted = 0;
     private float cpuUsageConverted = 0;
@@ -65,24 +65,29 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.mainActivity = (MainActivity) activity;
+        Log.d("debug", "*** : " + "ONATTACH");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainFrame = (RelativeLayout) inflater.inflate(R.layout.fragment_device, container, false);
+        Log.d("debug", "*** : " + "ONCREATEVIEW");
         return mainFrame;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.d("debug", "*** : " + "ONACTIVITYCREATED");
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("debug", "*** : " + "ONRESUME");
         mainActivity.setUpActionBar(R.string.my_device, true);
+        locker = true;
         initViewRefs();
         generateJScoreCircle();
         initListeners();

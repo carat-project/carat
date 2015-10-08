@@ -28,7 +28,7 @@ public class GlobalFragment extends Fragment implements Runnable {
 
     private MainActivity mainActivity;
     private ScrollView mainFrame;
-    private boolean locker = true;
+    private boolean locker;
 
     private SurfaceHolder globalSurfaceHolder;
     private SurfaceHolder androidSurfaceHolder;
@@ -70,6 +70,7 @@ public class GlobalFragment extends Fragment implements Runnable {
     public void onResume() {
         super.onResume();
         mainActivity.setUpActionBar(R.string.global_results, true);
+        locker = true;
         initViewRefs();
         initListeners();
         setValues();
