@@ -52,6 +52,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     private TextView osVersion;
     private TextView caratID;
     private TextView batteryLife;
+    private TextView whatIsJScore;
 
     private boolean locker;
     private float memoryUsedConverted = 0;
@@ -106,6 +107,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         caratID = (TextView) mainFrame.findViewById(R.id.carat_id_value);
         deviceModel = (TextView) mainFrame.findViewById(R.id.device_model_value);
         osVersion = (TextView) mainFrame.findViewById(R.id.os_version_value);
+        whatIsJScore = (TextView) mainFrame.findViewById(R.id.what_are_jscore_numbers);
 
         memoryUsedButton = (Button) mainFrame.findViewById(R.id.memory_used_info_button);
         memoryActiveButton = (Button) mainFrame.findViewById(R.id.memory_active_button);
@@ -121,6 +123,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         memoryActiveButton.setOnClickListener(this);
         cpuUsageButton.setOnClickListener(this);
         processListButton.setOnClickListener(this);
+        whatIsJScore.setOnClickListener(this);
     }
 
 
@@ -211,6 +214,12 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.cpu_usage_title),
                         getString(R.string.cpu_usage_explanation));
+                dialog.showDialog();
+                break;
+            case R.id.what_are_jscore_numbers:
+                dialog = new BaseDialog(getContext(),
+                        getString(R.string.jscore_dialog_title),
+                        getString(R.string.jscore_explanation));
                 dialog.showDialog();
                 break;
             default:

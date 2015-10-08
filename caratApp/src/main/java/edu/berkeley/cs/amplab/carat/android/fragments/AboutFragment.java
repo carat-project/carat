@@ -46,7 +46,9 @@ public class AboutFragment extends ExtendedTitleFragment {
     public void onResume() {
         super.onResume();
         mainActivity.setUpActionBar(R.string.about, true);
-        setAboutItems();
+        if (allAboutItems.size() == 0) {
+            setAboutItems();
+        }
         initViewRefs();
     }
 
@@ -54,7 +56,7 @@ public class AboutFragment extends ExtendedTitleFragment {
         CaratApplication app = (CaratApplication) getActivity().getApplication();
         expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_about_list);
         expandableListView.setAdapter(new AboutExpandListAdapter
-                (expandableListView, app, allAboutItems));
+                (mainActivity, expandableListView, app, allAboutItems));
     }
 
     private void setAboutItems() {

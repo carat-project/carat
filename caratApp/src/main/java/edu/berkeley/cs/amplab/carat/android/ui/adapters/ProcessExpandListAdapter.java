@@ -24,7 +24,7 @@ import edu.berkeley.cs.amplab.carat.thrift.ProcessInfo;
  * Created by Valto on 7.10.2015.
  */
 public class ProcessExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener, View.OnClickListener {
+        ExpandableListView.OnChildClickListener, View.OnClickListener, ExpandableListView.OnGroupClickListener {
 
     private MainActivity mainActivity;
     private CaratApplication caratApplication;
@@ -38,6 +38,7 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
         this.mainActivity = mainActivity;
         this.processInfoList = processInfoList;
         this.lv = lv;
+        this.lv.setOnGroupClickListener(this);
         this.lv.setOnGroupExpandListener(this);
         this.lv.setOnChildClickListener(this);
 
@@ -181,5 +182,17 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
                 dialog.showDialog();
                 break;
         }
+    }
+
+    @Override
+    public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+        if (parent.isGroupExpanded(groupPosition)) {
+            ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+            collapseIcon.setImageResource(R.drawable.collapse_down);
+        } else {
+            ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+            collapseIcon.setImageResource(R.drawable.collapse_up);
+        }
+        return false;
     }
 }

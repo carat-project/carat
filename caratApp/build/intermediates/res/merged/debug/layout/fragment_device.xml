@@ -142,7 +142,8 @@
                 android:weightSum="19">
 
                 <TextView
-                    style="@style/SmallGrayText"
+                    android:id="@+id/what_are_jscore_numbers"
+                    style="@style/MediumOrangeText"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="5"

@@ -133,9 +133,10 @@
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>
     <string name="app_category_title">Foreground App</string>
-    <string name="actions_list_message">BLAABLAA</string>
-    <string name="no_actions_title">NOACTIONS:D</string>
-    <string name="no_actions_message">VIESTI:DSADSA</string>
+    <string name="actions_list_message">Actions helps you Lorem ipsum You can stop application...</string>
+    <string name="no_actions_title">No actions.</string>
+    <string name="no_actions_message">You dont have any actions lorem ipsum yms.</string>
+    <string name="stopped">STOPPED</string>
 
     <string name="about">ABOUT</string>
 

@@ -129,6 +129,12 @@
         <item name="android:textColor">@color/orange</item>
     </style>
 
+    <style name="MediumOrangeText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+
     <!-- ActionBar style -->
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/actionbar_color</item>

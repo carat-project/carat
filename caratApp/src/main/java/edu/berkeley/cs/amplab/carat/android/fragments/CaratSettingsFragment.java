@@ -61,10 +61,7 @@ public class CaratSettingsFragment extends PreferenceFragment {
 		
 		// we use the tracker in the following two methods, so instantiate it here
 		tracker = Tracker.getInstance((MainActivity) getActivity());
-		
-		setSharePreferenceIntent();
-		setFeedbackPreferenceIntent();
-		
+
 		/**
 		 * It seems I need to do this one manually.
 		 * -Eemil
@@ -85,68 +82,9 @@ public class CaratSettingsFragment extends PreferenceFragment {
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View cr = super.onCreateView(inflater, container, savedInstanceState);
-        cr.setBackgroundColor(getResources().getColor(android.R.color.background_light));
-        return cr;
-    }
-
-	/**
-	 * Set an intent for our "share" preference widget
-	 */
-	private void setSharePreferenceIntent() {
-		// grab a reference to our Preference widget object (Preference is a subclass of View). 
-		// (we have several preference widget objects in our res/xml/preferences.xml), 
-		// the name of the preference object we are trying to grab here is specified in CaratApplication.SHARE_PREFERENCE_KEY. 
-		// each preference widget in our xml file (preferences.xml) corresponds to an item/entry in our preference fragment's view		
-		Preference preference = findPreference(Constants.SHARE_PREFERENCE_KEY);
-		
-		// create an intent that we want to perform whenever this item is clicked (in this case, a send intent)
-		Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.setType("text/plain");
-		int jscore = CaratApplication.getJscore();
-		intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.myjscoreis) + " " + jscore);
-		intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharetext1) + " " + jscore
-				+ getString(R.string.sharetext2));
-		
-		// set the created intent as our preference (view) object's intent
-		preference.setIntent(intent);
-		
-		tracker.trackSharing(getActivity().getTitle());
-	}
-
-	
-	/**
-	 * Set an intent for our "share" preference widget
-	 */
-	private void setFeedbackPreferenceIntent() {
-		Preference preference = findPreference(Constants.FEEDBACK_PREFERENCE_KEY);
-		
-		Intent intent = new Intent(Intent.ACTION_SEND);
-		
-		MainActivity mainActivity = ((MainActivity) getActivity());
-		Context context = mainActivity.getApplicationContext();
-		SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-		
-		String os = SamplingLibrary.getOsVersion();
-		String model = SamplingLibrary.getModel();
-		String uuId = defaultSharedPreferences.getString(CaratApplication.getRegisteredUuid(), "UNKNOWN");
-		int jscore = CaratApplication.getJscore();
-		
-		// Emulator does not support message/rfc822
-		if (model.equals("sdk"))
-			intent.setType("text/plain");
-		else
-			intent.setType("message/rfc822");
-		intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "carat@cs.helsinki.fi" });
-		intent.putExtra(Intent.EXTRA_SUBJECT, "[carat] [Android] " + getString(R.string.feedbackfrom) + " "
-				+ model);
-		/*intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.os) + ": " + os + "\n"
-				+ getString(R.string.model) + ": " + model + "\nCarat ID: " + uuId + "\nJ-Score: " + jscore + "\n"
-				+ mainActivity.getFullVersion() + "\n"); */
-		
-		preference.setIntent(intent);
-		
-		tracker.trackFeedback(os, model,  getActivity().getTitle());
+		View cr = super.onCreateView(inflater, container, savedInstanceState);
+		cr.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+		return cr;
 	}
 
 	@Override

@@ -32,14 +32,13 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
  * Created by Valto on 2.10.2015.
  */
 public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener, View.OnClickListener, Runnable {
+        ExpandableListView.OnChildClickListener, View.OnClickListener, Runnable, ExpandableListView.OnGroupClickListener {
 
     private CaratApplication caratApplication;
     private SimpleHogBug[] hogReport, bugReport;
     private ArrayList<SimpleHogBug> allReports = new ArrayList<>();
     private LayoutInflater mInflater;
     private ExpandableListView lv;
-    private ImageView collapseIcon;
     private MainActivity mainActivity;
     private Button killAppButton;
 
@@ -53,6 +52,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     private SurfaceView progressSurface;
 
+    private SimpleHogBug storedHogBug;
+
     private boolean locker;
 
     public ActionsExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication,
@@ -63,6 +64,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         this.bugReport = bugReport;
         this.lv = lv;
         this.lv.setOnGroupExpandListener(this);
+        this.lv.setOnGroupClickListener(this);
         this.mainActivity = mainActivity;
         this.lv.setOnChildClickListener(this);
 
@@ -171,15 +173,12 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         processIcon = (ImageView) v.findViewById(R.id.process_icon);
         processName = (TextView) v.findViewById(R.id.process_name);
         processImprovement = (TextView) v.findViewById(R.id.process_improvement);
-        collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
 
         processIcon.setImageDrawable(CaratApplication.iconForApp(caratApplication.getApplicationContext(),
                 item.getAppName()));
         processName.setText(CaratApplication.labelForApp(caratApplication.getApplicationContext(),
                 item.getAppName()));
         processImprovement.setText(item.getBenefitText());
-        collapseIcon.setImageResource(R.drawable.collapse_down);
-        collapseIcon.setTag(groupPosition);
     }
 
     private void drawProgress(View v, SimpleHogBug item) {
@@ -192,7 +191,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     // TODO COLLAPSE IMAGES NOT WORKING
     @Override
     public void onGroupExpand(int groupPosition) {
-
+        storedHogBug = allReports.get(groupPosition);
     }
 
     @Override
@@ -208,8 +207,11 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.stop_app_button:
-                // TODO KILL APP GET ITEM
-                // killApp();
+                if (storedHogBug != null) {
+                    killApp(storedHogBug);
+                }
+                break;
+            default:
                 break;
         }
     }
@@ -241,7 +243,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             }
 
             killAppButton.setEnabled(false);
-            killAppButton.setText(caratApplication.getString(R.string.killed));
+            killAppButton.setBackgroundResource(R.drawable.button_rounded_gray);
+            killAppButton.setText(caratApplication.getString(R.string.stopped));
             SamplingLibrary.killApp(mainActivity, raw, label);
 
         }
@@ -266,5 +269,17 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         Paint paint = new Paint();
         paint.setARGB(255, 75, 200, 127);
         canvas.drawRect(r, paint);
+    }
+
+    @Override
+    public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+        if (parent.isGroupExpanded(groupPosition)) {
+            ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+            collapseIcon.setImageResource(R.drawable.collapse_down);
+        } else {
+            ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+            collapseIcon.setImageResource(R.drawable.collapse_up);
+        }
+        return false;
     }
 }

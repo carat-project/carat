@@ -134,7 +134,7 @@
 
         <TextView
             android:id="@+id/what_are_these_numbers"
-            style="@style/MediumBlackText"
+            style="@style/MediumOrangeText"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:gravity="center_vertical"

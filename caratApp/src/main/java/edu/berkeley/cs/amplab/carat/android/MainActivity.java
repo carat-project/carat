@@ -1,6 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
@@ -9,12 +10,15 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.preference.PreferenceFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,6 +39,7 @@ import java.util.Properties;
 import edu.berkeley.cs.amplab.carat.android.activities.PrefetchData;
 import edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity;
 import edu.berkeley.cs.amplab.carat.android.fragments.AboutFragment;
+import edu.berkeley.cs.amplab.carat.android.fragments.CaratSettingsFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.EnableInternetDialogFragment;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
@@ -175,8 +180,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 }
                 break;
             case R.id.action_hide_apps:
+                setHideSmallPreference();
                 break;
             case R.id.action_feedback:
+                giveFeedback();
                 break;
             case R.id.action_about:
                 AboutFragment aboutFragment = new AboutFragment();
@@ -210,10 +217,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private void setValues() {
         setJScore();
-        setBatteryLife();
+        setBatteryLife(CaratApplication.myDeviceData.getBatteryLife());
         setBugAmount();
         setHogAmount();
         setActionsAmount();
+        Log.d("debug", "*** Values set");
     }
 
     public void setUpActionBar(int resId, boolean canGoBack) {
@@ -242,8 +250,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         jScore = CaratApplication.getJscore();
     }
 
-    private void setBatteryLife() {
-        batteryLife = CaratApplication.myDeviceData.getBatteryLife();
+    public void setBatteryLife(String batteryLife) {
+        this.batteryLife = batteryLife;
     }
 
     public String getBatteryLife() {
@@ -310,6 +318,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
+    public void setHideSmallPreference() {
+        CaratSettingsFragment caratSettingsFragment = new CaratSettingsFragment();
+        replaceFragment(caratSettingsFragment, Constants.FRAGMENT_HIDE_SMALL);
+    }
+
     @SuppressLint("NewApi")
     private void getStatsFromServer() {
         PrefetchData prefetchData = new PrefetchData(this);
@@ -341,6 +354,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         String caratText = getString(R.string.sharetext1) + " " + getJScore() + getString(R.string.sharetext2);
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "", null));
         intent.putExtra(Intent.EXTRA_TEXT, caratText);
+        startActivity(Intent.createChooser(intent, "Send email"));
+    }
+
+    public void giveFeedback() {
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "carat@cs.helsinki.fi", null));
         startActivity(Intent.createChooser(intent, "Send email"));
     }
 

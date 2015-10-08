@@ -22,23 +22,21 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
  * Created by Valto on 30.9.2015.
  */
 public class HogBugExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener, View.OnClickListener {
+        ExpandableListView.OnChildClickListener, View.OnClickListener, ExpandableListView.OnGroupClickListener {
 
     private LayoutInflater mInflater;
     private CaratApplication a = null;
     private SimpleHogBug[] allBugsOrHogs = null;
     private ExpandableListView lv;
-    private ImageView collapseIcon;
     private MainActivity mainActivity;
-    private ArrayList<ImageView> collapseTags;
 
     public HogBugExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication, SimpleHogBug[] results) {
-        collapseTags = new ArrayList<>();
         this.a = caratApplication;
         this.lv = lv;
         this.lv.setOnGroupExpandListener(this);
         this.mainActivity = mainActivity;
         this.lv.setOnChildClickListener(this);
+        this.lv.setOnGroupClickListener(this);
         int items = 0;
         if (results != null)
             for (SimpleHogBug app : results) {
@@ -174,35 +172,21 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
         ImageView processIcon = (ImageView) v.findViewById(R.id.process_icon);
         TextView processName = (TextView) v.findViewById(R.id.process_name);
         TextView processImprovement = (TextView) v.findViewById(R.id.process_improvement);
-        collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
 
         processIcon.setImageDrawable(CaratApplication.iconForApp(a.getApplicationContext(),
                 item.getAppName()));
         processName.setText(CaratApplication.labelForApp(a.getApplicationContext(),
                 item.getAppName()));
         processImprovement.setText(item.getBenefitText());
-        collapseIcon.setImageResource(R.drawable.collapse_down);
-        collapseIcon.setTag(groupPosition);
-        collapseTags.add(collapseIcon);
 
     }
     // TODO COLLAPSE IMAGES NOT WORKING
     @Override
     public void onGroupExpand(int groupPosition) {
-        for (ImageView iV : collapseTags) {
-            if (groupPosition == (int) iV.getTag()) {
-                iV.setImageResource(R.drawable.collapse_up);
-            }
-        }
     }
 
     @Override
     public void onGroupCollapsed(int groupPosition) {
-        for (ImageView iV : collapseTags) {
-            if (groupPosition == (int) iV.getTag()) {
-                iV.setImageResource(R.drawable.collapse_down);
-            }
-        }
     }
 
     @Override
@@ -220,5 +204,17 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
                 dialog.showDialog();
                 break;
         }
+    }
+
+    @Override
+    public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+        if (parent.isGroupExpanded(groupPosition)) {
+            ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+            collapseIcon.setImageResource(R.drawable.collapse_down);
+        } else {
+            ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+            collapseIcon.setImageResource(R.drawable.collapse_up);
+        }
+        return false;
     }
 }

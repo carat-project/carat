@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,9 +57,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ll = (RelativeLayout) inflater.inflate(R.layout.fragment_dashboard, container, false);
-        initViewRefs();
-        initListeners();
-        generateJScoreCircle();
         return ll;
     }
 
@@ -71,9 +69,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     public void onResume() {
         super.onResume();
         mainActivity.setUpActionBar(R.string.title_activity_dashboard, false);
+        initViewRefs();
+        initListeners();
+        generateJScoreCircle();
+        setValues();
         shareButton.setVisibility(View.VISIBLE);
         shareBar.setVisibility(View.GONE);
-        setValues();
     }
 
     private void initViewRefs() {
@@ -199,13 +200,17 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     }
 
     public void scheduleRefresh() {
+        Log.d("debug", "*** SCHELUDE START");
         if (mainActivity != null)
             mainActivity.runOnUiThread(new Runnable() {
                 public void run() {
                     View v = getView();
                     if (v != null) {
+                        Log.d("debug", "*** battery");
                         String batteryLife = CaratApplication.myDeviceData.getBatteryLife();
+                        mainActivity.setBatteryLife(batteryLife);
                         batteryText.setText(batteryLife);
+
                     }
 
                     int hogsCount = 0;
@@ -223,5 +228,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                     }
                 }
             });
+        Log.d("debug", "*** SCHELUDE END");
     }
 }
