@@ -1,7 +1,9 @@
 package edu.berkeley.cs.amplab.carat.android.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -75,13 +77,11 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tutorial_accept_button) {
-            /*Intent returnIntent = new Intent();
+            Intent returnIntent = new Intent();
             setResult(RESULT_OK, returnIntent);
             SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
             p.edit().putBoolean(getString(R.string.save_accept_eula), true).commit();
-            finish(); */
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+            finish();
         }
     }
 

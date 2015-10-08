@@ -119,5 +119,6 @@ public class Constants {
     public static final String FRAGMENT_ACTIONS_TAG = "fragment_actions";
     public static final String FRAGMENT_MY_DEVICE_TAG = "fragment_my_device";
     public static final String FRAGMENT_ABOUT_TAG = "fragment_about";
+    public static final String FRAGMENT_PROCESS_LIST = "fragment_process_list";
 
 }

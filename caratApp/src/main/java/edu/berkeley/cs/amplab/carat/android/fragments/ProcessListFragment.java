@@ -11,11 +11,16 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
+import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.ui.adapters.HogBugExpandListAdapter;
 import edu.berkeley.cs.amplab.carat.android.ui.adapters.ProcessExpandListAdapter;
+import edu.berkeley.cs.amplab.carat.thrift.ProcessInfo;
 
 /**
  * Created by Valto on 7.10.2015.
@@ -53,14 +58,16 @@ public class ProcessListFragment extends Fragment {
     }
 
     private void initViewRefs() {
-        processHeader = (RelativeLayout) mainFrame.findViewById(R.id.hogs_header);
+        processHeader = (RelativeLayout) mainFrame.findViewById(R.id.process_header);
         expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_process_list);
     }
 
     private void refresh() {
         CaratApplication app = (CaratApplication) getActivity().getApplication();
+        List<ProcessInfo> searchResults = SamplingLibrary
+                .getRunningAppInfo(getActivity());
         expandableListView.setAdapter(new ProcessExpandListAdapter((MainActivity) getActivity(),
-                expandableListView, app, CaratApplication.getStorage().getHogReport()));
+                expandableListView, app, searchResults));
     }
 
 }

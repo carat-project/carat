@@ -3,9 +3,12 @@ package edu.berkeley.cs.amplab.carat.android;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -26,6 +29,7 @@ import com.flurry.android.FlurryAgent;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 import edu.berkeley.cs.amplab.carat.android.activities.PrefetchData;
@@ -66,6 +70,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().setStatusBarColor(getResources().getColor(R.color.statusbar_color));
         }
+
+        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        if (!p.getBoolean(getResources().getString(R.string.save_accept_eula), false)) {
+            Intent i = new Intent(this, TutorialActivity.class);
+            this.startActivityForResult(i, Constants.REQUESTCODE_ACCEPT_EULA);
+        }
+        getStatsFromServer();
         super.onCreate(savedInstanceState);
 
         CaratApplication.setMain(this);
@@ -76,15 +88,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         if (!CaratApplication.isInternetAvailable()) {
             EnableInternetDialogFragment dialog = new EnableInternetDialogFragment();
             dialog.show(getSupportFragmentManager(), "dialog");
-        }
-
-        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-        getStatsFromServer();
-        if (p.getBoolean(getResources().getString(R.string.save_accept_eula), false)) {
-            Intent i = new Intent(this, TutorialActivity.class);
-            this.startActivityForResult(i, Constants.REQUESTCODE_ACCEPT_EULA);
-            return;
         }
 
         setContentView(R.layout.activity_dashboard);
@@ -147,11 +150,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_carat, menu);
-        if (menu.findItem(R.id.action_wifi_only).isChecked()) {
-            menu.findItem(R.id.action_wifi_only).setChecked(true);
-        } else {
-            menu.findItem(R.id.action_wifi_only).setChecked(false);
-        }
+        final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
+        final boolean useWifiOnly = p.getBoolean(getString(R.string.wifi_only_key), false);
+        menu.findItem(R.id.action_wifi_only).setChecked(useWifiOnly);
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -167,8 +168,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         switch (id) {
             case R.id.action_wifi_only:
                 if (item.isChecked()) {
+                    SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
+                    p.edit().putBoolean(getString(R.string.wifi_only_key), false).commit();
                     item.setChecked(false);
                 } else {
+                    SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
+                    p.edit().putBoolean(getString(R.string.wifi_only_key), true).commit();
                     item.setChecked(true);
                 }
                 break;
@@ -233,10 +238,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void refreshSummaryFragment() {
-        if (fragmentManager.getBackStackEntryCount() == 0) {
-            dashboardFragment.scheduleRefresh();
+        if (fragmentManager != null) {
+            if (fragmentManager.getBackStackEntryCount() == 0) {
+                dashboardFragment.scheduleRefresh();
+            }
         }
-
     }
 
     private void setJScore() {
@@ -296,15 +302,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
-        // use a fragment tag, so that later on we can find the currently displayed fragment
         final String FRAGMENT_TAG = tag;
-        // replace the fragment, using a fragment transaction
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2 || !isDestroyed()) {
-            transaction.replace(R.id.fragment_holder, fragment, FRAGMENT_TAG)
-                    .addToBackStack(FRAGMENT_TAG).commitAllowingStateLoss();
+        boolean fragmentPopped = fragmentManager.popBackStackImmediate(FRAGMENT_TAG, 0);
+
+        if (!fragmentPopped) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2 || !isDestroyed()) {
+                transaction.replace(R.id.fragment_holder, fragment, FRAGMENT_TAG)
+                        .addToBackStack(FRAGMENT_TAG).commitAllowingStateLoss();
+            }
         }
+
     }
 
     @SuppressLint("NewApi")
@@ -319,15 +329,26 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void shareOnFacebook() {
-
+        String caratText = getString(R.string.sharetext1) + " " + getJScore() + getString(R.string.sharetext2);
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, caratText);
+        startActivity(Intent.createChooser(intent, "facebook"));
     }
 
     public void shareOnTwitter() {
-
+        String caratText = getString(R.string.sharetext1) + " " + getJScore() + getString(R.string.sharetext2);
+        String tweetUrl = "https://twitter.com/intent/tweet?text="
+                + caratText;
+        Uri uri = Uri.parse(tweetUrl);
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
     public void shareViaEmail() {
-
+        String caratText = getString(R.string.sharetext1) + " " + getJScore() + getString(R.string.sharetext2);
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "", null));
+        intent.putExtra(Intent.EXTRA_TEXT, caratText);
+        startActivity(Intent.createChooser(intent, "Send email"));
     }
 
     public String getLastUpdated() {

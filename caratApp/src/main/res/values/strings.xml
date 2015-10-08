@@ -139,6 +139,9 @@
 
     <string name="about">ABOUT</string>
 
+    <!-- PROCESS LIST -->
+    <string name="version">Version</string>
+
     <!--
 These are the same for all languages. When translating,
 delete these from your file.

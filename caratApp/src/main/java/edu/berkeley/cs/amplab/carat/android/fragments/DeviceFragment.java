@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
@@ -45,6 +46,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     private Button memoryUsedButton;
     private Button memoryActiveButton;
     private Button cpuUsageButton;
+    private Button processListButton;
 
     private TextView deviceModel;
     private TextView osVersion;
@@ -104,6 +106,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         memoryActiveButton = (Button) mainFrame.findViewById(R.id.memory_active_button);
         cpuUsageButton = (Button) mainFrame.findViewById(R.id.cpu_usage_button);
         batteryLife = (TextView) mainFrame.findViewById(R.id.battery_value);
+        processListButton = (Button) mainFrame.findViewById(R.id.process_list_button);
 
     }
 
@@ -112,6 +115,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         memoryUsedButton.setOnClickListener(this);
         memoryActiveButton.setOnClickListener(this);
         cpuUsageButton.setOnClickListener(this);
+        processListButton.setOnClickListener(this);
     }
 
 
@@ -176,6 +180,10 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.process_list_button:
+                ProcessListFragment processListFragment = new ProcessListFragment();
+                mainActivity.replaceFragment(processListFragment, Constants.FRAGMENT_PROCESS_LIST);
+                break;
             case R.id.jscore_progress_circle:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.jscore_dialog_title),
