@@ -12,7 +12,6 @@ IB_DESIGNABLE
 @interface MeasurementBar : UIView
 @property (nonatomic) IBInspectable CGFloat largerMeasureValue;
 @property (nonatomic) IBInspectable CGFloat smallerMeasureValue;
-@property (nonatomic) IBInspectable UIColor *largerBarColor;
-@property (nonatomic) IBInspectable UIColor *smallerBarColor;
-
+@property (nonatomic, retain) IBInspectable UIColor *largerBarColor;
+@property (nonatomic, retain) IBInspectable UIColor *smallerBarColor;
 @end

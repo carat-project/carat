@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BugsViewController">
             <connections>
+                <outlet property="tableView" destination="zyF-3Z-UIQ" id="pMi-zf-Q1Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +15,165 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYD-b9-YVC">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Bugs" id="vcg-4D-ApX">
+                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="N4h-ga-M3d">
+                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="pig-9b-nQ4">
+                                <inset key="imageInsets" minX="20" minY="10" maxX="0.0" maxY="10"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Tb-B0-2fD">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BugsDesc" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09o-nS-QZn" customClass="LocalizedLabel">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bug_icon" translatesAutoresizingMaskIntoConstraints="NO" id="fE6-ef-A89">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="LN5-bU-A7a"/>
+                                <constraint firstAttribute="height" constant="70" id="cO0-2C-364"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="LN5-bU-A7a"/>
+                                    <exclude reference="cO0-2C-364"/>
+                                </mask>
+                            </variation>
+                            <variation key="widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="LN5-bU-A7a"/>
+                                    <include reference="cO0-2C-364"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="6oA-yj-6qf"/>
+                        <constraint firstItem="09o-nS-QZn" firstAttribute="trailing" secondItem="1Tb-B0-2fD" secondAttribute="trailing" constant="-10" id="EZO-hn-QNP"/>
+                        <constraint firstItem="09o-nS-QZn" firstAttribute="top" secondItem="1Tb-B0-2fD" secondAttribute="top" constant="5" id="Oqz-hm-uO3"/>
+                        <constraint firstItem="fE6-ef-A89" firstAttribute="top" secondItem="1Tb-B0-2fD" secondAttribute="top" constant="20" symbolic="YES" id="RCP-nA-ARj">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
+                        <constraint firstItem="09o-nS-QZn" firstAttribute="leading" secondItem="fE6-ef-A89" secondAttribute="trailing" id="Sh7-nc-Xxe">
+                            <variation key="widthClass=compact" constant="-2"/>
+                        </constraint>
+                        <constraint firstItem="fE6-ef-A89" firstAttribute="leading" secondItem="1Tb-B0-2fD" secondAttribute="leading" constant="20" symbolic="YES" id="bvd-fL-ih4">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="09o-nS-QZn"/>
+                            <exclude reference="fE6-ef-A89"/>
+                        </mask>
+                        <mask key="constraints">
+                            <exclude reference="6oA-yj-6qf"/>
+                            <exclude reference="EZO-hn-QNP"/>
+                            <exclude reference="Oqz-hm-uO3"/>
+                            <exclude reference="Sh7-nc-Xxe"/>
+                            <exclude reference="RCP-nA-ARj"/>
+                            <exclude reference="bvd-fL-ih4"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="subviews">
+                            <include reference="09o-nS-QZn"/>
+                            <include reference="fE6-ef-A89"/>
+                        </mask>
+                        <mask key="constraints">
+                            <include reference="6oA-yj-6qf"/>
+                            <include reference="EZO-hn-QNP"/>
+                            <include reference="Oqz-hm-uO3"/>
+                            <include reference="Sh7-nc-Xxe"/>
+                            <include reference="RCP-nA-ARj"/>
+                            <include reference="bvd-fL-ih4"/>
+                        </mask>
+                    </variation>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zyF-3Z-UIQ">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="4t0-fL-gtU"/>
+                        <outlet property="delegate" destination="-1" id="egT-Dh-aVK"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="MYD-b9-YVC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="2HF-FI-iZ4"/>
+                <constraint firstItem="zyF-3Z-UIQ" firstAttribute="trailing" secondItem="1Tb-B0-2fD" secondAttribute="trailing" id="9qk-of-EVj"/>
+                <constraint firstItem="zyF-3Z-UIQ" firstAttribute="leading" secondItem="1Tb-B0-2fD" secondAttribute="leading" id="GUh-bB-drO"/>
+                <constraint firstItem="zyF-3Z-UIQ" firstAttribute="top" secondItem="1Tb-B0-2fD" secondAttribute="bottom" id="MU9-94-gm8"/>
+                <constraint firstAttribute="bottom" secondItem="zyF-3Z-UIQ" secondAttribute="bottom" id="N0T-8K-fOm"/>
+                <constraint firstItem="1Tb-B0-2fD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dP7-02-0cn"/>
+                <constraint firstItem="1Tb-B0-2fD" firstAttribute="top" secondItem="MYD-b9-YVC" secondAttribute="bottom" id="kMR-Ri-lz5"/>
+                <constraint firstItem="1Tb-B0-2fD" firstAttribute="trailing" secondItem="MYD-b9-YVC" secondAttribute="trailing" id="wAw-zF-gMK"/>
+                <constraint firstItem="MYD-b9-YVC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xXX-o4-qXV"/>
+                <constraint firstItem="MYD-b9-YVC" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="zNb-Ok-Bb6"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="MYD-b9-YVC"/>
+                    <exclude reference="1Tb-B0-2fD"/>
+                    <exclude reference="zyF-3Z-UIQ"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="2HF-FI-iZ4"/>
+                    <exclude reference="xXX-o4-qXV"/>
+                    <exclude reference="zNb-Ok-Bb6"/>
+                    <exclude reference="dP7-02-0cn"/>
+                    <exclude reference="kMR-Ri-lz5"/>
+                    <exclude reference="wAw-zF-gMK"/>
+                    <exclude reference="9qk-of-EVj"/>
+                    <exclude reference="GUh-bB-drO"/>
+                    <exclude reference="MU9-94-gm8"/>
+                    <exclude reference="N0T-8K-fOm"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="MYD-b9-YVC"/>
+                    <include reference="1Tb-B0-2fD"/>
+                    <include reference="zyF-3Z-UIQ"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="2HF-FI-iZ4"/>
+                    <include reference="xXX-o4-qXV"/>
+                    <include reference="zNb-Ok-Bb6"/>
+                    <include reference="dP7-02-0cn"/>
+                    <include reference="kMR-Ri-lz5"/>
+                    <include reference="wAw-zF-gMK"/>
+                    <include reference="9qk-of-EVj"/>
+                    <include reference="GUh-bB-drO"/>
+                    <include reference="MU9-94-gm8"/>
+                    <include reference="N0T-8K-fOm"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="191" y="351"/>
         </view>
     </objects>
+    <resources>
+        <image name="arrow_icon" width="48" height="48"/>
+        <image name="bug_icon" width="48" height="48"/>
+        <image name="more_icon" width="42" height="42"/>
+    </resources>
 </document>

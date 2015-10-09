@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BugHogExpandedTableViewCell.h"
 
-@interface BugsViewController : UIViewController
+@interface BugsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) NSArray *tableData;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray *expandedCells;
 -(IBAction)showMessage;
 
 

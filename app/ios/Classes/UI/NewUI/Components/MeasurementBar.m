@@ -40,14 +40,8 @@
 {
     _customConstraints = [[NSMutableArray alloc] init];
     // Initialization code
-    //self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-    self.opaque = NO;
-    //self.backgroundColor = [UIColor whiteColor];
-    // Determine our start and stop angles for the arc (in radians)
     UIView *view = nil;
     _measureTopImg = [UIImage imageNamed:@"measurebar_top"];
-    _largerBarColor = C_RED;
-    _smallerBarColor = C_ORANGE;
     [self setBackgroundColor:C_LIGHT_GRAY];
     
     /*
@@ -88,16 +82,11 @@
         CGContextFillRect(ctx, rectangle);
     }
     
+    if(_measureTopImg != nil){
+        _measureTopImg = [UIImage imageNamed:@"measurebar_top"];
+    }
     CGRect imgRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     [_measureTopImg drawInRect:imgRect];
-    
-    /*
-//    UIGraphicsPushContext(ctx);
-    CGContextSaveGState(ctx);
-    [_measureTopImg drawInRect:imgRect];
-    //UIGraphicsPopContext();
-    CGContextRestoreGState(ctx);
-    */
 }
 
 

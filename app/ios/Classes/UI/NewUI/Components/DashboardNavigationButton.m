@@ -94,6 +94,9 @@
     [_dashboardButtonTitle setText:title];
     //_dashboardButtonTitle.textAlignment = NSTextAlignmentCenter;
 }
+
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

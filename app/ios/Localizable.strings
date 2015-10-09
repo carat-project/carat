@@ -31,7 +31,15 @@
 "DeviceModel"="Device model";
 "ProcessList"="PROCESS LIST";
 "DeviceUsage"="DEVICE USAGE";
-“MemoryUsed”=“Memory used”;
-“MemoryActive”=“Memory active”;
-“CPUUsage”=“CPU Usage”;
+"MemoryUsed"="Memory used";
+"MemoryActive"="Memory active";
+"CPUUsage"="CPU Usage";
 //My Device ends
+//BugsView start
+"ExpectedImp"="Expected improvement ";
+"Samples"="Samples";
+"Error"="Error";
+"SamplesWithout"="Samples without";
+"NumberHelpLabel"="What are these numbers?";
+
+//BugsView ends

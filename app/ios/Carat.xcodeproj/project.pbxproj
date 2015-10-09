@@ -28,6 +28,8 @@
 		66EC15081A2A6A8E00153746 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15061A2A6A8E00153746 /* infoButton.png */; };
 		89486E571BC55DFF00138F23 /* MeasurementBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89486E561BC55DFF00138F23 /* MeasurementBar.m */; settings = {ASSET_TAGS = (); }; };
 		89486E591BC55E2000138F23 /* MeasurementBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89486E581BC55E2000138F23 /* MeasurementBar.xib */; settings = {ASSET_TAGS = (); }; };
+		8949115A1BC78D140025F848 /* BugHogExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894911581BC78D140025F848 /* BugHogExpandedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		8949115B1BC78D140025F848 /* BugHogExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894911591BC78D140025F848 /* BugHogExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		894A23F21BC251140059850A /* DashBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A23ED1BC251140059850A /* DashBoardViewController.m */; settings = {ASSET_TAGS = (); }; };
 		894A23F31BC251140059850A /* DashBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894A23EE1BC251140059850A /* DashBoardViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		894A23F41BC251140059850A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A23F11BC251140059850A /* BaseViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -55,6 +57,9 @@
 		89DAB8B61BC2B26B0053647E /* UiInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B51BC2B26B0053647E /* UiInsetLabel.m */; settings = {ASSET_TAGS = (); }; };
 		89DE0E2C1BC3A7CA0034F64D /* BugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DE0E2A1BC3A7CA0034F64D /* BugsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		89DE0E2D1BC3A7CA0034F64D /* BugsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89DE0E2B1BC3A7CA0034F64D /* BugsViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		89EFCC0E1BC656E700480C56 /* BugHogListItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFCC0D1BC656E700480C56 /* BugHogListItemData.m */; settings = {ASSET_TAGS = (); }; };
+		89EFCC121BC66ABF00480C56 /* BugHogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		89EFCC131BC66ABF00480C56 /* BugHogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AB244AF814E10D660055FCD6 /* ActionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB244AF714E10D660055FCD6 /* ActionItemCell.xib */; };
 		AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */; };
 		AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF6144E1E520090CC09 /* CaratAppDelegate.m */; };
@@ -220,6 +225,9 @@
 		89486E551BC55DFF00138F23 /* MeasurementBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementBar.h; sourceTree = "<group>"; };
 		89486E561BC55DFF00138F23 /* MeasurementBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementBar.m; sourceTree = "<group>"; };
 		89486E581BC55E2000138F23 /* MeasurementBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasurementBar.xib; sourceTree = "<group>"; };
+		894911571BC78D140025F848 /* BugHogExpandedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogExpandedTableViewCell.h; sourceTree = "<group>"; };
+		894911581BC78D140025F848 /* BugHogExpandedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogExpandedTableViewCell.m; sourceTree = "<group>"; };
+		894911591BC78D140025F848 /* BugHogExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugHogExpandedTableViewCell.xib; sourceTree = "<group>"; };
 		894A23ED1BC251140059850A /* DashBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashBoardViewController.m; sourceTree = "<group>"; };
 		894A23EE1BC251140059850A /* DashBoardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashBoardViewController.xib; sourceTree = "<group>"; };
 		894A23EF1BC251140059850A /* DashBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashBoardViewController.h; sourceTree = "<group>"; };
@@ -266,6 +274,11 @@
 		89DE0E291BC3A7CA0034F64D /* BugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugsViewController.h; sourceTree = "<group>"; };
 		89DE0E2A1BC3A7CA0034F64D /* BugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugsViewController.m; sourceTree = "<group>"; };
 		89DE0E2B1BC3A7CA0034F64D /* BugsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugsViewController.xib; sourceTree = "<group>"; };
+		89EFCC0C1BC656E700480C56 /* BugHogListItemData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogListItemData.h; sourceTree = "<group>"; };
+		89EFCC0D1BC656E700480C56 /* BugHogListItemData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogListItemData.m; sourceTree = "<group>"; };
+		89EFCC0F1BC66ABF00480C56 /* BugHogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogTableViewCell.h; sourceTree = "<group>"; };
+		89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogTableViewCell.m; sourceTree = "<group>"; };
+		89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugHogTableViewCell.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Carat-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Carat-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		8F35504DFD1C0120ECC89B4A /* Pods.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods/Pods.ad hoc.xcconfig"; sourceTree = "<group>"; };
 		AB105EBB14EDCA57000DB145 /* ProcessListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessListViewController.h; sourceTree = "<group>"; };
@@ -949,9 +962,9 @@
 		894A23EC1BC250E70059850A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				894A23FC1BC251800059850A /* DashboardNavigationButton.xib */,
 				894A23FA1BC251800059850A /* DashboardNavigationButton.h */,
 				894A23FB1BC251800059850A /* DashboardNavigationButton.m */,
-				894A23FC1BC251800059850A /* DashboardNavigationButton.xib */,
 				894A23FD1BC251800059850A /* ScoreView.h */,
 				894A23FE1BC251800059850A /* ScoreView.m */,
 				894A23FF1BC251800059850A /* ShareBar.h */,
@@ -969,6 +982,12 @@
 				89486E581BC55E2000138F23 /* MeasurementBar.xib */,
 				89486E551BC55DFF00138F23 /* MeasurementBar.h */,
 				89486E561BC55DFF00138F23 /* MeasurementBar.m */,
+				89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */,
+				89EFCC0F1BC66ABF00480C56 /* BugHogTableViewCell.h */,
+				89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */,
+				894911591BC78D140025F848 /* BugHogExpandedTableViewCell.xib */,
+				894911571BC78D140025F848 /* BugHogExpandedTableViewCell.h */,
+				894911581BC78D140025F848 /* BugHogExpandedTableViewCell.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -978,6 +997,8 @@
 			children = (
 				894A240C1BC256A90059850A /* TutorialPageContent.h */,
 				894A240D1BC256A90059850A /* TutorialPageContent.m */,
+				89EFCC0C1BC656E700480C56 /* BugHogListItemData.h */,
+				89EFCC0D1BC656E700480C56 /* BugHogListItemData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1123,7 +1144,6 @@
 		ABD317C91487FD1C000A8DC7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				894A23EB1BC250B70059850A /* NewUI */,
 				C7547EBB19963CFD007A01CF /* ProcessItemCell.h */,
 				C7547EBC19963CFD007A01CF /* ProcessItemCell.m */,
 				C7547EC119963CFD007A01CF /* ReportItemCell.h */,
@@ -1158,6 +1178,7 @@
 				C7547E2219963CFD007A01CF /* ActionItemCell.m */,
 				C7547E2319963CFD007A01CF /* ActionObject.h */,
 				C7547E2419963CFD007A01CF /* ActionObject.m */,
+				894A23EB1BC250B70059850A /* NewUI */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1665,6 +1686,7 @@
 				89D48E611BC3CE7800595136 /* ActionsViewController.xib in Resources */,
 				AB41CE1C1450BC060090CC09 /* hog.png in Resources */,
 				C75488D519963D04007A01CF /* icon76.png in Resources */,
+				89EFCC131BC66ABF00480C56 /* BugHogTableViewCell.xib in Resources */,
 				AB41CE2E145229FE0090CC09 /* CurrentView.xib in Resources */,
 				AB645DF61456F9EC0008244B /* icon57.png in Resources */,
 				C7548CC019963ED0007A01CF /* Icon-40.png in Resources */,
@@ -1708,6 +1730,7 @@
 				89486E591BC55E2000138F23 /* MeasurementBar.xib in Resources */,
 				C75488C419963D04007A01CF /* Default-Portrait@2x.png in Resources */,
 				AB9525B014EA1B6F00343418 /* killapp.html in Resources */,
+				8949115B1BC78D140025F848 /* BugHogExpandedTableViewCell.xib in Resources */,
 				C75488C619963D04007A01CF /* Default-Portrait~ipad.png in Resources */,
 				C7548CC119963ED0007A01CF /* Icon-40@2x.png in Resources */,
 				89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */,
@@ -1788,6 +1811,7 @@
 				C74130CA19EDC6EA00A1E8CE /* SDWebImageDecoder.m in Sources */,
 				C754889B19963D04007A01CF /* SDWebImageDownloader.m in Sources */,
 				894A23F21BC251140059850A /* DashBoardViewController.m in Sources */,
+				89EFCC0E1BC656E700480C56 /* BugHogListItemData.m in Sources */,
 				89D48E601BC3CE7800595136 /* ActionsViewController.m in Sources */,
 				C74130CC19EDC6EA00A1E8CE /* SDWebImageDownloaderDelegate.h in Sources */,
 				C754889C19963D04007A01CF /* SDWebImageManager.m in Sources */,
@@ -1805,6 +1829,7 @@
 				AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */,
 				C754889219963D04007A01CF /* MBProgressHUD.m in Sources */,
 				AB41CDFD144E3B990090CC09 /* Reachability.m in Sources */,
+				8949115A1BC78D140025F848 /* BugHogExpandedTableViewCell.m in Sources */,
 				AB41CE06144F56D40090CC09 /* CaratAppDelegate_iPhone.m in Sources */,
 				AB41CE09144F56E90090CC09 /* CaratAppDelegate_iPad.m in Sources */,
 				AB7999121455C1C5000AE9FE /* HogReportViewController.m in Sources */,
@@ -1824,6 +1849,7 @@
 				C754889019963D03007A01CF /* InstructionViewController.m in Sources */,
 				C754888019963D03007A01CF /* CoreDataDetail.m in Sources */,
 				C1D52F331465F85A008D6D09 /* TApplicationException.m in Sources */,
+				89EFCC121BC66ABF00480C56 /* BugHogTableViewCell.m in Sources */,
 				89DAB8B31BC2A7C60053647E /* LocalizedLabel.m in Sources */,
 				C1D52F341465F85A008D6D09 /* TException.m in Sources */,
 				C754887219963D03007A01CF /* ActionObject.m in Sources */,

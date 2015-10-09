@@ -124,19 +124,57 @@
     [actionsButton setButtonExtraInfo:@"4"];
     [actionsButton setButtonTitle:NSLocalizedString(@"Actions", nil)];
     
+    UITapGestureRecognizer *bugsTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(bugsTapped)];
+    [bugsButton addGestureRecognizer:bugsTap];
+    [bugsTap release];
+    
+    UITapGestureRecognizer *hogsTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(hogsTapped)];
+    [hogsButton addGestureRecognizer:hogsTap];
+    [hogsTap release];
+    
+    UITapGestureRecognizer *statisticsTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(statisticsTapped)];
+    [statisticsButton addGestureRecognizer:statisticsTap];
+    [statisticsTap release];
+    
+    UITapGestureRecognizer *actionsTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(actionsTapped)];
+    [actionsButton addGestureRecognizer:actionsTap];
+    [actionsTap release];
+    
     [self.view addSubview:bugsButton];
     [self.view addSubview:hogsButton];
     [self.view addSubview:statisticsButton];
     [self.view addSubview:actionsButton];
-    
-    [self addCustomButtonOnNavBar];
 }
 
-- (void)addCustomButtonOnNavBar
+- (void)bugsTapped
 {
-    
-    
+    NSLog(@"bugsTapped");
+    [self showBugsController];
 }
+- (void)hogsTapped
+{
+    NSLog(@"hogsTapped");
+    [self showHogsController];
+}
+- (void)statisticsTapped
+{
+    NSLog(@"statisticsTapped");
+    [self showStatisticsController];
+}
+- (void)actionsTapped
+{
+    NSLog(@"actionsTapped");
+    [self showActionsController];
+}
+
 
 -(void)moreIconPressed
 {
