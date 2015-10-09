@@ -102,7 +102,6 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
 
     }
 
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

@@ -2,17 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/white"
-    android:paddingLeft="15dp"
-    android:paddingTop="15dp"
+    android:orientation="vertical"
     android:paddingBottom="15dp"
-    android:paddingRight="60dp">
+    android:paddingLeft="15dp"
+    android:paddingRight="60dp"
+    android:paddingTop="15dp">
 
     <TextView
         android:id="@+id/about_child_text"
+        style="@style/SmallGrayText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SAMPLE TEXT"/>
+        android:text="SAMPLE TEXT" />
 
 </LinearLayout><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/about_list_child_item.xml -->

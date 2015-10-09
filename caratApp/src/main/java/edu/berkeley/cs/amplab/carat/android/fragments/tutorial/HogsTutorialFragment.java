@@ -30,5 +30,4 @@ public class HogsTutorialFragment extends Fragment {
 
     }
 
-
 }

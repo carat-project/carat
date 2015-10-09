@@ -55,7 +55,6 @@
                         style="@style/LargeBlackText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
                         android:paddingTop="4dp"
                         android:text="@string/carat_id_title" />
 
@@ -78,7 +77,6 @@
                         style="@style/LargeBlackText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
                         android:paddingTop="4dp"
                         android:text="@string/os_version_title" />
 
@@ -101,7 +99,6 @@
                         style="@style/LargeBlackText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
                         android:paddingTop="4dp"
                         android:text="@string/device_model_title" />
 

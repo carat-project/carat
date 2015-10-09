@@ -580,6 +580,9 @@
     <string name="priorityservice">Service</string>
     <string name="prioritysuggestion">Suggestion</string>
     <string name="priorityvisible">Visible App</string>
+    <string name="process_list_message">Processes are lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum </string>
     <string name="process_list_title">PROCESS LIST</string>
     <string name="processlist">Running processes</string>
     <string name="questionnaire">Please help us improve Carat</string>

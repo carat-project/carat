@@ -186,6 +186,9 @@
 
     <!-- PROCESS LIST -->
     <string name="version">Version</string>
+    <string name="process_list_message">Processes are lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum </string>
 
     <!-- PREFERENCES LIST -->
     <string name="show_all">Show all</string>

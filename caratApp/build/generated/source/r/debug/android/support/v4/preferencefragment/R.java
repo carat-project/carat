@@ -262,7 +262,7 @@ public final class R {
 		public static final int abc_shareactionprovider_share_with_application = 0x7f06000c;
 		public static final int back_button_label = 0x7f0600bc;
 		public static final int next_button_label = 0x7f0600e6;
-		public static final int skip_button_label = 0x7f0600f1;
+		public static final int skip_button_label = 0x7f0600f2;
 	}
 	public static final class style {
 		public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 0x7f0900bf;
