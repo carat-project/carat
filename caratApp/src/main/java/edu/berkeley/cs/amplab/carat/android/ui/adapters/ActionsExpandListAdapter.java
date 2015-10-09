@@ -31,7 +31,8 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 /**
  * Created by Valto on 2.10.2015.
  */
-public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements View.OnClickListener, Runnable, ExpandableListView.OnGroupClickListener {
+public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements View.OnClickListener,
+        Runnable, ExpandableListView.OnGroupClickListener, ExpandableListView.OnGroupExpandListener {
 
     private CaratApplication caratApplication;
     private SimpleHogBug[] hogReport, bugReport;
@@ -39,13 +40,13 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private LayoutInflater mInflater;
     private ExpandableListView lv;
     private MainActivity mainActivity;
-    private Button killAppButton;
 
     private ImageView processIcon;
     private TextView processName;
     private TextView processImprovement;
     private TextView samplesAmount;
     private TextView appCategory;
+    private Button killAppButton;
     private SurfaceHolder progressSurfaceHolder;
     private Thread drawingThread;
 
@@ -54,16 +55,18 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private SimpleHogBug storedHogBug;
 
     private boolean locker;
+    private int previousGroup = -1;
 
     public ActionsExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication,
                                     SimpleHogBug[] hogReport, SimpleHogBug[] bugReport) {
 
         this.caratApplication = caratApplication;
-        this.mainActivity = mainActivity;
         this.hogReport = hogReport;
         this.bugReport = bugReport;
         this.lv = lv;
         this.lv.setOnGroupClickListener(this);
+        this.lv.setOnGroupExpandListener(this);
+        this.mainActivity = mainActivity;
 
         for (SimpleHogBug s : hogReport) {
             allReports.add(s);
@@ -241,7 +244,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             Canvas c = progressSurfaceHolder.lockCanvas();
             draw(c);
             progressSurfaceHolder.unlockCanvasAndPost(c);
-            locker = false;
         }
     }
 
@@ -251,10 +253,12 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         Paint paint = new Paint();
         paint.setARGB(255, 75, 200, 127);
         canvas.drawRect(r, paint);
+        locker = false;
     }
 
     @Override
     public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+        storedHogBug = allReports.get(groupPosition);
         if (parent.isGroupExpanded(groupPosition)) {
             ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
             collapseIcon.setImageResource(R.drawable.collapse_down);
@@ -263,5 +267,13 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             collapseIcon.setImageResource(R.drawable.collapse_up);
         }
         return false;
+    }
+
+    @Override
+    public void onGroupExpand(int groupPosition) {
+        storedHogBug = allReports.get(groupPosition);
+        if (groupPosition != previousGroup)
+            lv.collapseGroup(previousGroup);
+        previousGroup = groupPosition;
     }
 }

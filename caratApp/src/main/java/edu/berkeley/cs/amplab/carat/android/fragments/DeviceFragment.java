@@ -58,7 +58,6 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     private float memoryUsedConverted = 0;
     private float memoryActiveConverted = 0;
     private float cpuUsageConverted = 0;
-    private long[] lastPoint = null;
     private BaseDialog dialog;
 
 
@@ -162,20 +161,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
             memoryActiveConverted = (float) totalAndUsed[2] / (totalAndUsed[3] + totalAndUsed[2]);
         }
 
-        getActivity().runOnUiThread(new Runnable() {
-            public void run() {
-                long[] currentPoint = SamplingLibrary.readUsagePoint();
-
-                float cpu = 0;
-                if (lastPoint == null) {
-                    lastPoint = currentPoint;
-                } else {
-                    cpu = (float) SamplingLibrary.getUsage(lastPoint, currentPoint);
-                }
-                cpuUsageConverted = cpu;
-
-            }
-        });
+        cpuUsageConverted = mainActivity.getCpuValue();
         drawMemoryValues();
 
     }
@@ -270,7 +256,6 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
                 r = new RectF(0, 0, 0, 0);
                 break;
         }
-        Log.d("debug", "*** CPU: " + cpuUsageConverted);
         canvas.drawColor(Color.argb(255, 180, 180, 180));
         Paint paint = new Paint();
         paint.setARGB(255, 75, 200, 127);

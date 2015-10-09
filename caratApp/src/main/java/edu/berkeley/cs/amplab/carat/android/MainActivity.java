@@ -51,7 +51,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private String batteryLife;
     private String bugAmount, hogAmount, actionsAmount;
+    private float cpu;
     private int jScore;
+    private long[] lastPoint = null;
 
     private TextView actionBarTitle;
     private ImageView backArrow;
@@ -215,12 +217,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
-    private void setValues() {
+    public void setValues() {
         setJScore();
         setBatteryLife(CaratApplication.myDeviceData.getBatteryLife());
         setBugAmount();
         setHogAmount();
         setActionsAmount();
+        setCpuValue();
         Log.d("debug", "*** Values set");
     }
 
@@ -244,6 +247,22 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 dashboardFragment.scheduleRefresh();
             }
         }
+    }
+
+    private void setCpuValue() {
+        long[] currentPoint = SamplingLibrary.readUsagePoint();
+        float cpu = 0;
+        if (lastPoint == null) {
+            lastPoint = currentPoint;
+        } else {
+            cpu = (float) SamplingLibrary.getUsage(lastPoint, currentPoint);
+        }
+        this.cpu = cpu;
+
+    }
+
+    public float getCpuValue() {
+        return cpu;
     }
 
     private void setJScore() {

@@ -42,35 +42,42 @@
         android:layout_weight="85"
         android:groupIndicator="@null"></ExpandableListView>
 
-    <LinearLayout
-        android:id="@+id/empty_actions_layout"
+    <ScrollView
+        android:id="@+id/no_actions_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="100"
-        android:orientation="vertical"
-        android:padding="30dp"
         android:visibility="gone">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:src="@drawable/empty_bugs_icon" />
-
-        <TextView
-            style="@style/LargeBoldBlackText"
+        <LinearLayout
+            android:id="@+id/empty_actions_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:text="@string/no_actions_title" />
+            android:layout_height="match_parent"
+            android:layout_weight="100"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:visibility="gone">
 
-        <TextView
-            style="@style/LargeBlackText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/no_actions_message" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:src="@drawable/empty_actions_icon" />
 
-    </LinearLayout>
+            <TextView
+                style="@style/LargeBoldBlackText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/no_actions_title" />
+
+            <TextView
+                style="@style/LargeBlackText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_actions_message" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/fragment_actions.xml -->

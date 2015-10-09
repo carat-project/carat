@@ -6,11 +6,14 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -23,6 +26,7 @@ import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.ui.LocalizedWebView;
 import edu.berkeley.cs.amplab.carat.android.ui.adapters.ActionsExpandListAdapter;
+import edu.berkeley.cs.amplab.carat.android.ui.adapters.HogBugExpandListAdapter;
 
 /**
  * Created by Valto on 30.9.2015.
@@ -34,6 +38,9 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
 
     private MainActivity mainActivity;
     private LinearLayout mainFrame;
+    private LinearLayout noActionsLayout;
+    private RelativeLayout actionsHeader;
+    private ScrollView noActionsScroll;
     private ExpandableListView expandableListView;
 
     @Override
@@ -64,6 +71,9 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
     }
 
     private void initViewRefs() {
+        noActionsScroll = (ScrollView) mainFrame.findViewById(R.id.no_actions_scroll_view);
+        noActionsLayout = (LinearLayout) mainFrame.findViewById(R.id.empty_actions_layout);
+        actionsHeader = (RelativeLayout) mainFrame.findViewById(R.id.actions_header);
         expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_actions_list);
     }
 
@@ -75,100 +85,25 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
         bugReport = s.getBugReport();
 
         if (s.hogsIsEmpty() && s.bugsIsEmpty()) {
-            //TODO SHOW empty actions view
+            noActionsScroll.setVisibility(View.VISIBLE);
+            noActionsLayout.setVisibility(View.VISIBLE);
+            actionsHeader.setVisibility(View.GONE);
+            expandableListView.setVisibility(View.GONE);
             return;
+        } else {
+            noActionsScroll.setVisibility(View.GONE);
+            noActionsLayout.setVisibility(View.GONE);
+            actionsHeader.setVisibility(View.VISIBLE);
+            expandableListView.setVisibility(View.VISIBLE);
+            expandableListView.setAdapter(new ActionsExpandListAdapter(mainActivity,
+                    expandableListView, (CaratApplication) getActivity().getApplication(),
+                    hogReport, bugReport));
         }
 
-        expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_actions_list);
-        expandableListView.setAdapter(new ActionsExpandListAdapter(mainActivity,
-                expandableListView, (CaratApplication) getActivity().getApplication(),
-                hogReport, bugReport));
+
+
     }
 
-    private void initUpgradeOsView(View root) {
-        LocalizedWebView webview = (LocalizedWebView) root.findViewById(R.id.upgradeOsView);
-        webview.loadUrl("file:///android_asset/upgradeos.html");
-        //webview.setOnTouchListener(new FlipperBackListener(this, vf, vf.indexOfChild(findViewById(android.R.id.list))));
-    }
-
-    /* Show the bluetooth setting */
-    public void GoToBluetoothScreen() {
-        safeStart(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS, getString(R.string.bluetoothsettings));
-    }
-
-    /* Show the wifi setting */
-    public void GoToWifiScreen() {
-        safeStart(android.provider.Settings.ACTION_WIFI_SETTINGS, getString(R.string.wifisettings));
-    }
-
-    /*
-     * Show the display setting including screen brightness setting, sleep mode
-     */
-    public void GoToDisplayScreen() {
-        safeStart(android.provider.Settings.ACTION_DISPLAY_SETTINGS, getString(R.string.screensettings));
-    }
-
-    /*
-     * Show the sound setting including phone ringer mode, vibration mode, haptic feedback setting and other sound options
-     */
-    public void GoToSoundScreen() {
-        safeStart(android.provider.Settings.ACTION_SOUND_SETTINGS, getString(R.string.soundsettings));
-    }
-
-    /*
-     * Show the location service setting including configuring gps provider, network provider
-     */
-    public void GoToLocSevScreen() {
-        safeStart(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS, getString(R.string.locationsettings));
-    }
-
-    /* Show the synchronization setting */
-    public void GoToSyncScreen() {
-        safeStart(android.provider.Settings.ACTION_SYNC_SETTINGS, getString(R.string.syncsettings));
-    }
-
-    /*
-     * Show the mobile network setting including configuring 3G/2G, network operators
-     */
-    public void GoToMobileNetworkScreen() {
-        safeStart(android.provider.Settings.ACTION_DATA_ROAMING_SETTINGS, getString(R.string.mobilenetworksettings));
-    }
-
-    /* Show the application setting */
-    public void GoToAppScreen() {
-        safeStart(android.provider.Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS, getString(R.string.appsettings));
-    }
-
-    private void safeStart(String intentString, String thing) {
-        Intent intent = null;
-        try {
-            intent = new Intent(intentString);
-            startActivity(intent);
-        } catch (Throwable th) {
-            // Log.e(TAG, "Could not start activity: " + intent, th);
-            if (thing != null) {
-                Toast t = Toast.makeText(getActivity(), getString(R.string.opening) + thing + getString(R.string.notsupported),
-                        Toast.LENGTH_SHORT);
-                t.show();
-            }
-        }
-    }
-
-    /**
-     * Open a Carat-related questionnaire.
-     */
-    public void openQuestionnaire() {
-        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String caratId = Uri.encode(p.getString(CaratApplication.getRegisteredUuid(), ""));
-        String os = Uri.encode(SamplingLibrary.getOsVersion());
-        String model = Uri.encode(SamplingLibrary.getModel());
-        String url = CaratApplication.getStorage().getQuestionnaireUrl();
-        if (url != null && url.length() > 7 && url.startsWith("http")) { // http://
-            url = url.replace("caratid", caratId).replace("caratos", os).replace("caratmodel", model);
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(browserIntent);
-        }
-    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

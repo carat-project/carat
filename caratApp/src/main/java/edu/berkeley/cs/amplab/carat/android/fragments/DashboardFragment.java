@@ -125,7 +125,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
         cd.setStepSize(1f);
     }
 
-    private void setValues() {
+    public void setValues() {
         if (mainActivity.getJScore() == -1 || mainActivity.getJScore() == 0) {
             cd.setCustomText(new String[]{"N/A"});
         } else {
@@ -228,6 +228,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                     }
                 }
             });
+        mainActivity.setValues();
+        setValues();
         Log.d("debug", "*** SCHELUDE END");
     }
 }
