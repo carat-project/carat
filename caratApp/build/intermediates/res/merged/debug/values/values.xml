@@ -13,10 +13,10 @@
     </string-array>
     <string-array name="hog_thresh_list">
         <item>Show all</item>
-        <item>impact &lt; 5m</item>
-        <item>impact &lt; 10m</item>
-        <item>impact &lt; 20m</item>
-        <item>impact &lt; 1h</item>
+        <item>impact &lt; 5 min</item>
+        <item>impact &lt; 10 min</item>
+        <item>impact &lt; 20 min</item>
+        <item>impact &lt; 1 hour</item>
     </string-array>
     <string-array name="hog_thresh_minutes">
         <item>0</item>
@@ -384,7 +384,7 @@
     <string name="actions_amount">4</string>
     <string name="actions_list_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
     <string name="active_battery_life">Active Battery Life</string>
-    <string name="ago">ago)</string>
+    <string name="ago">ago</string>
     <string name="alogo">AmpLab Logo</string>
     <string name="app_category_title">Foreground App</string>
     <string name="app_name">Carat</string>
@@ -460,6 +460,7 @@
     <string name="feedback">Give feedback (email)</string>
     <string name="feedbackfrom">Feedback from a</string>
     <string name="finishing">Finishing up</string>
+    <string name="five">Impact &lt; 5 min</string>
     <string name="global_general_all_message">Out of 431,882 installed applications, 9 are energy-intensive
         (Hogs in the Carat App) and 4 are energy anomalies (Bugs).</string>
     <string name="global_general_android">Android</string>
@@ -481,6 +482,7 @@
     <string name="hog_thresh">Hide apps with a small impact</string>
     <string name="hogs">HOGS</string>
     <string name="hogs_amount">4</string>
+    <string name="hour">Impact &lt; 1 hour</string>
     <string name="information">Information</string>
     <string name="jscore">Your J-Score:</string>
     <string name="jscore_dialog_title">J-SCORE</string>
@@ -531,7 +533,7 @@
     <string name="morestatsat">More at carat.cs.helsinki.fi/statistics</string>
     <string name="my_device">MY DEVICE</string>
     <string name="myjscoreis">My J-Score is</string>
-    <string name="neverupdated">(Never updated)</string>
+    <string name="neverupdated">Never updated</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="next_button_label">Next</string>
@@ -597,6 +599,7 @@
     <string name="sharetext2">!\nWhat\'s yours?\nFind out here: \nhttp://carat.cs.berkeley.edu/</string>
     <string name="sharewith">Share with:</string>
     <string name="shortenscreentimeout">Shorten screen timeout</string>
+    <string name="show_all">Show all</string>
     <string name="significance">Significance:</string>
     <string name="similarapps">Similar Apps</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
@@ -624,6 +627,7 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="syncsettings">Sync Settings</string>
+    <string name="ten">Impact &lt; 10 min</string>
     <string name="title_activity_carat">CaratActivity</string>
     <string name="title_activity_dashboard">DASHBOARD</string>
     <string name="title_activity_main">MainActivity</string>
@@ -640,9 +644,10 @@
         originally created in collaboration with the AMP Lab at UC Berkeley,
         that helps detect and diagnose battery problems, giving you personalized recommendations.</string>
     <string name="tutorial_fragment_main_title">Carat Collaborative Energy Diagnosis</string>
+    <string name="twenty">Impact &lt; 20 min</string>
     <string name="ulogo">University of Helsinki Logo</string>
     <string name="unknown">Unknown</string>
-    <string name="updated">(Updated </string>
+    <string name="updated">Updated </string>
     <string name="updated0">(Updated 0m 0s ago)</string>
     <string name="updatedjustnow">(Updated just now)</string>
     <string name="updating">Updating</string>

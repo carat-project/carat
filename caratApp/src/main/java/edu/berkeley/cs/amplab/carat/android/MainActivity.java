@@ -38,6 +38,7 @@ import java.util.Properties;
 
 import edu.berkeley.cs.amplab.carat.android.activities.PrefetchData;
 import edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity;
+import edu.berkeley.cs.amplab.carat.android.dialogs.PreferenceListDialog;
 import edu.berkeley.cs.amplab.carat.android.fragments.AboutFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.CaratSettingsFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment;
@@ -338,8 +339,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setHideSmallPreference() {
-        CaratSettingsFragment caratSettingsFragment = new CaratSettingsFragment();
-        replaceFragment(caratSettingsFragment, Constants.FRAGMENT_HIDE_SMALL);
+        PreferenceListDialog preferenceListDialog = new PreferenceListDialog(this, getString(R.string.hog_hide_threshold));
+        preferenceListDialog.showDialog();
     }
 
     @SuppressLint("NewApi")

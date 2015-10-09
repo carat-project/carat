@@ -244,7 +244,7 @@ public final class R {
 		public static final int abc_search_dropdown_item_icons_2line = 0x7f030015;
 		public static final int abc_search_view = 0x7f030016;
 		public static final int preference_list_fragment = 0x7f03003b;
-		public static final int support_simple_spinner_dropdown_item = 0x7f030048;
+		public static final int support_simple_spinner_dropdown_item = 0x7f030049;
 	}
 	public static final class string {
 		public static final int abc_action_bar_home_description = 0x7f060000;
@@ -261,8 +261,8 @@ public final class R {
 		public static final int abc_shareactionprovider_share_with = 0x7f06000b;
 		public static final int abc_shareactionprovider_share_with_application = 0x7f06000c;
 		public static final int back_button_label = 0x7f0600bc;
-		public static final int next_button_label = 0x7f0600e4;
-		public static final int skip_button_label = 0x7f0600ee;
+		public static final int next_button_label = 0x7f0600e6;
+		public static final int skip_button_label = 0x7f0600f1;
 	}
 	public static final class style {
 		public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 0x7f0900bf;

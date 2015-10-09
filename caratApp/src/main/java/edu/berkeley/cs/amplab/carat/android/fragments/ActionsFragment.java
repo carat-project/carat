@@ -100,14 +100,11 @@ public class ActionsFragment extends ExtendedTitleFragment implements Serializab
                     hogReport, bugReport));
         }
 
-
-
     }
 
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-//        outState.putSerializable("savedInstance", this);
         super.onSaveInstanceState(outState);
     }
 }

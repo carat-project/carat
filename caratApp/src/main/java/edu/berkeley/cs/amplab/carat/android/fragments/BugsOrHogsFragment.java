@@ -35,10 +35,6 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 	private DrawView w = null;
 	private View detailPage = null;
 
-	/**
-	 * When creating Hogs or Bugs, set which one this is here:
-	 */
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,11 +43,6 @@ public class BugsOrHogsFragment extends ExtendedTitleFragment {
 			isBugs = true;
 		else
 			isBugs = false;
-		// if (savedInstanceState != null) {
-		// isBugs = savedInstanceState.getBoolean(IS_BUGS);
-		// } else {
-		// Log.d("BugsOrHogsFragment", "savedInstanceState=null");
-		// }
 	}
 
 	@Override

@@ -187,6 +187,13 @@
     <!-- PROCESS LIST -->
     <string name="version">Version</string>
 
+    <!-- PREFERENCES LIST -->
+    <string name="show_all">Show all</string>
+    <string name="five">Impact &lt; 5 min</string>
+    <string name="ten">Impact &lt; 10 min</string>
+    <string name="twenty">Impact &lt; 20 min</string>
+    <string name="hour">Impact &lt; 1 hour</string>
+
     <!--
 These are the same for all languages. When translating,
 delete these from your file.
@@ -271,9 +278,9 @@ delete these from your file.
 
     <string name="samplesreported">Samples reported</string>
     <string name="updating">Updating</string>
-    <string name="updated">(Updated </string>
-    <string name="ago">ago)</string>
-    <string name="neverupdated">(Never updated)</string>
+    <string name="updated">Updated </string>
+    <string name="ago">ago</string>
+    <string name="neverupdated">Never updated</string>
     <string name="updatedjustnow">(Updated just now)</string>
     <string name="didntget">got no</string>
     <string name="updatingreports">Updating reports</string>
@@ -396,10 +403,10 @@ delete these from your file.
     <!-- Hog threshold values visible to user -->
     <string-array name="hog_thresh_list">
         <item>Show all</item>
-        <item>impact &lt; 5m</item>
-        <item>impact &lt; 10m</item>
-        <item>impact &lt; 20m</item>
-        <item>impact &lt; 1h</item>
+        <item>impact &lt; 5 min</item>
+        <item>impact &lt; 10 min</item>
+        <item>impact &lt; 20 min</item>
+        <item>impact &lt; 1 hour</item>
     </string-array>
 
     <!-- Hog threshold values used by the system, do not translate -->
