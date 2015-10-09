@@ -23,8 +23,7 @@ import edu.berkeley.cs.amplab.carat.android.model_classes.AboutItem;
 /**
  * Created by Valto on 6.10.2015.
  */
-public class AboutExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener, View.OnClickListener, ExpandableListView.OnGroupClickListener {
+public class AboutExpandListAdapter extends BaseExpandableListAdapter implements View.OnClickListener, ExpandableListView.OnGroupClickListener {
 
     private LayoutInflater mInflater;
     private CaratApplication a = null;
@@ -39,10 +38,8 @@ public class AboutExpandListAdapter extends BaseExpandableListAdapter implements
         this.mainActivity = mainActivity;
         this.a = caratApplication;
         this.lv = lv;
-        this.lv.setOnGroupExpandListener(this);
-        this.lv.setOnChildClickListener(this);
         this.lv.setOnGroupClickListener(this);
-        allAboutItems = results;
+        this.allAboutItems = results;
         mInflater = LayoutInflater.from(a);
     }
 
@@ -147,26 +144,11 @@ public class AboutExpandListAdapter extends BaseExpandableListAdapter implements
             aboutMessage.setTag("see_hogs");
             aboutMessage.setTextColor(mainActivity.getResources().getColor(R.color.orange));
             aboutMessage.setOnClickListener(this);
-        }
-        if (item.getAboutTitle().equals("Carat")) {
+        } else {
             aboutMessage.setTextColor(mainActivity.getResources().getColor(R.color.gray));
             aboutMessage.setOnClickListener(null);
         }
 
-    }
-
-    // TODO COLLAPSE IMAGES NOT WORKING
-    @Override
-    public void onGroupExpand(int groupPosition) {
-    }
-
-    @Override
-    public void onGroupCollapsed(int groupPosition) {
-    }
-
-    @Override
-    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        return true;
     }
 
     @Override

@@ -31,8 +31,7 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 /**
  * Created by Valto on 2.10.2015.
  */
-public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener, View.OnClickListener, Runnable, ExpandableListView.OnGroupClickListener {
+public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements View.OnClickListener, Runnable, ExpandableListView.OnGroupClickListener {
 
     private CaratApplication caratApplication;
     private SimpleHogBug[] hogReport, bugReport;
@@ -60,13 +59,11 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                                     SimpleHogBug[] hogReport, SimpleHogBug[] bugReport) {
 
         this.caratApplication = caratApplication;
+        this.mainActivity = mainActivity;
         this.hogReport = hogReport;
         this.bugReport = bugReport;
         this.lv = lv;
-        this.lv.setOnGroupExpandListener(this);
         this.lv.setOnGroupClickListener(this);
-        this.mainActivity = mainActivity;
-        this.lv.setOnChildClickListener(this);
 
         for (SimpleHogBug s : hogReport) {
             allReports.add(s);
@@ -186,21 +183,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         progressSurfaceHolder = progressSurface.getHolder();
         drawingThread = new Thread(this);
         drawingThread.start();
-    }
-
-    // TODO COLLAPSE IMAGES NOT WORKING
-    @Override
-    public void onGroupExpand(int groupPosition) {
-        storedHogBug = allReports.get(groupPosition);
-    }
-
-    @Override
-    public void onGroupCollapsed(int groupPosition) {
-    }
-
-    @Override
-    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        return true;
     }
 
     @Override

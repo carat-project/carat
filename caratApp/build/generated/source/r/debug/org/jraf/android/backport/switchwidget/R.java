@@ -68,8 +68,8 @@ public final class R {
 		public static final int preference_widget_switch = 0x7f03003c;
 	}
 	public static final class string {
-		public static final int switch_off = 0x7f0600f4;
-		public static final int switch_on = 0x7f0600f5;
+		public static final int switch_off = 0x7f0600f3;
+		public static final int switch_on = 0x7f0600f4;
 	}
 	public static final class style {
 		public static final int Preference_SwitchPreference = 0x7f0900ad;

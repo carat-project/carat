@@ -201,13 +201,13 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
             case R.id.memory_used_info_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.memory_used_title),
-                        getString(R.string.memory_used_explanation));
+                        getString(R.string.memory_explanation));
                 dialog.showDialog();
                 break;
             case R.id.memory_active_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.memory_active_title),
-                        getString(R.string.memory_active_explanation));
+                        getString(R.string.memory_explanation));
                 dialog.showDialog();
                 break;
             case R.id.cpu_usage_button:
@@ -264,8 +264,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
                 r = new RectF(0, 0, memoryActiveConverted * canvas.getWidth(), canvas.getHeight());
                 break;
             case 2:
-                r = new RectF(0, 0, 0.3f * canvas.getWidth(), canvas.getHeight());
-                //r = new RectF(0, 0, cpuUsageConverted * canvas.getWidth(), canvas.getHeight());
+                r = new RectF(0, 0, cpuUsageConverted * canvas.getWidth(), canvas.getHeight());
                 break;
             default:
                 r = new RectF(0, 0, 0, 0);

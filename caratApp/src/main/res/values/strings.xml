@@ -4,10 +4,30 @@
     <!-- NEW -->
 
     <!-- EXPLANATIONS -->
-    <string name="jscore_explanation">J-Score is adsasdasdasdadsadsadadsadadsadsadsadasd</string>
-    <string name="memory_used_explanation">Memory used VOUVOUVOU</string>
-    <string name="memory_active_explanation">Memory active Memory active Memory active Memory active
-        Memory active Memory active Memory active Memory active Memory active </string>
+    <string name="jscore_explanation">The J-Score represents the percentile battery life you see relative
+        to all other devices being measured by Carat. So, if you have a J-Score of 50, that means
+        your expected battery life is better than half of our users; a score of 99 means you have
+        better battery life than 99 of our users.
+        Of course, a single number does not provide a complete description of your battery life.
+        A low J-Score could mean that your device is using a big battery inefficiently or a small
+        battery with average efficiency. Similarly, a high J-Score could simply mean that you don\'t
+        use your device heavily. Carat computes a huge variety of statistics, and the J-Score is
+        just one of them.
+    </string>
+    <string name="memory_explanation">
+        The operating system (OS) classifies your device\'s physical memory as either used or free.
+        If memory is used, it means there is currently data there that belongs to some process
+        (like one of your apps or the OS, itself). When the device runs out of free memory, it needs
+        to make room so it can store new data, which means closing apps that might be running in the
+        background or asking your apps to throw away data they aren\'t using.
+        The OS then further subcategorizes used memory as being either active or inactive,
+        depending on whether it was accessed recently or not, respectively. When the OS runs out of
+        free memory, it starts reclaiming inactive memory.
+        When you open a bunch of apps, the fraction of used memory may increase; when the apps you
+        have running are working with lots of data (often an energy-intensive task), the fraction
+        of active memory may increase. The OS also preloads often used applications into memory,
+        shortening wait times.
+    </string>
     <string name="cpu_usage_explanation">BUUJAA! asdsadsa asdsadsa asdsadsa
         asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa </string>
     <string name="jscore_dialog_title">J-SCORE</string>
@@ -78,8 +98,10 @@
     <string name="hog_list_message">Hogs are apps that are correlated with higher energy use across
         many devices. Closing hogs may improve battery life.</string>
 
-    <string name="no_hogs_title">ASD</string>
-    <string name="no_hogs_message">ASDASDLOL</string>
+    <string name="no_hogs_title">You have no hogs.</string>
+    <string name="no_hogs_message">Please check back in a week.\n\n
+        If your apps are behaving normally, there will be no bugs here.\n\n
+        When an app starts to use significantly more energy on your device than on others, it will show up here.</string>
 
     <!-- MY DEVICE -->
     <string name="your_jscore_title">YOUR J-SCORE</string>
@@ -96,11 +118,15 @@
     <!-- ABOUT -->
     <string name="about_general_title">Carat</string>
     <string name="about_general_message">General about</string>
-    <string name="about_general_child_message">loremimpsaudiasmdaoploremimpsaudiasmdaop
-        loremimpsaudiasmdaoploremimpsaudiasmdaoploremimpsaudiasmdaoploremimpsaudiasmdaop</string>
+    <string name="about_general_child_message">Carat is a research project of the University of Helsinki,
+        originally created in collaboration with the AMP Lab at UC Berkeley,
+        that helps detect and diagnose battery problems, giving you personalized recommendations.
+        Carat is under development, so please check back often to see new results. The more you use it,
+        the better it will get.
+    </string>
     <string name="about_actions_title">Actions</string>
     <string name="about_actions_message">How to use Carat</string>
-    <string name="about_actions_child_message"></string>
+    <string name="about_actions_child_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
     <string name="about_bugs_title">Bugs</string>
     <string name="about_bugs_message">See your bugs</string>
     <string name="about_bugs_child_message">Bugs are apps that use a lot of energy on a small number
@@ -111,10 +137,18 @@
         many devices. Closing hogs may improve battery life.</string>
     <string name="about_collect_title">Collect Data</string>
     <string name="about_collect_message">Info what and how Carat collects data</string>
-    <string name="about_collect_child_message"></string>
+    <string name="about_collect_child_message">Carat collects and reports generic usage statistics about your phone that allow it to do its job;
+        this process involves absolutely no personally identifying information. Period.</string>
     <string name="about_battery_title">Active Battery Life</string>
-    <string name="about_battery_message"></string>
-    <string name="about_battery_child_message"></string>
+    <string name="about_battery_message">What does Active Battery Life mean?</string>
+    <string name="about_battery_child_message">Active Battery Life approximates the amount of
+        time your battery would last if you started from a full charge and discharged the battery at a
+        rate that was the average of what Carat observed on your device during active use.
+        This average rate excludes times that your device was idle and, as always, cannot account for
+        behavior when Carat was not running.
+        You may find that this number is much higher or lower than what you expect, but it more closely
+        summarizes, statistically speaking, the intensity of your active device use.
+    </string>
 
     <!-- GLOBAL RESULTS -->
     <string name="global_results">GLOBAL RESULTS</string>
@@ -133,9 +167,19 @@
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>
     <string name="app_category_title">Foreground App</string>
-    <string name="actions_list_message">Actions helps you Lorem ipsum You can stop application...</string>
+    <string name="actions_list_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
     <string name="no_actions_title">No actions.</string>
-    <string name="no_actions_message">You dont have any actions lorem ipsum yms.</string>
+    <string name="no_actions_message">You have no actions.\n\n
+        You should open Carat regularly so it can take samples of your device state and communicate these to our servers.\n
+        We suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\n
+        It can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\n
+        Make sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\n
+        The more often you open the app, the more quickly it will generate reports, the more information those reports will contain,
+        and the more accurate the recommendations will be.\n
+        Carat does not run as a background service, which is why it needs your help.\n
+        The app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground,
+        but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.
+    </string>
     <string name="stopped">STOPPED</string>
 
     <string name="about">ABOUT</string>

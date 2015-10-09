@@ -23,8 +23,7 @@ import edu.berkeley.cs.amplab.carat.thrift.ProcessInfo;
 /**
  * Created by Valto on 7.10.2015.
  */
-public class ProcessExpandListAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener, View.OnClickListener, ExpandableListView.OnGroupClickListener {
+public class ProcessExpandListAdapter extends BaseExpandableListAdapter implements View.OnClickListener, ExpandableListView.OnGroupClickListener {
 
     private MainActivity mainActivity;
     private CaratApplication caratApplication;
@@ -39,8 +38,6 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
         this.processInfoList = processInfoList;
         this.lv = lv;
         this.lv.setOnGroupClickListener(this);
-        this.lv.setOnGroupExpandListener(this);
-        this.lv.setOnChildClickListener(this);
 
         mInflater = LayoutInflater.from(caratApplication);
 
@@ -155,21 +152,6 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
         processName.setText(CaratApplication.labelForApp(caratApplication.getApplicationContext(), p));
         processPackage.setText(p);
 
-    }
-    // TODO COLLAPSE IMAGES NOT WORKING
-    @Override
-    public void onGroupExpand(int groupPosition) {
-
-    }
-
-    @Override
-    public void onGroupCollapsed(int groupPosition) {
-
-    }
-
-    @Override
-    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        return true;
     }
 
     @Override
