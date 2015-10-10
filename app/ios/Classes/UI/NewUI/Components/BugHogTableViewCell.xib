@@ -27,7 +27,7 @@
                             <constraint firstAttribute="width" constant="43" id="LCP-Hp-XqT"/>
                             <constraint firstAttribute="height" constant="40" id="Lup-yE-GuK"/>
                         </constraints>
-                        <state key="normal" image="collapse_bnt_open"/>
+                        <state key="normal" image="collapse_btn_open"/>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6sG-wh-asO">
                         <rect key="frame" x="8" y="8" width="40" height="40"/>
@@ -56,6 +56,7 @@
                     <constraint firstItem="6sG-wh-asO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="vam-Rf-GLJ"/>
                 </constraints>
             </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration" identifier="collapsedCell"/>
             <connections>
                 <outlet property="expImpTimeLabel" destination="kDo-4i-qu9" id="Ilh-rk-NYM"/>
                 <outlet property="nameLabel" destination="zGZ-1Q-3b4" id="fER-cy-SXK"/>
@@ -65,6 +66,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="collapse_bnt_open" width="48" height="48"/>
+        <image name="collapse_btn_open" width="48" height="48"/>
     </resources>
 </document>

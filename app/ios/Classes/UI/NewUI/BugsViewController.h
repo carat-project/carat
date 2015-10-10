@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BugHogExpandedTableViewCell.h"
+#import "BugHogListItemData.h"
+#import "BugHogTableViewCell.h"
+#import "BaseViewController.h"
 
-@interface BugsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface BugsViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSArray *tableData;
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 

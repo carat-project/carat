@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+@interface HogsViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) NSArray *tableData;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
 
-@interface HogsViewController : UIViewController
+@property (nonatomic, strong) NSMutableArray *expandedCells;
 
 @end

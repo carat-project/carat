@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "DashboardViewController.h"
 
 @implementation BaseViewController
 - (void)viewDidLoad
@@ -30,6 +31,17 @@
             [self setFontFamily:fontFamily forView:sview andSubViews:YES];
         }
     }
+}
+
+- (IBAction)barItemBackPressed{
+    NSLog(@"****** barItemBackPressed *******");
+    DashBoardViewController *controler = [[DashBoardViewController alloc]initWithNibName:@"DashBoardViewController" bundle:nil];
+    [self presentViewController:controler animated: YES completion:nil];
+    [controler release];
+}
+
+-(IBAction)barItemMorePressed{
+    NSLog(@"barItemMorePressed");
 }
 
 @end

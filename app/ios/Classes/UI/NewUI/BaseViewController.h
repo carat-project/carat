@@ -13,5 +13,7 @@
 
 @interface BaseViewController : UIViewController
 
+- (IBAction)barItemBackPressed;
+- (IBAction)barItemMorePressed;
 
 @end

@@ -16,25 +16,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYD-b9-YVC">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="Bugs" id="vcg-4D-ApX">
-                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="N4h-ga-M3d">
-                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
-                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                            </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="pig-9b-nQ4">
-                                <inset key="imageInsets" minX="20" minY="10" maxX="0.0" maxY="10"/>
-                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Tb-B0-2fD">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
@@ -108,7 +89,7 @@
                         </mask>
                     </variation>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zyF-3Z-UIQ">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zyF-3Z-UIQ">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -116,6 +97,28 @@
                         <outlet property="delegate" destination="-1" id="egT-Dh-aVK"/>
                     </connections>
                 </tableView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYD-b9-YVC">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Bugs" id="vcg-4D-ApX">
+                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="N4h-ga-M3d">
+                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemBackPressed" destination="-1" id="KiJ-tT-cIx"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="pig-9b-nQ4">
+                                <inset key="imageInsets" minX="20" minY="10" maxX="0.0" maxY="10"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -132,9 +135,9 @@
             </constraints>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="MYD-b9-YVC"/>
                     <exclude reference="1Tb-B0-2fD"/>
                     <exclude reference="zyF-3Z-UIQ"/>
+                    <exclude reference="MYD-b9-YVC"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="2HF-FI-iZ4"/>
@@ -151,9 +154,9 @@
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
-                    <include reference="MYD-b9-YVC"/>
                     <include reference="1Tb-B0-2fD"/>
                     <include reference="zyF-3Z-UIQ"/>
+                    <include reference="MYD-b9-YVC"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="2HF-FI-iZ4"/>

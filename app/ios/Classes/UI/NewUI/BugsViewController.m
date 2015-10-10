@@ -7,11 +7,12 @@
 //
 
 #import "BugsViewController.h"
-#import "BugHogListItemData.h"
 
 @interface BugsViewController ()
 
 @end
+NSString * const expandedCell = @"BugHogExpandedTableViewCell";
+NSString * const collapsedCell = @"BugHogTableViewCell";
 
 @implementation BugsViewController
 - (void)viewDidLoad {
@@ -21,6 +22,8 @@
     NSLog(@"viewDidLoad tabledata count: %d", [_tableData count]);
     NSLog(@"viewDidLoad tableView ref: %@", _tableView);
     _expandedCells = [[NSMutableArray alloc]init];
+    [_tableView registerNib:[UINib nibWithNibName:collapsedCell bundle:nil] forCellReuseIdentifier:collapsedCell];
+    [_tableView registerNib:[UINib nibWithNibName:expandedCell bundle:nil] forCellReuseIdentifier:expandedCell];
 
 }
 
@@ -89,71 +92,50 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"tableView cellForRowAtIndexPath **********");
-    BugHogExpandedTableViewCell *cell;
-    static NSString *simpleTableIdentifier = @"BugHogExpandedTableViewCell";
-    cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
-    BugHogListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
-    
-    cell.nameLabel.text = rowData.title;
-    cell.thumbnailAppImg.image = [UIImage imageNamed:rowData.imageName];
-    NSString *bodyText = NSLocalizedString(@"ExpectedImp", nil);
-    NSMutableString *expImpLabelText = [[NSMutableString alloc]init];
-    [expImpLabelText appendString:bodyText];
-    [expImpLabelText appendString:rowData.expImpTxt];
-    cell.expImpTimeLabel.text = expImpLabelText;
-    [expImpLabelText release];
-    
-    cell.samplesValueLabel.text = rowData.samples;
-    cell.samplesWithoutValueLabel.text = rowData.samplesWithout;
-    cell.errorValueLabel.text = rowData.error;
-   
+    UITableViewCell *cell = nil;
+    static NSString *cellIdentifier = nil;
     if ([self.expandedCells containsObject:indexPath])
     {
-        [cell.expandContent setHidden:NO];
-        [cell.expandBtn setImage:[UIImage imageNamed:@"collapse_btn_close"]];
+        cellIdentifier = expandedCell;
     }
     else{
-        [cell.expandContent setHidden:YES];
-        [cell.expandBtn setImage:[UIImage imageNamed:@"collapse_bnt_open"]];
+        cellIdentifier = collapsedCell;
     }
-    
-    
 
-    /*
-    if ([self.expandedCells containsObject:indexPath])
-    {
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    BugHogListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
+    if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
+        BugHogExpandedTableViewCell *expandedCell = (BugHogExpandedTableViewCell *)cell;
+        expandedCell.nameLabel.text = rowData.title;
+        expandedCell.thumbnailAppImg.image = [UIImage imageNamed:rowData.imageName];
+        NSString *bodyText = NSLocalizedString(@"ExpectedImp", nil);
+        NSMutableString *expImpLabelText = [[NSMutableString alloc]init];
+        [expImpLabelText appendString:bodyText];
+        [expImpLabelText appendString:rowData.expImpTxt];
+        expandedCell.expImpTimeLabel.text = expImpLabelText;
+        [expImpLabelText release];
         
-        static NSString *simpleTableIdentifier = @"BugHogExpandedTableViewCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-        if (cell == nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        BugHogExpandedTableViewCell *expCell = (BugHogExpandedTableViewCell *) cell;
-        BugHogListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
-        [self setTopRowData:rowData cell:expCell];
-        expCell.samplesValueLabel.text = rowData.samples;
-        expCell.samplesWithoutValueLabel.text = rowData.samplesWithout;
-        expCell.errorValueLabel.text = rowData.error;
+        expandedCell.samplesValueLabel.text = rowData.samples;
+        expandedCell.samplesWithoutValueLabel.text = rowData.samplesWithout;
+        expandedCell.errorValueLabel.text = rowData.error;
     }
-    else
-    {
-        static NSString *simpleTableIdentifier = @"BugHogTableViewCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-        if (cell == nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:simpleTableIdentifier owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        BugHogListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
-        [self setTopRowData:rowData cell:cell];
-       
+    else{
+        BugHogTableViewCell *collapsedCell = (BugHogTableViewCell *)cell;
+        collapsedCell.nameLabel.text = rowData.title;
+        collapsedCell.thumbnailAppImg.image = [UIImage imageNamed:rowData.imageName];
+        NSString *bodyText = NSLocalizedString(@"ExpectedImp", nil);
+        NSMutableString *expImpLabelText = [[NSMutableString alloc]init];
+        [expImpLabelText appendString:bodyText];
+        [expImpLabelText appendString:rowData.expImpTxt];
+        collapsedCell.expImpTimeLabel.text = expImpLabelText;
+        [expImpLabelText release];
     }
-    */
+    
     return cell;
 }
 
@@ -164,28 +146,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BugHogExpandedTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [tableView beginUpdates];
     
     if ([self.expandedCells containsObject:indexPath])
     {
-        [cell.expandBtn setImage: [UIImage imageNamed:@"collapse_btn_open"]];
-        [cell.expandContent setHidden:YES];
         [self.expandedCells removeObject:indexPath];
-        
     }
     else
     {
-        [cell.expandBtn setImage: [UIImage imageNamed:@"collapse_btn_close"]];
-        [cell.expandContent setHidden:NO];
         [self.expandedCells addObject:indexPath];
     }
-    [tableView beginUpdates];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
     [tableView endUpdates];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat kExpandedCellHeight = 190;
+    CGFloat kExpandedCellHeight = 196;
     CGFloat kNormalCellHeigh = 56;
     
     if ([self.expandedCells containsObject:indexPath])

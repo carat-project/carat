@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "DashboardViewController.h"
+#import "BaseViewController.h"
 
-@interface MyScoreViewController : UIViewController
-
-- (IBAction)barItemBackPressed;
-- (IBAction)barItemMorePressed;
+@interface MyScoreViewController : BaseViewController
 - (IBAction)leftSwipe;
 
 @end

@@ -24,18 +24,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (IBAction)barItemBackPressed{
-    NSLog(@"****** barItemBackPressed *******");
-    DashBoardViewController *controler = [[DashBoardViewController alloc]initWithNibName:@"DashBoardViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
-}
-
--(IBAction)barItemMorePressed{
-    NSLog(@"barItemMorePressed");
-   }
-
 -(IBAction)leftSwipe{
     NSLog(@"Left Swipe");
 }
