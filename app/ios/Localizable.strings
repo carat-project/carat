@@ -43,3 +43,8 @@
 "NumberHelpLabel"="What are these numbers?";
 
 //BugsView ends
+//Global results starts
+"GlobalResults"="Global results";
+"GeneralStatistics"="General statistics";
+"pop"="Popular device models";
+//Global results ends

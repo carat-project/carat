@@ -14,7 +14,57 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZWr-dT-jZi">
+                    <rect key="frame" x="174" y="23" width="400" height="44"/>
+                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Actions" id="xZD-Vs-zbT">
+                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="iA3-nn-amW">
+                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemBackPressed" destination="-1" id="ezP-se-6KC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="PFA-bp-6ds">
+                                <inset key="imageInsets" minX="20" minY="10" maxX="0.0" maxY="10"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemMorePressed" destination="-1" id="Gzs-Nw-YUY"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ZWr-dT-jZi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MjK-pb-JfA"/>
+                <constraint firstItem="ZWr-dT-jZi" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="VPS-ye-udE"/>
+                <constraint firstItem="ZWr-dT-jZi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="bkJ-11-zV4"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="MjK-pb-JfA"/>
+                    <exclude reference="VPS-ye-udE"/>
+                    <exclude reference="bkJ-11-zV4"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="constraints">
+                    <include reference="MjK-pb-JfA"/>
+                    <include reference="VPS-ye-udE"/>
+                    <include reference="bkJ-11-zV4"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="arrow_icon" width="48" height="48"/>
+        <image name="more_icon" width="42" height="42"/>
+    </resources>
 </document>

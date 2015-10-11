@@ -9,12 +9,14 @@
 #import "BugsViewController.h"
 
 @interface BugsViewController ()
-
 @end
-NSString * const expandedCell = @"BugHogExpandedTableViewCell";
-NSString * const collapsedCell = @"BugHogTableViewCell";
+
 
 @implementation BugsViewController
+
+static NSString * expandedCell = @"BugHogExpandedTableViewCell";
+static NSString * collapsedCell = @"BugHogTableViewCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

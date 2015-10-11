@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HogsViewController">
             <connections>
+                <outlet property="tableView" destination="d8A-Q0-RGX" id="5T8-Lf-o6g"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,11 +19,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIz-wl-QuG">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HogsDesc" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-WC-92V" customClass="LocalizedLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HogsDesc" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-WC-92V" customClass="LocalizedLabel">
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <variation key="widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="68" y="7" width="322" height="21"/>
+                            </variation>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery_icon" translatesAutoresizingMaskIntoConstraints="NO" id="JwT-Ev-fMQ">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -46,7 +50,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="4tb-WC-92V" firstAttribute="top" secondItem="EIz-wl-QuG" secondAttribute="top" constant="5" id="I8z-zD-7YH"/>
+                        <constraint firstItem="4tb-WC-92V" firstAttribute="top" secondItem="EIz-wl-QuG" secondAttribute="top" constant="7" id="I8z-zD-7YH" userLabel="HogsDesc.top = top + 10"/>
                         <constraint firstItem="4tb-WC-92V" firstAttribute="leading" secondItem="JwT-Ev-fMQ" secondAttribute="trailing" id="LCE-nU-NFA">
                             <variation key="widthClass=compact" constant="-2"/>
                         </constraint>
@@ -91,6 +95,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d8A-Q0-RGX">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="FhH-wQ-cGv"/>
+                        <outlet property="delegate" destination="-1" id="cgp-k8-0Jv"/>
+                    </connections>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa1-j1-u9C">
                     <rect key="frame" x="8" y="5" width="470" height="44"/>
@@ -104,14 +112,14 @@
                                 <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="barItemBackPressed" destination="-1" id="RK2-5D-xx8"/>
+                                    <action selector="barItemBackPressed" destination="-1" id="DqP-1h-tbS"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" image="more_icon" id="aG8-qj-BOM">
                                 <inset key="imageInsets" minX="20" minY="10" maxX="0.0" maxY="10"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="barItemMorePressed" destination="-1" id="vUZ-YX-pJI"/>
+                                    <action selector="barItemMorePressed" destination="-1" id="1GY-K9-w8Y"/>
                                 </connections>
                             </barButtonItem>
                         </navigationItem>

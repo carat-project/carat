@@ -34,4 +34,16 @@
 }
 */
 
+- (void)dealloc {
+    [_genIntensiveDescLabel release];
+    [_androidIntensiveLabel release];
+    [_genIntensiveBar release];
+    [_androidIntensiveBar release];
+    [_iOSIntensiveDescLabel release];
+    [_iOSIntensiveBar release];
+    [_allUsersIntensiveDescLabel release];
+    [_allUsersIntensiveBar release];
+    [_popularDeviceModelsDescLabel release];
+    [super dealloc];
+}
 @end
