@@ -61,11 +61,11 @@ public final class R {
 		public static final int switch_track_holo_light = 0x7f020084;
 	}
 	public static final class id {
-		public static final int switchWidget = 0x7f0d00e7;
+		public static final int switchWidget = 0x7f0d00b6;
 	}
 	public static final class layout {
-		public static final int preference = 0x7f03003a;
-		public static final int preference_widget_switch = 0x7f03003d;
+		public static final int preference = 0x7f030033;
+		public static final int preference_widget_switch = 0x7f030036;
 	}
 	public static final class string {
 		public static final int switch_off = 0x7f0600f7;

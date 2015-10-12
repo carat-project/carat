@@ -23,7 +23,7 @@ import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
-import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
+import edu.berkeley.cs.amplab.carat.android.views.CircleDisplay;
 
 /**
  * Created by Valto on 30.9.2015.
@@ -148,7 +148,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         osVersion.setText(SamplingLibrary.getOsVersion());
         deviceModel.setText(SamplingLibrary.getModel());
         caratID.setText(CaratApplication.myDeviceData.getCaratId());
-        batteryLife.setText(mainActivity.getBatteryLife());
+        batteryLife.setText(CaratApplication.myDeviceData.getBatteryLife());
 
         setMemoryValues();
 

@@ -17,7 +17,7 @@ import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.SparseArray;
-import edu.berkeley.cs.amplab.carat.android.fragments.SuggestionsFragment;
+
 import edu.berkeley.cs.amplab.carat.android.model_classes.MyDeviceData;
 import edu.berkeley.cs.amplab.carat.android.protocol.CommunicationManager;
 import edu.berkeley.cs.amplab.carat.android.protocol.SampleSender;
@@ -72,7 +72,6 @@ public class CaratApplication extends Application {
 	// Activity pointers so that all activity UIs can be updated with a callback
 	// to CaratApplication
 	static MainActivity main = null;
-	private static SuggestionsFragment actionList = null;
 	// The Sampler samples the battery level when it changes.
 	private static Sampler sampler = null;
 	
@@ -298,16 +297,6 @@ public class CaratApplication extends Application {
 		}
 	}
 
-	public static void refreshActions() {
-		if (actionList != null) {
-			main.runOnUiThread(new Runnable() {
-				public void run() {
-					actionList.refresh();
-				}
-			});
-		}
-	}
-
 	public static void setActionProgress(final int progress, final String what, final boolean fail) {
 		if (main != null) {
 			main.runOnUiThread(new Runnable() {
@@ -338,10 +327,6 @@ public class CaratApplication extends Application {
 
 	protected static void setMain(MainActivity mainActivity) {
 		main = mainActivity;
-	}
-
-	public static void setActionList(SuggestionsFragment suggestionsFragment) {
-		actionList = suggestionsFragment;
 	}
 
 	public static String getRegisteredUuid() {

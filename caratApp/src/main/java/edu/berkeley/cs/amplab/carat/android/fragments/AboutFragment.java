@@ -2,6 +2,7 @@ package edu.berkeley.cs.amplab.carat.android.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,9 @@ import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.model_classes.AboutItem;
-import edu.berkeley.cs.amplab.carat.android.ui.adapters.AboutExpandListAdapter;
+import edu.berkeley.cs.amplab.carat.android.views.adapters.AboutExpandListAdapter;
 
-public class AboutFragment extends ExtendedTitleFragment {
+public class AboutFragment extends Fragment {
     private MainActivity mainActivity;
     private LinearLayout mainFrame;
     private ExpandableListView expandableListView;

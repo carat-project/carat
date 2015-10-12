@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
-import edu.berkeley.cs.amplab.carat.android.ui.adapters.HogBugExpandListAdapter;
+import edu.berkeley.cs.amplab.carat.android.views.adapters.HogBugExpandListAdapter;
 
 /**
  * Created by Valto on 30.9.2015.

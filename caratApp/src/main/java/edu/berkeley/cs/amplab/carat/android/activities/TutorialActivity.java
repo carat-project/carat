@@ -16,12 +16,11 @@ import android.widget.ImageView;
 import java.util.List;
 import java.util.Vector;
 
-import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.fragments.tutorial.BugsTutorialFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.tutorial.HogsTutorialFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.tutorial.MainTutorialFragment;
-import edu.berkeley.cs.amplab.carat.android.ui.adapters.TutorialPagerAdapter;
+import edu.berkeley.cs.amplab.carat.android.views.adapters.TutorialPagerAdapter;
 
 public class TutorialActivity extends ActionBarActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 

@@ -1,12 +1,8 @@
 package edu.berkeley.cs.amplab.carat.android.fragments;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,26 +10,22 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import java.io.Serializable;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
-import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
-import edu.berkeley.cs.amplab.carat.android.ui.LocalizedWebView;
-import edu.berkeley.cs.amplab.carat.android.ui.adapters.ActionsExpandListAdapter;
-import edu.berkeley.cs.amplab.carat.android.ui.adapters.HogBugExpandListAdapter;
+import edu.berkeley.cs.amplab.carat.android.views.adapters.ActionsExpandListAdapter;
 
 /**
  * Created by Valto on 30.9.2015.
  */
 
 
-public class ActionsFragment extends ExtendedTitleFragment implements Serializable {
+public class ActionsFragment extends Fragment implements Serializable {
     private static final long serialVersionUID = -6034269327947014085L;
 
     private MainActivity mainActivity;

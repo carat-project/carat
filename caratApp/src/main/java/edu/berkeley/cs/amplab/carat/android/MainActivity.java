@@ -1,21 +1,15 @@
 package edu.berkeley.cs.amplab.carat.android;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.preference.PreferenceFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -33,14 +27,12 @@ import com.flurry.android.FlurryAgent;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 import java.util.Properties;
 
-import edu.berkeley.cs.amplab.carat.android.activities.PrefetchData;
+import edu.berkeley.cs.amplab.carat.android.utils.PrefetchData;
 import edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.PreferenceListDialog;
 import edu.berkeley.cs.amplab.carat.android.fragments.AboutFragment;
-import edu.berkeley.cs.amplab.carat.android.fragments.CaratSettingsFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.DashboardFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.EnableInternetDialogFragment;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
@@ -202,10 +194,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             default:
                 break;
 
-        }
-
-        if (id == R.id.action_settings) {
-            return true;
         }
 
         return super.onOptionsItemSelected(item);

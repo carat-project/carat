@@ -20,7 +20,7 @@ import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
-import edu.berkeley.cs.amplab.carat.android.ui.CircleDisplay;
+import edu.berkeley.cs.amplab.carat.android.views.CircleDisplay;
 
 /**
  * Created by Valto on 30.9.2015.
@@ -131,7 +131,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
         } else {
             cd.showValue((float) mainActivity.getJScore(), 99f, false);
         }
-        batteryText.setText(mainActivity.getBatteryLife());
+        batteryText.setText(CaratApplication.myDeviceData.getBatteryLife());
         bugAmountText.setText(mainActivity.getBugAmount());
         hogAmountText.setText(mainActivity.getHogAmount());
         actionsAmountText.setText(mainActivity.getActionsAmount());
