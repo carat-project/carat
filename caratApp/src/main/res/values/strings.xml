@@ -152,6 +152,7 @@
 
     <!-- GLOBAL RESULTS -->
     <string name="global_results">GLOBAL RESULTS</string>
+    <string name="all_reports">ALL REPORTS</string>
     <string name="global_general_statistics">GENERAL STATISTICS</string>
     <string name="global_general_all_message">Out of 431,882 installed applications, 9 are energy-intensive
         (Hogs in the Carat App) and 4 are energy anomalies (Bugs).</string>
@@ -163,6 +164,7 @@
         single energy anomaly.</string>
     <string name="global_general_popular_title">POPULAR DEVICE MODELS</string>
     <string name="global_general_android">Android</string>
+    <string name="well_behaved">Well-behaved</string>
 
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>
@@ -197,6 +199,9 @@
     <string name="twenty">Impact &lt; 20 min</string>
     <string name="hour">Impact &lt; 1 hour</string>
 
+    <string name="hogs_camel">Hogs</string>
+    <string name="bugs_camel">Bugs</string>
+    <string name="well_behaved_caps">WELL-BEHAVED</string>
     <!--
 These are the same for all languages. When translating,
 delete these from your file.

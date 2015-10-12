@@ -56,7 +56,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private Tracker tracker;
 
-    public int mHogs = Constants.VALUE_NOT_AVAILABLE,
+    public int mWellbehaved = Constants.VALUE_NOT_AVAILABLE,
+            mHogs = Constants.VALUE_NOT_AVAILABLE,
             mBugs = Constants.VALUE_NOT_AVAILABLE,
             mActions = Constants.VALUE_NOT_AVAILABLE;
 
@@ -152,7 +153,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
         final boolean useWifiOnly = p.getBoolean(getString(R.string.wifi_only_key), false);
         menu.findItem(R.id.action_wifi_only).setChecked(useWifiOnly);
-        setProgressCircle(false);
+        progressCircle = (ProgressBar) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_progress_circle);
+        progressCircle.getIndeterminateDrawable().setColorFilter(0xF2FFFFFF,
+                android.graphics.PorterDuff.Mode.SRC_ATOP);
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -234,10 +237,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setProgressCircle(boolean visibility) {
-        progressCircle = (ProgressBar) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_progress_circle);
-        progressCircle.getIndeterminateDrawable().setColorFilter(0xF2FFFFFF,
-                android.graphics.PorterDuff.Mode.SRC_ATOP);
-        if (visibility) {
+        if (progressCircle == null) {
+            return;
+        } else if (visibility) {
             progressCircle.setVisibility(View.VISIBLE);
         } else {
             progressCircle.setVisibility(View.GONE);
@@ -414,9 +416,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private boolean isStatsDataStoredInPref() {
+        int wellbehaved = CaratApplication.mPrefs.getInt(Constants.STATS_WELLBEHAVED_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
         int hogs = CaratApplication.mPrefs.getInt(Constants.STATS_HOGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
         int bugs = CaratApplication.mPrefs.getInt(Constants.STATS_BUGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
-        if (hogs != Constants.VALUE_NOT_AVAILABLE && bugs != Constants.VALUE_NOT_AVAILABLE) {
+        if (wellbehaved != Constants.VALUE_NOT_AVAILABLE && hogs != Constants.VALUE_NOT_AVAILABLE && bugs != Constants.VALUE_NOT_AVAILABLE) {
+            mWellbehaved = wellbehaved;
             mHogs = hogs;
             mBugs = bugs;
             mActions = hogs + bugs;

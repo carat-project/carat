@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -31,8 +32,9 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 /**
  * Created by Valto on 2.10.2015.
  */
-public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements View.OnClickListener,
-        Runnable, ExpandableListView.OnGroupClickListener, ExpandableListView.OnGroupExpandListener {
+public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements
+        Runnable, ExpandableListView.OnGroupClickListener, ExpandableListView.OnGroupExpandListener,
+        ExpandableListView.OnChildClickListener {
 
     private CaratApplication caratApplication;
     private SimpleHogBug[] hogReport, bugReport;
@@ -66,6 +68,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         this.lv = lv;
         this.lv.setOnGroupClickListener(this);
         this.lv.setOnGroupExpandListener(this);
+        this.lv.setOnChildClickListener(this);
         this.mainActivity = mainActivity;
 
         for (SimpleHogBug s : hogReport) {
@@ -165,7 +168,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         samplesAmount.setText(String.valueOf(item.getSamples()));
         locker = true;
         drawProgress(v, item);
-        killAppButton.setOnClickListener(this);
 
     }
 
@@ -188,20 +190,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         drawingThread.start();
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.stop_app_button:
-                if (storedHogBug != null) {
-                    killApp(storedHogBug);
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void killApp(SimpleHogBug fullObject) {
+    public void killApp(SimpleHogBug fullObject, View v) {
         final String raw = fullObject.getAppName();
         final PackageInfo pak = SamplingLibrary.getPackageInfo(mainActivity, raw);
         final String label = CaratApplication.labelForApp(mainActivity, raw);
@@ -227,6 +216,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                 ClickTracking.track(uuId, "killbutton", options, caratApplication);
             }
 
+            killAppButton = (Button) v.findViewById(R.id.stop_app_button);
             killAppButton.setEnabled(false);
             killAppButton.setBackgroundResource(R.drawable.button_rounded_gray);
             killAppButton.setText(caratApplication.getString(R.string.stopped));
@@ -258,7 +248,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-        storedHogBug = allReports.get(groupPosition);
         if (parent.isGroupExpanded(groupPosition)) {
             ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
             collapseIcon.setImageResource(R.drawable.collapse_down);
@@ -275,5 +264,14 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         if (groupPosition != previousGroup)
             lv.collapseGroup(previousGroup);
         previousGroup = groupPosition;
+    }
+
+    @Override
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+
+        Log.d("debug", "*** ID: " + lv.getChildAt(childPosition).getId());
+        Log.d("debug", "*** ID: " + v.getId());
+        return false;
     }
 }

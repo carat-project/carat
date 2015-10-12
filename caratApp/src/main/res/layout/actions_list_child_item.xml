@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="false"
+    android:focusable="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,6 +13,8 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="15dp"
+        android:clickable="false"
+        android:focusable="false"
         android:weightSum="2">
 
         <Button
@@ -21,6 +25,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="10dp"
+            android:clickable="false"
+            android:focusable="false"
             android:layout_weight="1"
             android:text="@string/stop_app_title" />
 
@@ -29,6 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
+            android:clickable="false"
+            android:focusable="false"
             android:orientation="vertical">
 
             <TextView
@@ -36,22 +44,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/stop_app_button"
+                android:clickable="false"
+                android:focusable="false"
                 android:text="Foreground App" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:clickable="false"
+                android:focusable="false"
                 android:layout_height="40dp">
 
                 <SurfaceView
                     android:id="@+id/progress_surface"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:scaleType="fitXY"
                     android:src="@drawable/progress_bar_small" />
 
@@ -64,11 +80,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
         android:padding="15dp">
 
         <TextView
             android:id="@+id/samples_title"
             style="@style/LargeBlackText"
+            android:clickable="false"
+            android:focusable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -77,6 +97,8 @@
         <TextView
             android:id="@+id/samples_amount"
             style="@style/LargeBlackText"
+            android:clickable="false"
+            android:focusable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -87,6 +109,8 @@
     <View
         android:id="@+id/view2"
         android:layout_width="fill_parent"
+        android:clickable="false"
+        android:focusable="false"
         android:layout_height="1dp"
         android:background="@color/lightgray" />
 
@@ -94,12 +118,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:clickable="false"
+        android:focusable="false"
         android:padding="15dp">
 
         <TextView
             style="@style/LargeBoldBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
             android:layout_marginBottom="15dp"
             android:text="INFO" />
 
@@ -108,6 +136,8 @@
             style="@style/MediumBlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
             android:text="LOREMOdalmsdsaöldmsaölmrasormoireewoihrekhrh aslkjdsalkdjsalksajölsakjdlsakjdsalkdjsalkdsjsaöldjaölkjdsaöldjsadölkasdsaölkda" />
 
     </LinearLayout>

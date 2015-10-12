@@ -18,6 +18,190 @@
             style="@style/LargeBoldBlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="@string/all_reports" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/lightgray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <SurfaceView
+                    android:id="@+id/well_behaved_surface"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/well_behaved_title"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toLeftOf="@+id/well_behaved_button" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/well_behaved_title"
+                    android:layout_toLeftOf="@+id/well_behaved_button"
+                    android:paddingRight="25dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/progress_bar" />
+
+                <TextView
+                    android:id="@+id/well_behaved_title"
+                    style="@style/LargeBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/well_behaved" />
+
+                <Button
+                    android:id="@+id/well_behaved_button"
+                    style="@style/InfoButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="i"
+                    android:layout_alignBaseline="@+id/well_behaved_surface"
+                    android:layout_alignBottom="@+id/well_behaved_surface"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <SurfaceView
+                    android:id="@+id/bugs_surface"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/bugs_title"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toLeftOf="@+id/bugs_button"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/bugs_title"
+                    android:layout_toLeftOf="@+id/bugs_button"
+                    android:paddingRight="25dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/progress_bar" />
+
+                <TextView
+                    android:id="@+id/bugs_title"
+                    style="@style/LargeBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="5dp"
+                    android:text="@string/bugs_camel" />
+
+                <Button
+                    android:id="@+id/bugs_button"
+                    style="@style/InfoButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="i"
+                    android:layout_alignBaseline="@+id/bugs_surface"
+                    android:layout_alignBottom="@+id/bugs_surface"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <SurfaceView
+                    android:id="@+id/hogs_surface"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/hogs_title"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toLeftOf="@+id/hogs_button" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/hogs_title"
+                    android:layout_toLeftOf="@+id/hogs_button"
+                    android:paddingRight="25dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/progress_bar" />
+
+                <TextView
+                    android:id="@+id/hogs_title"
+                    style="@style/LargeBlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="5dp"
+                    android:text="@string/hogs_camel" />
+
+                <Button
+                    android:id="@+id/hogs_button"
+                    style="@style/InfoButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="i"
+                    android:layout_alignBaseline="@+id/hogs_surface"
+                    android:layout_alignBottom="@+id/hogs_surface"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/LargeBoldBlackText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
             android:text="@string/global_general_statistics" />
 

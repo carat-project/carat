@@ -385,6 +385,7 @@
     <string name="actions_list_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
     <string name="active_battery_life">Active Battery Life</string>
     <string name="ago">ago</string>
+    <string name="all_reports">ALL REPORTS</string>
     <string name="alogo">AmpLab Logo</string>
     <string name="app_category_title">Foreground App</string>
     <string name="app_name">Carat</string>
@@ -410,6 +411,7 @@
         Restarting a buggy app may improve battery life.</string>
     <string name="bugs">BUGS</string>
     <string name="bugs_amount">7</string>
+    <string name="bugs_camel">Bugs</string>
     <string name="carat_id_title">Carat ID</string>
     <string name="caratid">Carat ID:</string>
     <string name="chart_bugs">Bugs</string>
@@ -482,6 +484,7 @@
     <string name="hog_thresh">Hide apps with a small impact</string>
     <string name="hogs">HOGS</string>
     <string name="hogs_amount">4</string>
+    <string name="hogs_camel">Hogs</string>
     <string name="hour">Impact &lt; 1 hour</string>
     <string name="information">Information</string>
     <string name="jscore">Your J-Score:</string>
@@ -660,6 +663,8 @@
     <string name="version_name">1.12</string>
     <string name="view">VIEW</string>
     <string name="viewprocess">View Process List</string>
+    <string name="well_behaved">Well-behaved</string>
+    <string name="well_behaved_caps">WELL-BEHAVED</string>
     <string name="what_are_jscore_numbers">What are j-score numbers?</string>
     <string name="what_are_these_numbers">What are these numbers?</string>
     <string name="what_are_these_numbers_explanation">Expected benefit is the amount of battery life
