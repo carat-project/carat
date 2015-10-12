@@ -80,11 +80,6 @@
     <!-- Updating etc -->
     
     <string name="samplesreported"> mittausta lähetetty</string>
-    <string name="updating">Päivitetään</string>
-    <string name="updated">(Päivitetty </string>
-    <string name="ago">sitten)</string>
-    <string name="neverupdated">(Ei päivitetty)</string>
-    <string name="updatedjustnow">(Päivitetty äsken)</string>
     <string name="didntget">ei saatu</string>
     <string name="updatingreports">Päivitetään raporttia</string>
     <string name="blacklist">Poistolista</string>

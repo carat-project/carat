@@ -36,7 +36,6 @@
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values-fi/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Asetukset</string>
-    <string name="ago">sitten)</string>
     <string name="appicon">Kuvake</string>
     <string name="appmanager">Sovellushallinta</string>
     <string name="appname">Sovelluksen nimi</string>
@@ -107,7 +106,6 @@
     <string name="moreinfo">Lisätietoja</string>
     <string name="morestatsat">Lisää: carat.cs.helsinki.fi/statistics</string>
     <string name="myjscoreis">J-Scoreni on</string>
-    <string name="neverupdated">(Ei päivitetty)</string>
     <string name="notrunning">suljettuna</string>
     <string name="notsupported">eivät ole saatavilla tällä laitteella.</string>
     <string name="off">OFF</string>
@@ -170,10 +168,7 @@
         that helps detect and diagnose battery problems, giving you personalized recommendations.</string>
     <string name="tutorial_fragment_main_title">Carat Collaborative Energy Diagnosis</string>
     <string name="unknown">Tuntematon</string>
-    <string name="updated">(Päivitetty </string>
     <string name="updated0">(Päivitetty 0m 0s sitten)</string>
-    <string name="updatedjustnow">(Päivitetty äsken)</string>
-    <string name="updating">Päivitetään</string>
     <string name="updatingreports">Päivitetään raporttia</string>
     <string name="upgradeosinfo">Käyttöjärjestelmän päivittäminen</string>
     <string name="viewprocess">Sovelluslista</string>

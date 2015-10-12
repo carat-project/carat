@@ -334,6 +334,12 @@ public class CaratApplication extends Application {
     public void refreshUi() {
         boolean connecting = false;
         Log.d("debug", "*** Start refresh");
+        main.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                main.setProgressCircle(true);
+            }
+        });
         Context co = getApplicationContext();
         // TODO: using a shared preferences object might cause problem in different OS versions. replace with a private one. see MainActivity.AsyncTask.doInBackground().
         final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(co);
@@ -407,6 +413,7 @@ public class CaratApplication extends Application {
             @Override
             public void run() {
                 main.refreshSummaryFragment();
+                main.setProgressCircle(false);
             }
         });
 

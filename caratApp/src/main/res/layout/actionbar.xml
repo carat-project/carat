@@ -12,6 +12,15 @@
         android:textColor="@color/white"
         android:textSize="25sp" />
 
+    <ProgressBar
+        android:id="@+id/action_bar_progress_circle"
+        style="?android:attr/progressBarStyleInverse"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
     <ImageView
         android:id="@+id/back_arrow"
         android:layout_width="24dp"

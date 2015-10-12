@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private TextView actionBarTitle;
     private ImageView backArrow;
+    private ProgressBar progressCircle;
     private DashboardFragment dashboardFragment;
 
     private Tracker tracker;
@@ -150,6 +152,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
         final boolean useWifiOnly = p.getBoolean(getString(R.string.wifi_only_key), false);
         menu.findItem(R.id.action_wifi_only).setChecked(useWifiOnly);
+        setProgressCircle(false);
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -227,6 +230,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             backArrow.setVisibility(View.VISIBLE);
         } else {
             backArrow.setVisibility(View.GONE);
+        }
+    }
+
+    public void setProgressCircle(boolean visibility) {
+        progressCircle = (ProgressBar) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_progress_circle);
+        progressCircle.getIndeterminateDrawable().setColorFilter(0xF2FFFFFF,
+                android.graphics.PorterDuff.Mode.SRC_ATOP);
+        if (visibility) {
+            progressCircle.setVisibility(View.VISIBLE);
+        } else {
+            progressCircle.setVisibility(View.GONE);
         }
     }
 
@@ -312,7 +326,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     public void replaceFragment(Fragment fragment, String tag) {
         final String FRAGMENT_TAG = tag;
-
+        setProgressCircle(false);
         boolean fragmentPopped = getSupportFragmentManager().popBackStackImmediate(FRAGMENT_TAG, 0);
 
         if (!fragmentPopped) {
