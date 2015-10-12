@@ -19,6 +19,8 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nineoldandroids.view.ViewHelper;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,7 +39,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         ExpandableListView.OnChildClickListener {
 
     private CaratApplication caratApplication;
-    private SimpleHogBug[] hogReport, bugReport;
     private ArrayList<SimpleHogBug> allReports = new ArrayList<>();
     private LayoutInflater mInflater;
     private ExpandableListView lv;
@@ -63,8 +64,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                                     SimpleHogBug[] hogReport, SimpleHogBug[] bugReport) {
 
         this.caratApplication = caratApplication;
-        this.hogReport = hogReport;
-        this.bugReport = bugReport;
         this.lv = lv;
         this.lv.setOnGroupClickListener(this);
         this.lv.setOnGroupExpandListener(this);
@@ -95,7 +94,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     @Override
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) caratApplication.getApplicationContext()
                     .getSystemService(caratApplication.getApplicationContext().LAYOUT_INFLATER_SERVICE);
@@ -159,15 +157,22 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         return true;
     }
 
-    private void setViewsInChild(View v, SimpleHogBug item) {
+    private void setViewsInChild(View v, final SimpleHogBug item) {
         TextView samplesText = (TextView) v.findViewById(R.id.samples_title);
         samplesAmount = (TextView) v.findViewById(R.id.samples_amount);
         killAppButton = (Button) v.findViewById(R.id.stop_app_button);
         appCategory = (TextView) v.findViewById(R.id.app_category);
         samplesText.setText(R.string.samples);
         samplesAmount.setText(String.valueOf(item.getSamples()));
-        locker = true;
+        killAppButton.setTag(item.getAppName());
+        killAppButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                killApp(item, v);
+            }
+        });
         drawProgress(v, item);
+        locker = true;
 
     }
 
@@ -216,7 +221,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                 ClickTracking.track(uuId, "killbutton", options, caratApplication);
             }
 
-            killAppButton = (Button) v.findViewById(R.id.stop_app_button);
+            killAppButton = (Button) v.findViewWithTag(fullObject.getAppName());
             killAppButton.setEnabled(false);
             killAppButton.setBackgroundResource(R.drawable.button_rounded_gray);
             killAppButton.setText(caratApplication.getString(R.string.stopped));
@@ -234,6 +239,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             Canvas c = progressSurfaceHolder.lockCanvas();
             draw(c);
             progressSurfaceHolder.unlockCanvasAndPost(c);
+            locker = false;
         }
     }
 
@@ -243,7 +249,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         Paint paint = new Paint();
         paint.setARGB(255, 75, 200, 127);
         canvas.drawRect(r, paint);
-        locker = false;
     }
 
     @Override
@@ -260,18 +265,12 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public void onGroupExpand(int groupPosition) {
-        storedHogBug = allReports.get(groupPosition);
-        if (groupPosition != previousGroup)
-            lv.collapseGroup(previousGroup);
-        previousGroup = groupPosition;
+
     }
 
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-
-
-        Log.d("debug", "*** ID: " + lv.getChildAt(childPosition).getId());
-        Log.d("debug", "*** ID: " + v.getId());
         return false;
     }
+
 }

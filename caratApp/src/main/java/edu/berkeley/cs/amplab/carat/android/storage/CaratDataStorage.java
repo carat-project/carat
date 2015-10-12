@@ -16,6 +16,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
@@ -36,7 +37,7 @@ public class CaratDataStorage {
     public static final String SETTINGSFILE = "carat-settings.dat";
 
     public static final String SAMPLES_REPORTED = "carat-samples-reported.dat";
-    
+
     public static final String FRESHNESS = "carat-freshness.dat";
     private Context a = null;
 
@@ -75,12 +76,12 @@ public class CaratDataStorage {
         freshness = System.currentTimeMillis();
         writeText(freshness + "", FRESHNESS);
     }
-    
+
     public void writeBlacklistFreshness() {
         blacklistFreshness = System.currentTimeMillis();
         writeText(blacklistFreshness + "", BLACKLIST_FRESHNESS);
     }
-    
+
     public void writeQuickHogsFreshness() {
         quickHogsFreshness = System.currentTimeMillis();
         writeText(quickHogsFreshness + "", QUICKHOGS_FRESHNESS);
@@ -99,8 +100,8 @@ public class CaratDataStorage {
             Log.e(this.getClass().getName(), "Could not write object:" + o
                     + "!");
             e.printStackTrace();
-        } catch (Throwable th){
-        	Log.e(this.getClass().getName(), "Problem writing object", th);
+        } catch (Throwable th) {
+            Log.e(this.getClass().getName(), "Problem writing object", th);
         }
     }
 
@@ -122,8 +123,8 @@ public class CaratDataStorage {
                     "Could not find class: " + e.getMessage()
                             + " reading from " + fname + "!");
             e.printStackTrace();
-        } catch (Throwable th){
-        	Log.e(this.getClass().getName(), "Problem reading object", th);
+        } catch (Throwable th) {
+            Log.e(this.getClass().getName(), "Problem reading object", th);
         }
         return null;
     }
@@ -140,8 +141,8 @@ public class CaratDataStorage {
             Log.e(this.getClass().getName(), "Could not write text:" + thing
                     + "!");
             e.printStackTrace();
-        } catch (Throwable th){
-        	Log.e(this.getClass().getName(), "Problem writing text in "+fname, th);
+        } catch (Throwable th) {
+            Log.e(this.getClass().getName(), "Problem writing text in " + fname, th);
         }
     }
 
@@ -158,8 +159,8 @@ public class CaratDataStorage {
             Log.e(this.getClass().getName(), "Could not read text from "
                     + fname + "!");
             e.printStackTrace();
-        } catch (Throwable th){
-        	Log.e(this.getClass().getName(), "Problem reading text", th);
+        } catch (Throwable th) {
+            Log.e(this.getClass().getName(), "Problem reading text", th);
         }
         return null;
     }
@@ -172,9 +173,9 @@ public class CaratDataStorage {
                     + fname + " does not exist yet. Wait for reports.");
             // e.printStackTrace();
             return null;
-        } catch (Throwable th){
-        	Log.e(this.getClass().getName(), "Problem opening file "+fname+" for input", th);
-        	return null;
+        } catch (Throwable th) {
+            Log.e(this.getClass().getName(), "Problem opening file " + fname + " for input", th);
+            return null;
         }
     }
 
@@ -186,9 +187,9 @@ public class CaratDataStorage {
                     + fname + " does not exist yet. Wait for reports.");
             // e.printStackTrace();
             return null;
-        } catch (Throwable th){
-        	Log.e(this.getClass().getName(), "Problem opening file "+fname+" for output", th);
-        	return null;
+        } catch (Throwable th) {
+            Log.e(this.getClass().getName(), "Problem opening file " + fname + " for output", th);
+            return null;
         }
     }
 
@@ -219,8 +220,8 @@ public class CaratDataStorage {
     public long getFreshness() {
         return freshness;
     }
-    
-    
+
+
     public long readBlacklistFreshness() {
         String s = readText(BLACKLIST_FRESHNESS);
         if (Constants.DEBUG)
@@ -230,11 +231,11 @@ public class CaratDataStorage {
         else
             return -1;
     }
-    
+
     public long getBlacklistFreshness() {
         return blacklistFreshness;
     }
-    
+
     public long readQuickHogsFreshness() {
         String s = readText(QUICKHOGS_FRESHNESS);
         if (Constants.DEBUG)
@@ -244,11 +245,11 @@ public class CaratDataStorage {
         else
             return -1;
     }
-    
+
     public long getQuickHogsFreshness() {
         return quickHogsFreshness;
     }
-    
+
     /**
      * @return a list of blacklisted apps
      */
@@ -258,7 +259,7 @@ public class CaratDataStorage {
         else
             return readBlacklist();
     }
-    
+
     /**
      * @return a list of blacklisted expressions
      */
@@ -268,13 +269,12 @@ public class CaratDataStorage {
         else
             return readGloblist();
     }
-    
+
     /**
-     * 
      * @return a list of blacklisted apps
      */
     @SuppressWarnings("unchecked")
-	public List<String> readBlacklist() {
+    public List<String> readBlacklist() {
         Object o = readObject(BLACKLIST_FILE);
         //Log.d("CaratDataStorage", "Read blacklist: " + o);
         if (o != null) {
@@ -283,9 +283,8 @@ public class CaratDataStorage {
         } else
             return null;
     }
-    
+
     /**
-     * 
      * @param blacklist the list of blacklisted apps to write.
      */
     public void writeBlacklist(List<String> blacklist) {
@@ -294,13 +293,12 @@ public class CaratDataStorage {
         blacklistedApps = new WeakReference<List<String>>(blacklist);
         writeObject(blacklist, BLACKLIST_FILE);
     }
-    
+
     /**
-     * 
      * @return a list of blacklisted expressions
      */
     @SuppressWarnings("unchecked")
-	public List<String> readGloblist() {
+    public List<String> readGloblist() {
         Object o = readObject(GLOBLIST_FILE);
         //Log.d("CaratDataStorage", "Read glob blacklist: " + o);
         if (o != null) {
@@ -309,9 +307,8 @@ public class CaratDataStorage {
         } else
             return null;
     }
-    
+
     /**
-     * 
      * @param globlist the list of blacklisted expressions to write.
      */
     public void writeGloblist(List<String> globlist) {
@@ -320,7 +317,7 @@ public class CaratDataStorage {
         blacklistedGlobs = new WeakReference<List<String>>(globlist);
         writeObject(globlist, GLOBLIST_FILE);
     }
-    
+
     /**
      * @return the questionnaire base URL, read from storage or memory.
      */
@@ -330,9 +327,8 @@ public class CaratDataStorage {
         else
             return readQuestionnaireUrl();
     }
-    
+
     /**
-     * 
      * @return the questionnaire base URL, read from storage.
      */
     public String readQuestionnaireUrl() {
@@ -343,9 +339,10 @@ public class CaratDataStorage {
         } else
             return null;
     }
-    
+
     /**
      * Write questionnaire URL to permanent storage.
+     *
      * @param url the questionnaire base URL.
      */
     public void writeQuestionnaireUrl(String url) {
@@ -354,13 +351,13 @@ public class CaratDataStorage {
         questionnaireUrl = url;
         writeText(url, QUESTIONNAIRE_URL_FILE);
     }
-    
+
     public void samplesReported(int howmany) {
-    	samples_reported += howmany;
-        writeText(samples_reported+ "", SAMPLES_REPORTED);
+        samples_reported += howmany;
+        writeText(samples_reported + "", SAMPLES_REPORTED);
     }
-    
- 
+
+
     public long readSamplesReported() {
         String s = readText(SAMPLES_REPORTED);
         if (Constants.DEBUG)
@@ -388,15 +385,15 @@ public class CaratDataStorage {
         else
             return readReports();
     }
-    
+
     public boolean bugsIsEmpty() {
-    	SimpleHogBug[] bugs = getBugReport();
-    	return bugs == null || bugs.length == 0;
+        SimpleHogBug[] bugs = getBugReport();
+        return bugs == null || bugs.length == 0;
     }
-    
+
     public boolean hogsIsEmpty() {
-    	SimpleHogBug[] hogs = getHogReport();
-    	return hogs == null || hogs.length == 0;
+        SimpleHogBug[] hogs = getHogReport();
+        return hogs == null || hogs.length == 0;
     }
 
     /**
@@ -422,7 +419,7 @@ public class CaratDataStorage {
             return null;
         return refilter(hogData.get());
     }
-    
+
     public SimpleHogBug[] getSettingsReport() {
         if (settingsData == null || settingsData.get() == null) {
             readSettingsReport();
@@ -435,7 +432,7 @@ public class CaratDataStorage {
     public void writeBugReport(HogBugReport r) {
         if (r != null) {
             SimpleHogBug[] list = convertAndFilter(r.getHbList(), true);
-            if (list != null){
+            if (list != null) {
                 bugData = new WeakReference<SimpleHogBug[]>(list);
                 writeObject(list, BUGFILE);
             }
@@ -445,7 +442,7 @@ public class CaratDataStorage {
     public void writeHogReport(HogBugReport r) {
         if (r != null) {
             SimpleHogBug[] list = convertAndFilter(r.getHbList(), false);
-            if (list != null){
+            if (list != null) {
                 hogData = new WeakReference<SimpleHogBug[]>(list);
                 writeObject(list, HOGFILE);
             }
@@ -455,47 +452,48 @@ public class CaratDataStorage {
     public void writeSettingsReport(HogBugReport r) {
         if (r != null) {
             SimpleHogBug[] list = convertAndFilter(r.getHbList(), false);
-            if (list != null){
+            if (list != null) {
                 settingsData = new WeakReference<SimpleHogBug[]>(list);
                 writeObject(list, SETTINGSFILE);
             }
         }
     }
 
-    
-	private SimpleHogBug[] refilter(SimpleHogBug[] list) {
-		List<SimpleHogBug> result = new LinkedList<SimpleHogBug>();
 
-		SharedPreferences p = a.getSharedPreferences(
-				Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
-		String hogThresh = p
-				.getString(
-						a.getString(edu.berkeley.cs.amplab.carat.android.R.string.hog_hide_threshold),
-						"10");
-		int thresh = Integer.parseInt(hogThresh);
+    private SimpleHogBug[] refilter(SimpleHogBug[] list) {
+        List<SimpleHogBug> result = new LinkedList<SimpleHogBug>();
 
-		int size = list.length;
-		for (int i = 0; i < size; ++i) {
-			int[] benefit = list[i].getBenefit();
-			// this is going to also filter out any hogs/bugs with less than 1
-			// min benefit.
-			if (benefit[0] > 0 || benefit[1] > thresh)
-				result.add(list[i]);
-		}
+        SharedPreferences p = a.getSharedPreferences(
+                Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+        String hogThresh = p
+                .getString(
+                        a.getString(edu.berkeley.cs.amplab.carat.android.R.string.hog_hide_threshold),
+                        "10");
+        int thresh = Integer.parseInt(hogThresh);
 
-		return result.toArray(new SimpleHogBug[result.size()]);
-	}
-    
+        int size = list.length;
+        for (int i = 0; i < size; ++i) {
+            int[] benefit = list[i].getBenefit();
+            // this is going to also filter out any hogs/bugs with less than 1
+            // min benefit.
+            if (benefit[0] > 0 || benefit[1] > thresh)
+                result.add(list[i]);
+        }
+
+        return result.toArray(new SimpleHogBug[result.size()]);
+    }
+
     /**
      * For Settings, we need more than a boolean here.
-     * @param list the list of bugs or hogs received from the server.
+     *
+     * @param list  the list of bugs or hogs received from the server.
      * @param isBug True if the list contains Bugs, false if Hogs.
      * @return The list of non-hidden bugs or hogs.
      */
     private SimpleHogBug[] convertAndFilter(List<HogsBugs> list, boolean isBug) {
         if (list == null)
             return null;
-        
+
         List<SimpleHogBug> result = new LinkedList<SimpleHogBug>();
         int size = list.size();
         for (int i = 0; i < size; ++i) {
@@ -503,7 +501,7 @@ public class CaratDataStorage {
             String n = fixName(item.getAppName());
             if (SamplingLibrary.isHidden(CaratApplication.getContext(), n))
                 continue;
-            SimpleHogBug h = new SimpleHogBug(n, isBug ? Constants.Type.BUG:Constants.Type.HOG);
+            SimpleHogBug h = new SimpleHogBug(n, isBug ? Constants.Type.BUG : Constants.Type.HOG);
             h.setAppLabel(item.getAppLabel());
             String priority = item.getAppPriority();
             if (priority == null || priority.length() == 0)
@@ -571,7 +569,7 @@ public class CaratDataStorage {
         hogData = new WeakReference<SimpleHogBug[]>(r);
         return r;
     }
-    
+
     public SimpleHogBug[] readSettingsReport() {
         Object o = readObject(SETTINGSFILE);
         if (o == null || !(o instanceof SimpleHogBug[]))

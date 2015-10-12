@@ -153,9 +153,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
         final boolean useWifiOnly = p.getBoolean(getString(R.string.wifi_only_key), false);
         menu.findItem(R.id.action_wifi_only).setChecked(useWifiOnly);
-        progressCircle = (ProgressBar) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_progress_circle);
-        progressCircle.getIndeterminateDrawable().setColorFilter(0xF2FFFFFF,
-                android.graphics.PorterDuff.Mode.SRC_ATOP);
+        setProgressCircle(false);
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -237,9 +235,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setProgressCircle(boolean visibility) {
-        if (progressCircle == null) {
-            return;
-        } else if (visibility) {
+        progressCircle = (ProgressBar) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_progress_circle);
+        progressCircle.getIndeterminateDrawable().setColorFilter(0xF2FFFFFF,
+                android.graphics.PorterDuff.Mode.SRC_ATOP);
+        if (visibility) {
             progressCircle.setVisibility(View.VISIBLE);
         } else {
             progressCircle.setVisibility(View.GONE);
