@@ -75,6 +75,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
         setValues();
         shareButton.setVisibility(View.VISIBLE);
         shareBar.setVisibility(View.GONE);
+        scheduleRefresh();
     }
 
     private void initViewRefs() {
