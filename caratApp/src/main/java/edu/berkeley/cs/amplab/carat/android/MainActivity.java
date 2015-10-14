@@ -211,11 +211,24 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setValues() {
-        setJScore();
+        setJScore(CaratApplication.getJscore());
         setBatteryLife(CaratApplication.myDeviceData.getBatteryLife());
-        setBugAmount();
-        setHogAmount();
-        setActionsAmount();
+        if (CaratApplication.getStorage().getBugReport() != null) {
+            setBugAmount(String.valueOf(CaratApplication.getStorage().getBugReport().length));
+        } else {
+            setBugAmount("0");
+        }
+        if (CaratApplication.getStorage().getHogReport() != null) {
+            setHogAmount(String.valueOf(CaratApplication.getStorage().getHogReport().length));
+        } else {
+            setHogAmount("0");
+        }
+        if (CaratApplication.getStorage().getHogReport() != null && CaratApplication.getStorage().getBugReport() != null) {
+            setActionsAmount(CaratApplication.getStorage().getHogReport().length + CaratApplication.getStorage().getBugReport().length);
+        } else {
+            setActionsAmount(0);
+        }
+
         setCpuValue();
         Log.d("debug", "*** Values set");
     }
@@ -253,7 +266,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
-    private void setCpuValue() {
+    public void setCpuValue() {
         long[] currentPoint = SamplingLibrary.readUsagePoint();
         float cpu = 0;
         if (lastPoint == null) {
@@ -269,8 +282,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return cpu;
     }
 
-    private void setJScore() {
-        jScore = CaratApplication.getJscore();
+    public void setJScore(int jScore) {
+        this.jScore = jScore;
     }
 
     public void setBatteryLife(String batteryLife) {
@@ -289,12 +302,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return bugAmount;
     }
 
-    public void setBugAmount() {
-        if (CaratApplication.getStorage().getBugReport() != null) {
-            bugAmount = String.valueOf(CaratApplication.getStorage().getBugReport().length);
-        } else {
-            bugAmount = "0";
-        }
+    public void setBugAmount(String bugAmount) {
+        this.bugAmount = bugAmount;
 
     }
 
@@ -302,27 +311,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return hogAmount;
     }
 
-    public void setHogAmount() {
-        if (CaratApplication.getStorage().getHogReport() != null) {
-            hogAmount = String.valueOf(CaratApplication.getStorage().getHogReport().length);
-        } else {
-            hogAmount = "0";
-        }
+    public void setHogAmount(String hogAmount) {
+        this.hogAmount = hogAmount;
     }
 
     public String getActionsAmount() {
         return actionsAmount;
     }
 
-    public void setActionsAmount() {
-        int sum = 0;
-        if (CaratApplication.getStorage().getBugReport() != null) {
-            sum = CaratApplication.getStorage().getBugReport().length;
-        }
-        if (CaratApplication.getStorage().getHogReport() != null) {
-            sum += CaratApplication.getStorage().getHogReport().length;
-        }
-        actionsAmount = String.valueOf(sum);
+    public void setActionsAmount(int actionsAmount) {
+        this.actionsAmount = String.valueOf(actionsAmount);
     }
 
     public void replaceFragment(Fragment fragment, String tag) {

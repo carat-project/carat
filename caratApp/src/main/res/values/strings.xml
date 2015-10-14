@@ -240,7 +240,7 @@ delete these from your file.
     <string name="memused">Memory used:</string>
     <string name="memactive">Memory active:</string>
     <string name="cpu">CPU Usage:</string>
-    <string name="updated0">(Updated 0m 0s ago)</string>
+    <string name="updated0">Updated 0m 0s ago</string>
     <string name="viewprocess">View Process List</string>
     <string name="alogo">AmpLab Logo</string>
     <string name="ulogo">University of Helsinki Logo</string>
@@ -289,7 +289,7 @@ delete these from your file.
     <string name="updated">Updated </string>
     <string name="ago">ago</string>
     <string name="neverupdated">Never updated</string>
-    <string name="updatedjustnow">(Updated just now)</string>
+    <string name="updatedjustnow">Updated just now</string>
     <string name="didntget">got no</string>
     <string name="updatingreports">Updating reports</string>
     <string name="blacklist">Blacklist</string>

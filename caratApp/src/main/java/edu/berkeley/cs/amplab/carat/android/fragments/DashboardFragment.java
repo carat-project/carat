@@ -226,10 +226,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                         hogAmountText.setText(String.valueOf(hogsCount));
                         bugAmountText.setText(String.valueOf(bugsCount));
                         actionsAmountText.setText(String.valueOf(hogsCount + bugsCount));
+                        mainActivity.setBugAmount(String.valueOf(bugsCount));
+                        mainActivity.setHogAmount(String.valueOf(hogsCount));
+                        mainActivity.setActionsAmount(bugsCount + hogsCount);
                     }
                 }
             });
-        mainActivity.setValues();
+        mainActivity.setJScore(CaratApplication.getJscore());
+        mainActivity.setCpuValue();
         setValues();
         Log.d("debug", "*** SCHELUDE END");
     }

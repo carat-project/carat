@@ -654,8 +654,8 @@
     <string name="ulogo">University of Helsinki Logo</string>
     <string name="unknown">Unknown</string>
     <string name="updated">Updated </string>
-    <string name="updated0">(Updated 0m 0s ago)</string>
-    <string name="updatedjustnow">(Updated just now)</string>
+    <string name="updated0">Updated 0m 0s ago</string>
+    <string name="updatedjustnow">Updated just now</string>
     <string name="updating">Updating</string>
     <string name="updatingreports">Updating reports</string>
     <string name="upgradeosinfo">Upgrading the OS</string>
