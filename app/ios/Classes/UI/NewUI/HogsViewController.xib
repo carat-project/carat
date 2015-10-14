@@ -24,9 +24,6 @@
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
-                            <variation key="widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="68" y="7" width="322" height="21"/>
-                            </variation>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery_icon" translatesAutoresizingMaskIntoConstraints="NO" id="JwT-Ev-fMQ">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -70,11 +67,11 @@
                         </mask>
                         <mask key="constraints">
                             <exclude reference="vkt-my-So4"/>
-                            <exclude reference="PRA-LK-MN5"/>
-                            <exclude reference="lO2-RW-v2u"/>
                             <exclude reference="I8z-zD-7YH"/>
                             <exclude reference="LCE-nU-NFA"/>
                             <exclude reference="sk7-SQ-w1l"/>
+                            <exclude reference="PRA-LK-MN5"/>
+                            <exclude reference="lO2-RW-v2u"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
@@ -84,11 +81,11 @@
                         </mask>
                         <mask key="constraints">
                             <include reference="vkt-my-So4"/>
-                            <include reference="PRA-LK-MN5"/>
-                            <include reference="lO2-RW-v2u"/>
                             <include reference="I8z-zD-7YH"/>
                             <include reference="LCE-nU-NFA"/>
                             <include reference="sk7-SQ-w1l"/>
+                            <include reference="PRA-LK-MN5"/>
+                            <include reference="lO2-RW-v2u"/>
                         </mask>
                     </variation>
                 </view>
@@ -100,7 +97,7 @@
                         <outlet property="delegate" destination="-1" id="cgp-k8-0Jv"/>
                     </connections>
                 </tableView>
-                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa1-j1-u9C">
+                <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa1-j1-u9C">
                     <rect key="frame" x="8" y="5" width="470" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">

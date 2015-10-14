@@ -25,22 +25,6 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lz-c2-lM5" userLabel="ScrollContent" customClass="LocalizedLabel">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart_image" translatesAutoresizingMaskIntoConstraints="NO" id="av9-JB-eeg" userLabel="topImg">
-                                    <rect key="frame" x="20" y="20" width="400" height="214"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="av9-JB-eeg" secondAttribute="height" multiplier="200:79" id="vkW-tO-KxE"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="vkW-tO-KxE"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="widthClass=compact">
-                                        <mask key="constraints">
-                                            <include reference="vkW-tO-KxE"/>
-                                        </mask>
-                                    </variation>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDP-d4-NHu" customClass="LocalizedLabel">
                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                     <attributedString key="attributedText">
@@ -53,9 +37,8 @@
                                         </fragment>
                                     </attributedString>
                                     <nil key="highlightedColor"/>
-                                    <variation key="widthClass=compact" misplaced="YES">
+                                    <variation key="widthClass=compact">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <rect key="frame" x="0.0" y="15" width="400" height="24"/>
                                     </variation>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rY7-db-Ctt" userLabel="middleContent">
@@ -82,6 +65,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InfoJscoreLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAt-mf-K2E" customClass="LocalizedLabel">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="jT3-hW-7g7"/>
                                             </constraints>
@@ -98,6 +82,9 @@
                                                     <include reference="jT3-hW-7g7"/>
                                                 </mask>
                                             </variation>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="Wbf-sS-0FX" appends="YES" id="6Sz-GP-l1B"/>
+                                            </connections>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8945f54548f45f4554" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEk-cL-1Fm" userLabel="caratIDValue">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -220,6 +207,9 @@
                                             <state key="normal" title="ProcessList">
                                                 <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="showProcessList:" destination="-1" eventType="touchUpInside" id="YDT-io-uhu"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10h 23m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsv-CQ-Myq" customClass="LocalizedLabel">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -382,28 +372,6 @@
                                         </mask>
                                     </variation>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJt-eY-rn5" userLabel="Score" customClass="ScoreView">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="CJt-eY-rn5" secondAttribute="height" multiplier="1:1" id="rFD-XE-8TY"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="score">
-                                            <integer key="value" value="50"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="scoreTitle" value="J-Score"/>
-                                    </userDefinedRuntimeAttributes>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="rFD-XE-8TY"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="widthClass=compact">
-                                        <mask key="constraints">
-                                            <include reference="rFD-XE-8TY"/>
-                                        </mask>
-                                    </variation>
-                                </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DeviceUsage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFK-J2-Wzh" customClass="LocalizedLabel">
                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                     <constraints>
@@ -454,7 +422,7 @@
                                             <real key="value" value="40"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
-                                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="smallerBarColor">
                                             <color key="value" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -463,7 +431,7 @@
                                             <real key="value" value="60"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="smallerMeasureValue">
-                                            <real key="value" value="50"/>
+                                            <real key="value" value="0.0"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <variation key="default">
@@ -502,6 +470,9 @@
                                             <include reference="p3F-NB-gRM"/>
                                         </mask>
                                     </variation>
+                                    <connections>
+                                        <action selector="showMemUsedInfo:" destination="-1" eventType="touchUpInside" id="T5f-dh-Tps"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MemoryUsed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5J9-dv-SQp" customClass="LocalizedLabel">
                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -536,16 +507,16 @@
                                             <real key="value" value="40"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
-                                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="smallerBarColor">
                                             <color key="value" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="largerMeasureValue">
-                                            <real key="value" value="50"/>
+                                            <real key="value" value="30"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="smallerMeasureValue">
-                                            <real key="value" value="30"/>
+                                            <real key="value" value="0.0"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <variation key="default">
@@ -603,6 +574,9 @@
                                             <include reference="JXr-XQ-UQg"/>
                                         </mask>
                                     </variation>
+                                    <connections>
+                                        <action selector="showCPUUsageInfo:" destination="-1" eventType="touchUpInside" id="Rt8-QM-jWR"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CPUUsage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCL-z5-zDF" customClass="LocalizedLabel">
                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -648,6 +622,9 @@
                                             <include reference="rfH-Z0-MrM"/>
                                         </mask>
                                     </variation>
+                                    <connections>
+                                        <action selector="showMemActiveInfo:" destination="-1" eventType="touchUpInside" id="Khd-Q3-d0n"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPa-QB-5NA" userLabel="CPUusageBar" customClass="MeasurementBar">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -663,7 +640,7 @@
                                             <real key="value" value="40"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
-                                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="smallerBarColor">
                                             <color key="value" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -672,7 +649,7 @@
                                             <real key="value" value="40"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="smallerMeasureValue">
-                                            <real key="value" value="35"/>
+                                            <real key="value" value="0.0"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <variation key="default">
@@ -686,8 +663,51 @@
                                         </mask>
                                     </variation>
                                 </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart_image" translatesAutoresizingMaskIntoConstraints="NO" id="av9-JB-eeg" userLabel="topImg">
+                                    <rect key="frame" x="20" y="20" width="400" height="214"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="av9-JB-eeg" secondAttribute="height" multiplier="200:79" id="vkW-tO-KxE"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="vkW-tO-KxE"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="vkW-tO-KxE"/>
+                                        </mask>
+                                    </variation>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJt-eY-rn5" userLabel="Score" customClass="ScoreView">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <gestureRecognizers/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="CJt-eY-rn5" secondAttribute="height" multiplier="1:1" id="rFD-XE-8TY"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="score">
+                                            <integer key="value" value="50"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="scoreTitle" value="J-Score"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="rFD-XE-8TY"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="rFD-XE-8TY"/>
+                                        </mask>
+                                    </variation>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="AhW-tT-NHN" appends="YES" id="vtK-ki-uWa"/>
+                                    </connections>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="r80-CN-dJQ" firstAttribute="top" secondItem="XCM-lD-JVE" secondAttribute="bottom" id="0HE-Gk-Mam"/>
                                 <constraint firstItem="XCM-lD-JVE" firstAttribute="leading" secondItem="Y9p-Du-lpu" secondAttribute="leading" id="1Br-qH-2BP"/>
@@ -755,10 +775,8 @@
                             </constraints>
                             <variation key="default">
                                 <mask key="subviews">
-                                    <exclude reference="av9-JB-eeg"/>
                                     <exclude reference="WDP-d4-NHu"/>
                                     <exclude reference="rY7-db-Ctt"/>
-                                    <exclude reference="CJt-eY-rn5"/>
                                     <exclude reference="xFK-J2-Wzh"/>
                                     <exclude reference="Gam-nj-VfC"/>
                                     <exclude reference="Y9p-Du-lpu"/>
@@ -770,61 +788,61 @@
                                     <exclude reference="FCL-z5-zDF"/>
                                     <exclude reference="kFg-WG-yIS"/>
                                     <exclude reference="dPa-QB-5NA"/>
+                                    <exclude reference="av9-JB-eeg"/>
+                                    <exclude reference="CJt-eY-rn5"/>
                                 </mask>
                                 <mask key="constraints">
                                     <exclude reference="hk5-6Y-b9W"/>
-                                    <exclude reference="3BX-CC-tji"/>
-                                    <exclude reference="ONn-HT-2hN"/>
-                                    <exclude reference="RAO-jz-heb"/>
+                                    <exclude reference="37b-GD-3Tx"/>
+                                    <exclude reference="Jxc-wC-7uU"/>
+                                    <exclude reference="fu0-at-vrQ"/>
+                                    <exclude reference="8HK-pb-9U7"/>
+                                    <exclude reference="9Kn-IO-Ugd"/>
+                                    <exclude reference="tO5-tl-DRS"/>
+                                    <exclude reference="GN0-tb-ubr"/>
+                                    <exclude reference="liS-qL-7Kq"/>
+                                    <exclude reference="nMe-c4-tuh"/>
                                     <exclude reference="Kxb-a6-MLe"/>
                                     <exclude reference="Q0c-24-TvP"/>
                                     <exclude reference="RTt-aK-DGg"/>
                                     <exclude reference="rbp-Qd-NMt"/>
-                                    <exclude reference="8qG-LJ-iHs"/>
-                                    <exclude reference="VMh-vM-KpJ"/>
-                                    <exclude reference="yYA-g9-qHN"/>
-                                    <exclude reference="XML-u9-TdZ"/>
-                                    <exclude reference="ceU-Wf-6dy"/>
-                                    <exclude reference="k96-Gl-Fpx"/>
-                                    <exclude reference="IF4-a1-8Jl"/>
-                                    <exclude reference="Mvx-J6-FL9"/>
-                                    <exclude reference="nzL-ik-RRv"/>
-                                    <exclude reference="4mN-rs-E3B"/>
-                                    <exclude reference="DZ8-IA-z3q"/>
-                                    <exclude reference="X7U-6M-gYH"/>
-                                    <exclude reference="bg6-0U-wQK"/>
-                                    <exclude reference="GN0-tb-ubr"/>
-                                    <exclude reference="liS-qL-7Kq"/>
-                                    <exclude reference="3dn-Cn-YvB"/>
-                                    <exclude reference="CV7-iC-33v"/>
-                                    <exclude reference="JKG-c5-1O5"/>
-                                    <exclude reference="Q98-BL-Kv0"/>
                                     <exclude reference="1Br-qH-2BP"/>
                                     <exclude reference="8dn-j7-Jwb"/>
                                     <exclude reference="Byi-m3-2pJ"/>
                                     <exclude reference="l41-EZ-amg"/>
                                     <exclude reference="y8b-wS-ugx"/>
                                     <exclude reference="yh8-N9-aXl"/>
+                                    <exclude reference="IF4-a1-8Jl"/>
+                                    <exclude reference="Mvx-J6-FL9"/>
+                                    <exclude reference="nzL-ik-RRv"/>
+                                    <exclude reference="XML-u9-TdZ"/>
+                                    <exclude reference="ceU-Wf-6dy"/>
+                                    <exclude reference="k96-Gl-Fpx"/>
+                                    <exclude reference="4mN-rs-E3B"/>
+                                    <exclude reference="DZ8-IA-z3q"/>
+                                    <exclude reference="X7U-6M-gYH"/>
+                                    <exclude reference="bg6-0U-wQK"/>
+                                    <exclude reference="3dn-Cn-YvB"/>
+                                    <exclude reference="CV7-iC-33v"/>
+                                    <exclude reference="JKG-c5-1O5"/>
+                                    <exclude reference="Q98-BL-Kv0"/>
+                                    <exclude reference="Gcr-lq-b2X"/>
+                                    <exclude reference="aOv-Ws-WM9"/>
                                     <exclude reference="0HE-Gk-Mam"/>
                                     <exclude reference="4xL-vW-4Wa"/>
                                     <exclude reference="CXn-Tv-fj7"/>
-                                    <exclude reference="nMe-c4-tuh"/>
-                                    <exclude reference="Gcr-lq-b2X"/>
-                                    <exclude reference="aOv-Ws-WM9"/>
-                                    <exclude reference="8HK-pb-9U7"/>
-                                    <exclude reference="37b-GD-3Tx"/>
-                                    <exclude reference="Jxc-wC-7uU"/>
-                                    <exclude reference="fu0-at-vrQ"/>
-                                    <exclude reference="9Kn-IO-Ugd"/>
-                                    <exclude reference="tO5-tl-DRS"/>
+                                    <exclude reference="8qG-LJ-iHs"/>
+                                    <exclude reference="VMh-vM-KpJ"/>
+                                    <exclude reference="yYA-g9-qHN"/>
+                                    <exclude reference="3BX-CC-tji"/>
+                                    <exclude reference="ONn-HT-2hN"/>
+                                    <exclude reference="RAO-jz-heb"/>
                                 </mask>
                             </variation>
                             <variation key="widthClass=compact">
                                 <mask key="subviews">
-                                    <include reference="av9-JB-eeg"/>
                                     <include reference="WDP-d4-NHu"/>
                                     <include reference="rY7-db-Ctt"/>
-                                    <include reference="CJt-eY-rn5"/>
                                     <include reference="xFK-J2-Wzh"/>
                                     <include reference="Gam-nj-VfC"/>
                                     <include reference="Y9p-Du-lpu"/>
@@ -836,53 +854,55 @@
                                     <include reference="FCL-z5-zDF"/>
                                     <include reference="kFg-WG-yIS"/>
                                     <include reference="dPa-QB-5NA"/>
+                                    <include reference="av9-JB-eeg"/>
+                                    <include reference="CJt-eY-rn5"/>
                                 </mask>
                                 <mask key="constraints">
                                     <include reference="hk5-6Y-b9W"/>
-                                    <include reference="3BX-CC-tji"/>
-                                    <include reference="ONn-HT-2hN"/>
-                                    <include reference="RAO-jz-heb"/>
+                                    <include reference="37b-GD-3Tx"/>
+                                    <include reference="Jxc-wC-7uU"/>
+                                    <include reference="fu0-at-vrQ"/>
+                                    <include reference="8HK-pb-9U7"/>
+                                    <include reference="9Kn-IO-Ugd"/>
+                                    <include reference="tO5-tl-DRS"/>
+                                    <include reference="GN0-tb-ubr"/>
+                                    <include reference="liS-qL-7Kq"/>
+                                    <include reference="nMe-c4-tuh"/>
                                     <include reference="Kxb-a6-MLe"/>
                                     <include reference="Q0c-24-TvP"/>
                                     <include reference="RTt-aK-DGg"/>
                                     <include reference="rbp-Qd-NMt"/>
-                                    <include reference="8qG-LJ-iHs"/>
-                                    <include reference="VMh-vM-KpJ"/>
-                                    <include reference="yYA-g9-qHN"/>
-                                    <include reference="XML-u9-TdZ"/>
-                                    <include reference="ceU-Wf-6dy"/>
-                                    <include reference="k96-Gl-Fpx"/>
-                                    <include reference="IF4-a1-8Jl"/>
-                                    <include reference="Mvx-J6-FL9"/>
-                                    <include reference="nzL-ik-RRv"/>
-                                    <include reference="4mN-rs-E3B"/>
-                                    <include reference="DZ8-IA-z3q"/>
-                                    <include reference="X7U-6M-gYH"/>
-                                    <include reference="bg6-0U-wQK"/>
-                                    <include reference="GN0-tb-ubr"/>
-                                    <include reference="liS-qL-7Kq"/>
-                                    <include reference="3dn-Cn-YvB"/>
-                                    <include reference="CV7-iC-33v"/>
-                                    <include reference="JKG-c5-1O5"/>
-                                    <include reference="Q98-BL-Kv0"/>
                                     <include reference="1Br-qH-2BP"/>
                                     <include reference="8dn-j7-Jwb"/>
                                     <include reference="Byi-m3-2pJ"/>
                                     <include reference="l41-EZ-amg"/>
                                     <include reference="y8b-wS-ugx"/>
                                     <include reference="yh8-N9-aXl"/>
+                                    <include reference="IF4-a1-8Jl"/>
+                                    <include reference="Mvx-J6-FL9"/>
+                                    <include reference="nzL-ik-RRv"/>
+                                    <include reference="XML-u9-TdZ"/>
+                                    <include reference="ceU-Wf-6dy"/>
+                                    <include reference="k96-Gl-Fpx"/>
+                                    <include reference="4mN-rs-E3B"/>
+                                    <include reference="DZ8-IA-z3q"/>
+                                    <include reference="X7U-6M-gYH"/>
+                                    <include reference="bg6-0U-wQK"/>
+                                    <include reference="3dn-Cn-YvB"/>
+                                    <include reference="CV7-iC-33v"/>
+                                    <include reference="JKG-c5-1O5"/>
+                                    <include reference="Q98-BL-Kv0"/>
+                                    <include reference="Gcr-lq-b2X"/>
+                                    <include reference="aOv-Ws-WM9"/>
                                     <include reference="0HE-Gk-Mam"/>
                                     <include reference="4xL-vW-4Wa"/>
                                     <include reference="CXn-Tv-fj7"/>
-                                    <include reference="nMe-c4-tuh"/>
-                                    <include reference="Gcr-lq-b2X"/>
-                                    <include reference="aOv-Ws-WM9"/>
-                                    <include reference="8HK-pb-9U7"/>
-                                    <include reference="37b-GD-3Tx"/>
-                                    <include reference="Jxc-wC-7uU"/>
-                                    <include reference="fu0-at-vrQ"/>
-                                    <include reference="9Kn-IO-Ugd"/>
-                                    <include reference="tO5-tl-DRS"/>
+                                    <include reference="8qG-LJ-iHs"/>
+                                    <include reference="VMh-vM-KpJ"/>
+                                    <include reference="yYA-g9-qHN"/>
+                                    <include reference="3BX-CC-tji"/>
+                                    <include reference="ONn-HT-2hN"/>
+                                    <include reference="RAO-jz-heb"/>
                                 </mask>
                             </variation>
                         </view>
@@ -987,8 +1007,18 @@
                     <include reference="xXT-nD-5yq"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="459" y="302"/>
+            <point key="canvasLocation" x="349" y="122"/>
         </view>
+        <tapGestureRecognizer id="AhW-tT-NHN" userLabel="scoreTap">
+            <connections>
+                <action selector="showJScoreExplanation:" destination="-1" id="nDt-yc-JsH"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Wbf-sS-0FX" userLabel="infoLabelTap">
+            <connections>
+                <action selector="showJScoreExplanation:" destination="-1" id="hYY-c4-uCV"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="arrow_icon" width="48" height="48"/>

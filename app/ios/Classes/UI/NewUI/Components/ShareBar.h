@@ -9,6 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "AppColors.h"
 #import "AppLayout.h"
-@interface ShareBar : UIView
 
+@class ShareBar;
+@interface ShareBar : UIView {
+}
+@property (nonatomic, assign) id  delegate;
+
+-(void)setDelegate:(id)delegate;
+-(void)closeTapped;
+-(void)emailTapped;
+-(void)twitterTapped;
+-(void)facebookTapped;
+@end
+
+@protocol ShareBarDelegate
+- (void)faceBookPressed;
+- (void)twitterPressed;
+- (void)emailPressed;
+- (void)closePressed;
 @end

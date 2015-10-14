@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "DashboardViewController.h"
+#import "InfoViewController.h"
 
 @implementation BaseViewController
 - (void)viewDidLoad
@@ -33,11 +34,27 @@
     }
 }
 
+-(void)showInfoView:(NSString *)title message:(NSString *)message;
+{
+    NSLog(@"showInfoView");
+    InfoViewController *controler = [[InfoViewController alloc]initWithNibName:@"InfoViewController" bundle:nil];
+    controler.titleForView = title;
+    controler.messageForView = message;
+    [self.navigationController pushViewController:controler animated:YES];
+    /*
+    InfoViewController *controler = [[InfoViewController alloc]initWithNibName:@"TutorialViewController" bundle:nil];
+    //controler.messageForView = title;
+    //controler.titleForView =message;
+    [self.navigationController pushViewController:controler animated:YES];
+     */
+}
+
 - (IBAction)barItemBackPressed{
     NSLog(@"****** barItemBackPressed *******");
-    DashBoardViewController *controler = [[DashBoardViewController alloc]initWithNibName:@"DashBoardViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
+    [self.navigationController popViewControllerAnimated:YES];
+    //DashBoardViewController *controler = [[DashBoardViewController alloc]initWithNibName:@"DashBoardViewController" bundle:nil];
+    //[self presentViewController:controler animated: YES completion:nil];
+    //[controler release];
 }
 
 -(IBAction)barItemMorePressed{

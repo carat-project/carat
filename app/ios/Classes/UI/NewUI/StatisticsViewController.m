@@ -44,6 +44,26 @@
     [_allUsersIntensiveDescLabel release];
     [_allUsersIntensiveBar release];
     [_popularDeviceModelsDescLabel release];
+    [_wellBehivedBar release];
+    [_wellBehivedLabel release];
+    [_bugBar release];
+    [_bugsLabel release];
+    [_hogsLabel release];
+    [_hogsBar release];
     [super dealloc];
+}
+- (IBAction)showWellBehivedInfo:(id)sender {
+    NSLog(@"showWellBehivedInfo");
+     [self showInfoView:@"WellBehived" message:@"WellBehivedDesc"];
+}
+
+- (IBAction)showBugsInfo:(id)sender {
+        NSLog(@"showBugsInfo");
+     [self showInfoView:@"Bugs" message:@"BugsDesc"];
+}
+
+- (IBAction)showHogsInfo:(id)sender {
+        NSLog(@"showHogsInfo");
+     [self showInfoView:@"Hogs" message:@"HogsDesc"];
 }
 @end

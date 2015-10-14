@@ -17,7 +17,25 @@
 #import "StatisticsViewController.h"
 #import "ActionsViewController.h"
 #import "MyScoreViewController.h"
+#import "MoreViewController.h"
 
 @interface DashBoardViewController : BaseViewController
+@property (retain, nonatomic) IBOutlet ScoreView *scoreView;
+@property (retain, nonatomic) IBOutlet UILabel *updateLabel;
+@property (retain, nonatomic) IBOutlet ShareView *shareView;
+@property (retain, nonatomic) IBOutlet LocalizedLabel *batteryLastLabel;
+@property (retain, nonatomic) IBOutlet DashboardNavigationButton *bugsBtn;
+@property (retain, nonatomic) IBOutlet DashboardNavigationButton *hogsBtn;
+@property (retain, nonatomic) IBOutlet DashboardNavigationButton *statisticsBtn;
+@property (retain, nonatomic) IBOutlet DashboardNavigationButton *actionsBtn;
+
+- (IBAction)shareButtonTapped:(id)sender;
+- (IBAction)showScoreInfo:(id)sender;
+- (IBAction)showMyDevice:(id)sender;
+- (IBAction)showBugs:(id)sender;
+- (IBAction)showHogs:(id)sender;
+- (IBAction)showStatistics:(id)sender;
+- (IBAction)showActions:(id)sender;
+
 
 @end

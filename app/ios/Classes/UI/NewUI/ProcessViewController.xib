@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProcessViewController">
+            <connections>
+                <outlet property="tableView" destination="FZj-Dj-NFZ" id="h5Z-PB-zfT"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FZj-Dj-NFZ">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="PTe-Sg-4tk"/>
+                        <outlet property="delegate" destination="-1" id="nAw-In-9FF"/>
+                    </connections>
+                </tableView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLu-Mx-SU0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="YaY-2J-YHe"/>
+                    </constraints>
+                    <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Process list" id="WNO-fz-Ez1">
+                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="17c-sj-h7x">
+                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemBackPressed" destination="-1" id="ol3-hi-r4E"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="y6G-gm-0Ln">
+                                <inset key="imageInsets" minX="25" minY="12" maxX="0.0" maxY="12"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemMorePressed" destination="-1" id="yoJ-DY-8Xf"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="YaY-2J-YHe"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="YaY-2J-YHe"/>
+                        </mask>
+                    </variation>
+                </navigationBar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PLu-Mx-SU0" firstAttribute="leading" secondItem="FZj-Dj-NFZ" secondAttribute="leading" id="NfO-d0-iSZ"/>
+                <constraint firstItem="FZj-Dj-NFZ" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="RqR-nM-qH6"/>
+                <constraint firstItem="PLu-Mx-SU0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Vor-Z9-UTV"/>
+                <constraint firstItem="PLu-Mx-SU0" firstAttribute="bottom" secondItem="FZj-Dj-NFZ" secondAttribute="top" id="YSi-6z-43b"/>
+                <constraint firstAttribute="trailing" secondItem="PLu-Mx-SU0" secondAttribute="trailing" id="c4V-C0-0B0"/>
+                <constraint firstItem="PLu-Mx-SU0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eZJ-hU-Vcx"/>
+                <constraint firstItem="PLu-Mx-SU0" firstAttribute="trailing" secondItem="FZj-Dj-NFZ" secondAttribute="trailing" id="gfX-iu-Kh6"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="FZj-Dj-NFZ"/>
+                    <exclude reference="PLu-Mx-SU0"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="NfO-d0-iSZ"/>
+                    <exclude reference="Vor-Z9-UTV"/>
+                    <exclude reference="YSi-6z-43b"/>
+                    <exclude reference="c4V-C0-0B0"/>
+                    <exclude reference="eZJ-hU-Vcx"/>
+                    <exclude reference="gfX-iu-Kh6"/>
+                    <exclude reference="RqR-nM-qH6"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="FZj-Dj-NFZ"/>
+                    <include reference="PLu-Mx-SU0"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="NfO-d0-iSZ"/>
+                    <include reference="Vor-Z9-UTV"/>
+                    <include reference="YSi-6z-43b"/>
+                    <include reference="c4V-C0-0B0"/>
+                    <include reference="eZJ-hU-Vcx"/>
+                    <include reference="gfX-iu-Kh6"/>
+                    <include reference="RqR-nM-qH6"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow_icon" width="48" height="48"/>
+        <image name="more_icon" width="42" height="42"/>
+    </resources>
+</document>

@@ -55,7 +55,8 @@
     CGFloat scoreEdge = oneThirdHeight * 0.7f;
     CGFloat scoreLeft = (UI_SCREEN_W - scoreEdge)/2.0f;
    
-    
+    [_scoreView setScore: 60];
+    [_scoreView setTitle: @"J-score"];
     ScoreView *scoreView = [[ScoreView alloc] initWithFrame:CGRectMake(scoreLeft, scoreTop, scoreEdge, scoreEdge)];
     [scoreView setScore: 60];
     [scoreView setTitle: @"J-score"];
@@ -154,35 +155,6 @@
     [self.view addSubview:actionsButton];
 }
 
-- (void)bugsTapped
-{
-    NSLog(@"bugsTapped");
-    [self showBugsController];
-}
-- (void)hogsTapped
-{
-    NSLog(@"hogsTapped");
-    [self showHogsController];
-}
-- (void)statisticsTapped
-{
-    NSLog(@"statisticsTapped");
-    [self showStatisticsController];
-}
-- (void)actionsTapped
-{
-    NSLog(@"actionsTapped");
-    [self showActionsController];
-}
-
-
--(void)moreIconPressed
-{
-    NSLog(@"moreIcon pressed");
-    [self showTutorialController];
-}
-
-
 -(void)setTextLabel:(UILabel*) label text:(NSString *)text top:(CGFloat)top
 {
      CGFloat fontSize = 20.0f;
@@ -219,52 +191,52 @@
     
 }
 
--(void) showTutorialController
-{
-    TutorialViewController *controler = [[TutorialViewController alloc]initWithNibName:@"TutorialViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
-}
--(void) showBugsController
-{
-    BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
-}
--(void) showHogsController
-{
-    HogsViewController *controler = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
-}
--(void) showStatisticsController
-{
-    StatisticsViewController *controler = [[StatisticsViewController alloc]initWithNibName:@"StatisticsViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
-}
--(void) showActionsController
-{
-    ActionsViewController *controler = [[ActionsViewController alloc]initWithNibName:@"ActionsViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
-}
--(void) showMyScoreController
-{
-    MyScoreViewController *controler = [[MyScoreViewController alloc]initWithNibName:@"MyScoreViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
-
-}
-
-
 - (void)dealloc {
     [_batteryLife release];
     [_batteryLifeTime release];
     [_myDeviceBtn release];
 
+    [_scoreView release];
+    [_updateLabel release];
+    [_shareView release];
+    [_batteryLastLabel release];
+    [_bugsBtn release];
+    [_hogsBtn release];
+    [_statisticsBtn release];
+    [_actionsBtn release];
     [super dealloc];
 }
 
 
+- (IBAction)shareButtonTapped:(id)sender {
+}
+
+- (IBAction)showScoreInfo:(id)sender {
+    [self showInfoView:@"JScore" message:@"JScoreDesc"];
+}
+
+- (IBAction)showMyDevice:(id)sender {
+    MyScoreViewController *controler = [[MyScoreViewController alloc]initWithNibName:@"MyScoreViewController" bundle:nil];
+    [self.navigationController pushViewController:controler animated:YES];
+}
+
+- (IBAction)showBugs:(id)sender {
+    NSLog(@"bugsTapped");
+    BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
+    [self.navigationController pushViewController:controler animated:YES];
+}
+
+- (IBAction)showHogs:(id)sender {
+    HogsViewController *controler = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
+    [self.navigationController pushViewController:controler animated:YES];
+}
+
+- (IBAction)showStatistics:(id)sender {
+    StatisticsViewController *controler = [[StatisticsViewController alloc]initWithNibName:@"StatisticsViewController" bundle:nil];
+    [self.navigationController pushViewController:controler animated:YES];
+}
+- (IBAction)showActions:(id)sender {
+    ActionsViewController *controler = [[ActionsViewController alloc]initWithNibName:@"ActionsViewController" bundle:nil];
+    [self.navigationController pushViewController:controler animated:YES];
+}
 @end

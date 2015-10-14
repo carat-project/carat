@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
+            <connections>
+                <outlet property="tableView" destination="TIg-dE-gCv" id="aw4-hl-wSX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TIg-dE-gCv">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="swu-Az-aPf"/>
+                        <outlet property="delegate" destination="-1" id="kxS-73-QKZ"/>
+                    </connections>
+                </tableView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTA-wv-ACX">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="About" id="Zb9-7A-P8G">
+                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="bOt-aG-kSU">
+                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemBackPressed" destination="-1" id="uu5-dZ-3Yv"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TIg-dE-gCv" firstAttribute="trailing" secondItem="oTA-wv-ACX" secondAttribute="trailing" id="1jy-M6-ZsH"/>
+                <constraint firstAttribute="bottom" secondItem="TIg-dE-gCv" secondAttribute="bottom" id="9PB-Cd-FET"/>
+                <constraint firstItem="oTA-wv-ACX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CZo-iU-lLG"/>
+                <constraint firstItem="oTA-wv-ACX" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="CvB-0h-6TD"/>
+                <constraint firstItem="TIg-dE-gCv" firstAttribute="leading" secondItem="oTA-wv-ACX" secondAttribute="leading" id="HZL-Iq-txk"/>
+                <constraint firstItem="oTA-wv-ACX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Hjz-aU-eQq"/>
+                <constraint firstItem="TIg-dE-gCv" firstAttribute="top" secondItem="oTA-wv-ACX" secondAttribute="bottom" id="S1o-Zy-8Sa"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="TIg-dE-gCv"/>
+                    <exclude reference="oTA-wv-ACX"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="CZo-iU-lLG"/>
+                    <exclude reference="CvB-0h-6TD"/>
+                    <exclude reference="Hjz-aU-eQq"/>
+                    <exclude reference="1jy-M6-ZsH"/>
+                    <exclude reference="9PB-Cd-FET"/>
+                    <exclude reference="HZL-Iq-txk"/>
+                    <exclude reference="S1o-Zy-8Sa"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="TIg-dE-gCv"/>
+                    <include reference="oTA-wv-ACX"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="CZo-iU-lLG"/>
+                    <include reference="CvB-0h-6TD"/>
+                    <include reference="Hjz-aU-eQq"/>
+                    <include reference="1jy-M6-ZsH"/>
+                    <include reference="9PB-Cd-FET"/>
+                    <include reference="HZL-Iq-txk"/>
+                    <include reference="S1o-Zy-8Sa"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow_icon" width="48" height="48"/>
+    </resources>
+</document>

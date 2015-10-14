@@ -7,6 +7,7 @@
 //
 
 #import "MyScoreViewController.h"
+#import "InfoViewController.h"
 
 @interface MyScoreViewController ()
 
@@ -41,4 +42,31 @@
 }
 */
 
+- (void)dealloc {
+    [super dealloc];
+}
+- (IBAction)showJScoreExplanation:(id)sender {
+    NSLog(@"showInfoView");
+    [self showInfoView:@"JScore" message:@"JScoreDesc"];
+}
+
+- (IBAction)showProcessList:(id)sender {
+    ProcessViewController *controler = [[ProcessViewController alloc]initWithNibName:@"ProcessViewController" bundle:nil];
+    [self.navigationController pushViewController:controler animated:YES];
+}
+
+- (IBAction)showMemUsedInfo:(id)sender {
+    NSLog(@"showInfoView");
+    [self showInfoView:@"MemoryUsed" message:@"MemoryDesc"];
+}
+
+- (IBAction)showMemActiveInfo:(id)sender {
+    NSLog(@"showInfoView");
+    [self showInfoView:@"MemoryActive" message:@"MemoryDesc"];
+}
+
+- (IBAction)showCPUUsageInfo:(id)sender {
+    NSLog(@"showInfoView");
+    [self showInfoView:@"CPUUsage" message:@"CpuUsageDesc"];
+}
 @end

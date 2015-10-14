@@ -67,7 +67,6 @@
 - (void)drawRect:(CGRect)rect
 {
     //[super drawRect:rect];
-    
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     if(_largerMeasureValue > 0){
         CGRect rectangle = [self getDrawRectangle:_largerMeasureValue];
@@ -126,6 +125,8 @@
 */
 
 - (void)dealloc {
+    [_containerView release];
+    [_customConstraints release];
     [_measureTopImg release];
     [_largerBarColor release];
     [_smallerBarColor release];

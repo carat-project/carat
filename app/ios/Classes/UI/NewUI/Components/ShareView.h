@@ -11,6 +11,6 @@
 #import "AppLayout.h"
 #import "Sharebar.h"
 
-@interface ShareView : UIView
+@interface ShareView : UIView <ShareBarDelegate>
 - (IBAction)tapDetected:(id)sender;
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "MeasurementBar.h"
+#import "LocalizedLabel.h"
 
 @interface StatisticsViewController : BaseViewController
 @property (retain, nonatomic) IBOutlet UILabel *genIntensiveDescLabel;
@@ -19,6 +20,16 @@
 @property (retain, nonatomic) IBOutlet MeasurementBar *iOSIntensiveBar;
 @property (retain, nonatomic) IBOutlet UILabel *allUsersIntensiveDescLabel;
 @property (retain, nonatomic) IBOutlet MeasurementBar *allUsersIntensiveBar;
+@property (retain, nonatomic) IBOutlet LocalizedLabel *wellBehivedLabel;
+@property (retain, nonatomic) IBOutlet MeasurementBar *wellBehivedBar;
+@property (retain, nonatomic) IBOutlet LocalizedLabel *bugsLabel;
+@property (retain, nonatomic) IBOutlet MeasurementBar *bugBar;
+@property (retain, nonatomic) IBOutlet LocalizedLabel *hogsLabel;
+@property (retain, nonatomic) IBOutlet MeasurementBar *hogsBar;
+
+- (IBAction)showWellBehivedInfo:(id)sender;
+- (IBAction)showBugsInfo:(id)sender;
+- (IBAction)showHogsInfo:(id)sender;
 
 @property (retain, nonatomic) IBOutlet UILabel *popularDeviceModelsDescLabel;
 

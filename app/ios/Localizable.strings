@@ -6,6 +6,7 @@
   Copyright © 2015 University of Helsinki. All rights reserved.
 */
 //DashBoard starts
+
 "BatteryLifeLabel"="Active Battery Life";
 "Bugs"="Bugs";
 "Hogs"="Hogs";
@@ -13,6 +14,8 @@
 "Actions"="Actions";
 "MyDevice"="My Device";
 "View"="View";
+"UpdatedNowTxt"= "Updated just now";
+"JScore"="J-Score";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
@@ -41,10 +44,76 @@
 "Error"="Error";
 "SamplesWithout"="Samples without";
 "NumberHelpLabel"="What are these numbers?";
-
+"NoBugs"="You have no bugs.";
+"NoBugsMessage"="Please check back in a week.\n\nIf your apps are behaving normally, there will be no bugs here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
 //BugsView ends
+//HogsView starts
+"NoHogs"="You have no hogs.";
+"NoHogsMessage"="Please check back in a week.\n\nIf your apps are behaving normally, there will be no bugs here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
+//HogsView ends
 //Global results starts
 "GlobalResults"="Global results";
+"AllReports"="All reports";
 "GeneralStatistics"="General statistics";
 "pop"="Popular device models";
+"GenAllMessage"="Out of 431,882 installed applications, 9 are energy-intensive (Hogs in the Carat App) and 4 are energy anomalies (Bugs).";
+"GenAndroidMessage"="Out of 295,665 installed Android applications, 12 are energy-intensive and 4 are energy anomalies.";
+"GenIOSMessage"="Out of 136,217 installed iOS applications, 2 are energy-intensive and 4 are energy anomalies.";
+"GenUsersMessage"="Out of 644,024 users, 49 have at least a single energy anomaly.";
+"WellBehived"="Well-behaved";
 //Global results ends
+//Actions view start
+"ActionsDesc"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
+"Stop"="Stop";
+"ForeGroundApp"="Foreground App";
+"NoActions"="No actions.";
+"NoActionsMessage"="You have no actions.\n\nYou should open Carat regularly so it can take samples of your device state and communicate these to our servers.\nWe suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\nIt can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\nMake sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\nThe more often you open the app, the more quickly it will generate reports, the more information those reports will contain, and the more accurate the recommendations will be.\nCarat does not run as a background service, which is why it needs your help.\nThe app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground, but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.";
+//Actions view ends
+//ProcessView starts
+"Version"="Version";
+"ProcessMessage"="Processes are lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum";
+//ProcessView ends
+
+// EXPLANATIONS
+"JScoreDesc"="The J-Score represents the percentile battery life you see relative to all other devices being measured by Carat. \n\nSo, if you have a J-Score of 50, that means your expected battery life is better than half of our users; a score of 99 means you have better battery life than 99 of our users. Of course, a single number does not provide a complete description of your battery life. \n\nA low J-Score could mean that your device is using a big battery inefficiently or a small battery with average efficiency. Similarly, a high J-Score could simply mean that you don\'t use your device heavily. Carat computes a huge variety of statistics, and the J-Score is just one of them.";
+
+"MemoryDesc"="The operating system (OS) classifies your device\'s physical memory as either used or free. If memory is used, it means there is currently data there that belongs to some process (like one of your apps or the OS, itself). When the device runs out of free memory, it needs to make room so it can store new data, which means closing apps that might be running in the background or asking your apps to throw away data they aren\'t using. The OS then further subcategorizes used memory as being either active or inactive, depending on whether it was accessed recently or not, respectively. When the OS runs out of free memory, it starts reclaiming inactive memory. When you open a bunch of apps, the fraction of used memory may increase; when the apps you have running are working with lots of data (often an energy-intensive task), the fraction of active memory may increase. The OS also preloads often used applications into memory, shortening wait times.";
+"CpuUsageDesc"="BUUJAA! asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa";
+"WhatAreTheseNumbersDesc"="Expected benefit is the amount of battery life that fixing the hog/bug is expected to yield. Fixing hogs means killing the app and using it less, while fixing a bug may mean just...";
+"WellBehivedDesc"="Well-behaved is something that I still have to find description to.";
+
+// MENU
+"Settings"="Settings";
+"WifiOnly"="Use Wifi only";
+"HideApps"="Hide apps with a small impact";
+"FeedBack"="Give feedback";
+"Tutorial"="Show tutorial";
+"About"="About";
+
+//About
+"AboutTittle"="Carat";
+"AboutSub"="General about";
+"AboutMessage"="Carat is a research project of the University of Helsinki, originally created in collaboration with the AMP Lab at UC Berkeley, that helps detect and diagnose battery problems, giving you personalized recommendations. Carat is under development, so please check back often to see new results. The more you use it, the better it will get.";
+"ActionsSub"="How to use Carat";
+"ActionsMessage"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
+//Bugs
+"BugsSub"="See your bugs";
+//BugsMessage==BugsDesc
+//Hogs
+"HogsSub"="See your hogs";
+//HogsMessage == HogsDesc
+"CollectData"="Collect Data";
+"CollectDataSub"="Info what and how Carat collects data";
+"CollectDataMessage"="Carat collects and reports generic usage statistics about your phone that allow it to do its job this process involves absolutely no personally identifying information. Period.";
+"ActiveBatteryLife"="Active Battery Life";
+"ActiveBatteryLifeSub"="What does Active Battery Life mean?";
+"ActiveBatteryLifeMessage"="Active Battery Life approximates the amount of time your battery would last if you started from a full charge and discharged the battery at a rate that was the average of what Carat observed on your device during active use. This average rate excludes times that your device was idle and, as always, cannot account for behavior when Carat was not running. You may find that this number is much higher or lower than what you expect, but it more closely summarizes, statistically speaking, the intensity of your active device use.";
+//About ends
+
+//Preferences list
+"ShowAll"="Show all";
+"Five"="Impact < 5 min";
+"Ten"="Impact < 10 min";
+"Twenty"="Impact < 20 min";
+"Hour"="Impact < 1 hour";
+"Select"="Select";

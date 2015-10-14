@@ -6,11 +6,11 @@
 //  Copyright (c) 2011 UC Berkeley. All rights reserved.
 //
 
-#import "AboutViewController.h"
+#import "AboutViewController2.h"
 #import "CoreDataManager.h"
 #import "Utilities.h"
 
-@implementation AboutViewController
+@implementation AboutViewController2
 
 @synthesize aboutWebView;
 

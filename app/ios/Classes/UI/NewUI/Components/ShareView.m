@@ -16,6 +16,7 @@
     CGFloat top;
     CGFloat buttonLeft;
     CGFloat buttonEdge;
+    ShareBar* shareBar;
     
 }
 
@@ -44,10 +45,12 @@
     if(_isBarState){
         NSLog(@"create sharebar");
         self.frame = CGRectMake(0,  top,  UI_SCREEN_W, buttonEdge);
-        ShareBar *shareBar = [[ShareBar alloc] initWithFrame:CGRectMake(0, 7, UI_SCREEN_W, buttonEdge-14)];
+        shareBar = [[ShareBar alloc] initWithFrame:CGRectMake(0, 7, UI_SCREEN_W, buttonEdge-14)];
+        shareBar.delegate = self;
         [self addSubview:shareBar];
     }
     else{
+        [ShareBar release];
         self.frame = CGRectMake(buttonLeft,  top, buttonEdge, buttonEdge);
         UIImage *shareBtnImg = [UIImage imageNamed:@"share_btn"];
         UIImageView *shareBtn = [[UIImageView alloc] initWithImage:shareBtnImg];
@@ -79,6 +82,30 @@
      }
     
 }
+
+- (void)faceBookPressed{
+     NSLog(@"faceBookPressed");
+}
+- (void)twitterPressed{
+     NSLog(@"twitterPressed");
+}
+
+- (void)emailPressed{
+     NSLog(@"emailPressed");
+}
+
+- (void)closePressed{
+    NSLog(@"closePressed");
+    [self tapDetected:nil];
+}
+
+
+- (void)dealloc {
+    [ShareBar release];
+    
+    [super dealloc];
+}
+
 
 
 @end

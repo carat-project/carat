@@ -53,8 +53,7 @@
 - (IBAction)acceptPressed{
     NSLog(@"****** acceptPressed *******");
     DashBoardViewController *controler = [[DashBoardViewController alloc]initWithNibName:@"DashBoardViewController" bundle:nil];
-    [self presentViewController:controler animated: YES completion:nil];
-    [controler release];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)rightSwipe{

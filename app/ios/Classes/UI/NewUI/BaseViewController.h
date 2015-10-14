@@ -15,5 +15,5 @@
 
 - (IBAction)barItemBackPressed;
 - (IBAction)barItemMorePressed;
-
+- (void)showInfoView:(NSString *)title message:(NSString *)message;
 @end

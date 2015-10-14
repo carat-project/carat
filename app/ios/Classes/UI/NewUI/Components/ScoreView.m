@@ -194,4 +194,13 @@
     _score = score;
 }
 
+- (void)dealloc {
+    [_containerView release];
+    [_scoreTitle release];
+    [_customConstraints release];
+    
+    [super dealloc];
+}
+
+
 @end

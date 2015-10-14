@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController <UIWebViewDelegate> {
+@interface AboutViewController2 : UIViewController <UIWebViewDelegate> {
     NSArray *aboutWebView;
 }
 

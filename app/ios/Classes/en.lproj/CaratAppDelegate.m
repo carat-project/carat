@@ -107,13 +107,17 @@ void onUncaughtException(NSException *exception)
     DLog(@"Proceeding with consent");
     //[self startStoryboard];
     if (self.window == nil){
+        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
         self.dashBoardViewController = [[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil];
+        self.window.rootViewController = self.dashBoardViewController;
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.window.rootViewController];
+        self.navigationController.navigationBarHidden = YES;
+        [self.window addSubview:self.navigationController.view];
+        
         
         //TutorialViewController *tut = [[TutorialViewController alloc] initWithNibName:@"TutorialViewController" bundle:nil];
         //BugsViewController *bug = [[BugsViewController alloc] initWithNibName:@"BugsViewController" bundle:nil];
         
-        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-        self.window.rootViewController = self.dashBoardViewController;
         [self.window makeKeyAndVisible];
     }
 /*

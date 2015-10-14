@@ -27,8 +27,8 @@
 }
 
 @property (strong, nonatomic) UIWindow *window;
-//@property (strong, nonatomic) UITabBarController *tabBarController;
 @property (strong, nonatomic) DashBoardViewController *dashBoardViewController;
+@property (strong, nonatomic) UINavigationController *navigationController;
 
 - (BOOL)proceedWithConsent;
 - (BOOL)acquireConsentWithCallbackTarget:(CaratAppDelegate *)delegate withSelector:(SEL)selector;

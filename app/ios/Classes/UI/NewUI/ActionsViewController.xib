@@ -15,6 +15,82 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hU-MC-Nve">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ActionsDesc" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHv-z9-Nph" customClass="LocalizedLabel">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="68" y="5" width="322" height="15"/>
+                            </variation>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="action_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9uV-Fq-TcT">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="sfM-0B-hQE"/>
+                                <constraint firstAttribute="height" constant="70" id="vPi-yi-w0i"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="sfM-0B-hQE"/>
+                                    <exclude reference="vPi-yi-w0i"/>
+                                </mask>
+                            </variation>
+                            <variation key="widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="sfM-0B-hQE"/>
+                                    <include reference="vPi-yi-w0i"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="WHv-z9-Nph" firstAttribute="leading" secondItem="9uV-Fq-TcT" secondAttribute="trailing" id="Fkq-46-0Ym">
+                            <variation key="widthClass=compact" constant="-2"/>
+                        </constraint>
+                        <constraint firstItem="WHv-z9-Nph" firstAttribute="trailing" secondItem="8hU-MC-Nve" secondAttribute="trailing" constant="-10" id="QST-cq-oZ5"/>
+                        <constraint firstAttribute="height" constant="70" id="TDS-fI-5bi"/>
+                        <constraint firstItem="9uV-Fq-TcT" firstAttribute="top" secondItem="8hU-MC-Nve" secondAttribute="top" constant="20" symbolic="YES" id="jAy-bQ-1W2">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
+                        <constraint firstItem="9uV-Fq-TcT" firstAttribute="leading" secondItem="8hU-MC-Nve" secondAttribute="leading" constant="20" symbolic="YES" id="n18-Pm-yDG">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
+                        <constraint firstItem="WHv-z9-Nph" firstAttribute="top" secondItem="8hU-MC-Nve" secondAttribute="top" constant="5" id="rvF-Cg-ahd"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="WHv-z9-Nph"/>
+                            <exclude reference="9uV-Fq-TcT"/>
+                        </mask>
+                        <mask key="constraints">
+                            <exclude reference="TDS-fI-5bi"/>
+                            <exclude reference="QST-cq-oZ5"/>
+                            <exclude reference="rvF-Cg-ahd"/>
+                            <exclude reference="Fkq-46-0Ym"/>
+                            <exclude reference="jAy-bQ-1W2"/>
+                            <exclude reference="n18-Pm-yDG"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="subviews">
+                            <include reference="WHv-z9-Nph"/>
+                            <include reference="9uV-Fq-TcT"/>
+                        </mask>
+                        <mask key="constraints">
+                            <include reference="TDS-fI-5bi"/>
+                            <include reference="QST-cq-oZ5"/>
+                            <include reference="rvF-Cg-ahd"/>
+                            <include reference="Fkq-46-0Ym"/>
+                            <include reference="jAy-bQ-1W2"/>
+                            <include reference="n18-Pm-yDG"/>
+                        </mask>
+                    </variation>
+                </view>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZWr-dT-jZi">
                     <rect key="frame" x="174" y="23" width="400" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,27 +119,44 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="8hU-MC-Nve" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3t8-3U-TOe"/>
+                <constraint firstItem="8hU-MC-Nve" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="5hX-Pe-1Jk"/>
+                <constraint firstItem="8hU-MC-Nve" firstAttribute="top" secondItem="ZWr-dT-jZi" secondAttribute="bottom" id="E33-tQ-gEf"/>
                 <constraint firstItem="ZWr-dT-jZi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MjK-pb-JfA"/>
                 <constraint firstItem="ZWr-dT-jZi" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="VPS-ye-udE"/>
                 <constraint firstItem="ZWr-dT-jZi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="bkJ-11-zV4"/>
             </constraints>
             <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="8hU-MC-Nve"/>
+                </mask>
                 <mask key="constraints">
                     <exclude reference="MjK-pb-JfA"/>
                     <exclude reference="VPS-ye-udE"/>
                     <exclude reference="bkJ-11-zV4"/>
+                    <exclude reference="3t8-3U-TOe"/>
+                    <exclude reference="5hX-Pe-1Jk"/>
+                    <exclude reference="E33-tQ-gEf"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="8hU-MC-Nve"/>
+                </mask>
                 <mask key="constraints">
                     <include reference="MjK-pb-JfA"/>
                     <include reference="VPS-ye-udE"/>
                     <include reference="bkJ-11-zV4"/>
+                    <include reference="3t8-3U-TOe"/>
+                    <include reference="5hX-Pe-1Jk"/>
+                    <include reference="E33-tQ-gEf"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="223" y="147"/>
         </view>
     </objects>
     <resources>
+        <image name="action_icon" width="48" height="48"/>
         <image name="arrow_icon" width="48" height="48"/>
         <image name="more_icon" width="42" height="42"/>
     </resources>
