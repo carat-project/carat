@@ -542,7 +542,7 @@
     <string name="next_button_label">Next</string>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="no_actions_message">You have no actions.\n\n
+    <string name="no_actions_message">
         You should open Carat regularly so it can take samples of your device state and communicate these to our servers.\n
         We suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\n
         It can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\n
@@ -553,7 +553,7 @@
         The app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground,
         but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.
     </string>
-    <string name="no_actions_title">No actions.</string>
+    <string name="no_actions_title">You have no actions.</string>
     <string name="no_bugs_message">Please check back in a week.\n\n
         If your apps are behaving normally, there will be no bugs here.\n\n
         When an app starts to use significantly more energy on your device than on others, it will show up here.</string>

@@ -170,8 +170,8 @@
     <string name="stop_app_title">STOP</string>
     <string name="app_category_title">Foreground App</string>
     <string name="actions_list_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
-    <string name="no_actions_title">No actions.</string>
-    <string name="no_actions_message">You have no actions.\n\n
+    <string name="no_actions_title">You have no actions.</string>
+    <string name="no_actions_message">
         You should open Carat regularly so it can take samples of your device state and communicate these to our servers.\n
         We suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\n
         It can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\n
