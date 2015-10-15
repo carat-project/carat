@@ -20,9 +20,20 @@ import edu.berkeley.cs.amplab.carat.android.utils.JsonParser;
 public class PrefetchData extends AsyncTask<Void, Void, Void> {
 
     // counts (general Carat statistics shown in the summary fragment)
+    public int appWellbehaved = Constants.VALUE_NOT_AVAILABLE,
+            appHogs = Constants.VALUE_NOT_AVAILABLE,
+            appBugs = Constants.VALUE_NOT_AVAILABLE;
+
     public int mWellbehaved = Constants.VALUE_NOT_AVAILABLE,
             mHogs = Constants.VALUE_NOT_AVAILABLE,
             mBugs = Constants.VALUE_NOT_AVAILABLE;
+
+    public int iosWellbehaved = Constants.VALUE_NOT_AVAILABLE,
+            iosHogs = Constants.VALUE_NOT_AVAILABLE,
+            iosBugs = Constants.VALUE_NOT_AVAILABLE;
+
+    public int userHasBug = Constants.VALUE_NOT_AVAILABLE,
+            userHasNoBugs = Constants.VALUE_NOT_AVAILABLE;
 
     private MainActivity a = null;
 
@@ -47,27 +58,18 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
 
         if (serverResponseJson != null && serverResponseJson != "") {
             try {
-                JSONArray jsonArray = new JSONObject(serverResponseJson).getJSONArray("android-apps");
-                // Using Java reflections to set fields by passing their name to a method
-                try {
-                    setIntFieldsFromJson(jsonArray, 0, "mWellbehaved");
-                    setIntFieldsFromJson(jsonArray, 1, "mHogs");
-                    setIntFieldsFromJson(jsonArray, 2, "mBugs");
+                saveAppValues(new JSONObject(serverResponseJson).getJSONArray("apps"), 0);
+                saveAppValues(new JSONObject(serverResponseJson).getJSONArray("android-apps"), 1);
+                saveAppValues(new JSONObject(serverResponseJson).getJSONArray("ios-apps"), 2);
+                saveAppValues(new JSONObject(serverResponseJson).getJSONArray("users"), 3);
 
-                    if (CaratApplication.mPrefs != null) {
-                        saveStatsToPref();
-                    } else {
-                        // Log.e(TAG, "The shared preference is null (not loaded yet. "
-                        //		+ "Check CaratApplication's new thread for loading the sharedPref)");
-                    }
-
-                    // Log.i(TAG, "received JSON: " + "mBugs: " + mWellbehaved
-                    //		+ ", mHogs: " + mHogs + ", mBugs: " + mBugs);
-                } catch (IllegalArgumentException e) {
-                    Log.e(TAG, "IllegalArgumentException in setFieldsFromJson()");
-                } catch (IllegalAccessException e) {
-                    Log.e(TAG, "IllegalAccessException in setFieldsFromJson()");
+                if (CaratApplication.mPrefs != null) {
+                    saveStatsToPref();
+                } else {
+                    // Log.e(TAG, "The shared preference is null (not loaded yet. "
+                    //		+ "Check CaratApplication's new thread for loading the sharedPref)");
                 }
+
             } catch (JSONException e) {
                 // Log.e(TAG, e.getStackTrace().toString());
             }
@@ -77,6 +79,38 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
+    private void saveAppValues(JSONArray jsonArray, int which) {
+        try {
+            switch (which) {
+                case 0:
+                    setIntFieldsFromJson(jsonArray, 0, "appWellbehaved");
+                    setIntFieldsFromJson(jsonArray, 1, "appHogs");
+                    setIntFieldsFromJson(jsonArray, 2, "appBugs");
+                    break;
+                case 1:
+                    setIntFieldsFromJson(jsonArray, 0, "mWellbehaved");
+                    setIntFieldsFromJson(jsonArray, 1, "mHogs");
+                    setIntFieldsFromJson(jsonArray, 2, "mBugs");
+                    break;
+                case 2:
+                    setIntFieldsFromJson(jsonArray, 0, "iosWellbehaved");
+                    setIntFieldsFromJson(jsonArray, 1, "iosHogs");
+                    setIntFieldsFromJson(jsonArray, 2, "iosBugs");
+                    break;
+                case 3:
+                    setIntFieldsFromJson(jsonArray, 0, "userHasBug");
+                    setIntFieldsFromJson(jsonArray, 1, "userHasNoBugs");
+                    break;
+            }
+        } catch (IllegalArgumentException e) {
+            Log.e(TAG, "IllegalArgumentException in setFieldsFromJson()");
+        } catch (IllegalAccessException e) {
+            Log.e(TAG, "IllegalAccessException in setFieldsFromJson()");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     @SuppressLint("NewApi")
     private void saveStatsToPref() {
         SharedPreferences.Editor editor = CaratApplication.mPrefs.edit();
@@ -84,9 +118,20 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
         // might be -1 (Constants.VALUE_NOT_AVAILABLE). So
         // when we are reading the following pref values, we
         // should check that condition )
+        editor.putInt(Constants.STATS_APP_WELLBEHAVED_COUNT_PREFERENCE_KEY, appWellbehaved);
+        editor.putInt(Constants.STATS_APP_HOGS_COUNT_PREFERENCE_KEY, appHogs);
+        editor.putInt(Constants.STATS_APP_BUGS_COUNT_PREFERENCE_KEY, appBugs);
+
         editor.putInt(Constants.STATS_WELLBEHAVED_COUNT_PREFERENCE_KEY, mWellbehaved);
         editor.putInt(Constants.STATS_HOGS_COUNT_PREFERENCE_KEY, mHogs);
         editor.putInt(Constants.STATS_BUGS_COUNT_PREFERENCE_KEY, mBugs);
+
+        editor.putInt(Constants.STATS_IOS_WELLBEHAVED_COUNT_PREFERENCE_KEY, iosWellbehaved);
+        editor.putInt(Constants.STATS_IOS_HOGS_COUNT_PREFERENCE_KEY, iosHogs);
+        editor.putInt(Constants.STATS_IOS_BUGS_COUNT_PREFERENCE_KEY, iosBugs);
+
+        editor.putInt(Constants.STATS_USER_BUGS_COUNT_PREFERENCE_KEY, userHasBug);
+        editor.putInt(Constants.STATS_USER_NO_BUGS_COUNT_PREFERENCE_KEY, userHasNoBugs);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             editor.apply(); // async (runs in parallel

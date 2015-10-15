@@ -206,6 +206,7 @@
             android:text="@string/global_general_statistics" />
 
         <TextView
+            android:id="@+id/all_general_text"
             style="@style/MediumBlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -234,6 +235,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/android_general_text"
             style="@style/MediumBlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -262,6 +264,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/ios_general_text"
             style="@style/MediumBlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -290,6 +293,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/user_general_text"
             style="@style/MediumBlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

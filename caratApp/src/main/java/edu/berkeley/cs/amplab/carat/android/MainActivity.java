@@ -56,10 +56,21 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private Tracker tracker;
 
+    public int appWellbehaved = Constants.VALUE_NOT_AVAILABLE,
+            appHogs = Constants.VALUE_NOT_AVAILABLE,
+            appBugs = Constants.VALUE_NOT_AVAILABLE;
+
     public int mWellbehaved = Constants.VALUE_NOT_AVAILABLE,
             mHogs = Constants.VALUE_NOT_AVAILABLE,
             mBugs = Constants.VALUE_NOT_AVAILABLE,
             mActions = Constants.VALUE_NOT_AVAILABLE;
+
+    public int iosWellbehaved = Constants.VALUE_NOT_AVAILABLE,
+            iosHogs = Constants.VALUE_NOT_AVAILABLE,
+            iosBugs = Constants.VALUE_NOT_AVAILABLE;
+
+    public int userHasBug = Constants.VALUE_NOT_AVAILABLE,
+            userHasNoBugs = Constants.VALUE_NOT_AVAILABLE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -409,18 +420,42 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private boolean isStatsDataLoaded() {
-        return mHogs != Constants.VALUE_NOT_AVAILABLE && mBugs != Constants.VALUE_NOT_AVAILABLE;
+        return mHogs != Constants.VALUE_NOT_AVAILABLE && mBugs != Constants.VALUE_NOT_AVAILABLE
+                && appBugs != Constants.VALUE_NOT_AVAILABLE && iosHogs != Constants.VALUE_NOT_AVAILABLE
+                && userHasBug != Constants.VALUE_NOT_AVAILABLE;
     }
 
     private boolean isStatsDataStoredInPref() {
+        int appWellbehaved = CaratApplication.mPrefs.getInt(Constants.STATS_APP_WELLBEHAVED_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
+        int appHogs = CaratApplication.mPrefs.getInt(Constants.STATS_APP_HOGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
+        int appBugs = CaratApplication.mPrefs.getInt(Constants.STATS_APP_BUGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
+
         int wellbehaved = CaratApplication.mPrefs.getInt(Constants.STATS_WELLBEHAVED_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
         int hogs = CaratApplication.mPrefs.getInt(Constants.STATS_HOGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
         int bugs = CaratApplication.mPrefs.getInt(Constants.STATS_BUGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
-        if (wellbehaved != Constants.VALUE_NOT_AVAILABLE && hogs != Constants.VALUE_NOT_AVAILABLE && bugs != Constants.VALUE_NOT_AVAILABLE) {
+
+        int iosWellbehaved = CaratApplication.mPrefs.getInt(Constants.STATS_IOS_WELLBEHAVED_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
+        int iosHogs = CaratApplication.mPrefs.getInt(Constants.STATS_IOS_HOGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
+        int iosBugs = CaratApplication.mPrefs.getInt(Constants.STATS_IOS_BUGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
+
+        int userBugs = CaratApplication.mPrefs.getInt(Constants.STATS_USER_BUGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
+        int userNoBugs = CaratApplication.mPrefs.getInt(Constants.STATS_USER_NO_BUGS_COUNT_PREFERENCE_KEY, Constants.VALUE_NOT_AVAILABLE);
+
+        if (wellbehaved != Constants.VALUE_NOT_AVAILABLE && hogs != Constants.VALUE_NOT_AVAILABLE &&
+                bugs != Constants.VALUE_NOT_AVAILABLE && appWellbehaved != Constants.VALUE_NOT_AVAILABLE
+                && iosWellbehaved != Constants.VALUE_NOT_AVAILABLE && userBugs != Constants.VALUE_NOT_AVAILABLE) {
+            this.appWellbehaved = appWellbehaved;
+            this.appBugs = appBugs;
+            this.appHogs = appHogs;
             mWellbehaved = wellbehaved;
             mHogs = hogs;
             mBugs = bugs;
             mActions = hogs + bugs;
+            this.iosWellbehaved = iosWellbehaved;
+            this.iosBugs = iosBugs;
+            this.iosHogs = iosHogs;
+            this.userHasBug = userBugs;
+            this.userHasNoBugs = userNoBugs;
             return true;
         } else {
             return false;

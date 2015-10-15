@@ -48,31 +48,6 @@
                 android:focusable="false"
                 android:text="Foreground App" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:clickable="false"
-                android:focusable="false"
-                android:layout_height="40dp">
-
-                <SurfaceView
-                    android:id="@+id/progress_surface"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/progress_bar_small" />
-
-            </RelativeLayout>
-
         </LinearLayout>
 
     </LinearLayout>

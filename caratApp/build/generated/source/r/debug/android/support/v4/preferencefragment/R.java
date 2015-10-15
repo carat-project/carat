@@ -172,9 +172,9 @@ public final class R {
 		public static final int action_mode_close_button = 0x7f0d0025;
 		public static final int activity_chooser_view_content = 0x7f0d0026;
 		public static final int always = 0x7f0d0016;
-		public static final int back_button = 0x7f0d00bb;
+		public static final int back_button = 0x7f0d00be;
 		public static final int beginning = 0x7f0d0013;
-		public static final int button_bar = 0x7f0d00ba;
+		public static final int button_bar = 0x7f0d00bd;
 		public static final int checkbox = 0x7f0d0038;
 		public static final int collapseActionView = 0x7f0d0017;
 		public static final int default_activity_button = 0x7f0d0029;
@@ -194,7 +194,7 @@ public final class R {
 		public static final int list_item = 0x7f0d002a;
 		public static final int middle = 0x7f0d0015;
 		public static final int never = 0x7f0d0019;
-		public static final int next_button = 0x7f0d00bd;
+		public static final int next_button = 0x7f0d00c0;
 		public static final int none = 0x7f0d000e;
 		public static final int normal = 0x7f0d000a;
 		public static final int progress_circular = 0x7f0d0005;
@@ -214,7 +214,7 @@ public final class R {
 		public static final int showCustom = 0x7f0d000f;
 		public static final int showHome = 0x7f0d0010;
 		public static final int showTitle = 0x7f0d0011;
-		public static final int skip_button = 0x7f0d00bc;
+		public static final int skip_button = 0x7f0d00bf;
 		public static final int split_action_bar = 0x7f0d0007;
 		public static final int submit_area = 0x7f0d004b;
 		public static final int tabMode = 0x7f0d000b;
@@ -260,9 +260,9 @@ public final class R {
 		public static final int abc_searchview_description_voice = 0x7f06000a;
 		public static final int abc_shareactionprovider_share_with = 0x7f06000b;
 		public static final int abc_shareactionprovider_share_with_application = 0x7f06000c;
-		public static final int back_button_label = 0x7f0600b9;
-		public static final int next_button_label = 0x7f0600e6;
-		public static final int skip_button_label = 0x7f0600f2;
+		public static final int back_button_label = 0x7f0600bb;
+		public static final int next_button_label = 0x7f0600eb;
+		public static final int skip_button_label = 0x7f0600f8;
 	}
 	public static final class style {
 		public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 0x7f0900bf;

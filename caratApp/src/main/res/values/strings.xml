@@ -165,6 +165,14 @@
     <string name="global_general_popular_title">POPULAR DEVICE MODELS</string>
     <string name="global_general_android">Android</string>
     <string name="well_behaved">Well-behaved</string>
+    <string name="out_of">Out of</string>
+    <string name="all_installed">installed applications,</string>
+    <string name="hog_intensity">are energy-intensive (Hogs in the Carat App) and</string>
+    <string name="bug_intensity">are energy anomalies (Bugs).</string>
+    <string name="android_installed">installed Android applications,</string>
+    <string name="ios_installed">installed iOS applications,</string>
+    <string name="users">users,</string>
+    <string name="user_intensity">have at least a single energy anomaly.</string>
 
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>

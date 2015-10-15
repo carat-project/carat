@@ -35,7 +35,7 @@ import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
  * Created by Valto on 2.10.2015.
  */
 public class ActionsExpandListAdapter extends BaseExpandableListAdapter implements
-        Runnable, ExpandableListView.OnGroupClickListener, ExpandableListView.OnGroupExpandListener,
+        ExpandableListView.OnGroupClickListener, ExpandableListView.OnGroupExpandListener,
         ExpandableListView.OnChildClickListener {
 
     private CaratApplication caratApplication;
@@ -50,14 +50,9 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private TextView samplesAmount;
     private TextView appCategory;
     private Button killAppButton;
-    private SurfaceHolder progressSurfaceHolder;
-    private Thread drawingThread;
-
-    private SurfaceView progressSurface;
 
     private SimpleHogBug storedHogBug;
 
-    private boolean locker;
     private int previousGroup = -1;
 
     public ActionsExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication,
@@ -171,8 +166,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                 killApp(item, v);
             }
         });
-        drawProgress(v, item);
-        locker = true;
 
     }
 
@@ -186,13 +179,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         processName.setText(CaratApplication.labelForApp(caratApplication.getApplicationContext(),
                 item.getAppName()));
         processImprovement.setText(item.getBenefitText());
-    }
-
-    private void drawProgress(View v, SimpleHogBug item) {
-        progressSurface = (SurfaceView) v.findViewById(R.id.progress_surface);
-        progressSurfaceHolder = progressSurface.getHolder();
-        drawingThread = new Thread(this);
-        drawingThread.start();
     }
 
     public void killApp(SimpleHogBug fullObject, View v) {
@@ -221,34 +207,16 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                 ClickTracking.track(uuId, "killbutton", options, caratApplication);
             }
 
-            killAppButton = (Button) v.findViewWithTag(fullObject.getAppName());
-            killAppButton.setEnabled(false);
-            killAppButton.setBackgroundResource(R.drawable.button_rounded_gray);
-            killAppButton.setText(caratApplication.getString(R.string.stopped));
-            SamplingLibrary.killApp(mainActivity, raw, label);
-
-        }
-    }
-
-    @Override
-    public void run() {
-        while (locker) {
-            if (!progressSurfaceHolder.getSurface().isValid()) {
-                continue;
+            if (SamplingLibrary.killApp(mainActivity, raw, label)) {
+                killAppButton = (Button) v.findViewWithTag(fullObject.getAppName());
+                killAppButton.setEnabled(false);
+                killAppButton.setBackgroundResource(R.drawable.button_rounded_gray);
+                killAppButton.setText(caratApplication.getString(R.string.stopped));
             }
-            Canvas c = progressSurfaceHolder.lockCanvas();
-            draw(c);
-            progressSurfaceHolder.unlockCanvasAndPost(c);
-            locker = false;
-        }
-    }
 
-    private void draw(Canvas canvas) {
-        RectF r = new RectF(0, 0, canvas.getWidth(), canvas.getHeight());
-        canvas.drawColor(Color.argb(255, 180, 180, 180));
-        Paint paint = new Paint();
-        paint.setARGB(255, 75, 200, 127);
-        canvas.drawRect(r, paint);
+
+
+        }
     }
 
     @Override

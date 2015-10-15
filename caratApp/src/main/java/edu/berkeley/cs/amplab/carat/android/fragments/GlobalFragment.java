@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.sql.BatchUpdateException;
 
 import edu.berkeley.cs.amplab.carat.android.R;
@@ -62,10 +64,14 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
 
     private TextView deviceList;
     private TextView wellTitle, bugsTitle, hogsTitle;
+    private TextView allText, androidText, iosText, userText;
 
     private BaseDialog dialog;
 
     private float wellBehavedValue, hogsValue, bugsValue;
+    private float appWellBehavedValue, appHogsValue, appBugsValue;
+    private float iosWellBehavedValue, iosHogsValue, iosBugsValue;
+    private float userBugsValue, userNoBugsValue;
 
     @Override
     public void onAttach(Activity activity) {
@@ -127,6 +133,11 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
         bugsButton = (Button) mainFrame.findViewById(R.id.bugs_button);
         hogsButton = (Button) mainFrame.findViewById(R.id.hogs_button);
 
+        allText = (TextView) mainFrame.findViewById(R.id.all_general_text);
+        androidText = (TextView) mainFrame.findViewById(R.id.android_general_text);
+        iosText = (TextView) mainFrame.findViewById(R.id.ios_general_text);
+        userText = (TextView) mainFrame.findViewById(R.id.user_general_text);
+
     }
 
     private void initListeners() {
@@ -140,16 +151,54 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
                 "DROIDX: 2%\nSamsung Galaxy Note II: 2%\nNexus S: 1%\nHTC One X: 1%\n" +
                 "Samsung Droid Charge: 1%\nOther: 66%");
         int sum = mainActivity.mWellbehaved + mainActivity.mBugs + mainActivity.mHogs;
+        int appSum = mainActivity.appWellbehaved + mainActivity.appBugs + mainActivity.appHogs;
+        int iosSum = mainActivity.iosWellbehaved + mainActivity.iosHogs + mainActivity.iosBugs;
+        int userSum = mainActivity.userHasBug + mainActivity.userHasNoBugs;
+
         wellBehavedValue = (float)mainActivity.mWellbehaved / sum;
         bugsValue = (float)mainActivity.mBugs / sum;
         hogsValue = (float)mainActivity.mHogs / sum;
+
+        appWellBehavedValue = (float)mainActivity.appWellbehaved / appSum;
+        appBugsValue = (float)mainActivity.appBugs / appSum;
+        appHogsValue = (float)mainActivity.appHogs / appSum;
+
+        iosWellBehavedValue = (float)mainActivity.iosWellbehaved / iosSum;
+        iosBugsValue = (float)mainActivity.iosBugs / iosSum;
+        iosHogsValue = (float)mainActivity.iosHogs / iosSum;
+
+        userBugsValue = (float)mainActivity.userHasBug / userSum;
+
         String wellBehaved = String.format("%.0f", wellBehavedValue * 100);
         String bugs = String.format("%.0f", bugsValue * 100);
         String hogs = String.format("%.0f", hogsValue * 100);
 
+        String appHogPercent = String.format("%.0f", appHogsValue * 100);
+        String appBugPercent = String.format("%.0f", appBugsValue * 100);
+
+        String iosHogPercent = String.format("%.0f", iosHogsValue * 100);
+        String iosBugPercent = String.format("%.0f", iosBugsValue * 100);
+
+        String userBugPercent = String.format("%.0f", userBugsValue * 100);
+
         wellTitle.setText(getString(R.string.well_behaved) + " " + wellBehaved + "%");
         bugsTitle.setText(getString(R.string.bugs_camel) + " " + bugs + "%");
         hogsTitle.setText(getString(R.string.hogs_camel) + " " + hogs + "%");
+
+        allText.setText(getString(R.string.out_of) + " " + appSum + " " + getString(R.string.all_installed)
+            + " " + appHogPercent + "% " + getString(R.string.hog_intensity) + " " + appBugPercent +
+            "% " + getString(R.string.bug_intensity));
+
+        androidText.setText(getString(R.string.out_of) + " " + sum + " " + getString(R.string.android_installed)
+                + " " + hogs + "% " + getString(R.string.hog_intensity) + " " + bugs +
+                "% " + getString(R.string.bug_intensity));
+
+        iosText.setText(getString(R.string.out_of) + " " + iosSum + " " + getString(R.string.ios_installed)
+                + "% " + iosHogPercent + " " + getString(R.string.hog_intensity) + " " + iosBugPercent +
+                "% " + getString(R.string.bug_intensity));
+
+        userText.setText(getString(R.string.out_of) + " " + userSum + " " + getString(R.string.users)
+                + " " + userBugPercent + "% " + getString(R.string.user_intensity));
 
     }
 
@@ -220,28 +269,28 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
         Paint paint;
         switch (which) {
             case 0:
-                r = new RectF(0, 0, canvas.getWidth() * (float) Math.random(), canvas.getHeight());
+                r = new RectF(0, 0, canvas.getWidth() * (appBugsValue + appHogsValue), canvas.getHeight());
                 canvas.drawColor(Color.argb(255, 180, 180, 180));
                 paint = new Paint();
                 paint.setShader(shader);
                 canvas.drawRect(r, paint);
                 break;
             case 1:
-                r = new RectF(0, 0, canvas.getWidth() * (float) Math.random(), canvas.getHeight());
+                r = new RectF(0, 0, canvas.getWidth() * (bugsValue + hogsValue), canvas.getHeight());
                 canvas.drawColor(Color.argb(255, 180, 180, 180));
                 paint = new Paint();
                 paint.setShader(shader);
                 canvas.drawRect(r, paint);
                 break;
             case 2:
-                r = new RectF(0, 0, canvas.getWidth() * (float) Math.random(), canvas.getHeight());
+                r = new RectF(0, 0, canvas.getWidth() * (iosBugsValue + iosHogsValue), canvas.getHeight());
                 canvas.drawColor(Color.argb(255, 180, 180, 180));
                 paint = new Paint();
                 paint.setShader(shader);
                 canvas.drawRect(r, paint);
                 break;
             case 3:
-                r = new RectF(0, 0, canvas.getWidth() * (float) Math.random(), canvas.getHeight());
+                r = new RectF(0, 0, canvas.getWidth() * userBugsValue, canvas.getHeight());
                 canvas.drawColor(Color.argb(255, 180, 180, 180));
                 paint = new Paint();
                 paint.setShader(shader);

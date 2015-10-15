@@ -25,7 +25,7 @@ import edu.berkeley.cs.amplab.carat.android.views.CircleDisplay;
 /**
  * Created by Valto on 30.9.2015.
  */
-public class DashboardFragment extends Fragment implements View.OnClickListener, CircleDisplay.SelectionListener {
+public class DashboardFragment extends Fragment implements View.OnClickListener {
 
     private MainActivity mainActivity;
     private RelativeLayout ll;
@@ -190,16 +190,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
         }
     }
 
-    @Override
-    public void onSelectionUpdate(float val, float maxval) {
-
-    }
-
-    @Override
-    public void onValueSelected(float val, float maxval) {
-
-    }
-
     public void scheduleRefresh() {
         Log.d("debug", "*** SCHELUDE START");
         if (mainActivity != null)
@@ -219,10 +209,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                     if (CaratApplication.getStorage() != null && v != null) {
                         SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
                         SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
-                        if (h != null)
+                        if (h != null) {
                             hogsCount = h.length;
-                        if (b != null)
+                            Log.d("debug", "*** hogsCount: " + h.length);
+                        }
+                        if (b != null) {
                             bugsCount = b.length;
+                            Log.d("debug", "*** bugsCount: " + b.length);
+                        }
                         hogAmountText.setText(String.valueOf(hogsCount));
                         bugAmountText.setText(String.valueOf(bugsCount));
                         actionsAmountText.setText(String.valueOf(hogsCount + bugsCount));

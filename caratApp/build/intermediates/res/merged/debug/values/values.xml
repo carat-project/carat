@@ -385,8 +385,10 @@
     <string name="actions_list_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
     <string name="active_battery_life">Active Battery Life</string>
     <string name="ago">ago</string>
+    <string name="all_installed">installed applications,</string>
     <string name="all_reports">ALL REPORTS</string>
     <string name="alogo">AmpLab Logo</string>
+    <string name="android_installed">installed Android applications,</string>
     <string name="app_category_title">Foreground App</string>
     <string name="app_name">Carat</string>
     <string name="appicon">App Icon</string>
@@ -407,6 +409,7 @@
     <string name="blackBackground">false</string>
     <string name="blacklist">Blacklist</string>
     <string name="bluetoothsettings">Bluetooth Settings</string>
+    <string name="bug_intensity">are energy anomalies (Bugs).</string>
     <string name="bug_list_message">Bugs are apps that use a lot of energy on a small number of devices, including yours.
         Restarting a buggy app may improve battery life.</string>
     <string name="bugs">BUGS</string>
@@ -479,6 +482,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="helpcarat">Help Carat collect data</string>
     <string name="hog_hide_threshold">hoghidethreshold</string>
+    <string name="hog_intensity">are energy-intensive (Hogs in the Carat App) and</string>
     <string name="hog_list_message">Hogs are apps that are correlated with higher energy use across
         many devices. Closing hogs may improve battery life.</string>
     <string name="hog_thresh">Hide apps with a small impact</string>
@@ -487,6 +491,7 @@
     <string name="hogs_camel">Hogs</string>
     <string name="hour">Impact &lt; 1 hour</string>
     <string name="information">Information</string>
+    <string name="ios_installed">installed iOS applications,</string>
     <string name="jscore">Your J-Score:</string>
     <string name="jscore_dialog_title">J-SCORE</string>
     <string name="jscore_explanation">The J-Score represents the percentile battery life you see relative
@@ -574,6 +579,7 @@
     <string name="osinfo">About this OS version</string>
     <string name="osupgrade">Upgrade the OS</string>
     <string name="osver">OS version:</string>
+    <string name="out_of">Out of</string>
     <string name="priority">Priority:</string>
     <string name="priorityDefault">Not running</string>
     <string name="prioritybackground">Background App</string>
@@ -659,6 +665,8 @@
     <string name="updating">Updating</string>
     <string name="updatingreports">Updating reports</string>
     <string name="upgradeosinfo">Upgrading the OS</string>
+    <string name="user_intensity">have at least a single energy anomaly.</string>
+    <string name="users">users,</string>
     <string name="version">Version</string>
     <string name="version_name">2.0</string>
     <string name="view">VIEW</string>

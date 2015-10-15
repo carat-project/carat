@@ -36,6 +36,17 @@ public class Constants {
     public static final String STATS_HOGS_COUNT_PREFERENCE_KEY = "hogsPrefKey";
     public static final String STATS_BUGS_COUNT_PREFERENCE_KEY = "bugsPrefKey";
 
+    public static final String STATS_APP_WELLBEHAVED_COUNT_PREFERENCE_KEY = "appWellbehavedPrefKey";
+    public static final String STATS_APP_HOGS_COUNT_PREFERENCE_KEY = "appHogsPrefKey";
+    public static final String STATS_APP_BUGS_COUNT_PREFERENCE_KEY = "appBugsPrefKey";
+
+    public static final String STATS_IOS_WELLBEHAVED_COUNT_PREFERENCE_KEY = "iosWellbehavedPrefKey";
+    public static final String STATS_IOS_HOGS_COUNT_PREFERENCE_KEY = "iosHogsPrefKey";
+    public static final String STATS_IOS_BUGS_COUNT_PREFERENCE_KEY = "iosBugsPrefKey";
+
+    public static final String STATS_USER_BUGS_COUNT_PREFERENCE_KEY = "userBugsPrefKey";
+    public static final String STATS_USER_NO_BUGS_COUNT_PREFERENCE_KEY = "userNoBugsPrefKey";
+
     public static final String PREFERENCE_NEW_UUID = "carat.new.uuid";
     public static final String PREFERENCE_TIME_BASED_UUID = "carat.uuid.timebased";
 
