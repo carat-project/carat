@@ -38,8 +38,6 @@
 		894A24051BC251800059850A /* DashboardNavigationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A23FB1BC251800059850A /* DashboardNavigationButton.m */; settings = {ASSET_TAGS = (); }; };
 		894A24061BC251800059850A /* DashboardNavigationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894A23FC1BC251800059850A /* DashboardNavigationButton.xib */; settings = {ASSET_TAGS = (); }; };
 		894A24071BC251800059850A /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A23FE1BC251800059850A /* ScoreView.m */; settings = {ASSET_TAGS = (); }; };
-		894A24081BC251800059850A /* ShareBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A24001BC251800059850A /* ShareBar.m */; settings = {ASSET_TAGS = (); }; };
-		894A24091BC251800059850A /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A24021BC251800059850A /* ShareView.m */; settings = {ASSET_TAGS = (); }; };
 		894A240A1BC251800059850A /* TutorialPageIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A24041BC251800059850A /* TutorialPageIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
 		894A240E1BC256A90059850A /* TutorialPageContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A240D1BC256A90059850A /* TutorialPageContent.m */; settings = {ASSET_TAGS = (); }; };
 		894AF0641BCCD992003E7D76 /* AboutExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -257,10 +255,6 @@
 		894A23FC1BC251800059850A /* DashboardNavigationButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardNavigationButton.xib; sourceTree = "<group>"; };
 		894A23FD1BC251800059850A /* ScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreView.h; sourceTree = "<group>"; };
 		894A23FE1BC251800059850A /* ScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreView.m; sourceTree = "<group>"; };
-		894A23FF1BC251800059850A /* ShareBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareBar.h; sourceTree = "<group>"; };
-		894A24001BC251800059850A /* ShareBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareBar.m; sourceTree = "<group>"; };
-		894A24011BC251800059850A /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
-		894A24021BC251800059850A /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		894A24031BC251800059850A /* TutorialPageIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageIndicatorView.h; sourceTree = "<group>"; };
 		894A24041BC251800059850A /* TutorialPageIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageIndicatorView.m; sourceTree = "<group>"; };
 		894A240C1BC256A90059850A /* TutorialPageContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageContent.h; sourceTree = "<group>"; };
@@ -1024,10 +1018,6 @@
 				894A23FB1BC251800059850A /* DashboardNavigationButton.m */,
 				894A23FD1BC251800059850A /* ScoreView.h */,
 				894A23FE1BC251800059850A /* ScoreView.m */,
-				894A23FF1BC251800059850A /* ShareBar.h */,
-				894A24001BC251800059850A /* ShareBar.m */,
-				894A24011BC251800059850A /* ShareView.h */,
-				894A24021BC251800059850A /* ShareView.m */,
 				894A24031BC251800059850A /* TutorialPageIndicatorView.h */,
 				894A24041BC251800059850A /* TutorialPageIndicatorView.m */,
 				89DAB8AE1BC29FB30053647E /* LocalizedUIButton.h */,
@@ -1944,11 +1934,9 @@
 				C75488B819963D04007A01CF /* UIImageDoNotCache.m in Sources */,
 				89550A991BCBD4A400D1DE11 /* MoreViewController.m in Sources */,
 				C1D52F391465F85A008D6D09 /* TSocketClient.m in Sources */,
-				894A24081BC251800059850A /* ShareBar.m in Sources */,
 				C1D52F3A1465F85A008D6D09 /* TTransportException.m in Sources */,
 				C754887E19963D03007A01CF /* CopyLabel.m in Sources */,
 				C754888419963D03007A01CF /* CoreDataRegistration.m in Sources */,
-				894A24091BC251800059850A /* ShareView.m in Sources */,
 				89550A9D1BCBDBDC00D1DE11 /* TouchView.m in Sources */,
 				89486E571BC55DFF00138F23 /* MeasurementBar.m in Sources */,
 				894A24071BC251800059850A /* ScoreView.m in Sources */,

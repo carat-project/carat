@@ -9,150 +9,30 @@
 #import "DashBoardViewController.h"
 
 @implementation DashBoardViewController{
-    
-    UILabel *_batteryLife;
-    UILabel *_batteryLifeTime;
-    UIButton *_myDeviceBtn;
 }
 
 - (void)loadView
 {
     [super loadView];
-    _batteryLife = [UILabel new];
-    _batteryLifeTime = [UILabel new];
-    
-    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 20, UI_SCREEN_W, UI_TOP_NAVIGATION_BAR_HEIGHT)];
-    //do something like background color, title, etc you self
-    UINavigationItem *navItem = [UINavigationItem alloc];
-    navItem.title = @"Dashboard";
-    
-    UIImage *moreImage = [UIImage imageNamed:@"more_icon"];
-    UIButton *more = [UIButton buttonWithType:UIButtonTypeCustom];
-    more.bounds = CGRectMake( 0, 0, 17, 17);
-    [more setImage:moreImage forState:UIControlStateNormal];
-    [more addTarget:self action:@selector(moreIconPressed)forControlEvents: UIControlEventTouchUpInside];
-    UIBarButtonItem *moreButton = [[UIBarButtonItem alloc] initWithCustomView:more];
+    [_shareBar setHidden:YES];
 
-    /*
-    [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"more_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(moreIconPressed)];
-     */
-    navItem.rightBarButtonItem = moreButton;
-    navItem.rightBarButtonItem.customView.frame = CGRectMake(UI_SCREEN_W-50, 15, 20,20);
+    [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
+    [_bugsBtn setButtonExtraInfo:@"7"];
+    [_bugsBtn setButtonTitle:NSLocalizedString(@"Bugs", nil)];
     
-    navbar.tintColor = C_WHITE;
-    [navbar pushNavigationItem:navItem animated:false];
+    [_hogsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
+    [_hogsBtn setButtonExtraInfo:@"4"];
+    [_hogsBtn setButtonTitle:NSLocalizedString(@"Hogs", nil)];
 
-    [self.view addSubview:navbar];
+    [_statisticsBtn setButtonImage:[UIImage imageNamed:@"globe_icon"]];
+    [_statisticsBtn setButtonExtraInfo:@"VIEW"];
+    [_statisticsBtn setButtonTitle:NSLocalizedString(@"Statistics", nil)];
     
-    UIImage *img = [UIImage imageNamed:@"chart_image"];
-    CGFloat oneThirdHeight = ((UI_WINDOW_HEIGHT- UI_TOP_NAVIGATION_BAR_HEIGHT - 20)*0.33f);
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
-    imageView.frame = CGRectMake(0,  UI_TOP_NAVIGATION_BAR_HEIGHT+20, UI_SCREEN_W, oneThirdHeight);
-    NSLog(@"topImgHeight: %f CGRectGetMaxY(imageView.frame): %f", oneThirdHeight, CGRectGetMaxY(imageView.frame));
-    [self.view addSubview:imageView];
+    [_actionsBtn setButtonImage:[UIImage imageNamed:@"action_icon"]];
+    [_actionsBtn setButtonExtraInfo:@"4"];
+    [_actionsBtn setButtonTitle:NSLocalizedString(@"Actions", nil)];
+    
 
-    CGFloat scoreTop = UI_TOP_NAVIGATION_BAR_HEIGHT + 20 + oneThirdHeight * 0.1f;
-    CGFloat scoreEdge = oneThirdHeight * 0.7f;
-    CGFloat scoreLeft = (UI_SCREEN_W - scoreEdge)/2.0f;
-   
-    [_scoreView setScore: 60];
-    [_scoreView setTitle: @"J-score"];
-    ScoreView *scoreView = [[ScoreView alloc] initWithFrame:CGRectMake(scoreLeft, scoreTop, scoreEdge, scoreEdge)];
-    [scoreView setScore: 60];
-    [scoreView setTitle: @"J-score"];
-    [self.view addSubview:scoreView];
-    
-    CGFloat shareEdge = 60.0f;
-    CGFloat shareTop = CGRectGetMaxY(imageView.frame)-shareEdge/2.0f;
-    CGFloat shareLeft = UI_SCREEN_W - shareEdge - 20.0f; //20 is margin from right screen edge
-    NSLog(@"shareTop: %f shareLeft: %f", shareTop, shareLeft);
-    
-    ShareView *shareView =[[ShareView alloc] initWithFrame:CGRectMake(shareLeft, shareTop, shareEdge, shareEdge)];
-    [self.view addSubview:shareView];
-    
-    CGFloat centerTopBottomPad = oneThirdHeight*0.25f;
-    CGFloat batterylifeLabelTop = CGRectGetMaxY(imageView.frame) + centerTopBottomPad;
-    NSString *activeBatteryLifeLabelString = NSLocalizedString(@"BatteryLifeLabel", nil);
-    NSLog(@"activeBatteryLifeLabelString: %@", activeBatteryLifeLabelString);
-    
-    [self setTextLabel:_batteryLife text:NSLocalizedString(@"BatteryLifeLabel", nil) top:batterylifeLabelTop];
-    _batteryLife.textColor = C_LIGHT_GRAY;
-    [self.view addSubview:_batteryLife];
-    
-    [self setTextLabel:_batteryLifeTime text:@"10h 23m" top:(CGRectGetMaxY(_batteryLife.frame)+5)];
-    
-    [self.view addSubview:_batteryLifeTime];
-    
-    NSString *buttonText = NSLocalizedString(@"MyDevice", nil);
-    CGFloat fontSize = 20.0f;
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
-    
-    CGRect buttonFrame = [self getTextFrame:buttonText font:font top:(CGRectGetMaxY(_batteryLifeTime.frame)+10)];
-    buttonFrame.size.height += 10.0f;
-    buttonFrame.size.width += 30.0f;
-    buttonFrame.origin.x -= 15.0f;
-    _myDeviceBtn = [[UIButton alloc] initWithFrame:buttonFrame];
-    
-    _myDeviceBtn.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    _myDeviceBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    _myDeviceBtn.backgroundColor = C_ORANGE_LIGHT;
-    [_myDeviceBtn setTitle:buttonText forState:UIControlStateNormal];
-    [_myDeviceBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    [_myDeviceBtn addTarget:self action:@selector(showMyScoreController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_myDeviceBtn];
-    
-    CGFloat buttonWidth = UI_SCREEN_W/4.0f;
-    CGFloat buttonTop = CGRectGetMaxY(_myDeviceBtn.frame)+centerTopBottomPad;
-    CGFloat buttonHeight = UI_SCREEN_H - buttonTop;
-    DashboardNavigationButton* bugsButton = [[DashboardNavigationButton alloc] initWithFrame:CGRectMake(0, buttonTop, buttonWidth, buttonHeight)];
-    [bugsButton setButtonImage:[UIImage imageNamed:@"bug_icon"]];
-    [bugsButton setButtonExtraInfo:@"7"];
-    [bugsButton setButtonTitle:NSLocalizedString(@"Bugs", nil)];
-
-    DashboardNavigationButton* hogsButton = [[DashboardNavigationButton alloc] initWithFrame:CGRectMake(buttonWidth, buttonTop, buttonWidth, buttonHeight)];
-    [hogsButton setButtonImage:[UIImage imageNamed:@"battery_icon"]];
-    [hogsButton setButtonExtraInfo:@"4"];
-    [hogsButton setButtonTitle:NSLocalizedString(@"Hogs", nil)];
-    
-    DashboardNavigationButton* statisticsButton = [[DashboardNavigationButton alloc] initWithFrame:CGRectMake(buttonWidth*2.0f, buttonTop, buttonWidth, buttonHeight)];
-    [statisticsButton setButtonImage:[UIImage imageNamed:@"globe_icon"]];
-    [statisticsButton setButtonExtraInfo:@"VIEW"];
-    [statisticsButton setButtonTitle:NSLocalizedString(@"Statistics", nil)];
-    
-    DashboardNavigationButton* actionsButton = [[DashboardNavigationButton alloc] initWithFrame:CGRectMake(buttonWidth*3.0f, buttonTop, buttonWidth, buttonHeight)];
-    [actionsButton setButtonImage:[UIImage imageNamed:@"action_icon"]];
-    [actionsButton setButtonExtraInfo:@"4"];
-    [actionsButton setButtonTitle:NSLocalizedString(@"Actions", nil)];
-    
-    UITapGestureRecognizer *bugsTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(bugsTapped)];
-    [bugsButton addGestureRecognizer:bugsTap];
-    [bugsTap release];
-    
-    UITapGestureRecognizer *hogsTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(hogsTapped)];
-    [hogsButton addGestureRecognizer:hogsTap];
-    [hogsTap release];
-    
-    UITapGestureRecognizer *statisticsTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(statisticsTapped)];
-    [statisticsButton addGestureRecognizer:statisticsTap];
-    [statisticsTap release];
-    
-    UITapGestureRecognizer *actionsTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(actionsTapped)];
-    [actionsButton addGestureRecognizer:actionsTap];
-    [actionsTap release];
-    
-    [self.view addSubview:bugsButton];
-    [self.view addSubview:hogsButton];
-    [self.view addSubview:statisticsButton];
-    [self.view addSubview:actionsButton];
 }
 
 -(void)setTextLabel:(UILabel*) label text:(NSString *)text top:(CGFloat)top
@@ -192,18 +72,16 @@
 }
 
 - (void)dealloc {
-    [_batteryLife release];
-    [_batteryLifeTime release];
-    [_myDeviceBtn release];
-
     [_scoreView release];
     [_updateLabel release];
-    [_shareView release];
     [_batteryLastLabel release];
     [_bugsBtn release];
     [_hogsBtn release];
     [_statisticsBtn release];
     [_actionsBtn release];
+    [_shareBtn release];
+    [_shareBar release];
+    [_shareBar release];
     [super dealloc];
 }
 
@@ -238,5 +116,94 @@
 - (IBAction)showActions:(id)sender {
     ActionsViewController *controler = [[ActionsViewController alloc]initWithNibName:@"ActionsViewController" bundle:nil];
     [self.navigationController pushViewController:controler animated:YES];
+}
+- (IBAction)showFacebook:(id)sender {
+    id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.helsinki.fi" name:@"Carat"];
+    
+    SZShareOptions *options = [SZShareUtils userShareOptions];
+    
+    // http://developers.facebook.com/docs/reference/api/link/
+    
+    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+        
+        if (network == SZSocialNetworkFacebook) {
+            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life!"] forKey:@"message"];
+            [postData.params setObject:@"http://carat.cs.helsinki.fi" forKey:@"link"];
+            [postData.params setObject:@"Carat: Collaborative Energy Diagnosis" forKey:@"caption"];
+            [postData.params setObject:@"Carat" forKey:@"name"];
+            [postData.params setObject:@"Carat is a free app that tells you what is using up your battery, whether that's normal, and what you can do about it." forKey:@"description"];
+            [postData.params setObject:@"http://carat.cs.helsinki.fi/img/icon144.png" forKey:@"picture"];
+        } else if (network == SZSocialNetworkTwitter) {
+            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life! http://is.gd/caratweb"] forKey:@"status"];
+        }
+        
+    };
+    
+    options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
+        emailData.subject = @"Battery Diagnosis with Carat";
+        
+        //        NSString *appURL = [emailData.propagationInfo objectForKey:@"http://bit.ly/xurpWS"];
+        //        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
+        //        id<SZEntity> entity = emailData.share.entity;
+        NSString *appName = emailData.share.application.name;
+        
+        emailData.messageBody = [NSString stringWithFormat:@"Check out this free app called %@ that tells you what is using up your mobile device's battery, whether that's normal, and what you can do about it: http://is.gd/caratweb\n\n\n", appName];
+    };
+    
+    options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
+        //        NSString *appURL = [smsData.propagationInfo objectForKey:@"application_url"];
+        //        NSString *entityURL = [smsData.propagationInfo objectForKey:@"entity_url"];
+        //        id<SZEntity> entity = smsData.share.entity;
+        NSString *appName = smsData.share.application.name;
+        
+        smsData.body = [NSString stringWithFormat:@"Check out this free app called %@ that helps improve your mobile device's battery life: http://is.gd/caratweb", appName];
+    };
+    
+    [SZShareUtils showShareDialogWithViewController:self options:options entity:entity completion:^(NSArray *shares) {
+        DLog(@"Created %d shares: %@", [shares count], shares);
+    } cancellation:^{
+        DLog(@"Share creation cancelled");
+    }];
+    
+    /*
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        fbSLComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [fbSLComposeViewController addImage:someImage];
+        [fbSLComposeViewController setInitialText:@"Some Text"];
+        [self presentViewController:fbSLComposeViewController animated:YES completion:nil];
+        
+        fbSLComposeViewController.completionHandler = ^(SLComposeViewControllerResult result) {
+            switch(result) {
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"facebook: CANCELLED");
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"facebook: SHARED");
+                    break;
+            }
+        };
+    }
+    else {
+        UIAlertView *fbError = [[UIAlertView alloc] initWithTitle:@"Facebook Unavailable" message:@"Sorry, we're unable to find a Facebook account on your device.\nPlease setup an account in your devices settings and try again." delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
+        [fbError show];
+    }
+    */
+}
+
+- (IBAction)showTwitter:(id)sender {
+}
+
+
+- (IBAction)showEmail:(id)sender {
+}
+
+- (IBAction)showShareBar:(id)sender {
+    [_shareBar setHidden:NO];
+    [_shareBtn setHidden:YES];
+}
+
+- (IBAction)closeShareBar:(id)sender {
+    [_shareBar setHidden:YES];
+    [_shareBtn setHidden:NO];
 }
 @end

@@ -59,6 +59,9 @@
 
 -(IBAction)barItemMorePressed{
     NSLog(@"barItemMorePressed");
+    MoreViewController *controler = [[MoreViewController alloc]initWithNibName:@"MoreViewController" bundle:nil];
+    [self.navigationController pushViewController:controler animated:YES];
+    
 }
 
 @end

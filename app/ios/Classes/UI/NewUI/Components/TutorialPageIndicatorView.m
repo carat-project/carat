@@ -134,6 +134,9 @@
  */
 
 - (void)dealloc {
+    [_containerView release];
+    [_customConstraints release];
     [super dealloc];
+    
 }
 @end

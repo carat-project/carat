@@ -36,7 +36,7 @@
 - (void)commonInit
 {
     _customConstraints = [[NSMutableArray alloc] init];
-    
+    self.backgroundColor = [UIColor clearColor];
     UIView *view = nil;
     NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"DashboardNavigationButton"
                                                      owner:self
