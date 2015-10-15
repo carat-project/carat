@@ -350,6 +350,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
+    public void setTitleUpdating(String what) {
+        dashboardFragment.setUpdatingValue(what);
+    }
+
+    public void setTitleUpdatingFailed(String what) {
+        setTitle(getString(R.string.didntget) + " " + what);
+    }
+
     public void setHideSmallPreference() {
         PreferenceListDialog preferenceListDialog = new PreferenceListDialog(this, getString(R.string.hog_hide_threshold));
         preferenceListDialog.showDialog();

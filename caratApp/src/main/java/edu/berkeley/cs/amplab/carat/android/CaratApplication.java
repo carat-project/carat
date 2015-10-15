@@ -298,11 +298,11 @@ public class CaratApplication extends Application {
         if (main != null) {
             main.runOnUiThread(new Runnable() {
                 public void run() {
-					/*if (fail)
+					if (fail)
 						main.setTitleUpdatingFailed(what);
 					else
 						main.setTitleUpdating(what);
-					main.setProgress(progress * 100);*/
+					//main.setProgress(progress * 100);
                 }
             });
         }

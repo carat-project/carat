@@ -139,6 +139,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         updatedText.setText(mainActivity.getLastUpdated());
     }
 
+    public void setUpdatingValue(String what) {
+        updatedText.setText(getString(R.string.updating) + " " + what);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
