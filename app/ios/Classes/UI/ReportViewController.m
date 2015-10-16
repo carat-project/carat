@@ -213,7 +213,15 @@
 	// Do any additional setup after loading the view, typically from a nib.
 
     //Setup the navigation
-    self.navigationItem.title = self.tableTitle;;
+    self.navigationItem.title = self.tableTitle;
+    [self.dataTable addPullToRefreshWithActionHandler:^{
+        if ([[CommunicationManager instance] isInternetReachable] == YES && // online
+            [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
+        {
+            [[CoreDataManager instance] updateLocalReportsFromServer];
+            [self updateView];
+        }
+    }];
 }
 
 // overridden by subclasses

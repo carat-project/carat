@@ -1654,6 +1654,11 @@ static id instance = nil;
     return JScore;
 }
 
+- (NSString *) getJScoreString
+{
+    return [[NSNumber numberWithInt:(int)(MIN( MAX([self getJScore], -1.0), 1.0)*100)] stringValue];
+}
+
 -(NSInteger) getSampleSent
 {
 	return samplesSent;

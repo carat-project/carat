@@ -99,12 +99,6 @@
                                                 <constraint firstAttribute="height" constant="30" id="i5q-bo-c8z"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="firstMeasureValue">
-                                                    <real key="value" value="20"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="secondMeasureValue">
-                                                    <real key="value" value="40"/>
-                                                </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
                                                     <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </userDefinedRuntimeAttribute>
@@ -237,12 +231,6 @@
                                                 <constraint firstAttribute="height" constant="30" id="f4N-Dg-Htl"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="firstMeasureValue">
-                                                    <real key="value" value="20"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="secondMeasureValue">
-                                                    <real key="value" value="40"/>
-                                                </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
                                                     <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </userDefinedRuntimeAttribute>
@@ -375,12 +363,6 @@
                                                 <constraint firstAttribute="height" constant="30" id="LQ4-1X-XDj"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="firstMeasureValue">
-                                                    <real key="value" value="20"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="secondMeasureValue">
-                                                    <real key="value" value="40"/>
-                                                </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
                                                     <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </userDefinedRuntimeAttribute>

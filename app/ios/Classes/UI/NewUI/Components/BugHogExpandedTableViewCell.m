@@ -9,9 +9,6 @@
 #import "BugHogExpandedTableViewCell.h"
 
 @implementation BugHogExpandedTableViewCell
-@synthesize nameLabel = _nameLabel;
-@synthesize expImpTimeLabel = _prepTimeLabel;
-@synthesize thumbnailAppImg = _thumbnailImageView;
 @synthesize samplesValueLabel = _samplesValueLabel;
 @synthesize samplesWithoutValueLabel = _samplesWithoutValueLabel;
 @synthesize errorValueLabel = _errorValueLabel;

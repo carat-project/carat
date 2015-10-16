@@ -9,64 +9,257 @@
 #import "MyScoreViewController.h"
 #import "InfoViewController.h"
 
+#import "Utilities.h"
+#import "Flurry.h"
+#import "CoreDataManager.h"
+#import "CommunicationManager.h"
+#import "UIDeviceHardware.h"
+#import "Globals.h"
+#import "UIImageDoNotCache.h"
+#import "CaratConstants.h"
+
 @interface MyScoreViewController ()
 
 @end
 
 @implementation MyScoreViewController
 
+
+#pragma mark - View Life Cycle methods
+- (id) initWithNibName: (NSString *) nibNameOrNil
+                bundle: (NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self->MAX_LIFE = 1209600;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)viewWillLayoutSubviews
+{
+    //adjust scroll height etc
+    [super viewWillLayoutSubviews];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [super viewWillAppear:animated];
+    [self updateView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sampleCountUpdated:) name:kSamplesSentCountUpdateNotification object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadDataWithHUD:)
+                                                 name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil)
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil) object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning {
+    DLog(@"Memory warning.");
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(IBAction)leftSwipe{
-    NSLog(@"Left Swipe");
 }
 
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)updateView
+{
+    // J-Score
+    int vScore = (MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
+    // Expected Battery Life
+    NSTimeInterval eb; // expected life in seconds
+    double jev = [[[CoreDataManager instance] getJScoreInfo:YES] expectedValue];
+    if (jev > 0) eb = MIN(MAX_LIFE,100/jev);
+    else eb = MAX_LIFE;
+    NSString *vBatteryLife = [[Utilities doubleAsTimeNSString:eb] stringByTrimmingCharactersInSet:
+                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    // UUID
+    NSString *vUUID = [[Globals instance] getUUID];
+    //Device Info
+    UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
+    NSString* vPlatform = [h platformString];
+    NSString* vOSVersion = [UIDevice currentDevice].systemVersion;
+    //Memory Info
+    float memUsed = 0;
+    float memActive = 0;
+    NSDictionary *memoryInfo = [Utilities getMemoryInfo];
+    if (memoryInfo) {
+        memUsed = [memoryInfo[kMemoryUsed] floatValue]*100;
+        memActive = [memoryInfo[kMemoryActive] floatValue]*100;
+    }
+    
+    
+    [self.jScore setScore:vScore];
+    self.caratIDValue.text = vUUID;
+    self.batteryLifeTimeValue.text = vBatteryLife;
+    self.osVersionValue.text = vOSVersion;
+    self.deviceModelValue.text = vPlatform;
+    self.memoryUsedBar.largerMeasureValue = memUsed;
+    self.memoryActiveBar.largerMeasureValue = memActive;
+    DLog(@"memUsed: %f, memActive: %f", memUsed, memActive);
+    // Last Updated NOT USED IN THIS VIEW ANYMORE
+    
+    /*
+     NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
+    for (UILabel *lastUp in self.lastUpdated) {
+        lastUp.text = [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
+    }
+    */
+    // Change since last week
+    //    [[self sinceLastWeekString] makeObjectsPerformSelector:@selector(setText:) withObject:[[[[CoreDataManager instance] getChangeSinceLastWeek] objectAtIndex:0] stringByAppendingString:[@" (" stringByAppendingString:[[[[CoreDataManager instance] getChangeSinceLastWeek] objectAtIndex:1] stringByAppendingString:@"%)"]]]];
+    //OS
+    double vOS = MIN(MAX([[[CoreDataManager instance] getOSInfo:YES] score],0.0),1.0);
+    //MODEL
+    double vModel = [[[CoreDataManager instance] getModelInfo:YES] score];
+    //APPS
+    double vApps = [[[CoreDataManager instance] getSimilarAppsInfo:YES] score];
+    DLog(@"uuid: %s, jscore: %d, os: %f, model: %f, apps: %f", [vUUID UTF8String], vScore, vOS, vModel, vApps);
+    
+    [self.view setNeedsDisplay];
 }
-*/
 
-- (void)dealloc {
-    [super dealloc];
+- (NSString *)getSameOSDetail:(id)sender
+{
+    DetailScreenReport *dsr = [[CoreDataManager instance] getOSInfo:YES];
+    if (dsr == nil || ![dsr expectedValueIsSet] || [dsr expectedValue] <= 0 || ![dsr errorIsSet] || [dsr error] <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Nothing to Report!"
+                                                        message:@"Please check back later; we should have results for your device soon."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    } else {
+        double expectedValueWithout = [[[CoreDataManager instance] getOSInfo:NO] expectedValue];
+        
+        NSInteger benefit = (int) (100/expectedValueWithout - 100/[dsr expectedValue]);
+        NSInteger benefit_max = (int) (100/(expectedValueWithout-[dsr errorWithout]) - 100/([dsr expectedValue]+[dsr error]));
+        NSInteger error = (int) (benefit_max-benefit);
+        
+        NSString *errorTxt = [NSString stringWithFormat:@"%@ ± %@", [Utilities doubleAsTimeNSString:benefit], [Utilities doubleAsTimeNSString:error]];
+        NSString *samplesWithoutTxt = [[NSNumber numberWithDouble:[dsr samplesWithout]] stringValue];
+        NSString *samplesTxt = [[NSNumber numberWithDouble:[dsr samples]] stringValue];
+        
+        NSMutableString *returnString = [[NSMutableString alloc]init];
+        [returnString appendString:NSLocalizedString(@"Same Operating System", nil)];
+        [returnString appendString:@"\n\n"];
+        [returnString appendString:errorTxt];
+        [returnString appendString:@"\nSamples:"];
+        [returnString appendString:samplesTxt];
+        [returnString appendString:@"\nSamplesWithout"];
+        [returnString appendString:samplesWithoutTxt];
+        return returnString;
+        
+    }
+    return @"";
 }
+
+
+
+#pragma mark - -HUD methods
+- (void)loadDataWithHUD:(id)obj
+{
+    if ([[CoreDataManager instance] getReportUpdateStatus] == nil) {
+        // *probably* no update in progress, reload table data while locking out view
+        HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
+        [self.tabBarController.view addSubview:HUD];
+        
+        HUD.dimBackground = YES;
+        
+        // Register for HUD callbacks so we can remove it from the window at the right time
+        HUD.delegate = self;
+        HUD.labelText = NSLocalizedString(@"MyDeviceHudLabel", nil);
+        
+        [HUD showWhileExecuting:@selector(updateView) onTarget:self withObject:nil animated:YES];
+    }
+}
+
+
+#pragma mark - MBProgressHUDDelegate method
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    [HUD release];
+    HUD = nil;
+}
+
+
+-(void)sampleCountUpdated:(NSNotification*)notification{
+    // Last Updated
+    /*
+    NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
+    for (UILabel *lastUp in self.lastUpdated) {
+        lastUp.text = [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
+    }
+    */
+}
+
+#pragma mark - Navigation methods
 - (IBAction)showJScoreExplanation:(id)sender {
     NSLog(@"showInfoView");
     [self showInfoView:@"JScore" message:@"JScoreDesc"];
+    [Flurry logEvent:NSLocalizedString(@"selectedJScoreInfo", nil)];
 }
 
 - (IBAction)showProcessList:(id)sender {
     ProcessViewController *controler = [[ProcessViewController alloc]initWithNibName:@"ProcessViewController" bundle:nil];
     [self.navigationController pushViewController:controler animated:YES];
+    [Flurry logEvent:NSLocalizedString(@"selectedProcessList", nil)]; //
 }
 
 - (IBAction)showMemUsedInfo:(id)sender {
     NSLog(@"showInfoView");
     [self showInfoView:@"MemoryUsed" message:@"MemoryDesc"];
+    [Flurry logEvent:NSLocalizedString(@"selectedMemoryInfo", nil)];
 }
 
 - (IBAction)showMemActiveInfo:(id)sender {
     NSLog(@"showInfoView");
     [self showInfoView:@"MemoryActive" message:@"MemoryDesc"];
+    [Flurry logEvent:NSLocalizedString(@"selectedMemoryInfo", nil)];
 }
 
 - (IBAction)showCPUUsageInfo:(id)sender {
     NSLog(@"showInfoView");
     [self showInfoView:@"CPUUsage" message:@"CpuUsageDesc"];
+    [Flurry logEvent:NSLocalizedString(@"selectedProcessList", nil)];
+}
+
+
+- (void)dealloc {
+    [_jScore release];
+    [_caratIDValue release];
+    [_osVersionValue release];
+    [_deviceModelValue release];
+    [_batteryLifeTimeValue release];
+    [_memoryUsedBar release];
+    [_memoryActiveBar release];
+    [_cpuUsageBar release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
 }
 @end

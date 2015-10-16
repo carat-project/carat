@@ -81,10 +81,14 @@ void onUncaughtException(NSException *exception)
         self.window.clipsToBounds =YES;
         self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
     }
+    
+
+    [[Globals instance] userHasConsented]; //TODO remove just skipping user consent for now
     // test for consent
     if ([[Globals instance] hasUserConsented]) return [self proceedWithConsent];
     else return [self acquireConsentWithCallbackTarget:self
                                           withSelector:@selector(proceedWithConsent)];
+    
 }
 
 - (BOOL)acquireConsentWithCallbackTarget:(CaratAppDelegate *)delegate withSelector:(SEL)selector {
@@ -220,19 +224,6 @@ void onUncaughtException(NSException *exception)
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     
     return YES;
-}
-
-- (void)startStoryboard
-{
-    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    //UIViewController *mainViewController = [storyboard instantiateInitialViewController];
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"dashBoardViewControllerStoryboardID"];
-
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = vc;
-    [self.window makeKeyAndVisible];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

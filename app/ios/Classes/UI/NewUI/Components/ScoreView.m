@@ -98,16 +98,18 @@
 - (void)drawRect:(CGRect)rect
 {
     // Display our percentage as a string
-    NSString* textContent = [NSString stringWithFormat:@"%d", _score];
-    
+    NSString* textContent = [NSString stringWithFormat:@"%ld", (long)_score];
+    if(_score == 0){
+        textContent = NSLocalizedString(@"NA", nil);
+    }
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     
     // Create our arc, with the correct angles
     CGFloat radius = (rect.size.width/2.0f)-2;
     NSLog(@"radius: %f", radius);
-    int textSize = radius * 0.75;
+    int textSize = radius * 0.55;
     NSLog(@"textSize: %d", textSize);
-    int textSizeSmall = textSize/3.0f;
+    int textSizeSmall = textSize/2.0f;
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextAddEllipseInRect(ctx, rect);

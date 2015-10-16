@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BugHogTableViewCell.h"
 
-@interface BugHogExpandedTableViewCell : UITableViewCell
+@interface BugHogExpandedTableViewCell : BugHogTableViewCell
 
-@property (retain, nonatomic) IBOutlet UIImageView *thumbnailAppImg;
-@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
-@property (retain, nonatomic) IBOutlet UILabel *expImpTimeLabel;
 @property (retain, nonatomic) IBOutlet UILabel *samplesValueLabel;
 @property (retain, nonatomic) IBOutlet UILabel *samplesWithoutValueLabel;
 @property (retain, nonatomic) IBOutlet UILabel *errorValueLabel;

@@ -275,7 +275,6 @@
 	[super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                             name:@"CCDMReportUpdateStatusNotification" object:nil];
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated

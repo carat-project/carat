@@ -27,7 +27,6 @@
 		66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15051A2A6A8E00153746 /* infoButton@2x.png */; };
 		66EC15081A2A6A8E00153746 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15061A2A6A8E00153746 /* infoButton.png */; };
 		89486E571BC55DFF00138F23 /* MeasurementBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89486E561BC55DFF00138F23 /* MeasurementBar.m */; settings = {ASSET_TAGS = (); }; };
-		89486E591BC55E2000138F23 /* MeasurementBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89486E581BC55E2000138F23 /* MeasurementBar.xib */; settings = {ASSET_TAGS = (); }; };
 		8949115A1BC78D140025F848 /* BugHogExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894911581BC78D140025F848 /* BugHogExpandedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		8949115B1BC78D140025F848 /* BugHogExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894911591BC78D140025F848 /* BugHogExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		894A23F21BC251140059850A /* DashBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A23ED1BC251140059850A /* DashBoardViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -40,6 +39,7 @@
 		894A24071BC251800059850A /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A23FE1BC251800059850A /* ScoreView.m */; settings = {ASSET_TAGS = (); }; };
 		894A240A1BC251800059850A /* TutorialPageIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A24041BC251800059850A /* TutorialPageIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
 		894A240E1BC256A90059850A /* TutorialPageContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A240D1BC256A90059850A /* TutorialPageContent.m */; settings = {ASSET_TAGS = (); }; };
+		894A5A7C1BD0B88C00388E87 /* NetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A5A7B1BD0B88C00388E87 /* NetworkBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		894AF0641BCCD992003E7D76 /* AboutExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		894AF0651BCCD992003E7D76 /* AboutExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		894AF0691BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0671BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -238,7 +238,6 @@
 		79232538B6627BDD4D603C66 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		89486E551BC55DFF00138F23 /* MeasurementBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementBar.h; sourceTree = "<group>"; };
 		89486E561BC55DFF00138F23 /* MeasurementBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementBar.m; sourceTree = "<group>"; };
-		89486E581BC55E2000138F23 /* MeasurementBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasurementBar.xib; sourceTree = "<group>"; };
 		894911571BC78D140025F848 /* BugHogExpandedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogExpandedTableViewCell.h; sourceTree = "<group>"; };
 		894911581BC78D140025F848 /* BugHogExpandedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogExpandedTableViewCell.m; sourceTree = "<group>"; };
 		894911591BC78D140025F848 /* BugHogExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugHogExpandedTableViewCell.xib; sourceTree = "<group>"; };
@@ -259,6 +258,8 @@
 		894A24041BC251800059850A /* TutorialPageIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageIndicatorView.m; sourceTree = "<group>"; };
 		894A240C1BC256A90059850A /* TutorialPageContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageContent.h; sourceTree = "<group>"; };
 		894A240D1BC256A90059850A /* TutorialPageContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageContent.m; sourceTree = "<group>"; };
+		894A5A7A1BD0B88C00388E87 /* NetworkBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkBaseViewController.h; sourceTree = "<group>"; };
+		894A5A7B1BD0B88C00388E87 /* NetworkBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkBaseViewController.m; sourceTree = "<group>"; };
 		894AF0611BCCD992003E7D76 /* AboutExpandedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutExpandedTableViewCell.h; sourceTree = "<group>"; };
 		894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutExpandedTableViewCell.m; sourceTree = "<group>"; };
 		894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutExpandedTableViewCell.xib; sourceTree = "<group>"; };
@@ -968,6 +969,8 @@
 			children = (
 				894A23F01BC251140059850A /* BaseViewController.h */,
 				894A23F11BC251140059850A /* BaseViewController.m */,
+				894A5A7A1BD0B88C00388E87 /* NetworkBaseViewController.h */,
+				894A5A7B1BD0B88C00388E87 /* NetworkBaseViewController.m */,
 				894A240B1BC256180059850A /* Model */,
 				894A23EE1BC251140059850A /* DashBoardViewController.xib */,
 				894A23EF1BC251140059850A /* DashBoardViewController.h */,
@@ -1026,7 +1029,6 @@
 				89DAB8B21BC2A7C60053647E /* LocalizedLabel.m */,
 				89DAB8B41BC2B26B0053647E /* UiInsetLabel.h */,
 				89DAB8B51BC2B26B0053647E /* UiInsetLabel.m */,
-				89486E581BC55E2000138F23 /* MeasurementBar.xib */,
 				89486E551BC55DFF00138F23 /* MeasurementBar.h */,
 				89486E561BC55DFF00138F23 /* MeasurementBar.m */,
 				89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */,
@@ -1791,7 +1793,6 @@
 				C7547E0919963590007A01CF /* Default-Landscape@2x.png in Resources */,
 				89D48E5C1BC3CE4E00595136 /* StatisticsViewController.xib in Resources */,
 				ABB1221C14E9E7C300FE959A /* procmanager1.png in Resources */,
-				89486E591BC55E2000138F23 /* MeasurementBar.xib in Resources */,
 				C75488C419963D04007A01CF /* Default-Portrait@2x.png in Resources */,
 				AB9525B014EA1B6F00343418 /* killapp.html in Resources */,
 				8949115B1BC78D140025F848 /* BugHogExpandedTableViewCell.xib in Resources */,
@@ -1888,6 +1889,7 @@
 				C74130D119EDC6EA00A1E8CE /* UIButton+WebCache.m in Sources */,
 				C754889F19963D04007A01CF /* UIImageView+WebCache.m in Sources */,
 				C754887A19963D03007A01CF /* CaratProtocol.m in Sources */,
+				894A5A7C1BD0B88C00388E87 /* NetworkBaseViewController.m in Sources */,
 				894AF0691BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				C754887619963D03007A01CF /* BugDetailViewController.m in Sources */,
@@ -2021,7 +2023,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.carat;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.caratTest;
 				PRODUCT_NAME = Carat;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/BuildHeaders/";
@@ -2066,7 +2068,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.carat;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.caratTest;
 				PRODUCT_NAME = Carat;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
@@ -2130,7 +2132,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.carat;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.berkeley.cs.caratTest;
 				PRODUCT_NAME = Carat;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/BuildHeaders/";

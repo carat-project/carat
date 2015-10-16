@@ -11,6 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyScoreViewController">
             <connections>
+                <outlet property="batteryLifeTimeValue" destination="Jsv-CQ-Myq" id="xgo-4H-lcr"/>
+                <outlet property="caratIDValue" destination="YEk-cL-1Fm" id="NVW-x0-9b7"/>
+                <outlet property="cpuUsageBar" destination="dPa-QB-5NA" id="fMD-MM-eg3"/>
+                <outlet property="deviceModelValue" destination="tZH-ql-jvd" id="04a-9Q-pTJ"/>
+                <outlet property="jScore" destination="CJt-eY-rn5" id="UE9-jE-1Fa"/>
+                <outlet property="memoryActiveBar" destination="r80-CN-dJQ" id="qJJ-9G-H68"/>
+                <outlet property="memoryUsedBar" destination="Y9p-Du-lpu" id="faF-UR-jAT"/>
+                <outlet property="osVersionValue" destination="UgA-N2-2wk" id="n7L-iy-XFN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -211,7 +219,7 @@
                                                 <action selector="showProcessList:" destination="-1" eventType="touchUpInside" id="YDT-io-uhu"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10h 23m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsv-CQ-Myq" customClass="LocalizedLabel">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10h 23m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsv-CQ-Myq">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Don-WA-KtO"/>
@@ -415,12 +423,6 @@
                                         <constraint firstAttribute="height" constant="30" id="X9F-oG-UFO"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="firstMeasureValue">
-                                            <real key="value" value="20"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="secondMeasureValue">
-                                            <real key="value" value="40"/>
-                                        </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
                                             <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
@@ -500,12 +502,6 @@
                                         <constraint firstAttribute="height" constant="30" id="Emg-hO-YJU"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="firstMeasureValue">
-                                            <real key="value" value="20"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="secondMeasureValue">
-                                            <real key="value" value="40"/>
-                                        </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
                                             <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
@@ -633,12 +629,6 @@
                                         <constraint firstAttribute="height" constant="30" id="cy2-hO-pXI"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="firstMeasureValue">
-                                            <real key="value" value="20"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="secondMeasureValue">
-                                            <real key="value" value="40"/>
-                                        </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="largerBarColor">
                                             <color key="value" red="0.30588235289999999" green="0.69411764710000001" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>

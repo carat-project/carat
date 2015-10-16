@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOZ-09-Btk">
-                    <rect key="frame" x="4" y="66" width="592" height="21"/>
+                    <rect key="frame" x="4" y="58" width="592" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="bM6-Lo-Gcp"/>
                     </constraints>
@@ -27,13 +27,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bug_icon" translatesAutoresizingMaskIntoConstraints="NO" id="SyE-UN-qff">
-                    <rect key="frame" x="0.0" y="10" width="600" height="55"/>
+                    <rect key="frame" x="0.0" y="15" width="600" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="55" id="li6-Fd-SyF"/>
+                        <constraint firstAttribute="height" constant="38" id="li6-Fd-SyF"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbV-MH-pdW">
-                    <rect key="frame" x="0.0" y="87" width="600" height="21"/>
+                    <rect key="frame" x="0.0" y="79" width="600" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="NWO-Bg-pIn"/>
                     </constraints>
@@ -47,10 +47,10 @@
                 <constraint firstItem="qOZ-09-Btk" firstAttribute="centerX" secondItem="mbV-MH-pdW" secondAttribute="centerX" id="3mQ-0r-0qC"/>
                 <constraint firstAttribute="trailing" secondItem="SyE-UN-qff" secondAttribute="trailing" id="JMU-2F-sog"/>
                 <constraint firstItem="mbV-MH-pdW" firstAttribute="leading" secondItem="SyE-UN-qff" secondAttribute="leading" id="JNk-Hk-FQE"/>
-                <constraint firstItem="SyE-UN-qff" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="JXi-cW-e9k"/>
+                <constraint firstItem="SyE-UN-qff" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="JXi-cW-e9k"/>
                 <constraint firstItem="qOZ-09-Btk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="ac7-Yo-G7U"/>
                 <constraint firstItem="mbV-MH-pdW" firstAttribute="trailing" secondItem="SyE-UN-qff" secondAttribute="trailing" id="btm-NU-sN3"/>
-                <constraint firstItem="qOZ-09-Btk" firstAttribute="top" secondItem="SyE-UN-qff" secondAttribute="bottom" constant="1" id="dkf-xk-2El"/>
+                <constraint firstItem="qOZ-09-Btk" firstAttribute="top" secondItem="SyE-UN-qff" secondAttribute="bottom" constant="5" id="dkf-xk-2El"/>
                 <constraint firstItem="SyE-UN-qff" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hE6-8Z-VEr"/>
                 <constraint firstItem="mbV-MH-pdW" firstAttribute="top" secondItem="qOZ-09-Btk" secondAttribute="bottom" id="oQk-sU-AZw"/>
             </constraints>

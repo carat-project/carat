@@ -12,12 +12,18 @@
 #import "BugHogTableViewCell.h"
 #import "BaseViewController.h"
 
-@interface BugsViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) NSArray *tableData;
+#import "UIImageView+WebCache.h"
+#import "CoreDataManager.h"
+#import "MBProgressHUD.h"
+
+@interface BugsViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate> {
+    HogBugReport *report;
+    
+}
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *expandedCells;
--(IBAction)showMessage;
+@property (retain, nonatomic) HogBugReport *report;
 
 
 @end

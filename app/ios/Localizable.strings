@@ -7,6 +7,7 @@
 */
 //DashBoard starts
 
+"Carat" = "Carat";
 "BatteryLifeLabel"="Active Battery Life";
 "Bugs"="Bugs";
 "Hogs"="Hogs";
@@ -16,6 +17,7 @@
 "View"="View";
 "UpdatedNowTxt"= "Updated just now";
 "JScore"="J-Score";
+"NA" = "N/A";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
@@ -25,11 +27,12 @@
 "Accept"="Accept";
 "AcceptInfo"="By proceeding you accept EULA and privacy policy.";
 //Tutorial ends
-//My Device starts
+//My Device starts (Old CurrentView)
 "titleScore"="YOUR J-SCORE";
 "CaratID"="Carat ID";
 "InfoJscoreLabel"="What are j-score numbers?";
 "OSversion"="OS version";
+"MyDeviceHudLabel" = "Updating Device Data";
 //"BatteryLifeLabel"="Active Battery Life" dashboard
 "DeviceModel"="Device model";
 "ProcessList"="PROCESS LIST";
@@ -64,9 +67,11 @@
 //Global results ends
 //Actions view start
 "ActionsDesc"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
+"ActionsEmpty"="You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...";
 "Stop"="Stop";
 "ForeGroundApp"="Foreground App";
 "NoActions"="No actions.";
+"ActionsHudLabel"="Updating Action List";
 "NoActionsMessage"="You have no actions.\n\nYou should open Carat regularly so it can take samples of your device state and communicate these to our servers.\nWe suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\nIt can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\nMake sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\nThe more often you open the app, the more quickly it will generate reports, the more information those reports will contain, and the more accurate the recommendations will be.\nCarat does not run as a background service, which is why it needs your help.\nThe app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground, but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.";
 //Actions view ends
 //ProcessView starts
@@ -117,3 +122,52 @@
 "Twenty"="Impact < 20 min";
 "Hour"="Impact < 1 hour";
 "Select"="Select";
+
+//Share messages
+"JScoreShareMessage" = "My J-Score is %@. Find out yours and improve your battery life!";
+"CaratShareMessage" = "Carat is a free app that tells you what is using up your battery, whether that's normal, and what you can do about it.";
+"CaratHomePage" = "http://carat.cs.helsinki.fi";
+"EmailMessageTittle" = "Battery Diagnosis with Carat";
+"CaratEmailSalesPitch" = "Check out this free app called %@ that tells you what is using up your mobile device's battery, whether that's normal, and what you can do about it: http://is.gd/caratweb\n\n\n";
+
+//HUD
+"CCDMReportUpdateStatusNotification" = "CCDMReportUpdateStatusNotification";
+//Progress updates
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingHogReports" = "Updating hog reports...";
+"UpdatingBugReports" = "Updating bug report...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+
+//Flurry Logs
+"selectedProcessList" = "selectedProcessList";
+"selectedBugsView" = "selectedBugsView";
+"selectedHogsView" = "selectedHogsView";
+"selectedActionsView" = "selectedActionsView";
+"selectedStatisticsView" = "selectedStatisticsView";
+"selectedMyDeviceView" = "selectedMyDeviceView";
+"selectedMoreView" = "selectedMoreView";
+
+"selectedShareEmail" = "selectedShareEmail";
+"selectedShareFacebook" = "selectedShareFacebook";
+"selectedShareTwitter" = "selectedShareTwitter";
+
+
+
+"selectedActiveBatteryLifeInfo"="selectedActiveBatteryLifeInfo";
+"selectedJScoreInfo" = "selectedJScoreInfo";
+"selectedMemoryInfo"="selectedMemoryInfo";
+"Category Detail"="Category Detail";
+"selectedSameOS" = "selectedSameOS";
+"OS Version" = "OS Version";
+
+
+
+
+
+
+
