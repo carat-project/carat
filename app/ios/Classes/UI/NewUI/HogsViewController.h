@@ -10,11 +10,9 @@
 #import "BugHogExpandedTableViewCell.h"
 #import "BugHogListItemData.h"
 #import "BugHogTableViewCell.h"
-#import "BaseViewController.h"
-@interface HogsViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) NSArray *tableData;
-@property (retain, nonatomic) IBOutlet UITableView *tableView;
+#import "BugHogListViewController.h"
 
-@property (nonatomic, strong) NSMutableArray *expandedCells;
+@interface HogsViewController : BugHogListViewController
+
 
 @end

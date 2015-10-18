@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self updateView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,6 +32,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // UPDATE REPORT DATA
+    if ([[CommunicationManager instance] isInternetReachable] == YES && // online
+        ![self isFresh] && // need to update
+        [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
+    {
+        [[CoreDataManager instance] updateLocalReportsFromServer];
+    } else if ([[CommunicationManager instance] isInternetReachable] == NO) {
+        DLog(@"Starting without reachability; setting notification.");
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNetworkStatus:) name:kUpdateNetworkStatusNotification object:nil];
+    
+    [self updateNetworkStatus:nil];
+}
+
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -38,12 +58,22 @@
                                              selector:@selector(loadDataWithHUD:)
                                                  name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil)
                                                object:nil];
+    // UPDATE REPORT DATA
+    if ([[CommunicationManager instance] isInternetReachable] == YES && // online
+        ![self isFresh] && // need to update
+        [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
+    {
+        [[CoreDataManager instance] updateLocalReportsFromServer];
+    } else if ([[CommunicationManager instance] isInternetReachable] == NO) {
+        DLog(@"Starting without reachability; setting notification.");
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil) object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kUpdateNetworkStatusNotification object:nil];
 }
 
 /*
@@ -56,33 +86,43 @@
 }
 */
 
-#pragma mark - initHUD method
-- (void)initHUD:(NSString *) hudLabel selector: (SEL)selector
+- (void) updateNetworkStatus:(NSNotification *) notice
 {
-    HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
-    [self.tabBarController.view addSubview:HUD];
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    NSDictionary *dict = [notice userInfo];
+    BOOL isInternetActive = [dict[kIsInternetActive] boolValue];
     
-    HUD.dimBackground = YES;
-    
-    // Register for HUD callbacks so we can remove it from the window at the right time
-    HUD.delegate = self;
-    HUD.labelText = hudLabel;
-    
-    [HUD showWhileExecuting:@selector(selector)
-                   onTarget:self
-                 withObject:nil
-                   animated:YES];
+    if (isInternetActive || [[CommunicationManager instance] isInternetReachable]) {
+        DLog(@"Checking if update needed with new reachability status...");
+        if (![self isFresh] && // need to update
+            [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
+        {
+            DLog(@"Update possible; initiating.");
+            [[CoreDataManager instance] updateLocalReportsFromServer];
+        }
+    }
 }
 
+- (BOOL) isFresh
+{
+    return [[CoreDataManager instance] secondsSinceLastUpdate] < 600; // 600 == 10 minutes
+}
 #pragma mark - MBProgressHUDDelegate method
-
+//show network communication states in GUI
 - (void)hudWasHidden:(MBProgressHUD *)hud
 {
     // Remove HUD from screen when the HUD was hidded
-    [HUD removeFromSuperview];
-    [HUD release];
-    HUD = nil;
+    DLog(@"%s hudWasHidden", __PRETTY_FUNCTION__);
 }
 
+- (void)loadDataWithHUD:(id)obj
+{
+
+}
+
+- (void)updateView
+{
+    
+}
 
 @end

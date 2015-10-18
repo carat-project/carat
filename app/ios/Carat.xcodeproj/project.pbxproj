@@ -40,6 +40,8 @@
 		894A240A1BC251800059850A /* TutorialPageIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A24041BC251800059850A /* TutorialPageIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
 		894A240E1BC256A90059850A /* TutorialPageContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A240D1BC256A90059850A /* TutorialPageContent.m */; settings = {ASSET_TAGS = (); }; };
 		894A5A7C1BD0B88C00388E87 /* NetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A5A7B1BD0B88C00388E87 /* NetworkBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		894A5A7F1BD2C06200388E87 /* ListNetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A5A7E1BD2C06200388E87 /* ListNetworkBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		894A5A821BD2C12B00388E87 /* BugHogListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A5A811BD2C12B00388E87 /* BugHogListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		894AF0641BCCD992003E7D76 /* AboutExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		894AF0651BCCD992003E7D76 /* AboutExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		894AF0691BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0671BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -260,6 +262,10 @@
 		894A240D1BC256A90059850A /* TutorialPageContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageContent.m; sourceTree = "<group>"; };
 		894A5A7A1BD0B88C00388E87 /* NetworkBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkBaseViewController.h; sourceTree = "<group>"; };
 		894A5A7B1BD0B88C00388E87 /* NetworkBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkBaseViewController.m; sourceTree = "<group>"; };
+		894A5A7D1BD2C06200388E87 /* ListNetworkBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListNetworkBaseViewController.h; sourceTree = "<group>"; };
+		894A5A7E1BD2C06200388E87 /* ListNetworkBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListNetworkBaseViewController.m; sourceTree = "<group>"; };
+		894A5A801BD2C12B00388E87 /* BugHogListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogListViewController.h; sourceTree = "<group>"; };
+		894A5A811BD2C12B00388E87 /* BugHogListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogListViewController.m; sourceTree = "<group>"; };
 		894AF0611BCCD992003E7D76 /* AboutExpandedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutExpandedTableViewCell.h; sourceTree = "<group>"; };
 		894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutExpandedTableViewCell.m; sourceTree = "<group>"; };
 		894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutExpandedTableViewCell.xib; sourceTree = "<group>"; };
@@ -971,6 +977,10 @@
 				894A23F11BC251140059850A /* BaseViewController.m */,
 				894A5A7A1BD0B88C00388E87 /* NetworkBaseViewController.h */,
 				894A5A7B1BD0B88C00388E87 /* NetworkBaseViewController.m */,
+				894A5A7D1BD2C06200388E87 /* ListNetworkBaseViewController.h */,
+				894A5A7E1BD2C06200388E87 /* ListNetworkBaseViewController.m */,
+				894A5A801BD2C12B00388E87 /* BugHogListViewController.h */,
+				894A5A811BD2C12B00388E87 /* BugHogListViewController.m */,
 				894A240B1BC256180059850A /* Model */,
 				894A23EE1BC251140059850A /* DashBoardViewController.xib */,
 				894A23EF1BC251140059850A /* DashBoardViewController.h */,
@@ -1917,6 +1927,7 @@
 				C1D52F321465F85A008D6D09 /* TSocketServer.m in Sources */,
 				C754888219963D03007A01CF /* CoreDataManager.m in Sources */,
 				C754887319963D03007A01CF /* ActionViewController.m in Sources */,
+				894A5A7F1BD2C06200388E87 /* ListNetworkBaseViewController.m in Sources */,
 				C754889019963D03007A01CF /* InstructionViewController.m in Sources */,
 				C754888019963D03007A01CF /* CoreDataDetail.m in Sources */,
 				C1D52F331465F85A008D6D09 /* TApplicationException.m in Sources */,
@@ -1950,6 +1961,7 @@
 				C1D52F3B1465F85A008D6D09 /* TSharedProcessorFactory.m in Sources */,
 				C136F09B14662E5600F0A292 /* CommunicationManager.m in Sources */,
 				89D48E5B1BC3CE4E00595136 /* StatisticsViewController.m in Sources */,
+				894A5A821BD2C12B00388E87 /* BugHogListViewController.m in Sources */,
 				894A240A1BC251800059850A /* TutorialPageIndicatorView.m in Sources */,
 				C75488B919963D04007A01CF /* Utilities.m in Sources */,
 				89550AA71BCC062400D1DE11 /* AboutViewController.m in Sources */,

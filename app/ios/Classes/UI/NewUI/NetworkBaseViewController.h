@@ -10,12 +10,13 @@
 #import "MBProgressHUD.h"
 
 @interface NetworkBaseViewController : BaseViewController <MBProgressHUDDelegate> {
-    MBProgressHUD *HUD;
 }
 
 
 - (void)loadDataWithHUD:(id)obj;
-- (void)initHUD:(NSString *) hudLabel selector: (SEL)selector;
+- (void)hudWasHidden:(MBProgressHUD *)hud;
 
-
+- (void) updateNetworkStatus:(NSNotification *) notice;
+- (BOOL) isFresh;
+- (void)updateView; //use this function to update gui from data
 @end

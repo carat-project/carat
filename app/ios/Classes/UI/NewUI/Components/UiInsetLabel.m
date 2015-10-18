@@ -9,6 +9,11 @@
 #import "UiInsetLabel.h"
 
 @implementation UiInsetLabel
+@synthesize leftInset;
+@synthesize rightInset;
+@synthesize topInset;
+@synthesize bottomInset;
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

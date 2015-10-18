@@ -17,12 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _pagePos = 0;
-    _pageCount = 3;
-    [_pageIndicatorView setPageCount:_pageCount];
-    
     [self createTutorialData];
+    _pagePos = 0;
+    _pageCount = _pageDataContent.count;
+    [_pageIndicatorView setPageCount:_pageCount];
     [self setPage:_pagePos];
+    
+    
+    [_acceptButton setEnabled:[[Globals instance] hasUserConsented]];
     NSLog(@"******TutorialViewController viewDidLoad******");
     
     // Do any additional setup after loading the view.
@@ -52,7 +54,7 @@
 
 - (IBAction)acceptPressed{
     NSLog(@"****** acceptPressed *******");
-    DashBoardViewController *controler = [[DashBoardViewController alloc]initWithNibName:@"DashBoardViewController" bundle:nil];
+    [[Globals instance] userHasConsented];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -70,26 +72,35 @@
     }
 }
 
+- (void)checkEula{
+    
+}
+
 - (void)createTutorialData
 {
     NSLog(@"****** createTutorialData ********");
     TutorialPageContent *main = [TutorialPageContent new];
     TutorialPageContent *bugs = [TutorialPageContent new];
     TutorialPageContent *hogs = [TutorialPageContent new];
+    TutorialPageContent *eula = [TutorialPageContent new];
 
     main.title = NSLocalizedString(@"MainTitle", nil);
     bugs.title = NSLocalizedString(@"Bugs", nil);
     hogs.title = NSLocalizedString(@"Hogs", nil);
+    eula.title = NSLocalizedString(@"Eula", nil);
     
     main.text = NSLocalizedString(@"MainDesc", nil);
     bugs.text = NSLocalizedString(@"BugsDesc", nil);
     hogs.text = NSLocalizedString(@"HogsDesc", nil);
+    eula.text = NSLocalizedString(@"EulaShortDesc", nil);
     
     main.imageName = @"tutorial_01";
     bugs.imageName = @"tutorial_02";
     hogs.imageName = @"tutorial_03";
+    eula.imageName = @"tutorial_04";
     
-    _pageDataContent = [[NSArray alloc] initWithObjects:main, bugs, hogs, nil];
+    
+    _pageDataContent = [[NSArray alloc] initWithObjects:main, bugs, hogs, eula, nil];
 
      NSLog(@"****** Check created data title ******** %@", ((TutorialPageContent*)_pageDataContent[1]).title);
     
@@ -101,6 +112,9 @@
     _pagePos = pageNumber;
     TutorialPageContent* pageCont = _pageDataContent[pageNumber];
      NSLog(@"****** setPage title ******** %@", pageCont.title);
+    if(pageNumber == 4){
+        [_acceptButton setEnabled:YES];
+    }
     [_ImageView setImage:[UIImage imageNamed:pageCont.imageName]];
     [_tutorialPageTitle setText:pageCont.title];
     [_tutorialPageDescription setText:pageCont.text];

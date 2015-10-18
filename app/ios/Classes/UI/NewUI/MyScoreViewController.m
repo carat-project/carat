@@ -74,11 +74,6 @@
                                                     name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil) object:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
-
 - (void)didReceiveMemoryWarning {
     DLog(@"Memory warning.");
     [super didReceiveMemoryWarning];
@@ -184,16 +179,7 @@
 {
     if ([[CoreDataManager instance] getReportUpdateStatus] == nil) {
         // *probably* no update in progress, reload table data while locking out view
-        HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
-        [self.tabBarController.view addSubview:HUD];
-        
-        HUD.dimBackground = YES;
-        
-        // Register for HUD callbacks so we can remove it from the window at the right time
-        HUD.delegate = self;
-        HUD.labelText = NSLocalizedString(@"MyDeviceHudLabel", nil);
-        
-        [HUD showWhileExecuting:@selector(updateView) onTarget:self withObject:nil animated:YES];
+
     }
 }
 
@@ -202,9 +188,7 @@
 - (void)hudWasHidden:(MBProgressHUD *)hud
 {
     // Remove HUD from screen when the HUD was hidded
-    [HUD removeFromSuperview];
-    [HUD release];
-    HUD = nil;
+
 }
 
 

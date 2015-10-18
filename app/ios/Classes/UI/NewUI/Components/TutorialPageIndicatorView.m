@@ -14,7 +14,7 @@
 @end
 
 @implementation TutorialPageIndicatorView{
-
+    CGFloat ballEdge;
 }
 
 
@@ -49,8 +49,9 @@
     _customConstraints = [[NSMutableArray alloc] init];
     
     UIView *view = nil;
-    _pageCount = 3;
+    [self setPageCount:4];
     _pagePosition = 0; //first page
+    
     
     if (view != nil) {
         _containerView = view;
@@ -85,8 +86,20 @@
 - (void)drawRect:(CGRect)rect
 {
     // Display our percentage as a string
-    CGFloat ballEdge = self.frame.size.height;
+    CGFloat optimalWidth = [self getOptimalWidth];
+    NSLog(@"setPageCount w :%f and optW: %f and height: %f", self.frame.size.width, optimalWidth, ballEdge);
     CGFloat left = 0;
+    if(self.frame.size.width < optimalWidth){
+        ballEdge = self.frame.size.width/(1.3f*_pageCount - 0.3f);
+        NSLog(@"setPageCount ballEdge :%f", ballEdge);
+    }
+    else{
+        ballEdge = self.frame.size.height;
+        left = (self.frame.size.width-optimalWidth)/2.0f;
+    }
+
+    
+    
     for(int i=0; i<_pageCount; i++){
         if(i != 0){
             left += ballEdge;
@@ -111,12 +124,12 @@
 -(void)setPageCount:(int) pageCount{
     NSLog(@"setPageCount");
     _pageCount = pageCount;
-    CGFloat ballEdge = self.frame.size.height;
-    CGFloat viewNewWidth = ballEdge * pageCount +  (ballEdge*0.3f)*(pageCount-1);
-    CGRect frameRect = self.frame;
-    frameRect.size.width = viewNewWidth;
-    self.frame = frameRect;
     [self setNeedsDisplay] ;
+}
+
+-(CGFloat)getOptimalWidth
+{
+    return self.frame.size.height * _pageCount +  (self.frame.size.height*0.3f)*(_pageCount-1);
 }
 
 -(void)setPagePositionAs:(int) pagePosition{

@@ -10,6 +10,7 @@
 
 #import "Utilities.h"
 #import "SVPullToRefresh.h"
+#import "CaratConstants.h"
 
 @interface BugsViewController ()
 @end
@@ -29,13 +30,37 @@ static NSString * collapsedCell = @"BugHogTableViewCell";
     _expandedCells = [[NSMutableArray alloc]init];
     [_tableView registerNib:[UINib nibWithNibName:collapsedCell bundle:nil] forCellReuseIdentifier:collapsedCell];
     [_tableView registerNib:[UINib nibWithNibName:expandedCell bundle:nil] forCellReuseIdentifier:expandedCell];
+    
+    [self setReport:[[CoreDataManager instance] getBugs:NO withoutHidden:YES]];
+    
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        if ([[CommunicationManager instance] isInternetReachable] == YES && // online
+            [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
+        {
+            [[CoreDataManager instance] updateLocalReportsFromServer];
+            [self updateView];
+        }
+    }];
+    
+    [self updateView];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if ([[CoreDataManager instance] getReportUpdateStatus] == nil) {
+        [self.tableView.pullToRefreshView stopAnimating];
+    } else {
+        [self.tableView.pullToRefreshView startAnimating];
+    }
+    
+    [self setReport:[[CoreDataManager instance] getBugs:NO withoutHidden:YES]];
+    
     [[CoreDataManager instance] checkConnectivityAndSendStoredDataToServer];
+    [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sampleCountUpdated:) name:kSamplesSentCountUpdateNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -60,6 +85,27 @@ static NSString * collapsedCell = @"BugHogTableViewCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
   
+}
+
+- (void)updateView {
+    [self reloadReport];
+    if (self.report != nil) {
+        [self.tableView reloadData];
+    }
+    [self.view setNeedsDisplay];
+}
+
+- (void)reloadReport {
+    HogBugReport * bugs = [[CoreDataManager instance] getBugs:NO withoutHidden:YES];
+    if (bugs != nil) {
+        [self setReport:bugs];
+    }
+}
+
+-(void)sampleCountUpdated:(NSNotification*)notification{
+    
+    if(self.tableView)
+        [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -184,22 +230,6 @@ static NSString * collapsedCell = @"BugHogTableViewCell";
         [self.tableView.pullToRefreshView stopAnimating];
     }
 }
-
-- (void)reloadReport {
-    HogBugReport * bugs = [[CoreDataManager instance] getBugs:NO withoutHidden:YES];
-    if (bugs != nil) {
-        [self setReport:bugs];
-    }
-}
-
-- (void)updateView {
-    [self reloadReport];
-    if (self.report != nil) {
-        [self.tableView reloadData];
-    }
-    [self.view setNeedsDisplay];
-}
-
 
 
 

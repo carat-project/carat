@@ -14,7 +14,6 @@
 
 @interface MyScoreViewController : BaseViewController <MBProgressHUDDelegate> {
     NSTimeInterval MAX_LIFE; // max battery life in seconds
-    MBProgressHUD *HUD;
 }
 @property (retain, nonatomic) IBOutlet ScoreView *jScore;
 @property (retain, nonatomic) IBOutlet UILabel *caratIDValue;
