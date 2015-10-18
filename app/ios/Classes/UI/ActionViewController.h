@@ -22,7 +22,7 @@
 
 @property (retain, nonatomic) IBOutlet UITableView *actionTable;
 
-- (void)shareHandler;
+//- (void)shareHandler;
 - (void)updateView;
 - (void)loadDataWithHUD;
 - (void)loadDataWithHUD:(id)obj;

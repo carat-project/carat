@@ -686,7 +686,8 @@
                                             <exclude reference="rFD-XE-8TY"/>
                                         </mask>
                                     </variation>
-                                    <variation key="widthClass=compact">
+                                    <variation key="widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="143" y="56" width="114" height="114"/>
                                         <mask key="constraints">
                                             <include reference="rFD-XE-8TY"/>
                                         </mask>
@@ -738,7 +739,7 @@
                                 <constraint firstItem="WDP-d4-NHu" firstAttribute="centerX" secondItem="av9-JB-eeg" secondAttribute="centerX" id="RTt-aK-DGg"/>
                                 <constraint firstItem="rY7-db-Ctt" firstAttribute="trailing" secondItem="2lz-c2-lM5" secondAttribute="trailing" constant="-10" id="VMh-vM-KpJ"/>
                                 <constraint firstItem="Gam-nj-VfC" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" id="X7U-6M-gYH"/>
-                                <constraint firstItem="CJt-eY-rn5" firstAttribute="top" secondItem="av9-JB-eeg" secondAttribute="centerY" id="XML-u9-TdZ"/>
+                                <constraint firstItem="CJt-eY-rn5" firstAttribute="top" secondItem="av9-JB-eeg" secondAttribute="bottom" multiplier="0.35" id="XML-u9-TdZ"/>
                                 <constraint firstItem="dPa-QB-5NA" firstAttribute="top" secondItem="xRx-Yc-Mvn" secondAttribute="top" id="aOv-Ws-WM9"/>
                                 <constraint firstItem="Gam-nj-VfC" firstAttribute="bottom" secondItem="xFK-J2-Wzh" secondAttribute="bottom" id="bg6-0U-wQK">
                                     <variation key="widthClass=compact" constant="1"/>

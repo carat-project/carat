@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BugHogExpandedTableViewCell.h"
-#import "BugHogListItemData.h"
-#import "BugHogTableViewCell.h"
 #import "BugHogListViewController.h"
 
 @interface HogsViewController : BugHogListViewController

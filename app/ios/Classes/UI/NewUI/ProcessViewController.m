@@ -13,20 +13,16 @@
 @end
 
 @implementation ProcessViewController
+@synthesize lastUpdate;
+@synthesize processList;
 
-static NSString * expandedCell = @"BugHogExpandedTableViewCell";
-static NSString * collapsedCell = @"BugHogTableViewCell";
 
 - (void)viewDidLoad {
+    expandedCell = @"BugHogExpandedTableViewCell";
+    collapsedCell = @"BugHogTableViewCell";
+
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self creteData];
-    NSLog(@"viewDidLoad tabledata count: %d", [_tableData count]);
-    NSLog(@"viewDidLoad tableView ref: %@", _tableView);
-    _expandedCells = [[NSMutableArray alloc]init];
-    [_tableView registerNib:[UINib nibWithNibName:collapsedCell bundle:nil] forCellReuseIdentifier:collapsedCell];
-    [_tableView registerNib:[UINib nibWithNibName:expandedCell bundle:nil] forCellReuseIdentifier:expandedCell];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,114 +31,68 @@ static NSString * collapsedCell = @"BugHogTableViewCell";
     
 }
 
-- (NSArray *)tableData
-{
-    if (!_tableData)
-    {
-        [self creteData];
-    }
-    return _tableData;
-}
-
--(void) creteData{
-    
-    BugHogListItemData* d1 = [BugHogListItemData new];
-    d1.imageName = @"Icon-Small-50";
-    d1.title = @"Facebook";
-    d1.expImpTxt = @"dunno what goes here";
-    d1.samples = @"263";
-    d1.error = @"49";
-    d1.samplesWithout = @"2125454";
-    
-    BugHogListItemData* d2 = [BugHogListItemData new];
-    d2.imageName = @"Icon-Small-50";
-    d2.title = @"Instagram";
-    d2.expImpTxt = @"dunno what goes here";
-    d2.samples = @"120";
-    d2.error = @"23";
-    d2.samplesWithout = @"2125";
-    
-    BugHogListItemData* d3 = [BugHogListItemData new];
-    d3.imageName = @"Icon-Small-50";
-    d3.title = @"Googlemaps";
-    d3.expImpTxt = @"dunno what goes here";
-    d3.samples = @"50";
-    d3.error = @"13";
-    d3.samplesWithout = @"621254";
-    
-    _tableData = [[NSArray alloc] initWithObjects:d1, d2, d3, nil];
-}
-
+#pragma mark - table methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"tabledata count: %d", [_tableData count]);
-    return [_tableData count];
+    if (self.processList != nil) {
+        return [self.processList count];
+    } else return 0;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Process List";
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:self.lastUpdate];
+    return [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
-    static NSString *cellIdentifier = nil;
-    if ([self.expandedCells containsObject:indexPath])
-    {
-        cellIdentifier = expandedCell;
-    }
-    else{
-        cellIdentifier = collapsedCell;
-    }
+    UITableViewCell *cell = [super tableView: tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
+    NSDictionary *selectedProc = [self.processList objectAtIndex:indexPath.row];
     
-    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    BugHogListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
     if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
-        BugHogExpandedTableViewCell *expandedCell = (BugHogExpandedTableViewCell *)cell;
-        expandedCell.nameLabel.text = rowData.title;
-        expandedCell.thumbnailAppImg.image = [UIImage imageNamed:rowData.imageName];
-        NSString *bodyText = NSLocalizedString(@"ExpectedImp", nil);
-        NSMutableString *expImpLabelText = [[NSMutableString alloc]init];
-        [expImpLabelText appendString:bodyText];
-        [expImpLabelText appendString:rowData.expImpTxt];
-        expandedCell.expImpTimeLabel.text = expImpLabelText;
-        [expImpLabelText release];
+        BugHogExpandedTableViewCell *expandedCellView = (BugHogExpandedTableViewCell *)cell;
         
-        expandedCell.samplesValueLabel.text = rowData.samples;
-        expandedCell.samplesWithoutValueLabel.text = rowData.samplesWithout;
-        expandedCell.errorValueLabel.text = rowData.error;
+        [self setTopRowData:selectedProc cell:expandedCellView];
     }
     else{
-        BugHogTableViewCell *collapsedCell = (BugHogTableViewCell *)cell;
-        collapsedCell.nameLabel.text = rowData.title;
-        collapsedCell.thumbnailAppImg.image = [UIImage imageNamed:rowData.imageName];
-        NSString *bodyText = NSLocalizedString(@"ExpectedImp", nil);
-        NSMutableString *expImpLabelText = [[NSMutableString alloc]init];
-        [expImpLabelText appendString:bodyText];
-        [expImpLabelText appendString:rowData.expImpTxt];
-        collapsedCell.expImpTimeLabel.text = expImpLabelText;
-        [expImpLabelText release];
+        BugHogTableViewCell *collapsedCellView = (BugHogTableViewCell *)cell;
+        [self setTopRowData:selectedProc cell:collapsedCellView];
     }
+    
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)setTopRowData:(NSDictionary *)selectedProc cell:(BugHogTableViewCell *)cell
 {
-    [tableView beginUpdates];
+    NSString *appName = [selectedProc objectForKey:@"ProcessName"];
+    cell.nameLabel.text = appName;
     
-    if ([self.expandedCells containsObject:indexPath])
-    {
-        [self.expandedCells removeObject:indexPath];
+    NSString *imageURL = [[@"https://s3.amazonaws.com/carat.icons/"
+                           stringByAppendingString:appName]
+                          stringByAppendingString:@".jpg"];
+    [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURL]
+                         placeholderImage:[UIImage imageNamed:@"icon57.png"]];
+    
+    /*
+    [UIImage newImageNotCached:[appName stringByAppendingString:@".png"]];
+    UIImage *img = [UIImage newImageNotCached:[appName stringByAppendingString:@".png"]];
+    if (img == nil) {
+        img = [UIImage newImageNotCached:@"icon57.png"];
     }
-    else
-    {
-        [self.expandedCells addObject:indexPath];
-    }
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [self.tableView reloadData];
-    [tableView endUpdates];
+    */
+    cell.expImpTimeLabel.text = [selectedProc objectForKey:@"ProcessID"];
+}
+
+//Override super classes expandaple list item since this list doesn't seem to contain any expandaple
+//data
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -181,9 +131,6 @@ static NSString * collapsedCell = @"BugHogTableViewCell";
  */
 
 - (void)dealloc {
-    [_tableData release];
-    [_tableView release];
-    [_expandedCells release];
     [super dealloc];
 }
 @end

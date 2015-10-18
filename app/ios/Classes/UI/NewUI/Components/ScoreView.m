@@ -99,8 +99,10 @@
 {
     // Display our percentage as a string
     NSString* textContent = [NSString stringWithFormat:@"%ld", (long)_score];
-    if(_score == 0){
+    CGFloat score = _score;
+    if(score == 0){
         textContent = NSLocalizedString(@"NA", nil);
+        score = 99.0f;
     }
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     
@@ -119,7 +121,7 @@
     [bezierPath addArcWithCenter:CGPointMake(rect.size.width / 2, rect.size.height / 2)
                           radius: radius
                       startAngle:startAngle
-                        endAngle:(endAngle - startAngle) * (_score / 99.0) + startAngle
+                        endAngle:(endAngle - startAngle) * (score / 99.0) + startAngle
                        clockwise:YES];
     
     // Set the display for the path, and stroke it

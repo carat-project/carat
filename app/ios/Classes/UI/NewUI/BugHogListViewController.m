@@ -81,7 +81,7 @@
     NSString *imageURL = [[@"https://s3.amazonaws.com/carat.icons/"
                            stringByAppendingString:appName]
                           stringByAppendingString:@".jpg"];
-    [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:[CoreDataManager] getIconForApp]
+    [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURL]
                          placeholderImage:[UIImage imageNamed:@"icon57.png"]];
     
     

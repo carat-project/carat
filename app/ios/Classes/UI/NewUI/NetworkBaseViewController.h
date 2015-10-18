@@ -18,5 +18,5 @@
 
 - (void) updateNetworkStatus:(NSNotification *) notice;
 - (BOOL) isFresh;
-- (void)updateView; //use this function to update gui from data
+- (void) updateView; //use this function to update gui from data
 @end

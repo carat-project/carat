@@ -11,7 +11,7 @@
 #import "MeasurementBar.h"
 #import "LocalizedLabel.h"
 
-@interface StatisticsViewController : BaseViewController
+@interface StatisticsViewController : BaseViewController <NSURLConnectionDataDelegate>
 @property (retain, nonatomic) IBOutlet UILabel *genIntensiveDescLabel;
 @property (retain, nonatomic) IBOutlet MeasurementBar *genIntensiveBar;
 @property (retain, nonatomic) IBOutlet UILabel *androidIntensiveLabel;
@@ -26,6 +26,8 @@
 @property (retain, nonatomic) IBOutlet MeasurementBar *bugBar;
 @property (retain, nonatomic) IBOutlet LocalizedLabel *hogsLabel;
 @property (retain, nonatomic) IBOutlet MeasurementBar *hogsBar;
+@property (retain, nonatomic) IBOutlet UILabel *iosPopularModelsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *androidPopularModelLabel;
 
 - (IBAction)showWellBehivedInfo:(id)sender;
 - (IBAction)showBugsInfo:(id)sender;

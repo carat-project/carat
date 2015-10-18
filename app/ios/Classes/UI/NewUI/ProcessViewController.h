@@ -9,13 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "BugHogExpandedTableViewCell.h"
-#import "BugHogListItemData.h"
 #import "BugHogTableViewCell.h"
+#import "ListNetworkBaseViewController.h"
 
-@interface ProcessViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) NSArray *tableData;
-@property (retain, nonatomic) IBOutlet UITableView *tableView;
+#import "UIImageView+WebCache.h"
+//#import "UIImageDoNotCache.h" 
 
-@property (nonatomic, strong) NSMutableArray *expandedCells;
+@interface ProcessViewController : ListNetworkBaseViewController {
+    NSArray *processList;
+    NSDate *lastUpdate;
+}
+
+@property (retain, nonatomic) NSDate *lastUpdate;
+@property (retain, nonatomic) NSArray *processList;
 
 @end

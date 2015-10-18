@@ -135,7 +135,7 @@
     } else if (act.actionBenefit == -3) {
         cell.actionValue.text = @"See top Hogs and devices";
         cell.actionType = ActionTypeGlobalStats;
-        cell.actionHeader.text = @"";
+        //cell.actionHeader.text = @"";
     }
 	else {
         cell.actionValue.text = [NSString stringWithFormat:@"%@ ± %@", [Utilities doubleAsTimeNSString:act.actionBenefit], [Utilities doubleAsTimeNSString:act.actionError]];

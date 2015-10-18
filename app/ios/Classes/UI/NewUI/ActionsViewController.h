@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
+#import "ListNetworkBaseViewController.h"
 
-@interface ActionsViewController : BaseViewController
+#import "ActionItemCell.h"
+
+#import "ActionObject.h"
+
+@interface ActionsViewController : ListNetworkBaseViewController{
+    NSMutableArray *actionList;
+    NSMutableArray *tableViewCellsList;
+}
+
+@property (retain, nonatomic) NSMutableArray *actionList;
+@property (retain, nonatomic) NSMutableArray *tableViewCellsList;
 
 @end

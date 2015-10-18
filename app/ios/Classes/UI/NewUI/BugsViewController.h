@@ -7,23 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BugHogExpandedTableViewCell.h"
-#import "BugHogListItemData.h"
-#import "BugHogTableViewCell.h"
-#import "BaseViewController.h"
+#import "BugHogListViewController.h"
 
-#import "UIImageView+WebCache.h"
-#import "CoreDataManager.h"
-#import "MBProgressHUD.h"
-
-@interface BugsViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate> {
-    HogBugReport *report;
-    
-}
-@property (retain, nonatomic) IBOutlet UITableView *tableView;
-
-@property (nonatomic, strong) NSMutableArray *expandedCells;
-@property (retain, nonatomic) HogBugReport *report;
+@interface BugsViewController : BugHogListViewController
 
 
 @end

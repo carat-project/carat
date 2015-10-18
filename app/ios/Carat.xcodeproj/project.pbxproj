@@ -42,6 +42,8 @@
 		894A5A7C1BD0B88C00388E87 /* NetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A5A7B1BD0B88C00388E87 /* NetworkBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		894A5A7F1BD2C06200388E87 /* ListNetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A5A7E1BD2C06200388E87 /* ListNetworkBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		894A5A821BD2C12B00388E87 /* BugHogListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A5A811BD2C12B00388E87 /* BugHogListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		894A5A891BD3EF1200388E87 /* ActionItemCollapsedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894A5A871BD3EF1200388E87 /* ActionItemCollapsedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		894A5A8B1BD3F1C400388E87 /* ActionItemExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894A5A8A1BD3F1C400388E87 /* ActionItemExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		894AF0641BCCD992003E7D76 /* AboutExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		894AF0651BCCD992003E7D76 /* AboutExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		894AF0691BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0671BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -73,10 +75,8 @@
 		89DAB8B61BC2B26B0053647E /* UiInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B51BC2B26B0053647E /* UiInsetLabel.m */; settings = {ASSET_TAGS = (); }; };
 		89DE0E2C1BC3A7CA0034F64D /* BugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DE0E2A1BC3A7CA0034F64D /* BugsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		89DE0E2D1BC3A7CA0034F64D /* BugsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89DE0E2B1BC3A7CA0034F64D /* BugsViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		89EFCC0E1BC656E700480C56 /* BugHogListItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFCC0D1BC656E700480C56 /* BugHogListItemData.m */; settings = {ASSET_TAGS = (); }; };
 		89EFCC121BC66ABF00480C56 /* BugHogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		89EFCC131BC66ABF00480C56 /* BugHogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		AB244AF814E10D660055FCD6 /* ActionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB244AF714E10D660055FCD6 /* ActionItemCell.xib */; };
 		AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */; };
 		AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF6144E1E520090CC09 /* CaratAppDelegate.m */; };
 		AB41CDF8144E27200090CC09 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB41CDF7144E27200090CC09 /* CoreLocation.framework */; };
@@ -266,6 +266,8 @@
 		894A5A7E1BD2C06200388E87 /* ListNetworkBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListNetworkBaseViewController.m; sourceTree = "<group>"; };
 		894A5A801BD2C12B00388E87 /* BugHogListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogListViewController.h; sourceTree = "<group>"; };
 		894A5A811BD2C12B00388E87 /* BugHogListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogListViewController.m; sourceTree = "<group>"; };
+		894A5A871BD3EF1200388E87 /* ActionItemCollapsedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemCollapsedTableViewCell.xib; sourceTree = "<group>"; };
+		894A5A8A1BD3F1C400388E87 /* ActionItemExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemExpandedTableViewCell.xib; sourceTree = "<group>"; };
 		894AF0611BCCD992003E7D76 /* AboutExpandedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutExpandedTableViewCell.h; sourceTree = "<group>"; };
 		894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutExpandedTableViewCell.m; sourceTree = "<group>"; };
 		894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutExpandedTableViewCell.xib; sourceTree = "<group>"; };
@@ -317,8 +319,6 @@
 		89DE0E291BC3A7CA0034F64D /* BugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugsViewController.h; sourceTree = "<group>"; };
 		89DE0E2A1BC3A7CA0034F64D /* BugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugsViewController.m; sourceTree = "<group>"; };
 		89DE0E2B1BC3A7CA0034F64D /* BugsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugsViewController.xib; sourceTree = "<group>"; };
-		89EFCC0C1BC656E700480C56 /* BugHogListItemData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogListItemData.h; sourceTree = "<group>"; };
-		89EFCC0D1BC656E700480C56 /* BugHogListItemData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogListItemData.m; sourceTree = "<group>"; };
 		89EFCC0F1BC66ABF00480C56 /* BugHogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogTableViewCell.h; sourceTree = "<group>"; };
 		89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogTableViewCell.m; sourceTree = "<group>"; };
 		89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugHogTableViewCell.xib; sourceTree = "<group>"; };
@@ -327,7 +327,6 @@
 		AB105EBB14EDCA57000DB145 /* ProcessListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessListViewController.h; sourceTree = "<group>"; };
 		AB105EBC14EDCA57000DB145 /* ProcessListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessListViewController.m; sourceTree = "<group>"; };
 		AB105EBE14EDCCD2000DB145 /* jscoreinfo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jscoreinfo.html; sourceTree = "<group>"; };
-		AB244AF714E10D660055FCD6 /* ActionItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemCell.xib; sourceTree = "<group>"; };
 		AB3B89C816C03A26007C8596 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		AB41CDF1144E1AF60090CC09 /* UIDeviceProc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDeviceProc.h; sourceTree = "<group>"; };
 		AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDeviceProc.m; sourceTree = "<group>"; };
@@ -438,10 +437,10 @@
 		C70C03D0194E3F30008C8B01 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		C7547E0519963590007A01CF /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x.png"; path = "../Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		C7547E0C19963CCD007A01CF /* icon152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon152.png; path = ../icon152.png; sourceTree = "<group>"; };
-		C7547E2119963CFD007A01CF /* ActionItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemCell.h; sourceTree = "<group>"; };
-		C7547E2219963CFD007A01CF /* ActionItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemCell.m; sourceTree = "<group>"; };
-		C7547E2319963CFD007A01CF /* ActionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionObject.h; sourceTree = "<group>"; };
-		C7547E2419963CFD007A01CF /* ActionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionObject.m; sourceTree = "<group>"; };
+		C7547E2119963CFD007A01CF /* ActionItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionItemCell.h; path = ../../ActionItemCell.h; sourceTree = "<group>"; };
+		C7547E2219963CFD007A01CF /* ActionItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionItemCell.m; path = ../../ActionItemCell.m; sourceTree = "<group>"; };
+		C7547E2319963CFD007A01CF /* ActionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionObject.h; path = ../../ActionObject.h; sourceTree = "<group>"; };
+		C7547E2419963CFD007A01CF /* ActionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionObject.m; path = ../../ActionObject.m; sourceTree = "<group>"; };
 		C7547E2519963CFD007A01CF /* ActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
 		C7547E2619963CFD007A01CF /* ActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
 		C7547E2B19963CFD007A01CF /* BugDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugDetailViewController.h; sourceTree = "<group>"; };
@@ -932,7 +931,6 @@
 				C754877E19963D02007A01CF /* ProcessListView.xib */,
 				ABC07A1F14859E7500FCC2C2 /* AboutView.xib */,
 				AB7A112C14E06520004D155C /* ActionView.xib */,
-				AB244AF714E10D660055FCD6 /* ActionItemCell.xib */,
 				AB41CE2D145229FE0090CC09 /* CurrentView.xib */,
 				C7547EAC19963CFD007A01CF /* HiddenAppsView.xib */,
 				2840D7CD1179279E00D7F93C /* ReportView.xib */,
@@ -1029,6 +1027,16 @@
 				894A23FC1BC251800059850A /* DashboardNavigationButton.xib */,
 				894A23FA1BC251800059850A /* DashboardNavigationButton.h */,
 				894A23FB1BC251800059850A /* DashboardNavigationButton.m */,
+				894A5A871BD3EF1200388E87 /* ActionItemCollapsedTableViewCell.xib */,
+				894A5A8A1BD3F1C400388E87 /* ActionItemExpandedTableViewCell.xib */,
+				C7547E2119963CFD007A01CF /* ActionItemCell.h */,
+				C7547E2219963CFD007A01CF /* ActionItemCell.m */,
+				89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */,
+				89EFCC0F1BC66ABF00480C56 /* BugHogTableViewCell.h */,
+				89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */,
+				894911591BC78D140025F848 /* BugHogExpandedTableViewCell.xib */,
+				894911571BC78D140025F848 /* BugHogExpandedTableViewCell.h */,
+				894911581BC78D140025F848 /* BugHogExpandedTableViewCell.m */,
 				894A23FD1BC251800059850A /* ScoreView.h */,
 				894A23FE1BC251800059850A /* ScoreView.m */,
 				894A24031BC251800059850A /* TutorialPageIndicatorView.h */,
@@ -1041,12 +1049,6 @@
 				89DAB8B51BC2B26B0053647E /* UiInsetLabel.m */,
 				89486E551BC55DFF00138F23 /* MeasurementBar.h */,
 				89486E561BC55DFF00138F23 /* MeasurementBar.m */,
-				89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */,
-				89EFCC0F1BC66ABF00480C56 /* BugHogTableViewCell.h */,
-				89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */,
-				894911591BC78D140025F848 /* BugHogExpandedTableViewCell.xib */,
-				894911571BC78D140025F848 /* BugHogExpandedTableViewCell.h */,
-				894911581BC78D140025F848 /* BugHogExpandedTableViewCell.m */,
 				89550A9B1BCBDBDC00D1DE11 /* TouchView.h */,
 				89550A9C1BCBDBDC00D1DE11 /* TouchView.m */,
 				89550A9E1BCBDCC500D1DE11 /* TouchViewDelegate.h */,
@@ -1063,10 +1065,10 @@
 		894A240B1BC256180059850A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C7547E2319963CFD007A01CF /* ActionObject.h */,
+				C7547E2419963CFD007A01CF /* ActionObject.m */,
 				894A240C1BC256A90059850A /* TutorialPageContent.h */,
 				894A240D1BC256A90059850A /* TutorialPageContent.m */,
-				89EFCC0C1BC656E700480C56 /* BugHogListItemData.h */,
-				89EFCC0D1BC656E700480C56 /* BugHogListItemData.m */,
 				894AF06B1BCCEC5F003E7D76 /* AboutListItemData.h */,
 				894AF06C1BCCEC5F003E7D76 /* AboutListItemData.m */,
 			);
@@ -1244,10 +1246,6 @@
 				AB7999111455C1C5000AE9FE /* HogReportViewController.m */,
 				AB105EBB14EDCA57000DB145 /* ProcessListViewController.h */,
 				AB105EBC14EDCA57000DB145 /* ProcessListViewController.m */,
-				C7547E2119963CFD007A01CF /* ActionItemCell.h */,
-				C7547E2219963CFD007A01CF /* ActionItemCell.m */,
-				C7547E2319963CFD007A01CF /* ActionObject.h */,
-				C7547E2419963CFD007A01CF /* ActionObject.m */,
 				894A23EB1BC250B70059850A /* NewUI */,
 			);
 			path = UI;
@@ -1756,6 +1754,7 @@
 				89D48E661BC3D01D00595136 /* MyScoreViewController.xib in Resources */,
 				89D48E611BC3CE7800595136 /* ActionsViewController.xib in Resources */,
 				AB41CE1C1450BC060090CC09 /* hog.png in Resources */,
+				894A5A891BD3EF1200388E87 /* ActionItemCollapsedTableViewCell.xib in Resources */,
 				C75488D519963D04007A01CF /* icon76.png in Resources */,
 				89EFCC131BC66ABF00480C56 /* BugHogTableViewCell.xib in Resources */,
 				AB41CE2E145229FE0090CC09 /* CurrentView.xib in Resources */,
@@ -1793,7 +1792,6 @@
 				AB9B580D148FF31D004F92F2 /* 37x-X.png in Resources */,
 				C75488D019963D04007A01CF /* icon120.png in Resources */,
 				AB7A112D14E06520004D155C /* ActionView.xib in Resources */,
-				AB244AF814E10D660055FCD6 /* ActionItemCell.xib in Resources */,
 				894A23F31BC251140059850A /* DashBoardViewController.xib in Resources */,
 				C75488BC19963D04007A01CF /* ConsentView.xib in Resources */,
 				C7548BBC19963D04007A01CF /* ProcessItemCell.xib in Resources */,
@@ -1818,6 +1816,7 @@
 				661955AD1A73FE2F00865B2E /* collectdata.html in Resources */,
 				AB99EB0414EA6CCD0008E440 /* deviceselect.png in Resources */,
 				AB99EB0514EA6CCD0008E440 /* updatecheck.png in Resources */,
+				894A5A8B1BD3F1C400388E87 /* ActionItemExpandedTableViewCell.xib in Resources */,
 				C7548CC219963ED0007A01CF /* Icon-Small-50.png in Resources */,
 				661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */,
 				ABEC9B6814F1DA00005CE813 /* license.txt in Resources */,
@@ -1889,7 +1888,6 @@
 				C74130CA19EDC6EA00A1E8CE /* SDWebImageDecoder.m in Sources */,
 				C754889B19963D04007A01CF /* SDWebImageDownloader.m in Sources */,
 				894A23F21BC251140059850A /* DashBoardViewController.m in Sources */,
-				89EFCC0E1BC656E700480C56 /* BugHogListItemData.m in Sources */,
 				89D48E601BC3CE7800595136 /* ActionsViewController.m in Sources */,
 				C74130CC19EDC6EA00A1E8CE /* SDWebImageDownloaderDelegate.h in Sources */,
 				C754889C19963D04007A01CF /* SDWebImageManager.m in Sources */,
