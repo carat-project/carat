@@ -11,7 +11,7 @@
                 <outlet property="contentView" destination="hpx-p7-rLH" id="iOv-fP-0pb"/>
                 <outlet property="labelRef" destination="doe-we-gd1" id="e8V-Jx-Clp"/>
                 <outlet property="navigationBar" destination="lWH-BB-lU4" id="NAl-cX-w6I"/>
-                <outlet property="navigationItemRef" destination="nZn-bm-uun" id="prG-UI-4lB"/>
+                <outlet property="navigationItemRef" destination="nZn-bm-uun" id="4wD-zc-gRd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -686,8 +686,7 @@
                                             <exclude reference="rFD-XE-8TY"/>
                                         </mask>
                                     </variation>
-                                    <variation key="widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="143" y="56" width="114" height="114"/>
+                                    <variation key="widthClass=compact">
                                         <mask key="constraints">
                                             <include reference="rFD-XE-8TY"/>
                                         </mask>

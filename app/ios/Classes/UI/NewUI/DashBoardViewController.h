@@ -18,6 +18,8 @@
 #import "MyScoreViewController.h"
 #import "MoreViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "MBProgressHUD.h"
 #import <Socialize/Socialize.h>
 #import <Social/Social.h>

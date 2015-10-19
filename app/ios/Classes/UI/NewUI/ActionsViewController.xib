@@ -23,9 +23,6 @@
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
-                            <variation key="widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="68" y="5" width="322" height="15"/>
-                            </variation>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="action_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9uV-Fq-TcT">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -69,9 +66,9 @@
                         </mask>
                         <mask key="constraints">
                             <exclude reference="TDS-fI-5bi"/>
+                            <exclude reference="Fkq-46-0Ym"/>
                             <exclude reference="QST-cq-oZ5"/>
                             <exclude reference="rvF-Cg-ahd"/>
-                            <exclude reference="Fkq-46-0Ym"/>
                             <exclude reference="jAy-bQ-1W2"/>
                             <exclude reference="n18-Pm-yDG"/>
                         </mask>
@@ -83,15 +80,15 @@
                         </mask>
                         <mask key="constraints">
                             <include reference="TDS-fI-5bi"/>
+                            <include reference="Fkq-46-0Ym"/>
                             <include reference="QST-cq-oZ5"/>
                             <include reference="rvF-Cg-ahd"/>
-                            <include reference="Fkq-46-0Ym"/>
                             <include reference="jAy-bQ-1W2"/>
                             <include reference="n18-Pm-yDG"/>
                         </mask>
                     </variation>
                 </view>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZWr-dT-jZi">
+                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZWr-dT-jZi">
                     <rect key="frame" x="174" y="23" width="400" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
@@ -131,12 +128,12 @@
                     <exclude reference="8hU-MC-Nve"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="MjK-pb-JfA"/>
-                    <exclude reference="VPS-ye-udE"/>
-                    <exclude reference="bkJ-11-zV4"/>
                     <exclude reference="3t8-3U-TOe"/>
                     <exclude reference="5hX-Pe-1Jk"/>
                     <exclude reference="E33-tQ-gEf"/>
+                    <exclude reference="MjK-pb-JfA"/>
+                    <exclude reference="VPS-ye-udE"/>
+                    <exclude reference="bkJ-11-zV4"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -144,12 +141,12 @@
                     <include reference="8hU-MC-Nve"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="MjK-pb-JfA"/>
-                    <include reference="VPS-ye-udE"/>
-                    <include reference="bkJ-11-zV4"/>
                     <include reference="3t8-3U-TOe"/>
                     <include reference="5hX-Pe-1Jk"/>
                     <include reference="E33-tQ-gEf"/>
+                    <include reference="MjK-pb-JfA"/>
+                    <include reference="VPS-ye-udE"/>
+                    <include reference="bkJ-11-zV4"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="223" y="147"/>

@@ -14,6 +14,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /*
+    NSString *title = [_navigationItem title];
+    NSLog(@"title: %@", title);
+    NSString *locallizedTitle = [NSLocalizedString(title, nil) uppercaseString];
+    NSLog(@"locallizedTitle: %@", locallizedTitle);
+    [_navigationItem setTitle:locallizedTitle];
+     */
+
+    
     //[self setFontFamily:@"SanFransisco" forView:self.view andSubViews:YES];
 }
 
@@ -64,4 +74,7 @@
     
 }
 
+- (void)dealloc {
+    [super dealloc];
+}
 @end

@@ -18,17 +18,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //ios 9 doesnt allow this had to make info.plist file some changes (AllowArbitaryDownloads)
+    //to get this to work needs that file from https url
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://carat.cs.helsinki.fi/statistics-data/stats.json"]];
     
     __block NSDictionary *json;
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               json = [NSJSONSerialization JSONObjectWithData:data
+                               if(data){
+                                   json = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:nil];
-                               [self applyGeneralStatJSONDataToView: json];
-                               NSLog(@"Async JSON: %@", json);
+                                   [self applyGeneralStatJSONDataToView: json];
+                                   NSLog(@"Async JSON: %@", json);
+                               }
                            }];
     _iosPopularModelsLabel.text = NSLocalizedString(@"IOSModelDesc", nil);
     _androidPopularModelLabel.text = NSLocalizedString(@"AndroidModelDesc", nil);

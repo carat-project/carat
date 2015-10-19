@@ -7,13 +7,14 @@
 */
 //DashBoard starts
 
+"Dashboard"="Dashboard";
 "Carat" = "Carat";
 "BatteryLifeLabel"="Active Battery Life";
 "Bugs"="Bugs";
 "Hogs"="Hogs";
 "Statistics"="Statistics";
 "Actions"="Actions";
-"MyDevice"="My Device";
+"MyDevice"="MY DEVICE";
 "View"="View";
 "UpdatedNowTxt"= "Updated just now";
 "JScore"="J-Score";

@@ -31,6 +31,16 @@
     
 }
 
+- (void)updateView
+{
+    self.processList = [[UIDevice currentDevice] runningProcesses];
+    self.lastUpdate = [NSDate date];
+    // TODO filter (based on "Filter Daemons" button)
+    [self.tableView reloadData];
+    [self.view setNeedsDisplay];
+}
+
+
 #pragma mark - table methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

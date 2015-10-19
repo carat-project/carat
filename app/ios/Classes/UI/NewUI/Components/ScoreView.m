@@ -126,11 +126,11 @@
     
     // Set the display for the path, and stroke it
     bezierPath.lineWidth = 4;
-    [C_ORANGE_LIGHT setStroke];
+    [C_ORANGE setStroke];
     [bezierPath stroke];
     
     
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:textSize]};
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Bold" size:textSize]};
     // NSString class method: boundingRectWithSize:options:attributes:context is
     // available only on ios7.0 sdk.
     CGRect scoreSize = [textContent boundingRectWithSize:CGSizeMake(radius, CGFLOAT_MAX)
@@ -151,7 +151,7 @@
     
     [[UIColor blackColor] setFill];
 // Text Drawing
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:textSize];
+    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:textSize];
     
     /// Make a copy of the default paragraph style
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];

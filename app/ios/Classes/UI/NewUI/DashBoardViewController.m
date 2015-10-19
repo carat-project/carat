@@ -32,11 +32,11 @@
     return self;
 }
 
-- (void)loadView
-{
-    [super loadView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
     [_shareBar setHidden:YES];
-
+    
     [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
     [_bugsBtn setButtonExtraInfo:@"7"];
     [_bugsBtn setButtonTitle:NSLocalizedString(@"Bugs", nil)];
@@ -44,7 +44,7 @@
     [_hogsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
     [_hogsBtn setButtonExtraInfo:@"4"];
     [_hogsBtn setButtonTitle:NSLocalizedString(@"Hogs", nil)];
-
+    
     [_statisticsBtn setButtonImage:[UIImage imageNamed:@"globe_icon"]];
     [_statisticsBtn setButtonExtraInfo:@"VIEW"];
     [_statisticsBtn setButtonTitle:NSLocalizedString(@"Statistics", nil)];
@@ -52,13 +52,23 @@
     [_actionsBtn setButtonImage:[UIImage imageNamed:@"action_icon"]];
     [_actionsBtn setButtonExtraInfo:@"4"];
     [_actionsBtn setButtonTitle:NSLocalizedString(@"Actions", nil)];
-    
+}
 
+
+- (void)loadView
+{
+    [super loadView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    //[self.navigationController setNavigationBarHidden:YES animated:YES];
+    NSString *title = [super.navigationItem title];
+    NSLog(@"title: %@", title);
+    NSString *locallizedTitle = [NSLocalizedString(title, nil) uppercaseString];
+    NSLog(@"locallizedTitle: %@", locallizedTitle);
+    [super.navigationItem setTitle:locallizedTitle];
+    
     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [super viewWillAppear:animated];
     [self updateView];
@@ -105,7 +115,10 @@
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil) object:nil];
-
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kUpdateNetworkStatusNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kSamplesSentCountUpdateNotification object:nil];
 }
 
 - (void)updateView
