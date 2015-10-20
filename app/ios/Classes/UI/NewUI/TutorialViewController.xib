@@ -306,6 +306,7 @@
                     <include reference="wTb-5N-Ljb"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="133" y="177"/>
         </view>
         <swipeGestureRecognizer direction="right" id="s6e-OU-Uh2">
             <connections>

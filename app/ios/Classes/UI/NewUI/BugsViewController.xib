@@ -114,7 +114,7 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" image="more_icon" id="pig-9b-nQ4">
-                                <inset key="imageInsets" minX="20" minY="10" maxX="0.0" maxY="10"/>
+                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="barItemMorePressed" destination="-1" id="Ugj-gD-R7E"/>
@@ -181,6 +181,6 @@
     <resources>
         <image name="arrow_icon" width="48" height="48"/>
         <image name="bug_icon" width="48" height="48"/>
-        <image name="more_icon" width="42" height="42"/>
+        <image name="more_icon" width="8" height="30"/>
     </resources>
 </document>

@@ -46,7 +46,7 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" image="more_icon" id="y6G-gm-0Ln">
-                                <inset key="imageInsets" minX="25" minY="12" maxX="0.0" maxY="12"/>
+                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="barItemMorePressed" destination="-1" id="yoJ-DY-8Xf"/>
@@ -110,6 +110,6 @@
     </objects>
     <resources>
         <image name="arrow_icon" width="48" height="48"/>
-        <image name="more_icon" width="42" height="42"/>
+        <image name="more_icon" width="8" height="30"/>
     </resources>
 </document>

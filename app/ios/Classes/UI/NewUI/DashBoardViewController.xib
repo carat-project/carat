@@ -190,7 +190,7 @@
                     <items>
                         <navigationItem title="Dashboard" id="coB-1j-50y">
                             <barButtonItem key="rightBarButtonItem" image="more_icon" id="9BB-qE-3aM">
-                                <inset key="imageInsets" minX="25" minY="12" maxX="0.0" maxY="12"/>
+                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="barItemMorePressed" destination="-1" id="qb9-f8-8gx"/>
@@ -692,8 +692,8 @@
         <image name="close_icon" width="48" height="48"/>
         <image name="email_icon" width="48" height="48"/>
         <image name="facebook_icon" width="48" height="48"/>
-        <image name="more_icon" width="42" height="42"/>
-        <image name="share_btn" width="72" height="72"/>
+        <image name="more_icon" width="8" height="30"/>
+        <image name="share_btn" width="81" height="81"/>
         <image name="twitter_icon" width="48" height="48"/>
     </resources>
 </document>

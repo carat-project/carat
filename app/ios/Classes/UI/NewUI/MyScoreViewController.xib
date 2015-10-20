@@ -1077,7 +1077,7 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" image="more_icon" id="evr-xv-hVb">
-                                <inset key="imageInsets" minX="25" minY="12" maxX="0.0" maxY="12"/>
+                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="barItemMorePressed" destination="-1" id="ffy-U0-VFo"/>
@@ -1129,12 +1129,6 @@
             </variation>
             <point key="canvasLocation" x="349" y="122"/>
         </view>
-        <window contentMode="scaleToFill" resizesToFullScreen="NO" id="aqv-ss-054">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="815" y="22"/>
-        </window>
         <tapGestureRecognizer id="ZAg-WH-0XS" userLabel="jScoreTap">
             <connections>
                 <action selector="showJScoreExplanation:" destination="-1" id="M5F-MT-MOX"/>
@@ -1144,6 +1138,6 @@
     <resources>
         <image name="arrow_icon" width="48" height="48"/>
         <image name="chart_image" width="360" height="142"/>
-        <image name="more_icon" width="42" height="42"/>
+        <image name="more_icon" width="8" height="30"/>
     </resources>
 </document>
