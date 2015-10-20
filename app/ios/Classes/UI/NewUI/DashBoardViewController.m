@@ -34,7 +34,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [_shareBar setHidden:YES];
     
     [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
@@ -54,47 +53,20 @@
     [_actionsBtn setButtonTitle:NSLocalizedString(@"Actions", nil)];
 }
 
-
-- (void)loadView
-{
-    [super loadView];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     //[self.navigationController setNavigationBarHidden:YES animated:YES];
-    NSString *title = [super.navigationItem title];
-    NSLog(@"title: %@", title);
-    NSString *locallizedTitle = [NSLocalizedString(title, nil) uppercaseString];
-    NSLog(@"locallizedTitle: %@", locallizedTitle);
-    [super.navigationItem setTitle:locallizedTitle];
-    
     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [super viewWillAppear:animated];
     [self updateView];
     
-    // UPDATE REPORT DATA
-    if ([[CommunicationManager instance] isInternetReachable] == YES && // online
-        ![self isFresh] && // need to update
-        [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
-    {
-        [[CoreDataManager instance] updateLocalReportsFromServer];
-        [self.progressBar startAnimating];
-    } else if ([[CommunicationManager instance] isInternetReachable] == NO) {
-        DLog(@"Starting without reachability; setting notification.");
-    }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNetworkStatus:) name:kUpdateNetworkStatusNotification object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sampleCountUpdated:) name:kSamplesSentCountUpdateNotification object:nil];
-    
-    [self updateNetworkStatus:nil];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     if ([[CoreDataManager instance] getReportUpdateStatus] == nil) {
         // For this screen, let's put sending samples/registrations here so that we don't conflict
         // with the report syncing (need to limit memory/CPU/thread usage so that we don't get killed).
@@ -103,21 +75,11 @@
     }
     
     [self loadDataWithHUD:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loadDataWithHUD:)
-                                                 name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil)
-                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil) object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kUpdateNetworkStatusNotification object:nil];
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kSamplesSentCountUpdateNotification object:nil];
 }
 
@@ -149,6 +111,48 @@
     [self.updateLabel setNeedsDisplay];
 }
 
+//override to get handle progress bard
+- (void) updateNetworkStatus:(NSNotification *) notice
+{
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    NSDictionary *dict = [notice userInfo];
+    BOOL isInternetActive = [dict[kIsInternetActive] boolValue];
+    
+    if (isInternetActive || [[CommunicationManager instance] isInternetReachable]) {
+        DLog(@"Checking if update needed with new reachability status...");
+        if (![self isFresh] && // need to update
+            [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
+        {
+            DLog(@"Update possible; initiating.");
+            [[CoreDataManager instance] updateLocalReportsFromServer];
+            [self.progressBar startAnimating];
+            
+        }
+    }
+}
+
+#pragma mark - -HUD methods
+- (void)loadDataWithHUD:(id)obj
+{
+    DLog(@"[CoreDataManager instance] getReportUpdateStatus] = %@", [[CoreDataManager instance] getReportUpdateStatus]);
+    if([[CoreDataManager instance] getReportUpdateStatus] == nil){
+        [self.progressBar stopAnimating];
+        [self sampleCountUpdated:nil];
+    }
+    else{
+        self.updateLabel.text = [[CoreDataManager instance] getReportUpdateStatus];
+        [self.updateLabel setNeedsDisplay];
+    }
+    DLog(@"loadDataWithHUD");
+}
+
+
+#pragma mark - MBProgressHUDDelegate method
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    // Remove HUD from screen when the HUD was hidded
+    [self sampleCountUpdated:nil];
+}
 
 #pragma mark - Controller specific helpfull UI mehtods
 -(void)setTextLabel:(UILabel*) label text:(NSString *)text top:(CGFloat)top
@@ -212,55 +216,6 @@
     [_shareBar setHidden:YES];
     [_shareBtn setHidden:NO];
 }
-
-#pragma mark - -HUD methods
-- (void)loadDataWithHUD:(id)obj
-{
-     DLog(@"[CoreDataManager instance] getReportUpdateStatus] = %@", [[CoreDataManager instance] getReportUpdateStatus]);
-    if([[CoreDataManager instance] getReportUpdateStatus] == nil){
-        [self.progressBar stopAnimating];
-        [self sampleCountUpdated:nil];
-    }
-    else{
-        self.updateLabel.text = [[CoreDataManager instance] getReportUpdateStatus];
-        [self.updateLabel setNeedsDisplay];
-    }
-    DLog(@"loadDataWithHUD");
-}
-
-
-#pragma mark - MBProgressHUDDelegate method
-- (void)hudWasHidden:(MBProgressHUD *)hud
-{
-    // Remove HUD from screen when the HUD was hidded
-    [self sampleCountUpdated:nil];
-}
-
-- (BOOL) isFresh
-{
-    return [[CoreDataManager instance] secondsSinceLastUpdate] < 600; // 600 == 10 minutes
-}
-
-- (void) updateNetworkStatus:(NSNotification *) notice
-{
-    DLog(@"%s", __PRETTY_FUNCTION__);
-    NSDictionary *dict = [notice userInfo];
-    BOOL isInternetActive = [dict[kIsInternetActive] boolValue];
-    
-    if (isInternetActive || [[CommunicationManager instance] isInternetReachable]) {
-        DLog(@"Checking if update needed with new reachability status...");
-        if (![self isFresh] && // need to update
-            [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
-        {
-            DLog(@"Update possible; initiating.");
-            [[CoreDataManager instance] updateLocalReportsFromServer];
-            [self.progressBar startAnimating];
-            
-        }
-    }
-}
-
-
 
 #pragma mark - Navigation methods
 - (IBAction)showScoreInfo:(id)sender {

@@ -10,8 +10,7 @@
                 <outlet property="contentHeightConstraint" destination="1ud-ZE-sdc" id="X9O-PU-qut"/>
                 <outlet property="contentView" destination="hpx-p7-rLH" id="iOv-fP-0pb"/>
                 <outlet property="labelRef" destination="doe-we-gd1" id="e8V-Jx-Clp"/>
-                <outlet property="navigationBar" destination="lWH-BB-lU4" id="NAl-cX-w6I"/>
-                <outlet property="navigationItemRef" destination="nZn-bm-uun" id="4wD-zc-gRd"/>
+                <outlet property="navBar" destination="lWH-BB-lU4" id="JKK-KV-DC8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -9,7 +9,7 @@
 #import "ScoreView.h"
 #import "DashboardNavigationButton.h"
 
-#import "BaseViewController.h"
+#import "NetworkBaseViewController.h"
 #import "TutorialViewController.h"
 #import "BugsViewController.h"
 #import "HogsViewController.h"
@@ -26,7 +26,7 @@
 #import <MessageUI/MessageUI.h>
 
 
-@interface DashBoardViewController : BaseViewController <MFMailComposeViewControllerDelegate, MBProgressHUDDelegate>{
+@interface DashBoardViewController : NetworkBaseViewController <MFMailComposeViewControllerDelegate>{
     NSTimeInterval MAX_LIFE; // max battery life in seconds
 }
 

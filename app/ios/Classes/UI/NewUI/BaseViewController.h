@@ -13,7 +13,7 @@
 
 @interface BaseViewController : UIViewController
 
-//@property (retain, nonatomic) IBOutlet UINavigationItem *navigationItem;
+@property (retain, nonatomic) IBOutlet UINavigationBar *navBar;
 - (IBAction)barItemBackPressed;
 - (IBAction)barItemMorePressed;
 - (void)showInfoView:(NSString *)title message:(NSString *)message;

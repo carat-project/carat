@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _navigationItemRef.title = NSLocalizedString(_titleForView, nil);
+    [super.navBar.topItem setTitle:[NSLocalizedString(_titleForView, nil) uppercaseString]];
     _labelRef.text = NSLocalizedString(_messageForView, nil);
     
     CGFloat labelMargin = 12.0f;
@@ -57,9 +57,7 @@
 
 - (void)dealloc {
     [_labelRef release];
-    [_navigationItemRef release];
     [_contentView release];
-    [_navigationBar release];
     [_contentHeightConstraint release];
     [super dealloc];
 }

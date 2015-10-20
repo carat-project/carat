@@ -24,6 +24,7 @@
                 <outlet property="iOSIntensiveBar" destination="ATo-Ci-DTq" id="bQS-ix-Ijm"/>
                 <outlet property="iOSIntensiveDescLabel" destination="xkG-mD-sKC" id="9X7-Hh-5J9"/>
                 <outlet property="iosPopularModelsLabel" destination="xeb-Vr-saY" id="5tE-EQ-57T"/>
+                <outlet property="navBar" destination="xtK-g7-HlJ" id="2U0-5K-Q15"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wellBehivedBar" destination="9lN-dL-KqY" id="MK9-Mq-oPi"/>
                 <outlet property="wellBehivedLabel" destination="e1s-KM-Zeg" id="WMV-I3-onL"/>

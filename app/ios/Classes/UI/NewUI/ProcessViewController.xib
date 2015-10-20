@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProcessViewController">
             <connections>
+                <outlet property="navBar" destination="PLu-Mx-SU0" id="XEp-Vn-b2i"/>
                 <outlet property="tableView" destination="FZj-Dj-NFZ" id="h5Z-PB-zfT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

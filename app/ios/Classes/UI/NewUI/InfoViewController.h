@@ -12,8 +12,6 @@
 
 @interface InfoViewController : BaseViewController
 @property (retain, nonatomic) IBOutlet LocalizedLabel *labelRef;
-@property (retain, nonatomic) IBOutlet UINavigationItem *navigationItemRef;
-@property (retain, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 
 @property (assign, nonatomic) NSString *titleForView;

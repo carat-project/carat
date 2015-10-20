@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "DashboardViewController.h"
-#import "BaseViewController.h"
+#import "NetworkBaseViewController.h"
 #import "ProcessViewController.h"
 
-@interface MyScoreViewController : BaseViewController <MBProgressHUDDelegate> {
+@interface MyScoreViewController : NetworkBaseViewController {
     NSTimeInterval MAX_LIFE; // max battery life in seconds
 }
 @property (retain, nonatomic) IBOutlet ScoreView *jScore;
@@ -23,6 +23,7 @@
 @property (retain, nonatomic) IBOutlet MeasurementBar *memoryUsedBar;
 @property (retain, nonatomic) IBOutlet MeasurementBar *memoryActiveBar;
 @property (retain, nonatomic) IBOutlet MeasurementBar *cpuUsageBar;
+@property (retain, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
 
 - (IBAction)showJScoreExplanation:(id)sender;
 - (IBAction)showProcessList:(id)sender;

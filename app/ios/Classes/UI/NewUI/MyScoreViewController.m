@@ -42,12 +42,6 @@
     // Do any additional setup after loading the view from its nib.
 }
 
--(void)viewWillLayoutSubviews
-{
-    //adjust scroll height etc
-    [super viewWillLayoutSubviews];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
@@ -61,24 +55,23 @@
 {
     [super viewDidAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loadDataWithHUD:)
-                                                 name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil)
-                                               object:nil];
+    [super viewDidAppear:animated];
+    if ([[CoreDataManager instance] getReportUpdateStatus] == nil) {
+        // For this screen, let's put sending samples/registrations here so that we don't conflict
+        // with the report syncing (need to limit memory/CPU/thread usage so that we don't get killed).
+        [[CoreDataManager instance] checkConnectivityAndSendStoredDataToServer];
+        //[self.progressBar startAnimating];
+    }
+    
+    [self loadDataWithHUD:nil];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:NSLocalizedString(@"CCDMReportUpdateStatusNotification", nil) object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kSamplesSentCountUpdateNotification object:nil];
 }
-
-- (void)didReceiveMemoryWarning {
-    DLog(@"Memory warning.");
-    [super didReceiveMemoryWarning];
-}
-
 
 - (void)updateView
 {
@@ -106,7 +99,6 @@
         memActive = [memoryInfo[kMemoryActive] floatValue]*100;
     }
     
-    
     [self.jScore setScore:vScore];
     self.caratIDValue.text = vUUID;
     self.batteryLifeTimeValue.text = vBatteryLife;
@@ -115,14 +107,9 @@
     self.memoryUsedBar.largerMeasureValue = memUsed;
     self.memoryActiveBar.largerMeasureValue = memActive;
     DLog(@"memUsed: %f, memActive: %f", memUsed, memActive);
-    // Last Updated NOT USED IN THIS VIEW ANYMORE
+    // Last Updated
+    [self sampleCountUpdated:nil];
     
-    /*
-     NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
-    for (UILabel *lastUp in self.lastUpdated) {
-        lastUp.text = [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
-    }
-    */
     // Change since last week
     //    [[self sinceLastWeekString] makeObjectsPerformSelector:@selector(setText:) withObject:[[[[CoreDataManager instance] getChangeSinceLastWeek] objectAtIndex:0] stringByAppendingString:[@" (" stringByAppendingString:[[[[CoreDataManager instance] getChangeSinceLastWeek] objectAtIndex:1] stringByAppendingString:@"%)"]]]];
     //OS
@@ -132,8 +119,59 @@
     //APPS
     double vApps = [[[CoreDataManager instance] getSimilarAppsInfo:YES] score];
     DLog(@"uuid: %s, jscore: %d, os: %f, model: %f, apps: %f", [vUUID UTF8String], vScore, vOS, vModel, vApps);
-    
     [self.view setNeedsDisplay];
+}
+
+-(void)sampleCountUpdated:(NSNotification*)notification{
+    // Last Updated
+    //[self.progressBar stopAnimating];
+    NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
+    self.lastUpdatedLabel.text = [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
+    [self.lastUpdatedLabel setNeedsDisplay];
+}
+
+
+//override to get handle progress bard
+- (void) updateNetworkStatus:(NSNotification *) notice
+{
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    NSDictionary *dict = [notice userInfo];
+    BOOL isInternetActive = [dict[kIsInternetActive] boolValue];
+    
+    if (isInternetActive || [[CommunicationManager instance] isInternetReachable]) {
+        DLog(@"Checking if update needed with new reachability status...");
+        if (![self isFresh] && // need to update
+            [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
+        {
+            DLog(@"Update possible; initiating.");
+            [[CoreDataManager instance] updateLocalReportsFromServer];
+            //[self.progressBar startAnimating];
+            
+        }
+    }
+}
+
+#pragma mark - -HUD methods
+- (void)loadDataWithHUD:(id)obj
+{
+    DLog(@"[CoreDataManager instance] getReportUpdateStatus] = %@", [[CoreDataManager instance] getReportUpdateStatus]);
+    if([[CoreDataManager instance] getReportUpdateStatus] == nil){
+        //[self.progressBar stopAnimating];
+        [self sampleCountUpdated:nil];
+    }
+    else{
+        self.lastUpdatedLabel.text = [[CoreDataManager instance] getReportUpdateStatus];
+        [self.lastUpdatedLabel setNeedsDisplay];
+    }
+    DLog(@"loadDataWithHUD");
+}
+
+
+#pragma mark - MBProgressHUDDelegate method
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    // Remove HUD from screen when the HUD was hidded
+    [self sampleCountUpdated:nil];
 }
 
 - (NSString *)getSameOSDetail:(id)sender
@@ -170,36 +208,6 @@
         
     }
     return @"";
-}
-
-
-
-#pragma mark - -HUD methods
-- (void)loadDataWithHUD:(id)obj
-{
-    if ([[CoreDataManager instance] getReportUpdateStatus] == nil) {
-        // *probably* no update in progress, reload table data while locking out view
-
-    }
-}
-
-
-#pragma mark - MBProgressHUDDelegate method
-- (void)hudWasHidden:(MBProgressHUD *)hud
-{
-    // Remove HUD from screen when the HUD was hidded
-
-}
-
-
--(void)sampleCountUpdated:(NSNotification*)notification{
-    // Last Updated
-    /*
-    NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
-    for (UILabel *lastUp in self.lastUpdated) {
-        lastUp.text = [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
-    }
-    */
 }
 
 #pragma mark - Navigation methods
@@ -244,6 +252,7 @@
     [_memoryActiveBar release];
     [_cpuUsageBar release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_lastUpdatedLabel release];
     [super dealloc];
 }
 @end
