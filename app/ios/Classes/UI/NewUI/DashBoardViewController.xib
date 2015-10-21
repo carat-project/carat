@@ -199,6 +199,25 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="vzu-2P-pc6">
+                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="vzu-2P-pc6" secondAttribute="height" multiplier="1:1" id="8xF-8v-sug"/>
+                        <constraint firstAttribute="height" constant="40" id="R2o-a3-kb4"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="8xF-8v-sug"/>
+                            <exclude reference="R2o-a3-kb4"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="8xF-8v-sug"/>
+                            <include reference="R2o-a3-kb4"/>
+                        </mask>
+                    </variation>
+                </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpT-LF-6p6" userLabel="midCont">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
@@ -219,9 +238,6 @@
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
-                            <variation key="widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="8" y="105" width="384" height="21"/>
-                            </variation>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gy-A1-c9i" customClass="LocalizedUIButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -526,25 +542,6 @@
                         <action selector="showShareBar:" destination="-1" eventType="touchUpInside" id="Gz7-Ba-t7y"/>
                     </connections>
                 </button>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="vzu-2P-pc6">
-                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="vzu-2P-pc6" secondAttribute="height" multiplier="1:1" id="8xF-8v-sug"/>
-                        <constraint firstAttribute="height" constant="40" id="R2o-a3-kb4"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="8xF-8v-sug"/>
-                            <exclude reference="R2o-a3-kb4"/>
-                        </mask>
-                    </variation>
-                    <variation key="widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="8xF-8v-sug"/>
-                            <include reference="R2o-a3-kb4"/>
-                        </mask>
-                    </variation>
-                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
@@ -583,10 +580,10 @@
                     <exclude reference="Ia7-bT-aLn"/>
                     <exclude reference="KHS-1W-TCm"/>
                     <exclude reference="MLN-M5-fNW"/>
+                    <exclude reference="vzu-2P-pc6"/>
                     <exclude reference="BpT-LF-6p6"/>
                     <exclude reference="EgJ-dC-XF2"/>
                     <exclude reference="oEg-W8-5rf"/>
-                    <exclude reference="vzu-2P-pc6"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="955-m5-NRj"/>
@@ -624,10 +621,10 @@
                     <include reference="Ia7-bT-aLn"/>
                     <include reference="KHS-1W-TCm"/>
                     <include reference="MLN-M5-fNW"/>
+                    <include reference="vzu-2P-pc6"/>
                     <include reference="BpT-LF-6p6"/>
                     <include reference="EgJ-dC-XF2"/>
                     <include reference="oEg-W8-5rf"/>
-                    <include reference="vzu-2P-pc6"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="955-m5-NRj"/>
