@@ -26,4 +26,14 @@
     // Configure the view for the selected state
 }
 
+- (void)dealloc {
+    [_samplesValueLabel release];
+    [_samplesWithoutValueLabel release];
+    [_errorValueLabel release];
+    [_helpLabel release];
+    [_expandContent release];
+    [_expandBtn release];
+    [super dealloc];
+}
+
 @end

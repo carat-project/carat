@@ -101,7 +101,7 @@
         [self.expandedCells addObject:indexPath];
     }
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     
     [tableView endUpdates];
 }
@@ -125,6 +125,9 @@
         // *probably* no update in progress, reload table data while locking out view
         [self.tableView.pullToRefreshView stopAnimating];
     }
+}
+
+-(void)sampleCountUpdated:(NSNotification*)notification{
 }
 
 

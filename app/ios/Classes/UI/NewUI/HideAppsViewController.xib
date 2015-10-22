@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HideAppsViewController">
             <connections>
                 <outlet property="navBar" destination="OMm-xN-Zja" id="Tf6-cC-7vu"/>
+                <outlet property="pickerView" destination="Lf7-8j-QYz" id="DRp-QS-Zud"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

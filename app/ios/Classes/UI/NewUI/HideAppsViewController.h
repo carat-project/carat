@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Globals.h"
 #import "BaseViewController.h"
 
 @interface HideAppsViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) NSArray *hideChoises;
+@property (retain, nonatomic) IBOutlet UIPickerView *pickerView;
 - (IBAction)selectClicked:(id)sender;
 
 @end

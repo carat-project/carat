@@ -180,92 +180,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DLog(@"%s", __PRETTY_FUNCTION__);
     UITableViewCell *cell = [super tableView: tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
-    [tableViewCellsList addObject:cell];
-    
+    DLog(@"Loading cells and populating it");
     // Set up the cell...
     ActionObject *act = [self.actionList objectAtIndex:indexPath.row];
-    ActionItemCell *actCell = (ActionItemCell *)cell;
+    ActionTableViewCell *actCell = (ActionTableViewCell *)cell;
     [self setTopRowData:act cell:actCell];
+    [self setDescriptionValue:act cell:actCell];
     if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
-        switch (act.actionType) {
-            case ActionTypeKillApp:
-                DLog(@"Loading Kill App instructions");
-                actCell.actionDescription.text = @"";
-                //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"killapp.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
-                break;
-                
-            case ActionTypeRestartApp:
-                DLog(@"Loading Restart App instructions");
-                actCell.actionDescription.text = @"";
-                //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"killapp.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
-                break;
-                
-            case ActionTypeUpgradeOS:
-                DLog(@"Loading Upgrade OS instructions");
-                actCell.actionDescription.text = @"";
-                //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"upgradeos.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
-                break;
-                
-            case ActionTypeActiveBatteryLifeInfo:
-                DLog(@"Loading Active Battery Life info");
-                actCell.actionDescription.text = @"";
-                self.navigationItem.title = @"Active Battery Life Info";
-                //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"activebatterylife.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
-                break;
-                
-            case ActionTypeJScoreInfo:
-                DLog(@"Loading J-Score info");
-                self.navigationItem.title = @"J-Score Info";
-                actCell.actionDescription.text = @"";
-                //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"jscoreinfo.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
-                break;
-                
-            case ActionTypeMemoryInfo:
-                DLog(@"Loading Memory info");
-                self.navigationItem.title = @"Memory Info";
-                actCell.actionDescription.text = @"";
-                //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"memoryinfo.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
-                break;
-                
-            case ActionTypeDetailInfo:
-                DLog(@"Loading Detail info");
-                self.navigationItem.title = @"Distribution Info";
-                actCell.actionDescription.text = @"";
-                //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"detailinfo.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
-                break;
-                
-            case ActionTypeDimScreen:
-                DLog(@"These instructions not yet implemented.");
-                actCell.actionDescription.text = @"";
-                //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] isDirectory:NO]]];
-                break;
-                
-            case ActionTypeSpreadTheWord:
-                DLog(@"Should not be loading InstructionView when ActionType is SpreadTheWord!");
-                actCell.actionDescription.text = @"";
-                //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] isDirectory:NO]]];
-                break;
-                
-            case ActionTypeCollectData:
-                DLog(@"Loading Data Collection info");
-                actCell.actionDescription.text = @"";
-                self.navigationItem.title = @"Data Collection Info";
-                //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"collectdata.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
-                break;
-                
-            default:
-                DLog(@"Unrecognized Action Type!");
-                actCell.actionDescription.text = @"";
-                //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] isDirectory:NO]]];
-                break;
-        }
+        actCell.actionDescr.text = actCell.descValue; //need to store description for cell height
     }
+    [tableViewCellsList addObject:cell];
     return cell;
 }
 
--(void)setTopRowData:(ActionObject *)act cell:(ActionItemCell *)cell
+-(void)setTopRowData:(ActionObject *)act cell:(ActionTableViewCell *)cell
 {
+     DLog(@"setTopRowData");
     NSString *appName = act.actionText;
     cell.actionString.text = appName;
     
@@ -295,6 +227,94 @@
     }
 }
 
+- (void)setDescriptionValue:(ActionObject *)act cell:(ActionTableViewCell *)cell
+{
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    switch (act.actionType) {
+        case ActionTypeKillApp:
+            DLog(@"Loading Kill App instructions");
+            cell.descValue = NSLocalizedString(@"KillAppDesc", nil);
+            //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"killapp.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
+            break;
+            
+        case ActionTypeRestartApp:
+            DLog(@"Loading Restart App instructions");
+            cell.descValue = NSLocalizedString(@"KillAppDesc", nil);
+            //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"killapp.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
+            break;
+            
+        case ActionTypeUpgradeOS:
+            DLog(@"Loading Upgrade OS instructions");
+            cell.descValue = NSLocalizedString(@"UpgradeOSDesc", nil);
+            //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"upgradeos.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
+            break;
+            
+        case ActionTypeActiveBatteryLifeInfo:
+            DLog(@"Loading Active Battery Life info");
+            [self setDescription:cell titleID:NSLocalizedString(@"ActiveBatteryLifeSub", nil) textID:NSLocalizedString(@"ActiveBatteryLifeMessage" , nil)];
+            //self.navigationItem.title = @"Active Battery Life Info";
+            //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"activebatterylife.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
+            break;
+            
+        case ActionTypeJScoreInfo:
+            DLog(@"Loading J-Score info");
+            [self setDescription:cell titleID:NSLocalizedString(@"InfoJscoreLabel", nil) textID:NSLocalizedString(@"JScoreDesc" , nil)];
+            //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"jscoreinfo.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
+            break;
+            
+        case ActionTypeMemoryInfo:
+            DLog(@"Loading Memory info");
+        {
+            cell.descValue = NSLocalizedString(@"MemoryDesc", nil);
+        }
+            //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"memoryinfo.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
+            break;
+            
+        case ActionTypeDetailInfo:
+            DLog(@"Loading Detail info");
+            self.navigationItem.title = @"Distribution Info";
+            cell.descValue = @"";
+            //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"detailinfo.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
+            break;
+            
+        case ActionTypeDimScreen:
+            DLog(@"These instructions not yet implemented.");
+            cell.descValue = @"";
+            //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] isDirectory:NO]]];
+            break;
+            
+        case ActionTypeSpreadTheWord:
+            DLog(@"Should not be loading InstructionView when ActionType is SpreadTheWord!");
+            cell.descValue = @"";
+            //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] isDirectory:NO]]];
+            break;
+            
+        case ActionTypeCollectData:
+            DLog(@"Loading Data Collection info");
+            [self setDescription:cell titleID:NSLocalizedString(@"CollectDataTitle", nil) textID:NSLocalizedString(@"CollectDataDesc" , nil)];
+            break;
+            
+        default:
+            DLog(@"Unrecognized Action Type!");
+            cell.descValue = @"";
+            //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"] isDirectory:NO]]];
+            break;
+    }
+}
+
+-(void) setDescription:(ActionTableViewCell *)cell titleID:(NSString *)titleID textID:(NSString *)textID
+{
+    NSString *title = NSLocalizedString(titleID, nil);
+    NSString *text = NSLocalizedString(textID, nil);
+    NSMutableString *all = [[NSMutableString alloc] init];
+    [all appendString:title];
+    [all appendString:@"\n\n"];
+    [all appendString:text];
+    cell.descValue = all;
+    [all release];
+}
+
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
@@ -313,15 +333,25 @@
     
     if ([self.expandedCells containsObject:indexPath])
     {
-        ActionItemCell *cell = [tableViewCellsList objectAtIndex:indexPath.row];
-        CGFloat expandedTextHeight = 56.0f + [self getTextHeight:cell.actionDescription] + 16.0f;//margins 8 + 8
-        NSLog(@"expandedTextHeight: %f", expandedTextHeight);
+        DLog(@"heightForRowAtIndexPath");
+        ActionTableViewCell *cell = [tableViewCellsList objectAtIndex:indexPath.row];
         
-        return expandedTextHeight; //It's not necessary a constant, though
+        if(cell.descValue.length > 0){
+        //UIFont *font = [UIFont fontWithName:@"System" size:15];
+        UIFont *font =  cell.actionString.font;
+        [font fontWithSize:15];
+        CGRect frame = [self getTextFrame:cell.descValue font:font top:0];
+        CGFloat expandedTextHeight = 56.0f + frame.size.height + 16.0f;//margins 8 + 8
+        NSLog(@"expandedTextHeight: %f", expandedTextHeight);
+            return expandedTextHeight;
+        }
+        else{
+            return kNormalCellHeigh;
+        }
     }
     else
     {
-        return kNormalCellHeigh; //Again not necessary a constant
+         return kNormalCellHeigh;
     }
 }
 

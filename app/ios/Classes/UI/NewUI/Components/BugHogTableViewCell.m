@@ -23,4 +23,11 @@
     // Configure the view for the selected state
 }
 
+- (void)dealloc {
+    [_nameLabel release];
+    [_prepTimeLabel release];
+    [_thumbnailImageView release];
+    [super dealloc];
+}
+
 @end

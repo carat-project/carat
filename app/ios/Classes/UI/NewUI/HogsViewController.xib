@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HogsViewController">
@@ -90,12 +91,13 @@
                         </mask>
                     </variation>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d8A-Q0-RGX">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="d8A-Q0-RGX" customClass="PGTableViewWithEmptyView">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FhH-wQ-cGv"/>
                         <outlet property="delegate" destination="-1" id="cgp-k8-0Jv"/>
+                        <outlet property="emptyView" destination="oAO-uH-lWR" id="j6N-Tv-3jM"/>
                     </connections>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa1-j1-u9C">
@@ -171,10 +173,103 @@
                 </mask>
             </variation>
         </view>
+        <view contentMode="scaleToFill" id="oAO-uH-lWR" userLabel="Empty View">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-Tj-fay">
+                    <rect key="frame" x="0.0" y="46" width="320" height="33"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="8" y="201" width="358" height="29"/>
+                    </variation>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-KC-ecZ">
+                    <rect key="frame" x="0.0" y="95" width="320" height="130"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <variation key="widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="8" y="238" width="358" height="313"/>
+                    </variation>
+                </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_hogs" translatesAutoresizingMaskIntoConstraints="NO" id="fjR-wE-EAn">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="fjR-wE-EAn" secondAttribute="height" multiplier="374:193" id="IMW-sg-KpA"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="IMW-sg-KpA"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="IMW-sg-KpA"/>
+                        </mask>
+                    </variation>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="fjR-wE-EAn" firstAttribute="leading" secondItem="oAO-uH-lWR" secondAttribute="leading" id="41v-hS-ypG"/>
+                <constraint firstAttribute="trailing" secondItem="fjR-wE-EAn" secondAttribute="trailing" id="5rL-5f-R3u"/>
+                <constraint firstItem="l7u-KC-ecZ" firstAttribute="leading" secondItem="oAO-uH-lWR" secondAttribute="leading" constant="8" id="9EG-lf-9Am"/>
+                <constraint firstItem="Xgp-Tj-fay" firstAttribute="leading" secondItem="oAO-uH-lWR" secondAttribute="leading" constant="8" id="DjW-ZM-JmO"/>
+                <constraint firstItem="fjR-wE-EAn" firstAttribute="top" secondItem="oAO-uH-lWR" secondAttribute="top" constant="8" id="GKw-4P-oAP"/>
+                <constraint firstAttribute="trailing" secondItem="l7u-KC-ecZ" secondAttribute="trailing" constant="8" id="jMA-KU-eIv"/>
+                <constraint firstItem="l7u-KC-ecZ" firstAttribute="top" secondItem="Xgp-Tj-fay" secondAttribute="bottom" constant="8" id="jlh-Cb-EbO"/>
+                <constraint firstItem="Xgp-Tj-fay" firstAttribute="top" secondItem="fjR-wE-EAn" secondAttribute="bottom" id="n05-hY-q3R"/>
+                <constraint firstAttribute="bottom" secondItem="l7u-KC-ecZ" secondAttribute="bottom" id="rhb-Q5-tjd"/>
+                <constraint firstAttribute="trailing" secondItem="Xgp-Tj-fay" secondAttribute="trailing" constant="8" id="vfL-id-85L"/>
+            </constraints>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="fjR-wE-EAn"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="GKw-4P-oAP"/>
+                    <exclude reference="5rL-5f-R3u"/>
+                    <exclude reference="41v-hS-ypG"/>
+                    <exclude reference="n05-hY-q3R"/>
+                    <exclude reference="DjW-ZM-JmO"/>
+                    <exclude reference="vfL-id-85L"/>
+                    <exclude reference="jlh-Cb-EbO"/>
+                    <exclude reference="jMA-KU-eIv"/>
+                    <exclude reference="9EG-lf-9Am"/>
+                    <exclude reference="rhb-Q5-tjd"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="fjR-wE-EAn"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="GKw-4P-oAP"/>
+                    <include reference="5rL-5f-R3u"/>
+                    <include reference="41v-hS-ypG"/>
+                    <include reference="n05-hY-q3R"/>
+                    <include reference="DjW-ZM-JmO"/>
+                    <include reference="vfL-id-85L"/>
+                    <include reference="jlh-Cb-EbO"/>
+                    <include reference="jMA-KU-eIv"/>
+                    <include reference="9EG-lf-9Am"/>
+                    <include reference="rhb-Q5-tjd"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="-100" y="366"/>
+        </view>
     </objects>
     <resources>
         <image name="arrow_icon" width="48" height="48"/>
         <image name="battery_icon" width="48" height="48"/>
+        <image name="empty_hogs" width="210" height="114"/>
         <image name="more_icon" width="8" height="30"/>
     </resources>
 </document>

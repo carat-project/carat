@@ -26,6 +26,8 @@
 - (BOOL) hasUserConsented;
 - (void) setDistanceTraveled : (double) distance;
 - (double) getDistanceTraveled;
+- (void) setHideConsumptionLimit:(float) limit;
+- (float) getHideConsumptionLimit;
 - (NSArray *) getHiddenApps;
 - (void) hideApp : (NSString *) appName;
 - (void) showApp : (NSString *) appName;

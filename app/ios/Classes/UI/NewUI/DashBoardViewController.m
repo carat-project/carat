@@ -9,7 +9,6 @@
 #import "DashBoardViewController.h"
 
 #import "Utilities.h"
-#import "Flurry.h"
 #import "CoreDataManager.h"
 #import "CommunicationManager.h"
 #import "UIDeviceHardware.h"

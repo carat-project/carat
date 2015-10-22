@@ -181,6 +181,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="collapse_btn_close" width="48" height="48"/>
+        <image name="collapse_btn_close" width="81" height="63"/>
     </resources>
 </document>

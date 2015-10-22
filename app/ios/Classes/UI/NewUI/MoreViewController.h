@@ -12,8 +12,15 @@
 #import "TutorialViewController.h"
 #import "HideAppsViewController.h"
 #import "AboutViewController.h"
+#import "CoreDataManager.h"
+#import "CaratConstants.h"
+#import "Utilities.h"
+#import "UIDeviceHardware.h"
+#import "Flurry.h"
 
-@interface MoreViewController : BaseViewController
+#import <MessageUI/MessageUI.h>
+
+@interface MoreViewController : BaseViewController <MFMailComposeViewControllerDelegate>
 - (IBAction)wifiOnlySwitcherValueChanged:(id)sender;
 - (IBAction)hideAppsClicked:(id)sender;
 - (IBAction)feedBackClicked:(id)sender;

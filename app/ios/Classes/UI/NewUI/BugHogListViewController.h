@@ -14,10 +14,12 @@
 
 @interface BugHogListViewController : ListNetworkBaseViewController{
     HogBugReport *report;
-    
+    NSMutableArray *filteredCells;    
 }
 @property (retain, nonatomic) HogBugReport *report;
+@property (nonatomic, strong) NSMutableArray *filteredCells;
 
 - (void)reloadReport;
+- (void)setHogBugReport:(HogBugReport *)report;
 
 @end

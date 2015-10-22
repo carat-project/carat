@@ -64,6 +64,14 @@ static id instance = nil;
     
     return self.myUUID;
 }
+- (void) setHideConsumptionLimit:(float) limit
+{
+    [defaults setObject:[NSNumber numberWithFloat:limit] forKey:@"ConsumptionLimit"];
+}
+- (float) getHideConsumptionLimit
+{
+    return [[defaults objectForKey:@"ConsumptionLimit"] floatValue];
+}
 
 - (void) hideApp : (NSString *) appName {
     NSArray *hiddenApps = [defaults arrayForKey:@"HiddenApps"];

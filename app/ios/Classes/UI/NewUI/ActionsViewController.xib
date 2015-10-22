@@ -3,11 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionsViewController">
             <connections>
                 <outlet property="navBar" destination="ZWr-dT-jZi" id="40Z-fN-N1T"/>
+                <outlet property="tableView" destination="1Gm-Dd-X77" id="HoJ-xi-mwL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -114,48 +116,164 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Gm-Dd-X77" customClass="PGTableViewWithEmptyView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="rY7-6o-Svg"/>
+                        <outlet property="delegate" destination="-1" id="OPW-7h-Bpz"/>
+                        <outlet property="emptyView" destination="Kov-9o-mSf" id="4w3-xc-iPC"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="8hU-MC-Nve" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3t8-3U-TOe"/>
                 <constraint firstItem="8hU-MC-Nve" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="5hX-Pe-1Jk"/>
+                <constraint firstAttribute="trailing" secondItem="1Gm-Dd-X77" secondAttribute="trailing" id="9LP-Ws-9QR"/>
+                <constraint firstItem="1Gm-Dd-X77" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="B0t-EH-mCD"/>
                 <constraint firstItem="8hU-MC-Nve" firstAttribute="top" secondItem="ZWr-dT-jZi" secondAttribute="bottom" id="E33-tQ-gEf"/>
+                <constraint firstItem="1Gm-Dd-X77" firstAttribute="top" secondItem="8hU-MC-Nve" secondAttribute="bottom" id="K1Q-GO-GAX"/>
                 <constraint firstItem="ZWr-dT-jZi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MjK-pb-JfA"/>
                 <constraint firstItem="ZWr-dT-jZi" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="VPS-ye-udE"/>
                 <constraint firstItem="ZWr-dT-jZi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="bkJ-11-zV4"/>
+                <constraint firstAttribute="bottom" secondItem="1Gm-Dd-X77" secondAttribute="bottom" id="qpd-4b-Mwo"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="8hU-MC-Nve"/>
+                    <exclude reference="1Gm-Dd-X77"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="3t8-3U-TOe"/>
-                    <exclude reference="5hX-Pe-1Jk"/>
-                    <exclude reference="E33-tQ-gEf"/>
                     <exclude reference="MjK-pb-JfA"/>
                     <exclude reference="VPS-ye-udE"/>
                     <exclude reference="bkJ-11-zV4"/>
+                    <exclude reference="3t8-3U-TOe"/>
+                    <exclude reference="5hX-Pe-1Jk"/>
+                    <exclude reference="E33-tQ-gEf"/>
+                    <exclude reference="9LP-Ws-9QR"/>
+                    <exclude reference="B0t-EH-mCD"/>
+                    <exclude reference="K1Q-GO-GAX"/>
+                    <exclude reference="qpd-4b-Mwo"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
                     <include reference="8hU-MC-Nve"/>
+                    <include reference="1Gm-Dd-X77"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="3t8-3U-TOe"/>
-                    <include reference="5hX-Pe-1Jk"/>
-                    <include reference="E33-tQ-gEf"/>
                     <include reference="MjK-pb-JfA"/>
                     <include reference="VPS-ye-udE"/>
                     <include reference="bkJ-11-zV4"/>
+                    <include reference="3t8-3U-TOe"/>
+                    <include reference="5hX-Pe-1Jk"/>
+                    <include reference="E33-tQ-gEf"/>
+                    <include reference="9LP-Ws-9QR"/>
+                    <include reference="B0t-EH-mCD"/>
+                    <include reference="K1Q-GO-GAX"/>
+                    <include reference="qpd-4b-Mwo"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="223" y="147"/>
+        </view>
+        <view contentMode="scaleToFill" id="Kov-9o-mSf" userLabel="Empty View">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RHx-yc-Pb9">
+                    <rect key="frame" x="0.0" y="46" width="320" height="33"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="8" y="201" width="358" height="29"/>
+                    </variation>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_actions" translatesAutoresizingMaskIntoConstraints="NO" id="E15-4d-hfs">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="E15-4d-hfs" secondAttribute="height" multiplier="374:193" id="jRF-nj-hKV"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="jRF-nj-hKV"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="jRF-nj-hKV"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KlL-Kw-DrZ">
+                    <rect key="frame" x="0.0" y="95" width="320" height="130"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <variation key="widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="8" y="238" width="358" height="313"/>
+                    </variation>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="RHx-yc-Pb9" firstAttribute="top" secondItem="E15-4d-hfs" secondAttribute="bottom" id="ADf-Gd-2yd"/>
+                <constraint firstItem="KlL-Kw-DrZ" firstAttribute="top" secondItem="RHx-yc-Pb9" secondAttribute="bottom" constant="8" id="QcS-n9-hXu"/>
+                <constraint firstItem="E15-4d-hfs" firstAttribute="leading" secondItem="Kov-9o-mSf" secondAttribute="leading" id="ZwE-Fj-4ut"/>
+                <constraint firstItem="RHx-yc-Pb9" firstAttribute="leading" secondItem="Kov-9o-mSf" secondAttribute="leading" constant="8" id="ar1-x1-KxO"/>
+                <constraint firstAttribute="trailing" secondItem="E15-4d-hfs" secondAttribute="trailing" id="cF4-HG-AOQ"/>
+                <constraint firstItem="E15-4d-hfs" firstAttribute="top" secondItem="Kov-9o-mSf" secondAttribute="top" constant="8" id="geO-5R-pmy"/>
+                <constraint firstAttribute="trailing" secondItem="RHx-yc-Pb9" secondAttribute="trailing" constant="8" id="kDM-HP-6rB"/>
+                <constraint firstAttribute="trailing" secondItem="KlL-Kw-DrZ" secondAttribute="trailing" constant="8" id="mLC-RJ-0PV"/>
+                <constraint firstItem="KlL-Kw-DrZ" firstAttribute="leading" secondItem="Kov-9o-mSf" secondAttribute="leading" constant="8" id="pvC-pV-t9n"/>
+                <constraint firstAttribute="bottom" secondItem="KlL-Kw-DrZ" secondAttribute="bottom" id="t0j-Ak-1xQ"/>
+            </constraints>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="E15-4d-hfs"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="geO-5R-pmy"/>
+                    <exclude reference="cF4-HG-AOQ"/>
+                    <exclude reference="ZwE-Fj-4ut"/>
+                    <exclude reference="ADf-Gd-2yd"/>
+                    <exclude reference="ar1-x1-KxO"/>
+                    <exclude reference="kDM-HP-6rB"/>
+                    <exclude reference="QcS-n9-hXu"/>
+                    <exclude reference="mLC-RJ-0PV"/>
+                    <exclude reference="pvC-pV-t9n"/>
+                    <exclude reference="t0j-Ak-1xQ"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="E15-4d-hfs"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="geO-5R-pmy"/>
+                    <include reference="cF4-HG-AOQ"/>
+                    <include reference="ZwE-Fj-4ut"/>
+                    <include reference="ADf-Gd-2yd"/>
+                    <include reference="ar1-x1-KxO"/>
+                    <include reference="kDM-HP-6rB"/>
+                    <include reference="QcS-n9-hXu"/>
+                    <include reference="mLC-RJ-0PV"/>
+                    <include reference="pvC-pV-t9n"/>
+                    <include reference="t0j-Ak-1xQ"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="-214" y="147"/>
         </view>
     </objects>
     <resources>
         <image name="action_icon" width="48" height="48"/>
         <image name="arrow_icon" width="48" height="48"/>
+        <image name="empty_actions" width="210" height="114"/>
         <image name="more_icon" width="8" height="30"/>
     </resources>
 </document>

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ListNetworkBaseViewController.h"
 
-#import "ActionItemCell.h"
+#import "ActionTableViewCell.h"
 
 #import "ActionObject.h"
 

@@ -66,6 +66,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="collapse_btn_open" width="48" height="48"/>
+        <image name="collapse_btn_open" width="81" height="63"/>
     </resources>
 </document>

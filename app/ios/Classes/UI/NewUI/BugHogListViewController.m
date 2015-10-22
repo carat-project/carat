@@ -14,17 +14,27 @@
 
 @implementation BugHogListViewController
 @synthesize report;
+@synthesize filteredCells;
+
 #pragma mark - View Life Cycle methods
 - (void)viewDidLoad {
     expandedCell = @"BugHogExpandedTableViewCell";
     collapsedCell = @"BugHogTableViewCell";
+    filteredCells = [[NSMutableArray alloc]init];
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [filteredCells removeAllObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,16 +56,18 @@
 //override superclasses
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (report != nil && [report hbListIsSet]) {
-        return [[report hbList] count];
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    if (filteredCells != nil) {
+        return [filteredCells count];
     } else return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DLog(@"%s", __PRETTY_FUNCTION__);
     UITableViewCell *cell = [super tableView: tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
     
-    HogsBugs *hb = [[report hbList] objectAtIndex:indexPath.row];
+    HogsBugs *hb = [filteredCells objectAtIndex:indexPath.row];
     if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
         BugHogExpandedTableViewCell *expandedCellView = (BugHogExpandedTableViewCell *)cell;
         
@@ -100,6 +112,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DLog(@"%s", __PRETTY_FUNCTION__);
     CGFloat kExpandedCellHeight = 196;
     CGFloat kNormalCellHeigh = 56;
     
@@ -114,7 +127,30 @@
     }
 }
 
+- (void) setHogBugReport:(HogBugReport *)rep
+{
+    report = rep;
+    if (report != nil && [report hbListIsSet]) {
+        int count = [[report hbList] count];
+        NSArray *hbList = [report hbList]; //[[ objectAtIndex:indexPath.row];
+        float filterVal = [[Globals instance] getHideConsumptionLimit];
+        DLog(@"%s filtred val %f", __PRETTY_FUNCTION__, filterVal);
+        [filteredCells removeAllObjects];
+        for(int i=0; i<count; i++)
+        {
+            HogsBugs *hb = hbList[i];
+            double benefit = (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
+            if(benefit > filterVal){
+                [filteredCells addObject: hb];
+            }
+        }
+        if([filteredCells count] > 0){
+            [self.tableView reloadData];
+        }
+        DLog(@"%s cells filtered:%d ", __PRETTY_FUNCTION__, (count - [filteredCells count]));
 
+    }
+}
 /*
 #pragma mark - Navigation
 
@@ -126,7 +162,8 @@
 */
 
 - (void)dealloc {
-        [report release];
+    [report release];
+    [filteredCells release];
     [super dealloc];
 }
 @end

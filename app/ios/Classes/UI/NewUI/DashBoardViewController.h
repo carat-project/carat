@@ -17,6 +17,7 @@
 #import "ActionsViewController.h"
 #import "MyScoreViewController.h"
 #import "MoreViewController.h"
+#import "Flurry.h"
 
 #import <QuartzCore/QuartzCore.h>
 

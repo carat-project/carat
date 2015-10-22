@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BugsViewController">
@@ -90,12 +91,13 @@
                         </mask>
                     </variation>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zyF-3Z-UIQ">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zyF-3Z-UIQ" customClass="PGTableViewWithEmptyView">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="4t0-fL-gtU"/>
                         <outlet property="delegate" destination="-1" id="egT-Dh-aVK"/>
+                        <outlet property="emptyView" destination="mFn-ok-Ze2" id="KoF-JJ-kQq"/>
                     </connections>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYD-b9-YVC">
@@ -175,12 +177,99 @@
                     <include reference="N0T-8K-fOm"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="191" y="351"/>
+            <point key="canvasLocation" x="500" y="355"/>
+        </view>
+        <view contentMode="scaleToFill" id="mFn-ok-Ze2" userLabel="Empty View">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Acc-yh-h4A">
+                    <rect key="frame" x="0.0" y="46" width="320" height="33"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_bugs" translatesAutoresizingMaskIntoConstraints="NO" id="xWm-6F-1f9">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="xWm-6F-1f9" secondAttribute="height" multiplier="374:193" id="Veb-qQ-hi2"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Veb-qQ-hi2"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="Veb-qQ-hi2"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="88T-Y3-hy8">
+                    <rect key="frame" x="0.0" y="95" width="320" height="130"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="88T-Y3-hy8" firstAttribute="top" secondItem="Acc-yh-h4A" secondAttribute="bottom" constant="8" id="39L-eh-kF6"/>
+                <constraint firstItem="Acc-yh-h4A" firstAttribute="top" secondItem="xWm-6F-1f9" secondAttribute="bottom" id="7JI-o9-mRN"/>
+                <constraint firstItem="xWm-6F-1f9" firstAttribute="top" secondItem="mFn-ok-Ze2" secondAttribute="top" constant="8" id="BOv-85-flD"/>
+                <constraint firstAttribute="trailing" secondItem="xWm-6F-1f9" secondAttribute="trailing" id="EVL-Y1-8Ar"/>
+                <constraint firstAttribute="trailing" secondItem="88T-Y3-hy8" secondAttribute="trailing" constant="8" id="YMX-Ua-h4Y"/>
+                <constraint firstItem="88T-Y3-hy8" firstAttribute="leading" secondItem="mFn-ok-Ze2" secondAttribute="leading" constant="8" id="aK7-i5-iTT"/>
+                <constraint firstAttribute="bottom" secondItem="88T-Y3-hy8" secondAttribute="bottom" id="cjf-CA-u3y"/>
+                <constraint firstItem="Acc-yh-h4A" firstAttribute="leading" secondItem="mFn-ok-Ze2" secondAttribute="leading" constant="8" id="gIT-Si-FN0"/>
+                <constraint firstItem="xWm-6F-1f9" firstAttribute="leading" secondItem="mFn-ok-Ze2" secondAttribute="leading" id="itA-8K-4Ek"/>
+                <constraint firstAttribute="trailing" secondItem="Acc-yh-h4A" secondAttribute="trailing" constant="8" id="pVv-ln-L1u"/>
+            </constraints>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="xWm-6F-1f9"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="BOv-85-flD"/>
+                    <exclude reference="EVL-Y1-8Ar"/>
+                    <exclude reference="itA-8K-4Ek"/>
+                    <exclude reference="7JI-o9-mRN"/>
+                    <exclude reference="gIT-Si-FN0"/>
+                    <exclude reference="pVv-ln-L1u"/>
+                    <exclude reference="39L-eh-kF6"/>
+                    <exclude reference="YMX-Ua-h4Y"/>
+                    <exclude reference="aK7-i5-iTT"/>
+                    <exclude reference="cjf-CA-u3y"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="xWm-6F-1f9"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="BOv-85-flD"/>
+                    <include reference="EVL-Y1-8Ar"/>
+                    <include reference="itA-8K-4Ek"/>
+                    <include reference="7JI-o9-mRN"/>
+                    <include reference="gIT-Si-FN0"/>
+                    <include reference="pVv-ln-L1u"/>
+                    <include reference="39L-eh-kF6"/>
+                    <include reference="YMX-Ua-h4Y"/>
+                    <include reference="aK7-i5-iTT"/>
+                    <include reference="cjf-CA-u3y"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="57" y="355"/>
         </view>
     </objects>
     <resources>
         <image name="arrow_icon" width="48" height="48"/>
         <image name="bug_icon" width="48" height="48"/>
+        <image name="empty_bugs" width="210" height="130"/>
         <image name="more_icon" width="8" height="30"/>
     </resources>
 </document>

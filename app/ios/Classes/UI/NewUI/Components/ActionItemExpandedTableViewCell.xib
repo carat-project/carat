@@ -3,33 +3,23 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionItemCell">
-            <connections>
-                <outlet property="actionDescription" destination="JEU-6J-aRz" id="J01-Mh-DGs"/>
-                <outlet property="actionString" destination="p2T-Ro-Nsr" id="Lu5-3R-qwY"/>
-                <outlet property="actionValue" destination="X0f-97-5my" id="Gj2-Oq-ZT0"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionTableViewCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="208" id="Udx-Q5-5pZ" customClass="ActionItemCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="323" id="Udx-Q5-5pZ" customClass="ActionTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Udx-Q5-5pZ" id="YeM-Cc-in4">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2T-Ro-Nsr" userLabel="AppName">
                         <rect key="frame" x="56" y="8" width="200" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0f-97-5my" userLabel="Improvement">
-                        <rect key="frame" x="56" y="34" width="200" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collapse_btn_close" translatesAutoresizingMaskIntoConstraints="NO" id="2OW-UY-Xij">
@@ -39,7 +29,7 @@
                             <constraint firstAttribute="width" constant="48" id="iKn-6B-zsL"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4J-Fy-Kfl" userLabel="ExpContent">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4J-Fy-Kfl" userLabel="ExpContent">
                         <rect key="frame" x="0.0" y="57" width="320" height="131"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-Og-b1P" userLabel="separator1">
@@ -95,70 +85,94 @@
                             </mask>
                         </variation>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0f-97-5my" userLabel="Improvement">
+                        <rect key="frame" x="56" y="34" width="200" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="Wjv-ce-xQH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Wjv-ce-xQH"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Wjv-ce-xQH"/>
+                            </mask>
+                        </variation>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="y4J-Fy-Kfl" firstAttribute="top" secondItem="2OW-UY-Xij" secondAttribute="bottom" constant="7" id="3OF-iq-yOy"/>
                     <constraint firstItem="p2T-Ro-Nsr" firstAttribute="leading" secondItem="YeM-Cc-in4" secondAttribute="leadingMargin" id="A1l-Gl-7fm"/>
                     <constraint firstItem="2OW-UY-Xij" firstAttribute="leading" secondItem="p2T-Ro-Nsr" secondAttribute="trailing" constant="8" id="Bof-Ll-Vyj"/>
+                    <constraint firstItem="2OW-UY-Xij" firstAttribute="leading" secondItem="X0f-97-5my" secondAttribute="trailing" constant="8" id="E32-vt-eMO"/>
                     <constraint firstItem="2OW-UY-Xij" firstAttribute="trailing" secondItem="YeM-Cc-in4" secondAttribute="trailingMargin" id="I0E-lU-JcX"/>
-                    <constraint firstItem="y4J-Fy-Kfl" firstAttribute="top" secondItem="X0f-97-5my" secondAttribute="bottom" constant="8" id="LKn-Be-P2r"/>
-                    <constraint firstItem="X0f-97-5my" firstAttribute="leading" secondItem="YeM-Cc-in4" secondAttribute="leadingMargin" id="NOj-iN-Mdf"/>
-                    <constraint firstItem="2OW-UY-Xij" firstAttribute="leading" secondItem="X0f-97-5my" secondAttribute="trailing" constant="8" id="OHv-xx-YTl"/>
                     <constraint firstItem="p2T-Ro-Nsr" firstAttribute="top" secondItem="YeM-Cc-in4" secondAttribute="topMargin" id="QdY-4d-dwF"/>
+                    <constraint firstItem="X0f-97-5my" firstAttribute="top" secondItem="p2T-Ro-Nsr" secondAttribute="bottom" constant="6" id="SXS-Xr-Ql3"/>
                     <constraint firstAttribute="bottomMargin" secondItem="y4J-Fy-Kfl" secondAttribute="bottom" id="UYy-Xi-Xd9"/>
-                    <constraint firstItem="X0f-97-5my" firstAttribute="top" secondItem="p2T-Ro-Nsr" secondAttribute="bottom" constant="6" id="X1z-9q-XFp"/>
                     <constraint firstItem="y4J-Fy-Kfl" firstAttribute="leading" secondItem="YeM-Cc-in4" secondAttribute="leadingMargin" id="Ygr-73-aHq"/>
                     <constraint firstItem="2OW-UY-Xij" firstAttribute="top" secondItem="YeM-Cc-in4" secondAttribute="topMargin" id="isg-BE-kn5"/>
+                    <constraint firstItem="X0f-97-5my" firstAttribute="leading" secondItem="YeM-Cc-in4" secondAttribute="leadingMargin" id="t20-5B-ZZ2"/>
                     <constraint firstAttribute="trailingMargin" secondItem="y4J-Fy-Kfl" secondAttribute="trailing" id="zRa-oz-xMA"/>
                 </constraints>
                 <variation key="default">
                     <mask key="subviews">
                         <exclude reference="p2T-Ro-Nsr"/>
-                        <exclude reference="X0f-97-5my"/>
                         <exclude reference="2OW-UY-Xij"/>
                         <exclude reference="y4J-Fy-Kfl"/>
+                        <exclude reference="X0f-97-5my"/>
                     </mask>
                     <mask key="constraints">
                         <exclude reference="A1l-Gl-7fm"/>
                         <exclude reference="QdY-4d-dwF"/>
-                        <exclude reference="NOj-iN-Mdf"/>
-                        <exclude reference="X1z-9q-XFp"/>
-                        <exclude reference="LKn-Be-P2r"/>
+                        <exclude reference="SXS-Xr-Ql3"/>
+                        <exclude reference="t20-5B-ZZ2"/>
+                        <exclude reference="3OF-iq-yOy"/>
                         <exclude reference="UYy-Xi-Xd9"/>
                         <exclude reference="Ygr-73-aHq"/>
                         <exclude reference="zRa-oz-xMA"/>
                         <exclude reference="Bof-Ll-Vyj"/>
+                        <exclude reference="E32-vt-eMO"/>
                         <exclude reference="I0E-lU-JcX"/>
-                        <exclude reference="OHv-xx-YTl"/>
                         <exclude reference="isg-BE-kn5"/>
                     </mask>
                 </variation>
                 <variation key="widthClass=compact">
                     <mask key="subviews">
                         <include reference="p2T-Ro-Nsr"/>
-                        <include reference="X0f-97-5my"/>
                         <include reference="2OW-UY-Xij"/>
                         <include reference="y4J-Fy-Kfl"/>
+                        <include reference="X0f-97-5my"/>
                     </mask>
                     <mask key="constraints">
                         <include reference="A1l-Gl-7fm"/>
                         <include reference="QdY-4d-dwF"/>
-                        <include reference="NOj-iN-Mdf"/>
-                        <include reference="X1z-9q-XFp"/>
-                        <include reference="LKn-Be-P2r"/>
+                        <include reference="SXS-Xr-Ql3"/>
+                        <include reference="t20-5B-ZZ2"/>
+                        <include reference="3OF-iq-yOy"/>
                         <include reference="UYy-Xi-Xd9"/>
                         <include reference="Ygr-73-aHq"/>
                         <include reference="zRa-oz-xMA"/>
                         <include reference="Bof-Ll-Vyj"/>
+                        <include reference="E32-vt-eMO"/>
                         <include reference="I0E-lU-JcX"/>
-                        <include reference="OHv-xx-YTl"/>
                         <include reference="isg-BE-kn5"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="336" y="174"/>
+            <connections>
+                <outlet property="actionDescr" destination="JEU-6J-aRz" id="dF8-WK-aJB"/>
+                <outlet property="actionString" destination="p2T-Ro-Nsr" id="MAC-kW-qkA"/>
+                <outlet property="actionValue" destination="X0f-97-5my" id="QnI-3n-kBp"/>
+            </connections>
+            <point key="canvasLocation" x="336" y="235.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="collapse_btn_close" width="48" height="48"/>
+        <image name="collapse_btn_close" width="81" height="63"/>
     </resources>
 </document>
