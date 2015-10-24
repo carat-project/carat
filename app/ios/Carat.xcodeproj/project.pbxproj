@@ -41,6 +41,12 @@
 		89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89685C751BBAA8440078C4C6 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		8988B1571BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1561BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1581BDC03DE0022524B /* BugHogExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		8988B1611BDC181B0022524B /* deviceselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15B1BDC181B0022524B /* deviceselect.png */; settings = {ASSET_TAGS = (); }; };
+		8988B1621BDC181B0022524B /* energyratedist.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15C1BDC181B0022524B /* energyratedist.png */; settings = {ASSET_TAGS = (); }; };
+		8988B1631BDC181B0022524B /* jscoreplot.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15D1BDC181B0022524B /* jscoreplot.png */; settings = {ASSET_TAGS = (); }; };
+		8988B1641BDC181B0022524B /* procmanager1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15E1BDC181B0022524B /* procmanager1.png */; settings = {ASSET_TAGS = (); }; };
+		8988B1651BDC181B0022524B /* procmanager2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15F1BDC181B0022524B /* procmanager2.png */; settings = {ASSET_TAGS = (); }; };
+		8988B1661BDC181B0022524B /* updatecheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1601BDC181B0022524B /* updatecheck.png */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B01BC29FB30053647E /* LocalizedUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8AF1BC29FB30053647E /* LocalizedUIButton.m */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B31BC2A7C60053647E /* LocalizedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B21BC2A7C60053647E /* LocalizedLabel.m */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B61BC2B26B0053647E /* UiInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B51BC2B26B0053647E /* UiInsetLabel.m */; settings = {ASSET_TAGS = (); }; };
@@ -110,12 +116,6 @@
 		89FF8B991BDBB06C00147943 /* ActionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B981BDBB06C00147943 /* ActionObject.m */; settings = {ASSET_TAGS = (); }; };
 		89FF8B9D1BDBB2BA00147943 /* ListNetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B9C1BDBB2BA00147943 /* ListNetworkBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		89FF8B9F1BDBF3A000147943 /* detailinfo.html in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B9E1BDBF3A000147943 /* detailinfo.html */; settings = {ASSET_TAGS = (); }; };
-		89FF8BA61BDBF4FA00147943 /* deviceselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8BA01BDBF4FA00147943 /* deviceselect.png */; settings = {ASSET_TAGS = (); }; };
-		89FF8BA71BDBF4FA00147943 /* energyratedist.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8BA11BDBF4FA00147943 /* energyratedist.png */; settings = {ASSET_TAGS = (); }; };
-		89FF8BA81BDBF4FA00147943 /* jscoreplot.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8BA21BDBF4FA00147943 /* jscoreplot.png */; settings = {ASSET_TAGS = (); }; };
-		89FF8BA91BDBF4FA00147943 /* procmanager1.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8BA31BDBF4FA00147943 /* procmanager1.png */; settings = {ASSET_TAGS = (); }; };
-		89FF8BAA1BDBF4FA00147943 /* procmanager2.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8BA41BDBF4FA00147943 /* procmanager2.png */; settings = {ASSET_TAGS = (); }; };
-		89FF8BAB1BDBF4FA00147943 /* updatecheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8BA51BDBF4FA00147943 /* updatecheck.png */; settings = {ASSET_TAGS = (); }; };
 		AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */; };
 		AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF6144E1E520090CC09 /* CaratAppDelegate.m */; };
 		AB41CDF8144E27200090CC09 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB41CDF7144E27200090CC09 /* CoreLocation.framework */; };
@@ -243,6 +243,12 @@
 		89685C751BBAA8440078C4C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8988B1561BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemExpandedTableViewCell.xib; sourceTree = "<group>"; };
 		8988B1581BDC03DE0022524B /* BugHogExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugHogExpandedTableViewCell.xib; sourceTree = "<group>"; };
+		8988B15B1BDC181B0022524B /* deviceselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deviceselect.png; sourceTree = "<group>"; };
+		8988B15C1BDC181B0022524B /* energyratedist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energyratedist.png; sourceTree = "<group>"; };
+		8988B15D1BDC181B0022524B /* jscoreplot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jscoreplot.png; sourceTree = "<group>"; };
+		8988B15E1BDC181B0022524B /* procmanager1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = procmanager1.png; sourceTree = "<group>"; };
+		8988B15F1BDC181B0022524B /* procmanager2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = procmanager2.png; sourceTree = "<group>"; };
+		8988B1601BDC181B0022524B /* updatecheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updatecheck.png; sourceTree = "<group>"; };
 		89DAB8AE1BC29FB30053647E /* LocalizedUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedUIButton.h; sourceTree = "<group>"; };
 		89DAB8AF1BC29FB30053647E /* LocalizedUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizedUIButton.m; sourceTree = "<group>"; };
 		89DAB8B11BC2A7C60053647E /* LocalizedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedLabel.h; sourceTree = "<group>"; };
@@ -353,12 +359,6 @@
 		89FF8B9B1BDBB2BA00147943 /* ListNetworkBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListNetworkBaseViewController.h; sourceTree = "<group>"; };
 		89FF8B9C1BDBB2BA00147943 /* ListNetworkBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListNetworkBaseViewController.m; sourceTree = "<group>"; };
 		89FF8B9E1BDBF3A000147943 /* detailinfo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = detailinfo.html; sourceTree = "<group>"; };
-		89FF8BA01BDBF4FA00147943 /* deviceselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deviceselect.png; sourceTree = "<group>"; };
-		89FF8BA11BDBF4FA00147943 /* energyratedist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energyratedist.png; sourceTree = "<group>"; };
-		89FF8BA21BDBF4FA00147943 /* jscoreplot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jscoreplot.png; sourceTree = "<group>"; };
-		89FF8BA31BDBF4FA00147943 /* procmanager1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = procmanager1.png; sourceTree = "<group>"; };
-		89FF8BA41BDBF4FA00147943 /* procmanager2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = procmanager2.png; sourceTree = "<group>"; };
-		89FF8BA51BDBF4FA00147943 /* updatecheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updatecheck.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Carat-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Carat-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		8F35504DFD1C0120ECC89B4A /* Pods.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods/Pods.ad hoc.xcconfig"; sourceTree = "<group>"; };
 		AB105EBE14EDCCD2000DB145 /* jscoreinfo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jscoreinfo.html; sourceTree = "<group>"; };
@@ -980,6 +980,19 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		8988B15A1BDC18020022524B /* img */ = {
+			isa = PBXGroup;
+			children = (
+				8988B15B1BDC181B0022524B /* deviceselect.png */,
+				8988B15C1BDC181B0022524B /* energyratedist.png */,
+				8988B15D1BDC181B0022524B /* jscoreplot.png */,
+				8988B15E1BDC181B0022524B /* procmanager1.png */,
+				8988B15F1BDC181B0022524B /* procmanager2.png */,
+				8988B1601BDC181B0022524B /* updatecheck.png */,
+			);
+			name = img;
+			sourceTree = "<group>";
+		};
 		89FF8AEC1BDBA0A700147943 /* UIOld */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,6 +1158,7 @@
 		ABA3A10214E4A560009B3D33 /* html */ = {
 			isa = PBXGroup;
 			children = (
+				8988B15A1BDC18020022524B /* img */,
 				ABD75498162F5FC100817924 /* activebatterylife.html */,
 				ABE5C2A416F0F36300780085 /* collectdata.html */,
 				AB99EB0014EA6C130008E440 /* upgradeos.html */,
@@ -1153,23 +1167,9 @@
 				AB9525AF14EA1B6F00343418 /* killapp.html */,
 				AB105EBE14EDCCD2000DB145 /* jscoreinfo.html */,
 				ABFCF9F714F6CDF600A508E0 /* memoryinfo.html */,
-				ABA3A10314E4A570009B3D33 /* img */,
 				89FF8B9E1BDBF3A000147943 /* detailinfo.html */,
 			);
 			path = html;
-			sourceTree = "<group>";
-		};
-		ABA3A10314E4A570009B3D33 /* img */ = {
-			isa = PBXGroup;
-			children = (
-				89FF8BA01BDBF4FA00147943 /* deviceselect.png */,
-				89FF8BA11BDBF4FA00147943 /* energyratedist.png */,
-				89FF8BA21BDBF4FA00147943 /* jscoreplot.png */,
-				89FF8BA31BDBF4FA00147943 /* procmanager1.png */,
-				89FF8BA41BDBF4FA00147943 /* procmanager2.png */,
-				89FF8BA51BDBF4FA00147943 /* updatecheck.png */,
-			);
-			path = img;
 			sourceTree = "<group>";
 		};
 		ABD317C91487FD1C000A8DC7 /* UI */ = {
@@ -1716,7 +1716,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66D41BCB1A8F8EF800044C66 /* settings.png in Resources */,
-				89FF8BA61BDBF4FA00147943 /* deviceselect.png in Resources */,
+				8988B1611BDC181B0022524B /* deviceselect.png in Resources */,
 				894A24061BC251800059850A /* DashboardNavigationButton.xib in Resources */,
 				89FF8B531BDBAA3300147943 /* StatisticsViewController.xib in Resources */,
 				89FF8B2A1BDBA67600147943 /* ReportView.xib in Resources */,
@@ -1728,13 +1728,13 @@
 				89FF8B0B1BDBA55800147943 /* CurrentView.xib in Resources */,
 				89FF8B571BDBAA3300147943 /* WebInfoViewController.xib in Resources */,
 				C704AE5E1A03B90200E4F13C /* bug.png in Resources */,
-				89FF8BAB1BDBF4FA00147943 /* updatecheck.png in Resources */,
-				89FF8BA71BDBF4FA00147943 /* energyratedist.png in Resources */,
+				8988B1661BDC181B0022524B /* updatecheck.png in Resources */,
+				8988B1621BDC181B0022524B /* energyratedist.png in Resources */,
 				89FF8B921BDBAA3E00147943 /* MoreViewController.xib in Resources */,
 				66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */,
 				89FF8B251BDBA64600147943 /* ProcessListView.xib in Resources */,
 				ABC07A161485828A00FCC2C2 /* amplab_logo.png in Resources */,
-				89FF8BAA1BDBF4FA00147943 /* procmanager2.png in Resources */,
+				8988B1651BDC181B0022524B /* procmanager2.png in Resources */,
 				89FF8B7F1BDBAA3E00147943 /* AboutViewController.xib in Resources */,
 				89FF8B201BDBA61700147943 /* InstructionView.xib in Resources */,
 				89FF8AFB1BDBA49700147943 /* ActionView.xib in Resources */,
@@ -1755,14 +1755,14 @@
 				AB9525B014EA1B6F00343418 /* killapp.html in Resources */,
 				89FF8B431BDBA76400147943 /* ReportItemCell.xib in Resources */,
 				8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */,
+				8988B1631BDC181B0022524B /* jscoreplot.png in Resources */,
 				89FF8B8C1BDBAA3E00147943 /* HogsViewController.xib in Resources */,
-				89FF8BA81BDBF4FA00147943 /* jscoreplot.png in Resources */,
 				8988B1571BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib in Resources */,
 				89FF8B821BDBAA3E00147943 /* ActionsViewController.xib in Resources */,
 				89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */,
 				89FF8B101BDBA58100147943 /* DetailView.xib in Resources */,
+				8988B1641BDC181B0022524B /* procmanager1.png in Resources */,
 				8958183C1BD7D372005E3C32 /* ActionItemCollapsedTableViewCell.xib in Resources */,
-				89FF8BA91BDBF4FA00147943 /* procmanager1.png in Resources */,
 				89FF8B551BDBAA3300147943 /* TutorialViewController.xib in Resources */,
 				661955B01A73FE4200865B2E /* jscoreinfo.html in Resources */,
 				894AF0651BCCD992003E7D76 /* AboutExpandedTableViewCell.xib in Resources */,

@@ -74,6 +74,13 @@
         cellView.samplesValueLabel.text = [[NSNumber numberWithDouble:[hb samples]] stringValue];
         cellView.samplesWithoutValueLabel.text = [[NSNumber numberWithDouble:[hb samplesWithout]] stringValue];
         cellView.errorValueLabel.text = [[NSNumber numberWithDouble:[hb error]] stringValue];
+
+        cellView.numerHelpTapArea.tag = indexPath.row;
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(handleSingleTap:)];
+        [cellView.numerHelpTapArea addGestureRecognizer:singleFingerTap];
+        [singleFingerTap release];
     }
     else{
         
@@ -148,6 +155,11 @@
         DLog(@"%s cells filtered:%d ", __PRETTY_FUNCTION__, (count - (int)[filteredCells count]));
 
     }
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    [self showWhatTheseNumbersMeanInfo];
 }
 
 #pragma mark - Navigation methods

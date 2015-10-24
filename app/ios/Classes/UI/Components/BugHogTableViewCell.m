@@ -17,7 +17,7 @@
 @synthesize errorValueLabel = _errorValueLabel;
 @synthesize helpLabel = _helpLabel;
 @synthesize expandBtn = _expandBtn;
-@synthesize delegate;
+@synthesize numerHelpTapArea = _numerHelpTapArea;
 
 - (void)awakeFromNib {
     // Initialization code
@@ -41,7 +41,7 @@
     [_errorValueLabel release];
     [_helpLabel release];
     [_expandBtn release];
-    delegate = nil;
+    [_numerHelpTapArea release];
     [super dealloc];
 }
 

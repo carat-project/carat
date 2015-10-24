@@ -11,10 +11,7 @@
 - (void) showWhatTheseNumbersMeanInfo;
 @end
 
-@interface BugHogTableViewCell : UITableViewCell{
-    id <ShowNumberHelpDelegate>  delegate;
-}
-@property (assign) id delegate;
+@interface BugHogTableViewCell : UITableViewCell
 
 @property (retain, nonatomic) IBOutlet UIImageView *thumbnailAppImg;
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
@@ -24,6 +21,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *errorValueLabel;
 @property (retain, nonatomic) IBOutlet UILabel *helpLabel;
 @property (retain, nonatomic) IBOutlet UIImageView *expandBtn;
-- (IBAction)showNumberHelp:(id)sender;
+@property (retain, nonatomic) IBOutlet UIView *numerHelpTapArea;
 
 @end

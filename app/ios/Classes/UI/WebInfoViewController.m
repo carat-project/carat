@@ -17,9 +17,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [super.navBar.topItem setTitle:[_titleForView uppercaseString]];
-    NSURLRequest *urlReq = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:_webUrl ofType:@"html"]]];
+    
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:_webUrl
+                                                         ofType:@"html"];
+    NSLog(@"%s title: %@ and filename: %@ filePath: %@", __PRETTY_FUNCTION__, _titleForView, _webUrl, filePath);
+    /*
+    NSMutableString *filename = [[NSMutableString alloc] init];
+    [filename appendString:_webUrl];
+    [filename appendString:@".html"];
+    */
+    
+     NSURLRequest *urlReq = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:filePath]];
+    //[filename release];
+    //[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:_webUrl ofType:@"html"]]];
     [_webView loadRequest:urlReq];
-     NSLog(@"%s title: %@", __PRETTY_FUNCTION__, _titleForView);
     // Do any additional setup after loading the view from its nib.
 }
 
