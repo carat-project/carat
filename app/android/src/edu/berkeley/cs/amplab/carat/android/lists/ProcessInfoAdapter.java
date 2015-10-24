@@ -83,12 +83,12 @@ public class ProcessInfoAdapter extends BaseAdapter {
         }
 
         holder.appIcon.setImageDrawable(CaratApplication.iconForApp(c, p));
-        holder.pkgName.setText(p);
+        holder.pkgName.setText(trunc(p));
         if (x.isSetApplicationLabel())
-            holder.txtName.setText(x.getApplicationLabel()+ " " + ver);
+            holder.txtName.setText(trunc(x.getApplicationLabel()+ " " + ver));
         else
-        holder.txtName.setText(CaratApplication.labelForApp(c, p)+ " " + ver);
-        holder.txtBenefit.setText(CaratApplication.translatedPriority(x.getImportance()));
+        holder.txtName.setText(trunc(CaratApplication.labelForApp(c, p)+ " " + ver));
+        holder.txtBenefit.setText(trunc(CaratApplication.translatedPriority(x.getImportance())));
         // holder.moreInfo...
 
         return convertView;
@@ -100,5 +100,12 @@ public class ProcessInfoAdapter extends BaseAdapter {
         TextView txtBenefit;
         TextView pkgName;
         // ImageView moreInfo;
+    }
+    
+    public static String trunc(String text){
+        if (text != null && text.length() > 30)
+            return text.substring(0, 28)+" …";
+        else
+            return text;
     }
 }

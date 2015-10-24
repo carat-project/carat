@@ -168,6 +168,7 @@ public final class SamplingLibrary {
 	// private static final String TAG="FeaturesPowerConsumption";
 
 	public static final int UUID_LENGTH = 16;
+    private static final String TAG = "Sampling";
 
 	private static double lastBatteryLevel;
 	private static double currentBatteryLevel;
@@ -607,16 +608,13 @@ public final class SamplingLibrary {
 			for (RunningServiceInfo pi : runningServices) {
 				if (pi == null)
 					continue;
-				if (packages.contains(pi.clientPackage))
+				if (packages.contains(pi.process))
                     continue;
-                packages.add(pi.clientPackage);
+                packages.add(pi.process);
 				ProcessInfo item = new ProcessInfo();
 				item.setImportance(pi.foreground ? "Foreground app" : "Service");
 				item.setPId(pi.pid);
-				if (pi.clientPackage != null && pi.clientPackage.length() > 0)
-				    item.setApplicationLabel(pi.clientPackage);
-				else
-				    item.setApplicationLabel(pi.service.flattenToString());
+				//item.setApplicationLabel(pi.service.flattenToString());
 				item.setPName(pi.process);
 				
 				l.add(item);
@@ -661,7 +659,7 @@ public final class SamplingLibrary {
 	 */
 	public static List<RunningServiceInfo> getRunningServiceInfo(Context c) {
 		ActivityManager pActivityManager = (ActivityManager) c.getSystemService(Activity.ACTIVITY_SERVICE);
-		return pActivityManager.getRunningServices(100);
+		return pActivityManager.getRunningServices(255);
 	}
 
 	/**
@@ -673,9 +671,22 @@ public final class SamplingLibrary {
 	public static boolean isRunning(Context context, String appName) {
 		List<RunningAppProcessInfo> runningProcs = getRunningProcessInfo(context);
 		for (RunningAppProcessInfo i : runningProcs) {
+		   // Log.d(TAG, "Matching process: "+i.processName +" with app: "+ appName);
 			if (i.processName.equals(appName) && i.importance != RunningAppProcessInfo.IMPORTANCE_EMPTY)
 				return true;
 		}
+		
+		List<RunningServiceInfo> services = getRunningServiceInfo(context);
+		for (RunningServiceInfo service: services){
+		  //  Log.d(TAG, "Matching service: "+service.process +" with app: "+ appName + " service pkg: " + service.clientPackage + " label: " + service.clientLabel);
+		    String pname = service.process;
+		    int idx = pname.indexOf(":");
+		    if (idx > 0)
+		        pname = pname.substring(0, idx);
+		    if (pname.equals(appName))
+		        return true;
+		}
+		
 		return false;
 	}
 
