@@ -62,17 +62,9 @@ void onUncaughtException(NSException *exception)
 #pragma mark Application lifecycle
 
 - (id) init {
-    if (self = [super init]) {
-        // custom init code
-        /*
-        [[UINavigationBar appearance] setBarTintColor:C_ORANGE];
-        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : C_WHITE}];
-        
-        [self.navigationController.navigationBar
-         setTitleTextAttributes:];
-         */
+    if (self = [super init])
+    {
     }
-    
     return self;
 }
 
@@ -84,7 +76,7 @@ void onUncaughtException(NSException *exception)
     }
     
 
-    [[Globals instance] userHasConsented]; //TODO remove just skipping user consent for now
+    //[[Globals instance] userHasConsented]; //TODO remove just skipping user consent for now
     // test for consent
     if ([[Globals instance] hasUserConsented]) return [self proceedWithConsent];
     else return [self acquireConsentWithCallbackTarget:self
@@ -95,7 +87,7 @@ void onUncaughtException(NSException *exception)
 - (BOOL)acquireConsentWithCallbackTarget:(CaratAppDelegate *)delegate withSelector:(SEL)selector {
     // UI
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    UIViewController *viewController = [[ConsentViewController alloc] initWithNibName:@"ConsentView" bundle:nil callbackTo:delegate withSelector:selector];
+    TutorialViewController *viewController = [[TutorialViewController alloc] initWithNibName:@"TutorialViewController" bundle:nil callbackTo:delegate withSelector:selector];
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
     [viewController release];
@@ -110,81 +102,17 @@ void onUncaughtException(NSException *exception)
 // called when the user has accepted the EULA
 - (BOOL)proceedWithConsent {
     DLog(@"Proceeding with consent");
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     //[self startStoryboard];
-    if (self.window == nil){
-        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-        self.dashBoardViewController = [[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil];
-        self.window.rootViewController = self.dashBoardViewController;
-        
-        self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.window.rootViewController];
-        self.navigationController.navigationBarHidden = YES;
-        
-        [self.window addSubview:self.navigationController.view];
-        
-        
-        //TutorialViewController *tut = [[TutorialViewController alloc] initWithNibName:@"TutorialViewController" bundle:nil];
-        //BugsViewController *bug = [[BugsViewController alloc] initWithNibName:@"BugsViewController" bundle:nil];
-        
-        [self.window makeKeyAndVisible];
-    }
-/*
-    if (self.window == nil)
-        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.dashBoardViewController = [[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil];
+    self.window.rootViewController = self.dashBoardViewController;
     
-    //self.dashBoardViewController = [[DashBoardViewController alloc] init];
- 
-    UIViewController *viewController0, *viewController1, *viewController2, *viewController3, *viewController4;
-    UINavigationController *navController0, *navController1, *navController2, *navController3, *navController4;
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.window.rootViewController];
+    self.navigationController.navigationBarHidden = YES;
     
-    viewController0 = [[ActionViewController alloc] initWithNibName:@"ActionView" bundle:nil];
-    
-    navController0 = [[UINavigationController alloc] initWithRootViewController:viewController0];
-    navController0.navigationBar.translucent = NO;
-    navController0.navigationBarHidden = YES;
-    viewController1 = [[CurrentViewController alloc] initWithNibName:@"CurrentView" bundle:nil];
-    navController1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
-    navController1.navigationBar.translucent = NO;
-    navController1.navigationBarHidden = YES;
-    viewController2 = [[HogReportViewController alloc] initWithNibName:@"ReportView" bundle:nil];
-    navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
-     navController2.navigationBar.translucent = NO;
-    navController2.navigationBarHidden = YES;
-    viewController3 = [[BugReportViewController alloc] initWithNibName:@"ReportView" bundle:nil];
-    navController3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
-    navController3.navigationBar.translucent = NO;
-    navController3.navigationBarHidden = YES;
-	viewController4 = [[SettingsViewController alloc] initWithNibName:@"SettingsView" bundle:nil];
-
-	navController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];
-	navController4.navigationBar.translucent = NO;
-	navController4.navigationBarHidden = YES;
-    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.tabBarController.tabBar.translucent = NO;
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController0, navController1, navController2, navController3, navController4, nil];
-*/
-    //self.window.rootViewController = self.tabBarController;
-    //self.window.rootViewController = self.dashBoardViewController;
-
-    //[self.window makeKeyAndVisible];
-
-    
-    
-    //DLog(@"Set root view controller; is nil? %@", self.dashBoardViewController==nil ? @"yes" : @"no");
-    // Fixme: What is this? Not used.
-	//UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , 20 ,20)];
-
-	 // views have been added to hierarchy, so they can be released
-    /*
-    [viewController0 release];
-    [viewController1 release];
-    [viewController2 release];
-    [viewController3 release];
-    [viewController4 release];
-    [navController0 release];
-    [navController1 release];
-    [navController2 release];
-    [navController3 release];
-    */
+    [self.window addSubview:self.navigationController.view];
+    [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     if (locationManager == nil && [CLLocationManager significantLocationChangeMonitoringAvailable]) {
         locationManager = [[CLLocationManager alloc] init];
@@ -203,17 +131,6 @@ void onUncaughtException(NSException *exception)
     // Right at this point, we are unsure if there is network connectivity, so 
     // save the message in core data. 
     [[CoreDataManager instance] generateSaveRegistration];
-    
-    // Analytics
-    /*
-    [Flurry startSession:@"4XITISYNWHTBTL4E533E"];
-    [Flurry logAllPageViewsForTarget:self.tabBarController];
-    [Flurry logAllPageViewsForTarget:navController0];
-    [Flurry logAllPageViewsForTarget:navController1];
-    [Flurry logAllPageViewsForTarget:navController2];
-    [Flurry logAllPageViewsForTarget:navController3];
-    [Flurry setUserID:[[Globals instance] getUUID]];
-    */
     
     // set the socialize api key and secret, app registered here: http://www.getsocialize.com/apps/
     [Socialize storeConsumerKey:@"8d0ddf53-fac1-48b1-ab25-b8c819455124"];

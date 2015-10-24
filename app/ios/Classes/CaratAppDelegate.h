@@ -16,11 +16,11 @@
 #import "CommunicationManager.h"
 #import "Thrift/transport/TSocketClient.h"
 #import "Thrift/protocol/TBinaryProtocol.h"
+#import "TutorialViewController.h"
 #import "DashBoardViewController.h"
 
 @interface CaratAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, CLLocationManagerDelegate> {
     UIWindow *window;
-//    UITabBarController *tabBarController;
     DashBoardViewController *dashBoardViewController;
     CLLocationManager *locationManager;
     UIBackgroundTaskIdentifier bgTask;

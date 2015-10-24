@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialViewController">
             <connections>
                 <outlet property="ImageView" destination="J9M-Pe-HJl" id="S3h-WK-ZHC"/>
+                <outlet property="acceptButton" destination="DOR-ri-xiv" id="ljX-L7-dpL"/>
                 <outlet property="pageIndicatorView" destination="JO7-iF-Kpd" id="zbR-LM-6rP"/>
                 <outlet property="tutorialPageDescription" destination="k8V-w0-rQO" id="sbW-G1-9W7"/>
                 <outlet property="tutorialPageTitle" destination="Uno-p5-9AQ" id="2d6-6Q-YTz"/>
@@ -35,20 +36,37 @@
                                 <outletCollection property="gestureRecognizers" destination="b9Q-yf-qLv" appends="YES" id="79V-ih-UQl"/>
                             </connections>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uno-p5-9AQ">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uno-p5-9AQ">
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="widthClass=compact">
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                            </variation>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8V-w0-rQO" customClass="UiInsetLabel">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <variation key="widthClass=compact">
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                             </variation>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JO7-iF-Kpd" customClass="TutorialPageIndicatorView">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="28" id="7HM-Af-WEG"/>
+                                <constraint firstAttribute="height" constant="22" id="7HM-Af-WEG"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="pageCount">
@@ -69,23 +87,6 @@
                                 </mask>
                             </variation>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8V-w0-rQO" customClass="UiInsetLabel">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                    <real key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                    <real key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <variation key="widthClass=compact">
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
-                            </variation>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -110,8 +111,8 @@
                         <mask key="subviews">
                             <exclude reference="J9M-Pe-HJl"/>
                             <exclude reference="Uno-p5-9AQ"/>
-                            <exclude reference="JO7-iF-Kpd"/>
                             <exclude reference="k8V-w0-rQO"/>
+                            <exclude reference="JO7-iF-Kpd"/>
                         </mask>
                         <mask key="constraints">
                             <exclude reference="Al6-JB-o6F"/>
@@ -136,8 +137,8 @@
                         <mask key="subviews">
                             <include reference="J9M-Pe-HJl"/>
                             <include reference="Uno-p5-9AQ"/>
-                            <include reference="JO7-iF-Kpd"/>
                             <include reference="k8V-w0-rQO"/>
+                            <include reference="JO7-iF-Kpd"/>
                         </mask>
                         <mask key="constraints">
                             <include reference="Al6-JB-o6F"/>
@@ -162,15 +163,33 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VA8-XC-ypw" userLabel="bottomContent">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AcceptInfo" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybp-o4-dKs" customClass="LocalizedLabel">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <gestureRecognizers/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                            <color key="textColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="widthClass=compact">
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="11"/>
+                            </variation>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="aMQ-78-Jm3" appends="YES" id="5j5-q3-Sw5"/>
+                            </connections>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOR-ri-xiv" customClass="LocalizedUIButton">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" red="1" green="0.62392155140000005" blue="0.048494156230000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="49" id="eGa-oo-Rmt"/>
+                                <constraint firstAttribute="height" constant="40" id="eGa-oo-Rmt"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                             <state key="normal" title="Accept"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="eGa-oo-Rmt"/>
@@ -185,80 +204,60 @@
                                 <action selector="acceptPressed" destination="-1" eventType="touchUpInside" id="YhT-wZ-Xbn"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybp-o4-dKs" customClass="LocalizedLabel">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="AOZ-tN-b6w"/>
-                            </constraints>
-                            <attributedString key="attributedText">
-                                <fragment content="AcceptInfo">
-                                    <attributes>
-                                        <color key="NSColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="13" name="Helvetica-Light"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                            <nil key="highlightedColor"/>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="AOZ-tN-b6w"/>
-                                </mask>
-                            </variation>
-                            <variation key="widthClass=compact">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <mask key="constraints">
-                                    <include reference="AOZ-tN-b6w"/>
-                                </mask>
-                            </variation>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.070588235294117646" green="0.12941176470588234" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="Ybp-o4-dKs" firstAttribute="leading" secondItem="VA8-XC-ypw" secondAttribute="leading" constant="8" id="2Ko-Fl-QHh"/>
                         <constraint firstItem="Ybp-o4-dKs" firstAttribute="centerX" secondItem="VA8-XC-ypw" secondAttribute="centerX" id="2TT-49-kSg"/>
-                        <constraint firstItem="DOR-ri-xiv" firstAttribute="top" secondItem="VA8-XC-ypw" secondAttribute="top" constant="20" id="9sI-PK-01H" userLabel="Accept.top = 1.1× top"/>
+                        <constraint firstAttribute="height" constant="83" id="CBw-v9-un0"/>
                         <constraint firstItem="DOR-ri-xiv" firstAttribute="centerX" secondItem="VA8-XC-ypw" secondAttribute="centerX" id="ClU-fk-UrR"/>
                         <constraint firstAttribute="trailing" secondItem="Ybp-o4-dKs" secondAttribute="trailing" constant="8" id="E6m-ii-bHp"/>
-                        <constraint firstAttribute="height" constant="146" id="EEd-6M-8eg"/>
+                        <constraint firstItem="Ybp-o4-dKs" firstAttribute="top" secondItem="DOR-ri-xiv" secondAttribute="bottom" id="MQS-n5-eF8"/>
                         <constraint firstItem="DOR-ri-xiv" firstAttribute="leading" secondItem="VA8-XC-ypw" secondAttribute="centerX" multiplier="0.5" id="MS1-Kc-hei"/>
+                        <constraint firstItem="DOR-ri-xiv" firstAttribute="top" secondItem="VA8-XC-ypw" secondAttribute="top" constant="8" id="VBI-01-qXn"/>
+                        <constraint firstAttribute="bottom" secondItem="Ybp-o4-dKs" secondAttribute="bottom" id="ds4-pj-QfM"/>
                         <constraint firstItem="DOR-ri-xiv" firstAttribute="trailing" secondItem="VA8-XC-ypw" secondAttribute="centerX" multiplier="1.5" id="ebg-xn-rNb"/>
-                        <constraint firstItem="Ybp-o4-dKs" firstAttribute="centerY" secondItem="VA8-XC-ypw" secondAttribute="centerY" multiplier="1.5" id="vKw-SM-LHS"/>
                     </constraints>
                     <variation key="default">
                         <mask key="subviews">
-                            <exclude reference="DOR-ri-xiv"/>
                             <exclude reference="Ybp-o4-dKs"/>
+                            <exclude reference="DOR-ri-xiv"/>
                         </mask>
                         <mask key="constraints">
-                            <exclude reference="EEd-6M-8eg"/>
-                            <exclude reference="9sI-PK-01H"/>
-                            <exclude reference="ClU-fk-UrR"/>
-                            <exclude reference="MS1-Kc-hei"/>
-                            <exclude reference="ebg-xn-rNb"/>
+                            <exclude reference="CBw-v9-un0"/>
                             <exclude reference="2Ko-Fl-QHh"/>
                             <exclude reference="2TT-49-kSg"/>
                             <exclude reference="E6m-ii-bHp"/>
-                            <exclude reference="vKw-SM-LHS"/>
+                            <exclude reference="MQS-n5-eF8"/>
+                            <exclude reference="ds4-pj-QfM"/>
+                            <exclude reference="ClU-fk-UrR"/>
+                            <exclude reference="MS1-Kc-hei"/>
+                            <exclude reference="VBI-01-qXn"/>
+                            <exclude reference="ebg-xn-rNb"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
                         <mask key="subviews">
-                            <include reference="DOR-ri-xiv"/>
                             <include reference="Ybp-o4-dKs"/>
+                            <include reference="DOR-ri-xiv"/>
                         </mask>
                         <mask key="constraints">
-                            <include reference="EEd-6M-8eg"/>
-                            <include reference="9sI-PK-01H"/>
-                            <include reference="ClU-fk-UrR"/>
-                            <include reference="MS1-Kc-hei"/>
-                            <include reference="ebg-xn-rNb"/>
+                            <include reference="CBw-v9-un0"/>
                             <include reference="2Ko-Fl-QHh"/>
                             <include reference="2TT-49-kSg"/>
                             <include reference="E6m-ii-bHp"/>
-                            <include reference="vKw-SM-LHS"/>
+                            <include reference="MQS-n5-eF8"/>
+                            <include reference="ds4-pj-QfM"/>
+                            <include reference="ClU-fk-UrR"/>
+                            <include reference="MS1-Kc-hei"/>
+                            <include reference="VBI-01-qXn"/>
+                            <include reference="ebg-xn-rNb"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="ExH-n3-ZmD" appends="YES" id="vhO-zL-DZa"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -273,6 +272,7 @@
                 <constraint firstAttribute="trailing" secondItem="wj5-qc-Dgm" secondAttribute="trailing" id="Br3-Jb-TUu"/>
                 <constraint firstItem="VA8-XC-ypw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SCS-el-UZS"/>
                 <constraint firstItem="VA8-XC-ypw" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="ZOS-sj-OQK"/>
+                <constraint firstItem="VA8-XC-ypw" firstAttribute="top" secondItem="wj5-qc-Dgm" secondAttribute="bottom" id="hnT-O7-uK2"/>
                 <constraint firstItem="VA8-XC-ypw" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="j48-1J-QGB"/>
                 <constraint firstItem="wj5-qc-Dgm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wTb-5N-Ljb"/>
             </constraints>
@@ -282,13 +282,14 @@
                     <exclude reference="VA8-XC-ypw"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="B0H-de-ZEZ"/>
-                    <exclude reference="SCS-el-UZS"/>
-                    <exclude reference="ZOS-sj-OQK"/>
-                    <exclude reference="j48-1J-QGB"/>
                     <exclude reference="5oH-Pa-mih"/>
                     <exclude reference="Br3-Jb-TUu"/>
                     <exclude reference="wTb-5N-Ljb"/>
+                    <exclude reference="B0H-de-ZEZ"/>
+                    <exclude reference="SCS-el-UZS"/>
+                    <exclude reference="ZOS-sj-OQK"/>
+                    <exclude reference="hnT-O7-uK2"/>
+                    <exclude reference="j48-1J-QGB"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -297,13 +298,14 @@
                     <include reference="VA8-XC-ypw"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="B0H-de-ZEZ"/>
-                    <include reference="SCS-el-UZS"/>
-                    <include reference="ZOS-sj-OQK"/>
-                    <include reference="j48-1J-QGB"/>
                     <include reference="5oH-Pa-mih"/>
                     <include reference="Br3-Jb-TUu"/>
                     <include reference="wTb-5N-Ljb"/>
+                    <include reference="B0H-de-ZEZ"/>
+                    <include reference="SCS-el-UZS"/>
+                    <include reference="ZOS-sj-OQK"/>
+                    <include reference="hnT-O7-uK2"/>
+                    <include reference="j48-1J-QGB"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="133" y="177"/>
@@ -318,8 +320,18 @@
                 <action selector="leftSwipe" destination="-1" id="0Rt-xZ-2oB"/>
             </connections>
         </swipeGestureRecognizer>
+        <tapGestureRecognizer id="aMQ-78-Jm3" userLabel="acceptInfoTap">
+            <connections>
+                <action selector="acceptInfoPressed" destination="-1" id="mEe-RM-MFi"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="ExH-n3-ZmD">
+            <connections>
+                <action selector="acceptInfoPressed" destination="-1" id="bgC-Ph-A0M"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="tutorial_02" width="360" height="640"/>
+        <image name="tutorial_02" width="180" height="320"/>
     </resources>
 </document>

@@ -14,6 +14,19 @@
 @end
 
 @implementation TutorialViewController
+@synthesize callbackDelegate;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil callbackTo:(id)delegate withSelector:(SEL)selector
+{
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        [self setCallbackDelegate:delegate];
+        self->callbackSelector = selector;
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,28 +36,12 @@
     [_pageIndicatorView setPageCount:_pageCount];
     [self setPage:_pagePos];
     
-    
-    [_acceptButton setEnabled:[[Globals instance] hasUserConsented]];
+    [_acceptButton setBackgroundColor:C_LIGHT_GRAY forState:UIControlStateDisabled];
+    [_acceptButton setBackgroundColor:C_ORANGE forState:UIControlStateNormal];
+    [_acceptButton setEnabled:[[Globals instance] hasUserConsented]];//
+    _acceptButton.layer.cornerRadius = 5; // this value vary as per your desire
+    _acceptButton.clipsToBounds = YES;
     NSLog(@"******TutorialViewController viewDidLoad******");
-    
-    // Do any additional setup after loading the view.
-     /*
-    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-    [recognizer setNumberOfTouchesRequired:1];
-    [_ImageView addGestureRecognizer:recognizer];
-    
-   
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-    
-    // Setting the swipe direction.
-    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
-    
-    // Adding the swipe gesture on image view
-    [_ImageView addGestureRecognizer:swipeLeft];
-    [_ImageView addGestureRecognizer:swipeRight];
-     */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +52,11 @@
 - (IBAction)acceptPressed{
     NSLog(@"****** acceptPressed *******");
     [[Globals instance] userHasConsented];
+    if(callbackDelegate != nil){
+        [[Globals instance] userHasConsented];
+        [self.callbackDelegate performSelector:self->callbackSelector];
+        [Flurry logEvent:NSLocalizedString(@"selectedEulaConsentForm", nil)];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -112,13 +114,23 @@
     _pagePos = pageNumber;
     TutorialPageContent* pageCont = _pageDataContent[pageNumber];
      NSLog(@"****** setPage title ******** %@", pageCont.title);
-    if(pageNumber == 4){
+    if(pageNumber == 3){
         [_acceptButton setEnabled:YES];
     }
     [_ImageView setImage:[UIImage imageNamed:pageCont.imageName]];
     [_tutorialPageTitle setText:pageCont.title];
     [_tutorialPageDescription setText:pageCont.text];
     [_pageIndicatorView setPagePositionAs:pageNumber];
+}
+
+- (IBAction)acceptInfoPressed
+{
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    WebInfoViewController *controler = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
+    controler.webUrl = @"consent";
+    controler.titleForView =  NSLocalizedString(@"EulaPrivacyPolicy", nil);
+    [self.navigationController pushViewController:controler animated:YES];
+    
 }
 
 /*
