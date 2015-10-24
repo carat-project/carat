@@ -6,9 +6,9 @@
 //  Copyright © 2015 University of Helsinki. All rights reserved.
 //
 
-#import "AboutCollapsedTableViewCell.h"
+#import "AboutTableViewCell.h"
 
-@implementation AboutCollapsedTableViewCell
+@implementation AboutTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -23,6 +23,8 @@
 - (void)dealloc {
     [_title release];
     [_subTitle release];
+    [_message release];
+    [_subTabArea release];
     [super dealloc];
 }
 @end

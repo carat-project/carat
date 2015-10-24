@@ -28,10 +28,9 @@
 		894A24071BC251800059850A /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A23FE1BC251800059850A /* ScoreView.m */; settings = {ASSET_TAGS = (); }; };
 		894A240A1BC251800059850A /* TutorialPageIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A24041BC251800059850A /* TutorialPageIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
 		894A240E1BC256A90059850A /* TutorialPageContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A240D1BC256A90059850A /* TutorialPageContent.m */; settings = {ASSET_TAGS = (); }; };
-		894AF0641BCCD992003E7D76 /* AboutExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		894AF0651BCCD992003E7D76 /* AboutExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		894AF0691BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0671BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		894AF06A1BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894AF0681BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		894AF0691BCCD9BF003E7D76 /* AboutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF0671BCCD9BF003E7D76 /* AboutTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		894AF06A1BCCD9BF003E7D76 /* AboutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894AF0681BCCD9BF003E7D76 /* AboutTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		894AF06D1BCCEC5F003E7D76 /* AboutListItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF06C1BCCEC5F003E7D76 /* AboutListItemData.m */; settings = {ASSET_TAGS = (); }; };
 		894C55891BDA5D5800B247F0 /* UIButton+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C55881BDA5D5800B247F0 /* UIButton+BackgroundColor.m */; settings = {ASSET_TAGS = (); }; };
 		894F34951BC042E700E0702A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 894F34941BC042E700E0702A /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
@@ -221,12 +220,10 @@
 		894A24041BC251800059850A /* TutorialPageIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageIndicatorView.m; sourceTree = "<group>"; };
 		894A240C1BC256A90059850A /* TutorialPageContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageContent.h; sourceTree = "<group>"; };
 		894A240D1BC256A90059850A /* TutorialPageContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageContent.m; sourceTree = "<group>"; };
-		894AF0611BCCD992003E7D76 /* AboutExpandedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutExpandedTableViewCell.h; sourceTree = "<group>"; };
-		894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutExpandedTableViewCell.m; sourceTree = "<group>"; };
 		894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutExpandedTableViewCell.xib; sourceTree = "<group>"; };
-		894AF0661BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutCollapsedTableViewCell.h; sourceTree = "<group>"; };
-		894AF0671BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutCollapsedTableViewCell.m; sourceTree = "<group>"; };
-		894AF0681BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCollapsedTableViewCell.xib; sourceTree = "<group>"; };
+		894AF0661BCCD9BF003E7D76 /* AboutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewCell.h; sourceTree = "<group>"; };
+		894AF0671BCCD9BF003E7D76 /* AboutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewCell.m; sourceTree = "<group>"; };
+		894AF0681BCCD9BF003E7D76 /* AboutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutTableViewCell.xib; sourceTree = "<group>"; };
 		894AF06B1BCCEC5F003E7D76 /* AboutListItemData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutListItemData.h; sourceTree = "<group>"; };
 		894AF06C1BCCEC5F003E7D76 /* AboutListItemData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutListItemData.m; sourceTree = "<group>"; };
 		894C55871BDA5D2A00B247F0 /* UIButton+BackgroundColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+BackgroundColor.h"; sourceTree = "<group>"; };
@@ -939,12 +936,10 @@
 				89550A9B1BCBDBDC00D1DE11 /* TouchView.h */,
 				89550A9C1BCBDBDC00D1DE11 /* TouchView.m */,
 				89550A9E1BCBDCC500D1DE11 /* TouchViewDelegate.h */,
-				894AF0681BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.xib */,
-				894AF0661BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.h */,
-				894AF0671BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m */,
+				894AF0681BCCD9BF003E7D76 /* AboutTableViewCell.xib */,
 				894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */,
-				894AF0611BCCD992003E7D76 /* AboutExpandedTableViewCell.h */,
-				894AF0621BCCD992003E7D76 /* AboutExpandedTableViewCell.m */,
+				894AF0661BCCD9BF003E7D76 /* AboutTableViewCell.h */,
+				894AF0671BCCD9BF003E7D76 /* AboutTableViewCell.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1745,7 +1740,7 @@
 				ABC07A1B14859C7100FCC2C2 /* about.png in Resources */,
 				ABC07A331486C21A00FCC2C2 /* 53-house.png in Resources */,
 				AB9B580B148FEA10004F92F2 /* 37x-Checkmark.png in Resources */,
-				894AF06A1BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.xib in Resources */,
+				894AF06A1BCCD9BF003E7D76 /* AboutTableViewCell.xib in Resources */,
 				89FF8B2F1BDBA6B600147943 /* SettingsView.xib in Resources */,
 				89FF8B881BDBAA3E00147943 /* DashBoardViewController.xib in Resources */,
 				AB9B580D148FF31D004F92F2 /* 37x-X.png in Resources */,
@@ -1821,7 +1816,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				894AF0641BCCD992003E7D76 /* AboutExpandedTableViewCell.m in Sources */,
 				C7E31C2F1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				89FF8B261BDBA64600147943 /* ProcessListViewController.m in Sources */,
 				89FF8B811BDBAA3E00147943 /* ActionsViewController.m in Sources */,
@@ -1850,7 +1844,7 @@
 				C754889F19963D04007A01CF /* UIImageView+WebCache.m in Sources */,
 				89FF8B021BDBA50500147943 /* BugReportViewController.m in Sources */,
 				C754887A19963D03007A01CF /* CaratProtocol.m in Sources */,
-				894AF0691BCCD9BF003E7D76 /* AboutCollapsedTableViewCell.m in Sources */,
+				894AF0691BCCD9BF003E7D76 /* AboutTableViewCell.m in Sources */,
 				89FF8B991BDBB06C00147943 /* ActionObject.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */,

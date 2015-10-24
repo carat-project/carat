@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutCollapsedTableViewCell : UITableViewCell
+@interface AboutTableViewCell : UITableViewCell
 @property (retain, nonatomic) IBOutlet UILabel *title;
 @property (retain, nonatomic) IBOutlet UILabel *subTitle;
+@property (retain, nonatomic) IBOutlet UILabel *message;
+@property (retain, nonatomic) IBOutlet UIView *subTabArea;
 
 @end

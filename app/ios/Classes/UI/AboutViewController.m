@@ -15,13 +15,13 @@
 @implementation AboutViewController
 
 static NSString * expandedCell = @"AboutExpandedTableViewCell";
-static NSString * collapsedCell = @"AboutCollapsedTableViewCell";
+static NSString * collapsedCell = @"AboutTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self creteData];
-    NSLog(@"viewDidLoad tabledata count: %d", [_tableData count]);
+    NSLog(@"viewDidLoad tabledata count: %lu", (unsigned long)[_tableData count]);
     NSLog(@"viewDidLoad tableView ref: %@", _tableView);
     _expandedCells = [[NSMutableArray alloc]init];
     [_tableView registerNib:[UINib nibWithNibName:collapsedCell bundle:nil] forCellReuseIdentifier:collapsedCell];
@@ -81,7 +81,7 @@ static NSString * collapsedCell = @"AboutCollapsedTableViewCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"tabledata count: %d", [_tableData count]);
+    NSLog(@"tabledata count: %lu", (unsigned long)[_tableData count]);
     return [_tableData count];
 }
 
@@ -104,35 +104,41 @@ static NSString * collapsedCell = @"AboutCollapsedTableViewCell";
     }
     
     AboutListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
-    if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
-        AboutExpandedTableViewCell *expandedCell = (AboutExpandedTableViewCell *)cell;
-        expandedCell.title.text = rowData.title;
-        expandedCell.subTitle.text = rowData.subTitle;
-        if([rowData.title isEqualToString: NSLocalizedString(@"Bugs", nil)]){
-            expandedCell.subTitle.textColor = C_ORANGE;
-        }
-        else if([rowData.title isEqualToString: NSLocalizedString(@"Hogs", nil)]){
-            expandedCell.subTitle.textColor = C_ORANGE;
-        }
-        else{
-            expandedCell.subTitle.textColor = C_LIGHT_GRAY;
-        }
-        expandedCell.message.text = rowData.message;
+    AboutTableViewCell *viewCell = (AboutTableViewCell *)cell;
+    viewCell.title.text = rowData.title;
+    viewCell.subTitle.text = rowData.subTitle;
+    if([rowData.title isEqualToString: NSLocalizedString(@"Bugs", nil)]){
+        viewCell.subTitle.textColor = C_ORANGE;
+
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(showBugs:)];
+        [viewCell.subTabArea addGestureRecognizer:singleFingerTap];
+        [singleFingerTap release];
+    }
+    else if([rowData.title isEqualToString: NSLocalizedString(@"Hogs", nil)]){
+        viewCell.subTitle.textColor = C_ORANGE;
+
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(showHogs:)];
+        [viewCell.subTabArea addGestureRecognizer:singleFingerTap];
+        [singleFingerTap release];
     }
     else{
-        AboutCollapsedTableViewCell *collapsedCell = (AboutCollapsedTableViewCell *)cell;
-        collapsedCell.title.text = rowData.title;
-        collapsedCell.subTitle.text = rowData.subTitle;
-        if([rowData.title isEqualToString: NSLocalizedString(@"Bugs", nil)]){
-            collapsedCell.subTitle.textColor = C_ORANGE;
+        viewCell.subTitle.textColor = C_LIGHT_GRAY;
+        NSArray *recognizers = [viewCell.subTabArea gestureRecognizers];
+        if(recognizers != nil){
+            int count = (int)recognizers.count;
+            for(int i=0; i<count; i++){
+                UIGestureRecognizer* r = [recognizers objectAtIndex:i];
+                [viewCell removeGestureRecognizer:r];
+            }
         }
-        else if([rowData.title isEqualToString: NSLocalizedString(@"Hogs", nil)]){
-            collapsedCell.subTitle.textColor = C_ORANGE;
-        }
-        else{
-            collapsedCell.subTitle.textColor = C_LIGHT_GRAY;
-        }
+    }
 
+    if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
+        viewCell.message.text = rowData.message;
     }
     
     return cell;
@@ -207,15 +213,37 @@ static NSString * collapsedCell = @"AboutCollapsedTableViewCell";
     [helloWorldAlert show];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Navigation methods
+- (void)showBugs:(UITapGestureRecognizer *)recognizer {
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
+   
+    NSMutableArray *controllers=[[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers] ;
+    
+    //Remove the last view controller
+    [controllers removeLastObject];
+    [controllers removeLastObject];
+    [controllers addObject:controler];
+    //set the new set of view controllers
+    [[self retain] autorelease];
+    [self.navigationController setViewControllers:controllers];
+}
+
+- (void)showHogs:(UITapGestureRecognizer *)recognizer {
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    HogsViewController *controler = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
+
+    NSMutableArray *controllers=[[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers] ;
+    
+    //Remove the last view controller
+    [controllers removeLastObject];
+    [controllers removeLastObject];
+    [controllers addObject:controler];
+    //set the new set of view controllers
+    [[self retain] autorelease];
+    [self.navigationController setViewControllers:controllers];
+}
+
 
 - (void)dealloc {
     [_tableData release];

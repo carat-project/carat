@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "AboutCollapsedTableViewCell.h"
-#import "AboutExpandedTableViewCell.h"
+#import "AboutTableViewCell.h"
 #import "AboutListItemData.h"
+#import "BugsViewController.h"
+#import "HogsViewController.h"
 
 
 @interface AboutViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
