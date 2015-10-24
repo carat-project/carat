@@ -26,6 +26,10 @@ public class ProcessInfoAdapter extends BaseAdapter {
     public ProcessInfoAdapter(Context context, List<ProcessInfo> results) {
         this.c = context;
         searchArrayList = results;
+        for (ProcessInfo item: searchArrayList)
+            if (!item.isSetApplicationLabel())
+                item.setApplicationLabel(CaratApplication.labelForApp(c, item.getPName()));
+        
         Collections.sort(searchArrayList, new AlphabeticalProcessInfoSort(context));
         mInflater = LayoutInflater.from(context);
     }
@@ -45,7 +49,7 @@ public class ProcessInfoAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.process, null);
+            convertView = mInflater.inflate(R.layout.process, parent, false);
             holder = new ViewHolder();
             holder.appIcon = (ImageView) convertView
                     .findViewById(R.id.app_icon);
@@ -80,6 +84,9 @@ public class ProcessInfoAdapter extends BaseAdapter {
 
         holder.appIcon.setImageDrawable(CaratApplication.iconForApp(c, p));
         holder.pkgName.setText(p);
+        if (x.isSetApplicationLabel())
+            holder.txtName.setText(x.getApplicationLabel()+ " " + ver);
+        else
         holder.txtName.setText(CaratApplication.labelForApp(c, p)+ " " + ver);
         holder.txtBenefit.setText(CaratApplication.translatedPriority(x.getImportance()));
         // holder.moreInfo...

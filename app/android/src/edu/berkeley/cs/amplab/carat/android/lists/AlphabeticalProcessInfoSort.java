@@ -18,10 +18,11 @@ public class AlphabeticalProcessInfoSort implements
 
     @Override
     public int compare(ProcessInfo lhs, ProcessInfo rhs) {
+        if (lhs.isSetApplicationLabel() && rhs.isSetApplicationLabel()){
+            return lhs.getApplicationLabel().compareTo(rhs.getApplicationLabel());
+        }
         String l = lhs.getPName();
-        l = CaratApplication.labelForApp(c, l);
         String r = rhs.getPName();
-        r = CaratApplication.labelForApp(c, r);
         if (l != null && r != null){
             return l.compareTo(r);
         }else

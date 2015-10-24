@@ -585,12 +585,16 @@ public final class SamplingLibrary {
 		List<RunningAppProcessInfo> runningProcs = getRunningProcessInfo(c);
 		List<RunningServiceInfo> runningServices = getRunningServiceInfo(c);
 
+		Set<String> packages = new HashSet<String>();
 		List<ProcessInfo> l = new ArrayList<ProcessInfo>();
 
 		if (runningProcs != null) {
 			for (RunningAppProcessInfo pi : runningProcs) {
 				if (pi == null)
 					continue;
+				if (packages.contains(pi.processName))
+				    continue;
+                packages.add(pi.processName);
 				ProcessInfo item = new ProcessInfo();
 				item.setImportance(CaratApplication.importanceString(pi.importance));
 				item.setPId(pi.pid);
@@ -603,10 +607,18 @@ public final class SamplingLibrary {
 			for (RunningServiceInfo pi : runningServices) {
 				if (pi == null)
 					continue;
+				if (packages.contains(pi.clientPackage))
+                    continue;
+                packages.add(pi.clientPackage);
 				ProcessInfo item = new ProcessInfo();
 				item.setImportance(pi.foreground ? "Foreground app" : "Service");
 				item.setPId(pi.pid);
-				item.setPName(pi.clientPackage);
+				if (pi.clientPackage != null && pi.clientPackage.length() > 0)
+				    item.setApplicationLabel(pi.clientPackage);
+				else
+				    item.setApplicationLabel(pi.service.flattenToString());
+				item.setPName(pi.process);
+				
 				l.add(item);
 			}
 		}
@@ -637,8 +649,9 @@ public final class SamplingLibrary {
 			}
 
 			runningAppInfo = new WeakReference<List<RunningAppProcessInfo>>(runningProcs);
-		}
-		return runningAppInfo.get();
+			return runningProcs;
+		}else
+		    return runningAppInfo.get();
 	}
 
 	/**
@@ -648,7 +661,7 @@ public final class SamplingLibrary {
 	 */
 	public static List<RunningServiceInfo> getRunningServiceInfo(Context c) {
 		ActivityManager pActivityManager = (ActivityManager) c.getSystemService(Activity.ACTIVITY_SERVICE);
-		return pActivityManager.getRunningServices(0);
+		return pActivityManager.getRunningServices(100);
 	}
 
 	/**
