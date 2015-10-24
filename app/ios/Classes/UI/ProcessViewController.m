@@ -91,7 +91,6 @@
     }
     
     cell.expImpTimeLabel.text = [selectedProc objectForKey:@"ProcessID"];
-    cell.delegate = self;
 }
 
 //Override super classes expandaple list item since this list doesn't seem to contain any expandaple
@@ -133,15 +132,6 @@
  // Pass the selected object to the new view controller.
  }
  */
-
-#pragma mark - Navigation methods
-- (IBAction)showWhatTheseNumbersMeanInfo:(id)sender {
-    DLog(@"%s", __PRETTY_FUNCTION__);
-    WebInfoViewController *controler = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
-    controler.webUrl = @"detailinfo";
-    controler.titleForView =  NSLocalizedString(@"NumberHelpLabel", nil);
-    [self.navigationController pushViewController:controler animated:YES];
-}
 
 
 - (void)dealloc {

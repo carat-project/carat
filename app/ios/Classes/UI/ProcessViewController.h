@@ -15,13 +15,11 @@
 //#import "UIImageView+WebCache.h"
 #import "UIImageDoNotCache.h" 
 
-@interface ProcessViewController : ListNetworkBaseViewController <ShowNumberHelpDelegate>{
+@interface ProcessViewController : ListNetworkBaseViewController{
     NSArray *processList;
     NSDate *lastUpdate;
 }
 
 @property (retain, nonatomic) NSDate *lastUpdate;
 @property (retain, nonatomic) NSArray *processList;
-
-- (void)showWhatTheseNumbersMeanInfo;
 @end
