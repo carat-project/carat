@@ -65,16 +65,8 @@
 {
     UITableViewCell *cell = [super tableView: tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
     NSDictionary *selectedProc = [self.processList objectAtIndex:indexPath.row];
-    
-    if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
-        BugHogExpandedTableViewCell *expandedCellView = (BugHogExpandedTableViewCell *)cell;
-        
-        [self setTopRowData:selectedProc cell:expandedCellView];
-    }
-    else{
-        BugHogTableViewCell *collapsedCellView = (BugHogTableViewCell *)cell;
-        [self setTopRowData:selectedProc cell:collapsedCellView];
-    }
+    BugHogTableViewCell *cellView = (BugHogTableViewCell *)cell;
+   [self setTopRowData:selectedProc cell:cellView];
     
     return cell;
 }
@@ -84,20 +76,22 @@
     NSString *appName = [selectedProc objectForKey:@"ProcessName"];
     cell.nameLabel.text = appName;
     
+    /*
     NSString *imageURL = [[@"https://s3.amazonaws.com/carat.icons/"
                            stringByAppendingString:appName]
                           stringByAppendingString:@".jpg"];
     [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURL]
-                         placeholderImage:[UIImage imageNamed:@"icon57.png"]];
+                         placeholderImage:[UIImage imageNamed:@"def_app_icon"]];
+    */
     
-    /*
     [UIImage newImageNotCached:[appName stringByAppendingString:@".png"]];
     UIImage *img = [UIImage newImageNotCached:[appName stringByAppendingString:@".png"]];
     if (img == nil) {
-        img = [UIImage newImageNotCached:@"icon57.png"];
+        img = [UIImage newImageNotCached:@"def_app_icon"];
     }
-    */
+    
     cell.expImpTimeLabel.text = [selectedProc objectForKey:@"ProcessID"];
+    cell.delegate = self;
 }
 
 //Override super classes expandaple list item since this list doesn't seem to contain any expandaple
@@ -139,6 +133,16 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+#pragma mark - Navigation methods
+- (IBAction)showWhatTheseNumbersMeanInfo:(id)sender {
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    WebInfoViewController *controler = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
+    controler.webUrl = @"detailinfo";
+    controler.titleForView =  NSLocalizedString(@"NumberHelpLabel", nil);
+    [self.navigationController pushViewController:controler animated:YES];
+}
+
 
 - (void)dealloc {
     [super dealloc];

@@ -145,16 +145,16 @@
                     <exclude reference="1Gm-Dd-X77"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="MjK-pb-JfA"/>
-                    <exclude reference="VPS-ye-udE"/>
-                    <exclude reference="bkJ-11-zV4"/>
-                    <exclude reference="3t8-3U-TOe"/>
-                    <exclude reference="5hX-Pe-1Jk"/>
-                    <exclude reference="E33-tQ-gEf"/>
                     <exclude reference="9LP-Ws-9QR"/>
                     <exclude reference="B0t-EH-mCD"/>
                     <exclude reference="K1Q-GO-GAX"/>
                     <exclude reference="qpd-4b-Mwo"/>
+                    <exclude reference="3t8-3U-TOe"/>
+                    <exclude reference="5hX-Pe-1Jk"/>
+                    <exclude reference="E33-tQ-gEf"/>
+                    <exclude reference="MjK-pb-JfA"/>
+                    <exclude reference="VPS-ye-udE"/>
+                    <exclude reference="bkJ-11-zV4"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -163,16 +163,16 @@
                     <include reference="1Gm-Dd-X77"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="MjK-pb-JfA"/>
-                    <include reference="VPS-ye-udE"/>
-                    <include reference="bkJ-11-zV4"/>
-                    <include reference="3t8-3U-TOe"/>
-                    <include reference="5hX-Pe-1Jk"/>
-                    <include reference="E33-tQ-gEf"/>
                     <include reference="9LP-Ws-9QR"/>
                     <include reference="B0t-EH-mCD"/>
                     <include reference="K1Q-GO-GAX"/>
                     <include reference="qpd-4b-Mwo"/>
+                    <include reference="3t8-3U-TOe"/>
+                    <include reference="5hX-Pe-1Jk"/>
+                    <include reference="E33-tQ-gEf"/>
+                    <include reference="MjK-pb-JfA"/>
+                    <include reference="VPS-ye-udE"/>
+                    <include reference="bkJ-11-zV4"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="223" y="147"/>
@@ -181,7 +181,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RHx-yc-Pb9">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RHx-yc-Pb9">
                     <rect key="frame" x="0.0" y="46" width="320" height="33"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -206,7 +206,7 @@
                         </mask>
                     </variation>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KlL-Kw-DrZ">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KlL-Kw-DrZ">
                     <rect key="frame" x="0.0" y="95" width="320" height="130"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
@@ -238,9 +238,9 @@
                     <exclude reference="E15-4d-hfs"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="geO-5R-pmy"/>
-                    <exclude reference="cF4-HG-AOQ"/>
                     <exclude reference="ZwE-Fj-4ut"/>
+                    <exclude reference="cF4-HG-AOQ"/>
+                    <exclude reference="geO-5R-pmy"/>
                     <exclude reference="ADf-Gd-2yd"/>
                     <exclude reference="ar1-x1-KxO"/>
                     <exclude reference="kDM-HP-6rB"/>
@@ -255,9 +255,9 @@
                     <include reference="E15-4d-hfs"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="geO-5R-pmy"/>
-                    <include reference="cF4-HG-AOQ"/>
                     <include reference="ZwE-Fj-4ut"/>
+                    <include reference="cF4-HG-AOQ"/>
+                    <include reference="geO-5R-pmy"/>
                     <include reference="ADf-Gd-2yd"/>
                     <include reference="ar1-x1-KxO"/>
                     <include reference="kDM-HP-6rB"/>

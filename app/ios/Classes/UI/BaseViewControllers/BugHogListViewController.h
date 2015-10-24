@@ -7,12 +7,11 @@
 //
 
 #import "ListNetworkBaseViewController.h"
-
-#import "BugHogExpandedTableViewCell.h"
+#import "WebInfoViewController.h";
 #import "BugHogTableViewCell.h"
 #import "UIImageView+WebCache.h"
 
-@interface BugHogListViewController : ListNetworkBaseViewController{
+@interface BugHogListViewController : ListNetworkBaseViewController <ShowNumberHelpDelegate>{
     HogBugReport *report;
     NSMutableArray *filteredCells;    
 }
@@ -21,5 +20,6 @@
 
 - (void)reloadReport;
 - (void)setHogBugReport:(HogBugReport *)report;
+- (void)showWhatTheseNumbersMeanInfo;
 
 @end

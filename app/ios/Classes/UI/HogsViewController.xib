@@ -177,7 +177,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-Tj-fay">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-Tj-fay">
                     <rect key="frame" x="0.0" y="46" width="320" height="33"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -186,7 +186,7 @@
                         <rect key="frame" x="8" y="201" width="358" height="29"/>
                     </variation>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-KC-ecZ">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-KC-ecZ">
                     <rect key="frame" x="0.0" y="95" width="320" height="130"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
@@ -234,15 +234,15 @@
                     <exclude reference="fjR-wE-EAn"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="GKw-4P-oAP"/>
-                    <exclude reference="5rL-5f-R3u"/>
                     <exclude reference="41v-hS-ypG"/>
-                    <exclude reference="n05-hY-q3R"/>
+                    <exclude reference="5rL-5f-R3u"/>
+                    <exclude reference="GKw-4P-oAP"/>
                     <exclude reference="DjW-ZM-JmO"/>
+                    <exclude reference="n05-hY-q3R"/>
                     <exclude reference="vfL-id-85L"/>
-                    <exclude reference="jlh-Cb-EbO"/>
-                    <exclude reference="jMA-KU-eIv"/>
                     <exclude reference="9EG-lf-9Am"/>
+                    <exclude reference="jMA-KU-eIv"/>
+                    <exclude reference="jlh-Cb-EbO"/>
                     <exclude reference="rhb-Q5-tjd"/>
                 </mask>
             </variation>
@@ -251,15 +251,15 @@
                     <include reference="fjR-wE-EAn"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="GKw-4P-oAP"/>
-                    <include reference="5rL-5f-R3u"/>
                     <include reference="41v-hS-ypG"/>
-                    <include reference="n05-hY-q3R"/>
+                    <include reference="5rL-5f-R3u"/>
+                    <include reference="GKw-4P-oAP"/>
                     <include reference="DjW-ZM-JmO"/>
+                    <include reference="n05-hY-q3R"/>
                     <include reference="vfL-id-85L"/>
-                    <include reference="jlh-Cb-EbO"/>
-                    <include reference="jMA-KU-eIv"/>
                     <include reference="9EG-lf-9Am"/>
+                    <include reference="jMA-KU-eIv"/>
+                    <include reference="jlh-Cb-EbO"/>
                     <include reference="rhb-Q5-tjd"/>
                 </mask>
             </variation>

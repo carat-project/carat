@@ -32,40 +32,71 @@
 
 //overrides super completely (super updateView is empty function)
 - (void)updateView {
-    NSMutableArray *myList = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *myList = [self getActionsList];
     
-    ActionObject *tmpAction;
+    // sharing Action
+    /*tmpAction = [[ActionObject alloc] init];
+     [tmpAction setActionText:@"Help Spread the Word"];
+     [tmpAction setActionType:ActionTypeSpreadTheWord];
+     [tmpAction setActionBenefit:-2];
+     [tmpAction setActionError:-2];
+     [myList addObject:tmpAction];
+     [tmpAction release];
+     */
+    //the "key" is the *name* of the @property as a string.  So you can also sort by @"label" if you'd like
+    [myList sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"actionBenefit" ascending:NO]]];
+    
+    [self setActionList:myList];
+    [self.tableView reloadData];
+    [self.view setNeedsDisplay];
+}
+
+- (NSMutableArray *) getActionsList
+{
+     // get Hogs, filter negative actionBenefits, fill mutable array
+    NSMutableArray *myList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
     
     DLog(@"Loading Hogs");
-    // get Hogs, filter negative actionBenefits, fill mutable array
-    NSArray *tmp = [[CoreDataManager instance] getHogs:YES withoutHidden:YES].hbList;
-    if (tmp != nil) {
-        for (HogsBugs *hb in tmp) {
-            if ([hb appName] != nil &&
-                [hb expectedValue] > 0 &&
-                [hb expectedValueWithout] > 0 &&
-                [hb error] > 0 &&
-                [hb errorWithout] > 0) {
-                
-                NSInteger benefit = (int) (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
-                NSInteger benefit_max = (int) (100/([hb expectedValueWithout]-[hb errorWithout]) - 100/([hb expectedValue]+[hb error]));
-                NSInteger error = (int) (benefit_max-benefit);
-                DLog(@"Benefit is %d ± %d for hog '%@'", benefit, error, [hb appName]);
-                if (benefit > 60) { // TODO need positive gap, also check for below
-                    tmpAction = [[ActionObject alloc] init];
-                    [tmpAction setActionText:[@"Kill " stringByAppendingString:[hb appName]]];
-                    [tmpAction setActionType:ActionTypeKillApp];
-                    [tmpAction setActionBenefit:benefit];
-                    [tmpAction setActionError:error];
-                    [myList addObject:tmpAction];
-                    [tmpAction release];
-                }
-            }
-        }
-    }
-    
+   // get Bugs, add to array
+    NSMutableArray *bugsActionList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionRestart", nil) actType:ActionTypeRestartApp];
+    [myList addObjectsFromArray:bugsActionList];
     DLog(@"Loading Bugs");
-    // get Bugs, add to array
+    
+    // get OS
+    ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];
+    if(tmpAction != nil){
+        [myList addObject:tmpAction];
+        [tmpAction release];
+    }
+    DLog(@"Loading OS");
+
+    /*
+    
+     NSArray *tmp = [[CoreDataManager instance] getHogs:YES withoutHidden:YES].hbList;
+     if (tmp != nil) {
+     for (HogsBugs *hb in tmp) {
+     if ([hb appName] != nil &&
+     [hb expectedValue] > 0 &&
+     [hb expectedValueWithout] > 0 &&
+     [hb error] > 0 &&
+     [hb errorWithout] > 0) {
+     
+     NSInteger benefit = (int) (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
+     NSInteger benefit_max = (int) (100/([hb expectedValueWithout]-[hb errorWithout]) - 100/([hb expectedValue]+[hb error]));
+     NSInteger error = (int) (benefit_max-benefit);
+     DLog(@"Benefit is %d ± %d for hog '%@'", benefit, error, [hb appName]);
+     if (benefit > 60) { // TODO need positive gap, also check for below
+     tmpAction = [[ActionObject alloc] init];
+     [tmpAction setActionText:[@"Kill " stringByAppendingString:[hb appName]]];
+     [tmpAction setActionType:ActionTypeKillApp];
+     [tmpAction setActionBenefit:benefit];
+     [tmpAction setActionError:error];
+     [myList addObject:tmpAction];
+     [tmpAction release];
+     }
+     }
+     }
+     }
     tmp = [[CoreDataManager instance] getBugs:YES withoutHidden:YES].hbList;
     if (tmp != nil) {
         for (HogsBugs *hb in tmp) {
@@ -91,9 +122,7 @@
             }
         }
     }
-    
-    DLog(@"Loading OS");
-    // get OS
+
     DetailScreenReport *dscWith = [[[CoreDataManager instance] getOSInfo:YES] retain];
     DetailScreenReport *dscWithout = [[[CoreDataManager instance] getOSInfo:NO] retain];
     
@@ -123,7 +152,7 @@
     
     [dscWith release];
     [dscWithout release];
-    
+    */
     DLog(@"Loading Actions");
     
     // data collection action
@@ -136,22 +165,7 @@
         [myList addObject:tmpAction];
         [tmpAction release];
     }
-    
-    // sharing Action
-    /*tmpAction = [[ActionObject alloc] init];
-     [tmpAction setActionText:@"Help Spread the Word"];
-     [tmpAction setActionType:ActionTypeSpreadTheWord];
-     [tmpAction setActionBenefit:-2];
-     [tmpAction setActionError:-2];
-     [myList addObject:tmpAction];
-     [tmpAction release];
-     */
-    //the "key" is the *name* of the @property as a string.  So you can also sort by @"label" if you'd like
-    [myList sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"actionBenefit" ascending:NO]]];
-    
-    [self setActionList:myList];
-    [self.tableView reloadData];
-    [self.view setNeedsDisplay];
+    return myList;
 }
 
 #pragma mark - MBProgressHUDDelegate method

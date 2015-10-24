@@ -1927,4 +1927,96 @@ static id instance = nil;
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Transfered functions from Controllers
+
+-(NSInteger)calcBenefit: (double)expVal expValWithout:(double)expValWithout
+{
+    return (int) (100/expValWithout - 100/expVal);
+}
+
+-(NSInteger)calcMaxBenefit:(double)expVal expValWithout:(double)expValWithout errWithout:(double)errWithout err:(double)err
+{
+    return (int) (100/(expValWithout-errWithout) - 100/(expVal+err));
+}
+-(ActionObject*)createActionObject:(double)expVal expValWithout:(double)expValWithout errWithout:(double)errWithout err:(double)err actText:(NSString*)actText actType:(ActionType)actType
+{
+    NSInteger benefit = [self calcBenefit:expVal expValWithout:expValWithout];
+    NSInteger benefit_max = [self calcMaxBenefit:expVal expValWithout:expValWithout errWithout:errWithout err:err];
+    NSInteger errorVal = (int) (benefit_max-benefit);
+    DLog(@"OS benefit is %d ± %d", benefit, err);
+    if (benefit > 60) {
+        ActionObject *tmpAction = [[ActionObject alloc] init];
+        [tmpAction setActionText:actText];
+        [tmpAction setActionType:actType];
+        [tmpAction setActionBenefit:benefit];
+        [tmpAction setActionError:errorVal];
+        return tmpAction;
+    }
+    return nil;
+}
+-(BOOL)valuesArePositive:(double)expVal expValWithout:(double)expValWithout errWithout:(double)errWithout err:(double)err
+{
+    return expVal > 0 &&
+    expValWithout > 0 &&
+    err > 0 &&
+    errWithout > 0;
+}
+
+-(NSMutableArray *)getHogsBugsActionList:(NSArray *)list actText:(NSString *)actText actType:(ActionType)actTyp
+{
+    NSMutableArray *myList = [[[NSMutableArray alloc] init] autorelease];
+    if (list != nil) {
+        for (HogsBugs *hb in list) {
+            double expVal = [hb expectedValue];
+            double expValWithout = [hb expectedValueWithout];
+            double err = [hb error];
+            double errWithout = [hb errorWithout];
+            if ([self valuesArePositive:expVal expValWithout:expValWithout errWithout:errWithout err:err] &&
+                [hb appName] != nil) {
+                
+                ActionObject *tmpAction = [self createActionObject:expVal expValWithout:expValWithout errWithout:errWithout err:err actText:actText actType:actTyp];
+                if(tmpAction != nil){
+                    [myList addObject:tmpAction];
+                    [tmpAction release];
+                }
+            }
+        }
+    }
+    return myList;
+}
+
+-(NSMutableArray *)getBugsActionList:(BOOL)getBugs withoutHidden:(BOOL)withoutHidden actText:(NSString *)actText actType:(ActionType)actType
+{
+    NSArray *tmp = [self getBugs:getBugs withoutHidden:withoutHidden].hbList;
+    return [self getHogsBugsActionList:tmp actText:actText actType:actType];
+}
+
+-(NSMutableArray *)getHogsActionList:(BOOL)getHogs withoutHidden:(BOOL)withoutHidden actText:(NSString *)actText actType:(ActionType)actType
+{
+    NSArray *tmp = [self getHogs:getHogs withoutHidden:withoutHidden].hbList;
+    return [self getHogsBugsActionList:tmp actText:actText actType:actType];
+}
+
+
+-(ActionObject*)createActionObjectFromDetailScreenReport:(NSString *)actText actType:(ActionType)actTyp
+{
+    DetailScreenReport *dscWith = [[self getOSInfo:YES] retain];
+    DetailScreenReport *dscWithout = [[self getOSInfo:NO] retain];
+    
+    BOOL canUpgradeOS = [Utilities canUpgradeOS];
+    
+    if (dscWith != nil && dscWithout != nil) {
+        if ([self valuesArePositive:dscWith.expectedValue expValWithout:dscWithout.expectedValue errWithout:dscWithout.error err:dscWith.error] &&
+            canUpgradeOS) {
+            ActionObject *tmpAction = [self createActionObject:dscWith.expectedValue expValWithout:dscWithout.expectedValue errWithout:dscWithout.error err:dscWith.error actText:actText actType:ActionTypeUpgradeOS];
+            return tmpAction;
+        }
+    }
+    [dscWith release];
+    [dscWithout release];
+    return nil;
+}
+
+
+
 @end

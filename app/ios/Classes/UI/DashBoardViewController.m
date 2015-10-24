@@ -35,20 +35,23 @@
     [super viewDidLoad];
     [_shareBar setHidden:YES];
     
+    int count = [self getBugsCount];
     [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
-    [_bugsBtn setButtonExtraInfo:@"7"];
+    [_bugsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     [_bugsBtn setButtonTitle:NSLocalizedString(@"Bugs", nil)];
     
+    count = [self getHogsCount];
     [_hogsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
-    [_hogsBtn setButtonExtraInfo:@"4"];
+    [_hogsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     [_hogsBtn setButtonTitle:NSLocalizedString(@"Hogs", nil)];
     
     [_statisticsBtn setButtonImage:[UIImage imageNamed:@"globe_icon"]];
     [_statisticsBtn setButtonExtraInfo:@"VIEW"];
     [_statisticsBtn setButtonTitle:NSLocalizedString(@"Statistics", nil)];
     
+    count = [self getActivityCount];
     [_actionsBtn setButtonImage:[UIImage imageNamed:@"action_icon"]];
-    [_actionsBtn setButtonExtraInfo:@"4"];
+    [_actionsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     [_actionsBtn setButtonTitle:NSLocalizedString(@"Actions", nil)];
 }
 
@@ -216,6 +219,55 @@
     [_shareBtn setHidden:NO];
 }
 
+- (int)getBugsCount
+{
+    int count = 0;
+    HogBugReport *rep = [[CoreDataManager instance] getBugs:NO withoutHidden:YES];
+    if (rep != nil && [rep hbListIsSet]) {
+        count = (int)[[rep hbList] count];
+    }
+    return count;
+}
+
+- (int)getHogsCount
+{
+    int count = 0;
+    HogBugReport *rep = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
+    if (rep != nil && [rep hbListIsSet]) {
+        count = (int)[[rep hbList] count];
+    }
+    return count;
+}
+
+- (int)getActivityCount
+{
+    NSMutableArray *myList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
+    
+    DLog(@"Loading Hogs");
+    // get Bugs, add to array
+    NSMutableArray *bugsActionList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionRestart", nil) actType:ActionTypeRestartApp];
+    [myList addObjectsFromArray:bugsActionList];
+    DLog(@"Loading Bugs");
+    
+    // get OS
+    ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];
+    if(tmpAction != nil){
+        [myList addObject:tmpAction];
+        [tmpAction release];
+    }
+    DLog(@"Loading OS");
+    // data collection action
+    if ([myList count] == 0) {
+        tmpAction = [[ActionObject alloc] init];
+        [tmpAction setActionText:@"Help Carat Collect Data"];
+        [tmpAction setActionType:ActionTypeCollectData];
+        [tmpAction setActionBenefit:-1];
+        [tmpAction setActionError:-1];
+        [myList addObject:tmpAction];
+        [tmpAction release];
+    }
+    return (int)myList.count;
+}
 #pragma mark - Navigation methods
 - (IBAction)showScoreInfo:(id)sender {
     [self showInfoView:@"JScore" message:@"JScoreDesc"];

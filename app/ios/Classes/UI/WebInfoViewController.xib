@@ -21,7 +21,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5tY-4j-LlC">
+                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5tY-4j-LlC">
                     <rect key="frame" x="46" y="66" width="400" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
@@ -56,13 +56,13 @@
                     <exclude reference="fgU-aQ-aKG"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="9fl-XD-c8p"/>
-                    <exclude reference="Jc3-6l-4gx"/>
-                    <exclude reference="whD-jS-v3Q"/>
                     <exclude reference="7pX-r9-FNx"/>
                     <exclude reference="Dtb-A8-kjD"/>
                     <exclude reference="HCS-mb-NAZ"/>
                     <exclude reference="vFQ-vR-9o1"/>
+                    <exclude reference="9fl-XD-c8p"/>
+                    <exclude reference="Jc3-6l-4gx"/>
+                    <exclude reference="whD-jS-v3Q"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -70,13 +70,13 @@
                     <include reference="fgU-aQ-aKG"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="9fl-XD-c8p"/>
-                    <include reference="Jc3-6l-4gx"/>
-                    <include reference="whD-jS-v3Q"/>
                     <include reference="7pX-r9-FNx"/>
                     <include reference="Dtb-A8-kjD"/>
                     <include reference="HCS-mb-NAZ"/>
                     <include reference="vFQ-vR-9o1"/>
+                    <include reference="9fl-XD-c8p"/>
+                    <include reference="Jc3-6l-4gx"/>
+                    <include reference="whD-jS-v3Q"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="313.5" y="205.5"/>

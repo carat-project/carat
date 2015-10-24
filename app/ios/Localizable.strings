@@ -80,6 +80,11 @@
 "ForeGroundApp"="Foreground App";
 "NoActions"="No actions.";
 "ActionsHudLabel"="Updating Action List";
+
+"ActionUpgradeOS" = "Upgrade the Operating System";
+"ActionRestart" = "Restart ";
+"ActionKill" = "Kill ";
+
 "NoActionsMessage"="You have no actions.\n\nYou should open Carat regularly so it can take samples of your device state and communicate these to our servers.\nWe suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\nIt can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\nMake sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\nThe more often you open the app, the more quickly it will generate reports, the more information those reports will contain, and the more accurate the recommendations will be.\nCarat does not run as a background service, which is why it needs your help.\nThe app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground, but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.";
 
 "KillAppDesc" = "From your home screen, press the home button twice. Now you should see a Process Manager. If necessary, swipe back and forth to locate the app you want to close. When you've found it, press and hold on the app icon until a red circle appears in the corner of the icon. Press this red circle. \n\nOnce you are done killing apps, press the home button to close the Process Manager. If you were trying to restart the app, now simply open it again, as usual.";

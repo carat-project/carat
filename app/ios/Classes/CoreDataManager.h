@@ -23,6 +23,8 @@
 #import "CoreDataRegistration.h"
 #import "CommunicationManager.h"
 
+#import "ActionObject.h"
+
 @interface CoreDataManager : NSObject 
 {
     NSDate * LastUpdatedDate;
@@ -80,6 +82,14 @@
 - (Sample *) getSample;
 - (NSString *) getReportUpdateStatus;
 - (void) wipeDB;
+
+-(ActionObject*)createActionObjectFromDetailScreenReport:(NSString *)actText actType:(ActionType)actTyp;
+-(NSMutableArray *)getBugsActionList:(BOOL)getBugs withoutHidden:(BOOL)withoutHidden actText:(NSString *)actText actType:(ActionType)actType;
+-(NSMutableArray *)getHogsActionList:(BOOL)getHogs withoutHidden:(BOOL)withoutHidden actText:(NSString *)actText actType:(ActionType)actType;
+-(NSMutableArray *)getHogsBugsActionList:(NSArray *)list actText:(NSString *)actText actType:(ActionType)actTyp;
+-(NSInteger)calcBenefit: (double)expVal expValWithout:(double)expValWithout;
+-(NSInteger)calcMaxBenefit:(double)expVal expValWithout:(double)expValWithout errWithout:(double)errWithout err:(double)err;
+
 @end
 
 #endif

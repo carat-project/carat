@@ -7,13 +7,13 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionTableViewCell"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BugHogTableViewCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="323" id="Udx-Q5-5pZ" customClass="ActionTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="355" id="Udx-Q5-5pZ" customClass="BugHogTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Udx-Q5-5pZ" id="YeM-Cc-in4">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2T-Ro-Nsr" userLabel="AppName">
@@ -169,7 +169,7 @@
                 <outlet property="actionString" destination="p2T-Ro-Nsr" id="MAC-kW-qkA"/>
                 <outlet property="actionValue" destination="X0f-97-5my" id="QnI-3n-kBp"/>
             </connections>
-            <point key="canvasLocation" x="336" y="235.5"/>
+            <point key="canvasLocation" x="336" y="251"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -226,15 +226,15 @@
                         </mask>
                         <mask key="constraints">
                             <exclude reference="CBw-v9-un0"/>
+                            <exclude reference="ClU-fk-UrR"/>
+                            <exclude reference="MS1-Kc-hei"/>
+                            <exclude reference="VBI-01-qXn"/>
+                            <exclude reference="ebg-xn-rNb"/>
                             <exclude reference="2Ko-Fl-QHh"/>
                             <exclude reference="2TT-49-kSg"/>
                             <exclude reference="E6m-ii-bHp"/>
                             <exclude reference="MQS-n5-eF8"/>
                             <exclude reference="ds4-pj-QfM"/>
-                            <exclude reference="ClU-fk-UrR"/>
-                            <exclude reference="MS1-Kc-hei"/>
-                            <exclude reference="VBI-01-qXn"/>
-                            <exclude reference="ebg-xn-rNb"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
@@ -244,15 +244,15 @@
                         </mask>
                         <mask key="constraints">
                             <include reference="CBw-v9-un0"/>
+                            <include reference="ClU-fk-UrR"/>
+                            <include reference="MS1-Kc-hei"/>
+                            <include reference="VBI-01-qXn"/>
+                            <include reference="ebg-xn-rNb"/>
                             <include reference="2Ko-Fl-QHh"/>
                             <include reference="2TT-49-kSg"/>
                             <include reference="E6m-ii-bHp"/>
                             <include reference="MQS-n5-eF8"/>
                             <include reference="ds4-pj-QfM"/>
-                            <include reference="ClU-fk-UrR"/>
-                            <include reference="MS1-Kc-hei"/>
-                            <include reference="VBI-01-qXn"/>
-                            <include reference="ebg-xn-rNb"/>
                         </mask>
                     </variation>
                     <connections>
@@ -282,14 +282,14 @@
                     <exclude reference="VA8-XC-ypw"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="5oH-Pa-mih"/>
-                    <exclude reference="Br3-Jb-TUu"/>
-                    <exclude reference="wTb-5N-Ljb"/>
                     <exclude reference="B0H-de-ZEZ"/>
                     <exclude reference="SCS-el-UZS"/>
                     <exclude reference="ZOS-sj-OQK"/>
                     <exclude reference="hnT-O7-uK2"/>
                     <exclude reference="j48-1J-QGB"/>
+                    <exclude reference="5oH-Pa-mih"/>
+                    <exclude reference="Br3-Jb-TUu"/>
+                    <exclude reference="wTb-5N-Ljb"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -298,14 +298,14 @@
                     <include reference="VA8-XC-ypw"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="5oH-Pa-mih"/>
-                    <include reference="Br3-Jb-TUu"/>
-                    <include reference="wTb-5N-Ljb"/>
                     <include reference="B0H-de-ZEZ"/>
                     <include reference="SCS-el-UZS"/>
                     <include reference="ZOS-sj-OQK"/>
                     <include reference="hnT-O7-uK2"/>
                     <include reference="j48-1J-QGB"/>
+                    <include reference="5oH-Pa-mih"/>
+                    <include reference="Br3-Jb-TUu"/>
+                    <include reference="wTb-5N-Ljb"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="133" y="177"/>

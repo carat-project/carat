@@ -68,18 +68,16 @@
     UITableViewCell *cell = [super tableView: tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
     
     HogsBugs *hb = [filteredCells objectAtIndex:indexPath.row];
+    BugHogTableViewCell *cellView = (BugHogTableViewCell *)cell;
     if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
-        BugHogExpandedTableViewCell *expandedCellView = (BugHogExpandedTableViewCell *)cell;
-        
-        [self setTopRowData:hb cell:expandedCellView];
-        
-        expandedCellView.samplesValueLabel.text = [[NSNumber numberWithDouble:[hb samples]] stringValue];
-        expandedCellView.samplesWithoutValueLabel.text = [[NSNumber numberWithDouble:[hb samplesWithout]] stringValue];
-        expandedCellView.errorValueLabel.text = [[NSNumber numberWithDouble:[hb error]] stringValue];
+        [self setTopRowData:hb cell:cellView];
+        cellView.samplesValueLabel.text = [[NSNumber numberWithDouble:[hb samples]] stringValue];
+        cellView.samplesWithoutValueLabel.text = [[NSNumber numberWithDouble:[hb samplesWithout]] stringValue];
+        cellView.errorValueLabel.text = [[NSNumber numberWithDouble:[hb error]] stringValue];
     }
     else{
-        BugHogTableViewCell *collapsedCellView = (BugHogTableViewCell *)cell;
-        [self setTopRowData:hb cell:collapsedCellView];
+        
+        [self setTopRowData:hb cell:cellView];
     }
     
     return cell;
@@ -94,7 +92,7 @@
                            stringByAppendingString:appName]
                           stringByAppendingString:@".jpg"];
     [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURL]
-                         placeholderImage:[UIImage imageNamed:@"icon57.png"]];
+                         placeholderImage:[UIImage imageNamed:@"def_app_icon"]];
     
     
     double benefit = (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
@@ -131,7 +129,7 @@
 {
     report = rep;
     if (report != nil && [report hbListIsSet]) {
-        int count = [[report hbList] count];
+        int count = (int)[[report hbList] count];
         NSArray *hbList = [report hbList]; //[[ objectAtIndex:indexPath.row];
         float filterVal = [[Globals instance] getHideConsumptionLimit];
         DLog(@"%s filtred val %f", __PRETTY_FUNCTION__, filterVal);
@@ -147,10 +145,20 @@
         if([filteredCells count] > 0){
             [self.tableView reloadData];
         }
-        DLog(@"%s cells filtered:%d ", __PRETTY_FUNCTION__, (count - [filteredCells count]));
+        DLog(@"%s cells filtered:%d ", __PRETTY_FUNCTION__, (count - (int)[filteredCells count]));
 
     }
 }
+
+#pragma mark - Navigation methods
+- (void)showWhatTheseNumbersMeanInfo{
+    DLog(@"%s", __PRETTY_FUNCTION__);
+    WebInfoViewController *controler = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
+    controler.webUrl = @"detailinfo";
+    controler.titleForView =  NSLocalizedString(@"NumberHelpLabel", nil);
+    [self.navigationController pushViewController:controler animated:YES];
+}
+
 /*
 #pragma mark - Navigation
 

@@ -241,7 +241,6 @@
     [Flurry logEvent:NSLocalizedString(@"selectedProcessList", nil)];
 }
 
-
 - (void)dealloc {
     [_jScore release];
     [_caratIDValue release];

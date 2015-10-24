@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebInfoViewController.h"
 #import "BaseViewController.h"
-#import "BugHogExpandedTableViewCell.h"
 #import "BugHogTableViewCell.h"
 #import "ListNetworkBaseViewController.h"
 
-#import "UIImageView+WebCache.h"
-//#import "UIImageDoNotCache.h" 
+//#import "UIImageView+WebCache.h"
+#import "UIImageDoNotCache.h" 
 
-@interface ProcessViewController : ListNetworkBaseViewController {
+@interface ProcessViewController : ListNetworkBaseViewController <ShowNumberHelpDelegate>{
     NSArray *processList;
     NSDate *lastUpdate;
 }
@@ -23,4 +23,5 @@
 @property (retain, nonatomic) NSDate *lastUpdate;
 @property (retain, nonatomic) NSArray *processList;
 
+- (void)showWhatTheseNumbersMeanInfo;
 @end
