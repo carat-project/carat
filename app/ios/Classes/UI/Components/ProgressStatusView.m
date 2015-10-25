@@ -9,6 +9,8 @@
 #import "ProgressStatusView.h"
 
 @implementation ProgressStatusView
+@synthesize progress;
+@synthesize label;
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -18,4 +20,16 @@
 }
 */
 
+- (void) layoutSubviews
+{
+    NSLog(@"%s before height: %f",__PRETTY_FUNCTION__, self.frame.size.height);
+    [super layoutSubviews];
+    NSLog(@"%s after height: %f", __PRETTY_FUNCTION__, self.frame.size.height);
+}
+
+- (void)dealloc {
+    [progress release];
+    [label release];
+    [super dealloc];
+}
 @end

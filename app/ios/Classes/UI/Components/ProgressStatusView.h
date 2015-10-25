@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProgressStatusView : UIView
+@interface ProgressStatusView : UIView {
+    UILabel *label;
+    UIActivityIndicatorView *progress;
+}
+@property (retain, nonatomic) IBOutlet UILabel *label;
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *progress;
 
 @end

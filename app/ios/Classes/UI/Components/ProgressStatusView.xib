@@ -73,6 +73,10 @@
                     <include reference="tEj-Cp-Lmb"/>
                 </mask>
             </variation>
+            <connections>
+                <outlet property="label" destination="Vg6-OJ-HLY" id="kOJ-V5-eSu"/>
+                <outlet property="progress" destination="RmH-II-hje" id="JLV-2N-ipY"/>
+            </connections>
             <point key="canvasLocation" x="325" y="391"/>
         </view>
     </objects>
