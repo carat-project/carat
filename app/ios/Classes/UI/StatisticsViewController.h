@@ -28,6 +28,8 @@
 @property (retain, nonatomic) IBOutlet MeasurementBar *hogsBar;
 @property (retain, nonatomic) IBOutlet UILabel *iosPopularModelsLabel;
 @property (retain, nonatomic) IBOutlet UILabel *androidPopularModelLabel;
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView* spinner;
+@property (retain, nonatomic) IBOutlet UIView *spinnerBackGround;
 
 - (IBAction)showWellBehivedInfo:(id)sender;
 - (IBAction)showBugsInfo:(id)sender;

@@ -9,19 +9,20 @@
 #import "StatisticsViewController.h"
 
 @interface StatisticsViewController ()
-
 @end
 
 @implementation StatisticsViewController {
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [_spinner startAnimating];
     
     //ios 9 doesnt allow this had to make info.plist file some changes (AllowArbitaryDownloads)
     //to get this to work needs that file from https url
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://carat.cs.helsinki.fi/statistics-data/stats.json"]];
-    
     __block NSDictionary *json;
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -31,6 +32,9 @@
                                                                       options:0
                                                                         error:nil];
                                    [self applyGeneralStatJSONDataToView: json];
+                                   [_spinnerBackGround setHidden:YES];
+                                   [_spinner stopAnimating];
+                                   [_spinner setHidden:YES];
                                    NSLog(@"Async JSON: %@", json);
                                }
                            }];
@@ -141,6 +145,7 @@
     [_hogsBar release];
     [_iosPopularModelsLabel release];
     [_androidPopularModelLabel release];
+    [_spinnerBackGround release];
     [super dealloc];
 }
 - (IBAction)showWellBehivedInfo:(id)sender {
