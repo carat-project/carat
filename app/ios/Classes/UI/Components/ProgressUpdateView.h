@@ -1,5 +1,5 @@
 //
-//  ProgressStatusView.h
+//  ProgressUpdateView.h
 //  Carat
 //
 //  Created by Jarno Petteri Laitinen on 25/10/15.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProgressStatusView : UIView
+@interface ProgressUpdateView : UIView
 @property (retain, nonatomic) IBOutlet UIView *contentView;
 @property (retain, nonatomic) IBOutlet UILabel *label;
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *actIndicator;
 
 @end

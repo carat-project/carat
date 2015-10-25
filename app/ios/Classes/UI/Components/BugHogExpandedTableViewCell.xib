@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fF-wY-rEe" userLabel="AppName">
@@ -179,7 +179,6 @@
             <connections>
                 <outlet property="errorValueLabel" destination="qp2-1c-5Ra" id="PaW-2n-CdV"/>
                 <outlet property="expImpTimeLabel" destination="bai-Rg-Bzy" id="AFq-VT-9PI"/>
-                <outlet property="expandBtn" destination="WFS-Oj-QWS" id="FvD-4Y-jlS"/>
                 <outlet property="nameLabel" destination="7fF-wY-rEe" id="8i0-Ix-u28"/>
                 <outlet property="numerHelpTapArea" destination="1Xq-uF-Noi" id="Ga6-Be-N6m"/>
                 <outlet property="samplesValueLabel" destination="UB8-KV-gkS" id="O1T-TX-DuW"/>

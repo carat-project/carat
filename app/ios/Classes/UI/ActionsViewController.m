@@ -188,11 +188,6 @@
     return [actionList count];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"To improve battery life...";
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DLog(@"%s", __PRETTY_FUNCTION__);
     UITableViewCell *cell = [super tableView: tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
@@ -326,18 +321,6 @@
     [all appendString:text];
     cell.descValue = all;
     [all release];
-}
-
-
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-    NSString *tmpStatus = [[CoreDataManager instance] getReportUpdateStatus];
-    if (tmpStatus == nil) {
-        return [Utilities formatNSTimeIntervalAsUpdatedNSString:[[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]]];
-    } else {
-        return tmpStatus;
-    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

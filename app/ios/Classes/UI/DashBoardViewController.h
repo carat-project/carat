@@ -16,7 +16,9 @@
 #import "ActionsViewController.h"
 #import "MyScoreViewController.h"
 #import "MoreViewController.h"
+#import "ProgressUpdateView.h"
 #import "Flurry.h"
+#import "UIView+UpdateAutoLayoutConstraints.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -39,7 +41,7 @@
 @property (retain, nonatomic) IBOutlet DashboardNavigationButton *hogsBtn;
 @property (retain, nonatomic) IBOutlet DashboardNavigationButton *statisticsBtn;
 @property (retain, nonatomic) IBOutlet DashboardNavigationButton *actionsBtn;
-@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *progressBar;
+@property (retain, nonatomic) IBOutlet ProgressUpdateView *progressUpdateView;
 
 
 - (IBAction)showFacebook:(id)sender;

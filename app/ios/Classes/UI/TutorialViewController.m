@@ -74,10 +74,6 @@
     }
 }
 
-- (void)checkEula{
-    
-}
-
 - (void)createTutorialData
 {
     NSLog(@"****** createTutorialData ********");

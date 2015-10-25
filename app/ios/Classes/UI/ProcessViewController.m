@@ -13,7 +13,6 @@
 @end
 
 @implementation ProcessViewController
-@synthesize lastUpdate;
 @synthesize processList;
 
 
@@ -34,7 +33,6 @@
 - (void)updateView
 {
     self.processList = [[UIDevice currentDevice] runningProcesses];
-    self.lastUpdate = [NSDate date];
     // TODO filter (based on "Filter Daemons" button)
     [self.tableView reloadData];
     [self.view setNeedsDisplay];
@@ -49,15 +47,9 @@
     } else return 0;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Process List";
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:self.lastUpdate];
-    return [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
+    
 }
 
 
@@ -67,6 +59,7 @@
     NSDictionary *selectedProc = [self.processList objectAtIndex:indexPath.row];
     BugHogTableViewCell *cellView = (BugHogTableViewCell *)cell;
    [self setTopRowData:selectedProc cell:cellView];
+    [cellView.expandBtn setHidden:YES];
     
     return cell;
 }
@@ -135,6 +128,7 @@
 
 
 - (void)dealloc {
+    [processList release];
     [super dealloc];
 }
 @end

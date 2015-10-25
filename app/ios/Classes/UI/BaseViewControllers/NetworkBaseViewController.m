@@ -41,10 +41,10 @@
         [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
     {
         [[CoreDataManager instance] updateLocalReportsFromServer];
+
     } else if ([[CommunicationManager instance] isInternetReachable] == NO) {
         DLog(@"Starting without reachability; setting notification.");
     }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNetworkStatus:) name:kUpdateNetworkStatusNotification object:nil];
     
     [self updateNetworkStatus:nil];
@@ -123,6 +123,10 @@
 - (void)updateView
 {
     
+}
+
+- (void)dealloc {
+    [super dealloc];
 }
 
 @end

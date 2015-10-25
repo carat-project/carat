@@ -59,6 +59,7 @@
             <accessibility key="accessibilityConfiguration" identifier="collapsedCell"/>
             <connections>
                 <outlet property="expImpTimeLabel" destination="kDo-4i-qu9" id="Ilh-rk-NYM"/>
+                <outlet property="expandBtn" destination="T0k-J4-pat" id="Tz4-QR-kO8"/>
                 <outlet property="nameLabel" destination="zGZ-1Q-3b4" id="fER-cy-SXK"/>
                 <outlet property="thumbnailAppImg" destination="6sG-wh-asO" id="x26-QK-MQP"/>
             </connections>

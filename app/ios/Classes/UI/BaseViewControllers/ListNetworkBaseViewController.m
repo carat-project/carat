@@ -61,6 +61,11 @@
 }
 
 #pragma mark - UITableViewDelegate and UITableViewDataSource methods
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
+    return [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
+}
 //let sub class work its magick on these
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -106,27 +111,26 @@
     [tableView endUpdates];
 }
 
-#pragma mark - MBProgressHUDDelegate method
-
-- (void)hudWasHidden:(MBProgressHUD *)hud
-{
-    // Remove HUD from screen when the HUD was hidded
-    DLog(@"%s hudWasHidden", __PRETTY_FUNCTION__);
-}
-
+#pragma mark - -HUD methods
 - (void)loadDataWithHUD:(id)obj
 {
-    DLog(@"%s loadDataWithHUD", __PRETTY_FUNCTION__);
-    if ([[CoreDataManager instance] getReportUpdateStatus] != nil) {
-        // update in progress, only update footer
-        [self.tableView reloadData];
-        [self.view setNeedsDisplay];
-    } else {
-        // *probably* no update in progress, reload table data while locking out view
-        [self.tableView.pullToRefreshView stopAnimating];
+    @synchronized([CoreDataManager instance]) {
+        if ([[CoreDataManager instance] getReportUpdateStatus] != nil) {
+            // update in progress, only update footer
+            [self.tableView reloadData];
+            self.tableView.pullToRefreshView.titleLabel.text = [[CoreDataManager instance] getReportUpdateStatus];
+            [self.view setNeedsDisplay];
+        } else {
+            // *probably* no update in progress, reload table data while locking out view
+            [self.tableView.pullToRefreshView stopAnimating];
+        }
     }
 }
-
+#pragma mark - MBProgressHUDDelegate method
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    self.tableView.pullToRefreshView.titleLabel.text = @"";
+}
 -(void)sampleCountUpdated:(NSNotification*)notification{
 }
 

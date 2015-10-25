@@ -18,6 +18,7 @@
 
 @implementation DashBoardViewController{
 }
+BOOL isUpdateProgressVisible;
 
 #pragma mark - View Life Cycle methods
 - (id) initWithNibName: (NSString *) nibNameOrNil
@@ -34,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_shareBar setHidden:YES];
+    
+    isUpdateProgressVisible = false;
     
     int count = [self getBugsCount];
     [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
@@ -73,9 +76,11 @@
         // For this screen, let's put sending samples/registrations here so that we don't conflict
         // with the report syncing (need to limit memory/CPU/thread usage so that we don't get killed).
         [[CoreDataManager instance] checkConnectivityAndSendStoredDataToServer];
-        [self.progressBar startAnimating];
+        [self setProgressUpdateViewHeight:40.0f];
     }
-    
+    else{
+        [self setProgressUpdateViewHeight:0.0f];
+    }
     [self loadDataWithHUD:nil];
 }
 
@@ -107,7 +112,6 @@
 
 -(void)sampleCountUpdated:(NSNotification*)notification{
     // Last Updated
-    [self.progressBar stopAnimating];
     NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
     self.updateLabel.text = [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
     [self.updateLabel setNeedsDisplay];
@@ -127,27 +131,57 @@
         {
             DLog(@"Update possible; initiating.");
             [[CoreDataManager instance] updateLocalReportsFromServer];
-            [self.progressBar startAnimating];
+            [self setProgressUpdateViewHeight:40.0f];
             
         }
     }
 }
 
+- (void) setProgressUpdateViewHeight:(CGFloat) height
+{
+    if(isUpdateProgressVisible && height == 0){
+        isUpdateProgressVisible = false;
+    }
+    else if(!isUpdateProgressVisible && height > 0){
+        isUpdateProgressVisible = true;
+    }
+    else {
+        return;
+    }
+    if(height == 0){
+        [self.progressUpdateView.label setHidden:YES];
+        [self.progressUpdateView.actIndicator stopAnimating];
+        [self.progressUpdateView.actIndicator setHidden:YES];
+    }
+    else{
+        [self.progressUpdateView.label setHidden:NO];
+        [self.progressUpdateView.actIndicator startAnimating];
+        [self.progressUpdateView.actIndicator setHidden:NO];
+    }
+    [self.progressUpdateView setConstraintConstant:height forAttribute:NSLayoutAttributeHeight];
+    [self.progressUpdateView.label setNeedsDisplay];
+    [self.progressUpdateView.actIndicator setNeedsDisplay];
+    [self.progressUpdateView setNeedsDisplay];
+}
+
+
 #pragma mark - -HUD methods
 - (void)loadDataWithHUD:(id)obj
 {
-    DLog(@"[CoreDataManager instance] getReportUpdateStatus] = %@", [[CoreDataManager instance] getReportUpdateStatus]);
-    if([[CoreDataManager instance] getReportUpdateStatus] == nil){
-        [self.progressBar stopAnimating];
-        [self sampleCountUpdated:nil];
+    @synchronized([CoreDataManager instance]) {
+    //DLog(@"[CoreDataManager instance] getReportUpdateStatus] = %@", [[CoreDataManager instance] getReportUpdateStatus]);
+        if([[CoreDataManager instance] getReportUpdateStatus] == nil){
+            [self sampleCountUpdated:nil];
+            [self setProgressUpdateViewHeight:0.0f];
+        }
+        else{
+            //self.updateLabel.text = [[CoreDataManager instance] getReportUpdateStatus];
+            //[self.updateLabel setNeedsDisplay];
+            [self setProgressUpdateViewHeight:40.0f];
+            self.progressUpdateView.label.text = [[CoreDataManager instance] getReportUpdateStatus];
+        }
     }
-    else{
-        self.updateLabel.text = [[CoreDataManager instance] getReportUpdateStatus];
-        [self.updateLabel setNeedsDisplay];
-    }
-    DLog(@"loadDataWithHUD");
 }
-
 
 #pragma mark - MBProgressHUDDelegate method
 - (void)hudWasHidden:(MBProgressHUD *)hud
@@ -442,7 +476,7 @@
     [_shareBar release];
     [_shareBar release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_progressBar release];
+    [_progressUpdateView release];
     [super dealloc];
 }
 @end

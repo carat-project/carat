@@ -1,18 +1,16 @@
 //
-//  ProgressStatusView.m
+//  ProgressUpdateView.m
 //  Carat
 //
 //  Created by Jarno Petteri Laitinen on 25/10/15.
 //  Copyright © 2015 University of Helsinki. All rights reserved.
 //
 
-#import "ProgressStatusView.h"
-
-@interface ProgressStatusView ()
+#import "ProgressUpdateView.h"
+@interface ProgressUpdateView ()
 @property (nonatomic, strong) NSMutableArray *customConstraints;
 @end
-
-@implementation ProgressStatusView
+@implementation ProgressUpdateView
 -(void)awakeFromNib {
     //Note That You Must Change @”BNYSharedView’ With Whatever Your Nib Is Named
     
@@ -58,7 +56,7 @@
 - (void)dealloc {
     [_contentView release];
     [_label release];
+    [_actIndicator release];
     [super dealloc];
 }
-
 @end

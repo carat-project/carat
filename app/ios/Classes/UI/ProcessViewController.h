@@ -17,9 +17,6 @@
 
 @interface ProcessViewController : ListNetworkBaseViewController{
     NSArray *processList;
-    NSDate *lastUpdate;
 }
-
-@property (retain, nonatomic) NSDate *lastUpdate;
 @property (retain, nonatomic) NSArray *processList;
 @end

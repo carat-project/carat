@@ -12,7 +12,6 @@
 @interface NetworkBaseViewController : BaseViewController <MBProgressHUDDelegate> {
 }
 
-
 - (void)loadDataWithHUD:(id)obj;
 - (void)hudWasHidden:(MBProgressHUD *)hud;
 

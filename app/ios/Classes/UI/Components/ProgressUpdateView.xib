@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProgressUpdateView">
+            <connections>
+                <outlet property="actIndicator" destination="LhY-Bk-AlC" id="Sg7-Km-kzM"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Bvs-Xc-9Xv"/>
+                <outlet property="label" destination="uHO-go-KQU" id="t4P-Ja-qKR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHO-go-KQU">
+                    <rect key="frame" x="36" y="324" width="331" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="LhY-Bk-AlC">
+                    <rect key="frame" x="8" y="324" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="NiK-6p-xx2"/>
+                        <constraint firstAttribute="height" constant="20" id="nRa-sL-fCe"/>
+                    </constraints>
+                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="uHO-go-KQU" firstAttribute="leading" secondItem="LhY-Bk-AlC" secondAttribute="trailing" constant="8" id="CrZ-cr-yfI"/>
+                <constraint firstItem="uHO-go-KQU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="QHh-Dv-KHm"/>
+                <constraint firstItem="LhY-Bk-AlC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="lHI-47-PUk"/>
+                <constraint firstItem="LhY-Bk-AlC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mi3-TS-HWZ"/>
+                <constraint firstAttribute="trailing" secondItem="uHO-go-KQU" secondAttribute="trailing" constant="8" id="oCe-tp-ypl"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+</document>
