@@ -12,25 +12,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGZ-1Q-3b4" userLabel="AppName">
-                        <rect key="frame" x="56" y="8" width="205" height="20"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0k-J4-pat">
-                        <rect key="frame" x="269" y="8" width="43" height="40"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDo-4i-qu9" userLabel="Improvement">
+                        <rect key="frame" x="56" y="33" width="200" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="43" id="LCP-Hp-XqT"/>
-                            <constraint firstAttribute="height" constant="40" id="Lup-yE-GuK"/>
+                            <constraint firstAttribute="height" constant="15" id="rO3-d1-zlf"/>
                         </constraints>
-                        <state key="normal" image="collapse_btn_open"/>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDo-4i-qu9" userLabel="Improvement">
-                        <rect key="frame" x="56" y="33" width="205" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -42,28 +31,43 @@
                             <constraint firstAttribute="width" constant="40" id="ppi-wT-JGi"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collapse_btn_open" translatesAutoresizingMaskIntoConstraints="NO" id="O7m-63-JIH">
+                        <rect key="frame" x="264" y="8" width="48" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="0gi-kl-MqX"/>
+                            <constraint firstAttribute="width" constant="48" id="iab-NB-iKm"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGZ-1Q-3b4" userLabel="AppName">
+                        <rect key="frame" x="56" y="8" width="200" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="T0k-J4-pat" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="1Tl-68-Qee"/>
-                    <constraint firstItem="T0k-J4-pat" firstAttribute="leading" secondItem="kDo-4i-qu9" secondAttribute="trailing" constant="8" id="BkE-jf-b27"/>
+                    <constraint firstItem="O7m-63-JIH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="BcB-92-ctM"/>
                     <constraint firstItem="kDo-4i-qu9" firstAttribute="top" secondItem="zGZ-1Q-3b4" secondAttribute="bottom" id="DwI-Ug-rxV"/>
-                    <constraint firstItem="T0k-J4-pat" firstAttribute="top" secondItem="zGZ-1Q-3b4" secondAttribute="top" id="HNb-aq-dfh"/>
+                    <constraint firstItem="O7m-63-JIH" firstAttribute="leading" secondItem="kDo-4i-qu9" secondAttribute="trailing" constant="8" id="KLB-eW-1Aj"/>
                     <constraint firstItem="kDo-4i-qu9" firstAttribute="leading" secondItem="zGZ-1Q-3b4" secondAttribute="leading" id="L2G-vE-2ti"/>
+                    <constraint firstItem="O7m-63-JIH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="SOK-SZ-7lY"/>
                     <constraint firstItem="kDo-4i-qu9" firstAttribute="trailing" secondItem="zGZ-1Q-3b4" secondAttribute="trailing" id="YSb-ma-SCG"/>
                     <constraint firstItem="zGZ-1Q-3b4" firstAttribute="top" secondItem="6sG-wh-asO" secondAttribute="top" id="Ztr-iw-uNa"/>
+                    <constraint firstItem="kDo-4i-qu9" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="bOK-FO-isa"/>
                     <constraint firstItem="zGZ-1Q-3b4" firstAttribute="leading" secondItem="6sG-wh-asO" secondAttribute="trailing" constant="8" id="eaz-hv-o09"/>
                     <constraint firstItem="6sG-wh-asO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tJJ-QF-znL"/>
                     <constraint firstItem="6sG-wh-asO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="vam-Rf-GLJ"/>
+                    <constraint firstItem="O7m-63-JIH" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="zgN-Qx-nTg"/>
                 </constraints>
             </tableViewCellContentView>
             <accessibility key="accessibilityConfiguration" identifier="collapsedCell"/>
             <connections>
                 <outlet property="expImpTimeLabel" destination="kDo-4i-qu9" id="Ilh-rk-NYM"/>
-                <outlet property="expandBtn" destination="T0k-J4-pat" id="Tz4-QR-kO8"/>
+                <outlet property="expandBtn" destination="O7m-63-JIH" id="l8R-al-fbt"/>
                 <outlet property="nameLabel" destination="zGZ-1Q-3b4" id="fER-cy-SXK"/>
                 <outlet property="thumbnailAppImg" destination="6sG-wh-asO" id="x26-QK-MQP"/>
             </connections>
-            <point key="canvasLocation" x="375" y="365"/>
+            <point key="canvasLocation" x="379" y="360"/>
         </tableViewCell>
     </objects>
     <resources>

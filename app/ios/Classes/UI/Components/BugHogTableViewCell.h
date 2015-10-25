@@ -20,7 +20,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *samplesWithoutValueLabel;
 @property (retain, nonatomic) IBOutlet UILabel *errorValueLabel;
 @property (retain, nonatomic) IBOutlet UILabel *helpLabel;
-@property (retain, nonatomic) IBOutlet UIButton *expandBtn;
+@property (retain, nonatomic) IBOutlet UIImageView *expandBtn;
 @property (retain, nonatomic) IBOutlet UIView *numerHelpTapArea;
 
 @end

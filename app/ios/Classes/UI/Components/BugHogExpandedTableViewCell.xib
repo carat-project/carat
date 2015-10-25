@@ -179,6 +179,7 @@
             <connections>
                 <outlet property="errorValueLabel" destination="qp2-1c-5Ra" id="PaW-2n-CdV"/>
                 <outlet property="expImpTimeLabel" destination="bai-Rg-Bzy" id="AFq-VT-9PI"/>
+                <outlet property="expandBtn" destination="WFS-Oj-QWS" id="iv9-8g-oqv"/>
                 <outlet property="nameLabel" destination="7fF-wY-rEe" id="8i0-Ix-u28"/>
                 <outlet property="numerHelpTapArea" destination="1Xq-uF-Noi" id="Ga6-Be-N6m"/>
                 <outlet property="samplesValueLabel" destination="UB8-KV-gkS" id="O1T-TX-DuW"/>
