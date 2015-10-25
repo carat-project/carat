@@ -46,6 +46,8 @@
 		8988B1641BDC181B0022524B /* procmanager1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15E1BDC181B0022524B /* procmanager1.png */; settings = {ASSET_TAGS = (); }; };
 		8988B1651BDC181B0022524B /* procmanager2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15F1BDC181B0022524B /* procmanager2.png */; settings = {ASSET_TAGS = (); }; };
 		8988B1661BDC181B0022524B /* updatecheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1601BDC181B0022524B /* updatecheck.png */; settings = {ASSET_TAGS = (); }; };
+		8988B1691BDC42CB0022524B /* ProgressStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8988B1681BDC42CB0022524B /* ProgressStatusView.m */; settings = {ASSET_TAGS = (); }; };
+		8988B16B1BDC42E30022524B /* ProgressStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988B16A1BDC42E30022524B /* ProgressStatusView.xib */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B01BC29FB30053647E /* LocalizedUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8AF1BC29FB30053647E /* LocalizedUIButton.m */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B31BC2A7C60053647E /* LocalizedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B21BC2A7C60053647E /* LocalizedLabel.m */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B61BC2B26B0053647E /* UiInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B51BC2B26B0053647E /* UiInsetLabel.m */; settings = {ASSET_TAGS = (); }; };
@@ -246,6 +248,9 @@
 		8988B15E1BDC181B0022524B /* procmanager1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = procmanager1.png; sourceTree = "<group>"; };
 		8988B15F1BDC181B0022524B /* procmanager2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = procmanager2.png; sourceTree = "<group>"; };
 		8988B1601BDC181B0022524B /* updatecheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updatecheck.png; sourceTree = "<group>"; };
+		8988B1671BDC42CB0022524B /* ProgressStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressStatusView.h; sourceTree = "<group>"; };
+		8988B1681BDC42CB0022524B /* ProgressStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressStatusView.m; sourceTree = "<group>"; };
+		8988B16A1BDC42E30022524B /* ProgressStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressStatusView.xib; sourceTree = "<group>"; };
 		89DAB8AE1BC29FB30053647E /* LocalizedUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedUIButton.h; sourceTree = "<group>"; };
 		89DAB8AF1BC29FB30053647E /* LocalizedUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizedUIButton.m; sourceTree = "<group>"; };
 		89DAB8B11BC2A7C60053647E /* LocalizedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedLabel.h; sourceTree = "<group>"; };
@@ -940,6 +945,9 @@
 				894AF0631BCCD992003E7D76 /* AboutExpandedTableViewCell.xib */,
 				894AF0661BCCD9BF003E7D76 /* AboutTableViewCell.h */,
 				894AF0671BCCD9BF003E7D76 /* AboutTableViewCell.m */,
+				8988B16A1BDC42E30022524B /* ProgressStatusView.xib */,
+				8988B1671BDC42CB0022524B /* ProgressStatusView.h */,
+				8988B1681BDC42CB0022524B /* ProgressStatusView.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1769,6 +1777,7 @@
 				661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */,
 				ABEC9B6814F1DA00005CE813 /* license.txt in Resources */,
 				89FF8B511BDBAA3300147943 /* ProcessViewController.xib in Resources */,
+				8988B16B1BDC42E30022524B /* ProgressStatusView.xib in Resources */,
 				89FF8AF61BDBA45600147943 /* AboutView.xib in Resources */,
 				661955B11A73FE4500865B2E /* memoryinfo.html in Resources */,
 				89FF8B8E1BDBAA3E00147943 /* InfoViewController.xib in Resources */,
@@ -1885,6 +1894,7 @@
 				89FF8B841BDBAA3E00147943 /* BugHogListViewController.m in Sources */,
 				89FF8B911BDBAA3E00147943 /* MoreViewController.m in Sources */,
 				C754888519963D03007A01CF /* CoreDataReport.m in Sources */,
+				8988B1691BDC42CB0022524B /* ProgressStatusView.m in Sources */,
 				89FF8AFC1BDBA49700147943 /* ActionViewController.m in Sources */,
 				89FF8B9D1BDBB2BA00147943 /* ListNetworkBaseViewController.m in Sources */,
 				89FF8B8B1BDBAA3E00147943 /* HogsViewController.m in Sources */,
