@@ -83,6 +83,9 @@
 - (NSString *) getReportUpdateStatus;
 - (void) wipeDB;
 
+//CPU Usage Data
+- (void) setCPUData:(float)used total:(float) total;
+
 -(ActionObject*)createActionObjectFromDetailScreenReport:(NSString *)actText actType:(ActionType)actTyp;
 -(NSMutableArray *)getBugsActionList:(BOOL)getBugs withoutHidden:(BOOL)withoutHidden actText:(NSString *)actText actType:(ActionType)actType;
 -(NSMutableArray *)getHogsActionList:(BOOL)getHogs withoutHidden:(BOOL)withoutHidden actText:(NSString *)actText actType:(ActionType)actType;

@@ -22,6 +22,8 @@ static NSString * reportUpdateStatus = nil;
 static dispatch_semaphore_t sendStoredDataToServerSemaphore;
 static NSMutableDictionary * daemonsList = nil;
 
+static float cpuUsageVal;
+
 - (void) postNotification
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CCDMReportUpdateStatusNotification" 
@@ -1726,6 +1728,10 @@ static id instance = nil;
         return [[[NSArray alloc] initWithObjects:@"0.0",@"0.0", nil] autorelease];
     }
     return ChangesSinceLastWeek;
+}
+
+- (void) setCPUData:(float)used total:(float) total{
+    
 }
 
 /**

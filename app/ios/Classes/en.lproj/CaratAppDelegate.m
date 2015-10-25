@@ -21,8 +21,20 @@
 #import "SettingsViewController.h"
 #import "BugsViewController.h"
 #import <Socialize/Socialize.h>
+#include <sys/sysctl.h>
+#include <sys/types.h>
+#include <mach/mach.h>
+#include <mach/processor_info.h>
+#include <mach/mach_host.h>
 
 @implementation CaratAppDelegate
+
+processor_info_array_t cpuInfo, prevCpuInfo;
+mach_msg_type_number_t numCpuInfo, numPrevCpuInfo;
+unsigned numCPUs;
+NSTimer *updateTimer;
+NSLock *CPUUsageLock;
+int cpuStateCheckCount;
 
 @synthesize window = _window;
 //@synthesize tabBarController = _tabBarController;
@@ -75,7 +87,22 @@ void onUncaughtException(NSException *exception)
         self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
     }
     
-
+    //Core usage
+    cpuStateCheckCount = 0;
+    int mib[2U] = { CTL_HW, HW_NCPU };
+    size_t sizeOfNumCPUs = sizeof(numCPUs);
+    int status = sysctl(mib, 2U, &numCPUs, &sizeOfNumCPUs, NULL, 0U);
+    if(status)
+        numCPUs = 1;
+    
+    CPUUsageLock = [[NSLock alloc] init];
+    
+    updateTimer = [[NSTimer scheduledTimerWithTimeInterval:3
+                                                    target:self
+                                                  selector:@selector(updateCoreInfo:)
+                                                  userInfo:nil
+                                                   repeats:YES] retain];
+    //CoreUsageEnds
     //[[Globals instance] userHasConsented]; //TODO remove just skipping user consent for now
     // test for consent
     if ([[Globals instance] hasUserConsented]) return [self proceedWithConsent];
@@ -144,6 +171,56 @@ void onUncaughtException(NSException *exception)
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     
     return YES;
+}
+
+#pragma mark Core Usage
+- (void)updateCoreInfo:(NSTimer *)timer
+{
+    if(cpuStateCheckCount > 20){
+        [updateTimer invalidate];
+        return;
+    }
+    updateTimer++;
+    natural_t numCPUsU = 0U;
+    kern_return_t err = host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &numCPUsU, &cpuInfo, &numCpuInfo);
+    if(err == KERN_SUCCESS) {
+        [CPUUsageLock lock];
+        float allCoresUsage=0f;
+        float allCoresTotal=0f;
+        for(unsigned i = 0U; i < numCPUs; ++i) {
+            float inUse, total;
+            if(prevCpuInfo) {
+                inUse = (
+                         (cpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_USER]   - prevCpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_USER])
+                         + (cpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_SYSTEM] - prevCpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_SYSTEM])
+                         + (cpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_NICE]   - prevCpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_NICE])
+                         );
+                total = inUse + (cpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_IDLE] - prevCpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_IDLE]);
+            } else {
+                inUse = cpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_USER] + cpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_SYSTEM] + cpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_NICE];
+                total = inUse + cpuInfo[(CPU_STATE_MAX * i) + CPU_STATE_IDLE];
+            }
+            allCoresUsage += inUse;
+            allCoresTotal += total;
+            
+            //NSLog(@"Core: %u Usage: %f",i,inUse / total);
+            [[CoreDataManager instance] setCPUData: allCoresUsage total: allCoresUsage];
+        }
+        [CPUUsageLock unlock];
+        
+        if(prevCpuInfo) {
+            size_t prevCpuInfoSize = sizeof(integer_t) * numPrevCpuInfo;
+            vm_deallocate(mach_task_self(), (vm_address_t)prevCpuInfo, prevCpuInfoSize);
+        }
+        
+        prevCpuInfo = cpuInfo;
+        numPrevCpuInfo = numCpuInfo;
+        
+        cpuInfo = NULL;
+        numCpuInfo = 0U;
+    } else {
+        NSLog(@"Error!");
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
