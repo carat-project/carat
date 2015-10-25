@@ -180,13 +180,13 @@ void onUncaughtException(NSException *exception)
         [updateTimer invalidate];
         return;
     }
-    updateTimer++;
+    cpuStateCheckCount++;
     natural_t numCPUsU = 0U;
     kern_return_t err = host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &numCPUsU, &cpuInfo, &numCpuInfo);
     if(err == KERN_SUCCESS) {
         [CPUUsageLock lock];
-        float allCoresUsage=0f;
-        float allCoresTotal=0f;
+        float allCoresUsage=0.0f;
+        float allCoresTotal=0.0f;
         for(unsigned i = 0U; i < numCPUs; ++i) {
             float inUse, total;
             if(prevCpuInfo) {
