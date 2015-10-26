@@ -646,6 +646,8 @@
     <string name="tutorial_fragment_bugs_message">Bugs are apps that use a lot of energy on a small
         number of devices, including yours. Restarting a buggy app may improve battery life.</string>
     <string name="tutorial_fragment_bugs_title">BUGS</string>
+    <string name="tutorial_fragment_eula_message">Lorem ipsum TODO...</string>
+    <string name="tutorial_fragment_eula_title">EULA</string>
     <string name="tutorial_fragment_hogs_message">Hogs are apps that are correlated with higher
         energy use across many devices. Closing hogs may improve battery life.</string>
     <string name="tutorial_fragment_hogs_title">HOGS</string>

@@ -10,8 +10,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.List;
 import java.util.Vector;
@@ -28,7 +31,11 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
     private PagerAdapter adapterViewPager;
     private ViewPager vPager;
     private Button acceptButton;
+    private TextView eulaLink;
+    private WebView eulaView;
+    private RelativeLayout mainLayout;
     private ImageView dot0, dot1, dot2, dot3;
+    private boolean eulaViewVisivibility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +45,19 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
         ;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
+        eulaViewVisivibility = false;
         initViewRefs();
         initialisePaging();
     }
 
     @Override
     public void onBackPressed() {
+        if (eulaViewVisivibility) {
+            eulaViewVisivibility = false;
+            mainLayout.setVisibility(View.VISIBLE);
+            eulaView.setVisibility(View.GONE);
+            return;
+        }
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -53,10 +67,18 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
     }
 
     private void initViewRefs() {
+
+        mainLayout = (RelativeLayout) findViewById(R.id.main_layout);
+
         dot0 = (ImageView) findViewById(R.id.page_indicator_0);
         dot1 = (ImageView) findViewById(R.id.page_indicator_1);
         dot2 = (ImageView) findViewById(R.id.page_indicator_2);
         dot3 = (ImageView) findViewById(R.id.page_indicator_3);
+
+        eulaLink = (TextView) findViewById(R.id.eula_link);
+        eulaLink.setOnClickListener(this);
+
+        eulaView = (WebView) findViewById(R.id.eula_view);
 
         acceptButton = (Button) findViewById(R.id.tutorial_accept_button);
         acceptButton.setOnClickListener(this);
@@ -85,6 +107,13 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
             SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
             p.edit().putBoolean(getString(R.string.save_accept_eula), true).commit();
             finish();
+        }
+        if (v.getId() == R.id.eula_link) {
+            eulaViewVisivibility = true;
+            eulaView.getSettings().setJavaScriptEnabled(true);
+            eulaView.loadUrl("file:///android_asset/consent.html");
+            mainLayout.setVisibility(View.GONE);
+            eulaView.setVisibility(View.VISIBLE);
         }
     }
 
