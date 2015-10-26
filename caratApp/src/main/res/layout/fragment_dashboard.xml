@@ -24,16 +24,6 @@
                 android:layout_height="120dp"
                 android:layout_centerInParent="true" />
 
-            <TextView
-                android:id="@+id/updated_text"
-                style="@style/SmallGrayText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="2dp"
-                android:text="@string/dashboard_updated_text" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -43,6 +33,18 @@
             android:layout_weight="35"
             android:background="@color/white"
             android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/updated_text"
+                style="@style/SmallGrayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:layout_alignParentTop="true"
+                android:text="@string/dashboard_updated_text" />
 
             <TextView
                 android:id="@+id/battery_life_title"

@@ -18,6 +18,7 @@ import java.util.Vector;
 
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.fragments.tutorial.BugsTutorialFragment;
+import edu.berkeley.cs.amplab.carat.android.fragments.tutorial.EulaTutorialFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.tutorial.HogsTutorialFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.tutorial.MainTutorialFragment;
 import edu.berkeley.cs.amplab.carat.android.views.adapters.TutorialPagerAdapter;
@@ -27,13 +28,14 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
     private PagerAdapter adapterViewPager;
     private ViewPager vPager;
     private Button acceptButton;
-    private ImageView dot0, dot1, dot2;
+    private ImageView dot0, dot1, dot2, dot3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.statusbar_color));
-        };
+        }
+        ;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
         initViewRefs();
@@ -54,6 +56,7 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
         dot0 = (ImageView) findViewById(R.id.page_indicator_0);
         dot1 = (ImageView) findViewById(R.id.page_indicator_1);
         dot2 = (ImageView) findViewById(R.id.page_indicator_2);
+        dot3 = (ImageView) findViewById(R.id.page_indicator_3);
 
         acceptButton = (Button) findViewById(R.id.tutorial_accept_button);
         acceptButton.setOnClickListener(this);
@@ -66,6 +69,7 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
         fragments.add(Fragment.instantiate(this, MainTutorialFragment.class.getName()));
         fragments.add(Fragment.instantiate(this, BugsTutorialFragment.class.getName()));
         fragments.add(Fragment.instantiate(this, HogsTutorialFragment.class.getName()));
+        fragments.add(Fragment.instantiate(this, EulaTutorialFragment.class.getName()));
         this.adapterViewPager = new TutorialPagerAdapter(super.getSupportFragmentManager(), fragments);
         vPager.setAdapter(adapterViewPager);
         vPager.setOnPageChangeListener(this);
@@ -94,16 +98,22 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
             dot0.setImageResource(R.drawable.dot_selected);
             dot1.setImageResource(R.drawable.dot);
             dot2.setImageResource(R.drawable.dot);
-        }
-        else if (position == 1) {
+            dot3.setImageResource(R.drawable.dot);
+        } else if (position == 1) {
             dot0.setImageResource(R.drawable.dot);
             dot1.setImageResource(R.drawable.dot_selected);
             dot2.setImageResource(R.drawable.dot);
-        }
-        else if (position == 2) {
+            dot3.setImageResource(R.drawable.dot);
+        } else if (position == 2) {
             dot0.setImageResource(R.drawable.dot);
             dot1.setImageResource(R.drawable.dot);
             dot2.setImageResource(R.drawable.dot_selected);
+            dot3.setImageResource(R.drawable.dot);
+        } else if (position == 3) {
+            dot0.setImageResource(R.drawable.dot);
+            dot1.setImageResource(R.drawable.dot);
+            dot2.setImageResource(R.drawable.dot);
+            dot3.setImageResource(R.drawable.dot_selected);
             acceptButton.setBackgroundResource(R.drawable.button_rounded_orange);
             acceptButton.setClickable(true);
         }

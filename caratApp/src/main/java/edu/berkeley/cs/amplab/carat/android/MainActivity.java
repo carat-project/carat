@@ -341,6 +341,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         if (!fragmentPopped) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2 || !isDestroyed()) {
                 transaction.replace(R.id.fragment_holder, fragment, FRAGMENT_TAG)
@@ -398,7 +399,26 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void giveFeedback() {
+        float memoryUsedConverted;
+        float memoryActiveConverted = 0;
+
+        int[] totalAndUsed = SamplingLibrary.readMeminfo();
+        memoryUsedConverted = 1 - ((float) totalAndUsed[0] / totalAndUsed[1]);
+        if (totalAndUsed.length > 2) {
+            memoryActiveConverted = (float) totalAndUsed[2] / (totalAndUsed[3] + totalAndUsed[2]);
+        }
+
+        String caratId = "Carat ID: " + CaratApplication.myDeviceData.getCaratId();
+        String jScore = "JScore: " + getJScore();
+        String osVersion = "OS Version: " + SamplingLibrary.getOsVersion();
+        String deviceModel = "Device Model: " + Build.MODEL;
+        String memoryUsed = "Memory Used: " + (memoryUsedConverted * 100) + "%";
+        String memoryActive = "Memory Active: " + (memoryActiveConverted * 100) + "%";
+
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "carat@cs.helsinki.fi", null));
+        intent.putExtra(Intent.EXTRA_TEXT, caratId + "\n" + jScore + "\n" + osVersion + "\n" + deviceModel
+                + "\n" + memoryUsed + "\n" + memoryActive);
+
         startActivity(Intent.createChooser(intent, "Send email"));
     }
 

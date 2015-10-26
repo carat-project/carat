@@ -147,9 +147,12 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
     }
 
     private void setValues() {
+        // TODO Hard coded text, need to get from backend!
         deviceList.setText("Samsung Galaxy S2: 17%\nGalaxy Nexus: 3%\nNexus 7: 3%\n" +
                 "DROIDX: 2%\nSamsung Galaxy Note II: 2%\nNexus S: 1%\nHTC One X: 1%\n" +
                 "Samsung Droid Charge: 1%\nOther: 66%");
+        // TODO END
+
         int sum = mainActivity.mWellbehaved + mainActivity.mBugs + mainActivity.mHogs;
         int appSum = mainActivity.appWellbehaved + mainActivity.appBugs + mainActivity.appHogs;
         int iosSum = mainActivity.iosWellbehaved + mainActivity.iosHogs + mainActivity.iosBugs;
@@ -334,13 +337,13 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
             case R.id.bugs_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.bugs),
-                        getString(R.string.cpu_usage_explanation));
+                        getString(R.string.tutorial_fragment_bugs_message));
                 dialog.showDialog();
                 break;
             case R.id.hogs_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.hogs),
-                        getString(R.string.cpu_usage_explanation));
+                        getString(R.string.tutorial_fragment_hogs_message));
                 dialog.showDialog();
                 break;
             default:

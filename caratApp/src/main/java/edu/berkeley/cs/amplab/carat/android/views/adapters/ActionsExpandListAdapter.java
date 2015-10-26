@@ -160,6 +160,9 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         samplesText.setText(R.string.samples);
         samplesAmount.setText(String.valueOf(item.getSamples()));
         killAppButton.setTag(item.getAppName());
+        killAppButton.setEnabled(true);
+        killAppButton.setBackgroundResource(R.drawable.button_rounded_orange);
+        killAppButton.setText(caratApplication.getString(R.string.stop_app_title));
         killAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,7 +236,9 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public void onGroupExpand(int groupPosition) {
-
+        if(groupPosition != previousGroup)
+            lv.collapseGroup(previousGroup);
+        previousGroup = groupPosition;
     }
 
     @Override

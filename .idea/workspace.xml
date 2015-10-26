@@ -12,6 +12,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/caratApp/src/main/res/layout/activity_tutorial.xml">
+        <config>
+          <theme>@style/Theme.AppCompat.Light.NoActionBar</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AndroidLogFilters">
@@ -33,26 +38,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values/strings.xml">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.5285171">
-                    <caret line="289" column="26" selection-start-line="289" selection-start-column="26" selection-end-line="289" selection-end-column="26" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -66,166 +51,130 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CaratApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/CaratApplication.java">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2328768">
-              <caret line="292" column="15" selection-start-line="292" selection-start-column="15" selection-end-line="292" selection-end-column="15" />
+            <state vertical-scroll-proportion="-2.5327103">
+              <caret line="51" column="69" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/MainActivity.java">
+      <file leaf-file-name="fragment_eula_tutorial.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_eula_tutorial.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3908046">
-              <caret line="352" column="47" selection-start-line="352" selection-start-column="47" selection-end-line="352" selection-end-column="47" />
+            <state vertical-scroll-proportion="-11.8529415">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#10824#10825#0" expanded="true" />
-                <element signature="e#10850#10851#0" expanded="true" />
-                <element signature="e#10891#10892#0" expanded="true" />
-                <element signature="e#10927#10928#0" expanded="true" />
-                <element signature="e#11437#11438#0" expanded="true" />
-                <element signature="e#11479#11480#0" expanded="true" />
-                <element signature="e#12440#12441#0" expanded="true" />
-                <element signature="e#12514#12542#0" expanded="true" />
+                <element signature="e#920#958#0" expanded="true" />
+                <element signature="e#1325#1365#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DashboardFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/DashboardFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-              <folding>
-                <element signature="e#2314#2347#0" expanded="true" />
-                <element signature="e#5440#5468#0" expanded="true" />
-                <element signature="e#5703#5742#0" expanded="true" />
-                <element signature="e#5768#5806#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Activity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/app/Activity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5007" column="16" selection-start-line="5007" selection-start-column="16" selection-end-line="5007" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommunicationManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/protocol/CommunicationManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="565" column="32" selection-start-line="565" selection-start-column="32" selection-end-line="565" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlobalFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/GlobalFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="192" column="3" selection-start-line="192" selection-start-column="3" selection-end-line="192" selection-end-column="3" />
-              <folding>
-                <element signature="e#7472#7504#0" expanded="true" />
-                <element signature="e#7559#7589#0" expanded="true" />
-                <element signature="e#7714#7740#0" expanded="true" />
-                <element signature="e#7764#7797#0" expanded="true" />
-                <element signature="e#7841#7874#0" expanded="true" />
-                <element signature="e#7918#7951#0" expanded="true" />
-                <element signature="e#7983#8009#0" expanded="true" />
-                <element signature="e#8030#8067#0" expanded="true" />
-                <element signature="e#8106#8139#0" expanded="true" />
-                <element signature="e#8178#8211#0" expanded="true" />
-                <element signature="e#8239#8265#0" expanded="true" />
-                <element signature="e#8289#8322#0" expanded="true" />
-                <element signature="e#8370#8403#0" expanded="true" />
-                <element signature="e#8451#8484#0" expanded="true" />
-                <element signature="e#8513#8539#0" expanded="true" />
-                <element signature="e#8564#8589#0" expanded="true" />
-                <element signature="e#8638#8672#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_actions.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_actions.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.058823">
-              <caret line="82" column="15" selection-start-line="82" selection-start-column="15" selection-end-line="82" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="actions_list_child_item.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/actions_list_child_item.xml">
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
+      <file leaf-file-name="TutorialPagerAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/TutorialPagerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActionsExpandListAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/ActionsExpandListAdapter.java">
+      <file leaf-file-name="TutorialActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/activities/TutorialActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.630137">
-              <caret line="164" column="41" selection-start-line="164" selection-start-column="41" selection-end-line="164" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_tutorial.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/activity_tutorial.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.911765">
+              <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
               <folding>
-                <element signature="e#2729#2730#0" expanded="true" />
-                <element signature="e#2765#2766#0" expanded="true" />
-                <element signature="e#2847#2848#0" expanded="true" />
-                <element signature="e#2883#2884#0" expanded="true" />
-                <element signature="e#3686#3687#0" expanded="true" />
-                <element signature="e#3738#3739#0" expanded="true" />
-                <element signature="e#3786#3787#0" expanded="true" />
-                <element signature="e#3826#3827#0" expanded="true" />
-                <element signature="e#3889#3890#0" expanded="true" />
-                <element signature="e#3925#3926#0" expanded="true" />
-                <element signature="e#4792#4793#0" expanded="true" />
-                <element signature="e#4819#4820#0" expanded="true" />
-                <element signature="e#4911#4912#0" expanded="true" />
-                <element signature="e#4938#4939#0" expanded="true" />
-                <element signature="e#5326#5342#0" expanded="true" />
-                <element signature="e#5650#5651#0" expanded="true" />
-                <element signature="e#6751#6793#0" expanded="true" />
-                <element signature="e#6935#6981#0" expanded="true" />
-                <element signature="e#8149#8193#0" expanded="true" />
+                <element signature="e#2728#2753#0" expanded="true" />
+                <element signature="e#3241#3269#0" expanded="true" />
               </folding>
             </state>
           </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="SamplingLibrary.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/sampling/SamplingLibrary.java">
+      <file leaf-file-name="detailinfo.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/detailinfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1932" column="26" selection-start-line="1932" selection-start-column="26" selection-end-line="1932" selection-end-column="26" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collectdata.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/collectdata.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="batterylifeinfo.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/batterylifeinfo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="about.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/about.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.70714283">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_bugs_tutorial.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_bugs_tutorial.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.5882354">
+              <caret line="4" column="97" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="97" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
+      </list>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -3442,13 +3391,25 @@
         <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/utils/PrefetchData.java" />
         <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/Constants.java" />
         <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_global.xml" />
-        <option value="$PROJECT_DIR$/caratApp/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/GlobalFragment.java" />
         <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/actions_list_child_item.xml" />
-        <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/ActionsExpandListAdapter.java" />
         <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/DashboardFragment.java" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_main_tutorial.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_dashboard.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_hogs_tutorial.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_bugs_tutorial.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/ActionsExpandListAdapter.java" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/GlobalFragment.java" />
         <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/CaratApplication.java" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_process_list.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/process_list_header.xml" />
         <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/MainActivity.java" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/tutorial/EulaTutorialFragment.java" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_eula_tutorial.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/activities/TutorialActivity.java" />
+        <option value="$PROJECT_DIR$/caratApp/src/main/res/layout/activity_tutorial.xml" />
       </list>
     </option>
   </component>
@@ -3484,9 +3445,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -3503,6 +3461,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="caratApp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -3695,59 +3657,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android_carat" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="caratApp" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carat" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sampling" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android_carat" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="caratApp" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carat" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="protocol" />
+              <option name="myItemId" value="fragments" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3776,6 +3686,62 @@
               <option name="myItemId" value="fragments" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tutorial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android_carat" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caratApp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carat" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dialogs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android_carat" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caratApp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carat" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -3791,9 +3757,22 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android_carat" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caratApp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3817,6 +3796,37 @@
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
@@ -3875,6 +3885,11 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -3965,6 +3980,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ec38efe7-5bd3-4dd2-b6a4-6494bd4683aa" name="Default" comment="" />
@@ -3979,33 +3997,41 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47209302" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2744186" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32906976" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -4015,11 +4041,222 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/DashboardFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5007" column="16" selection-start-line="5007" selection-start-column="16" selection-end-line="5007" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#260237#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#36141#36142#0" expanded="false" />
+            <element signature="e#36202#36203#0" expanded="false" />
+            <element signature="e#36963#36978#0" expanded="false" />
+            <element signature="e#38000#38001#0" expanded="false" />
+            <element signature="e#38030#38031#0" expanded="false" />
+            <element signature="e#38417#38418#0" expanded="false" />
+            <element signature="e#38452#38453#0" expanded="false" />
+            <element signature="e#38560#38561#0" expanded="false" />
+            <element signature="e#38595#38596#0" expanded="false" />
+            <element signature="e#38698#38699#0" expanded="false" />
+            <element signature="e#38736#38737#0" expanded="false" />
+            <element signature="e#38850#38851#0" expanded="false" />
+            <element signature="e#38880#38881#0" expanded="false" />
+            <element signature="e#38994#38995#0" expanded="false" />
+            <element signature="e#39031#39032#0" expanded="false" />
+            <element signature="e#39379#39380#0" expanded="false" />
+            <element signature="e#39409#39410#0" expanded="false" />
+            <element signature="e#40668#40669#0" expanded="false" />
+            <element signature="e#40741#40742#0" expanded="false" />
+            <element signature="e#49531#49532#0" expanded="false" />
+            <element signature="e#49583#49584#0" expanded="false" />
+            <element signature="e#53256#53257#0" expanded="false" />
+            <element signature="e#53286#53287#0" expanded="false" />
+            <element signature="e#55436#55437#0" expanded="false" />
+            <element signature="e#55483#55484#0" expanded="false" />
+            <element signature="e#55699#55700#0" expanded="false" />
+            <element signature="e#55738#55739#0" expanded="false" />
+            <element signature="e#67164#67165#0" expanded="false" />
+            <element signature="e#67192#67193#0" expanded="false" />
+            <element signature="e#67972#67973#0" expanded="false" />
+            <element signature="e#67999#68000#0" expanded="false" />
+            <element signature="e#75727#75728#0" expanded="false" />
+            <element signature="e#75768#75769#0" expanded="false" />
+            <element signature="e#80051#80052#0" expanded="false" />
+            <element signature="e#80078#80079#0" expanded="false" />
+            <element signature="e#81776#81777#0" expanded="false" />
+            <element signature="e#81803#81804#0" expanded="false" />
+            <element signature="e#83854#83855#0" expanded="false" />
+            <element signature="e#83887#83888#0" expanded="false" />
+            <element signature="e#91283#91284#0" expanded="false" />
+            <element signature="e#91334#91335#0" expanded="false" />
+            <element signature="e#97560#97561#0" expanded="false" />
+            <element signature="e#97612#97613#0" expanded="false" />
+            <element signature="e#97782#97783#0" expanded="false" />
+            <element signature="e#97836#97837#0" expanded="false" />
+            <element signature="e#105557#105558#0" expanded="false" />
+            <element signature="e#105585#105586#0" expanded="false" />
+            <element signature="e#106960#106961#0" expanded="false" />
+            <element signature="e#106988#106989#0" expanded="false" />
+            <element signature="e#108012#108013#0" expanded="false" />
+            <element signature="e#108040#108041#0" expanded="false" />
+            <element signature="e#109490#109491#0" expanded="false" />
+            <element signature="e#109518#109519#0" expanded="false" />
+            <element signature="e#110748#110749#0" expanded="false" />
+            <element signature="e#110776#110777#0" expanded="false" />
+            <element signature="e#115258#115259#0" expanded="false" />
+            <element signature="e#115282#115283#0" expanded="false" />
+            <element signature="e#119787#119788#0" expanded="false" />
+            <element signature="e#119814#119815#0" expanded="false" />
+            <element signature="e#131688#131689#0" expanded="false" />
+            <element signature="e#131725#131726#0" expanded="false" />
+            <element signature="e#134525#134526#0" expanded="false" />
+            <element signature="e#134589#134590#0" expanded="false" />
+            <element signature="e#135814#135815#0" expanded="false" />
+            <element signature="e#135871#135872#0" expanded="false" />
+            <element signature="e#136207#136208#0" expanded="false" />
+            <element signature="e#136264#136265#0" expanded="false" />
+            <element signature="e#136566#136567#0" expanded="false" />
+            <element signature="e#136604#136605#0" expanded="false" />
+            <element signature="e#136740#136741#0" expanded="false" />
+            <element signature="e#136803#136804#0" expanded="false" />
+            <element signature="e#138400#138401#0" expanded="false" />
+            <element signature="e#138427#138428#0" expanded="false" />
+            <element signature="e#140129#140130#0" expanded="false" />
+            <element signature="e#140170#140171#0" expanded="false" />
+            <element signature="e#140364#140365#0" expanded="false" />
+            <element signature="e#140409#140410#0" expanded="false" />
+            <element signature="e#142119#142120#0" expanded="false" />
+            <element signature="e#142155#142156#0" expanded="false" />
+            <element signature="e#151843#151844#0" expanded="false" />
+            <element signature="e#151889#151890#0" expanded="false" />
+            <element signature="e#153631#153632#0" expanded="false" />
+            <element signature="e#153685#153686#0" expanded="false" />
+            <element signature="e#168937#168938#0" expanded="false" />
+            <element signature="e#168985#168986#0" expanded="false" />
+            <element signature="e#170793#170794#0" expanded="false" />
+            <element signature="e#170839#170840#0" expanded="false" />
+            <element signature="e#193306#193307#0" expanded="false" />
+            <element signature="e#193338#193339#0" expanded="false" />
+            <element signature="e#193517#193518#0" expanded="false" />
+            <element signature="e#193550#193551#0" expanded="false" />
+            <element signature="e#194114#194115#0" expanded="false" />
+            <element signature="e#194160#194161#0" expanded="false" />
+            <element signature="e#196059#196060#0" expanded="false" />
+            <element signature="e#196088#196089#0" expanded="false" />
+            <element signature="e#197808#197809#0" expanded="false" />
+            <element signature="e#197832#197833#0" expanded="false" />
+            <element signature="e#200003#200004#0" expanded="false" />
+            <element signature="e#200031#200032#0" expanded="false" />
+            <element signature="e#209802#209803#0" expanded="false" />
+            <element signature="e#209835#209836#0" expanded="false" />
+            <element signature="e#212070#212071#0" expanded="false" />
+            <element signature="e#212112#212113#0" expanded="false" />
+            <element signature="e#212704#212705#0" expanded="false" />
+            <element signature="e#212733#212734#0" expanded="false" />
+            <element signature="e#212773#212774#0" expanded="false" />
+            <element signature="e#212807#212808#0" expanded="false" />
+            <element signature="e#219273#219274#0" expanded="false" />
+            <element signature="e#219332#219333#0" expanded="false" />
+            <element signature="e#220741#220742#0" expanded="false" />
+            <element signature="e#220796#220797#0" expanded="false" />
+            <element signature="e#221939#221940#0" expanded="false" />
+            <element signature="e#221966#221967#0" expanded="false" />
+            <element signature="e#234146#234147#0" expanded="false" />
+            <element signature="e#234176#234177#0" expanded="false" />
+            <element signature="e#247227#247228#0" expanded="false" />
+            <element signature="e#247293#247294#0" expanded="false" />
+            <element signature="e#247762#247763#0" expanded="false" />
+            <element signature="e#247794#247795#0" expanded="false" />
+            <element signature="e#256753#256754#0" expanded="false" />
+            <element signature="e#256784#256785#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/protocol/CommunicationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="565" column="32" selection-start-line="565" selection-start-column="32" selection-end-line="565" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3956#3964#0" expanded="false" />
+            <element signature="e#15480#16751#0" expanded="false" />
+            <element signature="e#15566#15574#0" expanded="false" />
+            <element signature="e#15625#15633#0" expanded="false" />
+            <element signature="e#16750#16751#0" expanded="false" />
+            <element signature="e#16851#17491#0" expanded="false" />
+            <element signature="e#17490#17491#0" expanded="false" />
+            <element signature="e#18176#18184#0" expanded="false" />
+            <element signature="e#19269#19278#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/GlobalFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="192" column="3" selection-start-line="192" selection-start-column="3" selection-end-line="192" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_actions.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="15" selection-start-line="82" selection-start-column="15" selection-end-line="82" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/actions_list_child_item.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/ActionsExpandListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="164" column="41" selection-start-line="164" selection-start-column="41" selection-end-line="164" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3599#3600#0" expanded="false" />
+            <element signature="e#3623#3624#0" expanded="false" />
+            <element signature="e#7518#7534#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/sampling/SamplingLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1932" column="26" selection-start-line="1932" selection-start-column="26" selection-end-line="1932" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/protocol/ProtocolClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4035,7 +4272,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4063,17 +4299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_global.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.294118">
-          <caret line="295" column="46" selection-start-line="295" selection-start-column="46" selection-end-line="295" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/sampling/SamplerService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4082,95 +4307,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/GlobalFragment.java">
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_actions.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="192" column="3" selection-start-line="192" selection-start-column="3" selection-end-line="192" selection-end-column="3" />
-          <folding>
-            <element signature="e#7472#7504#0" expanded="true" />
-            <element signature="e#7559#7589#0" expanded="true" />
-            <element signature="e#7714#7740#0" expanded="true" />
-            <element signature="e#7764#7797#0" expanded="true" />
-            <element signature="e#7841#7874#0" expanded="true" />
-            <element signature="e#7918#7951#0" expanded="true" />
-            <element signature="e#7983#8009#0" expanded="true" />
-            <element signature="e#8030#8067#0" expanded="true" />
-            <element signature="e#8106#8139#0" expanded="true" />
-            <element signature="e#8178#8211#0" expanded="true" />
-            <element signature="e#8239#8265#0" expanded="true" />
-            <element signature="e#8289#8322#0" expanded="true" />
-            <element signature="e#8370#8403#0" expanded="true" />
-            <element signature="e#8451#8484#0" expanded="true" />
-            <element signature="e#8513#8539#0" expanded="true" />
-            <element signature="e#8564#8589#0" expanded="true" />
-            <element signature="e#8638#8672#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_actions.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.058823">
           <caret line="82" column="15" selection-start-line="82" selection-start-column="15" selection-end-line="82" selection-end-column="15" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/actions_list_child_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
+      <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/actions_list_child_item.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/sampling/SamplingLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1932" column="26" selection-start-line="1932" selection-start-column="26" selection-end-line="1932" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/ActionsExpandListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.630137">
-          <caret line="164" column="41" selection-start-line="164" selection-start-column="41" selection-end-line="164" selection-end-column="41" />
-          <folding>
-            <element signature="e#2729#2730#0" expanded="true" />
-            <element signature="e#2765#2766#0" expanded="true" />
-            <element signature="e#2847#2848#0" expanded="true" />
-            <element signature="e#2883#2884#0" expanded="true" />
-            <element signature="e#3686#3687#0" expanded="true" />
-            <element signature="e#3738#3739#0" expanded="true" />
-            <element signature="e#3786#3787#0" expanded="true" />
-            <element signature="e#3826#3827#0" expanded="true" />
-            <element signature="e#3889#3890#0" expanded="true" />
-            <element signature="e#3925#3926#0" expanded="true" />
-            <element signature="e#4792#4793#0" expanded="true" />
-            <element signature="e#4819#4820#0" expanded="true" />
-            <element signature="e#4911#4912#0" expanded="true" />
-            <element signature="e#4938#4939#0" expanded="true" />
-            <element signature="e#5326#5342#0" expanded="true" />
-            <element signature="e#5650#5651#0" expanded="true" />
-            <element signature="e#6751#6793#0" expanded="true" />
-            <element signature="e#6935#6981#0" expanded="true" />
-            <element signature="e#8149#8193#0" expanded="true" />
-          </folding>
-        </state>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/protocol/CommunicationManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="565" column="32" selection-start-line="565" selection-start-column="32" selection-end-line="565" selection-end-column="32" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3956#3964#0" expanded="false" />
+            <element signature="e#15480#16751#0" expanded="false" />
+            <element signature="e#15566#15574#0" expanded="false" />
+            <element signature="e#15625#15633#0" expanded="false" />
+            <element signature="e#16750#16751#0" expanded="false" />
+            <element signature="e#16851#17491#0" expanded="false" />
+            <element signature="e#17490#17491#0" expanded="false" />
+            <element signature="e#18176#18184#0" expanded="false" />
+            <element signature="e#19269#19278#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4178,7 +4352,131 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5007" column="16" selection-start-line="5007" selection-start-column="16" selection-end-line="5007" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#0#260237#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#36141#36142#0" expanded="false" />
+            <element signature="e#36202#36203#0" expanded="false" />
+            <element signature="e#36963#36978#0" expanded="false" />
+            <element signature="e#38000#38001#0" expanded="false" />
+            <element signature="e#38030#38031#0" expanded="false" />
+            <element signature="e#38417#38418#0" expanded="false" />
+            <element signature="e#38452#38453#0" expanded="false" />
+            <element signature="e#38560#38561#0" expanded="false" />
+            <element signature="e#38595#38596#0" expanded="false" />
+            <element signature="e#38698#38699#0" expanded="false" />
+            <element signature="e#38736#38737#0" expanded="false" />
+            <element signature="e#38850#38851#0" expanded="false" />
+            <element signature="e#38880#38881#0" expanded="false" />
+            <element signature="e#38994#38995#0" expanded="false" />
+            <element signature="e#39031#39032#0" expanded="false" />
+            <element signature="e#39379#39380#0" expanded="false" />
+            <element signature="e#39409#39410#0" expanded="false" />
+            <element signature="e#40668#40669#0" expanded="false" />
+            <element signature="e#40741#40742#0" expanded="false" />
+            <element signature="e#49531#49532#0" expanded="false" />
+            <element signature="e#49583#49584#0" expanded="false" />
+            <element signature="e#53256#53257#0" expanded="false" />
+            <element signature="e#53286#53287#0" expanded="false" />
+            <element signature="e#55436#55437#0" expanded="false" />
+            <element signature="e#55483#55484#0" expanded="false" />
+            <element signature="e#55699#55700#0" expanded="false" />
+            <element signature="e#55738#55739#0" expanded="false" />
+            <element signature="e#67164#67165#0" expanded="false" />
+            <element signature="e#67192#67193#0" expanded="false" />
+            <element signature="e#67972#67973#0" expanded="false" />
+            <element signature="e#67999#68000#0" expanded="false" />
+            <element signature="e#75727#75728#0" expanded="false" />
+            <element signature="e#75768#75769#0" expanded="false" />
+            <element signature="e#80051#80052#0" expanded="false" />
+            <element signature="e#80078#80079#0" expanded="false" />
+            <element signature="e#81776#81777#0" expanded="false" />
+            <element signature="e#81803#81804#0" expanded="false" />
+            <element signature="e#83854#83855#0" expanded="false" />
+            <element signature="e#83887#83888#0" expanded="false" />
+            <element signature="e#91283#91284#0" expanded="false" />
+            <element signature="e#91334#91335#0" expanded="false" />
+            <element signature="e#97560#97561#0" expanded="false" />
+            <element signature="e#97612#97613#0" expanded="false" />
+            <element signature="e#97782#97783#0" expanded="false" />
+            <element signature="e#97836#97837#0" expanded="false" />
+            <element signature="e#105557#105558#0" expanded="false" />
+            <element signature="e#105585#105586#0" expanded="false" />
+            <element signature="e#106960#106961#0" expanded="false" />
+            <element signature="e#106988#106989#0" expanded="false" />
+            <element signature="e#108012#108013#0" expanded="false" />
+            <element signature="e#108040#108041#0" expanded="false" />
+            <element signature="e#109490#109491#0" expanded="false" />
+            <element signature="e#109518#109519#0" expanded="false" />
+            <element signature="e#110748#110749#0" expanded="false" />
+            <element signature="e#110776#110777#0" expanded="false" />
+            <element signature="e#115258#115259#0" expanded="false" />
+            <element signature="e#115282#115283#0" expanded="false" />
+            <element signature="e#119787#119788#0" expanded="false" />
+            <element signature="e#119814#119815#0" expanded="false" />
+            <element signature="e#131688#131689#0" expanded="false" />
+            <element signature="e#131725#131726#0" expanded="false" />
+            <element signature="e#134525#134526#0" expanded="false" />
+            <element signature="e#134589#134590#0" expanded="false" />
+            <element signature="e#135814#135815#0" expanded="false" />
+            <element signature="e#135871#135872#0" expanded="false" />
+            <element signature="e#136207#136208#0" expanded="false" />
+            <element signature="e#136264#136265#0" expanded="false" />
+            <element signature="e#136566#136567#0" expanded="false" />
+            <element signature="e#136604#136605#0" expanded="false" />
+            <element signature="e#136740#136741#0" expanded="false" />
+            <element signature="e#136803#136804#0" expanded="false" />
+            <element signature="e#138400#138401#0" expanded="false" />
+            <element signature="e#138427#138428#0" expanded="false" />
+            <element signature="e#140129#140130#0" expanded="false" />
+            <element signature="e#140170#140171#0" expanded="false" />
+            <element signature="e#140364#140365#0" expanded="false" />
+            <element signature="e#140409#140410#0" expanded="false" />
+            <element signature="e#142119#142120#0" expanded="false" />
+            <element signature="e#142155#142156#0" expanded="false" />
+            <element signature="e#151843#151844#0" expanded="false" />
+            <element signature="e#151889#151890#0" expanded="false" />
+            <element signature="e#153631#153632#0" expanded="false" />
+            <element signature="e#153685#153686#0" expanded="false" />
+            <element signature="e#168937#168938#0" expanded="false" />
+            <element signature="e#168985#168986#0" expanded="false" />
+            <element signature="e#170793#170794#0" expanded="false" />
+            <element signature="e#170839#170840#0" expanded="false" />
+            <element signature="e#193306#193307#0" expanded="false" />
+            <element signature="e#193338#193339#0" expanded="false" />
+            <element signature="e#193517#193518#0" expanded="false" />
+            <element signature="e#193550#193551#0" expanded="false" />
+            <element signature="e#194114#194115#0" expanded="false" />
+            <element signature="e#194160#194161#0" expanded="false" />
+            <element signature="e#196059#196060#0" expanded="false" />
+            <element signature="e#196088#196089#0" expanded="false" />
+            <element signature="e#197808#197809#0" expanded="false" />
+            <element signature="e#197832#197833#0" expanded="false" />
+            <element signature="e#200003#200004#0" expanded="false" />
+            <element signature="e#200031#200032#0" expanded="false" />
+            <element signature="e#209802#209803#0" expanded="false" />
+            <element signature="e#209835#209836#0" expanded="false" />
+            <element signature="e#212070#212071#0" expanded="false" />
+            <element signature="e#212112#212113#0" expanded="false" />
+            <element signature="e#212704#212705#0" expanded="false" />
+            <element signature="e#212733#212734#0" expanded="false" />
+            <element signature="e#212773#212774#0" expanded="false" />
+            <element signature="e#212807#212808#0" expanded="false" />
+            <element signature="e#219273#219274#0" expanded="false" />
+            <element signature="e#219332#219333#0" expanded="false" />
+            <element signature="e#220741#220742#0" expanded="false" />
+            <element signature="e#220796#220797#0" expanded="false" />
+            <element signature="e#221939#221940#0" expanded="false" />
+            <element signature="e#221966#221967#0" expanded="false" />
+            <element signature="e#234146#234147#0" expanded="false" />
+            <element signature="e#234176#234177#0" expanded="false" />
+            <element signature="e#247227#247228#0" expanded="false" />
+            <element signature="e#247293#247294#0" expanded="false" />
+            <element signature="e#247762#247763#0" expanded="false" />
+            <element signature="e#247794#247795#0" expanded="false" />
+            <element signature="e#256753#256754#0" expanded="false" />
+            <element signature="e#256784#256785#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4187,45 +4485,322 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
           <folding>
-            <element signature="e#2314#2347#0" expanded="true" />
-            <element signature="e#5440#5468#0" expanded="true" />
-            <element signature="e#5703#5742#0" expanded="true" />
-            <element signature="e#5768#5806#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_main_tutorial.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.3529415">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+          <folding>
+            <element signature="e#1116#1156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/23.0.1/support-v4-23.0.1-sources.jar!/android/support/v4/app/FragmentTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="185" column="40" selection-start-line="185" selection-start-column="40" selection-end-line="185" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_hogs_tutorial.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1176472">
+          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_dashboard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1176472">
+          <caret line="176" column="43" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
+          <folding>
+            <element signature="e#1813#1845#0" expanded="true" />
+            <element signature="e#2255#2284#0" expanded="true" />
+            <element signature="e#2688#2716#0" expanded="true" />
+            <element signature="e#3090#3109#0" expanded="true" />
+            <element signature="e#4621#4642#0" expanded="true" />
+            <element signature="e#4922#4936#0" expanded="true" />
+            <element signature="e#6013#6034#0" expanded="true" />
+            <element signature="e#6314#6328#0" expanded="true" />
+            <element signature="e#7359#7373#0" expanded="true" />
+            <element signature="e#7653#7673#0" expanded="true" />
+            <element signature="e#8763#8787#0" expanded="true" />
+            <element signature="e#9067#9084#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.117647">
+          <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/ActionsExpandListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7534246">
+          <caret line="74" column="58" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#5326#5342#0" expanded="false" />
+            <element signature="e#5609#5660#0" expanded="false" />
+            <element signature="e#5704#5854#0" expanded="false" />
+            <element signature="e#5853#5854#0" expanded="false" />
+            <element signature="e#6954#6996#0" expanded="false" />
+            <element signature="e#7138#7184#0" expanded="false" />
+            <element signature="e#8352#8396#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_global.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="19.264706">
+          <caret line="295" column="46" selection-start-line="295" selection-start-column="46" selection-end-line="295" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/GlobalFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.958904">
+          <caret line="338" column="49" selection-start-line="338" selection-start-column="49" selection-end-line="338" selection-end-column="49" />
+          <folding>
+            <element signature="e#8186#8219#0" expanded="false" />
+            <element signature="e#13643#13684#0" expanded="false" />
+            <element signature="e#13910#13960#0" expanded="false" />
+            <element signature="e#14186#14236#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/memoryinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/upgradeos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values-fi/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7009345">
+          <caret line="51" column="82" selection-start-line="51" selection-start-column="81" selection-end-line="51" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/ProcessExpandListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="149" column="58" selection-start-line="149" selection-start-column="58" selection-end-line="149" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/CaratApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2328768">
-          <caret line="292" column="15" selection-start-line="292" selection-start-column="15" selection-end-line="292" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="237" column="74" selection-start-line="237" selection-start-column="74" selection-end-line="237" selection-end-column="74" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_process_list.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5285171">
-          <caret line="289" column="26" selection-start-line="289" selection-start-column="26" selection-end-line="289" selection-end-column="26" />
+        <state vertical-scroll-proportion="-11.6470585">
+          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/process_list_header.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.3235292">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/sampling/SamplingLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="19" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/DeviceFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="157" column="8" selection-start-line="157" selection-start-column="8" selection-end-line="161" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3908046">
-          <caret line="352" column="47" selection-start-line="352" selection-start-column="47" selection-end-line="352" selection-end-column="47" />
+        <state vertical-scroll-proportion="-5.287671">
+          <caret line="419" column="59" selection-start-line="419" selection-start-column="59" selection-end-line="419" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10824#10825#0" expanded="true" />
-            <element signature="e#10850#10851#0" expanded="true" />
-            <element signature="e#10891#10892#0" expanded="true" />
-            <element signature="e#10927#10928#0" expanded="true" />
-            <element signature="e#11437#11438#0" expanded="true" />
-            <element signature="e#11479#11480#0" expanded="true" />
-            <element signature="e#12440#12441#0" expanded="true" />
-            <element signature="e#12514#12542#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/tutorial/BugsTutorialFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="30" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/fragments/tutorial/EulaTutorialFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="63" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_bugs_tutorial.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5882354">
+          <caret line="4" column="97" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5327103">
+          <caret line="51" column="69" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/fragment_eula_tutorial.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.8529415">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="e#920#958#0" expanded="true" />
+            <element signature="e#1325#1365#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/views/adapters/TutorialPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/java/edu/berkeley/cs/amplab/carat/android/activities/TutorialActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/res/layout/activity_tutorial.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.911765">
+          <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+          <folding>
+            <element signature="e#2728#2753#0" expanded="true" />
+            <element signature="e#3241#3269#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/detailinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/collectdata.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/batterylifeinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caratApp/src/main/assets/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70714283">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

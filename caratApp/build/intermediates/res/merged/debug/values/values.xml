@@ -66,7 +66,7 @@
     <color name="black">#000000</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="blue">#203E5F</color>
+    <color name="blue">#122134</color>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
@@ -431,8 +431,7 @@
     <string name="connection_error">Offline. Click to turn on Wifi.</string>
     <string name="copied">Copied:</string>
     <string name="cpu">CPU Usage:</string>
-    <string name="cpu_usage_explanation">BUUJAA! asdsadsa asdsadsa asdsadsa
-        asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa </string>
+    <string name="cpu_usage_explanation">CPU USAGE Lorem ipsum TODO...</string>
     <string name="cpu_usage_title">CPU usage</string>
     <string name="dashboard_updated_text">Updated just now</string>
     <string name="default_type">Foreground App</string>
@@ -589,9 +588,7 @@
     <string name="priorityservice">Service</string>
     <string name="prioritysuggestion">Suggestion</string>
     <string name="priorityvisible">Visible App</string>
-    <string name="process_list_message">Processes are lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum </string>
+    <string name="process_list_message">Processes are Lorem ipsum TODO...</string>
     <string name="process_list_title">PROCESS LIST</string>
     <string name="processlist">Running processes</string>
     <string name="questionnaire">Please help us improve Carat</string>
@@ -694,13 +691,13 @@
     <eat-comment/>
     <style name="AcceptButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/button_rounded_gray</item>
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
-        <item name="android:paddingBottom">5dp</item>
-        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingTop">2dp</item>
         <item name="android:paddingLeft">40dp</item>
         <item name="android:paddingRight">40dp</item>
     </style>
@@ -1673,7 +1670,7 @@
         <item name="android:textStyle">bold</item>
     </style>
     <style name="LargeOrangeText">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/orange</item>
     </style>
     <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/themes.xml -->
@@ -1692,6 +1689,11 @@
     <style name="MediumBoldBlackText">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="MediumBoldWhiteText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
     <style name="MediumOrangeText">
@@ -1907,8 +1909,12 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/gray</item>
     </style>
+    <style name="SmallStatusBarOrangeText">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/statusbar_color</item>
+    </style>
     <style name="SmallWhiteText">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
     <style name="StopAppButtonStyle" parent="@android:style/Widget.Button">

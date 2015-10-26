@@ -28,8 +28,7 @@
         of active memory may increase. The OS also preloads often used applications into memory,
         shortening wait times.
     </string>
-    <string name="cpu_usage_explanation">BUUJAA! asdsadsa asdsadsa asdsadsa
-        asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa </string>
+    <string name="cpu_usage_explanation">CPU USAGE Lorem ipsum TODO...</string>
     <string name="jscore_dialog_title">J-SCORE</string>
     <string name="what_are_these_numbers_title">What are these numbers?</string>
     <string name="what_are_these_numbers_explanation">Expected benefit is the amount of battery life
@@ -49,6 +48,8 @@
     <string name="tutorial_fragment_hogs_title">HOGS</string>
     <string name="tutorial_fragment_hogs_message">Hogs are apps that are correlated with higher
         energy use across many devices. Closing hogs may improve battery life.</string>
+    <string name="tutorial_fragment_eula_title">EULA</string>
+    <string name="tutorial_fragment_eula_message">Lorem ipsum TODO...</string>
 
     <!-- MENU -->
     <string name="action_settings">Settings</string>
@@ -196,9 +197,7 @@
 
     <!-- PROCESS LIST -->
     <string name="version">Version</string>
-    <string name="process_list_message">Processes are lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        lorem ipsum lorem ipsum lorem ipsum </string>
+    <string name="process_list_message">Processes are Lorem ipsum TODO...</string>
 
     <!-- PREFERENCES LIST -->
     <string name="show_all">Show all</string>

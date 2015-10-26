@@ -72,11 +72,11 @@ public final class R {
 		public static final int switch_on = 0x7f0600fe;
 	}
 	public static final class style {
-		public static final int Preference_SwitchPreference = 0x7f0900ad;
-		public static final int TextAppearance_Holo_Light_Widget_Switch = 0x7f0900dc;
-		public static final int TextAppearance_Holo_Widget_Switch = 0x7f0900dd;
-		public static final int Widget_Holo_CompoundButton_Switch = 0x7f090135;
-		public static final int Widget_Holo_Light_CompoundButton_Switch = 0x7f090136;
+		public static final int Preference_SwitchPreference = 0x7f0900ae;
+		public static final int TextAppearance_Holo_Light_Widget_Switch = 0x7f0900de;
+		public static final int TextAppearance_Holo_Widget_Switch = 0x7f0900df;
+		public static final int Widget_Holo_CompoundButton_Switch = 0x7f090137;
+		public static final int Widget_Holo_Light_CompoundButton_Switch = 0x7f090138;
 	}
 	public static final class styleable {
 		public static final int[] Android = { 0x01010095, 0x01010096, 0x01010097, 0x01010098, 0x01010099, 0x0101009a, 0x0101009b };
