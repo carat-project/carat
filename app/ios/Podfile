@@ -4,6 +4,8 @@
 platform:ios, '7.0'
 inhibit_all_warnings!
 
+pod 'AFNetworking', '~> 2.5'
+
 pod 'Socialize', :podspec => 'https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec'
 # Append to your Podfile
 post_install do |installer_representation|
