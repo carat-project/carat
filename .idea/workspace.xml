@@ -82,8 +82,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caratApp/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5852479">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.37243047">
+              <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -2799,7 +2799,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="C:\Users\Valto\workspace\android_carat" value="8663389005382" />
+        <entry key="C:\Users\Valto\workspace\android_carat" value="8663391067523" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -4502,8 +4502,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caratApp/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5852479">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.37243047">
+          <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
           <folding />
         </state>
       </provider>

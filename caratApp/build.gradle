@@ -10,6 +10,12 @@ android {
         targetSdkVersion 21
     }
 
+    // Create gradle.properties file to caratApp folder and define KEYSTORE_PASSWORD=xxx and
+    // KEY_PASSWORD=xxx there in order to generate signed APK for release.
+    // NEVER save gradle.properties to GIT or anywhere else, keep it local!
+    // Also create/move carat-release-key.keystore file to caratApp folder.
+    // Lastly uncomment everything below.
+
     /*signingConfigs {
         release {
             try {
