@@ -10,8 +10,27 @@ android {
         targetSdkVersion 21
     }
 
-    buildTypes {
+    /*signingConfigs {
         release {
+            try {
+                storeFile file("carat-release-key.keystore")
+                storePassword KEYSTORE_PASSWORD
+                keyAlias "carat"
+                keyPassword KEY_PASSWORD
+            }
+            catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties")
+            }
+        }
+    } */
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        release {
+            //signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }

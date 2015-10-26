@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:src="@drawable/tutorial_bugs_bg" />
+        android:src="@drawable/tutorial_eula_bg" />
 
     <TextView
         style="@style/MediumBoldWhiteText"

@@ -1717,10 +1717,11 @@ containing a value of this type.
         public static final int switch_track_holo_dark=0x7f020083;
         public static final int switch_track_holo_light=0x7f020084;
         public static final int tutorial_bugs_bg=0x7f020085;
-        public static final int tutorial_hogs_bg=0x7f020086;
-        public static final int tutorial_main_bg=0x7f020087;
-        public static final int twitter_icon=0x7f020088;
-        public static final int twologo=0x7f020089;
+        public static final int tutorial_eula_bg=0x7f020086;
+        public static final int tutorial_hogs_bg=0x7f020087;
+        public static final int tutorial_main_bg=0x7f020088;
+        public static final int twitter_icon=0x7f020089;
+        public static final int twologo=0x7f02008a;
     }
     public static final class id {
         public static final int aboutView=0x7f0d004f;
