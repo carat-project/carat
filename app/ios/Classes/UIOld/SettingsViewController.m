@@ -10,7 +10,7 @@
 #import "SettingsViewController.h"
 #import "AboutViewController.h"
 #import "CaratConstants.h"
-#import <Socialize/Socialize.h>
+#import "Socialize/Socialize.h"
 #import "Utilities.h"
 #import "CoreDataManager.h"
 #import "UIDeviceHardware.h"
