@@ -118,7 +118,13 @@ public class AboutExpandListAdapter extends BaseExpandableListAdapter implements
 
     private void setViewsInChild(View v, AboutItem item) {
         TextView childMessage = (TextView) v.findViewById(R.id.about_child_text);
+        ImageView logo = (ImageView) v.findViewById(R.id.university_logo);
         childMessage.setText(item.getChildMessage());
+        if (item.getAboutTitle().equals("Carat")) {
+            logo.setVisibility(View.VISIBLE);
+        } else {
+            logo.setVisibility(View.GONE);
+        }
 
     }
 
