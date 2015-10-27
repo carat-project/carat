@@ -18,6 +18,10 @@
             android:layout_alignParentLeft="true"
             android:layout_gravity="center_vertical|left"
             android:layout_margin="5dp"
+            android:adjustViewBounds="true"
+            android:maxHeight="56dp"
+            android:maxWidth="56dp"
+            android:scaleType="fitCenter"
             android:paddingRight="10dp"
             android:src="@drawable/ic_launcher" />
 

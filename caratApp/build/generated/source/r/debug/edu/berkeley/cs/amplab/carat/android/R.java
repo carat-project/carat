@@ -1722,6 +1722,7 @@ containing a value of this type.
         public static final int tutorial_main_bg=0x7f020088;
         public static final int twitter_icon=0x7f020089;
         public static final int twologo=0x7f02008a;
+        public static final int university_logo=0x7f02008b;
     }
     public static final class id {
         public static final int aboutView=0x7f0d004f;

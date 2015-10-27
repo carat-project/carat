@@ -235,7 +235,7 @@ public class CaratApplication extends Application {
         try {
             return context.getPackageManager().getApplicationIcon(appName);
         } catch (NameNotFoundException e) {
-            return context.getResources().getDrawable(R.drawable.ic_notify);
+            return context.getResources().getDrawable(R.drawable.gray_actions_icon);
         }
     }
 
