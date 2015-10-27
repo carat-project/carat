@@ -11,6 +11,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -37,21 +40,29 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
 
     private MainActivity a = null;
 
+    private HashMap<String, Integer> androidMap;
+    private HashMap<String, Integer> iosMap;
+    private boolean parseAndroid;
+
     public PrefetchData(MainActivity a) {
         this.a = a;
     }
 
     String serverResponseJson = null;
+    String serverResponseJsonDevices = null;
     private final String TAG = "PrefetchData";
 
     @Override
     protected Void doInBackground(Void... arg0) {
         // Log.d(TAG, "started doInBackground() method of the asyncTask");
         JsonParser jsonParser = new JsonParser();
+        androidMap = new HashMap<>();
+        iosMap = new HashMap<>();
         try {
             if (CaratApplication.isInternetAvailable()) {
                 serverResponseJson = jsonParser
                         .getJSONFromUrl("http://carat.cs.helsinki.fi/statistics-data/stats.json");
+                serverResponseJsonDevices = jsonParser.getJSONFromUrl("http://carat.cs.helsinki.fi/statistics-data/shares.json");
             }
         } catch (Exception e) {
         }
@@ -62,6 +73,14 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
                 saveAppValues(new JSONObject(serverResponseJson).getJSONArray("android-apps"), 1);
                 saveAppValues(new JSONObject(serverResponseJson).getJSONArray("ios-apps"), 2);
                 saveAppValues(new JSONObject(serverResponseJson).getJSONArray("users"), 3);
+
+                JSONObject tmp = new JSONObject(serverResponseJsonDevices).getJSONObject("All");
+                parseAndroid = true;
+                parseJson(tmp.getJSONObject("Android"));
+                a.setAndroidDevices(androidMap);
+                parseAndroid = false;
+                //parseJson(tmp.getJSONObject("iOS"));
+                //a.setIosDevices(iosMap);
 
                 if (CaratApplication.mPrefs != null) {
                     saveStatsToPref();
@@ -77,6 +96,45 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
             // Log.d(TAG, "server response JSON is null.");
         }
         return null;
+    }
+
+    private void parseJson(JSONObject data) {
+
+        if (data != null) {
+            Iterator<String> it = data.keys();
+            while (it.hasNext()) {
+                String key = it.next();
+
+                try {
+                    if (data.get(key) instanceof JSONArray) {
+                        JSONArray arry = data.getJSONArray(key);
+                        int size = arry.length();
+                        for (int i = 0; i < size; i++) {
+                            parseJson(arry.getJSONObject(i));
+                        }
+                    } else if (data.get(key) instanceof JSONObject) {
+                        parseJson(data.getJSONObject(key));
+                    } else {
+                        if (parseAndroid) {
+                            if (androidMap.containsKey(key)) {
+                                androidMap.put(key, androidMap.get(key) + Integer.parseInt(data.optString(key)));
+                            } else {
+                                androidMap.put(key, Integer.parseInt(data.optString(key)));
+                            }
+                        } /* else {
+                            if (iosMap.containsKey(key)) {
+                                iosMap.put(key, iosMap.get(key) + Integer.parseInt(data.optString(key)));
+                            } else {
+                                iosMap.put(key, Integer.parseInt(data.optString(key)));
+                            }
+                        } */
+                    }
+                } catch (Throwable e) {
+                    e.printStackTrace();
+
+                }
+            }
+        }
     }
 
     private void saveAppValues(JSONArray jsonArray, int which) {

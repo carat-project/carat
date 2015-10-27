@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/src/main/res/values-w720dp/dimens.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/src/main/res/values-w720dp/dimens.xml -->
     <eat-comment/>
     <dimen name="preference_fragment_padding_side">32dp</dimen>
 </resources>

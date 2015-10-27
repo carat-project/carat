@@ -2,4 +2,4 @@
     android:shape="rectangle">
     <corners android:radius="3dp" />
     <solid android:color="@color/gray" />
-</shape><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/drawable/button_rounded_gray.xml -->
+</shape><!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/drawable/button_rounded_gray.xml -->

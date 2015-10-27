@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="actionBarDivider"/>
     <attr format="reference" name="actionBarItemBackground"/>
@@ -111,11 +111,11 @@
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
     <item name="dialog_fixed_width_major" type="dimen">320dp</item>
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment/>
     <dimen name="preference_fragment_padding_bottom">0dp</dimen>
     <dimen name="preference_fragment_padding_side">16dp</dimen>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
     <eat-comment/>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_menu_divider" type="id"/>
@@ -124,10 +124,10 @@
     <item name="progress_circular" type="id"/>
     <item name="progress_horizontal" type="id"/>
     <integer name="abc_max_action_buttons">2</integer>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment/>
     <integer name="preference_fragment_scrollbarStyle">0x02000000</integer>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
@@ -142,12 +142,12 @@
     <string name="abc_searchview_description_voice">Voice search</string>
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment/>
     <string name="back_button_label">Back</string>
     <string name="next_button_label">Next</string>
     <string name="skip_button_label">Skip</string>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.AppCompat.Base.CompactMenu.Dialog" parent="android:TextAppearance.Medium">
         <item name="android:textColor">@android:color/primary_text_light</item>

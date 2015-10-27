@@ -28,6 +28,7 @@ import com.flurry.android.FlurryAgent;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Properties;
 
 import edu.berkeley.cs.amplab.carat.android.utils.PrefetchData;
@@ -53,6 +54,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private ImageView backArrow;
     private ProgressBar progressCircle;
     private DashboardFragment dashboardFragment;
+
+    private HashMap<String, Integer> androidDevices, iosDevices;
 
     private Tracker tracker;
 
@@ -488,6 +491,22 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         } else {
             return false;
         }
+    }
+
+    public HashMap<String, Integer> getIosDevices() {
+        return iosDevices;
+    }
+
+    public void setIosDevices(HashMap<String, Integer> iosDevices) {
+        this.iosDevices = iosDevices;
+    }
+
+    public HashMap<String, Integer> getAndroidDevices() {
+        return androidDevices;
+    }
+
+    public void setAndroidDevices(HashMap<String, Integer> androidDevices) {
+        this.androidDevices = androidDevices;
     }
 
     public void GoToWifiScreen() {

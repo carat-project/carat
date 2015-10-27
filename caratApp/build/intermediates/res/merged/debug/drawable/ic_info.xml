@@ -5,4 +5,4 @@
      <item android:state_focused="true"
            android:drawable="@drawable/infoicon_dark" /> <!-- focused -->
      <item android:drawable="@drawable/infoicon" /> <!-- default -->
-</selector><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/drawable/ic_info.xml -->
+</selector><!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/drawable/ic_info.xml -->

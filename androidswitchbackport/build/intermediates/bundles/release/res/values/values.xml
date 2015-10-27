@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidswitchbackport/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="background_holo_light">#fff3f3f3</color>
     <color name="bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
@@ -11,17 +11,17 @@
     <declare-styleable name="Switch"><attr format="reference" name="asb_thumb"/><attr format="reference" name="asb_track"/><attr format="reference" name="asb_textOn"/><attr format="reference" name="asb_textOff"/><attr format="dimension" name="asb_thumbTextPadding"/><attr format="reference" name="asb_switchTextAppearance"/><attr format="dimension" name="asb_switchMinWidth"/><attr format="dimension" name="asb_switchPadding"/></declare-styleable>
     <declare-styleable name="SwitchBackportTheme"><attr format="reference" name="asb_switchStyle"/><attr format="reference" name="asb_switchPreferenceStyle"/></declare-styleable>
     <declare-styleable name="SwitchPreference"><attr format="reference" name="asb_summaryOn"/><attr format="reference" name="asb_summaryOff"/><attr format="reference" name="asb_switchTextOn"/><attr format="reference" name="asb_switchTextOff"/><attr format="boolean" name="asb_disableDependentsState"/></declare-styleable>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidswitchbackport/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="preference_icon_minWidth">0dp</dimen>
     <dimen name="preference_item_padding_inner">8dip</dimen>
     <dimen name="preference_item_padding_side">8dip</dimen>
     <dimen name="preference_widget_width">48dp</dimen>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidswitchbackport/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="switch_off">OFF</string>
     <string name="switch_on">ON</string>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/androidswitchbackport/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="Preference.SwitchPreference" parent="">
         <item name="android:layout">@layout/preference</item>

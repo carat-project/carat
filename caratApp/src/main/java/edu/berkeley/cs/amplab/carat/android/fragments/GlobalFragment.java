@@ -24,6 +24,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.sql.BatchUpdateException;
+import java.util.HashMap;
 
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
@@ -147,11 +148,31 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
     }
 
     private void setValues() {
-        // TODO Hard coded text, need to get from backend!
-        deviceList.setText("Samsung Galaxy S2: 17%\nGalaxy Nexus: 3%\nNexus 7: 3%\n" +
-                "DROIDX: 2%\nSamsung Galaxy Note II: 2%\nNexus S: 1%\nHTC One X: 1%\n" +
-                "Samsung Droid Charge: 1%\nOther: 66%");
-        // TODO END
+        HashMap<String, Integer> androidMap = mainActivity.getAndroidDevices();
+        HashMap<String, Integer> iosMap = mainActivity.getIosDevices();
+        String androids = "";
+        //String iOSs = "";
+        int androidDeviceSum = 0;
+        //int iosDeviceSum = 0;
+
+        if (androidMap != null) {
+            for (int i : androidMap.values()) {
+                androidDeviceSum += i;
+            }
+            for (String key : androidMap.keySet()) {
+                androids += key + ": " + String.format("%.2f", (float)androidMap.get(key) / androidDeviceSum * 100) + "%" + "\n";
+            }
+        }
+        /*if (iosMap != null) {
+            for (int i : iosMap.values()) {
+                iosDeviceSum += i;
+            }
+            for (String key : iosMap.keySet()) {
+                iOSs += key + ": " + String.format("%.2f", (float)iosMap.get(key) / iosDeviceSum * 100) + "%" + "\n";
+            }
+        } */
+
+        deviceList.setText(androids);
 
         int sum = mainActivity.mWellbehaved + mainActivity.mBugs + mainActivity.mHogs;
         int appSum = mainActivity.appWellbehaved + mainActivity.appBugs + mainActivity.appHogs;

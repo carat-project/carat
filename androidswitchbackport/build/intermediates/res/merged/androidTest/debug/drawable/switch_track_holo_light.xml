@@ -30,4 +30,4 @@
     <item android:drawable="@drawable/switch_bg_focused_holo_light" android:state_focused="true"/>
     <item android:drawable="@drawable/switch_bg_holo_light"/>
 
-</selector><!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/src/main/res/drawable/switch_track_holo_light.xml --><!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/build/intermediates/bundles/debug/res/drawable/switch_track_holo_light.xml -->
+</selector><!-- From: file:/C:/Users/KYY/carat/carat/androidswitchbackport/src/main/res/drawable/switch_track_holo_light.xml --><!-- From: file:/C:/Users/KYY/carat/carat/androidswitchbackport/build/intermediates/bundles/debug/res/drawable/switch_track_holo_light.xml -->

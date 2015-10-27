@@ -31,4 +31,4 @@
     <item android:drawable="@drawable/switch_thumb_activated_holo_dark" android:state_checked="true"/>
     <item android:drawable="@drawable/switch_thumb_holo_dark"/>
 
-</selector><!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/src/main/res/drawable/switch_inner_holo_dark.xml --><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/drawable/switch_inner_holo_dark.xml -->
+</selector><!-- From: file:/C:/Users/KYY/carat/carat/androidswitchbackport/src/main/res/drawable/switch_inner_holo_dark.xml --><!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/drawable/switch_inner_holo_dark.xml -->

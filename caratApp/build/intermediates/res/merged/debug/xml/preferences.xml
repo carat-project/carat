@@ -30,4 +30,4 @@
         android:key="feedbackPrefKey"
         android:title="@string/feedback" />	
 
-</PreferenceScreen><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/xml/preferences.xml -->
+</PreferenceScreen><!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/xml/preferences.xml -->

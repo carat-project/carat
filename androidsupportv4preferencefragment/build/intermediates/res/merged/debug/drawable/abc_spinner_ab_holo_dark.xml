@@ -23,4 +23,4 @@
           android:drawable="@drawable/abc_spinner_ab_focused_holo_dark" />
     <item android:drawable="@drawable/abc_spinner_ab_default_holo_dark" />
 </selector>
-<!-- From: file:/usr/local/google/buildbot/repo_clients/https___googleplex-android.googlesource.com_a_platform_manifest.git/klp-ub-dev/frameworks/support/v7/appcompat/res/drawable/abc_spinner_ab_holo_dark.xml --><!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable/abc_spinner_ab_holo_dark.xml -->
+<!-- From: file:/usr/local/google/buildbot/repo_clients/https___googleplex-android.googlesource.com_a_platform_manifest.git/klp-ub-dev/frameworks/support/v7/appcompat/res/drawable/abc_spinner_ab_holo_dark.xml --><!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable/abc_spinner_ab_holo_dark.xml -->

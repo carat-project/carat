@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values-fi/strings.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values-fi/strings.xml -->
     <eat-comment/>
     <string-array name="drawer_items">
         <item>Yhteenveto</item>
@@ -18,7 +18,7 @@
         <item>vaikutus &lt; 20m</item>
         <item>vaikutus &lt; 1h</item>
     </string-array>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values-fi/values.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values-fi/values.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Siirry etusivulle"</string>
     <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Siirry ylös"</string>
@@ -33,7 +33,7 @@
     <string msgid="893419373245838918" name="abc_searchview_description_voice">"Puhehaku"</string>
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Jakaminen:"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Jakaminen: %s"</string>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values-fi/strings.xml -->
+    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values-fi/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Asetukset</string>
     <string name="appicon">Kuvake</string>
