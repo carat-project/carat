@@ -46,8 +46,10 @@ static NSString * collapsedCell = @"AboutTableViewCell";
 
 -(void) creteData{
     
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
     AboutListItemData* d1 = [AboutListItemData new];
-    d1.title = NSLocalizedString(@"AboutTittle", nil);
+    d1.title = [NSString stringWithFormat:@"%@ v%@", NSLocalizedString(@"AboutTittle", nil), version];
     d1.subTitle = NSLocalizedString(@"AboutSub", nil);
     d1.message = NSLocalizedString(@"AboutMessage", nil);
     
@@ -170,7 +172,7 @@ static NSString * collapsedCell = @"AboutTableViewCell";
     if ([self.expandedCells containsObject:indexPath])
     {
         AboutListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
-        CGFloat expandedTextHeight = 56.0f + [self getTextHeight:rowData.message] + 14.0f;//margins 7 +7
+        CGFloat expandedTextHeight = 56.0f + [self getTextHeight:rowData.message] + 16.0f;//margins 7 +7
         NSLog(@"expandedTextHeight: %f", expandedTextHeight);
         
         return expandedTextHeight; //It's not necessary a constant, though
@@ -184,7 +186,7 @@ static NSString * collapsedCell = @"AboutTableViewCell";
 
 -(CGFloat)getTextHeight:(NSString *)text
 {
-    UIFont *font = [UIFont systemFontOfSize:12];//[UIFont fontWithName:@"HelveticaNeue" size:fontSize];
+    UIFont *font = [UIFont systemFontOfSize:14];//[UIFont fontWithName:@"HelveticaNeue" size:fontSize];
     
     CGRect frame = [self getTextFrame:text font:font top:0];
     return frame.size.height;
@@ -193,12 +195,12 @@ static NSString * collapsedCell = @"AboutTableViewCell";
 -(CGRect)getTextFrame:(NSString *)text font:(UIFont *) font top:(CGFloat)top
 {
     NSDictionary *attributes = @{NSFontAttributeName: font};
-    CGRect textSize = [text boundingRectWithSize:CGSizeMake(UI_SCREEN_W-14.0f, CGFLOAT_MAX)
+    CGRect textSize = [text boundingRectWithSize:CGSizeMake(UI_SCREEN_W-16.0f, CGFLOAT_MAX)
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                       attributes:attributes
                                          context:nil];
-    CGRect textRect = CGRectMake((UI_SCREEN_W / 2.0) - textSize.size.width/2.0, top, textSize.size.width, textSize.size.height);
-    return textRect;
+    //CGRect textRect = CGRectMake((UI_SCREEN_W / 2.0) - textSize.size.width/2.0, top, textSize.size.width, textSize.size.height);
+    return textSize;
 }
 
 

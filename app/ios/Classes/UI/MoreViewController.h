@@ -26,5 +26,6 @@
 - (IBAction)feedBackClicked:(id)sender;
 - (IBAction)tutorialClicked:(id)sender;
 - (IBAction)aboutClicked:(id)sender;
+@property (retain, nonatomic) IBOutlet UILabel *versionLabel;
 
 @end

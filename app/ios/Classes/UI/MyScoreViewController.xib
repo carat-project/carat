@@ -30,6 +30,33 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UA0-i1-JrQ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="My Device" id="up8-Gs-wMP">
+                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="Eit-ay-ld8">
+                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemBackPressed" destination="-1" id="wdL-nD-ImK"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="evr-xv-hVb">
+                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemMorePressed" destination="-1" id="ffy-U0-VFo"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUu-e3-3JP" userLabel="scroll">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
@@ -974,12 +1001,31 @@
                                         </mask>
                                     </variation>
                                 </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hy_logo" translatesAutoresizingMaskIntoConstraints="NO" id="fpa-3b-j2n">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="fpa-3b-j2n" secondAttribute="height" multiplier="380:348" id="K2n-ld-0Hj"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="K2n-ld-0Hj"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="K2n-ld-0Hj"/>
+                                        </mask>
+                                    </variation>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="PU2-Fg-glv" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" id="1QK-jo-FHR"/>
                                 <constraint firstItem="av9-JB-eeg" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" id="3BX-CC-tji"/>
+                                <constraint firstAttribute="trailing" secondItem="fpa-3b-j2n" secondAttribute="trailing" constant="20" id="5as-tk-e4P"/>
+                                <constraint firstItem="fpa-3b-j2n" firstAttribute="bottom" secondItem="2lz-c2-lM5" secondAttribute="bottom" id="6K5-gd-Mdr"/>
+                                <constraint firstItem="fpa-3b-j2n" firstAttribute="top" secondItem="PU2-Fg-glv" secondAttribute="bottom" constant="8" id="6Vn-lt-zMh"/>
                                 <constraint firstItem="WDE-xB-80C" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" id="74X-D2-jHQ"/>
                                 <constraint firstItem="rY7-db-Ctt" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" id="8qG-LJ-iHs"/>
                                 <constraint firstItem="rY7-db-Ctt" firstAttribute="top" secondItem="WDE-xB-80C" secondAttribute="bottom" id="Ew7-y6-uuN"/>
@@ -992,7 +1038,7 @@
                                 <constraint firstItem="WDE-xB-80C" firstAttribute="top" secondItem="av9-JB-eeg" secondAttribute="bottom" id="XFL-yF-ouK"/>
                                 <constraint firstAttribute="trailing" secondItem="WDE-xB-80C" secondAttribute="trailing" id="f0W-by-Qes"/>
                                 <constraint firstAttribute="trailing" secondItem="PU2-Fg-glv" secondAttribute="trailing" id="fxJ-Xw-oHl"/>
-                                <constraint firstAttribute="bottom" secondItem="PU2-Fg-glv" secondAttribute="bottom" id="vNs-7S-cQ8"/>
+                                <constraint firstItem="fpa-3b-j2n" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" constant="20" id="gmg-iC-Dhu"/>
                                 <constraint firstItem="CJt-eY-rn5" firstAttribute="bottom" secondItem="av9-JB-eeg" secondAttribute="bottom" multiplier="0.88" id="yjc-eC-LJd"/>
                             </constraints>
                             <variation key="default">
@@ -1002,6 +1048,7 @@
                                     <exclude reference="rY7-db-Ctt"/>
                                     <exclude reference="PU2-Fg-glv"/>
                                     <exclude reference="WDE-xB-80C"/>
+                                    <exclude reference="fpa-3b-j2n"/>
                                 </mask>
                                 <mask key="constraints">
                                     <exclude reference="3BX-CC-tji"/>
@@ -1019,7 +1066,10 @@
                                     <exclude reference="1QK-jo-FHR"/>
                                     <exclude reference="VIA-hi-8Lo"/>
                                     <exclude reference="fxJ-Xw-oHl"/>
-                                    <exclude reference="vNs-7S-cQ8"/>
+                                    <exclude reference="5as-tk-e4P"/>
+                                    <exclude reference="6K5-gd-Mdr"/>
+                                    <exclude reference="6Vn-lt-zMh"/>
+                                    <exclude reference="gmg-iC-Dhu"/>
                                 </mask>
                             </variation>
                             <variation key="widthClass=compact">
@@ -1043,6 +1093,7 @@
                                 <mask key="subviews">
                                     <include reference="PU2-Fg-glv"/>
                                     <include reference="WDE-xB-80C"/>
+                                    <include reference="fpa-3b-j2n"/>
                                 </mask>
                                 <mask key="constraints">
                                     <include reference="74X-D2-jHQ"/>
@@ -1052,7 +1103,10 @@
                                     <include reference="1QK-jo-FHR"/>
                                     <include reference="VIA-hi-8Lo"/>
                                     <include reference="fxJ-Xw-oHl"/>
-                                    <include reference="vNs-7S-cQ8"/>
+                                    <include reference="5as-tk-e4P"/>
+                                    <include reference="6K5-gd-Mdr"/>
+                                    <include reference="6Vn-lt-zMh"/>
+                                    <include reference="gmg-iC-Dhu"/>
                                 </mask>
                             </variation>
                         </view>
@@ -1089,33 +1143,6 @@
                         </mask>
                     </variation>
                 </scrollView>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UA0-i1-JrQ">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <color key="backgroundColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="My Device" id="up8-Gs-wMP">
-                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="Eit-ay-ld8">
-                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
-                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="barItemBackPressed" destination="-1" id="wdL-nD-ImK"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="evr-xv-hVb">
-                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
-                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="barItemMorePressed" destination="-1" id="ffy-U0-VFo"/>
-                                </connections>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -1127,10 +1154,11 @@
                 <constraint firstAttribute="bottom" secondItem="LUu-e3-3JP" secondAttribute="bottom" id="xXT-nD-5yq"/>
                 <constraint firstItem="UA0-i1-JrQ" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="y5X-dE-eR3"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="LUu-e3-3JP"/>
                     <exclude reference="UA0-i1-JrQ"/>
+                    <exclude reference="LUu-e3-3JP"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="HhR-CB-dPR"/>
@@ -1144,8 +1172,8 @@
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
-                    <include reference="LUu-e3-3JP"/>
                     <include reference="UA0-i1-JrQ"/>
+                    <include reference="LUu-e3-3JP"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="HhR-CB-dPR"/>
@@ -1166,6 +1194,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="Hy_logo" width="380" height="348"/>
         <image name="arrow_icon" width="48" height="48"/>
         <image name="chart_image" width="360" height="142"/>
         <image name="more_icon" width="8" height="30"/>

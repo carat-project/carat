@@ -10,6 +10,7 @@
 #import "BaseViewController.h"
 #import "MeasurementBar.h"
 #import "LocalizedLabel.h"
+#import "PopularModel.h"
 
 @interface StatisticsViewController : BaseViewController <NSURLConnectionDataDelegate>
 @property (retain, nonatomic) IBOutlet UILabel *genIntensiveDescLabel;

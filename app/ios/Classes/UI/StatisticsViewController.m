@@ -14,11 +14,16 @@
 @implementation StatisticsViewController {
 }
 
+bool popModelLoaded;
+bool genStatLoaded;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [_spinner startAnimating];
+    
+    popModelLoaded = false;
+    genStatLoaded = false;
     
     //ios 9 doesnt allow this had to make info.plist file some changes (AllowArbitaryDownloads)
     //to get this to work needs that file from https url
@@ -32,14 +37,36 @@
                                                                       options:0
                                                                         error:nil];
                                    [self applyGeneralStatJSONDataToView: json];
-                                   [_spinnerBackGround setHidden:YES];
-                                   [_spinner stopAnimating];
-                                   [_spinner setHidden:YES];
-                                   NSLog(@"Async JSON: %@", json);
+                                   genStatLoaded = true;
+                                   if(popModelLoaded && genStatLoaded){
+                                       [_spinnerBackGround setHidden:YES];
+                                       [_spinner stopAnimating];
+                                       [_spinner setHidden:YES];
+                                   }
+                                   //NSLog(@"Async JSON: %@", json);
                                }
                            }];
-    _iosPopularModelsLabel.text = NSLocalizedString(@"IOSModelDesc", nil);
-    _androidPopularModelLabel.text = NSLocalizedString(@"AndroidModelDesc", nil);
+    
+    NSURLRequest *request2 = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://carat.cs.helsinki.fi/statistics-data/shares.json"]];
+    __block NSDictionary *json2;
+    [NSURLConnection sendAsynchronousRequest:request2
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               if(data){
+                                   json2 = [NSJSONSerialization JSONObjectWithData:data
+                                                                          options:0
+                                                                            error:nil];
+                                   [self applyPopularDevicesJSONDataToView: json2];
+                                   popModelLoaded = true;
+                                   if(popModelLoaded && genStatLoaded){
+                                       [_spinnerBackGround setHidden:YES];
+                                       [_spinner stopAnimating];
+                                       [_spinner setHidden:YES];
+                                   }
+                                   //NSLog(@"Async JSON: %@", json2);
+                               }
+                           }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,9 +83,86 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 }
-/*
- 
- */
+
+- (int)stringAtIndex:(NSMutableArray *) array text:(NSString *)text{
+    int count = (int)array.count;
+    for(int i=0; i<count; i++){
+        NSString *arrayText = ((PopularModel *)[array objectAtIndex:i]).deviceName;
+        if([arrayText isEqualToString:text]){
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+
+
+- (void)applyPopularDevicesJSONDataToView:(NSDictionary *)json
+{
+    NSDictionary *allData = [json valueForKey:@"All"];
+    NSDictionary *androidData = [allData valueForKey:@"Android"];
+    NSString *androidText = [self getPopularDeviceModelString:androidData];
+    
+    NSDictionary *iOSData = [allData valueForKey:@"iOS"];
+    NSString *iPhoneText = [self getPopularDeviceModelString:iOSData];
+
+    _iosPopularModelsLabel.text = iPhoneText;
+    _androidPopularModelLabel.text = androidText;
+}
+
+-(NSString *) getPopularDeviceModelString: (NSDictionary *)modelDict
+{
+    NSMutableArray *popularModels = [[NSMutableArray alloc]init];
+    NSArray *versions = [modelDict allValues];
+    for(NSDictionary *version in versions){
+        NSArray *deviceNames = [version allKeys];
+        NSArray *usedSum = [version allValues];
+        int index = 0;
+        for(NSString* deviceName in deviceNames){
+            int deviceStringInd = [self stringAtIndex:popularModels text:deviceName];
+            if(deviceStringInd != -1) {
+                PopularModel *popModel = (PopularModel *)[popularModels objectAtIndex:deviceStringInd];
+                long newSum = [(NSNumber *)[usedSum objectAtIndex:index] longValue];
+                popModel.inUseCount += newSum;
+                //popModel.inUseCount = [NSNumber numberWithLong:(newSum + old)];
+            }
+            else {
+                PopularModel *popModel = [[PopularModel alloc] init];
+                popModel.deviceName = deviceName;
+                popModel.inUseCount = [(NSNumber *)[usedSum objectAtIndex:index] longValue];
+                [popularModels addObject:popModel];
+                [popModel release];
+            }
+            index++;
+            
+        }
+    }
+    
+    //TODO to have this result to be accurate all models that arent in top 8 should go to other inUsedCount value.
+    //show only 8 devices
+    NSArray *sortedArray = [popularModels sortedArrayUsingSelector:@selector(compare:)];
+    [popularModels release];
+    
+    NSMutableString *androidText = [[NSMutableString alloc] init];
+    long sumAll = 0;
+    for(int i=0; i<8; i++){
+        PopularModel *m = (PopularModel *)[sortedArray objectAtIndex:i];
+        sumAll += (NSInteger)m.inUseCount;
+    }
+    
+    for(int i=0; i<8; i++){
+        PopularModel *m = (PopularModel *)[sortedArray objectAtIndex:i];
+        float rat = (m.inUseCount/(float)sumAll)*100.0f;
+        [androidText appendString:m.deviceName];
+        [androidText appendString:[NSString stringWithFormat:@" : %.01f%%\n", rat]];
+    }
+    NSLog(@"%@", androidText);
+    NSString *immutableString = [NSString stringWithString:androidText];
+    [androidText release];
+    return immutableString;
+}
+
 - (void)applyGeneralStatJSONDataToView:(NSDictionary *)json
 {
     [self applyGenStatisticDataToViews: json key:@"apps" stringID:@"GenAllMessage" label:_genIntensiveDescLabel bar:_genIntensiveBar];

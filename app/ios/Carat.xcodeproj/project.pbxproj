@@ -49,6 +49,7 @@
 		8988B1641BDC181B0022524B /* procmanager1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15E1BDC181B0022524B /* procmanager1.png */; settings = {ASSET_TAGS = (); }; };
 		8988B1651BDC181B0022524B /* procmanager2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15F1BDC181B0022524B /* procmanager2.png */; settings = {ASSET_TAGS = (); }; };
 		8988B1661BDC181B0022524B /* updatecheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1601BDC181B0022524B /* updatecheck.png */; settings = {ASSET_TAGS = (); }; };
+		89ABF7D81BDF9B1900DC663A /* PopularModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ABF7D71BDF9B1900DC663A /* PopularModel.m */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B01BC29FB30053647E /* LocalizedUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8AF1BC29FB30053647E /* LocalizedUIButton.m */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B31BC2A7C60053647E /* LocalizedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B21BC2A7C60053647E /* LocalizedLabel.m */; settings = {ASSET_TAGS = (); }; };
 		89DAB8B61BC2B26B0053647E /* UiInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B51BC2B26B0053647E /* UiInsetLabel.m */; settings = {ASSET_TAGS = (); }; };
@@ -254,6 +255,8 @@
 		8988B15E1BDC181B0022524B /* procmanager1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = procmanager1.png; sourceTree = "<group>"; };
 		8988B15F1BDC181B0022524B /* procmanager2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = procmanager2.png; sourceTree = "<group>"; };
 		8988B1601BDC181B0022524B /* updatecheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updatecheck.png; sourceTree = "<group>"; };
+		89ABF7D61BDF9B1900DC663A /* PopularModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopularModel.h; sourceTree = "<group>"; };
+		89ABF7D71BDF9B1900DC663A /* PopularModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopularModel.m; sourceTree = "<group>"; };
 		89DAB8AE1BC29FB30053647E /* LocalizedUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedUIButton.h; sourceTree = "<group>"; };
 		89DAB8AF1BC29FB30053647E /* LocalizedUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizedUIButton.m; sourceTree = "<group>"; };
 		89DAB8B11BC2A7C60053647E /* LocalizedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedLabel.h; sourceTree = "<group>"; };
@@ -964,6 +967,8 @@
 				894A240D1BC256A90059850A /* TutorialPageContent.m */,
 				894AF06B1BCCEC5F003E7D76 /* AboutListItemData.h */,
 				894AF06C1BCCEC5F003E7D76 /* AboutListItemData.m */,
+				89ABF7D61BDF9B1900DC663A /* PopularModel.h */,
+				89ABF7D71BDF9B1900DC663A /* PopularModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1831,6 +1836,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E31C2F1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m in Sources */,
+				89ABF7D81BDF9B1900DC663A /* PopularModel.m in Sources */,
 				89FF8B261BDBA64600147943 /* ProcessListViewController.m in Sources */,
 				89FF8B811BDBAA3E00147943 /* ActionsViewController.m in Sources */,
 				89FF8B2B1BDBA67600147943 /* ReportViewController.m in Sources */,

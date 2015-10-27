@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    _versionLabel.text = [NSString stringWithFormat:@"%@ v%@", NSLocalizedString(@"AboutTittle", nil), version];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -136,6 +139,7 @@
 
 
 - (void)dealloc {
+    [_versionLabel release];
     [super dealloc];
 }
 @end

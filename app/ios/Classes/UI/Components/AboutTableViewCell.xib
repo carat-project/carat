@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uy-vH-A6Y" userLabel="topContent">
@@ -77,9 +77,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZc-gl-jjO">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="34" width="256" height="25"/>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -107,10 +104,10 @@
                             <mask key="constraints">
                                 <exclude reference="BfX-Xc-21a"/>
                                 <exclude reference="PN8-1N-Lxm"/>
-                                <exclude reference="UjZ-AU-Swn"/>
-                                <exclude reference="req-hx-tip"/>
                                 <exclude reference="Cmg-DI-CBV"/>
                                 <exclude reference="Omi-V8-SaG"/>
+                                <exclude reference="UjZ-AU-Swn"/>
+                                <exclude reference="req-hx-tip"/>
                                 <exclude reference="21T-eT-h2J"/>
                                 <exclude reference="9DN-Mf-crA"/>
                                 <exclude reference="FtG-uR-rcf"/>
@@ -129,10 +126,10 @@
                             <mask key="constraints">
                                 <include reference="BfX-Xc-21a"/>
                                 <include reference="PN8-1N-Lxm"/>
-                                <include reference="UjZ-AU-Swn"/>
-                                <include reference="req-hx-tip"/>
                                 <include reference="Cmg-DI-CBV"/>
                                 <include reference="Omi-V8-SaG"/>
+                                <include reference="UjZ-AU-Swn"/>
+                                <include reference="req-hx-tip"/>
                                 <include reference="21T-eT-h2J"/>
                                 <include reference="9DN-Mf-crA"/>
                                 <include reference="FtG-uR-rcf"/>

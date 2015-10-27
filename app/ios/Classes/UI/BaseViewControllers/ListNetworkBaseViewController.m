@@ -63,8 +63,11 @@
 #pragma mark - UITableViewDelegate and UITableViewDataSource methods
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
-    return [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
+    if([self tableView:self.tableView numberOfRowsInSection:0] > 0){
+        NSTimeInterval howLong = [[NSDate date] timeIntervalSinceDate:[[CoreDataManager instance] getLastReportUpdateTimestamp]];
+        return [Utilities formatNSTimeIntervalAsUpdatedNSString:howLong];
+    }
+    return @"";
 }
 //let sub class work its magick on these
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
