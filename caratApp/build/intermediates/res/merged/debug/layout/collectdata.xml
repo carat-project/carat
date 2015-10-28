@@ -4,4 +4,4 @@
     android:layout_height="match_parent"
    android:id="@+id/collectDataView" >
 </edu.berkeley.cs.amplab.carat.android.views.LocalizedWebView>
-<!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/layout/collectdata.xml -->
+<!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/layout/collectdata.xml -->

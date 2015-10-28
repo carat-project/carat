@@ -5,4 +5,4 @@
           android:state_selected="true" />
     <!-- When not selected, use white-->
     <item android:drawable="@drawable/house_light" />
-</selector><!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/drawable/ic_tab_actions.xml -->
+</selector><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/drawable/ic_tab_actions.xml -->

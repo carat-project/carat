@@ -1,218 +1,218 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:2:1-137:12
-	xmlns:android
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:2:11-69
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:2:1-137:12
 	package
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:3:5-51
-		INJECTED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:3:5-51
+		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:5:5-47
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:5:5-47
 	android:versionCode
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:4:5-29
-		INJECTED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:4:5-29
+		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:2:11-69
 uses-sdk
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:7:5-9:41
-MERGED from [carat:androidswitchbackport:unspecified] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\androidswitchbackport\unspecified\AndroidManifest.xml:31:5-33:41
-MERGED from [carat:androidsupportv4preferencefragment:unspecified] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\androidsupportv4preferencefragment\unspecified\AndroidManifest.xml:20:5-22:40
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [carat:mPChartLib:unspecified] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\mPChartLib\unspecified\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:7:5-9:41
+MERGED from [android_carat:androidswitchbackport:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidswitchbackport\unspecified\AndroidManifest.xml:31:5-33:41
+MERGED from [android_carat:androidsupportv4preferencefragment:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidsupportv4preferencefragment\unspecified\AndroidManifest.xml:20:5-22:40
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [android_carat:mPChartLib:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\mPChartLib\unspecified\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:9:9-38
-		INJECTED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:9:9-38
+		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:8:9-34
-		INJECTED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:8:9-34
+		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:15:5-81
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:15:5-81
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:15:22-78
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:15:22-78
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:17:5-67
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:17:5-67
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:17:22-64
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:17:22-64
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:19:5-76
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:19:5-76
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:19:22-73
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:19:22-73
 uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:21:5-76
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:21:5-76
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:21:22-73
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:21:22-73
 uses-permission#android.permission.WAKE_LOCK
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:23:5-68
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:23:5-68
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:23:22-65
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:23:22-65
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:24:5-79
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:24:5-79
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:24:22-76
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:24:22-76
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:26:5-75
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:26:5-75
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:26:22-72
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:26:22-72
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:27:5-68
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:27:5-68
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:27:22-65
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:27:22-65
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:28:5-81
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:28:5-81
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:28:22-78
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:28:22-78
 uses-permission#android.permission.READ_SYNC_SETTINGS
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:29:5-77
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:29:5-77
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:29:22-74
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:29:22-74
 uses-permission#android.permission.BROADCAST_STICKY
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:31:5-75
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:31:5-75
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:31:22-72
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:31:22-72
 uses-permission#android.permission.KILL_BACKGROUND_PROCESSES
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:33:5-84
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:33:5-84
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:33:22-81
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:33:22-81
 android:uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:35:5-89
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:35:5-89
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:35:30-86
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:35:30-86
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:36:5-88
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:36:5-88
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:36:30-85
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:36:30-85
 application
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:40:5-135:19
-MERGED from [carat:androidswitchbackport:unspecified] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\androidswitchbackport\unspecified\AndroidManifest.xml:35:5-20
-MERGED from [carat:androidsupportv4preferencefragment:unspecified] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\androidsupportv4preferencefragment\unspecified\AndroidManifest.xml:24:5-20
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:40:5-135:19
+MERGED from [android_carat:androidswitchbackport:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidswitchbackport\unspecified\AndroidManifest.xml:35:5-20
+MERGED from [android_carat:androidsupportv4preferencefragment:unspecified] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidsupportv4preferencefragment\unspecified\AndroidManifest.xml:24:5-20
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:22.1.0] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.1] C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
+	android:enabled
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:43:9-31
 	android:label
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:45:9-41
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:45:9-41
 	android:allowBackup
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:42:9-35
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:42:9-35
 	android:icon
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:44:9-45
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:44:9-45
 	android:theme
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:46:9-40
-	android:enabled
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:43:9-31
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:46:9-40
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:41:9-41
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:41:9-41
 activity#edu.berkeley.cs.amplab.carat.android.MainActivity
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:47:9-57:20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:47:9-57:20
 	android:screenOrientation
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:51:13-49
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:51:13-49
 	android:label
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:50:13-45
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:50:13-45
 	android:configChanges
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:49:13-74
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:49:13-74
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:48:13-41
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:48:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:52:13-56:29
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:52:13-56:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:53:17-69
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:53:17-69
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:53:25-66
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:53:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:55:17-77
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:55:17-77
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:55:27-74
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:55:27-74
 receiver#edu.berkeley.cs.amplab.carat.android.sampling.BootReceiver
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:58:9-66:20
-	android:label
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:62:13-48
-	android:exported
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:61:13-36
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:58:9-66:20
 	android:enabled
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:60:13-35
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:60:13-35
+	android:label
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:62:13-48
+	android:exported
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:61:13-36
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:59:13-50
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:59:13-50
 intent-filter#android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:63:13-65:29
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:63:13-65:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:64:17-79
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:64:17-79
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:64:25-76
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:64:25-76
 receiver#edu.berkeley.cs.amplab.carat.android.sampling.Sampler
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:67:9-111:20
-	android:label
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:71:13-42
-	android:exported
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:70:13-36
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:67:9-111:20
 	android:enabled
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:69:13-35
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:69:13-35
+	android:label
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:71:13-42
+	android:exported
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:70:13-36
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:68:13-45
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:68:13-45
 intent-filter#android.intent.action.ACTION_POWER_CONNECTED+android.intent.action.ACTION_POWER_DISCONNECTED+android.intent.action.PACKAGE_REMOVED+android.intent.action.TIMEZONE_CHANGED+edu.berkeley.cs.amplab.carat.android.ACTION_SAMPLE
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:72:13-110:29
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:72:13-110:29
 action#android.intent.action.TIMEZONE_CHANGED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:97:17-81
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:97:17-81
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:97:25-78
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:97:25-78
 action#android.intent.action.PACKAGE_REMOVED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:98:17-80
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:98:17-80
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:98:25-77
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:98:25-77
 data
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:100:17-50
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:100:17-50
 	android:scheme
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:100:23-47
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:100:23-47
 action#android.intent.action.ACTION_POWER_CONNECTED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:106:17-87
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:106:17-87
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:106:25-84
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:106:25-84
 action#android.intent.action.ACTION_POWER_DISCONNECTED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:107:17-90
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:107:17-90
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:107:25-87
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:107:25-87
 action#edu.berkeley.cs.amplab.carat.android.ACTION_SAMPLE
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:109:17-93
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:109:17-93
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:109:25-90
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:109:25-90
 service#edu.berkeley.cs.amplab.carat.android.sampling.SamplerService
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:113:9-115:47
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:113:9-115:47
 	android:label
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:115:13-44
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:115:13-44
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:114:13-52
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:114:13-52
 receiver#edu.berkeley.cs.amplab.carat.android.sampling.InstallReceiver
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:117:9-127:20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:117:9-127:20
 	android:label
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:119:13-57
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:119:13-57
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:118:13-53
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:118:13-53
 intent-filter#android.intent.action.PACKAGE_ADDED+android.intent.action.PACKAGE_REMOVED+android.intent.action.PACKAGE_REPLACED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:120:13-126:29
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:120:13-126:29
 action#android.intent.action.PACKAGE_ADDED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:121:17-78
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:121:17-78
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:121:25-75
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:121:25-75
 action#android.intent.action.PACKAGE_REPLACED
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:123:17-81
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:123:17-81
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:123:25-78
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:123:25-78
 activity#edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity
-ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:129:9-134:20
+ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:129:9-134:20
 	android:screenOrientation
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:133:13-49
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:133:13-49
 	android:label
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:131:13-60
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:131:13-60
 	android:theme
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:132:13-69
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:132:13-69
 	android:name
-		ADDED from C:\Users\KYY\carat\carat\caratApp\src\main\AndroidManifest.xml:130:13-56
+		ADDED from C:\Users\Valto\workspace\android_carat\caratApp\src\main\AndroidManifest.xml:130:13-56

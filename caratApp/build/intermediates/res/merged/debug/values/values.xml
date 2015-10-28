@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="drawer_items">
         <item>Summary</item>
@@ -25,7 +25,7 @@
         <item>20</item>
         <item>60</item>
     </string-array>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -44,56 +44,56 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="actionbar_color">#F8B03A</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="background">#FFFFFFFF</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>
     <color name="background_floating_material_light">#ffeeeeee</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <color name="background_holo_light">#fff3f3f3</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="black">#000000</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="blue">#122134</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_holo_dark">@color/background_holo_light</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
     <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark</color>
     <color name="bright_foreground_material_dark">@android:color/white</color>
     <color name="bright_foreground_material_light">@android:color/black</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="brown">#744618</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="bugsYellow">#FA9626</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="cyan">#0099CC</color>
     <color name="darkblue">#122134</color>
@@ -101,40 +101,40 @@
     <color name="darkgray">#454545</color>
     <color name="darkgray2">#808080</color>
     <color name="darkgreen">#127112</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_holo_dark">#80bebebe</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_holo_dark">#bebebe</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="gray">#B4B4B4</color>
     <color name="green">#00D978</color>
     <color name="green_light">#FF99CC00</color>
     <color name="greencarat">#669900</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="hogsOrange">#F0471F</color>
     <color name="lightblue">#86CBE1</color>
     <color name="lightgray">#F5F5F5</color>
     <color name="lightorange">#FEE5B1</color>
     <color name="lightsilver">#E3E3E3</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="link_text_material_dark">@color/material_deep_teal_200</color>
     <color name="link_text_material_light">@color/material_deep_teal_500</color>
@@ -143,10 +143,10 @@
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="orange">#F7A71B</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
@@ -156,11 +156,11 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="purple">#FFAA66CC</color>
     <color name="red">#F33535</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="ripple_material_dark">#4dffffff</color>
     <color name="ripple_material_light">#1f000000</color>
@@ -168,29 +168,29 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="silver">#DDDDDD</color>
     <color name="statusbar_color">#F7A71B</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="text">#000000</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="transparent_blue">#800000FF</color>
     <color name="transparent_orange">#80FFBB33</color>
     <color name="white">#FFFFFF</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <color name="with">#f3b14d</color>
     <color name="without">#007777</color>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="yellow">#FFC600</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
@@ -222,7 +222,7 @@
     <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargins"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr format="dimension" name="maxButtonHeight"/><attr format="reference" name="collapseIcon"/><attr format="string" name="collapseContentDescription"/><attr name="popupTheme"/><attr format="reference" name="navigationIcon"/><attr format="string" name="navigationContentDescription"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/><attr format="reference" name="theme"/><attr name="android:theme"/><attr format="color" name="backgroundTint"/><attr name="backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
@@ -284,12 +284,12 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="default_margin">12dip</dimen>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -297,17 +297,17 @@
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
     <eat-comment/>
     <dimen name="preference_fragment_padding_bottom">0dp</dimen>
     <dimen name="preference_fragment_padding_side">16dp</dimen>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <dimen name="preference_icon_minWidth">0dp</dimen>
     <dimen name="preference_item_padding_inner">8dip</dimen>
     <dimen name="preference_item_padding_side">8dip</dimen>
     <dimen name="preference_widget_width">48dp</dimen>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -321,10 +321,10 @@
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="abc_max_action_buttons">2</integer>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
     <eat-comment/>
     <integer name="preference_fragment_scrollbarStyle">0x02000000</integer>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -343,7 +343,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="about">ABOUT</string>
     <string name="about_actions_child_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
@@ -396,10 +396,10 @@
     <string name="appname">App Name</string>
     <string name="appsettings">App Settings</string>
     <string name="automaticbrightness">Set brightness to automatic</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="back_button_label">Back</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="battery_life_value">10h 23m</string>
     <string name="batterylife">Active Battery Life:</string>
@@ -541,10 +541,10 @@
     <string name="my_device">MY DEVICE</string>
     <string name="myjscoreis">My J-Score is</string>
     <string name="neverupdated">Never updated</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="next_button_label">Next</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="no_actions_message">
         You should open Carat regularly so it can take samples of your device state and communicate these to our servers.\n
@@ -611,10 +611,10 @@
     <string name="show_all">Show all</string>
     <string name="significance">Significance:</string>
     <string name="similarapps">Similar Apps</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="skip_button_label">Skip</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="soundsettings">Sound Settings</string>
     <string name="statistics">STATISTICS</string>
@@ -629,11 +629,11 @@
     <string name="summary_unavailable_text">This screen will be updated as soon as the data is received from server.</string>
     <string name="summary_unavailable_title">Nothing to show yet</string>
     <string name="summary_your_device_has">Your Apps</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <string name="switch_off">OFF</string>
     <string name="switch_on">ON</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="syncsettings">Sync Settings</string>
     <string name="ten">Impact &lt; 10 min</string>
@@ -689,7 +689,7 @@
     <string name="your_jscore_title">YOUR J-SCORE</string>
     <string name="zero">0</string>
     <string name="zeroh">0h 0m 0s</string>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AcceptButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
@@ -703,13 +703,13 @@
         <item name="android:paddingLeft">40dp</item>
         <item name="android:paddingRight">40dp</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/themes.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/themes.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Theme customizations available in newer API levels can go in
@@ -728,7 +728,7 @@
         <item name="actionBarTabTextStyle">@style/SmallWhiteText</item>
         <item name="actionMenuTextColor">@color/white</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -1639,7 +1639,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ButtonTextStyle">
         <item name="android:textSize">28sp</item>
@@ -1675,14 +1675,14 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/orange</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/themes.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/themes.xml -->
     <eat-comment/>
     <style name="LightBackground" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:textColor">#2E3235</item>
         <item name="android:background">@color/lightsilver</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="MediumBlackText">
         <item name="android:textSize">14sp</item>
@@ -1740,7 +1740,7 @@
         <item name="android:paddingLeft">30dp</item>
         <item name="android:paddingRight">30dp</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
@@ -1838,12 +1838,12 @@
         <item name="android:autoCompleteTextViewStyle">@style/Widget.AppCompat.Light.AutoCompleteTextView</item>
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="PopupStyle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorAccent">@color/orange</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <style name="Preference.SwitchPreference" parent="">
         <item name="android:layout">@layout/preference</item>
@@ -1851,7 +1851,7 @@
         <item name="asb_switchTextOn">@string/switch_on</item>
         <item name="asb_switchTextOff">@string/switch_off</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ProcessListButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
@@ -1863,7 +1863,7 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:paddingTop">5dp</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <style name="RtlOverlay.Widget.AppCompat.ActionBar.TitleItem" parent="android:Widget">
         <item name="android:layout_gravity">center_vertical|left</item>
@@ -1905,7 +1905,7 @@
     <style name="RtlOverlay.Widget.AppCompat.Toolbar.Button.Navigation" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="android:paddingLeft">@dimen/abc_action_bar_navigation_padding_start_material</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="SmallGrayText">
         <item name="android:textSize">14sp</item>
@@ -1929,7 +1929,7 @@
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingRight">20dp</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.AppCompat" parent="Base.TextAppearance.AppCompat"/>
     <style name="TextAppearance.AppCompat.Body1" parent="Base.TextAppearance.AppCompat.Body1"/>
@@ -1987,7 +1987,7 @@
     </style>
     <style name="TextAppearance.AppCompat.Widget.Switch" parent="Base.TextAppearance.AppCompat.Widget.Switch"/>
     <style name="TextAppearance.AppCompat.Widget.TextView.SpinnerItem" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem"/>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.Holo.Light.Widget.Switch" parent="android:TextAppearance.Small">
 
@@ -1999,7 +1999,7 @@
         <!-- Switch thumb asset presents a dark background. -->
         <item name="android:textColor">@color/secondary_text_holo_dark</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.Widget.AppCompat.ExpandedMenu.Item" parent="Base.TextAppearance.Widget.AppCompat.ExpandedMenu.Item">
     </style>
@@ -2125,7 +2125,7 @@
     <style name="Widget.AppCompat.TextView.SpinnerItem" parent="Base.Widget.AppCompat.TextView.SpinnerItem"/>
     <style name="Widget.AppCompat.Toolbar" parent="Base.Widget.AppCompat.Toolbar"/>
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="RtlOverlay.Widget.AppCompat.Toolbar.Button.Navigation"/>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidswitchbackport/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.Holo.CompoundButton.Switch" parent="android:Widget.CompoundButton">
         <item name="asb_track">@drawable/switch_track_holo_dark</item>
@@ -2147,7 +2147,7 @@
         <item name="asb_switchMinWidth">96dip</item>
         <item name="asb_switchPadding">16dip</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="button" parent="@android:style/Widget.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
@@ -2162,7 +2162,7 @@
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
     </style>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/src/main/res/values/themes.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/values/themes.xml -->
     <eat-comment/>
     <style name="notitle" parent="Theme.AppCompat.Light">
     	<item name="android:windowNoTitle">true</item>

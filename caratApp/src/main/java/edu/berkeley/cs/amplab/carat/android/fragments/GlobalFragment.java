@@ -25,6 +25,7 @@ import org.w3c.dom.Text;
 
 import java.sql.BatchUpdateException;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
@@ -149,7 +150,7 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
 
     private void setValues() {
         HashMap<String, Integer> androidMap = mainActivity.getAndroidDevices();
-        HashMap<String, Integer> iosMap = mainActivity.getIosDevices();
+        //HashMap<String, Integer> iosMap = mainActivity.getIosDevices();
         String androids = "";
         //String iOSs = "";
         int androidDeviceSum = 0;
@@ -159,8 +160,13 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
             for (int i : androidMap.values()) {
                 androidDeviceSum += i;
             }
+            int limit = 0;
             for (String key : androidMap.keySet()) {
-                androids += key + ": " + String.format("%.2f", (float)androidMap.get(key) / androidDeviceSum * 100) + "%" + "\n";
+                androids += key + ": " + String.format("%.1f", (float)androidMap.get(key) / androidDeviceSum * 100) + "%" + "\n";
+                limit++;
+                if (limit == 8) {
+                    break;
+                }
             }
         }
         /*if (iosMap != null) {

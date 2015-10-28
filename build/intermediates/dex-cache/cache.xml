@@ -2,151 +2,151 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="983e2f375504bc04def18e709c35192afe92e65f">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\classes-88c764cddd27b793fecd52954dfa88b50d5dc225.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\httpclient-4.2.5.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="666e26e76f2e87d84e4f16acb546481ae1b8e9a6">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\httpclient-4.2.5-bdb0946f5b208826486592a7efd634bedfa2b322.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\commons-codec-1.6.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b7f0fc8f61ecadeb3695f0b9464755eee44374d4">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\commons-codec-1.6-e44eb6aa82a9b3acc38b3f88d5095627d0281633.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\log4j-1.2.14.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="03b254c872b95141751f414e353a25c2ac261b51">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\log4j-1.2.14-ca0025eff1e04b3eb17449058226d05b4b1bb683.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\servlet-api-2.5.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5959582d97d8b61f4d154ca9e495aafd16726e34">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\servlet-api-2.5-d58899f601ad3d0d26684397aca1d1b2c6ba85fe.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-c2439a3caefa6c1813fbfcbde31c0aad0292c407.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\commons-logging-1.1.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5043bfebc3db072ed80fbd362e7caf00e885d8ae">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\commons-logging-1.1.1-94d220fa669e32cf4dcfe79f1027425034fa0f2b.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\javax.annotation.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="50857ae5e9522d3a52f6644f71fec9059d665678">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\javax.annotation-e5e9bbeaa057905badbd3913363aefa88a051b73.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\libthrift-0.9.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a724290aa5e511925ecf16304b1adf0e02a0451b">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\libthrift-0.9.2-3223a70a2f1e88424810cc3d04fbd6f9e46475c1.jar" />
-    </item>
-    <item
-        jar="D:\Android\adt-bundle-windows-x86-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jar="C:\Users\Valto\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-9d14afa22ee100a5b6ef0e9e52e7856ba713f18e.jar" />
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-9c7c09d7a2eb89ec632576e5d4c59335c349a30a.jar" />
     </item>
     <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\httpcore-4.2.4.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3b7f38df6de5dd8b500e602ae8c2dd5ee446f883">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\httpcore-4.2.4-8ff8baf2d32c51276648faf85a14b515a3468b40.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\junit-4.4.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8f35ee1f35d2dadbb5029991449ee90c1bab4d4a">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\junit-4.4-a5b180926c1ac66d9d921d95573262eaf1348782.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\classes-652da984be82f20950d156c41dacb734cfad18b2.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\mPChartLib\unspecified\jars\libs\nineoldandroids-2.4.0-2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\nineoldandroids-2.4.0-2-b5ce1238f648b0ab2a19db57c5c8668295c61418.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\mPChartLib\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1154f1b626dcb5944a7a1bc254c87b377723cb8b">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\classes-47b8668281a65f6630f9f0d0a9d33cf4383cb14c.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\slf4j-android-1.6.1-RC1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a0b527e8aabcc1f1e97d1674dc3f4f0794ec5df1">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\slf4j-android-1.6.1-RC1-d3a2cb653d2043b91f8853e72a72e6352ba03134.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\androidswitchbackport\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6a455b4dbd02349f9e53fd2a2e643d3949b9de10">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\classes-f7e73ae29aa76ab3d0a6ade247a81c4763b63c14.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\FlurryAgent.jar"
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\FlurryAgent.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="53c156843322cc02b791fe8e2f57828f6e1ef296">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\FlurryAgent-745b2c3675bdc39503e2a35f917dd49a1ae3f0b6.jar" />
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\FlurryAgent-57db3a6e130d6ec2bde981e8b5fb5af1a6fb6037.jar" />
     </item>
     <item
-        jar="C:\Users\KYY\carat\carat\caratApp\build\intermediates\exploded-aar\carat\androidsupportv4preferencefragment\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="81b01df3306875af25642559793dccdb7b99d426">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\classes-798c657dd66ada45a6fec5b5e0ddee423abe8d26.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\jackson-core-asl-1.9.4.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8d8b2a3e5bc77ee1be67d060b44ac77d48a27d6e">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\jackson-core-asl-1.9.4-aca7868289fe76ad85ef51944807e7ff4b54ba60.jar" />
-    </item>
-    <item
-        jar="C:\Users\KYY\carat\carat\caratApp\libs\jackson-mapper-asl-1.9.11.jar"
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\jackson-mapper-asl-1.9.11.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="45d70862fa016993193075a1e8e32a01dcf438e8">
-        <dex dex="C:\Users\KYY\carat\carat\caratApp\build\intermediates\pre-dexed\debug\jackson-mapper-asl-1.9.11-e5595b6c344587893b1fa5972d2c50fae2d8c4df.jar" />
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\jackson-mapper-asl-1.9.11-cf729ccec99f2d1e7f6f65bd95c9aaa7a0faf37b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\classes-73e7ba3ed19fa599344366550bb6b82ff00582f3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\mPChartLib\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="40b39337765415d641dc5faa6c51410837e36972">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\classes-9ee2c6801458db79027237c429a5dcaa222d4f74.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\mPChartLib\unspecified\jars\libs\nineoldandroids-2.4.0-2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\nineoldandroids-2.4.0-2-c0bff0b9c212cab0d7b57089383b97ef0beaba45.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\httpcore-4.2.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3b7f38df6de5dd8b500e602ae8c2dd5ee446f883">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\httpcore-4.2.4-7ad48f463430fb10ae75b8ac68633f3e9ef2ae41.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\slf4j-android-1.6.1-RC1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a0b527e8aabcc1f1e97d1674dc3f4f0794ec5df1">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\slf4j-android-1.6.1-RC1-27715daf534355b23eaa98b92b9c3a05bac767c7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidswitchbackport\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4c1a01eec2267d87ada2f712d4eecfa1ca81e3a9">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\classes-d305c65c5084e7650b7bc1b10393e0defbab3684.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\log4j-1.2.14.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="03b254c872b95141751f414e353a25c2ac261b51">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\log4j-1.2.14-254d178271ec3cf19be21d9676587a84d91c6647.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\jackson-core-asl-1.9.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8d8b2a3e5bc77ee1be67d060b44ac77d48a27d6e">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\jackson-core-asl-1.9.4-7c42f0223d29cb754ebe4fcea148735c0291b9b7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\commons-logging-1.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5043bfebc3db072ed80fbd362e7caf00e885d8ae">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\commons-logging-1.1.1-28ea1905914e8ab985a1161d98eb8b7d3becc5ac.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="983e2f375504bc04def18e709c35192afe92e65f">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\classes-449b98370e69c53f9c269b470759074727675c27.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\commons-codec-1.6.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b7f0fc8f61ecadeb3695f0b9464755eee44374d4">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\commons-codec-1.6-ba1e84fb1671c774f816ed00693af252a5a4887e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\httpclient-4.2.5.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="666e26e76f2e87d84e4f16acb546481ae1b8e9a6">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\httpclient-4.2.5-763e88e0d06ff5e9ca6a40590ebba141a3fdb2a3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-5c836c97d572e7ce54118a8e5edb11972bcb2740.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\javax.annotation.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="50857ae5e9522d3a52f6644f71fec9059d665678">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\javax.annotation-fbc15c4f6984d8b5cb42f70bf982be5606edeebb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\libthrift-0.9.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a724290aa5e511925ecf16304b1adf0e02a0451b">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\libthrift-0.9.2-10bb08c5273a80cee8fbea0fa68c96ff9d68f6ad.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\servlet-api-2.5.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5959582d97d8b61f4d154ca9e495aafd16726e34">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\servlet-api-2.5-acd59b8700990616f691d46a59e3f69c86d35f07.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\libs\junit-4.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8f35ee1f35d2dadbb5029991449ee90c1bab4d4a">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\junit-4.4-af93587350744c99e88ca09d60a717c2cf94132d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\exploded-aar\android_carat\androidsupportv4preferencefragment\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e212e9f1d538ccbdbe5056073ef798d17f7f8c79">
+        <dex dex="C:\Users\Valto\workspace\android_carat\caratApp\build\intermediates\pre-dexed\debug\classes-2803451e03ba48b8d13d699eee932cd9bf99a91d.jar" />
     </item>
 
 </items>

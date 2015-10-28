@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.TreeMap;
 
 import edu.berkeley.cs.amplab.carat.android.utils.PrefetchData;
 import edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity;
@@ -493,13 +494,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
-    public HashMap<String, Integer> getIosDevices() {
+    /* public HashMap<String, Integer> getIosDevices() {
         return iosDevices;
     }
 
     public void setIosDevices(HashMap<String, Integer> iosDevices) {
         this.iosDevices = iosDevices;
-    }
+    } */
 
     public HashMap<String, Integer> getAndroidDevices() {
         return androidDevices;

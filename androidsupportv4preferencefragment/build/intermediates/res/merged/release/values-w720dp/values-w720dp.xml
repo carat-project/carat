@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values-w720dp/values.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values-w720dp/values.xml -->
     <eat-comment/>
     <bool name="abc_action_bar_expanded_action_views_exclusive">false</bool>
-    <!-- From: file:/C:/Users/KYY/carat/carat/androidsupportv4preferencefragment/src/main/res/values-w720dp/dimens.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidsupportv4preferencefragment/src/main/res/values-w720dp/dimens.xml -->
     <eat-comment/>
     <dimen name="preference_fragment_padding_side">32dp</dimen>
 </resources>

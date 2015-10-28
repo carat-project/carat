@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/KYY/carat/carat/caratApp/build/intermediates/exploded-aar/carat/androidsupportv4preferencefragment/unspecified/res/values-sw320dp/values-sw320dp.xml -->
+    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidsupportv4preferencefragment/unspecified/res/values-sw320dp/values-sw320dp.xml -->
     <eat-comment/>
     <dimen name="preference_fragment_padding_bottom">0dp</dimen>
     <dimen name="preference_fragment_padding_side">16dp</dimen>
