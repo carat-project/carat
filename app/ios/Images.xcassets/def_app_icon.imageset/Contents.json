@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "def_app_icon.png",
+      "filename" : "process_120.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "def_app_icon@2.png",
+      "filename" : "process_240@2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "def_app_icon@3.png",
+      "filename" : "process_360@3.png",
       "scale" : "3x"
     }
   ],
