@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/build/intermediates/exploded-aar/android_carat/androidswitchbackport/unspecified/res/values-sw720dp-w1280dp/values-sw720dp-w1280dp.xml -->
-    <eat-comment/>
-    <dimen name="preference_widget_width">64dp</dimen>
-</resources>

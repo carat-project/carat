@@ -1,5 +1,0 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="3dp" />
-    <solid android:color="@color/orange" />
-</shape><!-- From: file:/C:/Users/Valto/workspace/android_carat/caratApp/src/main/res/drawable/button_rounded_orange.xml -->

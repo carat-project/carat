@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- From: file:/C:/Users/Valto/workspace/android_carat/androidswitchbackport/build/intermediates/bundles/debug/res/values-sw720dp/values-sw720dp.xml -->
-    <eat-comment/>
-    <dimen name="preference_icon_minWidth">56dp</dimen>
-</resources>
