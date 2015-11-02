@@ -181,31 +181,36 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
             case R.id.jscore_progress_circle:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.jscore_dialog_title),
-                        getString(R.string.jscore_explanation));
+                        getString(R.string.jscore_explanation),
+                        "jscoreinfo");
                 dialog.showDialog();
                 break;
             case R.id.memory_used_info_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.memory_used_title),
-                        getString(R.string.memory_explanation));
+                        getString(R.string.memory_explanation),
+                        "memoryinfo");
                 dialog.showDialog();
                 break;
             case R.id.memory_active_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.memory_active_title),
-                        getString(R.string.memory_explanation));
+                        getString(R.string.memory_explanation),
+                        "memoryinfo");
                 dialog.showDialog();
                 break;
             case R.id.cpu_usage_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.cpu_usage_title),
-                        getString(R.string.cpu_usage_explanation));
+                        getString(R.string.cpu_usage_explanation),
+                        "memoryinfo");
                 dialog.showDialog();
                 break;
             case R.id.what_are_jscore_numbers:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.jscore_dialog_title),
-                        getString(R.string.jscore_explanation));
+                        getString(R.string.jscore_explanation),
+                        "jscoreinfo");
                 dialog.showDialog();
                 break;
             default:

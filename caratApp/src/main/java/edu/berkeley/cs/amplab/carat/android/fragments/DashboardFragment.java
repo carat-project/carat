@@ -149,7 +149,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.jscore_progress_circle:
                 BaseDialog dialog = new BaseDialog(getContext(),
                         getString(R.string.jscore_dialog_title),
-                        getString(R.string.jscore_explanation));
+                        getString(R.string.jscore_explanation),
+                        "jscoreinfo");
                 dialog.showDialog();
                 break;
             case R.id.bugs_button:

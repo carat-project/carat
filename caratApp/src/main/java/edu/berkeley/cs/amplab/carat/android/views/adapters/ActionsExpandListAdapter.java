@@ -66,10 +66,14 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         this.mainActivity = mainActivity;
 
         for (SimpleHogBug s : hogReport) {
-            allReports.add(s);
+            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                allReports.add(s);
+            }
         }
         for (SimpleHogBug s : bugReport) {
-            allReports.add(s);
+            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                allReports.add(s);
+            }
         }
 
         mInflater = LayoutInflater.from(caratApplication);
@@ -217,8 +221,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                 killAppButton.setText(caratApplication.getString(R.string.stopped));
             }
 
-
-
         }
     }
 
@@ -236,7 +238,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public void onGroupExpand(int groupPosition) {
-        if(groupPosition != previousGroup)
+        if (groupPosition != previousGroup)
             lv.collapseGroup(previousGroup);
         previousGroup = groupPosition;
     }

@@ -42,7 +42,7 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.statusbar_color));
         }
-        ;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
         eulaViewVisivibility = false;

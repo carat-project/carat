@@ -199,7 +199,8 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
             case R.id.what_are_these_numbers:
                 BaseDialog dialog = new BaseDialog(mainActivity,
                         mainActivity.getString(R.string.what_are_these_numbers_title),
-                        mainActivity.getString(R.string.what_are_these_numbers_explanation));
+                        mainActivity.getString(R.string.what_are_these_numbers_explanation),
+                        "detailinfo");
                 dialog.showDialog();
                 break;
         }

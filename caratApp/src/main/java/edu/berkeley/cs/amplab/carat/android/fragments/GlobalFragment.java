@@ -358,19 +358,22 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
             case R.id.well_behaved_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.well_behaved_caps),
-                        getString(R.string.cpu_usage_explanation));
+                        getString(R.string.cpu_usage_explanation),
+                        null);
                 dialog.showDialog();
                 break;
             case R.id.bugs_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.bugs),
-                        getString(R.string.tutorial_fragment_bugs_message));
+                        getString(R.string.tutorial_fragment_bugs_message),
+                        null);
                 dialog.showDialog();
                 break;
             case R.id.hogs_button:
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.hogs),
-                        getString(R.string.tutorial_fragment_hogs_message));
+                        getString(R.string.tutorial_fragment_hogs_message),
+                        null);
                 dialog.showDialog();
                 break;
             default:

@@ -3,30 +3,207 @@
 
     <!-- NEW -->
 
-    <string name="dashboard_updated_text"></string>
-    <string name="jscore_title"></string>
+    <!-- EXPLANATIONS -->
+    <string name="jscore_explanation">The J-Score represents the percentile battery life you see relative
+        to all other devices being measured by Carat. So, if you have a J-Score of 50, that means
+        your expected battery life is better than half of our users; a score of 99 means you have
+        better battery life than 99 of our users.
+        Of course, a single number does not provide a complete description of your battery life.
+        A low J-Score could mean that your device is using a big battery inefficiently or a small
+        battery with average efficiency. Similarly, a high J-Score could simply mean that you don\'t
+        use your device heavily. Carat computes a huge variety of statistics, and the J-Score is
+        just one of them.
+    </string>
+    <string name="memory_explanation">
+        The operating system (OS) classifies your device\'s physical memory as either used or free.
+        If memory is used, it means there is currently data there that belongs to some process
+        (like one of your apps or the OS, itself). When the device runs out of free memory, it needs
+        to make room so it can store new data, which means closing apps that might be running in the
+        background or asking your apps to throw away data they aren\'t using.
+        The OS then further subcategorizes used memory as being either active or inactive,
+        depending on whether it was accessed recently or not, respectively. When the OS runs out of
+        free memory, it starts reclaiming inactive memory.
+        When you open a bunch of apps, the fraction of used memory may increase; when the apps you
+        have running are working with lots of data (often an energy-intensive task), the fraction
+        of active memory may increase. The OS also preloads often used applications into memory,
+        shortening wait times.
+    </string>
+    <string name="cpu_usage_explanation">CPU USAGE Lorem ipsum TODO...</string>
+    <string name="jscore_dialog_title">J-SCORE</string>
+    <string name="what_are_these_numbers_title">Mitä nämä numerot ovat?</string>
+    <string name="what_are_these_numbers_explanation">Arvioitu parannus näyttää, kuinka paljon lisää käyttöaikaa bugin tai hogin korjaamisesta Carat arvioi sinun saavan. Hogin korjaaminen tarkoittaa kyseessä olevan sovelluksen lopettamista ja sen käytön vähentämistä. Bugin korjaaminen voi tarkoittaa sovelluksen lopettamista ja uudelleenkäynnistämistä, sen päivittämistä uudempaan versioon, tai sovelluksen asetuksien muuttamista.
+        Mittauksia näyttää, kuinka monta mittausta Carat on kerännyt kaikilta sovelluksen käyttäjiltä. Mittausten lisääntyessä on kyse yleisestä sovelluksesta ja sen energiakäyttäytyminen on paremmin Caratin tiedossa.
+        Kun mittaukset lisääntyvät, Mittausvirhe (minuutteina) pienenee.
+        Mittauksia ilman kertoo, kuinka monta mittausta Carat on kerännyt, joissa ei ole kyseistä sovellusta. Sekä mittauksia sovelluksen kanssa ja ilman tarvitaan sen energiakäyttäytymisen tarkkailuun.
+    </string>
 
     <!-- TUTORIAL -->
-    <string name="tutorial_accept">ACCEPT</string>
-    <string name="tutorial_eula_text">By proceeding you accept the EULA and privacy policy.</string>
-    <string name="tutorial_fragment_main_title">Carat Collaborative Energy Diagnosis</string>
-    <string name="tutorial_fragment_main_message">Carat is a research project of the University of Helsinki,
-        originally created in collaboration with the AMP Lab at UC Berkeley,
-        that helps detect and diagnose battery problems, giving you personalized recommendations.</string>
-    <string name="tutorial_fragment_bugs_title">BUGS</string>
-    <string name="tutorial_fragment_bugs_message">Bugs are apps that use a lot of energy on a small
-        number of devices, including yours. Restarting a buggy app may improve battery life.</string>
-    <string name="tutorial_fragment_hogs_title">HOGS</string>
-    <string name="tutorial_fragment_hogs_message">Hogs are apps that are correlated with higher
-        energy use across many devices. Closing hogs may improve battery life.</string>
+    <string name="tutorial_accept">HYVÄKSY</string>
+    <string name="tutorial_eula_text">Jatkamalla hyväksyt EULAn ja yksityisyyskäytännön.</string>
+    <string name="tutorial_fragment_main_title">Carat: kollaboratiivinen energiabugien löytäjä</string>
+    <string name="tutorial_fragment_main_message">Carat on tutkimusprojekti Helsingin Yliopistolta ja UC Berkeleyn AMP Labista. Carat auttaa löytämään ja korjaamaan akunkeston ongelmia, ja antaa henkilökohtaisia ehdotuksia.
+        Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.
+       Carat kerää ja raportoi puhelimestasi yleistä käyttötietoa, joka mahdollistaa Caratin tarjoamat toiminnot. Tähän ei missään tapauksessa sisälly henkilökohtaista tietoa.
+       Caratia kehitetään jatkuvasti, joten kannattaa tarkistaa uudet ehdotukset silloin tällöin. Mitä enemmän käytät Caratia, sitä tarkempaa tietoa se tarjoaa.</string>
+    <string name="tutorial_fragment_bugs_title">BUGIT</string>
+    <string name="tutorial_fragment_bugs_message">Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa.</string>
+    <string name="tutorial_fragment_hogs_title">HOGIT</string>
+    <string name="tutorial_fragment_hogs_message">Hogit ovat sovelluksia joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akunkestoa.</string>
+    <string name="tutorial_fragment_eula_title">EULA</string>
+    <string name="tutorial_fragment_eula_message">Lorem ipsum TODO...</string>
+
     <!-- MENU -->
     <string name="action_settings">Asetukset</string>
 
-    <string name="bugs">BUGS</string>
-    <string name="hogs">HOGS</string>
+    <!-- ACTIVITIES -->
+    <string name="title_activity_carat">CaratActivity</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="save_accept_eula">save_accept_eula</string>
+
+    <!-- DASHBOARD -->
+    <string name="jscore_value">69</string>
+    <string name="jscore_title">J-score</string>
+    <string name="dashboard_updated_text">Päivitetty juuri nyt</string>
+
+    <string name="bugs_amount">7</string>
+    <string name="hogs_amount">4</string>
+    <string name="view">NÄYTÄ</string>
+    <string name="actions_amount">4</string>
+
+    <string name="bugs">BUGIT</string>
+    <string name="hogs">HOGIT</string>
+    <string name="statistics">STATISTIIKKA</string>
+    <string name="actions">EHDOTUKSET</string>
+
+    <string name="active_battery_life">Aktiivinen akunkesto</string>
+    <string name="battery_life_value">10h 23m</string>
+    <string name="my_device">MINUN LAITTEENI</string>
+
+    <!-- MENU -->
+    <string name="menu_wifi_only">Käytä vain WiFiä</string>
+    <string name="menu_hide_apps">Piilota sovellukset joiden vaikutus on pieni</string>
+    <string name="menu_feedback">Anna palautetta</string>
+    <string name="menu_about">Tietoja</string>
+
+    <!-- BUGS -->
+    <string name="what_are_these_numbers">Mitä nämä numerot ovat?</string>
+    <string name="bug_list_message">Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa.</string>
+
+    <string name="no_bugs_title">Sinulla ei ole bugeja.</string>
+    <string name="no_bugs_message">Tarkista tilanne viikon päästä.\n\n
+        Jos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä.
+        Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.</string>
+
+    <!-- HOGS -->
+    <string name="hog_list_message">Hogit ovat sovelluksia joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akunkestoa.
+    </string>
+
+    <string name="no_hogs_title">Sinulla ei ole hogeja.</string>
+    <string name="no_hogs_message">Tarkista tilanne viikon päästä.\n\n
+         Jos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä.
+        Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.</string>
+
+    <!-- MY DEVICE -->
+    <string name="your_jscore_title">YOUR J-SCORE</string>
+    <string name="carat_id_title">Carat ID</string>
+    <string name="os_version_title">OS Versio</string>
+    <string name="device_model_title">Puhelimen malli</string>
+    <string name="device_usage_title">Puhelimen käyttö</string>
+    <string name="what_are_jscore_numbers">Mitä ovat J-Score-numerot?</string>
+    <string name="process_list_title">PROSESSILISTA</string>
+    <string name="memory_used_title">Muistia käytetty</string>
+    <string name="memory_active_title">Muistia aktiivisena</string>
+    <string name="cpu_usage_title">Suorittimen käyttö</string>
+
+    <!-- ABOUT -->
+    <string name="about_general_title">Carat</string>
+    <string name="about_general_message">Yleistä</string>
+    <string name="about_general_child_message">Carat on tutkimusprojekti Helsingin Yliopistolta ja UC Berkeleyn AMP Labista. Carat auttaa löytämään ja korjaamaan akunkeston ongelmia, ja antaa henkilökohtaisia ehdotuksia.
+        Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.
+       Carat kerää ja raportoi puhelimestasi yleistä käyttötietoa, joka mahdollistaa Caratin tarjoamat toiminnot. Tähän ei missään tapauksessa sisälly henkilökohtaista tietoa.
+       Caratia kehitetään jatkuvasti, joten kannattaa tarkistaa uudet ehdotukset silloin tällöin. Mitä enemmän käytät Caratia, sitä tarkempaa tietoa se tarjoaa.
+    </string>
+    <string name="about_actions_title">Ehdotukset</string>
+    <string name="about_actions_message">Kuinka käyttää Caratia</string>
+    <string name="about_actions_child_message">Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.</string>
+    <string name="about_bugs_title">Bugit</string>
+    <string name="about_bugs_message">Katso bugisi</string>
+    <string name="about_bugs_child_message">Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa.
+    </string>
+    <string name="about_hogs_title">Hogit</string>
+    <string name="about_hogs_message">Katso hogisi</string>
+    <string name="about_hogs_child_message">Hogit ovat sovelluksia joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akunkestoa.
+    </string>
+    <string name="about_collect_title">Kerää dataa</string>
+    <string name="about_collect_message">Tietoa miten Carat kerää dataa</string>
+    <string name="about_collect_child_message">Kun käytät Caratia säännöllisesti, se kerää ja lähettää mittauksia laittesi tilasta palvelimillemme. Suosittelemme avaamaan Caratin kerran päivässä, tai niin usein kuin muistat, erityisesti ensimmäisen viikon ajan. Voi mennä viikko tai pidempään ennen kuin Crat on kerännyt tarpeeksi dataa henkilökohtaisten raporttien generoimiseksi. Varmista, että Caratilla on mahdollisuus kommunikoida palvelimiemme kanssa (avaa Carat kun sinulla on aktiivinen Internet-yhteys).
+        Mitä useammin käytät Caratia, sitä nopeammin se generoi raportteja, sitä enemmän tietoa raportit sisältävät, ja sitä tarkempia suositukset ovat.
+        Carat ei käytä taustapalveluja laitteellasi, ja siksi se tarvitsee apuasi. Carat ottaa vastaan akunmuutosilmoituksia, jotka auttavat sitä ottamaan mittauksia kun se ei ole näkyvillä, mutta Carat ei voi avata itseään automaattisesti jos se suljetaan sovellustenhallinnasta, automaattisesti muistin säästämiseksi, tai jos puhelin käynnistetään uudelleen.
+    </string>
+    <string name="about_battery_title">Aktiivinen akunkesto</string>
+    <string name="about_battery_message">Mitä aktiivinen akunkesto tarkoittaa?</string>
+    <string name="about_battery_child_message">Aktiivinen akunkesto arvioi, kuinka kauan akkusi kestäisi aktiivisessa käytössä.
+        Aktiivinen akunkesto ei ota huomioon laitteen lepojaksoja, eikä aikaa, jolloin Carat
+        ei ole kerännyt mittauksia.
+        Aktiivinen akunkesto voi olla paljon vähemmän tai enemmän kuin voisit olettaa,
+        mutta se kuvaa tarkemmin aktiivisen käytön tilastollista intensiteettiä.
+    </string>
+
+    <!-- GLOBAL RESULTS -->
+    <string name="global_results">GLOBAALIT TULOKSET</string>
+    <string name="all_reports">KAIKKI RAPORTIT</string>
+    <string name="global_general_statistics">YLEINEN STATISTIIKKA</string>
+    <string name="global_general_all_message">Out of 431,882 installed applications, 9 are energy-intensive
+        (Hogs in the Carat App) and 4 are energy anomalies (Bugs).</string>
+    <string name="global_general_android_message">Out of 295,665 installed Android applications,
+        12 are energy-intensive and 4 are energy anomalies.</string>
+    <string name="global_general_ios_message">Out of 136,217 installed iOS applications,
+        2 are energy-intensive and 4 are energy anomalies.</string>
+    <string name="global_general_users_message">Out of 644,024 users, 49 have at least a
+        single energy anomaly.</string>
+    <string name="global_general_popular_title">YLEISET PUHELINMALLIT</string>
+    <string name="global_general_android">Android</string>
+    <string name="well_behaved">Hyvin käyttäytyvät</string>
+    <string name="out_of"></string>
+    <string name="all_installed">asennetusta applikaatiosta,</string>
+    <string name="hog_intensity">on energiaintensiivisiä (Hogeja) ja</string>
+    <string name="bug_intensity">on energiapoikkeuksia (Bugeja).</string>
+    <string name="android_installed">asennetusta Android-applikaatiosta,</string>
+    <string name="ios_installed">asennetusta iOS-applikaatiosta,</string>
+    <string name="users">käyttäjästä,</string>
+    <string name="user_intensity">:lla on ainakin yksi energiapoikkeus.</string>
+
+    <!-- ACTIONS -->
+    <string name="stop_app_title">PYSÄYTÄ</string>
+    <string name="app_category_title">Foreground App</string>
+    <string name="actions_list_message">Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.</string>
+    <string name="no_actions_title">Sinulla ei ole ehdotuksia.</string>
+    <string name="no_actions_message">
+        Jos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä.
+        Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.
+    </string>
+    <string name="stopped">PYSÄYTETTY</string>
+
+    <string name="about">TIETOJA</string>
+
+    <!-- PROCESS LIST -->
+    <string name="version">Versio</string>
+    <string name="process_list_message">Processes are Lorem ipsum TODO...</string>
+
+    <!-- PREFERENCES LIST -->
+    <string name="show_all">Näytä kaikki</string>
+    <string name="five">Vaikutus &lt; 5 min</string>
+    <string name="ten">Vaikutus &lt; 10 min</string>
+    <string name="twenty">Vaikutus &lt; 20 min</string>
+    <string name="hour">Vaikutus &lt; 1 hour</string>
+
+    <string name="hogs_camel">Hogit</string>
+    <string name="bugs_camel">Bugit</string>
+    <string name="well_behaved_caps">HYVIN KÄYTTÄYTYVÄT</string>
 
     <!-- These will be different -->
-	
+
     <string name="jscore">J-Scoresi:</string>
     <string name="batterylife">Aktiivinen akunkesto:</string>
     <string name="osver">KJ-versio:</string>
@@ -35,7 +212,7 @@
     <string name="memused">Muistinkäyttö:</string>
     <string name="memactive">Aktiivisena:</string>
     <string name="cpu">CPU-käyttö:</string>
-    <string name="updated0">(Päivitetty 0m 0s sitten)</string>
+    <string name="updated0">Päivitetty 0m 0s sitten</string>
 
     <string name="viewprocess">Sovelluslista</string>
 
@@ -50,7 +227,7 @@
     <string name="checkbackEmptyBugs">Tarkista tilanne viikon päästä.</string>
     <string name="checkbackEmptyBugs2">Jos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä.</string>
     <string name="checkbackEmptyBugs3">Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.</string>
-    
+
     <string name="copied">Kopioitu:</string>
     <string name="helpcarat">Auta Caratia keräämään dataa</string>
     <string name="questionnaire">Auta meitä parantamaan Caratia</string>
@@ -63,9 +240,9 @@
     <string name="sharetext1">Carat parantaa akunkestoani.\nJ-Scoreni on</string>
     <string name="sharetext2">!\nEntä sinun?\nOta selvää täällä: \nhttp://carat.cs.berkeley.edu/</string>
     <string name="myjscoreis">J-Scoreni on</string>
-    
+
     <string name="appmanager">Sovellushallinta</string>
-    
+
     <!-- Navigation drawer items (tabs) -->
     <string-array name="drawer_items">
         <item>Yhteenveto</item>
@@ -76,9 +253,12 @@
         <item>Caratin asetukset</item>
         <item>Tietoja</item>
     </string-array>
-    
+
     <!-- Updating etc -->
-    
+
+    <string name="updating">Päivitetään</string>
+    <string name="updated">Päivitetty </string>
+    <string name="ago">sitten</string>
     <string name="samplesreported"> mittausta lähetetty</string>
     <string name="didntget">ei saatu</string>
     <string name="updatingreports">Päivitetään raporttia</string>
@@ -99,7 +279,7 @@
     <string name="prioritysuggestion">Ehdotus</string>
 
     <!-- Settings screen related -->
-    
+
     <string name="bluetoothsettings">Bluetooth-asetukset</string>
     <string name="wifisettings">Langattoman verkon asetukset</string>
     <string name="screensettings">Näytön asetukset</string>
@@ -112,7 +292,7 @@
     <string name="notsupported">eivät ole saatavilla tällä laitteella.</string>
 
     <!-- Actions -->
-    
+
     <string name="kill">Lopeta </string>
     <string name="killed">lopetettu</string>
     <string name="restart">Uudelleenk. </string>
@@ -128,10 +308,10 @@
     <string name="disablevibration">Kytke värinä pois</string>
     <string name="disablegps">Sulje GPS</string>
     <string name="disablelocation">Sulje paikannuspalvelut</string>
-    
+
     <string name="shortenscreentimeout">Lyhennä näytön viivettä</string>
     <string name="disableautomaticsync">Kytke pois automaattinen päivitys</string>
-    
+
     <!-- Detail view -->
 
     <string name="runninghere">tällä laitteella</string>
@@ -154,17 +334,17 @@
     <string name="error">Mittausvirhe:</string>
     <string name="significance">Merkittävyys:</string>
     <string name="best">Jo paras</string>
-    
+
     <!-- The pie chart -->
     <string name="chart_wellbehaved">Hyvin käyttäytyvät</string>
     <string name="chart_hogs">Hogit</string>
     <string name="chart_bugs">Bugit</string>
-    
+
     <!-- The dialog to enable Internet -->
     <string name="dialog_text">Carat käyttää Internet-yhteyttä raporttiesi päivittämiseen.</string>
     <string name="dialog_enable">Kytkeydy verkkoon</string>
     <string name="dialog_cancel">Ei kiitos</string>
-    
+
     <!-- error messages -->
     <string name="connection_error">Ei yhteyttä. Kytkeydy verkkoon.</string>
 
@@ -179,15 +359,15 @@
     <string name="summary_screen_title">Carat-tilastoja</string>
     <string name="summary_chart_center_text">Muut-\nsovellukset</string>
     <string name="morestatsat">Lisää: carat.cs.helsinki.fi/statistics</string>
-    
+
     <!-- Carat settings screen -->
     <!-- switch backport strings -->
     <string name="off">OFF</string>
     <string name="on">ON</string>
     <string name="summary_off">Wifi + Mobiilidata</string>
     <string name="summary_on">Vain Wifi</string>
-    
-        <!-- New screen titles -->
+
+    <!-- New screen titles -->
     <string name="memoryinfo">Tietoa muistista</string>
     <string name="batterylifeinfo">Aktiivinen akunkesto</string>
     <string name="jscoreinfo">Mikä on J-Score?</string>
@@ -196,7 +376,7 @@
     <string name="deviceinfo">Laitteen tilastotietoja</string>
     <string name="osinfo">KJ-version tilastotietoja</string>
     <string name="processlist">Käynnissä olevat sovellukset</string>
-    
+
     <!-- Hog threshold values -->
     <string-array name="hog_thresh_list">
         <item>Näytä kaikki</item>
@@ -205,10 +385,10 @@
         <item>vaikutus &lt; 20m</item>
         <item>vaikutus &lt; 1h</item>
     </string-array>
-    
+
     <string name="hog_thresh">Piilota sovellukset joiden vaikutus on pieni</string>
 </resources>
 
 
-<!--  <item>Sovellussuositus</item>  
-	  <string name="action_websearch">Hae</string> -->
+    <!--  <item>Sovellussuositus</item>
+          <string name="action_websearch">Hae</string> -->

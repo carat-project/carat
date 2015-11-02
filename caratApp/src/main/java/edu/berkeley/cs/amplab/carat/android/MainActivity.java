@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.TreeMap;
 
+import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.utils.PrefetchData;
 import edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.PreferenceListDialog;
@@ -239,7 +240,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             setHogAmount("0");
         }
         if (CaratApplication.getStorage().getHogReport() != null && CaratApplication.getStorage().getBugReport() != null) {
-            setActionsAmount(CaratApplication.getStorage().getHogReport().length + CaratApplication.getStorage().getBugReport().length);
+            int actionsAmount = 0;
+            for (SimpleHogBug s : CaratApplication.getStorage().getBugReport()) {
+                if (SamplingLibrary.isRunning(this, s.getAppName())) {
+                    actionsAmount++;
+                }
+            }
+            for (SimpleHogBug s : CaratApplication.getStorage().getHogReport()) {
+                if (SamplingLibrary.isRunning(this, s.getAppName())) {
+                    actionsAmount++;
+                }
+            }
+            setActionsAmount(actionsAmount);
         } else {
             setActionsAmount(0);
         }
