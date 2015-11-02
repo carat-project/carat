@@ -234,6 +234,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         mainActivity.setJScore(CaratApplication.getJscore());
         mainActivity.setCpuValue();
         setValues();
+        generateJScoreCircle();
         Log.d("debug", "*** SCHELUDE END");
     }
 }
