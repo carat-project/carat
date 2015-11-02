@@ -20,7 +20,7 @@
 #import "ConsentViewController.h"
 #import "SettingsViewController.h"
 #import "BugsViewController.h"
-#import <Socialize/Socialize.h>
+#import "Socialize/Socialize.h"
 #include <sys/sysctl.h>
 #include <sys/types.h>
 #include <mach/mach.h>

@@ -23,7 +23,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "MBProgressHUD.h"
-#import <Socialize/Socialize.h>
+#import "Socialize/Socialize.h"
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
 

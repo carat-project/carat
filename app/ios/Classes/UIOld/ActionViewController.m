@@ -15,7 +15,7 @@
 #import "ActionObject.h"
 #import "CoreDataManager.h"
 #import "SVPullToRefresh.h"
-#import <Socialize/Socialize.h>
+#import "Socialize/Socialize.h"
 #import "CaratConstants.h"
 #import "UIDeviceHardware.h"
 

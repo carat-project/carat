@@ -40,7 +40,7 @@ Eclipse may complain about not being able to find the dependecies for Carat proj
 ## Build instructions for iOS
 
 1. Install ruby gems: https://rubygems.org/pages/download
-2. Install CocoaPods 0.33.1: http://rubygems.org/gems/cocoapods/versions/0.33.1
+2. Install CocoaPods 0.35.0: http://rubygems.org/gems/cocoapods/versions/0.35.0 . The version is very important.
 3. Make sure you have the latest Xcode.
 4. Go to the app/ios folder in a terminal and run `pod install`.
 5. Make sure the `SZIdentifierUtils.m ` and `.h` files still have `#define SHOULD_USE_IDFA 0`

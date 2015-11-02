@@ -1,8 +1,15 @@
-#source 'https://github.com/CocoaPods/Specs.git'
-#source 'https://github.com/socialize/SocializeCocoaPods.git'
+# https://guides.cocoapods.org/using/using-cocoapods.html
+#
+# Podfile and Podfile.lock should be kept under version control.
+# Pods dir is also recommended.
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/socialize/SocializeCocoaPods.git'
 
 platform:ios, '7.0'
 inhibit_all_warnings!
+
+pod 'AFNetworking', '~> 2.5'
 
 pod 'Socialize', :podspec => 'https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec'
 # Append to your Podfile
