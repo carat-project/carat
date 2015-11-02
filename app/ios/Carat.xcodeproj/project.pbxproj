@@ -194,6 +194,7 @@
 		C75488E619963D04007A01CF /* libFlurry_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7547F4819963CFD007A01CF /* libFlurry_5.0.0.a */; };
 		C7548C9F19963D04007A01CF /* UIDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = C754886319963D03007A01CF /* UIDeviceHardware.m */; };
 		C7E31C2F1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E31C2E1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C7FC323D1BE7F15700EA48B8 /* PopularModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ABF7D71BDF9B1900DC663A /* PopularModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1834,8 +1835,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7FC323D1BE7F15700EA48B8 /* PopularModel.m in Sources */,
 				C7E31C2F1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m in Sources */,
-				89ABF7D81BDF9B1900DC663A /* PopularModel.m in Sources */,
 				89FF8B261BDBA64600147943 /* ProcessListViewController.m in Sources */,
 				89FF8B811BDBAA3E00147943 /* ActionsViewController.m in Sources */,
 				89FF8B2B1BDBA67600147943 /* ReportViewController.m in Sources */,
