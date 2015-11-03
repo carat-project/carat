@@ -138,11 +138,11 @@ public class AboutExpandListAdapter extends BaseExpandableListAdapter implements
 
         Log.d("debug", "*** TAGS: " + item.getAboutTitle());
 
-        if (item.getAboutTitle().equals("Bugs")) {
+        if (item.getAboutTitle().equals(mainActivity.getResources().getString(R.string.bugs_camel))) {
             aboutMessage.setTag("see_bugs");
             aboutMessage.setTextColor(mainActivity.getResources().getColor(R.color.orange));
             aboutMessage.setOnClickListener(this);
-        } else if (item.getAboutTitle().equals("Hogs")) {
+        } else if (item.getAboutTitle().equals(mainActivity.getResources().getString(R.string.hogs_camel))) {
             aboutMessage.setTag("see_hogs");
             aboutMessage.setTextColor(mainActivity.getResources().getColor(R.color.orange));
             aboutMessage.setOnClickListener(this);
