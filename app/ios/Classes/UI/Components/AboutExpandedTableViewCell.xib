@@ -16,6 +16,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="380" height="234.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNq-PC-Nfq" userLabel="Message">
+                        <rect key="frame" x="56" y="34" width="200" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1c-Rm-Ysm" userLabel="topContent">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <subviews>
@@ -66,6 +72,7 @@
                             <constraint firstItem="cXk-ly-M9v" firstAttribute="trailing" secondItem="B1c-Rm-Ysm" secondAttribute="trailingMargin" id="RbI-eH-ieZ"/>
                             <constraint firstItem="3cR-tJ-hSi" firstAttribute="trailing" secondItem="B1c-Rm-Ysm" secondAttribute="trailingMargin" id="XAl-hz-S2C"/>
                             <constraint firstItem="t7j-Nb-c9n" firstAttribute="leading" secondItem="B1c-Rm-Ysm" secondAttribute="leadingMargin" id="XHK-Wr-l1T"/>
+                            <constraint firstItem="3cR-tJ-hSi" firstAttribute="leading" secondItem="t7j-Nb-c9n" secondAttribute="trailing" constant="8" id="YAb-Sh-yUK"/>
                             <constraint firstItem="pDI-be-eBK" firstAttribute="trailing" secondItem="B1c-Rm-Ysm" secondAttribute="trailing" id="aTT-su-Mwh"/>
                             <constraint firstAttribute="trailing" secondItem="3cR-tJ-hSi" secondAttribute="trailing" constant="8" id="szx-JW-7ir"/>
                             <constraint firstItem="pDI-be-eBK" firstAttribute="top" secondItem="3cR-tJ-hSi" secondAttribute="bottom" constant="8" id="uch-GY-onQ"/>
@@ -82,14 +89,15 @@
                                 <exclude reference="K17-S4-hCn"/>
                                 <exclude reference="4Ka-Yn-Gwl"/>
                                 <exclude reference="XHK-Wr-l1T"/>
+                                <exclude reference="GCH-JV-CC4"/>
+                                <exclude reference="R8d-Dz-pjh"/>
+                                <exclude reference="RbI-eH-ieZ"/>
                                 <exclude reference="72H-4B-Ggu"/>
                                 <exclude reference="Jgf-ga-inP"/>
                                 <exclude reference="aTT-su-Mwh"/>
                                 <exclude reference="uch-GY-onQ"/>
-                                <exclude reference="GCH-JV-CC4"/>
-                                <exclude reference="R8d-Dz-pjh"/>
-                                <exclude reference="RbI-eH-ieZ"/>
                                 <exclude reference="XAl-hz-S2C"/>
+                                <exclude reference="YAb-Sh-yUK"/>
                                 <exclude reference="szx-JW-7ir"/>
                                 <exclude reference="y5e-p2-HFa"/>
                             </mask>
@@ -105,25 +113,20 @@
                                 <include reference="K17-S4-hCn"/>
                                 <include reference="4Ka-Yn-Gwl"/>
                                 <include reference="XHK-Wr-l1T"/>
+                                <include reference="GCH-JV-CC4"/>
+                                <include reference="R8d-Dz-pjh"/>
+                                <include reference="RbI-eH-ieZ"/>
                                 <include reference="72H-4B-Ggu"/>
                                 <include reference="Jgf-ga-inP"/>
                                 <include reference="aTT-su-Mwh"/>
                                 <include reference="uch-GY-onQ"/>
-                                <include reference="GCH-JV-CC4"/>
-                                <include reference="R8d-Dz-pjh"/>
-                                <include reference="RbI-eH-ieZ"/>
                                 <include reference="XAl-hz-S2C"/>
+                                <include reference="YAb-Sh-yUK"/>
                                 <include reference="szx-JW-7ir"/>
                                 <include reference="y5e-p2-HFa"/>
                             </mask>
                         </variation>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNq-PC-Nfq" userLabel="Message">
-                        <rect key="frame" x="56" y="34" width="200" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="FNq-PC-Nfq" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="0jc-3p-fjl"/>
@@ -136,8 +139,8 @@
                 </constraints>
                 <variation key="default">
                     <mask key="subviews">
-                        <exclude reference="B1c-Rm-Ysm"/>
                         <exclude reference="FNq-PC-Nfq"/>
+                        <exclude reference="B1c-Rm-Ysm"/>
                     </mask>
                     <mask key="constraints">
                         <exclude reference="2jr-Ip-aEL"/>
@@ -151,8 +154,8 @@
                 </variation>
                 <variation key="widthClass=compact">
                     <mask key="subviews">
-                        <include reference="B1c-Rm-Ysm"/>
                         <include reference="FNq-PC-Nfq"/>
+                        <include reference="B1c-Rm-Ysm"/>
                     </mask>
                     <mask key="constraints">
                         <include reference="2jr-Ip-aEL"/>

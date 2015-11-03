@@ -14,6 +14,7 @@
 @implementation StatisticsViewController {
 }
 
+UIAlertView *alert;
 bool popModelLoaded;
 bool genStatLoaded;
 
@@ -32,18 +33,33 @@ bool genStatLoaded;
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               if(data){
+                               if(data != nil){
+                                   NSLog(@"%s applyGeneralStatJSONDataToView:\n", __PRETTY_FUNCTION__);
+                                   NSError *error = nil;
                                    json = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
-                                                                        error:nil];
-                                   [self applyGeneralStatJSONDataToView: json];
-                                   genStatLoaded = true;
-                                   if(popModelLoaded && genStatLoaded){
-                                       [_spinnerBackGround setHidden:YES];
-                                       [_spinner stopAnimating];
-                                       [_spinner setHidden:YES];
+                                                                        error:&error];
+                                   if(error == nil){
+                                       [self writeToFile:data fileName:@"stats.json"];
+                                       [self applyGeneralStatJSONDataToView: json];
+                                       genStatLoaded = true;
+                                       if(popModelLoaded && genStatLoaded){
+                                           [_spinnerBackGround setHidden:YES];
+                                           [_spinner stopAnimating];
+                                           [_spinner setHidden:YES];
+                                       }
+                                       //NSLog(@"%s Read from file:\n%@", __PRETTY_FUNCTION__, [self readFile:@"stats.json"]);
+                                       //NSLog(@"Async JSON: %@", json);
+
                                    }
-                                   //NSLog(@"Async JSON: %@", json);
+                                   else{
+                                       [self setGeneralStatsFromFile];
+                                       
+                                   }
+                                   
+                               }
+                               else{
+                                   [self setGeneralStatsFromFile];
                                }
                            }];
     
@@ -52,18 +68,30 @@ bool genStatLoaded;
     [NSURLConnection sendAsynchronousRequest:request2
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               if(data){
+                               if(data != nil){
+                                   NSError *error = nil;
                                    json2 = [NSJSONSerialization JSONObjectWithData:data
                                                                           options:0
-                                                                            error:nil];
-                                   [self applyPopularDevicesJSONDataToView: json2];
-                                   popModelLoaded = true;
-                                   if(popModelLoaded && genStatLoaded){
-                                       [_spinnerBackGround setHidden:YES];
-                                       [_spinner stopAnimating];
-                                       [_spinner setHidden:YES];
+                                                                            error:&error];
+                                   if(error == nil){
+                                       [self writeToFile:data fileName:@"shares.json"];
+                                       [self applyPopularDevicesJSONDataToView: json2];
+                                       popModelLoaded = true;
+                                       if(popModelLoaded && genStatLoaded){
+                                           [_spinnerBackGround setHidden:YES];
+                                           [_spinner stopAnimating];
+                                           [_spinner setHidden:YES];
+                                       }
+                                       //NSLog(@"%s Read from file:\n%@", __PRETTY_FUNCTION__, [self readFile:@"shares.json"]);
+                                                                             //NSLog(@"Async JSON: %@", json2);
                                    }
-                                   //NSLog(@"Async JSON: %@", json2);
+                                   else{
+                                       [self setPopularDeviceModelsFromFile];
+                                   }
+                                   
+                               }
+                               else{
+                                   [self setPopularDeviceModelsFromFile];
                                }
                            }];
     
@@ -93,6 +121,88 @@ bool genStatLoaded;
         }
     }
     return -1;
+}
+
+-(void)hideDownloadProgress
+{
+    [_spinnerBackGround setHidden:YES];
+    [_spinner stopAnimating];
+    [_spinner setHidden:YES];
+}
+
+-(void)setGeneralStatsFromFile
+{
+    NSData *content = [self readFile:@"stats.json"];
+    if(content == nil){
+        if(alert == nil){
+            alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NoNetwork", nil)
+                                               message:NSLocalizedString(@"NoGlobalData", nil)
+                                              delegate:nil
+                                     cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                     otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
+        [self hideDownloadProgress];
+        return;
+    }
+    NSDictionary *json = [self convertToDict:content];
+    [self applyGeneralStatJSONDataToView: json];
+    genStatLoaded = true;
+    if(popModelLoaded && genStatLoaded){
+        [self hideDownloadProgress];
+    }
+}
+
+-(void)setPopularDeviceModelsFromFile
+{
+    NSData *content = [self readFile:@"shares.json"];
+    if(content == nil){
+        if(alert == nil){
+            alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NoNetwork", nil)
+                                               message:NSLocalizedString(@"NoGlobalData", nil)
+                                              delegate:nil
+                                     cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                     otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
+        [self hideDownloadProgress];
+        return;
+    }
+    NSDictionary *json = [self convertToDict:content];
+    [self applyPopularDevicesJSONDataToView: json];
+    popModelLoaded = true;
+    if(popModelLoaded && genStatLoaded){
+        [self hideDownloadProgress];
+    }
+}
+
+-(void)writeToFile:(NSData *) content fileName:(NSString *)fileName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:fileName];
+    
+    [content  writeToFile:path atomically:YES];
+}
+
+-(NSData *)readFile:(NSString *) fileName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:fileName];
+    
+    NSData* content = [NSData dataWithContentsOfFile:path];
+    return content;
+}
+
+-(NSDictionary *)convertToDict:(NSData *) content
+{
+    return [NSJSONSerialization JSONObjectWithData:content
+                                    options:0
+                                      error:nil];
+    //[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 
 
@@ -250,6 +360,7 @@ bool genStatLoaded;
     [_iosPopularModelsLabel release];
     [_androidPopularModelLabel release];
     [_spinnerBackGround release];
+    alert = nil;
     [super dealloc];
 }
 - (IBAction)showWellBehivedInfo:(id)sender {

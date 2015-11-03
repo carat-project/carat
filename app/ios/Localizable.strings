@@ -73,6 +73,11 @@
 "AndroidModelDesc"="Samsung Galaxy S2 : 17%\nGalaxy Nexus : 3%\nNexus 7 : 3%\nDROIDX : 2%\nSamsung Galaxy Note II : 2%\nNexus S : 1%\nHTC One X : 1%\nSamsung Droid Charge : 1%\nOther : 67%";
 "IOSModelDesc"="iPhone 4S : 30%\niPhone 5 : 15%\niPhone 4 : 5%\niPad : 5%\niPad 2 (GSM) : 2%\niPad 3 : 1%\niPad 2 : 1%\nOther : 40%\n";
 //Global results ends
+//No network connection alert starts
+"NoNetwork"="No network connection";
+"NoGlobalData"="Failed to load from device or from network general statistic data.\nYou need network connection to see corect data";
+"OK"="OK";
+//No network connection alert ends
 //Actions view start
 "ActionsDesc"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
 "ActionsEmpty"="You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...";
