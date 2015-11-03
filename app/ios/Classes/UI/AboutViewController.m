@@ -166,13 +166,12 @@ static NSString * collapsedCell = @"AboutTableViewCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat kExpandedCellHeight = 196;
     CGFloat kNormalCellHeigh = 56;
     
     if ([self.expandedCells containsObject:indexPath])
     {
         AboutListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
-        CGFloat expandedTextHeight = 56.0f + [self getTextHeight:rowData.message] + 16.0f;//margins 7 +7
+        CGFloat expandedTextHeight = 56.0f + [self getTextHeight:rowData.message] + 8.0f;//margins 7 +7
         NSLog(@"expandedTextHeight: %f", expandedTextHeight);
         
         return expandedTextHeight; //It's not necessary a constant, though
@@ -186,7 +185,7 @@ static NSString * collapsedCell = @"AboutTableViewCell";
 
 -(CGFloat)getTextHeight:(NSString *)text
 {
-    UIFont *font = [UIFont systemFontOfSize:14];//[UIFont fontWithName:@"HelveticaNeue" size:fontSize];
+    UIFont *font = [UIFont systemFontOfSize:13];//[UIFont fontWithName:@"HelveticaNeue" size:fontSize];
     
     CGRect frame = [self getTextFrame:text font:font top:0];
     return frame.size.height;

@@ -44,10 +44,10 @@
         int hours = (int)((timeInterval - (days * 86400)) / 3600);
         int mins = (int)((timeInterval - (days * 86400) - (hours * 3600)) / 60);
         int secs = (int)((int)timeInterval % 60);
-        NSString *sDays = days > 0 ? [NSString stringWithFormat:@"%dd ", days] : @"";
-        NSString *sHours = hours > 0 ? [NSString stringWithFormat:@"%dh ", hours] : @"";
-        NSString *sMins = mins > 0 ? [NSString stringWithFormat:@"%dm ", mins] : @"";
-        NSString *sSecs = secs > 0 ? [NSString stringWithFormat:@"%ds ", secs] : @"";
+        NSString *sDays = days > 0 ? [NSString stringWithFormat:@"%dd", days] : @"";
+        NSString *sHours = hours > 0 ? [NSString stringWithFormat:@"%dh", hours] : @"";
+        NSString *sMins = mins > 0 ? [NSString stringWithFormat:@"%dm", mins] : @"";
+        NSString *sSecs = secs > 0 ? [NSString stringWithFormat:@"%ds", secs] : @"";
         
         return [sDays stringByAppendingString:[sHours stringByAppendingString:[sMins stringByAppendingString:sSecs]]];
     }

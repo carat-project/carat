@@ -1949,7 +1949,7 @@ static id instance = nil;
     NSInteger benefit = [self calcBenefit:expVal expValWithout:expValWithout];
     NSInteger benefit_max = [self calcMaxBenefit:expVal expValWithout:expValWithout errWithout:errWithout err:err];
     NSInteger errorVal = (int) (benefit_max-benefit);
-    DLog(@"OS benefit is %d ± %d", benefit, err);
+    DLog(@"OS benefit is %d ± %f", benefit, err);
     if (benefit > 60) {
         ActionObject *tmpAction = [[ActionObject alloc] init];
         [tmpAction setActionText:actText];
@@ -1979,8 +1979,7 @@ static id instance = nil;
             double errWithout = [hb errorWithout];
             if ([self valuesArePositive:expVal expValWithout:expValWithout errWithout:errWithout err:err] &&
                 [hb appName] != nil) {
-                
-                ActionObject *tmpAction = [self createActionObject:expVal expValWithout:expValWithout errWithout:errWithout err:err actText:actText actType:actTyp];
+                ActionObject *tmpAction = [self createActionObject:expVal expValWithout:expValWithout errWithout:errWithout err:err actText:[actText stringByAppendingString:[hb appName]] actType:actTyp];
                 if(tmpAction != nil){
                     [myList addObject:tmpAction];
                     [tmpAction release];
