@@ -1,0 +1,206 @@
+/* 
+  InfoPlist.strings
+  Carat
+
+  Created by Jarno Petteri Laitinen on 03/10/15.
+  Copyright © 2015 University of Helsinki. All rights reserved.
+*/
+//DashBoard starts
+
+"Dashboard"="Dashboard";
+"Carat" = "Carat";
+"BatteryLifeLabel"="Akun kesto";
+"Bugs"="Bugit";
+"Hogs"="Hogit";
+"Statistics"="Statistiikka";
+"Actions"="Ehdotukset";
+"MyDevice"="LAITTEENI";
+"View"="Näkymä";
+"UpdatedNowTxt"= "Juuri päivitetty";
+"JScore"="J-Score";
+"NA" = "N/A";
+//DashBoard ends
+//Tutorial starts
+"MainTitle"="Carat Collaborative Energy Diagnosis";
+"MainDesc"="Carat on tutkimusprojekti Helsingin Yliopistolta ja UC Berkeleyn AMP Labista. Carat auttaa löytämään ja korjaamaan akunkeston ongelmia, ja antaa henkilökohtaisia ehdotuksia. Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa. Carat kerää ja raportoi puhelimestasi yleistä käyttötietoa, joka mahdollistaa Caratin tarjoamat toiminnot. Tähän ei missään tapauksessa sisälly henkilökohtaista tietoa.\nCaratia kehitetään jatkuvasti, joten kannattaa tarkistaa uudet ehdotukset silloin tällöin. Mitä enemmän käytät Caratia, sitä tarkempaa tietoa se tarjoaa.";
+"BugsDesc"="Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa."
+"HogsDesc"="Hogit ovat sovelluksia joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akunkestoa.";
+"Eula"="Eula";
+"EulaShortDesc"="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit accumsan velit vel mattis libero nisl et sem. Proin interdum maecenas massa turpis sagittis in.";
+"Accept"="ACCEPT";
+"AcceptInfo"="By proceeding you accept EULA and privacy policy.";
+"EulaPrivacyPolicy" = "Eula privacy policy";
+//Tutorial ends
+//My Device starts (Old CurrentView)
+"titleScore"="SINUN J-SCORE:SI";
+"CaratID"="Carat tunnus";
+"InfoJscoreLabel"="Mitä tarkoittaa J-Score arvosi?";
+"OSversion"="OS versio";
+"MyDeviceHudLabel" = "Päivitä laitteen tiedot";
+//"BatteryLifeLabel"="Active Battery Life" dashboard
+"DeviceModel"="Laite malli";
+"ProcessList"="PROSESSI LISTA";
+"DeviceUsage"="LAITTEEN KÄYTTÖ";
+"MemoryUsed"="Muistia käytössä";
+"MemoryActive"="Muistia aktiivisena";
+"CPUUsage"="Processorin käyttö";
+//My Device ends
+//BugsView start
+"ExpectedImp"="Odotettava parannus ";
+"Samples"="Mittauksia";
+"Error"="Virheitä";
+"SamplesWithout"="Mittauksia ilman";
+"NumberHelpLabel"="Mitä nämä numerot tarkoittaa?";
+"NoBugs"="Sinulla ei ole bugeja.";
+"NoBugsMessage"="Tarkista tilanne viikon päästä.\n\nJos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä. Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.";
+//BugsView ends
+//HogsView starts
+"NoHogs"="You have no hogs.";
+"NoHogsMessage"="Tarkista tilanne viikon päästä.\n\nJos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä. Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.";
+//HogsView ends
+//Global results starts
+"GlobalResults"="Globaalit tulokset";
+"AllReports"="Kaikki raportit";
+"GeneralStatistics"="Yleinen statistiikka";
+"pop"="Suosituimmat laite mallit";
+"GenAllMessage"="Kaikista %ld asennetuista sovelluksista, %d%% kuluttaa voimakkasti virtaa (Hogi Carat sovelluksessa) ja %d%% ovat poikkeamia virran kulutuksessa (Bugs).";
+"GenAndroidMessage"="Kaikista %ld asennetuista android-sovelluksista, %d%% kuluttaa voimakkasti virtaa ja %d%% are energy anomalies.";
+"GenIOSMessage"="Kaikista %ld asennetuista iOS-sovelluksista, %d%% kuluttaa voimakkasti virtaa ja %d%% are energy anomalies.";
+"GenUsersMessage"="Out of %ld users, %d%% have at least a single energy anomaly.";
+"WellBehived"="Well-behaved";
+"Android"="Android";
+"IOS"="iOS";
+"AndroidModelDesc"="Samsung Galaxy S2 : 17%\nGalaxy Nexus : 3%\nNexus 7 : 3%\nDROIDX : 2%\nSamsung Galaxy Note II : 2%\nNexus S : 1%\nHTC One X : 1%\nSamsung Droid Charge : 1%\nOther : 67%";
+"IOSModelDesc"="iPhone 4S : 30%\niPhone 5 : 15%\niPhone 4 : 5%\niPad : 5%\niPad 2 (GSM) : 2%\niPad 3 : 1%\niPad 2 : 1%\nOther : 40%\n";
+//Global results ends
+//No network connection alert starts
+"NoNetwork"="Ei verkkoyhteyttä";
+"NoGlobalData"="Epäonnistu lataamaan yleistä statistiikkaa niin verkosta kuin puhelimesta.\nTarvitset verkkoyhteyden voidaksesi nähdä ajankohtaiset tiedot.";
+"OK"="OK";
+//No network connection alert ends
+//Actions view start
+"ActionsDesc"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
+"ActionsEmpty"="You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...";
+"Stop"="Stop";
+"ForeGroundApp"="Foreground App";
+"NoActions"="No actions.";
+"ActionsHudLabel"="Updating Action List";
+
+"ActionUpgradeOS" = "Upgrade the Operating System";
+"ActionRestart" = "Restart ";
+"ActionKill" = "Kill ";
+
+"NoActionsMessage"="You have no actions.\n\nYou should open Carat regularly so it can take samples of your device state and communicate these to our servers.\nWe suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\nIt can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\nMake sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\nThe more often you open the app, the more quickly it will generate reports, the more information those reports will contain, and the more accurate the recommendations will be.\nCarat does not run as a background service, which is why it needs your help.\nThe app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground, but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.";
+
+"KillAppDesc" = "From your home screen, press the home button twice. Now you should see a Process Manager. If necessary, swipe back and forth to locate the app you want to close. When you've found it, press and hold on the app icon until a red circle appears in the corner of the icon. Press this red circle. \n\nOnce you are done killing apps, press the home button to close the Process Manager. If you were trying to restart the app, now simply open it again, as usual.";
+"UpgradeOSDesc" = "Plug your device into a computer with iTunes installed and with access to the internet. Your device should show up in the side bar under a Devices category.\n\nSelect it, and make sure the Summary tab is selected along the iTunes title bar. Under the Version section of this window, you should see a button \"Check for Update\"\n\nPre ss this button. iTunes will walk you through the rest of the upgrade process.";
+"CollectDataTitle" = "How to Help Carat Collect Data";
+"CollectDataDesc" = "You should open Carat regularly so it can take samples of your device state and communicate these to our servers. We suggest opening Carat every day, or as often as you remember, especially for the first week after installing it. It can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports. Make sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\n\nThe more often you open the app, the more quickly it will generate reports, the more information those reports will contain, and the more accurate the recommendations will be.\n\nCarat is not allowed to run as a background app, which is why it needs your help. The app subscribes to various notifications that let it take a few samples when it's not in the foreground, but Carat cannot reopen itself after iOS closes it (to free up resources) or after the device is restarted.";
+//Actions view ends
+//ProcessView starts
+"Version"="Version";
+"ProcessMessage"="Processes are lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum";
+//ProcessView ends
+//Empty view starts
+"NothingToReport" = "Nothing to report!";
+"EmptyViewDesc" = "You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...";
+//Empty view ends
+// EXPLANATIONS
+"JScoreDesc"="The J-Score represents the percentile battery life you see relative to all other devices being measured by Carat. \n\nSo, if you have a J-Score of 50, that means your expected battery life is better than half of our users; a score of 99 means you have better battery life than 99 of our users. Of course, a single number does not provide a complete description of your battery life. \n\nA low J-Score could mean that your device is using a big battery inefficiently or a small battery with average efficiency. Similarly, a high J-Score could simply mean that you don\'t use your device heavily. Carat computes a huge variety of statistics, and the J-Score is just one of them.";
+
+"MemoryDesc"="The operating system (OS) classifies your device\'s physical memory as either used or free. If memory is used, it means there is currently data there that belongs to some process (like one of your apps or the OS, itself). When the device runs out of free memory, it needs to make room so it can store new data, which means closing apps that might be running in the background or asking your apps to throw away data they aren\'t using. The OS then further subcategorizes used memory as being either active or inactive, depending on whether it was accessed recently or not, respectively. When the OS runs out of free memory, it starts reclaiming inactive memory. When you open a bunch of apps, the fraction of used memory may increase; when the apps you have running are working with lots of data (often an energy-intensive task), the fraction of active memory may increase. The OS also preloads often used applications into memory, shortening wait times.";
+"CpuUsageDesc"="BUUJAA! asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa";
+"WhatAreTheseNumbersDesc"="Expected benefit is the amount of battery life that fixing the hog/bug is expected to yield. Fixing hogs means killing the app and using it less, while fixing a bug may mean just...";
+"WellBehivedDesc"="Well-behaved is something that I still have to find description to.";
+
+// MENU
+"Settings"="Settings";
+"WifiOnly"="Use Wifi only";
+"HideApps"="Hide apps with a small impact";
+"FeedBack"="Give feedback";
+"Tutorial"="Show tutorial";
+"About"="About";
+
+//About
+"AboutTittle"="Carat";
+"AboutSub"="Yleistä";
+"AboutMessage"="Kun käytät Caratia säännöllisesti, se kerää ja lähettää mittauksia laittesi tilasta palvelimillemme. Suosittelemme avaamaan Caratin kerran päivässä, tai niin usein kuin muistat, erityisesti ensimmäisen viikon ajan. Voi mennä viikko tai pidempään ennen kuin Crat on kerännyt tarpeeksi dataa henkilökohtaisten raporttien generoimiseksi. Varmista, että Caratilla on mahdollisuus kommunikoida palvelimiemme kanssa (avaa Carat kun sinulla on aktiivinen Internet-yhteys).\nMitä useammin käytät Caratia, sitä nopeammin se generoi raportteja, sitä enemmän tietoa raportit sisältävät, ja sitä tarkempia suositukset ovat.\nCarat ei käytä taustapalveluja laitteellasi, ja siksi se tarvitsee apuasi. Carat ottaa vastaan akunmuutosilmoituksia, jotka auttavat sitä ottamaan mittauksia kun se ei ole näkyvillä, mutta Carat ei voi avata itseään automaattisesti jos se suljetaan sovellustenhallinnasta, automaattisesti muistin säästämiseksi, tai jos puhelin käynnistetään uudelleen."
+"ActionsSub"="Ehdotukset";
+"ActionsMessage"="Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.";
+//Bugs
+"BugsSub"="Katso bugi lista";
+//BugsMessage==BugsDesc
+//Hogs
+"HogsSub"="Katso hogi lista";
+//HogsMessage == HogsDesc
+"CollectData"="Kerää dataa";
+"CollectDataSub"="Tietoa miten Carat kerää dataa";
+"CollectDataMessage"="Carat kerää ja raportoi yleisimmät käyttötiedot laitteestasi, joihin käyttöjärjestelmä sallii pääsyn. Tämä prosessi ei kerää yhtään henkilökohtaista tietoa. Piste"
+"ActiveBatteryLife"="Aktiivinen akunkesto";
+"ActiveBatteryLifeSub"="Mitä aktiivinen akunkesto tarkoittaa?";
+"ActiveBatteryLifeMessage"="Aktiivinen akunkesto arvioi, kuinka kauan akkusi kestäisi aktiivisessa käytössä. Aktiivinen akunkesto ei ota huomioon laitteen lepojaksoja, eikä aikaa, jolloin Carat ei ole kerännyt mittauksia. Aktiivinen akunkesto voi olla paljon vähemmän tai enemmän kuin voisit olettaa, mutta se kuvaa tarkemmin aktiivisen käytön tilastollista intensiteettiä.";
+//About ends
+
+//Preferences list
+"ShowAll"="Näytä kaikki";
+"Five"="Vaikutus < 5 min";
+"Ten"="Vaikutus < 10 min";
+"Twenty"="Vaikutus < 20 min";
+"Hour"="Vaikutus < 1 tunti";
+"Select"="Valitse";
+
+//Share messages
+"JScoreShareMessage" = "J-Scoresi on %@. Selvitä omasi ja paranna akkusi kesstävyyttä!";
+"CaratShareMessage" = "Carat on ilmainen sovellus, jolla pystyt selvittämään mikä kuluttaa akkuasi ja onko tämä normaalia vai voitko tehdä asialle jotain.";
+"CaratHomePage" = "http://carat.cs.helsinki.fi";
+"EmailMessageTittle" = "Akun diagnosointi Caratilla";
+"CaratEmailSalesPitch" = "Tutustu tähän ilmaiseen sovellukseen %@, joka kertoo sinulle mikä kuluttaa akkuasi ja onko normaalia vai voitko sinä tehdä asialle jotain : http://is.gd/caratweb\n\n";
+//HUD
+"CCDMReportUpdateStatusNotification" = "CCDMReportUpdateStatusNotification";
+//Progress updates
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingHogReports" = "Updating hog reports...";
+"UpdatingBugReports" = "Updating bug report...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatingMainReports" = "Updating main reports...";
+"UpdatedJust" = "Just Updated    %i Samples sent";
+"UpdatedNever" = @"Updated never   %i Samples sent";
+"Updated" = "Updated ";"
+"Ago" = " ago";
+"Samples" = "   %i Samples sent";
+"None" = "None";
+
+
+//Flurry Logs
+"selectedProcessList" = "selectedProcessList";
+"selectedBugsView" = "selectedBugsView";
+"selectedHogsView" = "selectedHogsView";
+"selectedActionsView" = "selectedActionsView";
+"selectedStatisticsView" = "selectedStatisticsView";
+"selectedMyDeviceView" = "selectedMyDeviceView";
+"selectedMoreView" = "selectedMoreView";
+
+"selectedGiveFeedback" = "selectedGiveFeedback";
+"selectedShareEmail" = "selectedShareEmail";
+"selectedShareFacebook" = "selectedShareFacebook";
+"selectedShareTwitter" = "selectedShareTwitter";
+"selectedEulaConsentForm" = "selectedEulaConsentForm";
+
+
+"selectedActiveBatteryLifeInfo"="selectedActiveBatteryLifeInfo";
+"selectedJScoreInfo" = "selectedJScoreInfo";
+"selectedMemoryInfo"="selectedMemoryInfo";
+"Category Detail"="Category Detail";
+"selectedSameOS" = "selectedSameOS";
+"OS Version" = "OS Version";
+
+
+
+
+
+
+

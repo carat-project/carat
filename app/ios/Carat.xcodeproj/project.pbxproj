@@ -33,7 +33,6 @@
 		894AF06A1BCCD9BF003E7D76 /* AboutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894AF0681BCCD9BF003E7D76 /* AboutTableViewCell.xib */; };
 		894AF06D1BCCEC5F003E7D76 /* AboutListItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 894AF06C1BCCEC5F003E7D76 /* AboutListItemData.m */; };
 		894C55891BDA5D5800B247F0 /* UIButton+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C55881BDA5D5800B247F0 /* UIButton+BackgroundColor.m */; };
-		894F34951BC042E700E0702A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 894F34941BC042E700E0702A /* Localizable.strings */; };
 		89550A9D1BCBDBDC00D1DE11 /* TouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89550A9C1BCBDBDC00D1DE11 /* TouchView.m */; };
 		89554B5B1BDCD98C00ECE919 /* ProgressUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89554B5A1BDCD98C00ECE919 /* ProgressUpdateView.xib */; };
 		89554B5E1BDCD99900ECE919 /* ProgressUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89554B5D1BDCD99900ECE919 /* ProgressUpdateView.m */; };
@@ -41,6 +40,7 @@
 		8958183C1BD7D372005E3C32 /* ActionItemCollapsedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8958183A1BD7D372005E3C32 /* ActionItemCollapsedTableViewCell.xib */; };
 		895818421BD8AF39005E3C32 /* ActionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 895818411BD8AF39005E3C32 /* ActionTableViewCell.m */; };
 		89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89685C751BBAA8440078C4C6 /* Images.xcassets */; };
+		897B01B41BEA1ABA0025E051 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 897B01B61BEA1ABA0025E051 /* Localizable.strings */; };
 		8988B1571BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1561BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib */; };
 		8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1581BDC03DE0022524B /* BugHogExpandedTableViewCell.xib */; };
 		8988B1611BDC181B0022524B /* deviceselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988B15B1BDC181B0022524B /* deviceselect.png */; };
@@ -234,7 +234,6 @@
 		894C55881BDA5D5800B247F0 /* UIButton+BackgroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackgroundColor.m"; sourceTree = "<group>"; };
 		894F09FA1BBBBB8500B092BD /* AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppColors.h; sourceTree = "<group>"; };
 		894F09FB1BBBC33400B092BD /* AppLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLayout.h; sourceTree = "<group>"; };
-		894F34941BC042E700E0702A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		89550A9B1BCBDBDC00D1DE11 /* TouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchView.h; sourceTree = "<group>"; };
 		89550A9C1BCBDBDC00D1DE11 /* TouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchView.m; sourceTree = "<group>"; };
 		89550A9E1BCBDCC500D1DE11 /* TouchViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchViewDelegate.h; sourceTree = "<group>"; };
@@ -247,6 +246,8 @@
 		895818401BD8AF39005E3C32 /* ActionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionTableViewCell.h; sourceTree = "<group>"; };
 		895818411BD8AF39005E3C32 /* ActionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionTableViewCell.m; sourceTree = "<group>"; };
 		89685C751BBAA8440078C4C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		897B01B51BEA1ABA0025E051 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		897B01B71BEA1B160025E051 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8988B1561BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemExpandedTableViewCell.xib; sourceTree = "<group>"; };
 		8988B1581BDC03DE0022524B /* BugHogExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugHogExpandedTableViewCell.xib; sourceTree = "<group>"; };
 		8988B15B1BDC181B0022524B /* deviceselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deviceselect.png; sourceTree = "<group>"; };
@@ -890,7 +891,7 @@
 				C18E107014665E230028095B /* Carat.xcdatamodeld */,
 				AB41CE15144F78450090CC09 /* img */,
 				89685C751BBAA8440078C4C6 /* Images.xcassets */,
-				894F34941BC042E700E0702A /* Localizable.strings */,
+				897B01B61BEA1ABA0025E051 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1713,6 +1714,7 @@
 				nl,
 				vi,
 				zh_CN,
+				fi,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Carat */;
 			projectDirPath = "";
@@ -1754,7 +1756,7 @@
 				66EC15081A2A6A8E00153746 /* infoButton.png in Resources */,
 				C75488D619963D04007A01CF /* 32-iphone.png in Resources */,
 				89FF8B061BDBA53900147943 /* ConsentView.xib in Resources */,
-				894F34951BC042E700E0702A /* Localizable.strings in Resources */,
+				897B01B41BEA1ABA0025E051 /* Localizable.strings in Resources */,
 				ABC07A1B14859C7100FCC2C2 /* about.png in Resources */,
 				ABC07A331486C21A00FCC2C2 /* 53-house.png in Resources */,
 				AB9B580B148FEA10004F92F2 /* 37x-Checkmark.png in Resources */,
@@ -1949,6 +1951,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		897B01B61BEA1ABA0025E051 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				897B01B51BEA1ABA0025E051 /* en */,
+				897B01B71BEA1B160025E051 /* fi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		AB41CDF6144E1E520090CC09 /* CaratAppDelegate.m */ = {
 			isa = PBXVariantGroup;
 			children = (
