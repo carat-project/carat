@@ -19,6 +19,7 @@ import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
+import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.views.CircleDisplay;
 
@@ -227,7 +228,18 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                         actionsAmountText.setText(String.valueOf(hogsCount + bugsCount));
                         mainActivity.setBugAmount(String.valueOf(bugsCount));
                         mainActivity.setHogAmount(String.valueOf(hogsCount));
-                        mainActivity.setActionsAmount(bugsCount + hogsCount);
+                        int actionsAmount = 0;
+                        for (SimpleHogBug s : h) {
+                            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                                actionsAmount++;
+                            }
+                        }
+                        for (SimpleHogBug s : b) {
+                            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                                actionsAmount++;
+                            }
+                        }
+                        mainActivity.setActionsAmount(actionsAmount);
                     }
                 }
             });
