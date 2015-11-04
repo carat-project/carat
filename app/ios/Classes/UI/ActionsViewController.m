@@ -54,7 +54,7 @@
 - (NSMutableArray *) getActionsList
 {
      // get Hogs, filter negative actionBenefits, fill mutable array
-    NSMutableArray *myList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
+    NSMutableArray *myList = [[CoreDataManager instance] getHogsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
     
     DLog(@"Loading Hogs");
    // get Bugs, add to array
