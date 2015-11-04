@@ -21,23 +21,24 @@
 		return result;
 	}
     else if (timeInterval < 5) {
-		result = [NSString stringWithFormat:@"Just Updated    %i Samples sent", [[CoreDataManager instance] getSampleSent]];
+		result = [NSString stringWithFormat:NSLocalizedString(@"UpdatedJust", nil), [[CoreDataManager instance] getSampleSent]];
 		return result;
 	}
     else if (timeInterval > 31536000) {
-		result = [NSString stringWithFormat:@"Updated never   %i Samples sent", [[CoreDataManager instance] getSampleSent]];
+		result = [NSString stringWithFormat:NSLocalizedString(@"UpdatedNever", nil), [[CoreDataManager instance] getSampleSent]];
 		return result;
 	}
     else { 
-		result =  [@"Updated " stringByAppendingString:[[Utilities doubleAsTimeNSString:timeInterval] stringByAppendingString:@"ago"]];
-		result = [result stringByAppendingFormat:@"   %i Samples sent", [[CoreDataManager instance] getSampleSent]];
+		result =  [NSLocalizedString(@"Updated", nil) stringByAppendingString:[[Utilities doubleAsTimeNSString:timeInterval] stringByAppendingString:NSLocalizedString(@"Ago", nil)]];
+		result = [result stringByAppendingFormat:NSLocalizedString(@"Samples", nil), [[CoreDataManager instance] getSampleSent]];
 		return result;
     }
 }
 
+
 + (NSString *)doubleAsTimeNSString:(double)timeInterval {
     // some custom strings for character
-    if (timeInterval < 1) { return @"None"; }
+    if (timeInterval < 1) { return NSLocalizedString(@"None", nil); }
     else {
         // (Updated Dd Mm Ss ago)
         int days = (int)(timeInterval / 86400);

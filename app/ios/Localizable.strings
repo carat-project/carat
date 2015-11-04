@@ -168,6 +168,13 @@
 "UpdatingMainReports" = "Updating main reports...";
 "UpdatingMainReports" = "Updating main reports...";
 "UpdatingMainReports" = "Updating main reports...";
+"UpdatedJust" = "Just Updated    %i Samples sent";
+"UpdatedNever" = @"Updated never   %i Samples sent";
+"Updated" = "Updated ";"
+"Ago" = " ago";
+"Samples" = "   %i Samples sent";
+"None" = "None";
+
 
 //Flurry Logs
 "selectedProcessList" = "selectedProcessList";
