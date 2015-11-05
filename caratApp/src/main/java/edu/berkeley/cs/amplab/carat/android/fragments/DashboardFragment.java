@@ -196,6 +196,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    private boolean done = false;
+
     public void scheduleRefresh() {
         Log.d("debug", "*** SCHELUDE START");
         if (mainActivity != null)
@@ -207,9 +209,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                         String batteryLife = CaratApplication.myDeviceData.getBatteryLife();
                         mainActivity.setBatteryLife(batteryLife);
                         batteryText.setText(batteryLife);
-
                     }
 
+                    int actionsAmount = 0;
                     int hogsCount = 0;
                     int bugsCount = 0;
                     if (CaratApplication.getStorage() != null && v != null) {
@@ -217,28 +219,28 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                         SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
                         if (h != null) {
                             hogsCount = h.length;
+                            for (SimpleHogBug s : h) {
+                                if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                                    actionsAmount++;
+                                }
+                            }
                             Log.d("debug", "*** hogsCount: " + h.length);
                         }
                         if (b != null) {
                             bugsCount = b.length;
+
+                            for (SimpleHogBug s : b) {
+                                if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                                    actionsAmount++;
+                                }
+                            }
                             Log.d("debug", "*** bugsCount: " + b.length);
                         }
                         hogAmountText.setText(String.valueOf(hogsCount));
                         bugAmountText.setText(String.valueOf(bugsCount));
-                        actionsAmountText.setText(String.valueOf(hogsCount + bugsCount));
+                        actionsAmountText.setText(String.valueOf(actionsAmount));
                         mainActivity.setBugAmount(String.valueOf(bugsCount));
                         mainActivity.setHogAmount(String.valueOf(hogsCount));
-                        int actionsAmount = 0;
-                        for (SimpleHogBug s : h) {
-                            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
-                                actionsAmount++;
-                            }
-                        }
-                        for (SimpleHogBug s : b) {
-                            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
-                                actionsAmount++;
-                            }
-                        }
                         mainActivity.setActionsAmount(actionsAmount);
                     }
                 }
