@@ -51,8 +51,12 @@
     [self.navigationController pushViewController:controler animated:YES];
 }
 
-- (IBAction)feedBackClicked:(id)sender {    
-    NSString *subject = [NSString stringWithFormat:@"[Carat IOS] Feedback from (device) (os)"];
+- (IBAction)feedBackClicked:(id)sender {
+    // Device info
+    UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
+    
+    /* create mail subject */
+    NSString *subject = [NSString stringWithFormat:@"[Carat IOS] Feedback from (%@) (%@)", [UIDevice currentDevice].systemVersion,[h platformString]];
     
     /* define email address */
     NSString *mail = [NSString stringWithFormat:@"Carat Team <carat@cs.helsinki.fi>"];
@@ -73,9 +77,6 @@
     NSString *JscoreStr = @"N/A";
     if(Jscore > 0)
         JscoreStr = [NSString stringWithFormat:@"%.0f", Jscore];
-    
-    // Device info
-    UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
     
     NSString *messageBody = [NSString stringWithFormat:
                              @"Carat ID: %s\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@", [[[Globals instance] getUUID] UTF8String], JscoreStr, [UIDevice currentDevice].systemVersion,[h platformString], memoryUsed, memoryActive];
