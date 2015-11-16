@@ -23,7 +23,7 @@
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
 "MainDesc"="Carat on tutkimusprojekti Helsingin Yliopistolta ja UC Berkeleyn AMP Labista. Carat auttaa löytämään ja korjaamaan akunkeston ongelmia, ja antaa henkilökohtaisia ehdotuksia. Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa. Carat kerää ja raportoi puhelimestasi yleistä käyttötietoa, joka mahdollistaa Caratin tarjoamat toiminnot. Tähän ei missään tapauksessa sisälly henkilökohtaista tietoa.\nCaratia kehitetään jatkuvasti, joten kannattaa tarkistaa uudet ehdotukset silloin tällöin. Mitä enemmän käytät Caratia, sitä tarkempaa tietoa se tarjoaa.";
-"BugsDesc"="Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa."
+"BugsDesc"="Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa.";
 "HogsDesc"="Hogit ovat sovelluksia joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akunkestoa.";
 "Eula"="Eula";
 "EulaShortDesc"="Mauris sed libero. Suspendisse facilisis nulla in lacinia laoreet, lorem velit accumsan velit vel mattis libero nisl et sem. Proin interdum maecenas massa turpis sagittis in.";
@@ -99,7 +99,7 @@
 //Actions view ends
 //ProcessView starts
 "Version"="Version";
-"ProcessMessage"="Processes are lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum";
+"ProcessMessage"="Prosessilista näyttää käynnissä olevat sovellukset, taustaprosessit, ja järjestelmän osat.";
 //ProcessView ends
 //Empty view starts
 "NothingToReport" = "Nothing to report!";
@@ -109,7 +109,7 @@
 "JScoreDesc"="The J-Score represents the percentile battery life you see relative to all other devices being measured by Carat. \n\nSo, if you have a J-Score of 50, that means your expected battery life is better than half of our users; a score of 99 means you have better battery life than 99 of our users. Of course, a single number does not provide a complete description of your battery life. \n\nA low J-Score could mean that your device is using a big battery inefficiently or a small battery with average efficiency. Similarly, a high J-Score could simply mean that you don\'t use your device heavily. Carat computes a huge variety of statistics, and the J-Score is just one of them.";
 
 "MemoryDesc"="The operating system (OS) classifies your device\'s physical memory as either used or free. If memory is used, it means there is currently data there that belongs to some process (like one of your apps or the OS, itself). When the device runs out of free memory, it needs to make room so it can store new data, which means closing apps that might be running in the background or asking your apps to throw away data they aren\'t using. The OS then further subcategorizes used memory as being either active or inactive, depending on whether it was accessed recently or not, respectively. When the OS runs out of free memory, it starts reclaiming inactive memory. When you open a bunch of apps, the fraction of used memory may increase; when the apps you have running are working with lots of data (often an energy-intensive task), the fraction of active memory may increase. The OS also preloads often used applications into memory, shortening wait times.";
-"CpuUsageDesc"="BUUJAA! asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa asdsadsa";
+"CpuUsageDesc"="CPU-käyttö kertoo kuinka kovassa käytössä laitteesi prosessori on.";
 "WhatAreTheseNumbersDesc"="Expected benefit is the amount of battery life that fixing the hog/bug is expected to yield. Fixing hogs means killing the app and using it less, while fixing a bug may mean just...";
 "WellBehivedDesc"="Well-behaved is something that I still have to find description to.";
 
@@ -124,7 +124,7 @@
 //About
 "AboutTittle"="Carat";
 "AboutSub"="Yleistä";
-"AboutMessage"="Kun käytät Caratia säännöllisesti, se kerää ja lähettää mittauksia laittesi tilasta palvelimillemme. Suosittelemme avaamaan Caratin kerran päivässä, tai niin usein kuin muistat, erityisesti ensimmäisen viikon ajan. Voi mennä viikko tai pidempään ennen kuin Crat on kerännyt tarpeeksi dataa henkilökohtaisten raporttien generoimiseksi. Varmista, että Caratilla on mahdollisuus kommunikoida palvelimiemme kanssa (avaa Carat kun sinulla on aktiivinen Internet-yhteys).\nMitä useammin käytät Caratia, sitä nopeammin se generoi raportteja, sitä enemmän tietoa raportit sisältävät, ja sitä tarkempia suositukset ovat.\nCarat ei käytä taustapalveluja laitteellasi, ja siksi se tarvitsee apuasi. Carat ottaa vastaan akunmuutosilmoituksia, jotka auttavat sitä ottamaan mittauksia kun se ei ole näkyvillä, mutta Carat ei voi avata itseään automaattisesti jos se suljetaan sovellustenhallinnasta, automaattisesti muistin säästämiseksi, tai jos puhelin käynnistetään uudelleen."
+"AboutMessage"="Kun käytät Caratia säännöllisesti, se kerää ja lähettää mittauksia laittesi tilasta palvelimillemme. Suosittelemme avaamaan Caratin kerran päivässä, tai niin usein kuin muistat, erityisesti ensimmäisen viikon ajan. Voi mennä viikko tai pidempään ennen kuin Crat on kerännyt tarpeeksi dataa henkilökohtaisten raporttien generoimiseksi. Varmista, että Caratilla on mahdollisuus kommunikoida palvelimiemme kanssa (avaa Carat kun sinulla on aktiivinen Internet-yhteys).\nMitä useammin käytät Caratia, sitä nopeammin se generoi raportteja, sitä enemmän tietoa raportit sisältävät, ja sitä tarkempia suositukset ovat.\nCarat ei käytä taustapalveluja laitteellasi, ja siksi se tarvitsee apuasi. Carat ottaa vastaan akunmuutosilmoituksia, jotka auttavat sitä ottamaan mittauksia kun se ei ole näkyvillä, mutta Carat ei voi avata itseään automaattisesti jos se suljetaan sovellustenhallinnasta, automaattisesti muistin säästämiseksi, tai jos puhelin käynnistetään uudelleen.";
 "ActionsSub"="Ehdotukset";
 "ActionsMessage"="Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.";
 //Bugs
@@ -135,7 +135,7 @@
 //HogsMessage == HogsDesc
 "CollectData"="Kerää dataa";
 "CollectDataSub"="Tietoa miten Carat kerää dataa";
-"CollectDataMessage"="Carat kerää ja raportoi yleisimmät käyttötiedot laitteestasi, joihin käyttöjärjestelmä sallii pääsyn. Tämä prosessi ei kerää yhtään henkilökohtaista tietoa. Piste"
+"CollectDataMessage"="Carat kerää ja raportoi yleisimmät käyttötiedot laitteestasi, joihin käyttöjärjestelmä sallii pääsyn. Tämä prosessi ei kerää yhtään henkilökohtaista tietoa. Piste";
 "ActiveBatteryLife"="Aktiivinen akunkesto";
 "ActiveBatteryLifeSub"="Mitä aktiivinen akunkesto tarkoittaa?";
 "ActiveBatteryLifeMessage"="Aktiivinen akunkesto arvioi, kuinka kauan akkusi kestäisi aktiivisessa käytössä. Aktiivinen akunkesto ei ota huomioon laitteen lepojaksoja, eikä aikaa, jolloin Carat ei ole kerännyt mittauksia. Aktiivinen akunkesto voi olla paljon vähemmän tai enemmän kuin voisit olettaa, mutta se kuvaa tarkemmin aktiivisen käytön tilastollista intensiteettiä.";
@@ -150,11 +150,11 @@
 "Select"="Valitse";
 
 //Share messages
-"JScoreShareMessage" = "J-Scoresi on %@. Selvitä omasi ja paranna akkusi kesstävyyttä!";
+"JScoreShareMessage" = "J-Scoresi on %@. Selvitä omasi ja paranna akkusi kestävyyttä!";
 "CaratShareMessage" = "Carat on ilmainen sovellus, jolla pystyt selvittämään mikä kuluttaa akkuasi ja onko tämä normaalia vai voitko tehdä asialle jotain.";
 "CaratHomePage" = "http://carat.cs.helsinki.fi";
 "EmailMessageTittle" = "Akun diagnosointi Caratilla";
-"CaratEmailSalesPitch" = "Tutustu tähän ilmaiseen sovellukseen %@, joka kertoo sinulle mikä kuluttaa akkuasi ja onko normaalia vai voitko sinä tehdä asialle jotain : http://is.gd/caratweb\n\n";
+"CaratEmailSalesPitch" = "Tutustu tähän ilmaiseen sovellukseen %@, joka kertoo sinulle mikä kuluttaa akkuasi ja onko tämä normaalia vai voitko sinä tehdä asialle jotain : http://is.gd/caratweb\n\n";
 //HUD
 "CCDMReportUpdateStatusNotification" = "CCDMReportUpdateStatusNotification";
 //Progress updates
@@ -168,8 +168,8 @@
 "UpdatingMainReports" = "Updating main reports...";
 "UpdatingMainReports" = "Updating main reports...";
 "UpdatedJust" = "Just Updated    %i Samples sent";
-"UpdatedNever" = @"Updated never   %i Samples sent";
-"Updated" = "Updated ";"
+"UpdatedNever" = "Updated never   %i Samples sent";
+"Updated" = "Updated ";
 "Ago" = " ago";
 "Samples" = "   %i Samples sent";
 "None" = "None";
@@ -197,10 +197,3 @@
 "Category Detail"="Category Detail";
 "selectedSameOS" = "selectedSameOS";
 "OS Version" = "OS Version";
-
-
-
-
-
-
-
