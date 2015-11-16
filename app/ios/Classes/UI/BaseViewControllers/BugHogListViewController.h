@@ -7,7 +7,7 @@
 //
 
 #import "ListNetworkBaseViewController.h"
-#import "WebInfoViewController.h";
+#import "WebInfoViewController.h"
 #import "BugHogTableViewCell.h"
 #import "UIImageView+WebCache.h"
 
