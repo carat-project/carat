@@ -172,6 +172,7 @@
 		C74130CE19EDC6EA00A1E8CE /* SDWebImageManagerDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4D14F1CA71005CE813 /* SDWebImageManagerDelegate.h */; };
 		C74130D019EDC6EA00A1E8CE /* UIButton+WebCache.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B5014F1CA71005CE813 /* UIButton+WebCache.h */; };
 		C74130D119EDC6EA00A1E8CE /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B5114F1CA71005CE813 /* UIButton+WebCache.m */; };
+		C7534EB71BF9F09600AA6F78 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7534EB61BF9F09600AA6F78 /* Launch Screen.storyboard */; };
 		C754887A19963D03007A01CF /* CaratProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C7547E3519963CFD007A01CF /* CaratProtocol.m */; };
 		C754887F19963D03007A01CF /* CoreDataAppReport.m in Sources */ = {isa = PBXBuildFile; fileRef = C7547E3F19963CFD007A01CF /* CoreDataAppReport.m */; };
 		C754888019963D03007A01CF /* CoreDataDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C7547E4119963CFD007A01CF /* CoreDataDetail.m */; };
@@ -460,6 +461,7 @@
 		C704AE531A03B90200E4F13C /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug.png; sourceTree = "<group>"; };
 		C704AE571A03B90200E4F13C /* twologo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twologo.png; sourceTree = "<group>"; };
 		C70C03D0194E3F30008C8B01 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		C7534EB61BF9F09600AA6F78 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C7547E3419963CFD007A01CF /* CaratProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratProtocol.h; sourceTree = "<group>"; };
 		C7547E3519963CFD007A01CF /* CaratProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaratProtocol.m; sourceTree = "<group>"; };
 		C7547E3E19963CFD007A01CF /* CoreDataAppReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataAppReport.h; sourceTree = "<group>"; };
@@ -1233,6 +1235,7 @@
 				89FF8B4D1BDBAA3300147943 /* WebInfoViewController.h */,
 				89FF8B4E1BDBAA3300147943 /* WebInfoViewController.m */,
 				89FF8B751BDBAA3E00147943 /* Main.storyboard */,
+				C7534EB61BF9F09600AA6F78 /* Launch Screen.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1773,6 +1776,7 @@
 				8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */,
 				8988B1631BDC181B0022524B /* jscoreplot.png in Resources */,
 				89FF8B8C1BDBAA3E00147943 /* HogsViewController.xib in Resources */,
+				C7534EB71BF9F09600AA6F78 /* Launch Screen.storyboard in Resources */,
 				8988B1571BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib in Resources */,
 				89FF8B821BDBAA3E00147943 /* ActionsViewController.xib in Resources */,
 				89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */,
