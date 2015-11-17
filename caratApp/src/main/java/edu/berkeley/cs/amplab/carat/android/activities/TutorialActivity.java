@@ -82,7 +82,7 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
 
         acceptButton = (Button) findViewById(R.id.tutorial_accept_button);
         acceptButton.setOnClickListener(this);
-        acceptButton.setClickable(false);
+        //acceptButton.setClickable(false);
     }
 
     private void initialisePaging() {
@@ -101,12 +101,16 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.tutorial_accept_button) {
-            Intent returnIntent = new Intent();
-            setResult(RESULT_OK, returnIntent);
-            SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
-            p.edit().putBoolean(getString(R.string.save_accept_eula), true).commit();
-            finish();
+        if (v.getId() == R.id.tutorial_accept_button){
+            if (this.vPager.getCurrentItem() < 3){
+                this.vPager.setCurrentItem(this.vPager.getCurrentItem()+1, true);
+            }else {
+                Intent returnIntent = new Intent();
+                setResult(RESULT_OK, returnIntent);
+                SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
+                p.edit().putBoolean(getString(R.string.save_accept_eula), true).commit();
+                finish();
+            }
         }
         if (v.getId() == R.id.eula_link) {
             eulaViewVisivibility = true;
@@ -144,7 +148,6 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
             dot2.setImageResource(R.drawable.dot);
             dot3.setImageResource(R.drawable.dot_selected);
             acceptButton.setBackgroundResource(R.drawable.button_rounded_orange);
-            acceptButton.setClickable(true);
         }
     }
 
