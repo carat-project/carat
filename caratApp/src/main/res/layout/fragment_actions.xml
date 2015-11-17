@@ -9,11 +9,15 @@
     android:weightSum="100"
     tools:context="edu.berkeley.cs.amplab.carat.android.fragments.ActionsFragment">
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="15">
+
     <RelativeLayout
         android:id="@+id/actions_header"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="15"
+        android:layout_height="wrap_content"
         android:background="@color/lightgray"
         android:orientation="horizontal">
 
@@ -34,6 +38,8 @@
             android:text="@string/actions_list_message" />
 
     </RelativeLayout>
+
+    </ScrollView>
 
     <ExpandableListView
         android:id="@+id/expandable_actions_list"

@@ -9,11 +9,15 @@
     android:weightSum="100"
     android:clickable="true">
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="15">
+
     <RelativeLayout
         android:id="@+id/bugs_header"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="15"
+        android:layout_height="wrap_content"
         android:background="@color/lightgray"
         android:orientation="horizontal">
 
@@ -34,6 +38,8 @@
             style="@style/SmallGrayText"/>
 
     </RelativeLayout>
+
+    </ScrollView>
 
     <ExpandableListView
         android:layout_weight="85"

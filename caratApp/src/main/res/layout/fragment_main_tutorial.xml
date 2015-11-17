@@ -7,30 +7,36 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:layout_gravity="center"
+        android:scaleType="centerCrop"
         android:src="@drawable/tutorial_main_bg" />
 
 
     <TextView
+        style="@style/MediumWhiteText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_above="@+id/main_scroll"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:layout_above="@+id/main_message"
-        android:text="@string/tutorial_fragment_main_title"
-        style="@style/MediumWhiteText"/>
+        android:gravity="center"
+        android:text="@string/tutorial_fragment_main_title" />
 
-    <TextView
-        android:id="@+id/main_message"
+    <ScrollView
+        android:id="@+id/main_scroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/tutorial_fragment_main_message"
-        style="@style/SmallWhiteText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerInParent="true">
 
+        <TextView
+            android:id="@+id/main_message"
+            style="@style/SmallWhiteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/tutorial_fragment_main_message" />
+    </ScrollView>
 
 </RelativeLayout>
