@@ -338,6 +338,7 @@ BOOL isUpdateProgressVisible;
     [Flurry logEvent:NSLocalizedString(@"selectedActionsView", nil)];
 }
 - (IBAction)showFacebook:(id)sender {
+    /*
     id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.helsinki.fi" name:@"Carat"];
     SZShareOptions *options = [SZShareUtils userShareOptions];
     // http://developers.facebook.com/docs/reference/api/link/
@@ -379,58 +380,7 @@ BOOL isUpdateProgressVisible;
     } cancellation:^{
         NSLog(@"Share creation cancelled");
     }];
-   
-    /*
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        fbSLComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [fbSLComposeViewController addImage:someImage];
-        [fbSLComposeViewController setInitialText:@"Some Text"];
-        [self presentViewController:fbSLComposeViewController animated:YES completion:nil];
-        
-        fbSLComposeViewController.completionHandler = ^(SLComposeViewControllerResult result) {
-            switch(result) {
-                case SLComposeViewControllerResultCancelled:
-                    NSLog(@"facebook: CANCELLED");
-                    break;
-                case SLComposeViewControllerResultDone:
-                    NSLog(@"facebook: SHARED");
-                    break;
-            }
-        };
-    }
-    else {
-        UIAlertView *fbError = [[UIAlertView alloc] initWithTitle:@"Facebook Unavailable" message:@"Sorry, we're unable to find a Facebook account on your device.\nPlease setup an account in your devices settings and try again." delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
-        [fbError show];
-    }
-    
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        
-        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        
-        [mySLComposerSheet setInitialText:@"iOS 6 Social Framework test!"];
-        
-        [mySLComposerSheet addImage:[UIImage imageNamed:@"icon144"]];
-        //@"http://carat.cs.helsinki.fi/img/icon144.png" forKey:@"picture"
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"http://stackoverflow.com/questions/12503287/tutorial-for-slcomposeviewcontroller-sharing"]];
-        
-        [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
-            switch (result) {
-                case SLComposeViewControllerResultCancelled:
-                    NSLog(@"Post Canceled");
-                    break;
-                case SLComposeViewControllerResultDone:
-                    NSLog(@"Post Sucessful");
-                    break;
-                    
-                default:
-                    break;
-            }
-        }];
-        
-        [self.navigationController pushViewController:mySLComposerSheet animated:YES];
-    }
-     */
-   
+   */
     [Flurry logEvent:NSLocalizedString(@"selectedShareFacebook", nil)];
 }
 
