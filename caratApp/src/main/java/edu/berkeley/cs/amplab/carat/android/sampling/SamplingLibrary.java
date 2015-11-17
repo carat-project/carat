@@ -585,12 +585,16 @@ public final class SamplingLibrary {
 		List<RunningAppProcessInfo> runningProcs = getRunningProcessInfo(c);
 		List<RunningServiceInfo> runningServices = getRunningServiceInfo(c);
 
+		Set<String> packages = new HashSet<String>();
 		List<ProcessInfo> l = new ArrayList<ProcessInfo>();
 
 		if (runningProcs != null) {
 			for (RunningAppProcessInfo pi : runningProcs) {
 				if (pi == null)
 					continue;
+				if (packages.contains(pi.processName))
+				    continue;
+                packages.add(pi.processName);
 				ProcessInfo item = new ProcessInfo();
 				item.setImportance(CaratApplication.importanceString(pi.importance));
 				item.setPId(pi.pid);
@@ -603,10 +607,15 @@ public final class SamplingLibrary {
 			for (RunningServiceInfo pi : runningServices) {
 				if (pi == null)
 					continue;
+				if (packages.contains(pi.process))
+                    continue;
+                packages.add(pi.process);
 				ProcessInfo item = new ProcessInfo();
 				item.setImportance(pi.foreground ? "Foreground app" : "Service");
 				item.setPId(pi.pid);
-				item.setPName(pi.clientPackage);
+				//item.setApplicationLabel(pi.service.flattenToString());
+				item.setPName(pi.process);
+				
 				l.add(item);
 			}
 		}
@@ -637,8 +646,9 @@ public final class SamplingLibrary {
 			}
 
 			runningAppInfo = new WeakReference<List<RunningAppProcessInfo>>(runningProcs);
-		}
-		return runningAppInfo.get();
+			return runningProcs;
+		}else
+		    return runningAppInfo.get();
 	}
 
 	/**
@@ -648,7 +658,7 @@ public final class SamplingLibrary {
 	 */
 	public static List<RunningServiceInfo> getRunningServiceInfo(Context c) {
 		ActivityManager pActivityManager = (ActivityManager) c.getSystemService(Activity.ACTIVITY_SERVICE);
-		return pActivityManager.getRunningServices(0);
+		return pActivityManager.getRunningServices(255);
 	}
 
 	/**
@@ -660,9 +670,22 @@ public final class SamplingLibrary {
 	public static boolean isRunning(Context context, String appName) {
 		List<RunningAppProcessInfo> runningProcs = getRunningProcessInfo(context);
 		for (RunningAppProcessInfo i : runningProcs) {
+		   // Log.d(TAG, "Matching process: "+i.processName +" with app: "+ appName);
 			if (i.processName.equals(appName) && i.importance != RunningAppProcessInfo.IMPORTANCE_EMPTY)
 				return true;
 		}
+		
+		List<RunningServiceInfo> services = getRunningServiceInfo(context);
+		for (RunningServiceInfo service: services){
+		  //  Log.d(TAG, "Matching service: "+service.process +" with app: "+ appName + " service pkg: " + service.clientPackage + " label: " + service.clientLabel);
+		    String pname = service.process;
+		    int idx = pname.indexOf(":");
+		    if (idx > 0)
+		        pname = pname.substring(0, idx);
+		    if (pname.equals(appName))
+		        return true;
+		}
+		
 		return false;
 	}
 

@@ -17,7 +17,8 @@
     <string name="memory_explanation">
         The operating system (OS) classifies your device\'s physical memory as either used or free.
         If memory is used, it means there is currently data there that belongs to some process
-        (like one of your apps or the OS, itself). When the device runs out of free memory, it needs
+        (like one of your apps or the OS, itself). When the device runs
+        out of free memory, it needs
         to make room so it can store new data, which means closing apps that might be running in the
         background or asking your apps to throw away data they aren\'t using.
         The OS then further subcategorizes used memory as being either active or inactive,
@@ -197,7 +198,7 @@
 
     <!-- PROCESS LIST -->
     <string name="version">Version</string>
-    <string name="process_list_message">Processes are Lorem ipsum TODO...</string>
+    <string name="process_list_message">The process list shows currently running applications and services. More active applications and services usually leads to worse battery life.</string>
 
     <!-- PREFERENCES LIST -->
     <string name="show_all">Show all</string>
@@ -214,7 +215,7 @@ These are the same for all languages. When translating,
 delete these from your file.
     -->
     <string name="app_name">Carat</string>
-    <string name="version_name">2.0</string>
+    <string name="version_name">2.02</string>
 
     <string name="jsna">N/A</string>
     <string name="fake_id">0</string>
