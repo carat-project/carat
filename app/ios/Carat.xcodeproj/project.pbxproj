@@ -40,6 +40,7 @@
 		8958183C1BD7D372005E3C32 /* ActionItemCollapsedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8958183A1BD7D372005E3C32 /* ActionItemCollapsedTableViewCell.xib */; };
 		895818421BD8AF39005E3C32 /* ActionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 895818411BD8AF39005E3C32 /* ActionTableViewCell.m */; };
 		89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89685C751BBAA8440078C4C6 /* Images.xcassets */; };
+		89739F7E1BFB032700AB626B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 89739F7C1BFB032700AB626B /* MBProgressHUD.m */; };
 		897B01B41BEA1ABA0025E051 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 897B01B61BEA1ABA0025E051 /* Localizable.strings */; };
 		8988B1571BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1561BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib */; };
 		8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8988B1581BDC03DE0022524B /* BugHogExpandedTableViewCell.xib */; };
@@ -54,37 +55,6 @@
 		89DAB8B61BC2B26B0053647E /* UiInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DAB8B51BC2B26B0053647E /* UiInsetLabel.m */; };
 		89EFCC121BC66ABF00480C56 /* BugHogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */; };
 		89EFCC131BC66ABF00480C56 /* BugHogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */; };
-		89FF8AF61BDBA45600147943 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8AF31BDBA45600147943 /* AboutView.xib */; };
-		89FF8AF71BDBA45600147943 /* AboutViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8AF51BDBA45600147943 /* AboutViewController2.m */; };
-		89FF8AFB1BDBA49700147943 /* ActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8AF81BDBA49700147943 /* ActionView.xib */; };
-		89FF8AFC1BDBA49700147943 /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8AFA1BDBA49700147943 /* ActionViewController.m */; };
-		89FF8AFF1BDBA4DB00147943 /* BugDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8AFE1BDBA4DB00147943 /* BugDetailViewController.m */; };
-		89FF8B021BDBA50500147943 /* BugReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B011BDBA50500147943 /* BugReportViewController.m */; };
-		89FF8B061BDBA53900147943 /* ConsentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B031BDBA53900147943 /* ConsentView.xib */; };
-		89FF8B071BDBA53900147943 /* ConsentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B051BDBA53900147943 /* ConsentViewController.m */; };
-		89FF8B0B1BDBA55800147943 /* CurrentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B081BDBA55800147943 /* CurrentView.xib */; };
-		89FF8B0C1BDBA55800147943 /* CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B0A1BDBA55800147943 /* CurrentViewController.m */; };
-		89FF8B101BDBA58100147943 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B0D1BDBA58100147943 /* DetailView.xib */; };
-		89FF8B111BDBA58100147943 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B0F1BDBA58100147943 /* DetailViewController.m */; };
-		89FF8B151BDBA5A200147943 /* HiddenAppsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B121BDBA5A100147943 /* HiddenAppsView.xib */; };
-		89FF8B161BDBA5A200147943 /* HiddenAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B141BDBA5A200147943 /* HiddenAppsViewController.m */; };
-		89FF8B191BDBA5C100147943 /* HogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B181BDBA5C100147943 /* HogDetailViewController.m */; };
-		89FF8B1C1BDBA5DB00147943 /* HogReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B1B1BDBA5DB00147943 /* HogReportViewController.m */; };
-		89FF8B201BDBA61700147943 /* InstructionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B1D1BDBA61700147943 /* InstructionView.xib */; };
-		89FF8B211BDBA61700147943 /* InstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B1F1BDBA61700147943 /* InstructionViewController.m */; };
-		89FF8B251BDBA64600147943 /* ProcessListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B221BDBA64600147943 /* ProcessListView.xib */; };
-		89FF8B261BDBA64600147943 /* ProcessListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B241BDBA64600147943 /* ProcessListViewController.m */; };
-		89FF8B2A1BDBA67600147943 /* ReportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B271BDBA67600147943 /* ReportView.xib */; };
-		89FF8B2B1BDBA67600147943 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B291BDBA67600147943 /* ReportViewController.m */; };
-		89FF8B2F1BDBA6B600147943 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B2C1BDBA6B600147943 /* SettingsView.xib */; };
-		89FF8B301BDBA6B600147943 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B2E1BDBA6B600147943 /* SettingsViewController.m */; };
-		89FF8B3D1BDBA76400147943 /* ActionItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B321BDBA76400147943 /* ActionItemCell.m */; };
-		89FF8B3E1BDBA76400147943 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B341BDBA76400147943 /* CopyLabel.m */; };
-		89FF8B3F1BDBA76400147943 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B361BDBA76400147943 /* MBProgressHUD.m */; };
-		89FF8B401BDBA76400147943 /* ProcessItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B381BDBA76400147943 /* ProcessItemCell.m */; };
-		89FF8B411BDBA76400147943 /* ProcessItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B391BDBA76400147943 /* ProcessItemCell.xib */; };
-		89FF8B421BDBA76400147943 /* ReportItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B3B1BDBA76400147943 /* ReportItemCell.m */; };
-		89FF8B431BDBA76400147943 /* ReportItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B3C1BDBA76400147943 /* ReportItemCell.xib */; };
 		89FF8B501BDBAA3300147943 /* ProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B451BDBAA3300147943 /* ProcessViewController.m */; };
 		89FF8B511BDBAA3300147943 /* ProcessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B461BDBAA3300147943 /* ProcessViewController.xib */; };
 		89FF8B521BDBAA3300147943 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B481BDBAA3300147943 /* StatisticsViewController.m */; };
@@ -247,6 +217,8 @@
 		895818401BD8AF39005E3C32 /* ActionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionTableViewCell.h; sourceTree = "<group>"; };
 		895818411BD8AF39005E3C32 /* ActionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionTableViewCell.m; sourceTree = "<group>"; };
 		89685C751BBAA8440078C4C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		89739F7C1BFB032700AB626B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		89739F7D1BFB032700AB626B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		897B01B51BEA1ABA0025E051 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		897B01B71BEA1B160025E051 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8988B1561BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionItemExpandedTableViewCell.xib; sourceTree = "<group>"; };
@@ -268,56 +240,6 @@
 		89EFCC0F1BC66ABF00480C56 /* BugHogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugHogTableViewCell.h; sourceTree = "<group>"; };
 		89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugHogTableViewCell.m; sourceTree = "<group>"; };
 		89EFCC111BC66ABF00480C56 /* BugHogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BugHogTableViewCell.xib; sourceTree = "<group>"; };
-		89FF8AF31BDBA45600147943 /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
-		89FF8AF41BDBA45600147943 /* AboutViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController2.h; sourceTree = "<group>"; };
-		89FF8AF51BDBA45600147943 /* AboutViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController2.m; sourceTree = "<group>"; };
-		89FF8AF81BDBA49700147943 /* ActionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionView.xib; sourceTree = "<group>"; };
-		89FF8AF91BDBA49700147943 /* ActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
-		89FF8AFA1BDBA49700147943 /* ActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
-		89FF8AFD1BDBA4DB00147943 /* BugDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugDetailViewController.h; sourceTree = "<group>"; };
-		89FF8AFE1BDBA4DB00147943 /* BugDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugDetailViewController.m; sourceTree = "<group>"; };
-		89FF8B001BDBA50500147943 /* BugReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugReportViewController.h; sourceTree = "<group>"; };
-		89FF8B011BDBA50500147943 /* BugReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugReportViewController.m; sourceTree = "<group>"; };
-		89FF8B031BDBA53900147943 /* ConsentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsentView.xib; sourceTree = "<group>"; };
-		89FF8B041BDBA53900147943 /* ConsentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsentViewController.h; sourceTree = "<group>"; };
-		89FF8B051BDBA53900147943 /* ConsentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsentViewController.m; sourceTree = "<group>"; };
-		89FF8B081BDBA55800147943 /* CurrentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentView.xib; sourceTree = "<group>"; };
-		89FF8B091BDBA55800147943 /* CurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentViewController.h; sourceTree = "<group>"; };
-		89FF8B0A1BDBA55800147943 /* CurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentViewController.m; sourceTree = "<group>"; };
-		89FF8B0D1BDBA58100147943 /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
-		89FF8B0E1BDBA58100147943 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		89FF8B0F1BDBA58100147943 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		89FF8B121BDBA5A100147943 /* HiddenAppsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HiddenAppsView.xib; sourceTree = "<group>"; };
-		89FF8B131BDBA5A200147943 /* HiddenAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiddenAppsViewController.h; sourceTree = "<group>"; };
-		89FF8B141BDBA5A200147943 /* HiddenAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HiddenAppsViewController.m; sourceTree = "<group>"; };
-		89FF8B171BDBA5C100147943 /* HogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HogDetailViewController.h; sourceTree = "<group>"; };
-		89FF8B181BDBA5C100147943 /* HogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HogDetailViewController.m; sourceTree = "<group>"; };
-		89FF8B1A1BDBA5DB00147943 /* HogReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HogReportViewController.h; sourceTree = "<group>"; };
-		89FF8B1B1BDBA5DB00147943 /* HogReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HogReportViewController.m; sourceTree = "<group>"; };
-		89FF8B1D1BDBA61700147943 /* InstructionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstructionView.xib; sourceTree = "<group>"; };
-		89FF8B1E1BDBA61700147943 /* InstructionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionViewController.h; sourceTree = "<group>"; };
-		89FF8B1F1BDBA61700147943 /* InstructionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionViewController.m; sourceTree = "<group>"; };
-		89FF8B221BDBA64600147943 /* ProcessListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessListView.xib; sourceTree = "<group>"; };
-		89FF8B231BDBA64600147943 /* ProcessListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessListViewController.h; sourceTree = "<group>"; };
-		89FF8B241BDBA64600147943 /* ProcessListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessListViewController.m; sourceTree = "<group>"; };
-		89FF8B271BDBA67600147943 /* ReportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportView.xib; sourceTree = "<group>"; };
-		89FF8B281BDBA67600147943 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
-		89FF8B291BDBA67600147943 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
-		89FF8B2C1BDBA6B600147943 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
-		89FF8B2D1BDBA6B600147943 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		89FF8B2E1BDBA6B600147943 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		89FF8B311BDBA76400147943 /* ActionItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionItemCell.h; sourceTree = "<group>"; };
-		89FF8B321BDBA76400147943 /* ActionItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionItemCell.m; sourceTree = "<group>"; };
-		89FF8B331BDBA76400147943 /* CopyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyLabel.h; sourceTree = "<group>"; };
-		89FF8B341BDBA76400147943 /* CopyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyLabel.m; sourceTree = "<group>"; };
-		89FF8B351BDBA76400147943 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		89FF8B361BDBA76400147943 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		89FF8B371BDBA76400147943 /* ProcessItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessItemCell.h; sourceTree = "<group>"; };
-		89FF8B381BDBA76400147943 /* ProcessItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessItemCell.m; sourceTree = "<group>"; };
-		89FF8B391BDBA76400147943 /* ProcessItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessItemCell.xib; sourceTree = "<group>"; };
-		89FF8B3A1BDBA76400147943 /* ReportItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportItemCell.h; sourceTree = "<group>"; };
-		89FF8B3B1BDBA76400147943 /* ReportItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportItemCell.m; sourceTree = "<group>"; };
-		89FF8B3C1BDBA76400147943 /* ReportItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportItemCell.xib; sourceTree = "<group>"; };
 		89FF8B441BDBAA3300147943 /* ProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessViewController.h; sourceTree = "<group>"; };
 		89FF8B451BDBAA3300147943 /* ProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessViewController.m; sourceTree = "<group>"; };
 		89FF8B461BDBAA3300147943 /* ProcessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessViewController.xib; sourceTree = "<group>"; };
@@ -813,7 +735,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				89FF8AEC1BDBA0A700147943 /* UIOld */,
 				894F09F91BBBBB2400B092BD /* Constants */,
 				AB91E431149024C3007786F0 /* Data */,
 				C70C03CF194E3F30008C8B01 /* Flurry */,
@@ -936,6 +857,8 @@
 				89EFCC0F1BC66ABF00480C56 /* BugHogTableViewCell.h */,
 				89EFCC101BC66ABF00480C56 /* BugHogTableViewCell.m */,
 				894A23FD1BC251800059850A /* ScoreView.h */,
+				89739F7C1BFB032700AB626B /* MBProgressHUD.m */,
+				89739F7D1BFB032700AB626B /* MBProgressHUD.h */,
 				894A23FE1BC251800059850A /* ScoreView.m */,
 				894A24031BC251800059850A /* TutorialPageIndicatorView.h */,
 				894A24041BC251800059850A /* TutorialPageIndicatorView.m */,
@@ -1007,79 +930,6 @@
 				8988B1601BDC181B0022524B /* updatecheck.png */,
 			);
 			name = img;
-			sourceTree = "<group>";
-		};
-		89FF8AEC1BDBA0A700147943 /* UIOld */ = {
-			isa = PBXGroup;
-			children = (
-				89FF8B961BDBAF9700147943 /* Model */,
-				89FF8AED1BDBA0F000147943 /* Components */,
-				89FF8AF31BDBA45600147943 /* AboutView.xib */,
-				89FF8AF41BDBA45600147943 /* AboutViewController2.h */,
-				89FF8AF51BDBA45600147943 /* AboutViewController2.m */,
-				89FF8AF81BDBA49700147943 /* ActionView.xib */,
-				89FF8AF91BDBA49700147943 /* ActionViewController.h */,
-				89FF8AFA1BDBA49700147943 /* ActionViewController.m */,
-				89FF8AFD1BDBA4DB00147943 /* BugDetailViewController.h */,
-				89FF8AFE1BDBA4DB00147943 /* BugDetailViewController.m */,
-				89FF8B001BDBA50500147943 /* BugReportViewController.h */,
-				89FF8B011BDBA50500147943 /* BugReportViewController.m */,
-				89FF8B031BDBA53900147943 /* ConsentView.xib */,
-				89FF8B041BDBA53900147943 /* ConsentViewController.h */,
-				89FF8B051BDBA53900147943 /* ConsentViewController.m */,
-				89FF8B081BDBA55800147943 /* CurrentView.xib */,
-				89FF8B091BDBA55800147943 /* CurrentViewController.h */,
-				89FF8B0A1BDBA55800147943 /* CurrentViewController.m */,
-				89FF8B0D1BDBA58100147943 /* DetailView.xib */,
-				89FF8B0E1BDBA58100147943 /* DetailViewController.h */,
-				89FF8B0F1BDBA58100147943 /* DetailViewController.m */,
-				89FF8B121BDBA5A100147943 /* HiddenAppsView.xib */,
-				89FF8B131BDBA5A200147943 /* HiddenAppsViewController.h */,
-				89FF8B141BDBA5A200147943 /* HiddenAppsViewController.m */,
-				89FF8B171BDBA5C100147943 /* HogDetailViewController.h */,
-				89FF8B181BDBA5C100147943 /* HogDetailViewController.m */,
-				89FF8B1A1BDBA5DB00147943 /* HogReportViewController.h */,
-				89FF8B1B1BDBA5DB00147943 /* HogReportViewController.m */,
-				89FF8B1D1BDBA61700147943 /* InstructionView.xib */,
-				89FF8B1E1BDBA61700147943 /* InstructionViewController.h */,
-				89FF8B1F1BDBA61700147943 /* InstructionViewController.m */,
-				89FF8B221BDBA64600147943 /* ProcessListView.xib */,
-				89FF8B231BDBA64600147943 /* ProcessListViewController.h */,
-				89FF8B241BDBA64600147943 /* ProcessListViewController.m */,
-				89FF8B271BDBA67600147943 /* ReportView.xib */,
-				89FF8B281BDBA67600147943 /* ReportViewController.h */,
-				89FF8B291BDBA67600147943 /* ReportViewController.m */,
-				89FF8B2C1BDBA6B600147943 /* SettingsView.xib */,
-				89FF8B2D1BDBA6B600147943 /* SettingsViewController.h */,
-				89FF8B2E1BDBA6B600147943 /* SettingsViewController.m */,
-			);
-			path = UIOld;
-			sourceTree = "<group>";
-		};
-		89FF8AED1BDBA0F000147943 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				89FF8B311BDBA76400147943 /* ActionItemCell.h */,
-				89FF8B321BDBA76400147943 /* ActionItemCell.m */,
-				89FF8B331BDBA76400147943 /* CopyLabel.h */,
-				89FF8B341BDBA76400147943 /* CopyLabel.m */,
-				89FF8B351BDBA76400147943 /* MBProgressHUD.h */,
-				89FF8B361BDBA76400147943 /* MBProgressHUD.m */,
-				89FF8B371BDBA76400147943 /* ProcessItemCell.h */,
-				89FF8B381BDBA76400147943 /* ProcessItemCell.m */,
-				89FF8B391BDBA76400147943 /* ProcessItemCell.xib */,
-				89FF8B3A1BDBA76400147943 /* ReportItemCell.h */,
-				89FF8B3B1BDBA76400147943 /* ReportItemCell.m */,
-				89FF8B3C1BDBA76400147943 /* ReportItemCell.xib */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		89FF8B961BDBAF9700147943 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		89FF8B9A1BDBB1F300147943 /* BaseViewControllers */ = {
@@ -1737,42 +1587,33 @@
 				8988B1611BDC181B0022524B /* deviceselect.png in Resources */,
 				894A24061BC251800059850A /* DashboardNavigationButton.xib in Resources */,
 				89FF8B531BDBAA3300147943 /* StatisticsViewController.xib in Resources */,
-				89FF8B2A1BDBA67600147943 /* ReportView.xib in Resources */,
 				C704AE621A03B90200E4F13C /* twologo.png in Resources */,
 				AB41CE1C1450BC060090CC09 /* hog.png in Resources */,
 				89EFCC131BC66ABF00480C56 /* BugHogTableViewCell.xib in Resources */,
 				89FF8B941BDBAA3E00147943 /* MyScoreViewController.xib in Resources */,
 				661955AF1A73FE3D00865B2E /* consent.html in Resources */,
-				89FF8B0B1BDBA55800147943 /* CurrentView.xib in Resources */,
 				89FF8B571BDBAA3300147943 /* WebInfoViewController.xib in Resources */,
 				C704AE5E1A03B90200E4F13C /* bug.png in Resources */,
 				8988B1661BDC181B0022524B /* updatecheck.png in Resources */,
 				8988B1621BDC181B0022524B /* energyratedist.png in Resources */,
 				89FF8B921BDBAA3E00147943 /* MoreViewController.xib in Resources */,
 				66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */,
-				89FF8B251BDBA64600147943 /* ProcessListView.xib in Resources */,
 				ABC07A161485828A00FCC2C2 /* amplab_logo.png in Resources */,
 				8988B1651BDC181B0022524B /* procmanager2.png in Resources */,
 				89FF8B7F1BDBAA3E00147943 /* AboutViewController.xib in Resources */,
-				89FF8B201BDBA61700147943 /* InstructionView.xib in Resources */,
-				89FF8AFB1BDBA49700147943 /* ActionView.xib in Resources */,
 				66EC15081A2A6A8E00153746 /* infoButton.png in Resources */,
 				C75488D619963D04007A01CF /* 32-iphone.png in Resources */,
-				89FF8B061BDBA53900147943 /* ConsentView.xib in Resources */,
 				897B01B41BEA1ABA0025E051 /* Localizable.strings in Resources */,
 				ABC07A1B14859C7100FCC2C2 /* about.png in Resources */,
 				ABC07A331486C21A00FCC2C2 /* 53-house.png in Resources */,
 				AB9B580B148FEA10004F92F2 /* 37x-Checkmark.png in Resources */,
 				894AF06A1BCCD9BF003E7D76 /* AboutTableViewCell.xib in Resources */,
-				89FF8B2F1BDBA6B600147943 /* SettingsView.xib in Resources */,
 				89FF8B881BDBAA3E00147943 /* DashBoardViewController.xib in Resources */,
 				AB9B580D148FF31D004F92F2 /* 37x-X.png in Resources */,
 				661955AE1A73FE3900865B2E /* about.html in Resources */,
-				89FF8B151BDBA5A200147943 /* HiddenAppsView.xib in Resources */,
 				89FF8B9F1BDBF3A000147943 /* detailinfo.html in Resources */,
 				AB9525B014EA1B6F00343418 /* killapp.html in Resources */,
 				89554B5B1BDCD98C00ECE919 /* ProgressUpdateView.xib in Resources */,
-				89FF8B431BDBA76400147943 /* ReportItemCell.xib in Resources */,
 				8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */,
 				8988B1631BDC181B0022524B /* jscoreplot.png in Resources */,
 				89FF8B8C1BDBAA3E00147943 /* HogsViewController.xib in Resources */,
@@ -1780,13 +1621,11 @@
 				8988B1571BDC03BD0022524B /* ActionItemExpandedTableViewCell.xib in Resources */,
 				89FF8B821BDBAA3E00147943 /* ActionsViewController.xib in Resources */,
 				89685C761BBAA8440078C4C6 /* Images.xcassets in Resources */,
-				89FF8B101BDBA58100147943 /* DetailView.xib in Resources */,
 				8988B1641BDC181B0022524B /* procmanager1.png in Resources */,
 				8958183C1BD7D372005E3C32 /* ActionItemCollapsedTableViewCell.xib in Resources */,
 				89FF8B551BDBAA3300147943 /* TutorialViewController.xib in Resources */,
 				661955B01A73FE4200865B2E /* jscoreinfo.html in Resources */,
 				894AF0651BCCD992003E7D76 /* AboutExpandedTableViewCell.xib in Resources */,
-				89FF8B411BDBA76400147943 /* ProcessItemCell.xib in Resources */,
 				89FF8B8A1BDBAA3E00147943 /* HideAppsViewController.xib in Resources */,
 				AB99EB0114EA6C130008E440 /* upgradeos.html in Resources */,
 				661955AD1A73FE2F00865B2E /* collectdata.html in Resources */,
@@ -1794,7 +1633,6 @@
 				661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */,
 				ABEC9B6814F1DA00005CE813 /* license.txt in Resources */,
 				89FF8B511BDBAA3300147943 /* ProcessViewController.xib in Resources */,
-				89FF8AF61BDBA45600147943 /* AboutView.xib in Resources */,
 				661955B11A73FE4500865B2E /* memoryinfo.html in Resources */,
 				89FF8B8E1BDBAA3E00147943 /* InfoViewController.xib in Resources */,
 				89FF8B861BDBAA3E00147943 /* BugsViewController.xib in Resources */,
@@ -1843,12 +1681,9 @@
 			files = (
 				C7FC323D1BE7F15700EA48B8 /* PopularModel.m in Sources */,
 				C7E31C2F1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m in Sources */,
-				89FF8B261BDBA64600147943 /* ProcessListViewController.m in Sources */,
 				89FF8B811BDBAA3E00147943 /* ActionsViewController.m in Sources */,
-				89FF8B2B1BDBA67600147943 /* ReportViewController.m in Sources */,
 				89DAB8B61BC2B26B0053647E /* UiInsetLabel.m in Sources */,
 				89FF8B891BDBAA3E00147943 /* HideAppsViewController.m in Sources */,
-				89FF8B1C1BDBA5DB00147943 /* HogReportViewController.m in Sources */,
 				89FF8B851BDBAA3E00147943 /* BugsViewController.m in Sources */,
 				89DAB8B01BC29FB30053647E /* LocalizedUIButton.m in Sources */,
 				C74130C519EDC6EA00A1E8CE /* SDImageCache.h in Sources */,
@@ -1860,7 +1695,6 @@
 				C74130CA19EDC6EA00A1E8CE /* SDWebImageDecoder.m in Sources */,
 				C754889B19963D04007A01CF /* SDWebImageDownloader.m in Sources */,
 				C74130CC19EDC6EA00A1E8CE /* SDWebImageDownloaderDelegate.h in Sources */,
-				89FF8B301BDBA6B600147943 /* SettingsViewController.m in Sources */,
 				C754889C19963D04007A01CF /* SDWebImageManager.m in Sources */,
 				C74130CE19EDC6EA00A1E8CE /* SDWebImageManagerDelegate.h in Sources */,
 				C754889D19963D04007A01CF /* SDWebImagePrefetcher.m in Sources */,
@@ -1868,13 +1702,11 @@
 				C74130D019EDC6EA00A1E8CE /* UIButton+WebCache.h in Sources */,
 				C74130D119EDC6EA00A1E8CE /* UIButton+WebCache.m in Sources */,
 				C754889F19963D04007A01CF /* UIImageView+WebCache.m in Sources */,
-				89FF8B021BDBA50500147943 /* BugReportViewController.m in Sources */,
 				C754887A19963D03007A01CF /* CaratProtocol.m in Sources */,
 				894AF0691BCCD9BF003E7D76 /* AboutTableViewCell.m in Sources */,
 				89FF8B991BDBB06C00147943 /* ActionObject.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */,
-				89FF8B401BDBA76400147943 /* ProcessItemCell.m in Sources */,
 				C754887F19963D03007A01CF /* CoreDataAppReport.m in Sources */,
 				AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */,
 				AB41CDFD144E3B990090CC09 /* Reachability.m in Sources */,
@@ -1883,7 +1715,6 @@
 				6676D13C1A4DDCDB0002FC1F /* CaratConstants.m in Sources */,
 				C14F5C30145BD4D300087F74 /* AsyncSocket.m in Sources */,
 				C14F5C36145BDA9900087F74 /* AsyncUdpSocket.m in Sources */,
-				89FF8B191BDBA5C100147943 /* HogDetailViewController.m in Sources */,
 				C1D52F2F1465F85A008D6D09 /* TBinaryProtocol.m in Sources */,
 				C1D52F301465F85A008D6D09 /* TProtocolException.m in Sources */,
 				C1D52F311465F85A008D6D09 /* TProtocolUtil.m in Sources */,
@@ -1903,47 +1734,36 @@
 				89FF8B501BDBAA3300147943 /* ProcessViewController.m in Sources */,
 				C754888B19963D03007A01CF /* Globals.m in Sources */,
 				C1D52F361465F85A008D6D09 /* TMemoryBuffer.m in Sources */,
-				89FF8AFF1BDBA4DB00147943 /* BugDetailViewController.m in Sources */,
 				C1D52F371465F85A008D6D09 /* TNSFileHandleTransport.m in Sources */,
-				89FF8B421BDBA76400147943 /* ReportItemCell.m in Sources */,
-				89FF8B071BDBA53900147943 /* ConsentViewController.m in Sources */,
-				89FF8B211BDBA61700147943 /* InstructionViewController.m in Sources */,
 				C7548C9F19963D04007A01CF /* UIDeviceHardware.m in Sources */,
 				89FF8B841BDBAA3E00147943 /* BugHogListViewController.m in Sources */,
 				89FF8B911BDBAA3E00147943 /* MoreViewController.m in Sources */,
 				C754888519963D03007A01CF /* CoreDataReport.m in Sources */,
-				89FF8AFC1BDBA49700147943 /* ActionViewController.m in Sources */,
 				89FF8B9D1BDBB2BA00147943 /* ListNetworkBaseViewController.m in Sources */,
 				89FF8B8B1BDBAA3E00147943 /* HogsViewController.m in Sources */,
 				C1D52F381465F85A008D6D09 /* TNSStreamTransport.m in Sources */,
 				C75488B819963D04007A01CF /* UIImageDoNotCache.m in Sources */,
 				C1D52F391465F85A008D6D09 /* TSocketClient.m in Sources */,
-				89FF8AF71BDBA45600147943 /* AboutViewController2.m in Sources */,
 				89FF8B541BDBAA3300147943 /* TutorialViewController.m in Sources */,
 				C1D52F3A1465F85A008D6D09 /* TTransportException.m in Sources */,
+				89739F7E1BFB032700AB626B /* MBProgressHUD.m in Sources */,
 				C754888419963D03007A01CF /* CoreDataRegistration.m in Sources */,
 				89550A9D1BCBDBDC00D1DE11 /* TouchView.m in Sources */,
 				89486E571BC55DFF00138F23 /* MeasurementBar.m in Sources */,
-				89FF8B3D1BDBA76400147943 /* ActionItemCell.m in Sources */,
 				894A24071BC251800059850A /* ScoreView.m in Sources */,
-				89FF8B111BDBA58100147943 /* DetailViewController.m in Sources */,
 				C754888319963D03007A01CF /* CoreDataProcessInfo.m in Sources */,
 				C1D52F3B1465F85A008D6D09 /* TSharedProcessorFactory.m in Sources */,
-				89FF8B0C1BDBA55800147943 /* CurrentViewController.m in Sources */,
 				C136F09B14662E5600F0A292 /* CommunicationManager.m in Sources */,
 				894A240A1BC251800059850A /* TutorialPageIndicatorView.m in Sources */,
 				C75488B919963D04007A01CF /* Utilities.m in Sources */,
 				C18E107214665E230028095B /* Carat.xcdatamodeld in Sources */,
 				89554B611BDCE2C600ECE919 /* UIView+UpdateAutoLayoutConstraints.m in Sources */,
 				C19D4207146D2AD6004C842A /* CoreDataSample.m in Sources */,
-				89FF8B3F1BDBA76400147943 /* MBProgressHUD.m in Sources */,
-				89FF8B3E1BDBA76400147943 /* CopyLabel.m in Sources */,
 				C754888919963D03007A01CF /* DatabaseManager.m in Sources */,
 				89FF8B951BDBAA3E00147943 /* NetworkBaseViewController.m in Sources */,
 				894AF06D1BCCEC5F003E7D76 /* AboutListItemData.m in Sources */,
 				89FF8B521BDBAA3300147943 /* StatisticsViewController.m in Sources */,
 				89FF8B8D1BDBAA3E00147943 /* InfoViewController.m in Sources */,
-				89FF8B161BDBA5A200147943 /* HiddenAppsViewController.m in Sources */,
 				89FF8B871BDBAA3E00147943 /* DashBoardViewController.m in Sources */,
 				894A240E1BC256A90059850A /* TutorialPageContent.m in Sources */,
 				89FF8B931BDBAA3E00147943 /* MyScoreViewController.m in Sources */,

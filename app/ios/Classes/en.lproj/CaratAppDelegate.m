@@ -12,13 +12,6 @@
 #import "Flurry.h"
 #import "Utilities.h"
 #import "CoreDataManager.h"
-
-#import "ActionViewController.h"
-#import "CurrentViewController.h"
-#import "HogReportViewController.h"
-#import "BugReportViewController.h"
-#import "ConsentViewController.h"
-#import "SettingsViewController.h"
 #import "BugsViewController.h"
 #import "Socialize/Socialize.h"
 #include <sys/sysctl.h>

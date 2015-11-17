@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "InstructionViewController.h"
+
+typedef enum {
+    ActionTypeKillApp,
+    ActionTypeRestartApp,
+    ActionTypeUpgradeOS,
+    ActionTypeDimScreen,
+    ActionTypeSpreadTheWord,
+    ActionTypeCollectData,
+    ActionTypeActiveBatteryLifeInfo,
+    ActionTypeJScoreInfo,
+    ActionTypeMemoryInfo,
+    ActionTypeDetailInfo,
+    ActionTypeGlobalStats,
+} ActionType;
 
 @interface ActionObject : NSObject {
     NSString *actionText;

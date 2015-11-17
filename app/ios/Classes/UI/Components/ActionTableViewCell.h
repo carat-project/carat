@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "InstructionViewController.h"
+#import "ActionObject.h"
 
 @interface ActionTableViewCell : UITableViewCell
 {
