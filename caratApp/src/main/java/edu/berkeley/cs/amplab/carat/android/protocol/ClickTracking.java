@@ -81,7 +81,9 @@ public class ClickTracking {
                 result = "Did not work!";
 
         } catch (Exception e) {
-            Log.e(TAG, e.getLocalizedMessage());
+            String msg = e.getLocalizedMessage();
+            if (msg != null)
+                Log.e(TAG, msg);
         }
 
         // 11. return result
