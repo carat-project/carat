@@ -1545,7 +1545,7 @@
 				ORGANIZATIONNAME = "University of Helsinki";
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = QA5XMCRV5M;
+						DevelopmentTeam = SFJUBY3N2H;
 					};
 				};
 			};
