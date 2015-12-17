@@ -90,4 +90,9 @@ public class PreferenceListDialog extends Dialog {
         p.edit().putString(mainActivity.getString(R.string.hog_hide_threshold), String.valueOf(amount)).commit();
         mainActivity.refreshSummaryFragment();
     }
+
+    private int load() {
+        SharedPreferences p = mainActivity.getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+        return Integer.parseInt(p.getString(mainActivity.getString(R.string.hog_hide_threshold), "0"));
+    }
 }
