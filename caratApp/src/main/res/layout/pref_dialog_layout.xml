@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <CheckedTextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:gravity="center_vertical"
+        android:paddingLeft="28dp"
+        android:paddingRight="10dp"
+        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:ellipsize="marquee"
+        android:textSize="16sp"
+        />
+
+    <CheckedTextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:gravity="center_vertical"
+        android:paddingLeft="28dp"
+        android:paddingRight="10dp"
+        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:ellipsize="marquee"
+        android:textSize="16sp"
+        />
+
+    <CheckedTextView
+        android:id="@+id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:gravity="center_vertical"
+        android:paddingLeft="28dp"
+        android:paddingRight="10dp"
+        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:ellipsize="marquee"
+        android:textSize="16sp"
+        />
+
+    <CheckedTextView
+        android:id="@+id/text4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:gravity="center_vertical"
+        android:paddingLeft="28dp"
+        android:paddingRight="10dp"
+        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:ellipsize="marquee"
+        android:textSize="16sp"
+        />
+
+    <CheckedTextView
+        android:id="@+id/text5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:gravity="center_vertical"
+        android:paddingLeft="28dp"
+        android:paddingRight="10dp"
+        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:ellipsize="marquee"
+        android:textSize="16sp"
+        />
+
+</LinearLayout>

@@ -141,7 +141,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
 
     public void setUpdatingValue(String what) {
-        updatedText.setText(getString(R.string.updating) + " " + what);
+        if (isAdded()) {
+            updatedText.setText(getString(R.string.updating) + " " + what);
+        }
     }
 
     @Override
