@@ -36,9 +36,9 @@
     [_pageIndicatorView setPageCount:_pageCount];
     [self setPage:_pagePos];
     
-    [_acceptButton setBackgroundColor:C_LIGHT_GRAY forState:UIControlStateDisabled];
-    [_acceptButton setBackgroundColor:C_ORANGE forState:UIControlStateNormal];
-    [_acceptButton setEnabled:[[Globals instance] hasUserConsented]];//
+    [_acceptButton setBackgroundColor:C_LIGHT_GRAY forState:UIControlStateNormal];
+    //[_acceptButton setEnabled:[[Globals instance] hasUserConsented]];//
+    [_acceptButton setEnabled:YES];
     _acceptButton.layer.cornerRadius = 5; // this value vary as per your desire
     _acceptButton.clipsToBounds = YES;
     NSLog(@"******TutorialViewController viewDidLoad******");
@@ -51,13 +51,19 @@
 
 - (IBAction)acceptPressed{
     NSLog(@"****** acceptPressed *******");
-    [[Globals instance] userHasConsented];
-    if(callbackDelegate != nil){
+    if (_pagePos == 3){
         [[Globals instance] userHasConsented];
-        [self.callbackDelegate performSelector:self->callbackSelector];
-        [Flurry logEvent:NSLocalizedString(@"selectedEulaConsentForm", nil)];
+        if(callbackDelegate != nil){
+            [[Globals instance] userHasConsented];
+            [self.callbackDelegate performSelector:self->callbackSelector];
+            [Flurry logEvent:NSLocalizedString(@"selectedEulaConsentForm", nil)];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }else {
+        if(_pagePos+1 < _pageCount){
+            [self setPage:(_pagePos+1)];
+        }
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)rightSwipe{
@@ -111,7 +117,9 @@
     TutorialPageContent* pageCont = _pageDataContent[pageNumber];
      NSLog(@"****** setPage title ******** %@", pageCont.title);
     if(pageNumber == 3){
-        [_acceptButton setEnabled:YES];
+        //[_acceptButton setEnabled:YES];
+        [_acceptButton setBackgroundColor:C_LIGHT_GRAY forState:UIControlStateDisabled];
+        [_acceptButton setBackgroundColor:C_ORANGE forState:UIControlStateNormal];
     }
     [_ImageView setImage:[UIImage imageNamed:pageCont.imageName]];
     [_tutorialPageTitle setText:pageCont.title];
