@@ -29,11 +29,11 @@
 }
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [delegate touchDown:self];
+    [delegate pressStart:self];
 }
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [delegate touchUp:self];
+    [delegate pressEnd:self];
 }
 
 /*

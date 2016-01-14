@@ -12,8 +12,8 @@
 
 
 @protocol TouchViewDelegate
--(void) touchDown:(id) sender;
--(void) touchUp:(id)sender;
+-(void) pressStart:(id) sender;
+-(void) pressEnd:(id)sender;
 @end
 
 #endif /* TouchViewDelegate_h */
