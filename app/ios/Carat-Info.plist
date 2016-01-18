@@ -8,19 +8,6 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>icon114.png</string>
-		<string>icon72.png</string>
-		<string>icon57.png</string>
-		<string>Default-Portrait@2x~ipad.png</string>
-		<string>Default-Landscape@2x~ipad.png</string>
-		<string>icon144.png</string>
-	</array>
-	<key>CFBundleIcons</key>
-	<dict/>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -57,7 +44,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.0.20151116</string>
+	<string>2.0.20151222</string>
 	<key>FacebookURLTypeIndex</key>
 	<integer>0</integer>
 	<key>LSApplicationCategoryType</key>
