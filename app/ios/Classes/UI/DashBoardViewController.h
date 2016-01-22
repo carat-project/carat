@@ -41,6 +41,7 @@
 @property (retain, nonatomic) IBOutlet DashboardNavigationButton *hogsBtn;
 @property (retain, nonatomic) IBOutlet DashboardNavigationButton *statisticsBtn;
 @property (retain, nonatomic) IBOutlet DashboardNavigationButton *actionsBtn;
+@property (retain, nonatomic) IBOutlet DashboardNavigationButton *settingsBtn;
 @property (retain, nonatomic) IBOutlet ProgressUpdateView *progressUpdateView;
 
 

@@ -56,6 +56,10 @@ BOOL isUpdateProgressVisible;
     [_actionsBtn setButtonImage:[UIImage imageNamed:@"action_icon"]];
     [_actionsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     [_actionsBtn setButtonTitle:NSLocalizedString(@"Actions", nil)];
+    
+    [_settingsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
+    [_settingsBtn setButtonExtraInfo:@"?"];
+    [_settingsBtn setButtonTitle:NSLocalizedString(@"Settings", nil)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -427,6 +431,7 @@ BOOL isUpdateProgressVisible;
     [_shareBar release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_progressUpdateView release];
+    [_settingsBtn release];
     [super dealloc];
 }
 @end
