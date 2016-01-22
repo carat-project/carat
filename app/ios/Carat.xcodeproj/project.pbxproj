@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		245A59801C526D7D003DC25C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A597E1C526D7D003DC25C /* SettingsViewController.m */; };
 		245A59811C526D7D003DC25C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245A597F1C526D7D003DC25C /* SettingsViewController.xib */; };
+		245A59841C529039003DC25C /* CoreDataSystemTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59831C529039003DC25C /* CoreDataSystemTree.m */; };
+		245A59871C529110003DC25C /* CoreDataSystemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59861C529110003DC25C /* CoreDataSystemNode.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */ = {isa = PBXBuildFile; fileRef = ABD75498162F5FC100817924 /* activebatterylife.html */; };
 		661955AD1A73FE2F00865B2E /* collectdata.html in Resources */ = {isa = PBXBuildFile; fileRef = ABE5C2A416F0F36300780085 /* collectdata.html */; };
@@ -178,6 +180,10 @@
 		245A597D1C526D7D003DC25C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		245A597E1C526D7D003DC25C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		245A597F1C526D7D003DC25C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		245A59821C529039003DC25C /* CoreDataSystemTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataSystemTree.h; sourceTree = "<group>"; };
+		245A59831C529039003DC25C /* CoreDataSystemTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataSystemTree.m; sourceTree = "<group>"; };
+		245A59851C529110003DC25C /* CoreDataSystemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataSystemNode.h; path = Classes/CoreDataSystemNode.h; sourceTree = SOURCE_ROOT; };
+		245A59861C529110003DC25C /* CoreDataSystemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataSystemNode.m; path = Classes/CoreDataSystemNode.m; sourceTree = SOURCE_ROOT; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Carat_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carat_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1022,6 +1028,10 @@
 				C7547E4719963CFD007A01CF /* CoreDataProcessInfo.m */,
 				C7547E4019963CFD007A01CF /* CoreDataDetail.h */,
 				C7547E4119963CFD007A01CF /* CoreDataDetail.m */,
+				245A59851C529110003DC25C /* CoreDataSystemNode.h */,
+				245A59861C529110003DC25C /* CoreDataSystemNode.m */,
+				245A59821C529039003DC25C /* CoreDataSystemTree.h */,
+				245A59831C529039003DC25C /* CoreDataSystemTree.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -1711,6 +1721,7 @@
 				C74130D019EDC6EA00A1E8CE /* UIButton+WebCache.h in Sources */,
 				C74130D119EDC6EA00A1E8CE /* UIButton+WebCache.m in Sources */,
 				C754889F19963D04007A01CF /* UIImageView+WebCache.m in Sources */,
+				245A59841C529039003DC25C /* CoreDataSystemTree.m in Sources */,
 				C754887A19963D03007A01CF /* CaratProtocol.m in Sources */,
 				894AF0691BCCD9BF003E7D76 /* AboutTableViewCell.m in Sources */,
 				89FF8B991BDBB06C00147943 /* ActionObject.m in Sources */,
@@ -1772,6 +1783,7 @@
 				89FF8B951BDBAA3E00147943 /* NetworkBaseViewController.m in Sources */,
 				894AF06D1BCCEC5F003E7D76 /* AboutListItemData.m in Sources */,
 				89FF8B521BDBAA3300147943 /* StatisticsViewController.m in Sources */,
+				245A59871C529110003DC25C /* CoreDataSystemNode.m in Sources */,
 				89FF8B8D1BDBAA3E00147943 /* InfoViewController.m in Sources */,
 				89FF8B871BDBAA3E00147943 /* DashBoardViewController.m in Sources */,
 				894A240E1BC256A90059850A /* TutorialPageContent.m in Sources */,

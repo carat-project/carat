@@ -57,6 +57,7 @@ BOOL isUpdateProgressVisible;
     [_actionsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     [_actionsBtn setButtonTitle:NSLocalizedString(@"Actions", nil)];
     
+    // count = [self getSettingCount];
     [_settingsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
     [_settingsBtn setButtonExtraInfo:@"?"];
     [_settingsBtn setButtonTitle:NSLocalizedString(@"Settings", nil)];
