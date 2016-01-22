@@ -341,6 +341,11 @@ BOOL isUpdateProgressVisible;
     [self.navigationController pushViewController:controler animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedActionsView", nil)];
 }
+- (IBAction)showSettings:(id)sender {
+    SettingsViewController *controller = [[SettingsViewController alloc]initWithNibName:@"SettingsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    [Flurry logEvent:NSLocalizedString(@"selectedSettingsView", nil)];
+}
 - (IBAction)showFacebook:(id)sender {
     /*
     id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.helsinki.fi" name:@"Carat"];

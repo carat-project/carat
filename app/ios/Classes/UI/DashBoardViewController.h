@@ -14,6 +14,7 @@
 #import "HogsViewController.h"
 #import "StatisticsViewController.h"
 #import "ActionsViewController.h"
+#import "SettingsViewController.h"
 #import "MyScoreViewController.h"
 #import "MoreViewController.h"
 #import "ProgressUpdateView.h"
@@ -56,6 +57,7 @@
 - (IBAction)showHogs:(id)sender;
 - (IBAction)showStatistics:(id)sender;
 - (IBAction)showActions:(id)sender;
+- (IBAction)showSettings:(id)sender;
 
 
 @end

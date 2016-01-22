@@ -83,6 +83,9 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <accessibility key="accessibilityConfiguration" label=""/>
                             <gestureRecognizers/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="Ly1-eT-jc7" appends="YES" id="fIJ-Zy-gvH"/>
+                            </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GU-Q5-Nte" userLabel="stat" customClass="DashboardNavigationButton">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -727,6 +730,11 @@
         <tapGestureRecognizer id="DdH-Nv-azK" userLabel="scoreTap">
             <connections>
                 <action selector="showScoreInfo:" destination="-1" id="u0f-SR-lS6"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Ly1-eT-jc7" userLabel="settingsTap">
+            <connections>
+                <action selector="showSettings:" destination="-1" id="2Rj-46-sIY"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

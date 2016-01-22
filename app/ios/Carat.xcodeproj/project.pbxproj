@@ -11,6 +11,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		245A59801C526D7D003DC25C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A597E1C526D7D003DC25C /* SettingsViewController.m */; };
+		245A59811C526D7D003DC25C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245A597F1C526D7D003DC25C /* SettingsViewController.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */ = {isa = PBXBuildFile; fileRef = ABD75498162F5FC100817924 /* activebatterylife.html */; };
 		661955AD1A73FE2F00865B2E /* collectdata.html in Resources */ = {isa = PBXBuildFile; fileRef = ABE5C2A416F0F36300780085 /* collectdata.html */; };
@@ -173,6 +175,9 @@
 		1D3623240D0F684500981E51 /* CaratAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratAppDelegate.h; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Carat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		245A597D1C526D7D003DC25C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		245A597E1C526D7D003DC25C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		245A597F1C526D7D003DC25C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Carat_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carat_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1064,6 +1069,9 @@
 				89FF8B471BDBAA3300147943 /* StatisticsViewController.h */,
 				89FF8B481BDBAA3300147943 /* StatisticsViewController.m */,
 				89FF8B5F1BDBAA3E00147943 /* ActionsViewController.xib */,
+				245A597D1C526D7D003DC25C /* SettingsViewController.h */,
+				245A597E1C526D7D003DC25C /* SettingsViewController.m */,
+				245A597F1C526D7D003DC25C /* SettingsViewController.xib */,
 				89FF8B5D1BDBAA3E00147943 /* ActionsViewController.h */,
 				89FF8B5E1BDBAA3E00147943 /* ActionsViewController.m */,
 				89FF8B7B1BDBAA3E00147943 /* MyScoreViewController.xib */,
@@ -1602,6 +1610,7 @@
 				8988B1651BDC181B0022524B /* procmanager2.png in Resources */,
 				89FF8B7F1BDBAA3E00147943 /* AboutViewController.xib in Resources */,
 				66EC15081A2A6A8E00153746 /* infoButton.png in Resources */,
+				245A59811C526D7D003DC25C /* SettingsViewController.xib in Resources */,
 				C75488D619963D04007A01CF /* 32-iphone.png in Resources */,
 				897B01B41BEA1ABA0025E051 /* Localizable.strings in Resources */,
 				ABC07A1B14859C7100FCC2C2 /* about.png in Resources */,
@@ -1769,6 +1778,7 @@
 				89FF8B931BDBAA3E00147943 /* MyScoreViewController.m in Sources */,
 				894A24051BC251800059850A /* DashboardNavigationButton.m in Sources */,
 				C754888719963D03007A01CF /* CoreDataSubReport.m in Sources */,
+				245A59801C526D7D003DC25C /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
