@@ -10,7 +10,8 @@
 
 @interface SettingsViewController : BaseViewController
 
-@property (retain, nonatomic) IBOutlet UILabel *informationLabel;
+@property (retain, nonatomic) IBOutlet UILabel *mobileNetworkType;
+@property (retain, nonatomic) IBOutlet UILabel *batteryState;
+@property (retain, nonatomic) IBOutlet UILabel *cpuUsage;
 
-+ (void) changeInformationLabel:(NSString*) text;
 @end

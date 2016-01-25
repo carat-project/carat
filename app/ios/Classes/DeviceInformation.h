@@ -10,4 +10,6 @@
 
 @interface DeviceInformation : NSManagedObject
 + (NSString *) getMobileNetworkType;
++ (NSString *) getBatteryState;
++ (float) getCpuUsage;
 @end
