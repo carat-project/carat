@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
+                <outlet property="informationLabel" destination="fRU-g6-Fyc" id="Ue6-ig-chw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -41,50 +42,68 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under construction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-g6-Fyc" userLabel="placeholderLabel">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqe-cd-FRg">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
-                    <variation key="widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="120" y="289" width="160" height="21"/>
-                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-g6-Fyc" userLabel="placeholderLabel">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="fRU-g6-Fyc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="E94-Uq-qUF"/>
+                <constraint firstItem="eqe-cd-FRg" firstAttribute="top" secondItem="tux-8l-PyE" secondAttribute="bottom" constant="33" id="BAE-YP-A5m">
+                    <variation key="widthClass=compact" constant="13"/>
+                </constraint>
+                <constraint firstItem="fRU-g6-Fyc" firstAttribute="top" secondItem="tux-8l-PyE" secondAttribute="bottom" constant="33" id="EDB-5B-Ysp">
+                    <variation key="widthClass=compact" constant="13"/>
+                </constraint>
                 <constraint firstItem="tux-8l-PyE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="I11-IS-2qC"/>
-                <constraint firstItem="fRU-g6-Fyc" firstAttribute="centerX" secondItem="tux-8l-PyE" secondAttribute="centerX" id="Wi0-KW-puN"/>
+                <constraint firstItem="fRU-g6-Fyc" firstAttribute="leading" secondItem="eqe-cd-FRg" secondAttribute="trailing" constant="-6" id="JNP-ux-MLy">
+                    <variation key="widthClass=compact" constant="3.5"/>
+                </constraint>
+                <constraint firstItem="eqe-cd-FRg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="YcQ-rA-ztI"/>
                 <constraint firstItem="tux-8l-PyE" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="k02-I0-F5q"/>
                 <constraint firstItem="tux-8l-PyE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mht-xd-0sz"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="tux-8l-PyE"/>
+                    <exclude reference="eqe-cd-FRg"/>
                     <exclude reference="fRU-g6-Fyc"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="I11-IS-2qC"/>
                     <exclude reference="k02-I0-F5q"/>
                     <exclude reference="mht-xd-0sz"/>
-                    <exclude reference="E94-Uq-qUF"/>
-                    <exclude reference="Wi0-KW-puN"/>
+                    <exclude reference="BAE-YP-A5m"/>
+                    <exclude reference="YcQ-rA-ztI"/>
+                    <exclude reference="EDB-5B-Ysp"/>
+                    <exclude reference="JNP-ux-MLy"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
                     <include reference="tux-8l-PyE"/>
+                    <include reference="eqe-cd-FRg"/>
                     <include reference="fRU-g6-Fyc"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="I11-IS-2qC"/>
                     <include reference="k02-I0-F5q"/>
                     <include reference="mht-xd-0sz"/>
-                    <include reference="E94-Uq-qUF"/>
-                    <include reference="Wi0-KW-puN"/>
+                    <include reference="BAE-YP-A5m"/>
+                    <include reference="YcQ-rA-ztI"/>
+                    <include reference="EDB-5B-Ysp"/>
+                    <include reference="JNP-ux-MLy"/>
                 </mask>
             </variation>
         </view>

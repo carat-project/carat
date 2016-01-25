@@ -15,6 +15,7 @@
 		245A59811C526D7D003DC25C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245A597F1C526D7D003DC25C /* SettingsViewController.xib */; };
 		245A59841C529039003DC25C /* CoreDataSystemTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59831C529039003DC25C /* CoreDataSystemTree.m */; };
 		245A59871C529110003DC25C /* CoreDataSystemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59861C529110003DC25C /* CoreDataSystemNode.m */; };
+		245A598B1C5647A1003DC25C /* DeviceInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A598A1C5647A1003DC25C /* DeviceInformation.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */ = {isa = PBXBuildFile; fileRef = ABD75498162F5FC100817924 /* activebatterylife.html */; };
 		661955AD1A73FE2F00865B2E /* collectdata.html in Resources */ = {isa = PBXBuildFile; fileRef = ABE5C2A416F0F36300780085 /* collectdata.html */; };
@@ -184,6 +185,8 @@
 		245A59831C529039003DC25C /* CoreDataSystemTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataSystemTree.m; sourceTree = "<group>"; };
 		245A59851C529110003DC25C /* CoreDataSystemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataSystemNode.h; path = Classes/CoreDataSystemNode.h; sourceTree = SOURCE_ROOT; };
 		245A59861C529110003DC25C /* CoreDataSystemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataSystemNode.m; path = Classes/CoreDataSystemNode.m; sourceTree = SOURCE_ROOT; };
+		245A59891C5647A1003DC25C /* DeviceInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
+		245A598A1C5647A1003DC25C /* DeviceInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInformation.m; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Carat_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carat_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -746,6 +749,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				245A59881C564728003DC25C /* Device */,
 				894F09F91BBBBB2400B092BD /* Constants */,
 				AB91E431149024C3007786F0 /* Data */,
 				C70C03CF194E3F30008C8B01 /* Flurry */,
@@ -791,6 +795,15 @@
 				1D6058910D05DD3D006BFB54 /* Carat.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		245A59881C564728003DC25C /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				245A59891C5647A1003DC25C /* DeviceInformation.h */,
+				245A598A1C5647A1003DC25C /* DeviceInformation.m */,
+			);
+			name = Device;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* Carat */ = {
@@ -1774,6 +1787,7 @@
 				C754888319963D03007A01CF /* CoreDataProcessInfo.m in Sources */,
 				C1D52F3B1465F85A008D6D09 /* TSharedProcessorFactory.m in Sources */,
 				C136F09B14662E5600F0A292 /* CommunicationManager.m in Sources */,
+				245A598B1C5647A1003DC25C /* DeviceInformation.m in Sources */,
 				894A240A1BC251800059850A /* TutorialPageIndicatorView.m in Sources */,
 				C75488B919963D04007A01CF /* Utilities.m in Sources */,
 				C18E107214665E230028095B /* Carat.xcdatamodeld in Sources */,

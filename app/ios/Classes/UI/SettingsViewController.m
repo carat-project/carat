@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "DeviceInformation.h"
 
 @interface SettingsViewController ()
 
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_informationLabel setText:[DeviceInformation getMobileNetworkType]];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -34,4 +36,8 @@
 }
 */
 
+- (void)dealloc {
+    [_informationLabel release];
+    [super dealloc];
+}
 @end

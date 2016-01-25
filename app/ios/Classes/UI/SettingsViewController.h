@@ -10,4 +10,7 @@
 
 @interface SettingsViewController : BaseViewController
 
+@property (retain, nonatomic) IBOutlet UILabel *informationLabel;
+
++ (void) changeInformationLabel:(NSString*) text;
 @end
