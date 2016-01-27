@@ -17,6 +17,9 @@
 #import <mach/processor_info.h>
 #import <mach/mach_host.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <CoreLocation/CoreLocation.h>
+//#import <CoreBluetooth/CoreBluetooth.h>
 
 @implementation DeviceInformation
 
@@ -60,16 +63,52 @@
     mach_msg_type_number_t msgCount;
     unsigned cpuCount;
     float system=0, user=0, idle=0;
-    kern_return_t code = host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &cpuCount, (processor_info_array_t *)&load, &msgCount);
-    if(code == KERN_SUCCESS) {
+    kern_return_t status = host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &cpuCount, (processor_info_array_t *)&load, &msgCount);
+    if(status == KERN_SUCCESS) {
         for(unsigned i=0; i<cpuCount; i++){
             system += load[i].cpu_ticks[CPU_STATE_SYSTEM];
             user += load[i].cpu_ticks[CPU_STATE_USER] + load[i].cpu_ticks[CPU_STATE_NICE];
             idle += load[i].cpu_ticks[CPU_STATE_IDLE];
         }
+        
+        // Deallocate mach task
+        vm_deallocate(mach_task_self(), load, (vm_size_t)(msgCount * sizeof(*load)));
         float total = system + user + idle;
         float used = system + user;
         return used/total;
     } else return 0.0;
 }
+
++ (float) getScreenBrightness {
+    return [UIScreen mainScreen].brightness;
+}
+
+// Synchronous approach to network reachability
++ (NSString *) getNetworkStatus {
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, "8.8.8.8");
+    SCNetworkReachabilityFlags flags;
+    bool status = SCNetworkReachabilityGetFlags(reachability, &flags);
+    CFRelease(reachability);
+    if(!status) return @"unknown";
+    bool networkReachable = ((flags & kSCNetworkReachabilityFlagsReachable) != 0) &&
+                            ((flags & kSCNetworkReachabilityFlagsConnectionRequired) != 0);
+    if (!networkReachable) return @"unavailable";
+    else if(flags & kSCNetworkReachabilityFlagsIsWWAN) return @"mobile";
+    else return @"wifi";
+}
+
++ (bool) getLocationEnabled {
+    return [CLLocationManager locationServicesEnabled];
+}
+
+/* Needs CoreBluetooth linked
++ (bool) getBluetoothEnabled {
+    NSDictionary *options = [NSDictionary dictionaryWithObject:@(NO) forKey:CBCentralManagerOptionShowPowerAlertKey];
+    CBCentralManager *cbManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil options:options];
+    return [cbManager state] == CBCentralManagerStatePoweredOn;
+}
+ */
+
 @end
+
+

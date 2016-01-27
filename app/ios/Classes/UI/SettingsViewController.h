@@ -13,5 +13,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *mobileNetworkType;
 @property (retain, nonatomic) IBOutlet UILabel *batteryState;
 @property (retain, nonatomic) IBOutlet UILabel *cpuUsage;
+@property (retain, nonatomic) IBOutlet UILabel *screenBrightness;
+@property (retain, nonatomic) IBOutlet UILabel *locationEnabled;
 
 @end

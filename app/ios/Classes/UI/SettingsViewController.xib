@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
                 <outlet property="batteryState" destination="Yes-P0-1Jy" id="6Y8-cC-To5"/>
                 <outlet property="cpuUsage" destination="3uM-bS-oSC" id="6b4-ge-Iu7"/>
+                <outlet property="locationEnabled" destination="wDW-Wt-LMC" id="iCs-Ei-GFH"/>
                 <outlet property="mobileNetworkType" destination="fRU-g6-Fyc" id="PCm-c7-1jj"/>
+                <outlet property="screenBrightness" destination="ASR-Yo-bDV" id="jr2-yc-YCt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,7 +22,6 @@
             <subviews>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tux-8l-PyE">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <animations/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,16 +47,14 @@
                 </navigationBar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqe-cd-FRg">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery state:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JT6-yy-gK9">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="8" y="105" width="107.5" height="20.5"/>
@@ -63,9 +62,8 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yes-P0-1Jy" userLabel="mobileNetworkType">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="119" y="105" width="70.5" height="20.5"/>
@@ -73,9 +71,8 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CPU usage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0b-Ys-E1W">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="8" y="133" width="107.5" height="20.5"/>
@@ -83,9 +80,8 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uM-bS-oSC" userLabel="mobileNetworkType">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="119" y="133" width="70.5" height="20.5"/>
@@ -93,13 +89,47 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-g6-Fyc" userLabel="mobileNetworkType">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-Gl-jfU">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="8" y="161" width="107.5" height="20.5"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASR-Yo-bDV" userLabel="mobileNetworkType">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="119" y="161" width="70.5" height="20.5"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDW-Wt-LMC" userLabel="mobileNetworkType">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="119" y="189" width="70.5" height="20.5"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yy-t8-VOF">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="8" y="189" width="107.5" height="20.5"/>
+                    </variation>
+                </label>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="eqe-cd-FRg" firstAttribute="top" secondItem="tux-8l-PyE" secondAttribute="bottom" constant="33" id="BAE-YP-A5m">
@@ -125,15 +155,19 @@
                     <exclude reference="T0b-Ys-E1W"/>
                     <exclude reference="3uM-bS-oSC"/>
                     <exclude reference="fRU-g6-Fyc"/>
+                    <exclude reference="wjh-Gl-jfU"/>
+                    <exclude reference="ASR-Yo-bDV"/>
+                    <exclude reference="wDW-Wt-LMC"/>
+                    <exclude reference="5yy-t8-VOF"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="I11-IS-2qC"/>
-                    <exclude reference="k02-I0-F5q"/>
-                    <exclude reference="mht-xd-0sz"/>
                     <exclude reference="BAE-YP-A5m"/>
                     <exclude reference="YcQ-rA-ztI"/>
                     <exclude reference="EDB-5B-Ysp"/>
                     <exclude reference="JNP-ux-MLy"/>
+                    <exclude reference="I11-IS-2qC"/>
+                    <exclude reference="k02-I0-F5q"/>
+                    <exclude reference="mht-xd-0sz"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -145,15 +179,19 @@
                     <include reference="T0b-Ys-E1W"/>
                     <include reference="3uM-bS-oSC"/>
                     <include reference="fRU-g6-Fyc"/>
+                    <include reference="wjh-Gl-jfU"/>
+                    <include reference="ASR-Yo-bDV"/>
+                    <include reference="wDW-Wt-LMC"/>
+                    <include reference="5yy-t8-VOF"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="I11-IS-2qC"/>
-                    <include reference="k02-I0-F5q"/>
-                    <include reference="mht-xd-0sz"/>
                     <include reference="BAE-YP-A5m"/>
                     <include reference="YcQ-rA-ztI"/>
                     <include reference="EDB-5B-Ysp"/>
                     <include reference="JNP-ux-MLy"/>
+                    <include reference="I11-IS-2qC"/>
+                    <include reference="k02-I0-F5q"/>
+                    <include reference="mht-xd-0sz"/>
                 </mask>
             </variation>
         </view>

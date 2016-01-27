@@ -20,7 +20,8 @@
     [_mobileNetworkType setText:[DeviceInformation getMobileNetworkType]];
     [_batteryState setText: [DeviceInformation getBatteryState]];
     [_cpuUsage setText: [NSString stringWithFormat:@"%2.2f %%", [DeviceInformation getCpuUsage]*100]];
-    
+    [_screenBrightness setText: [NSString stringWithFormat:@"%2.2f", [DeviceInformation getScreenBrightness]*100]];
+    [_locationEnabled setText: [NSString stringWithFormat:@"%s",[DeviceInformation getLocationEnabled] ? "ON" : "OFF"]];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -42,6 +43,8 @@
 - (void)dealloc {
     [_mobileNetworkType release];
     [_batteryState release];
+    [_screenBrightness release];
+    [_locationEnabled release];
     [super dealloc];
 }
 @end
