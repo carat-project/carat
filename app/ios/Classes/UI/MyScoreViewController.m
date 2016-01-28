@@ -17,6 +17,7 @@
 #import "Globals.h"
 #import "UIImageDoNotCache.h"
 #import "CaratConstants.h"
+#import "DeviceInformation.h"
 
 @interface MyScoreViewController ()
 
@@ -48,7 +49,8 @@ BOOL isUpdateProgressVisible;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [super viewWillAppear:animated];
-    [self updateView];
+    // This should happen automatically
+    // [self updateView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sampleCountUpdated:) name:kSamplesSentCountUpdateNotification object:nil];
 }
 
@@ -100,6 +102,8 @@ BOOL isUpdateProgressVisible;
         memUsed = [memoryInfo[kMemoryUsed] floatValue]*100;
         memActive = [memoryInfo[kMemoryActive] floatValue]*100;
     }
+    // Cpu Usage
+    float cpuUsage = [DeviceInformation getCpuUsage]*100;
     
     [self.jScore setScore:vScore];
     self.caratIDValue.text = vUUID;
@@ -108,6 +112,7 @@ BOOL isUpdateProgressVisible;
     self.deviceModelValue.text = vPlatform;
     self.memoryUsedBar.largerMeasureValue = memUsed;
     self.memoryActiveBar.largerMeasureValue = memActive;
+    self.cpuUsageBar.largerMeasureValue = cpuUsage;
     DLog(@"memUsed: %f, memActive: %f", memUsed, memActive);
     // Last Updated
     [self sampleCountUpdated:nil];

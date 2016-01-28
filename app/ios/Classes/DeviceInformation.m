@@ -21,6 +21,9 @@
 #import <CoreLocation/CoreLocation.h>
 //#import <CoreBluetooth/CoreBluetooth.h>
 
+
+static processor_cpu_load_info_t priorLoadInfo;
+
 @implementation DeviceInformation
 
 // Mobile network type, available in iOS 7.0+
@@ -57,26 +60,46 @@
     else return @"unknown";
 }
 
-// Experimental
++ (unsigned long) getNumCpu {
+    return [[NSProcessInfo processInfo] processorCount];
+}
+
+// Processor usage percentage
 + (float) getCpuUsage {
-    processor_cpu_load_info_t load;
-    mach_msg_type_number_t msgCount;
-    unsigned cpuCount;
-    float system=0, user=0, idle=0;
-    kern_return_t status = host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &cpuCount, (processor_info_array_t *)&load, &msgCount);
+    float used, total;
+    unsigned numCpu;
+    processor_cpu_load_info_t loadInfo;
+    mach_msg_type_number_t infoCount;
+    processor_flavor_t flavor = PROCESSOR_CPU_LOAD_INFO;
+    
+    // Request cpu load information from host name port
+    kern_return_t status = host_processor_info(mach_host_self(), flavor, &numCpu, (processor_info_array_t *) &loadInfo, &infoCount);
+    
     if(status == KERN_SUCCESS) {
-        for(unsigned i=0; i<cpuCount; i++){
-            system += load[i].cpu_ticks[CPU_STATE_SYSTEM];
-            user += load[i].cpu_ticks[CPU_STATE_USER] + load[i].cpu_ticks[CPU_STATE_NICE];
-            idle += load[i].cpu_ticks[CPU_STATE_IDLE];
+        for(int cpuId = 0; cpuId < numCpu; cpuId++) {
+            unsigned int *ticks = loadInfo[cpuId].cpu_ticks;
+            if (!priorLoadInfo) {
+                used = ticks[CPU_STATE_SYSTEM] + ticks[CPU_STATE_USER] + ticks[CPU_STATE_NICE];
+                total = used + ticks[CPU_STATE_IDLE];
+            } else {
+                unsigned int *priorTicks = priorLoadInfo[cpuId].cpu_ticks;
+                used = ((ticks[CPU_STATE_SYSTEM] - priorTicks[CPU_STATE_SYSTEM])
+                        + (ticks[CPU_STATE_USER] - priorTicks[CPU_STATE_USER])
+                        + (ticks[CPU_STATE_NICE] - priorTicks[CPU_STATE_NICE]));
+                total = used + (ticks[CPU_STATE_IDLE] - priorTicks[CPU_STATE_IDLE]);
+            }
         }
-        
-        // Deallocate mach task
-        vm_deallocate(mach_task_self(), load, (vm_size_t)(msgCount * sizeof(*load)));
-        float total = system + user + idle;
-        float used = system + user;
+        // Deallocate previous loadinfo arrays
+        if(priorLoadInfo){
+            vm_size_t size = infoCount * sizeof(*priorLoadInfo);
+            vm_deallocate(mach_task_self(), (vm_address_t)priorLoadInfo, size);
+        }
+        priorLoadInfo = loadInfo;
         return used/total;
-    } else return 0.0;
+    } else {
+        // Handle error
+        return 0;
+    }
 }
 
 + (float) getScreenBrightness {
