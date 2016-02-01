@@ -24,12 +24,11 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "MBProgressHUD.h"
-#import "Socialize/Socialize.h"
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
-
-@interface DashBoardViewController : NetworkBaseViewController <MFMailComposeViewControllerDelegate>{
+@interface DashBoardViewController : NetworkBaseViewController <FBSDKSharingDelegate>{
     NSTimeInterval MAX_LIFE; // max battery life in seconds
 }
 
@@ -58,6 +57,7 @@
 - (IBAction)showStatistics:(id)sender;
 - (IBAction)showActions:(id)sender;
 - (IBAction)showSettings:(id)sender;
-
-
+- (void)didCompleteWithResults:(NSDictionary *)results;
+- (void)didFailWithError:(NSError *)error;
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer;
 @end

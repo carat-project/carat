@@ -15,6 +15,7 @@
 #import "Globals.h"
 #import "UIImageDoNotCache.h"
 #import "CaratConstants.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @implementation DashBoardViewController{
 }
@@ -347,50 +348,32 @@ BOOL isUpdateProgressVisible;
     [self.navigationController pushViewController:controller animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedSettingsView", nil)];
 }
+
+#pragma mark - FBSDKSharingDelegate
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults :(NSDictionary *)results {
+    NSLog(@"FB Share: =%@\n",[results debugDescription]);
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+    NSLog(@"FB Error: =%@\n",[error debugDescription]);
+}
+
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
+    NSLog(@"FB Cancel: =%@\n",[sharer debugDescription]);
+}
+
 - (IBAction)showFacebook:(id)sender {
-    /*
-    id<SZEntity> entity = [SZEntity entityWithKey:@"http://carat.cs.helsinki.fi" name:@"Carat"];
-    SZShareOptions *options = [SZShareUtils userShareOptions];
-    // http://developers.facebook.com/docs/reference/api/link/
-    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
-        if (network == SZSocialNetworkFacebook) {
-            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life!"] forKey:@"message"];
-            [postData.params setObject:@"http://carat.cs.helsinki.fi" forKey:@"link"];
-            [postData.params setObject:@"Carat: Collaborative Energy Diagnosis" forKey:@"caption"];
-            [postData.params setObject:@"Carat" forKey:@"name"];
-            [postData.params setObject:@"Carat is a free app that tells you what is using up your battery, whether that's normal, and what you can do about it." forKey:@"description"];
-            [postData.params setObject:@"http://carat.cs.helsinki.fi/img/icon144.png" forKey:@"picture"];
-        } else if (network == SZSocialNetworkTwitter) {
-            [postData.params setObject:[[@"My J-Score is " stringByAppendingString:[[NSNumber numberWithInt:(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100)] stringValue]] stringByAppendingString:@". Find out yours and improve your battery life! http://is.gd/caratweb"] forKey:@"status"];
-        }
-    };
-    
-    options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
-        emailData.subject = @"Battery Diagnosis with Carat";
-        
-        //        NSString *appURL = [emailData.propagationInfo objectForKey:@"http://bit.ly/xurpWS"];
-        //        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
-        //        id<SZEntity> entity = emailData.share.entity;
-        NSString *appName = emailData.share.application.name;
-        
-        emailData.messageBody = [NSString stringWithFormat:@"Check out this free app called %@ that tells you what is using up your mobile device's battery, whether that's normal, and what you can do about it: http://is.gd/caratweb\n\n\n", appName];
-    };
-    
-    options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
-        //        NSString *appURL = [smsData.propagationInfo objectForKey:@"application_url"];
-        //        NSString *entityURL = [smsData.propagationInfo objectForKey:@"entity_url"];
-        //        id<SZEntity> entity = smsData.share.entity;
-        NSString *appName = smsData.share.application.name;
-        
-        smsData.body = [NSString stringWithFormat:@"Check out this free app called %@ that helps improve your mobile device's battery life: http://is.gd/caratweb", appName];
-    };
-    
-    [SZShareUtils showShareDialogWithViewController:self options:options entity:entity completion:^(NSArray *shares) {
-        //NSLog(@"Created %d shares: %@", [shares count], shares);
-    } cancellation:^{
-        NSLog(@"Share creation cancelled");
-    }];
-   */
+    int roundedJscore =(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:@"http://carat.cs.helsinki.fi"];
+    content.contentTitle = [[@"My J-Score is "
+                            stringByAppendingString:[@(roundedJscore) stringValue]]
+                            stringByAppendingString:@". Find out yours and improve your battery life!"];
+    content.imageURL = [NSURL URLWithString:@"http://carat.cs.helsinki.fi/img/icon144.png"];
+    content.contentDescription = @"Carat is a free app that tells you what is using up your battery, whether that's normal, and what you can do about it.";
+    [FBSDKShareDialog showFromViewController:self
+                                withContent:content
+                                delegate:self];
     [Flurry logEvent:NSLocalizedString(@"selectedShareFacebook", nil)];
 }
 

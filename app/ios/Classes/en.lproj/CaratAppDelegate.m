@@ -13,12 +13,13 @@
 #import "Utilities.h"
 #import "CoreDataManager.h"
 #import "BugsViewController.h"
-#import "Socialize/Socialize.h"
 #include <sys/sysctl.h>
 #include <sys/types.h>
 #include <mach/mach.h>
 #include <mach/processor_info.h>
 #include <mach/mach_host.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @implementation CaratAppDelegate
 
@@ -104,6 +105,17 @@ void onUncaughtException(NSException *exception)
     
 }
 
+// Used for facebook sharing
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            sourceApplication:(NSString *)sourceApplication
+            annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+}
+
 - (BOOL)acquireConsentWithCallbackTarget:(CaratAppDelegate *)delegate withSelector:(SEL)selector {
     // UI
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
@@ -153,10 +165,10 @@ void onUncaughtException(NSException *exception)
     [[CoreDataManager instance] generateSaveRegistration];
     
     // set the socialize api key and secret, app registered here: http://www.getsocialize.com/apps/
-    [Socialize storeConsumerKey:@"8d0ddf53-fac1-48b1-ab25-b8c819455124"];
+    /*[Socialize storeConsumerKey:@"8d0ddf53-fac1-48b1-ab25-b8c819455124"];
     [Socialize storeConsumerSecret:@"a043bea4-b4c0-432d-a007-5b74207d184e"];
     [SZFacebookUtils setAppId:@"258193747569113"];
-    [SZTwitterUtils setConsumerKey:@"JkGB6jsTAAfitYT6xASvxA" consumerSecret:@"crj455prhsA22L48VmxH2aEimR8Rmi0yYJgoclQpwPw"];
+    [SZTwitterUtils setConsumerKey:@"JkGB6jsTAAfitYT6xASvxA" consumerSecret:@"crj455prhsA22L48VmxH2aEimR8Rmi0yYJgoclQpwPw"];*/
     
     [[CoreDataManager instance] sampleNow:@"applicationDidBecomeActive"];
     
@@ -240,14 +252,6 @@ void onUncaughtException(NSException *exception)
     if ([[Globals instance] hasUserConsented]) [locationManager stopMonitoringSignificantLocationChanges];
 }
 
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
-}
-
-
 - (void)applicationWillTerminate:(UIApplication *)application {
     /*
      Called when the application is about to terminate.
@@ -259,7 +263,7 @@ void onUncaughtException(NSException *exception)
 #pragma mark -
 #pragma mark Facebook Connect methods
 
-- (BOOL)application:(UIApplication *)application 
+/*- (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url 
   sourceApplication:(NSString *)sourceApplication 
          annotation:(id)annotation 
@@ -271,7 +275,7 @@ void onUncaughtException(NSException *exception)
       handleOpenURL:(NSURL *)url 
 {
     return [Socialize handleOpenURL:url];
-}
+}*/
 
 #pragma mark -
 #pragma mark UITabBarControllerDelegate methods

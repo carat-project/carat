@@ -1,95 +1,49 @@
 PODS:
-  - AFNetworking (2.6.1):
-    - AFNetworking/NSURLConnection (= 2.6.1)
-    - AFNetworking/NSURLSession (= 2.6.1)
-    - AFNetworking/Reachability (= 2.6.1)
-    - AFNetworking/Security (= 2.6.1)
-    - AFNetworking/Serialization (= 2.6.1)
-    - AFNetworking/UIKit (= 2.6.1)
-  - AFNetworking/NSURLConnection (2.6.1):
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.1):
+  - AFNetworking/NSURLSession (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.1)
-  - AFNetworking/Security (2.6.1)
-  - AFNetworking/Serialization (2.6.1)
-  - AFNetworking/UIKit (2.6.1):
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - BlocksKit (2.2.5):
-    - BlocksKit/All (= 2.2.5)
-  - BlocksKit/All (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-    - BlocksKit/MessageUI
-    - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.5)
-  - BlocksKit/DynamicDelegate (2.2.5)
-  - BlocksKit/MessageUI (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - Bolts (1.4.0):
-    - Bolts/AppLinks (= 1.4.0)
-    - Bolts/Tasks (= 1.4.0)
-  - Bolts/AppLinks (1.4.0):
+  - Bolts (1.6.0):
+    - Bolts/AppLinks (= 1.6.0)
+    - Bolts/Tasks (= 1.6.0)
+  - Bolts/AppLinks (1.6.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.4.0)
-  - Facebook-iOS-SDK (3.20.0):
-    - Bolts (~> 1.0)
-  - Loopy (1.1.2):
-    - AFNetworking
-  - Socialize (3.1.2):
-    - BlocksKit
-    - Facebook-iOS-SDK (= 3.20)
-    - Loopy
-    - Socialize/arc (= 3.1.2)
-    - Socialize/no-arc (= 3.1.2)
-    - STTwitter
-    - SZJSONKit
-    - SZOAuthConsumer
-  - Socialize/arc (3.1.2):
-    - BlocksKit
-    - Facebook-iOS-SDK (= 3.20)
-    - Loopy
-    - Socialize/no-arc
-    - STTwitter
-    - SZJSONKit
-    - SZOAuthConsumer
-  - Socialize/no-arc (3.1.2):
-    - BlocksKit
-    - Facebook-iOS-SDK (= 3.20)
-    - Loopy
-    - STTwitter
-    - SZJSONKit
-    - SZOAuthConsumer
-  - STTwitter (0.2.2)
-  - SZJSONKit (1.5)
-  - SZOAuthConsumer (0.0.2)
+  - Bolts/Tasks (1.6.0)
+  - FBSDKCoreKit (4.9.1):
+    - Bolts (~> 1.5)
+  - FBSDKLoginKit (4.9.1):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.9.1):
+    - FBSDKCoreKit
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
-  - Socialize (from `https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec`)
-
-EXTERNAL SOURCES:
-  Socialize:
-    :podspec: https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec
+  - FBSDKCoreKit (~> 4.9.1)
+  - FBSDKLoginKit (~> 4.9.1)
+  - FBSDKShareKit (~> 4.9.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
-  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
-  Facebook-iOS-SDK: 7f22c5d87e0f5da398f7d2a231bf55149f004585
-  Loopy: 34ea4eb291bf8dc7c7dc485c185dd9d6747a212c
-  Socialize: 76d05010289c61be7816807f44930782dfc0af0d
-  STTwitter: eb85d8770ddb0f8989f341cf41ea875e90ac6e7f
-  SZJSONKit: 9b7d3cbf8f8cd21ec56d89950a0de1fadaca766e
-  SZOAuthConsumer: b62a98025846d76778ca4f24528a5c51b8e66ee6
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  Bolts: f52a250053bb517ca874523c3913776359ab3def
+  FBSDKCoreKit: aee20b6d9855f15b618d4fddd1a5ad45f5a4a59d
+  FBSDKLoginKit: ec22dc49bd372b064e93d6773df4ffefb3a552a2
+  FBSDKShareKit: b8c8ef0ed173f9fc1b3c8df384a0202ce53008d4
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0
