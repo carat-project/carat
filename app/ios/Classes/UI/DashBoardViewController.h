@@ -28,7 +28,7 @@
 #import <MessageUI/MessageUI.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
-@interface DashBoardViewController : NetworkBaseViewController <FBSDKSharingDelegate>{
+@interface DashBoardViewController : NetworkBaseViewController <FBSDKSharingDelegate, MFMailComposeViewControllerDelegate>{
     NSTimeInterval MAX_LIFE; // max battery life in seconds
 }
 
