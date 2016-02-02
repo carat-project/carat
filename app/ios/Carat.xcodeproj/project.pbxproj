@@ -10,6 +10,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2417658D1C60D896007EB0CD /* Icon144.png in Resources */ = {isa = PBXBuildFile; fileRef = 2417658C1C60D896007EB0CD /* Icon144.png */; };
 		245A59801C526D7D003DC25C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A597E1C526D7D003DC25C /* SettingsViewController.m */; };
 		245A59811C526D7D003DC25C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245A597F1C526D7D003DC25C /* SettingsViewController.xib */; };
 		245A59841C529039003DC25C /* CoreDataSystemTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59831C529039003DC25C /* CoreDataSystemTree.m */; };
@@ -32,6 +33,7 @@
 		66D41BCB1A8F8EF800044C66 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D41BCA1A8F8EF800044C66 /* settings.png */; };
 		66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15051A2A6A8E00153746 /* infoButton@2x.png */; };
 		66EC15081A2A6A8E00153746 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15061A2A6A8E00153746 /* infoButton.png */; };
+		8194B7199BDDFC529BBB8C49 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93874E209B351EAEE67C77F9 /* Pods.framework */; };
 		89486E571BC55DFF00138F23 /* MeasurementBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89486E561BC55DFF00138F23 /* MeasurementBar.m */; };
 		894A24051BC251800059850A /* DashboardNavigationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 894A23FB1BC251800059850A /* DashboardNavigationButton.m */; };
 		894A24061BC251800059850A /* DashboardNavigationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894A23FC1BC251800059850A /* DashboardNavigationButton.xib */; };
@@ -141,15 +143,8 @@
 		C704AE5E1A03B90200E4F13C /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = C704AE531A03B90200E4F13C /* bug.png */; };
 		C704AE621A03B90200E4F13C /* twologo.png in Resources */ = {isa = PBXBuildFile; fileRef = C704AE571A03B90200E4F13C /* twologo.png */; };
 		C74130C319EDC3E500A1E8CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3B89C816C03A26007C8596 /* Social.framework */; };
-		C74130C519EDC6EA00A1E8CE /* SDImageCache.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B3F14F1CA71005CE813 /* SDImageCache.h */; };
 		C74130C619EDC6EA00A1E8CE /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4014F1CA71005CE813 /* SDImageCache.m */; };
-		C74130C719EDC6EA00A1E8CE /* SDImageCacheDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4114F1CA71005CE813 /* SDImageCacheDelegate.h */; };
-		C74130C819EDC6EA00A1E8CE /* SDWebImageCompat.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4514F1CA71005CE813 /* SDWebImageCompat.h */; };
-		C74130C919EDC6EA00A1E8CE /* SDWebImageDecoder.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4614F1CA71005CE813 /* SDWebImageDecoder.h */; };
 		C74130CA19EDC6EA00A1E8CE /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4714F1CA71005CE813 /* SDWebImageDecoder.m */; };
-		C74130CC19EDC6EA00A1E8CE /* SDWebImageDownloaderDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4A14F1CA71005CE813 /* SDWebImageDownloaderDelegate.h */; };
-		C74130CE19EDC6EA00A1E8CE /* SDWebImageManagerDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4D14F1CA71005CE813 /* SDWebImageManagerDelegate.h */; };
-		C74130D019EDC6EA00A1E8CE /* UIButton+WebCache.h in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B5014F1CA71005CE813 /* UIButton+WebCache.h */; };
 		C74130D119EDC6EA00A1E8CE /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B5114F1CA71005CE813 /* UIButton+WebCache.m */; };
 		C7534EB71BF9F09600AA6F78 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7534EB61BF9F09600AA6F78 /* Launch Screen.storyboard */; };
 		C754887A19963D03007A01CF /* CaratProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C7547E3519963CFD007A01CF /* CaratProtocol.m */; };
@@ -182,6 +177,7 @@
 		1D3623240D0F684500981E51 /* CaratAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratAppDelegate.h; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Carat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2417658C1C60D896007EB0CD /* Icon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon144.png; path = ../Images.xcassets/AppIcon.appiconset/Icon144.png; sourceTree = "<group>"; };
 		245A597D1C526D7D003DC25C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		245A597E1C526D7D003DC25C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		245A597F1C526D7D003DC25C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -758,6 +754,7 @@
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
 				C14F5C33145BD54800087F74 /* CFNetwork.framework in Frameworks */,
 				AB8121E116C04EA2005FBE96 /* Accounts.framework in Frameworks */,
+				8194B7199BDDFC529BBB8C49 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,6 +1029,7 @@
 			children = (
 				C7547F3819963CFD007A01CF /* 32-iphone.png */,
 				66D41BCA1A8F8EF800044C66 /* settings.png */,
+				2417658C1C60D896007EB0CD /* Icon144.png */,
 				C704AE531A03B90200E4F13C /* bug.png */,
 				C704AE571A03B90200E4F13C /* twologo.png */,
 				66EC15051A2A6A8E00153746 /* infoButton@2x.png */,
@@ -1692,6 +1690,7 @@
 				661955AD1A73FE2F00865B2E /* collectdata.html in Resources */,
 				89FF8B901BDBAA3E00147943 /* Main.storyboard in Resources */,
 				661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */,
+				2417658D1C60D896007EB0CD /* Icon144.png in Resources */,
 				ABEC9B6814F1DA00005CE813 /* license.txt in Resources */,
 				89FF8B511BDBAA3300147943 /* ProcessViewController.xib in Resources */,
 				661955B11A73FE4500865B2E /* memoryinfo.html in Resources */,
@@ -1762,20 +1761,13 @@
 				89FF8B891BDBAA3E00147943 /* HideAppsViewController.m in Sources */,
 				89FF8B851BDBAA3E00147943 /* BugsViewController.m in Sources */,
 				89DAB8B01BC29FB30053647E /* LocalizedUIButton.m in Sources */,
-				C74130C519EDC6EA00A1E8CE /* SDImageCache.h in Sources */,
 				C74130C619EDC6EA00A1E8CE /* SDImageCache.m in Sources */,
 				89FF8B561BDBAA3300147943 /* WebInfoViewController.m in Sources */,
-				C74130C719EDC6EA00A1E8CE /* SDImageCacheDelegate.h in Sources */,
-				C74130C819EDC6EA00A1E8CE /* SDWebImageCompat.h in Sources */,
-				C74130C919EDC6EA00A1E8CE /* SDWebImageDecoder.h in Sources */,
 				C74130CA19EDC6EA00A1E8CE /* SDWebImageDecoder.m in Sources */,
 				C754889B19963D04007A01CF /* SDWebImageDownloader.m in Sources */,
-				C74130CC19EDC6EA00A1E8CE /* SDWebImageDownloaderDelegate.h in Sources */,
 				C754889C19963D04007A01CF /* SDWebImageManager.m in Sources */,
-				C74130CE19EDC6EA00A1E8CE /* SDWebImageManagerDelegate.h in Sources */,
 				C754889D19963D04007A01CF /* SDWebImagePrefetcher.m in Sources */,
 				895818421BD8AF39005E3C32 /* ActionTableViewCell.m in Sources */,
-				C74130D019EDC6EA00A1E8CE /* UIButton+WebCache.h in Sources */,
 				C74130D119EDC6EA00A1E8CE /* UIButton+WebCache.m in Sources */,
 				C754889F19963D04007A01CF /* UIImageView+WebCache.m in Sources */,
 				245A59841C529039003DC25C /* CoreDataSystemTree.m in Sources */,

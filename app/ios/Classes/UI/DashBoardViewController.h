@@ -57,7 +57,10 @@
 - (IBAction)showStatistics:(id)sender;
 - (IBAction)showActions:(id)sender;
 - (IBAction)showSettings:(id)sender;
-- (void)didCompleteWithResults:(NSDictionary *)results;
-- (void)didFailWithError:(NSError *)error;
+
+// Facebook
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults :(NSDictionary *)results;
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error;
 - (void)sharerDidCancel:(id<FBSDKSharing>)sharer;
+
 @end

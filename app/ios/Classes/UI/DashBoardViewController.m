@@ -16,6 +16,9 @@
 #import "UIImageDoNotCache.h"
 #import "CaratConstants.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
+#import <TwitterKit/TwitterKit.h>
 
 @implementation DashBoardViewController{
 }
@@ -378,7 +381,25 @@ BOOL isUpdateProgressVisible;
 }
 
 - (IBAction)showTwitter:(id)sender {
+    int roundedJscore =(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
+    TWTRComposer *composer = [[TWTRComposer alloc] init];
     
+    [composer setText:[[@"My J-Score is "
+                        stringByAppendingString:[@(roundedJscore) stringValue]]
+                        stringByAppendingString:@". Find out yours and improve your battery life! http://is.gd/caratweb"]];
+    UIImage *test = [UIImage imageNamed:@"Icon144.png"];
+    NSLog(@"TEST IS =%@", test);
+    [composer setImage:[UIImage imageNamed:@"Icon144.png"]];
+    
+    // Called from a UIViewController
+    [composer showFromViewController:self completion:^(TWTRComposerResult result) {
+        if (result == TWTRComposerResultCancelled) {
+            NSLog(@"Twitter Share: CANCELLED");
+        }
+        else {
+            NSLog(@"Twitter Share: COMPLETED");
+        }
+    }];
     [Flurry logEvent:NSLocalizedString(@"selectedShareTwitter", nil)];
 }
 
@@ -394,7 +415,6 @@ BOOL isUpdateProgressVisible;
         [messageBody appendString:[self getJScoreString]];
         [messageBody appendString:@"\n\n"];
         [messageBody appendString:[NSString stringWithFormat:NSLocalizedString(@"CaratEmailSalesPitch", nil), NSLocalizedString(@"Carat", nil)]];
-   
         [mail setMessageBody:messageBody isHTML:NO];
         
         //[self.navigationController pushViewController:mail animated:YES];
