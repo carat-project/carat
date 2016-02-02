@@ -15,5 +15,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *cpuUsage;
 @property (retain, nonatomic) IBOutlet UILabel *screenBrightness;
 @property (retain, nonatomic) IBOutlet UILabel *locationEnabled;
+@property (retain, nonatomic) IBOutlet UILabel *bluetoothEnabled;
 
 @end

@@ -8,7 +8,6 @@
 
 #import <CoreData/CoreData.h>
 #import <mach/mach.h>
-// #import <CoreBluetooth/CoreBluetooth.h>
 
 @interface DeviceInformation : NSManagedObject
 + (NSString *) getMobileNetworkType;
@@ -17,6 +16,5 @@
 + (unsigned long) getNumCpu;
 + (float) getScreenBrightness;
 + (NSString *) getNetworkStatus;
-// + (bool) getBluetoothEnabled;
 + (bool) getLocationEnabled;
 @end

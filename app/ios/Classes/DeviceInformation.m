@@ -17,10 +17,8 @@
 #import <mach/processor_info.h>
 #import <mach/mach_host.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
-#import <SystemConfiguration/SystemConfiguration.h>
+#import <SystemConfiguration/SystemConfiguration.h>	
 #import <CoreLocation/CoreLocation.h>
-//#import <CoreBluetooth/CoreBluetooth.h>
-
 
 static processor_cpu_load_info_t priorLoadInfo;
 
@@ -124,14 +122,4 @@ static processor_cpu_load_info_t priorLoadInfo;
     return [CLLocationManager locationServicesEnabled];
 }
 
-/* Needs CoreBluetooth linked
-+ (bool) getBluetoothEnabled {
-    NSDictionary *options = [NSDictionary dictionaryWithObject:@(NO) forKey:CBCentralManagerOptionShowPowerAlertKey];
-    CBCentralManager *cbManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil options:options];
-    return [cbManager state] == CBCentralManagerStatePoweredOn;
-}
- */
-
 @end
-
-
