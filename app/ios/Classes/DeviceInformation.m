@@ -19,6 +19,10 @@
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <SystemConfiguration/SystemConfiguration.h>	
 #import <CoreLocation/CoreLocation.h>
+#import <arpa/inet.h>
+#import <net/if.h>
+#import <ifaddrs.h>
+#import <net/if_dl.h>
 
 static processor_cpu_load_info_t priorLoadInfo;
 
@@ -104,6 +108,11 @@ static processor_cpu_load_info_t priorLoadInfo;
     return [UIScreen mainScreen].brightness;
 }
 
+// Starting from iOS 8.1 level reports in steps of 1pp
++ (float) getBatteryLevel {
+    return [UIDevice currentDevice].batteryLevel;
+}
+
 // Synchronous approach to network reachability
 + (NSString *) getNetworkStatus {
     SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, "8.8.8.8");
@@ -120,6 +129,57 @@ static processor_cpu_load_info_t priorLoadInfo;
 
 + (bool) getLocationEnabled {
     return [CLLocationManager locationServicesEnabled];
+}
+
+// Real uptime is fetched using sysctl call
++ (time_t) getDeviceUptime {
+    struct timeval bootTime;
+    int mib[2] = {CTL_KERN, KERN_BOOTTIME};
+    size_t size = sizeof(bootTime);
+    if(sysctl(mib, 2, &bootTime, &size, NULL, 0) != -1){
+        return (time(0) - bootTime.tv_sec);
+    }
+    
+    return 0;
+}
+
+// Sleep time is the difference between uptime and the time device has been awake
++ (time_t) getDeviceSleepTime {
+    time_t sleepTime = [self getDeviceUptime] - [[NSProcessInfo processInfo] systemUptime];
+    return sleepTime > 0 ? sleepTime : 0;
+}
+
+// Returns data sent and received by wifi and mobile interfaces in kilobytes
++ (NSArray *) getDataUsage {
+    struct ifaddrs *ifaddr;
+    const struct ifaddrs *cursor;
+    unsigned long wifiSent=0, wifiReceived=0, mobileSent=0, mobileReceived=0;
+    
+    // Get list of network interfaces
+    if(getifaddrs(&ifaddr) == 0){
+        for(cursor = ifaddr; cursor != NULL; cursor = cursor->ifa_next){
+            // Look for link layer interface
+            if(cursor->ifa_addr->sa_family == AF_LINK){
+                NSString *ifname = [NSString stringWithUTF8String:cursor->ifa_name];
+                const struct if_data *data = (struct if_data *) cursor -> ifa_data;
+                if(data == NULL) continue;
+                
+                // en0 is wifi
+                if([ifname hasPrefix:@"en"]){
+                    wifiSent += data->ifi_obytes;
+                    wifiReceived += data->ifi_ibytes;
+                }
+                // pdp_ip0 is mobile
+                else if([ifname hasPrefix:@"pdp_ip"]){
+                    mobileSent += data->ifi_obytes;
+                    mobileReceived += data->ifi_ibytes;
+                }
+            }
+        }
+        freeifaddrs(ifaddr);
+    }
+    
+    return @[@(wifiSent/1024), @(wifiReceived/1024), @(mobileSent/1024), @(mobileReceived/1024)];
 }
 
 @end

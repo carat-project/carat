@@ -16,5 +16,9 @@
 @property (retain, nonatomic) IBOutlet UILabel *screenBrightness;
 @property (retain, nonatomic) IBOutlet UILabel *locationEnabled;
 @property (retain, nonatomic) IBOutlet UILabel *bluetoothEnabled;
+@property (retain, nonatomic) IBOutlet UILabel *wifiUsage;
+@property (retain, nonatomic) IBOutlet UILabel *mobileUsage;
+@property (retain, nonatomic) IBOutlet UILabel *deviceUptime;
+@property (retain, nonatomic) IBOutlet UILabel *deviceSleepTime;
 
 @end

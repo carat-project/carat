@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -11,10 +12,14 @@
                 <outlet property="batteryState" destination="Yes-P0-1Jy" id="6Y8-cC-To5"/>
                 <outlet property="bluetoothEnabled" destination="Ail-8K-hF5" id="GwQ-ro-44S"/>
                 <outlet property="cpuUsage" destination="3uM-bS-oSC" id="6b4-ge-Iu7"/>
+                <outlet property="deviceSleepTime" destination="Bc2-wu-A8k" id="hxu-lC-Hdl"/>
+                <outlet property="deviceUptime" destination="y0h-ul-Vhq" id="XhK-Px-v2f"/>
                 <outlet property="locationEnabled" destination="wDW-Wt-LMC" id="iCs-Ei-GFH"/>
                 <outlet property="mobileNetworkType" destination="fRU-g6-Fyc" id="PCm-c7-1jj"/>
+                <outlet property="mobileUsage" destination="9Yh-QG-1PS" id="pQE-de-mtN"/>
                 <outlet property="screenBrightness" destination="ASR-Yo-bDV" id="jr2-yc-YCt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wifiUsage" destination="G69-1a-qBI" id="d3E-9x-S1R"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -90,7 +95,7 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-Gl-jfU">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-Gl-jfU">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,7 +113,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yy-t8-VOF">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yy-t8-VOF">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,7 +125,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTU-op-MzQ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTU-op-MzQ">
                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -136,6 +141,78 @@
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="119" y="218" width="273" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WiFi usage: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJD-aT-Dn6">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="7" y="247" width="108" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G69-1a-qBI" userLabel="mobileNetworkType">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="119" y="247" width="273" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile usage: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ds-xQ-r1T">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="7" y="276" width="108" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yh-QG-1PS" userLabel="mobileNetworkType">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="119" y="276" width="273" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0h-ul-Vhq" userLabel="mobileNetworkType">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="119" y="305" width="273" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFX-Zi-oRe">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="8" y="334" width="108" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc2-wu-A8k" userLabel="mobileNetworkType">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="119" y="334" width="273" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uptime:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6o-ru-Rj4">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="7" y="305" width="108" height="21"/>
                     </variation>
                 </label>
             </subviews>
@@ -194,13 +271,21 @@
                     <exclude reference="fRU-g6-Fyc"/>
                     <exclude reference="qTU-op-MzQ"/>
                     <exclude reference="Ail-8K-hF5"/>
+                    <exclude reference="UJD-aT-Dn6"/>
+                    <exclude reference="G69-1a-qBI"/>
+                    <exclude reference="5ds-xQ-r1T"/>
+                    <exclude reference="9Yh-QG-1PS"/>
+                    <exclude reference="y0h-ul-Vhq"/>
+                    <exclude reference="cFX-Zi-oRe"/>
+                    <exclude reference="Bc2-wu-A8k"/>
+                    <exclude reference="t6o-ru-Rj4"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="I11-IS-2qC"/>
-                    <exclude reference="k02-I0-F5q"/>
-                    <exclude reference="mht-xd-0sz"/>
-                    <exclude reference="BAE-YP-A5m"/>
-                    <exclude reference="YcQ-rA-ztI"/>
+                    <exclude reference="58Z-sS-wz4"/>
+                    <exclude reference="JwD-Bq-VeZ"/>
+                    <exclude reference="r1I-oO-5nF"/>
+                    <exclude reference="4vv-c2-5D7"/>
+                    <exclude reference="eDx-9d-EaK"/>
                     <exclude reference="3kH-HR-slY"/>
                     <exclude reference="CIt-4h-nJv"/>
                     <exclude reference="l4w-se-evC"/>
@@ -209,24 +294,24 @@
                     <exclude reference="Xpd-fx-Pp1"/>
                     <exclude reference="hye-30-kS3"/>
                     <exclude reference="iwD-4m-HQh"/>
-                    <exclude reference="EDB-5B-Ysp"/>
-                    <exclude reference="JNP-ux-MLy"/>
-                    <exclude reference="lfx-Qj-HYs"/>
                     <exclude reference="9vy-4D-7X0"/>
                     <exclude reference="CXr-YX-wmF"/>
                     <exclude reference="a5o-Bd-mtq"/>
                     <exclude reference="kLI-aD-A5y"/>
                     <exclude reference="tvV-rc-dgq"/>
+                    <exclude reference="BAE-YP-A5m"/>
+                    <exclude reference="YcQ-rA-ztI"/>
+                    <exclude reference="EDB-5B-Ysp"/>
+                    <exclude reference="JNP-ux-MLy"/>
+                    <exclude reference="lfx-Qj-HYs"/>
+                    <exclude reference="luZ-bo-cHL"/>
                     <exclude reference="2QU-E7-YjO"/>
                     <exclude reference="Isy-wG-g3g"/>
                     <exclude reference="ZlS-GH-SkC"/>
                     <exclude reference="lrQ-EC-xsU"/>
-                    <exclude reference="58Z-sS-wz4"/>
-                    <exclude reference="JwD-Bq-VeZ"/>
-                    <exclude reference="r1I-oO-5nF"/>
-                    <exclude reference="4vv-c2-5D7"/>
-                    <exclude reference="eDx-9d-EaK"/>
-                    <exclude reference="luZ-bo-cHL"/>
+                    <exclude reference="I11-IS-2qC"/>
+                    <exclude reference="k02-I0-F5q"/>
+                    <exclude reference="mht-xd-0sz"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -244,13 +329,21 @@
                     <include reference="fRU-g6-Fyc"/>
                     <include reference="qTU-op-MzQ"/>
                     <include reference="Ail-8K-hF5"/>
+                    <include reference="UJD-aT-Dn6"/>
+                    <include reference="G69-1a-qBI"/>
+                    <include reference="5ds-xQ-r1T"/>
+                    <include reference="9Yh-QG-1PS"/>
+                    <include reference="y0h-ul-Vhq"/>
+                    <include reference="cFX-Zi-oRe"/>
+                    <include reference="Bc2-wu-A8k"/>
+                    <include reference="t6o-ru-Rj4"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="I11-IS-2qC"/>
-                    <include reference="k02-I0-F5q"/>
-                    <include reference="mht-xd-0sz"/>
-                    <include reference="BAE-YP-A5m"/>
-                    <include reference="YcQ-rA-ztI"/>
+                    <include reference="58Z-sS-wz4"/>
+                    <include reference="JwD-Bq-VeZ"/>
+                    <include reference="r1I-oO-5nF"/>
+                    <include reference="4vv-c2-5D7"/>
+                    <include reference="eDx-9d-EaK"/>
                     <include reference="3kH-HR-slY"/>
                     <include reference="CIt-4h-nJv"/>
                     <include reference="l4w-se-evC"/>
@@ -259,24 +352,24 @@
                     <include reference="Xpd-fx-Pp1"/>
                     <include reference="hye-30-kS3"/>
                     <include reference="iwD-4m-HQh"/>
-                    <include reference="EDB-5B-Ysp"/>
-                    <include reference="JNP-ux-MLy"/>
-                    <include reference="lfx-Qj-HYs"/>
                     <include reference="9vy-4D-7X0"/>
                     <include reference="CXr-YX-wmF"/>
                     <include reference="a5o-Bd-mtq"/>
                     <include reference="kLI-aD-A5y"/>
                     <include reference="tvV-rc-dgq"/>
+                    <include reference="BAE-YP-A5m"/>
+                    <include reference="YcQ-rA-ztI"/>
+                    <include reference="EDB-5B-Ysp"/>
+                    <include reference="JNP-ux-MLy"/>
+                    <include reference="lfx-Qj-HYs"/>
+                    <include reference="luZ-bo-cHL"/>
                     <include reference="2QU-E7-YjO"/>
                     <include reference="Isy-wG-g3g"/>
                     <include reference="ZlS-GH-SkC"/>
                     <include reference="lrQ-EC-xsU"/>
-                    <include reference="58Z-sS-wz4"/>
-                    <include reference="JwD-Bq-VeZ"/>
-                    <include reference="r1I-oO-5nF"/>
-                    <include reference="4vv-c2-5D7"/>
-                    <include reference="eDx-9d-EaK"/>
-                    <include reference="luZ-bo-cHL"/>
+                    <include reference="I11-IS-2qC"/>
+                    <include reference="k02-I0-F5q"/>
+                    <include reference="mht-xd-0sz"/>
                 </mask>
             </variation>
         </view>

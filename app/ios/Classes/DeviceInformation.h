@@ -17,4 +17,7 @@
 + (float) getScreenBrightness;
 + (NSString *) getNetworkStatus;
 + (bool) getLocationEnabled;
++ (NSArray *) getDataUsage;
++ (time_t) getDeviceUptime;
++ (time_t) getDeviceSleepTime;
 @end
