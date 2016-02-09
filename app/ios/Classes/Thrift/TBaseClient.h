@@ -18,12 +18,13 @@
  */
 
 #import "TProtocol.h"
-#import "TTransport.h"
+#import "TApplicationException.h"
 
-@interface TProtocolUtil : NSObject {
-
+@interface TBaseClient : NSObject {
+    id <TProtocol> inProtocol;
+    id <TProtocol> outProtocol;
 }
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
+- (TApplicationException *)checkIncomingMessageException;
 
 @end

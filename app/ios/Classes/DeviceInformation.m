@@ -67,8 +67,8 @@ static processor_cpu_load_info_t priorLoadInfo;
 }
 
 // Processor usage percentage
-+ (float) getCpuUsage {
-    float used, total;
++ (double) getCpuUsage {
+    double used, total;
     unsigned numCpu;
     processor_cpu_load_info_t loadInfo;
     mach_msg_type_number_t infoCount;
@@ -97,15 +97,18 @@ static processor_cpu_load_info_t priorLoadInfo;
             vm_deallocate(mach_task_self(), (vm_address_t)priorLoadInfo, size);
         }
         priorLoadInfo = loadInfo;
-        return used/total;
+        
+        // Round to integer precision
+        return (used/total);
     } else {
-        // Handle error
+        // ...
         return 0;
     }
 }
 
-+ (float) getScreenBrightness {
-    return [UIScreen mainScreen].brightness;
+// Rounded screen brightness percentage
++ (NSNumber *) getScreenBrightness {
+    return @([UIScreen mainScreen].brightness*100);
 }
 
 // Starting from iOS 8.1 level reports in steps of 1pp
@@ -143,17 +146,17 @@ static processor_cpu_load_info_t priorLoadInfo;
     return 0;
 }
 
-// Sleep time is the difference between uptime and the time device has been awake
+// Calculate the difference between real and awake uptime
 + (time_t) getDeviceSleepTime {
     time_t sleepTime = [self getDeviceUptime] - [[NSProcessInfo processInfo] systemUptime];
     return sleepTime > 0 ? sleepTime : 0;
 }
 
 // Returns data sent and received by wifi and mobile interfaces in kilobytes
-+ (NSArray *) getDataUsage {
++ (NetworkUsage) getDataUsage {
+    NetworkUsage stats = {0,0,0,0};
     struct ifaddrs *ifaddr;
     const struct ifaddrs *cursor;
-    unsigned long wifiSent=0, wifiReceived=0, mobileSent=0, mobileReceived=0;
     
     // Get list of network interfaces
     if(getifaddrs(&ifaddr) == 0){
@@ -166,20 +169,19 @@ static processor_cpu_load_info_t priorLoadInfo;
                 
                 // en0 is wifi
                 if([ifname hasPrefix:@"en"]){
-                    wifiSent += data->ifi_obytes;
-                    wifiReceived += data->ifi_ibytes;
+                    stats.wifiSent += data->ifi_obytes;
+                    stats.wifiReceived += data->ifi_ibytes;
                 }
                 // pdp_ip0 is mobile
                 else if([ifname hasPrefix:@"pdp_ip"]){
-                    mobileSent += data->ifi_obytes;
-                    mobileReceived += data->ifi_ibytes;
+                    stats.mobileSent += data->ifi_obytes;
+                    stats.mobileReceived += data->ifi_ibytes;
                 }
             }
         }
         freeifaddrs(ifaddr);
     }
-    
-    return @[@(wifiSent/1024), @(wifiReceived/1024), @(mobileSent/1024), @(mobileReceived/1024)];
+    return stats;
 }
 
 @end

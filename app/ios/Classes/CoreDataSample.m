@@ -9,7 +9,6 @@
 #import "CoreDataSample.h"
 #import "CoreDataProcessInfo.h"
 
-
 @implementation CoreDataSample
 
 @dynamic batteryLevel;
@@ -24,5 +23,11 @@
 @dynamic networkStatus;
 @dynamic distanceTraveled;
 @dynamic processInfos;
+@dynamic cpuStatus;
+@dynamic screenBrightness;
+@dynamic networkDetails;
+@dynamic settings;
+
+
 
 @end

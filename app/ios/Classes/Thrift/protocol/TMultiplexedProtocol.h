@@ -17,13 +17,17 @@
  * under the License.
  */
 
-#import "TProtocol.h"
-#import "TTransport.h"
+#import <Foundation/Foundation.h>
 
-@interface TProtocolUtil : NSObject {
+#import "TProtocolDecorator.h"
 
+FOUNDATION_EXPORT NSString *const MULTIPLEXED_SERVICE_SEPERATOR;
+
+@interface TMultiplexedProtocol : TProtocolDecorator {
+    NSString * mServiceName;
 }
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
+- (id) initWithProtocol: (id <TProtocol>) protocol
+            serviceName: (NSString *) name;
 
 @end

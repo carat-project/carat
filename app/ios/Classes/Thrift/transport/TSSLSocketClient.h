@@ -17,13 +17,24 @@
  * under the License.
  */
 
-#import "TProtocol.h"
-#import "TTransport.h"
+#import <Foundation/Foundation.h>
+#import "TNSStreamTransport.h"
 
-@interface TProtocolUtil : NSObject {
-
+@interface TSSLSocketClient : TNSStreamTransport
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6)
+<NSStreamDelegate>
+#endif
+{
+    NSInputStream *inputStream;
+    NSOutputStream *outputStream;
+@private
+    NSString *sslHostname;
+    int sd;
 }
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
+- (id) initWithHostname: (NSString *) hostname
+                   port: (int) port;
+
+- (BOOL) isOpen;
 
 @end

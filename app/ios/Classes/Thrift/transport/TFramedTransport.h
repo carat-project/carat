@@ -17,13 +17,13 @@
  * under the License.
  */
 
-#import "TProtocol.h"
+#import <Foundation/Foundation.h>
 #import "TTransport.h"
 
-@interface TProtocolUtil : NSObject {
-
+@interface TFramedTransport : NSObject <TTransport> {
+    id <TTransport> mTransport;
 }
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
+- (id) initWithTransport: (id <TTransport>) transport;
 
 @end

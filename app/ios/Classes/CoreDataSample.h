@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "CaratProtocol.h"
 
 @class CoreDataProcessInfo;
 
@@ -24,7 +25,13 @@
 @property (nonatomic, retain) NSString * triggeredBy;
 @property (nonatomic, retain) NSString * networkStatus;
 @property (nonatomic, retain) NSNumber * distanceTraveled;
-@property (nonatomic, retain) NSSet *processInfos;
+@property (nonatomic, retain) NSSet * processInfos;
+
+@property (nonatomic, retain) NSNumber * screenBrightness;
+@property (nonatomic, retain) NSData * cpuStatus;
+@property (nonatomic, retain) NSData * networkDetails;
+@property (nonatomic, retain) NSData * settings;
+
 @end
 
 @interface CoreDataSample (CoreDataGeneratedAccessors)

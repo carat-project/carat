@@ -9,15 +9,23 @@
 #import <CoreData/CoreData.h>
 #import <mach/mach.h>
 
+typedef struct NetworkUsage {
+    double wifiReceived;
+    double wifiSent;
+    double mobileReceived;
+    double mobileSent;
+} NetworkUsage;
+
 @interface DeviceInformation : NSManagedObject
+
 + (NSString *) getMobileNetworkType;
 + (NSString *) getBatteryState;
-+ (float) getCpuUsage;
++ (double) getCpuUsage;
 + (unsigned long) getNumCpu;
-+ (float) getScreenBrightness;
++ (NSNumber *) getScreenBrightness;
 + (NSString *) getNetworkStatus;
 + (bool) getLocationEnabled;
-+ (NSArray *) getDataUsage;
++ (NetworkUsage) getDataUsage;
 + (time_t) getDeviceUptime;
 + (time_t) getDeviceSleepTime;
 @end

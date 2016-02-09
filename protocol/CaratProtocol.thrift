@@ -37,6 +37,13 @@ struct ProcessInfo {
 //
 typedef list<ProcessInfo> ProcessInfoList
 
+struct NetworkStatistics {
+	1: optional double wifiReceived;
+	2: optional double wifiSent;
+	3: optional double mobileReceived;
+	4: optional double mobileSent;
+}
+
 //
 // Network details on Android.
 //
@@ -54,6 +61,8 @@ struct NetworkDetails {
 	6: optional string wifiStatus;	 // disabled, disabling, enabled, enabling, unknown
 	7: optional i32 wifiSignalStrength;	// as given by getRssi() on Android
 	8: optional i32 wifiLinkSpeed;	    // link speed in Mbps
+
+	9: optional NetworkStatistics networkStatistics;
 }
 
 //
@@ -76,6 +85,7 @@ struct CpuStatus {
 	// Android-only: CPU
     1: optional double cpuUsage; // cpu usage fraction (0-1)
 	2: optional double uptime; // uptime in seconds
+	3: optional double sleeptime; // experimental sleep time
     // These may change
 //	3: optional double cpuTime; // CPU usage in seconds since reboot
 //	4: optional double idleTime; // idle time in seconds since reboot
@@ -98,6 +108,11 @@ struct CallInfo {
 struct Feature {
 	1: optional string key;
 	2: optional string value;
+}
+
+struct Settings {
+	5: optional bool bluetoothEnabled;
+	6: optional bool locationEnabled;
 }
 
 //
@@ -131,6 +146,7 @@ struct Sample {
 	22: optional i32 unknownSources; // Android Only: Unknown source app installation on == 1, off == 0
 	23: optional i32 developerMode; // Android Only: Developer mode on == 1, off == 0
 	24: optional list<Feature> extra; // Extra features for extensibility.
+	25: optional Settings settings;
 }
 
 //

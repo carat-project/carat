@@ -31,3 +31,5 @@ lint.xml
 .idea
 #Android Studio stuff
 out
+# Generated thrift interfaces
+protocol/gen-cocoa/

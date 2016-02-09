@@ -17,13 +17,13 @@
  * under the License.
  */
 
-#import "TProtocol.h"
 #import "TTransport.h"
+#import "TException.h"
 
-@interface TProtocolUtil : NSObject {
+typedef void(^TAsyncFailureBlock)(TException *);
 
-}
+@protocol TAsyncTransport <TTransport>
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
+- (void) flush:(dispatch_block_t)flushed failure:(TAsyncFailureBlock)failure;
 
 @end

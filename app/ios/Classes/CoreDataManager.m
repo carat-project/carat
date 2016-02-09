@@ -12,6 +12,13 @@
 #import "Flurry.h"
 #import "UIDeviceHardware.h"
 #import "Utilities.h"
+#import "DeviceInformation.h"
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "CaratProtocol.h"
+
+@interface CoreDataManager () <CBCentralManagerDelegate>
+@property (nonatomic) CBCentralManager *bluetoothManager;
+@end
 
 @implementation CoreDataManager (hidden)
 
@@ -21,6 +28,7 @@ static NSUInteger samplesSent;
 static NSString * reportUpdateStatus = nil;
 static dispatch_semaphore_t sendStoredDataToServerSemaphore;
 static NSMutableDictionary * daemonsList = nil;
+static bool bluetoothEnabled = false;
 
 static float cpuUsageVal;
 
@@ -52,6 +60,8 @@ static float cpuUsageVal;
                                                                       inManagedObjectContext:managedObjectContext];
         cdataMainReport.jScore = [NSNumber numberWithDouble:0.0];
 		cdataMainReport.samplesSent = [NSNumber numberWithUnsignedInteger:0];
+        
+        
 
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -396,9 +406,17 @@ static float cpuUsageVal;
 {
     self.lockReportSync = [[[NSLock alloc] init] autorelease];
     
+    
     //  We don't want to create huge number of threads to send 
     //  registrations/samples, so limit them.
     sendStoredDataToServerSemaphore = dispatch_semaphore_create(1);
+    
+    // Initialize CBCentralManager to sample bluetooth state
+    self.bluetoothManager = [[CBCentralManager alloc]
+                         initWithDelegate:self
+                         queue:nil
+                         options:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0]
+                         forKey:CBCentralManagerOptionShowPowerAlertKey]];
     
     [self loadLocalReportsToMemory:self.managedObjectContext];
     
@@ -945,6 +963,46 @@ static float cpuUsageVal;
         [cdataSample setMemoryUser:[NSNumber numberWithUnsignedInteger:[[UIDevice currentDevice] userMemory]]];
     }
     
+    //
+    // System data
+    //
+    
+    // Network statistics
+    struct NetworkUsage usage = [DeviceInformation getDataUsage];
+    NetworkStatistics *nwStats = [NetworkStatistics new];
+    nwStats.wifiReceived = usage.wifiReceived;
+    nwStats.wifiSent = usage.wifiSent;
+    nwStats.mobileReceived = usage.mobileReceived;
+    nwStats.mobileSent = usage.mobileSent;
+    
+    // Network details
+    NetworkDetails *nwDetails = [NetworkDetails new];
+    nwDetails.networkType = [DeviceInformation getNetworkStatus];
+    nwDetails.mobileNetworkType = [DeviceInformation getMobileNetworkType];
+    nwDetails.networkStatistics = nwStats;
+    
+    NSData *nwEncoded = [NSKeyedArchiver archivedDataWithRootObject:nwDetails];
+    [cdataSample setNetworkDetails:nwEncoded];
+    
+    // CPU usage
+    CpuStatus *cpuStat = [CpuStatus new];
+    cpuStat.cpuUsage = [DeviceInformation getCpuUsage];
+    cpuStat.uptime = [DeviceInformation getDeviceUptime];
+    cpuStat.sleeptime = [DeviceInformation getDeviceSleepTime];
+    
+    NSData * cpuEncoded = [NSKeyedArchiver archivedDataWithRootObject:cpuStat];
+    [cdataSample setCpuStatus:cpuEncoded];
+    
+    // Screen brightness
+    [cdataSample setScreenBrightness:[DeviceInformation getScreenBrightness]];
+    
+    // Other settings, on/off
+    Settings *sysSettings = [Settings new];
+    sysSettings.locationEnabled = [DeviceInformation getLocationEnabled];
+    sysSettings.bluetoothEnabled = bluetoothEnabled;
+    
+    NSData *settingsEncoded = [NSKeyedArchiver archivedDataWithRootObject:sysSettings];
+    [cdataSample setSettings:settingsEncoded];
     
     //
     //  Now save the sample.
@@ -1246,6 +1304,12 @@ static id instance = nil;
 
 + (id) instance {
     return instance;
+}
+
+// Listen to bluetooth state changes and update accordingly
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    bluetoothEnabled = (_bluetoothManager.state == CBCentralManagerStatePoweredOn);
 }
 
 - (void) dealloc

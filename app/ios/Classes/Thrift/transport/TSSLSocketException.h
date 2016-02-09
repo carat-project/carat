@@ -17,13 +17,13 @@
  * under the License.
  */
 
-#import "TProtocol.h"
-#import "TTransport.h"
+#import "TTransportException.h"
 
-@interface TProtocolUtil : NSObject {
+@interface TSSLSocketException : TTransportException
 
-}
++ (id) exceptionWithReason: (NSString *) reason
+                     error: (NSError *) error;
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
++ (id) exceptionWithReason: (NSString *) reason;
 
 @end

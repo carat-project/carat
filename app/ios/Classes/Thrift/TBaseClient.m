@@ -17,13 +17,30 @@
  * under the License.
  */
 
-#import "TProtocol.h"
-#import "TTransport.h"
+#import "TBaseClient.h"
+#import "TApplicationException.h"
+#import "TObjective-C.h"
 
-@interface TProtocolUtil : NSObject {
+@implementation TBaseClient
 
+- (void) dealloc
+{
+    [inProtocol release_stub];
+    [outProtocol release_stub];
+    [super dealloc_stub];
 }
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
+- (TApplicationException *)checkIncomingMessageException
+{
+    int msgType = 0;
+    [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+    if (msgType == TMessageType_EXCEPTION) {
+        TApplicationException * x = [TApplicationException read: inProtocol];
+        [inProtocol readMessageEnd];
+        return x;
+    }
+    
+    return nil;
+}
 
 @end

@@ -17,13 +17,25 @@
  * under the License.
  */
 
+#import <Foundation/Foundation.h>
+
 #import "TProtocol.h"
-#import "TTransport.h"
 
-@interface TProtocolUtil : NSObject {
+@protocol TBase <NSObject>
 
-}
+/**
+ * De-serialize object from the given input protocol
+ *
+ * @param input protocol used for reading 
+ */
+- (void) read: (id <TProtocol>) inProtocol;
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
+/**
+ * Serialize object to the given protocol
+ *
+ * @param buf output protocol used for writing
+ */
+- (void) write: (id <TProtocol>) outProtocol;
 
 @end
+

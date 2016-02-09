@@ -25,15 +25,15 @@
         options:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0]
         forKey:CBCentralManagerOptionShowPowerAlertKey]];
     
-    NSArray *dataUsage = [DeviceInformation getDataUsage];
+    NetworkUsage usage = [DeviceInformation getDataUsage];
     
     [_mobileNetworkType setText:[DeviceInformation getMobileNetworkType]];
     [_batteryState setText: [DeviceInformation getBatteryState]];
-    [_cpuUsage setText: [NSString stringWithFormat:@"%2.2f %%", [DeviceInformation getCpuUsage]*100]];
-    [_screenBrightness setText: [NSString stringWithFormat:@"%2.2f", [DeviceInformation getScreenBrightness]*100]];
+    [_cpuUsage setText: [NSString stringWithFormat:@"%.2lf", [DeviceInformation getCpuUsage]]];
+    [_screenBrightness setText: [[DeviceInformation getScreenBrightness] stringValue]];
     [_locationEnabled setText: [NSString stringWithFormat:@"%s",[DeviceInformation getLocationEnabled] ? "ON" : "OFF"]];
-    [_wifiUsage setText: [NSString stringWithFormat:@"\u2191%@kb \u2193%@ kb", [dataUsage objectAtIndex:0], [dataUsage objectAtIndex:1]]];
-    [_mobileUsage setText: [NSString stringWithFormat:@"\u2191%@kb \u2193%@ kb", [dataUsage objectAtIndex:2], [dataUsage objectAtIndex:3]]];
+    [_wifiUsage setText: [NSString stringWithFormat:@"\u2191%fkb \u2193%f kb", usage.wifiReceived, usage.wifiSent]];
+    [_mobileUsage setText: [NSString stringWithFormat:@"\u2191%fkb \u2193%f kb", usage.mobileReceived, usage.mobileSent]];
     [_deviceUptime setText: [NSString stringWithFormat:@"%lu seconds", [DeviceInformation getDeviceUptime]]];
     [_deviceSleepTime setText: [NSString stringWithFormat:@"%lu seconds", [DeviceInformation getDeviceSleepTime]]];
     [self updateBluetoothLabel];

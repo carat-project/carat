@@ -19,11 +19,18 @@
 
 #import "TProtocol.h"
 #import "TTransport.h"
+#import "TProtocolFactory.h"
 
-@interface TProtocolUtil : NSObject {
+@interface TCompactProtocol : NSObject <TProtocol>
 
-}
+- (id) initWithTransport: (id <TTransport>) transport;
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
+@end
+
+@interface TCompactProtocolFactory : NSObject <TProtocolFactory>
+
++ (TCompactProtocolFactory *) sharedFactory;
+
+- (TCompactProtocol *) newProtocolOnTransport: (id <TTransport>) transport;
 
 @end

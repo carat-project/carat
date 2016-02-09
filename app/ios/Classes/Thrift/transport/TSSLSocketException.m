@@ -17,13 +17,26 @@
  * under the License.
  */
 
-#import "TProtocol.h"
-#import "TTransport.h"
+#import "TSSLSocketException.h"
 
-@interface TProtocolUtil : NSObject {
+@implementation TSSLSocketException
 
++ (id) exceptionWithReason: (NSString *) reason
+                     error: (NSError *) error
+{
+    NSDictionary * userInfo = nil;
+    if (error != nil) {
+        userInfo = [NSDictionary dictionaryWithObject: error forKey: @"error"];
+    }
+    
+    return [super exceptionWithName: @"TSSLSocketException"
+                             reason: reason
+                           userInfo: userInfo];
 }
 
-+ (void) skipType: (int) type onProtocol: (id <TProtocol>) protocol;
++ (id) exceptionWithReason: (NSString *) reason
+{
+    return [self exceptionWithReason: reason error: nil];
+}
 
 @end
