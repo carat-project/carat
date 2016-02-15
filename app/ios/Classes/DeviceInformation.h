@@ -9,6 +9,10 @@
 #import <CoreData/CoreData.h>
 #import <mach/mach.h>
 
+#ifndef NSFoundationVersionNumber_iOS_9_0
+#define _iOS_9_0 NSFoundationVersionNumber_iOS_9_0
+#endif
+
 typedef struct NetworkUsage {
     double wifiReceived;
     double wifiSent;

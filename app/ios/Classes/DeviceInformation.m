@@ -17,7 +17,8 @@
 #import <mach/processor_info.h>
 #import <mach/mach_host.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
-#import <SystemConfiguration/SystemConfiguration.h>	
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <WatchConnectivity/WatchConnectivity.h>
 #import <CoreLocation/CoreLocation.h>
 #import <arpa/inet.h>
 #import <net/if.h>
@@ -146,10 +147,29 @@ const unsigned long GB = MB * 1024;
     return [CLLocationManager locationServicesEnabled];
 }
 
-// Low power mode, enabled/disabled
+// Low power mode, available in iOS 9.0+
 // @see https://developer.apple.com/library/ios/documentation/Performance/Conceptual/EnergyGuide-iOS/LowPowerMode.html
 + (bool) getPowersaverEnabled {
-    return [[NSProcessInfo processInfo] isLowPowerModeEnabled];
+    
+    [self isAppleWatchPaired];
+    // Make sure the method is available
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(isLowPowerModeEnabled)]) {
+        return [[NSProcessInfo processInfo] isLowPowerModeEnabled];
+    }
+    return false;
+}
+
+// Check if device is paired with an Apple watch
+// Experimental: not sampled!
++ (bool) isAppleWatchPaired {
+    if([WCSession isSupported]){
+        WCSession *session = [WCSession defaultSession];
+        // Might be needed
+        // session.delegate = self;
+        [session activateSession];
+        return session.paired;
+    }
+    return false;
 }
 
 // Sysctl call to fetch real uptime which includes sleep

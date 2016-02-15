@@ -17,6 +17,7 @@
 		245A59841C529039003DC25C /* CoreDataSystemTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59831C529039003DC25C /* CoreDataSystemTree.m */; };
 		245A59871C529110003DC25C /* CoreDataSystemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59861C529110003DC25C /* CoreDataSystemNode.m */; };
 		245A598B1C5647A1003DC25C /* DeviceInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A598A1C5647A1003DC25C /* DeviceInformation.m */; };
+		245FC06D1C7224170092A831 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245FC06C1C7224170092A831 /* WatchConnectivity.framework */; };
 		24AC38B91C6BA0CB00FA3572 /* TBinaryProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38931C6BA0CB00FA3572 /* TBinaryProtocol.m */; };
 		24AC38BA1C6BA0CB00FA3572 /* TProtocolException.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38961C6BA0CB00FA3572 /* TProtocolException.m */; };
 		24AC38BB1C6BA0CB00FA3572 /* TProtocolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38991C6BA0CB00FA3572 /* TProtocolUtil.m */; };
@@ -192,6 +193,7 @@
 		245A59861C529110003DC25C /* CoreDataSystemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataSystemNode.m; path = Classes/CoreDataSystemNode.m; sourceTree = SOURCE_ROOT; };
 		245A59891C5647A1003DC25C /* DeviceInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
 		245A598A1C5647A1003DC25C /* DeviceInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInformation.m; sourceTree = "<group>"; };
+		245FC06C1C7224170092A831 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		24AC38911C6BA0CB00FA3572 /* TBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBase.h; sourceTree = "<group>"; };
 		24AC38921C6BA0CB00FA3572 /* TBinaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBinaryProtocol.h; sourceTree = "<group>"; };
 		24AC38931C6BA0CB00FA3572 /* TBinaryProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBinaryProtocol.m; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245FC06D1C7224170092A831 /* WatchConnectivity.framework in Frameworks */,
 				2417658F1C60E64C007EB0CD /* CoreBluetooth.framework in Frameworks */,
 				24B28EA61C5F9E8D0099809D /* AFNetworking.framework in Frameworks */,
 				24B28EA21C5F9E460099809D /* FBSDKCoreKit.framework in Frameworks */,
@@ -942,6 +945,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				245FC06C1C7224170092A831 /* WatchConnectivity.framework */,
 				2417658E1C60E64C007EB0CD /* CoreBluetooth.framework */,
 				24B28EA51C5F9E8D0099809D /* AFNetworking.framework */,
 				24B28E9F1C5F9E460099809D /* FBSDKCoreKit.framework */,
