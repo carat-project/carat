@@ -26,8 +26,8 @@
 @dynamic cpuStatus;
 @dynamic screenBrightness;
 @dynamic networkDetails;
+@dynamic storageDetails;
 @dynamic settings;
-
 
 
 @end

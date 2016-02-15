@@ -16,16 +16,22 @@ typedef struct NetworkUsage {
     double mobileSent;
 } NetworkUsage;
 
+typedef struct DiskUsage {
+    int total;
+    int free;
+} DiskUsage;
+
 @interface DeviceInformation : NSManagedObject
 
 + (NSString *) getMobileNetworkType;
 + (NSString *) getBatteryState;
 + (double) getCpuUsage;
 + (unsigned long) getNumCpu;
-+ (NSNumber *) getScreenBrightness;
++ (int) getScreenBrightness;
 + (NSString *) getNetworkStatus;
 + (bool) getLocationEnabled;
 + (NetworkUsage) getDataUsage;
 + (time_t) getDeviceUptime;
 + (time_t) getDeviceSleepTime;
++ (DiskUsage) getDiskUsage;
 @end

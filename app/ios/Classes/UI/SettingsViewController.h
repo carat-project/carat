@@ -20,5 +20,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *mobileUsage;
 @property (retain, nonatomic) IBOutlet UILabel *deviceUptime;
 @property (retain, nonatomic) IBOutlet UILabel *deviceSleepTime;
+@property (retain, nonatomic) IBOutlet UILabel *deviceStorage;
 
 @end

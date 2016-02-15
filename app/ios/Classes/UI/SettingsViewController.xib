@@ -13,6 +13,7 @@
                 <outlet property="bluetoothEnabled" destination="Ail-8K-hF5" id="GwQ-ro-44S"/>
                 <outlet property="cpuUsage" destination="3uM-bS-oSC" id="6b4-ge-Iu7"/>
                 <outlet property="deviceSleepTime" destination="Bc2-wu-A8k" id="hxu-lC-Hdl"/>
+                <outlet property="deviceStorage" destination="i7z-Yu-Imy" id="xvn-jC-ZZo"/>
                 <outlet property="deviceUptime" destination="y0h-ul-Vhq" id="XhK-Px-v2f"/>
                 <outlet property="locationEnabled" destination="wDW-Wt-LMC" id="iCs-Ei-GFH"/>
                 <outlet property="mobileNetworkType" destination="fRU-g6-Fyc" id="PCm-c7-1jj"/>
@@ -215,6 +216,24 @@
                         <rect key="frame" x="7" y="305" width="108" height="21"/>
                     </variation>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hh-Pb-Rvo">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="8" y="363" width="108" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7z-Yu-Imy" userLabel="mobileNetworkType">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="119" y="362" width="273" height="21"/>
+                    </variation>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -279,6 +298,8 @@
                     <exclude reference="cFX-Zi-oRe"/>
                     <exclude reference="Bc2-wu-A8k"/>
                     <exclude reference="t6o-ru-Rj4"/>
+                    <exclude reference="7hh-Pb-Rvo"/>
+                    <exclude reference="i7z-Yu-Imy"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="58Z-sS-wz4"/>
@@ -337,6 +358,8 @@
                     <include reference="cFX-Zi-oRe"/>
                     <include reference="Bc2-wu-A8k"/>
                     <include reference="t6o-ru-Rj4"/>
+                    <include reference="7hh-Pb-Rvo"/>
+                    <include reference="i7z-Yu-Imy"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="58Z-sS-wz4"/>

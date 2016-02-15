@@ -111,8 +111,13 @@ struct Feature {
 }
 
 struct Settings {
-	5: optional bool bluetoothEnabled;
-	6: optional bool locationEnabled;
+	1: optional bool bluetoothEnabled;
+	2: optional bool locationEnabled;
+}
+
+struct StorageDetails {
+	1: optional i32 free;
+	2: optional i32 total;
 }
 
 //
@@ -147,6 +152,7 @@ struct Sample {
 	23: optional i32 developerMode; // Android Only: Developer mode on == 1, off == 0
 	24: optional list<Feature> extra; // Extra features for extensibility.
 	25: optional Settings settings;
+	26: optional StorageDetails storageDetails;
 }
 
 //

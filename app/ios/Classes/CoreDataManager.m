@@ -963,9 +963,15 @@ static float cpuUsageVal;
         [cdataSample setMemoryUser:[NSNumber numberWithUnsignedInteger:[[UIDevice currentDevice] userMemory]]];
     }
     
+    int brightness = [DeviceInformation getScreenBrightness];
+    [cdataSample setScreenBrightness:[NSNumber numberWithInt:brightness]];
+    
     //
     // System data
     //
+    
+    // Some fields are encoded here and decoded in fetchAndSendSamples
+    // This is in order to save thrift-generated classes in core data
     
     // Network statistics
     struct NetworkUsage usage = [DeviceInformation getDataUsage];
@@ -994,7 +1000,14 @@ static float cpuUsageVal;
     [cdataSample setCpuStatus:cpuEncoded];
     
     // Screen brightness
-    [cdataSample setScreenBrightness:[DeviceInformation getScreenBrightness]];
+    
+    // Storage space
+    DiskUsage diskUsage = [DeviceInformation getDiskUsage];
+    StorageDetails *storageDetails = [StorageDetails new];
+    storageDetails.total = diskUsage.total;
+    storageDetails.free = diskUsage.free;
+    NSData *storageEncoded = [NSKeyedArchiver archivedDataWithRootObject:storageDetails];
+    [cdataSample setStorageDetails:storageEncoded];
     
     // Other settings, on/off
     Settings *sysSettings = [Settings new];
@@ -1020,6 +1033,8 @@ static float cpuUsageVal;
         DLog(@"%s Exception while trying to save coredata, details: %@, %@", 
              __PRETTY_FUNCTION__, [exception name], [exception reason]);
     }
+    
+    
 }
 
 - (void) sampleBackground : (NSString *) triggeredBy
@@ -1195,6 +1210,18 @@ static float cpuUsageVal;
             sampleToSend.triggeredBy = (NSString *) [sample valueForKey:@"triggeredBy"];
             sampleToSend.networkStatus = (NSString *) [sample valueForKey:@"networkStatus"];
             sampleToSend.distanceTraveled = (double) [[sample valueForKey:@"distanceTraveled"] doubleValue];
+            sampleToSend.screenBrightness = [[sample valueForKey:@"screenBrightness"] intValue];
+            
+            // Unarchive structures to their original format
+            NSData * cpuEncoded = [sample valueForKey:@"cpuStatus"];
+            NSData * networkEncoded = [sample valueForKey:@"networkDetails"];
+            NSData * settingsEncoded = [sample valueForKey:@"settings"];
+            NSData * storageEncoded = [sample valueForKey:@"storageDetails"];
+            
+            sampleToSend.cpuStatus = [NSKeyedUnarchiver unarchiveObjectWithData:cpuEncoded];
+            sampleToSend.networkDetails = [NSKeyedUnarchiver unarchiveObjectWithData:networkEncoded];
+            sampleToSend.settings = [NSKeyedUnarchiver unarchiveObjectWithData:settingsEncoded];
+            sampleToSend.storageDetails = [NSKeyedUnarchiver unarchiveObjectWithData:storageEncoded];
             
             NSMutableArray *pInfoList = [[[NSMutableArray alloc] init] autorelease];
             sampleToSend.piList = pInfoList;
@@ -1963,10 +1990,10 @@ static id instance = nil;
          
          If you encounter schema incompatibility errors during development, you can reduce their frequency by:
          * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+         */[[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
          
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
-         [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+         /* Performing automatic lightweight migration by passing the following dictionary as the options parameter:
+         */[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];/*
          
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          

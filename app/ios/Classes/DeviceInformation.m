@@ -26,6 +26,10 @@
 
 static processor_cpu_load_info_t priorLoadInfo;
 
+const unsigned long KB = 1024;
+const unsigned long MB = KB * 1024;
+const unsigned long GB = MB * 1024;
+
 @implementation DeviceInformation
 
 // Mobile network type, available in iOS 7.0+
@@ -107,8 +111,8 @@ static processor_cpu_load_info_t priorLoadInfo;
 }
 
 // Rounded screen brightness percentage
-+ (NSNumber *) getScreenBrightness {
-    return @([UIScreen mainScreen].brightness*100);
++ (int) getScreenBrightness {
+    return (int)([UIScreen mainScreen].brightness*255);
 }
 
 // Starting from iOS 8.1 level reports in steps of 1pp
@@ -169,19 +173,33 @@ static processor_cpu_load_info_t priorLoadInfo;
                 
                 // en0 is wifi
                 if([ifname hasPrefix:@"en"]){
-                    stats.wifiSent += data->ifi_obytes;
-                    stats.wifiReceived += data->ifi_ibytes;
+                    stats.wifiSent += (data->ifi_obytes)/MB;
+                    stats.wifiReceived += (data->ifi_ibytes)/MB;
                 }
                 // pdp_ip0 is mobile
                 else if([ifname hasPrefix:@"pdp_ip"]){
-                    stats.mobileSent += data->ifi_obytes;
-                    stats.mobileReceived += data->ifi_ibytes;
+                    stats.mobileSent += (data->ifi_obytes)/MB;
+                    stats.mobileReceived += (data->ifi_ibytes)/MB;
                 }
             }
         }
         freeifaddrs(ifaddr);
     }
     return stats;
+}
+
+// Total and free storage space in filesystem
++ (DiskUsage) getDiskUsage {
+    DiskUsage storage = {0,0};
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
+        
+    if (dictionary) {
+        storage.total = [[dictionary objectForKey: NSFileSystemSize] unsignedLongLongValue]/MB;
+        storage.free = [[dictionary objectForKey: NSFileSystemFreeSize] unsignedLongLongValue]/MB;
+    }
+    return storage;
 }
 
 @end
