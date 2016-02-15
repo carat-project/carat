@@ -30,14 +30,15 @@
     [_mobileNetworkType setText:[DeviceInformation getMobileNetworkType]];
     [_batteryState setText: [DeviceInformation getBatteryState]];
     [_cpuUsage setText: [NSString stringWithFormat:@"%.2lf", [DeviceInformation getCpuUsage]]];
-    [_screenBrightness setText:[NSString stringWithFormat:@"%f", [DeviceInformation getScreenBrightness]]];
+    [_screenBrightness setText:[NSString stringWithFormat:@"%i", [DeviceInformation getScreenBrightness]]];
     [_locationEnabled setText: [NSString stringWithFormat:@"%s",[DeviceInformation getLocationEnabled] ? "ON" : "OFF"]];
-    [_wifiUsage setText: [NSString stringWithFormat:@"\u2191%fMB \u2193%fMB", usage.wifiReceived, usage.wifiSent]];
-    [_mobileUsage setText: [NSString stringWithFormat:@"\u2191%fMB \u2193%fMB", usage.mobileReceived, usage.mobileSent]];
+    [_wifiUsage setText: [NSString stringWithFormat:@"\u2191%.2lfMB \u2193%.2lfMB", usage.wifiReceived, usage.wifiSent]];
+    [_mobileUsage setText: [NSString stringWithFormat:@"\u2191%.2lfMB \u2193%.2lfMB", usage.mobileReceived, usage.mobileSent]];
     [_deviceUptime setText: [NSString stringWithFormat:@"%lu seconds", [DeviceInformation getDeviceUptime]]];
     [_deviceSleepTime setText: [NSString stringWithFormat:@"%lu seconds", [DeviceInformation getDeviceSleepTime]]];
     DiskUsage du = [DeviceInformation getDiskUsage];
     [_deviceStorage setText:[NSString stringWithFormat:@"%iMB/%iMB", du.total-du.free, du.total]];
+    [_powerSaver setText:[NSString stringWithFormat:@"%s", [DeviceInformation getPowersaverEnabled] ? "ON" : "OFF"]];
     [self updateBluetoothLabel];
 }
 
@@ -69,6 +70,7 @@
     [_deviceUptime release];
     [_deviceSleepTime release];
     [_deviceStorage release];
+    [_powerSaver release];
     [super dealloc];
 }
 @end

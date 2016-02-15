@@ -530,18 +530,21 @@ typedef NSMutableArray * FeatureList;
 @interface Settings : NSObject <NSCoding> {
   BOOL __bluetoothEnabled;
   BOOL __locationEnabled;
+  BOOL __powersaverEnabled;
 
   BOOL __bluetoothEnabled_isset;
   BOOL __locationEnabled_isset;
+  BOOL __powersaverEnabled_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=bluetoothEnabled, setter=setBluetoothEnabled:) BOOL bluetoothEnabled;
 @property (nonatomic, getter=locationEnabled, setter=setLocationEnabled:) BOOL locationEnabled;
+@property (nonatomic, getter=powersaverEnabled, setter=setPowersaverEnabled:) BOOL powersaverEnabled;
 #endif
 
 - (id) init;
-- (id) initWithBluetoothEnabled: (BOOL) bluetoothEnabled locationEnabled: (BOOL) locationEnabled;
+- (id) initWithBluetoothEnabled: (BOOL) bluetoothEnabled locationEnabled: (BOOL) locationEnabled powersaverEnabled: (BOOL) powersaverEnabled;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -557,6 +560,12 @@ typedef NSMutableArray * FeatureList;
 - (void) setLocationEnabled: (BOOL) locationEnabled;
 #endif
 - (BOOL) locationEnabledIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) powersaverEnabled;
+- (void) setPowersaverEnabled: (BOOL) powersaverEnabled;
+#endif
+- (BOOL) powersaverEnabledIsSet;
 
 @end
 

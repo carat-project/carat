@@ -34,4 +34,5 @@ typedef struct DiskUsage {
 + (time_t) getDeviceUptime;
 + (time_t) getDeviceSleepTime;
 + (DiskUsage) getDiskUsage;
++ (bool) getPowersaverEnabled;
 @end

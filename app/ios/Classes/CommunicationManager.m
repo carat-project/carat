@@ -39,7 +39,7 @@ static NSString * networkStatusString;
     }
     
     //caratServerAddress = @"server.caratproject.com";
-    caratServerAddress = @"caratserver.kurolabs.co";
+    caratServerAddress = @"10.112.18.140";
     
     [instance setupReachabilityNotifications];
 }
@@ -219,7 +219,7 @@ static NSString * networkStatusString;
 - (BOOL) isInternetReachable
 {
     DLog(@"%s %d", __PRETTY_FUNCTION__, isInternetActive);
-    return isInternetActive;
+    return true;
 }
 
 - (NSString *) networkStatusString

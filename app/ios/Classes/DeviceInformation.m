@@ -53,8 +53,7 @@ const unsigned long GB = MB * 1024;
     else return radioAccessTechnology;
 }
 
-// Battery state, available in iOS 2.0+
-// Possible states: Unknown, unplugged, charging, full
+// Battery state: Unknown, unplugged, charging, full
 // @see https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/
 + (NSString *) getBatteryState {
     UIDeviceBatteryState bs = [UIDevice currentDevice].batteryState;
@@ -70,7 +69,8 @@ const unsigned long GB = MB * 1024;
     return [[NSProcessInfo processInfo] processorCount];
 }
 
-// Processor usage percentage
+// Processor usage percentage as a value between 0 and 1
+// @see http://www.opensource.apple.com/source/xnu/xnu-344/osfmk/kern/host.c?txt
 + (double) getCpuUsage {
     double used, total;
     unsigned numCpu;
@@ -110,18 +110,23 @@ const unsigned long GB = MB * 1024;
     }
 }
 
-// Rounded screen brightness percentage
+// Screen brightness in range of 0-255
+// @see https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIScreen_Class/#//apple_ref/occ/instp/UIScreen/brightness
 + (int) getScreenBrightness {
     return (int)([UIScreen mainScreen].brightness*255);
 }
 
-// Starting from iOS 8.1 level reports in steps of 1pp
+// Battery level with accuracy of 1pp or 5pp
+// @see https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/batteryLevel
 + (float) getBatteryLevel {
     return [UIDevice currentDevice].batteryLevel;
 }
 
-// Synchronous approach to network reachability
+// Check network availability synchronously
+// @see https://developer.apple.com/library/prerelease/ios/documentation/SystemConfiguration/Reference/SCNetworkReachabilityRef/
 + (NSString *) getNetworkStatus {
+    
+    // Check connectivity to an address, in this case google dns
     SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, "8.8.8.8");
     SCNetworkReachabilityFlags flags;
     bool status = SCNetworkReachabilityGetFlags(reachability, &flags);
@@ -134,11 +139,21 @@ const unsigned long GB = MB * 1024;
     else return @"wifi";
 }
 
+
+// Location status, enabled/disabled
+// @see https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/
 + (bool) getLocationEnabled {
     return [CLLocationManager locationServicesEnabled];
 }
 
-// Real uptime is fetched using sysctl call
+// Low power mode, enabled/disabled
+// @see https://developer.apple.com/library/ios/documentation/Performance/Conceptual/EnergyGuide-iOS/LowPowerMode.html
++ (bool) getPowersaverEnabled {
+    return [[NSProcessInfo processInfo] isLowPowerModeEnabled];
+}
+
+// Sysctl call to fetch real uptime which includes sleep
+// @see http://opensource.apple.com/source/shell_cmds/shell_cmds-187/w/w.c
 + (time_t) getDeviceUptime {
     struct timeval bootTime;
     int mib[2] = {CTL_KERN, KERN_BOOTTIME};
@@ -151,12 +166,14 @@ const unsigned long GB = MB * 1024;
 }
 
 // Calculate the difference between real and awake uptime
+// @see https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSProcessInfo_Class/#//apple_ref/occ/instp/NSProcessInfo/systemUptime
 + (time_t) getDeviceSleepTime {
     time_t sleepTime = [self getDeviceUptime] - [[NSProcessInfo processInfo] systemUptime];
     return sleepTime > 0 ? sleepTime : 0;
 }
 
-// Returns data sent and received by wifi and mobile interfaces in kilobytes
+// Data sent and received by wifi and mobile interfaces in megabytes
+// @see https://developer.apple.com/library/ios/documentation/System/Conceptual/ManPages_iPhoneOS/man3/getifaddrs.3.html
 + (NetworkUsage) getDataUsage {
     NetworkUsage stats = {0,0,0,0};
     struct ifaddrs *ifaddr;
@@ -171,12 +188,12 @@ const unsigned long GB = MB * 1024;
                 const struct if_data *data = (struct if_data *) cursor -> ifa_data;
                 if(data == NULL) continue;
                 
-                // en0 is wifi
+                // en is wifi
                 if([ifname hasPrefix:@"en"]){
                     stats.wifiSent += (data->ifi_obytes)/MB;
                     stats.wifiReceived += (data->ifi_ibytes)/MB;
                 }
-                // pdp_ip0 is mobile
+                // pdp_ip is mobile
                 else if([ifname hasPrefix:@"pdp_ip"]){
                     stats.mobileSent += (data->ifi_obytes)/MB;
                     stats.mobileReceived += (data->ifi_ibytes)/MB;
@@ -188,7 +205,8 @@ const unsigned long GB = MB * 1024;
     return stats;
 }
 
-// Total and free storage space in filesystem
+// Total and free filesystem space in megabytes
+// @see https://developer.apple.com/library/prerelease/mac/documentation/Cocoa/Reference/Foundation/Classes/NSFileManager_Class/index.html
 + (DiskUsage) getDiskUsage {
     DiskUsage storage = {0,0};
     NSError *error = nil;
@@ -196,8 +214,8 @@ const unsigned long GB = MB * 1024;
     NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
         
     if (dictionary) {
-        storage.total = [[dictionary objectForKey: NSFileSystemSize] unsignedLongLongValue]/MB;
-        storage.free = [[dictionary objectForKey: NSFileSystemFreeSize] unsignedLongLongValue]/MB;
+        storage.total = (int)[[dictionary objectForKey: NSFileSystemSize] unsignedLongLongValue]/MB;
+        storage.free = (int)[[dictionary objectForKey: NSFileSystemFreeSize] unsignedLongLongValue]/MB;
     }
     return storage;
 }

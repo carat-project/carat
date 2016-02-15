@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -18,6 +18,7 @@
                 <outlet property="locationEnabled" destination="wDW-Wt-LMC" id="iCs-Ei-GFH"/>
                 <outlet property="mobileNetworkType" destination="fRU-g6-Fyc" id="PCm-c7-1jj"/>
                 <outlet property="mobileUsage" destination="9Yh-QG-1PS" id="pQE-de-mtN"/>
+                <outlet property="powerSaver" destination="Mv7-fR-k7x" id="Ucp-eD-kyh"/>
                 <outlet property="screenBrightness" destination="ASR-Yo-bDV" id="jr2-yc-YCt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wifiUsage" destination="G69-1a-qBI" id="d3E-9x-S1R"/>
@@ -234,6 +235,24 @@
                         <rect key="frame" x="119" y="362" width="273" height="21"/>
                     </variation>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power saver:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbZ-RC-cGe">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="7" y="392" width="108" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mv7-fR-k7x" userLabel="mobileNetworkType">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="119" y="391" width="273" height="21"/>
+                    </variation>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -300,6 +319,8 @@
                     <exclude reference="t6o-ru-Rj4"/>
                     <exclude reference="7hh-Pb-Rvo"/>
                     <exclude reference="i7z-Yu-Imy"/>
+                    <exclude reference="CbZ-RC-cGe"/>
+                    <exclude reference="Mv7-fR-k7x"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="58Z-sS-wz4"/>
@@ -360,6 +381,8 @@
                     <include reference="t6o-ru-Rj4"/>
                     <include reference="7hh-Pb-Rvo"/>
                     <include reference="i7z-Yu-Imy"/>
+                    <include reference="CbZ-RC-cGe"/>
+                    <include reference="Mv7-fR-k7x"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="58Z-sS-wz4"/>

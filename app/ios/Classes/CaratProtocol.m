@@ -2608,13 +2608,15 @@
   return self;
 }
 
-- (id) initWithBluetoothEnabled: (BOOL) bluetoothEnabled locationEnabled: (BOOL) locationEnabled
+- (id) initWithBluetoothEnabled: (BOOL) bluetoothEnabled locationEnabled: (BOOL) locationEnabled powersaverEnabled: (BOOL) powersaverEnabled
 {
   self = [super init];
   __bluetoothEnabled = bluetoothEnabled;
   __bluetoothEnabled_isset = YES;
   __locationEnabled = locationEnabled;
   __locationEnabled_isset = YES;
+  __powersaverEnabled = powersaverEnabled;
+  __powersaverEnabled_isset = YES;
   return self;
 }
 
@@ -2631,6 +2633,11 @@
     __locationEnabled = [decoder decodeBoolForKey: @"locationEnabled"];
     __locationEnabled_isset = YES;
   }
+  if ([decoder containsValueForKey: @"powersaverEnabled"])
+  {
+    __powersaverEnabled = [decoder decodeBoolForKey: @"powersaverEnabled"];
+    __powersaverEnabled_isset = YES;
+  }
   return self;
 }
 
@@ -2643,6 +2650,10 @@
   if (__locationEnabled_isset)
   {
     [encoder encodeBool: __locationEnabled forKey: @"locationEnabled"];
+  }
+  if (__powersaverEnabled_isset)
+  {
+    [encoder encodeBool: __powersaverEnabled forKey: @"powersaverEnabled"];
   }
 }
 
@@ -2685,6 +2696,23 @@
   __locationEnabled_isset = NO;
 }
 
+- (BOOL) powersaverEnabled {
+  return __powersaverEnabled;
+}
+
+- (void) setPowersaverEnabled: (BOOL) powersaverEnabled {
+  __powersaverEnabled = powersaverEnabled;
+  __powersaverEnabled_isset = YES;
+}
+
+- (BOOL) powersaverEnabledIsSet {
+  return __powersaverEnabled_isset;
+}
+
+- (void) unsetPowersaverEnabled {
+  __powersaverEnabled_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2716,6 +2744,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setPowersaverEnabled: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2737,6 +2773,11 @@
     [outProtocol writeBool: __locationEnabled];
     [outProtocol writeFieldEnd];
   }
+  if (__powersaverEnabled_isset) {
+    [outProtocol writeFieldBeginWithName: @"powersaverEnabled" type: TType_BOOL fieldID: 3];
+    [outProtocol writeBool: __powersaverEnabled];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2747,6 +2788,8 @@
   [ms appendFormat: @"%i", __bluetoothEnabled];
   [ms appendString: @",locationEnabled:"];
   [ms appendFormat: @"%i", __locationEnabled];
+  [ms appendString: @",powersaverEnabled:"];
+  [ms appendFormat: @"%i", __powersaverEnabled];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

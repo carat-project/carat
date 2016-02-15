@@ -963,15 +963,16 @@ static float cpuUsageVal;
         [cdataSample setMemoryUser:[NSNumber numberWithUnsignedInteger:[[UIDevice currentDevice] userMemory]]];
     }
     
-    int brightness = [DeviceInformation getScreenBrightness];
-    [cdataSample setScreenBrightness:[NSNumber numberWithInt:brightness]];
-    
     //
     // System data
     //
     
     // Some fields are encoded here and decoded in fetchAndSendSamples
     // This is in order to save thrift-generated classes in core data
+    
+    // Screen brightness
+    int brightness = [DeviceInformation getScreenBrightness];
+    [cdataSample setScreenBrightness:[NSNumber numberWithInt:brightness]];
     
     // Network statistics
     struct NetworkUsage usage = [DeviceInformation getDataUsage];
@@ -999,8 +1000,6 @@ static float cpuUsageVal;
     NSData * cpuEncoded = [NSKeyedArchiver archivedDataWithRootObject:cpuStat];
     [cdataSample setCpuStatus:cpuEncoded];
     
-    // Screen brightness
-    
     // Storage space
     DiskUsage diskUsage = [DeviceInformation getDiskUsage];
     StorageDetails *storageDetails = [StorageDetails new];
@@ -1013,6 +1012,7 @@ static float cpuUsageVal;
     Settings *sysSettings = [Settings new];
     sysSettings.locationEnabled = [DeviceInformation getLocationEnabled];
     sysSettings.bluetoothEnabled = bluetoothEnabled;
+    sysSettings.powersaverEnabled = [DeviceInformation getPowersaverEnabled];
     
     NSData *settingsEncoded = [NSKeyedArchiver archivedDataWithRootObject:sysSettings];
     [cdataSample setSettings:settingsEncoded];

@@ -113,6 +113,7 @@ struct Feature {
 struct Settings {
 	1: optional bool bluetoothEnabled;
 	2: optional bool locationEnabled;
+	3: optional bool powersaverEnabled;
 }
 
 struct StorageDetails {
