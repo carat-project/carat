@@ -62,19 +62,8 @@ dependencies {
     compile project(':androidswitchbackport')
     compile project(':androidsupportv4preferencefragment')
     compile project(':mPChartLib')
-    compile files('libs/commons-codec-1.6.jar')
-    compile files('libs/commons-logging-1.1.1.jar')
-    compile files('libs/FlurryAgent.jar')
-    compile files('libs/httpclient-4.2.5.jar')
-    compile files('libs/httpcore-4.2.4.jar')
-    compile files('libs/jackson-core-asl-1.9.4.jar')
-    compile files('libs/jackson-mapper-asl-1.9.11.jar')
-    compile files('libs/javax.annotation.jar')
-    compile files('libs/junit-4.4.jar')
-    compile files('libs/libthrift-0.9.2.jar')
-    compile files('libs/log4j-1.2.14.jar')
-    compile files('libs/servlet-api-2.5.jar')
-    compile files('libs/slf4j-android-1.6.1-RC1.jar')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:support-v4:23.0.1'
     compile 'com.android.support:appcompat-v7:22.1.0'
+    compile files('libs/universal-image-loader-1.9.5.jar')
 }

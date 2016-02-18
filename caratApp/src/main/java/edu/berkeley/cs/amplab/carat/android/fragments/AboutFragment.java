@@ -58,6 +58,8 @@ public class AboutFragment extends Fragment {
         expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_about_list);
         expandableListView.setAdapter(new AboutExpandListAdapter
                 (mainActivity, expandableListView, app, allAboutItems));
+        expandableListView.setFastScrollEnabled(true);
+        expandableListView.setScrollingCacheEnabled(false);
         expandableListView.expandGroup(0);
     }
 
