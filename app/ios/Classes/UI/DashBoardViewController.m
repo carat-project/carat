@@ -13,6 +13,7 @@
 #import "CommunicationManager.h"
 #import "UIDeviceHardware.h"
 #import "Globals.h"
+#import "Preprocessor.h"
 #import "UIImageDoNotCache.h"
 #import "CaratConstants.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -331,9 +332,17 @@ BOOL isUpdateProgressVisible;
 }
 
 - (IBAction)showHogs:(id)sender {
-    HogsViewController *controler = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
-    [Flurry logEvent:NSLocalizedString(@"selectedHogsView", nil)];
+    
+    // Check if we are running on iOS 9.0+, if so, show statistics instead
+    if(floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
+        HogsViewController *controller = [[HogsViewController alloc] initWithNibName:@"HogsViewController" bundle:nil];
+        [self.navigationController pushViewController:controller animated:YES];
+        [Flurry logEvent:NSLocalizedString(@"selectedHogsView", nil)];
+    } else {
+        HogStatisticsViewController *controller = [[HogStatisticsViewController alloc] initWithNibName:@"HogStatisticsViewController" bundle:nil];
+        [self.navigationController pushViewController:controller animated:YES];
+        [Flurry logEvent:NSLocalizedString(@"selectedHogStatisticsView", nil)];
+    }
 }
 
 - (IBAction)showStatistics:(id)sender {

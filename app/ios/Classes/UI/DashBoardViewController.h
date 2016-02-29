@@ -12,6 +12,7 @@
 #import "TutorialViewController.h"
 #import "BugsViewController.h"
 #import "HogsViewController.h"
+#import "HogStatisticsViewController.h"
 #import "StatisticsViewController.h"
 #import "ActionsViewController.h"
 #import "SettingsViewController.h"

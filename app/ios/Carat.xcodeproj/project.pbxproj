@@ -18,6 +18,8 @@
 		245A59871C529110003DC25C /* CoreDataSystemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59861C529110003DC25C /* CoreDataSystemNode.m */; };
 		245A598B1C5647A1003DC25C /* DeviceInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A598A1C5647A1003DC25C /* DeviceInformation.m */; };
 		245FC06D1C7224170092A831 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245FC06C1C7224170092A831 /* WatchConnectivity.framework */; };
+		245FC0761C8499800092A831 /* HogStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 245FC0741C8499800092A831 /* HogStatisticsViewController.m */; };
+		245FC0771C8499800092A831 /* HogStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245FC0751C8499800092A831 /* HogStatisticsViewController.xib */; };
 		24AC38B91C6BA0CB00FA3572 /* TBinaryProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38931C6BA0CB00FA3572 /* TBinaryProtocol.m */; };
 		24AC38BA1C6BA0CB00FA3572 /* TProtocolException.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38961C6BA0CB00FA3572 /* TProtocolException.m */; };
 		24AC38BB1C6BA0CB00FA3572 /* TProtocolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38991C6BA0CB00FA3572 /* TProtocolUtil.m */; };
@@ -194,6 +196,10 @@
 		245A59891C5647A1003DC25C /* DeviceInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
 		245A598A1C5647A1003DC25C /* DeviceInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInformation.m; sourceTree = "<group>"; };
 		245FC06C1C7224170092A831 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		245FC0731C8499800092A831 /* HogStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HogStatisticsViewController.h; sourceTree = "<group>"; };
+		245FC0741C8499800092A831 /* HogStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HogStatisticsViewController.m; sourceTree = "<group>"; };
+		245FC0751C8499800092A831 /* HogStatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HogStatisticsViewController.xib; sourceTree = "<group>"; };
+		245FC0791C849CBB0092A831 /* Preprocessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preprocessor.h; sourceTree = "<group>"; };
 		24AC38911C6BA0CB00FA3572 /* TBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBase.h; sourceTree = "<group>"; };
 		24AC38921C6BA0CB00FA3572 /* TBinaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBinaryProtocol.h; sourceTree = "<group>"; };
 		24AC38931C6BA0CB00FA3572 /* TBinaryProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBinaryProtocol.m; sourceTree = "<group>"; };
@@ -815,6 +821,7 @@
 				C7547F1819963CFD007A01CF /* UIImageDoNotCache.m */,
 				C7547F1919963CFD007A01CF /* Utilities.h */,
 				C7547F1A19963CFD007A01CF /* Utilities.m */,
+				245FC0791C849CBB0092A831 /* Preprocessor.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1229,6 +1236,9 @@
 				89FF8B4E1BDBAA3300147943 /* WebInfoViewController.m */,
 				89FF8B751BDBAA3E00147943 /* Main.storyboard */,
 				C7534EB61BF9F09600AA6F78 /* Launch Screen.storyboard */,
+				245FC0731C8499800092A831 /* HogStatisticsViewController.h */,
+				245FC0741C8499800092A831 /* HogStatisticsViewController.m */,
+				245FC0751C8499800092A831 /* HogStatisticsViewController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1672,6 +1682,7 @@
 				AB41CE1C1450BC060090CC09 /* hog.png in Resources */,
 				89EFCC131BC66ABF00480C56 /* BugHogTableViewCell.xib in Resources */,
 				89FF8B941BDBAA3E00147943 /* MyScoreViewController.xib in Resources */,
+				245FC0771C8499800092A831 /* HogStatisticsViewController.xib in Resources */,
 				661955AF1A73FE3D00865B2E /* consent.html in Resources */,
 				89FF8B571BDBAA3300147943 /* WebInfoViewController.xib in Resources */,
 				C704AE5E1A03B90200E4F13C /* bug.png in Resources */,
@@ -1809,6 +1820,7 @@
 				AB41CE09144F56E90090CC09 /* CaratAppDelegate_iPad.m in Sources */,
 				6676D13C1A4DDCDB0002FC1F /* CaratConstants.m in Sources */,
 				C14F5C30145BD4D300087F74 /* AsyncSocket.m in Sources */,
+				245FC0761C8499800092A831 /* HogStatisticsViewController.m in Sources */,
 				C14F5C36145BDA9900087F74 /* AsyncUdpSocket.m in Sources */,
 				894C55891BDA5D5800B247F0 /* UIButton+BackgroundColor.m in Sources */,
 				24AC38B91C6BA0CB00FA3572 /* TBinaryProtocol.m in Sources */,

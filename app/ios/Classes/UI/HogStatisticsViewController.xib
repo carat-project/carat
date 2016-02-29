@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HogStatisticsViewController">
+            <connections>
+                <outlet property="debugLabel" destination="ILd-qr-tVV" id="FzP-d3-pe9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y8-lj-sSI">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Top Hogs" id="gQo-XI-wDV">
+                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="gmv-a6-rxo">
+                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemBackPressed" destination="-1" id="xfq-V5-xUE"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="8sL-9u-A3l">
+                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemMorePressed" destination="-1" id="hRH-GL-lBE"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMc-Fr-Kiu">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HogStatisticsDesc" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hF9-di-f5b" customClass="LocalizedLabel">
+                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery_icon" translatesAutoresizingMaskIntoConstraints="NO" id="U5e-7m-XNn">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="4S4-Fc-bsO"/>
+                                <constraint firstAttribute="height" constant="70" id="EZH-5o-Zxm"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="4S4-Fc-bsO"/>
+                                    <exclude reference="EZH-5o-Zxm"/>
+                                </mask>
+                            </variation>
+                            <variation key="widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="4S4-Fc-bsO"/>
+                                    <include reference="EZH-5o-Zxm"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="U5e-7m-XNn" firstAttribute="leading" secondItem="tMc-Fr-Kiu" secondAttribute="leading" constant="20" symbolic="YES" id="5UR-Hc-dUY">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
+                        <constraint firstItem="U5e-7m-XNn" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="top" constant="20" symbolic="YES" id="62V-qa-Wum">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
+                        <constraint firstItem="hF9-di-f5b" firstAttribute="trailing" secondItem="tMc-Fr-Kiu" secondAttribute="trailing" constant="-10" id="DdF-rL-8sM"/>
+                        <constraint firstAttribute="height" constant="70" id="Egt-Ft-zMQ"/>
+                        <constraint firstItem="hF9-di-f5b" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="top" constant="7" id="siE-Na-ZxH" userLabel="HogsDesc.top = top + 10"/>
+                        <constraint firstItem="hF9-di-f5b" firstAttribute="leading" secondItem="U5e-7m-XNn" secondAttribute="trailing" id="uwf-c5-mlR">
+                            <variation key="widthClass=compact" constant="-2"/>
+                        </constraint>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="hF9-di-f5b"/>
+                            <exclude reference="U5e-7m-XNn"/>
+                        </mask>
+                        <mask key="constraints">
+                            <exclude reference="Egt-Ft-zMQ"/>
+                            <exclude reference="DdF-rL-8sM"/>
+                            <exclude reference="siE-Na-ZxH"/>
+                            <exclude reference="uwf-c5-mlR"/>
+                            <exclude reference="5UR-Hc-dUY"/>
+                            <exclude reference="62V-qa-Wum"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="subviews">
+                            <include reference="hF9-di-f5b"/>
+                            <include reference="U5e-7m-XNn"/>
+                        </mask>
+                        <mask key="constraints">
+                            <include reference="Egt-Ft-zMQ"/>
+                            <include reference="DdF-rL-8sM"/>
+                            <include reference="siE-Na-ZxH"/>
+                            <include reference="uwf-c5-mlR"/>
+                            <include reference="5UR-Hc-dUY"/>
+                            <include reference="62V-qa-Wum"/>
+                        </mask>
+                    </variation>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILd-qr-tVV">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1Y8-lj-sSI" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="K6m-qy-Jn9"/>
+                <constraint firstItem="tMc-Fr-Kiu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UeS-EV-hqu"/>
+                <constraint firstItem="1Y8-lj-sSI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Xed-D0-LUW"/>
+                <constraint firstItem="ILd-qr-tVV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="Ztd-5m-xcN"/>
+                <constraint firstItem="tMc-Fr-Kiu" firstAttribute="top" secondItem="1Y8-lj-sSI" secondAttribute="bottom" id="bte-Of-gzv"/>
+                <constraint firstItem="tMc-Fr-Kiu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="20" symbolic="YES" id="iKZ-Vg-GCf"/>
+                <constraint firstItem="ILd-qr-tVV" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="20" symbolic="YES" id="iUV-u4-AKr"/>
+                <constraint firstItem="ILd-qr-tVV" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="bottom" id="l06-TP-wtv"/>
+                <constraint firstItem="1Y8-lj-sSI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vJg-3s-VDr"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="1Y8-lj-sSI"/>
+                    <exclude reference="tMc-Fr-Kiu"/>
+                    <exclude reference="ILd-qr-tVV"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="K6m-qy-Jn9"/>
+                    <exclude reference="Xed-D0-LUW"/>
+                    <exclude reference="vJg-3s-VDr"/>
+                    <exclude reference="UeS-EV-hqu"/>
+                    <exclude reference="bte-Of-gzv"/>
+                    <exclude reference="iKZ-Vg-GCf"/>
+                    <exclude reference="Ztd-5m-xcN"/>
+                    <exclude reference="iUV-u4-AKr"/>
+                    <exclude reference="l06-TP-wtv"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="1Y8-lj-sSI"/>
+                    <include reference="tMc-Fr-Kiu"/>
+                    <include reference="ILd-qr-tVV"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="K6m-qy-Jn9"/>
+                    <include reference="Xed-D0-LUW"/>
+                    <include reference="vJg-3s-VDr"/>
+                    <include reference="UeS-EV-hqu"/>
+                    <include reference="bte-Of-gzv"/>
+                    <include reference="iKZ-Vg-GCf"/>
+                    <include reference="Ztd-5m-xcN"/>
+                    <include reference="iUV-u4-AKr"/>
+                    <include reference="l06-TP-wtv"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow_icon" width="48" height="48"/>
+        <image name="battery_icon" width="48" height="48"/>
+        <image name="more_icon" width="8" height="30"/>
+    </resources>
+</document>
