@@ -41,6 +41,7 @@
 		24B28EA61C5F9E8D0099809D /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B28EA51C5F9E8D0099809D /* AFNetworking.framework */; };
 		24B3BBFB1C5F907F00F43A0D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3BBFA1C5F907F00F43A0D /* CoreTelephony.framework */; };
 		24B3BBFF1C5F92DD00F43A0D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3BBFE1C5F92DD00F43A0D /* libsqlite3.tbd */; };
+		24E3D7191C85F69C00A33236 /* TopHogsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E3D7181C85F69C00A33236 /* TopHogsTableView.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */ = {isa = PBXBuildFile; fileRef = ABD75498162F5FC100817924 /* activebatterylife.html */; };
 		661955AD1A73FE2F00865B2E /* collectdata.html in Resources */ = {isa = PBXBuildFile; fileRef = ABE5C2A416F0F36300780085 /* collectdata.html */; };
@@ -248,6 +249,8 @@
 		24B3BBFA1C5F907F00F43A0D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		24B3BBFC1C5F92A700F43A0D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		24B3BBFE1C5F92DD00F43A0D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		24E3D7171C85F69C00A33236 /* TopHogsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHogsTableView.h; sourceTree = "<group>"; };
+		24E3D7181C85F69C00A33236 /* TopHogsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopHogsTableView.m; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Carat_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carat_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1022,6 +1025,8 @@
 				89554B5A1BDCD98C00ECE919 /* ProgressUpdateView.xib */,
 				89554B5C1BDCD99900ECE919 /* ProgressUpdateView.h */,
 				89554B5D1BDCD99900ECE919 /* ProgressUpdateView.m */,
+				24E3D7171C85F69C00A33236 /* TopHogsTableView.h */,
+				24E3D7181C85F69C00A33236 /* TopHogsTableView.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1812,6 +1817,7 @@
 				89FF8B991BDBB06C00147943 /* ActionObject.m in Sources */,
 				24AC38C51C6BA0CB00FA3572 /* TSocketClient.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				24E3D7191C85F69C00A33236 /* TopHogsTableView.m in Sources */,
 				AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */,
 				C754887F19963D03007A01CF /* CoreDataAppReport.m in Sources */,
 				AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */,

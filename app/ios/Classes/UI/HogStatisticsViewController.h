@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface HogStatisticsViewController : BaseViewController
-@property (retain, nonatomic) IBOutlet UILabel *debugLabel;
+@property (retain, nonatomic) IBOutlet UITableView *topHogsTable;
 @end

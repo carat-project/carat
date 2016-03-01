@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HogStatisticsViewController">
             <connections>
-                <outlet property="debugLabel" destination="ILd-qr-tVV" id="FzP-d3-pe9"/>
+                <outlet property="topHogsTable" destination="euS-RX-6W2" id="fJj-Iv-Os3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -114,30 +114,29 @@
                         </mask>
                     </variation>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILd-qr-tVV">
-                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="euS-RX-6W2">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="K6m-qy-Jn9"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UeS-EV-hqu"/>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Xed-D0-LUW"/>
-                <constraint firstItem="ILd-qr-tVV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="Ztd-5m-xcN"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="20" symbolic="YES" id="ZIq-S2-p2y"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="top" secondItem="1Y8-lj-sSI" secondAttribute="bottom" id="bte-Of-gzv"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" constant="20" symbolic="YES" id="cXQ-ec-WOl"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="20" symbolic="YES" id="iKZ-Vg-GCf"/>
-                <constraint firstItem="ILd-qr-tVV" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="20" symbolic="YES" id="iUV-u4-AKr"/>
-                <constraint firstItem="ILd-qr-tVV" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="bottom" id="l06-TP-wtv"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="kPb-EN-d06"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="bottom" id="s87-U7-1YG"/>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vJg-3s-VDr"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="1Y8-lj-sSI"/>
                     <exclude reference="tMc-Fr-Kiu"/>
-                    <exclude reference="ILd-qr-tVV"/>
+                    <exclude reference="euS-RX-6W2"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="K6m-qy-Jn9"/>
@@ -146,16 +145,17 @@
                     <exclude reference="UeS-EV-hqu"/>
                     <exclude reference="bte-Of-gzv"/>
                     <exclude reference="iKZ-Vg-GCf"/>
-                    <exclude reference="Ztd-5m-xcN"/>
-                    <exclude reference="iUV-u4-AKr"/>
-                    <exclude reference="l06-TP-wtv"/>
+                    <exclude reference="ZIq-S2-p2y"/>
+                    <exclude reference="cXQ-ec-WOl"/>
+                    <exclude reference="kPb-EN-d06"/>
+                    <exclude reference="s87-U7-1YG"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
                     <include reference="1Y8-lj-sSI"/>
                     <include reference="tMc-Fr-Kiu"/>
-                    <include reference="ILd-qr-tVV"/>
+                    <include reference="euS-RX-6W2"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="K6m-qy-Jn9"/>
@@ -164,9 +164,10 @@
                     <include reference="UeS-EV-hqu"/>
                     <include reference="bte-Of-gzv"/>
                     <include reference="iKZ-Vg-GCf"/>
-                    <include reference="Ztd-5m-xcN"/>
-                    <include reference="iUV-u4-AKr"/>
-                    <include reference="l06-TP-wtv"/>
+                    <include reference="ZIq-S2-p2y"/>
+                    <include reference="cXQ-ec-WOl"/>
+                    <include reference="kPb-EN-d06"/>
+                    <include reference="s87-U7-1YG"/>
                 </mask>
             </variation>
         </view>
