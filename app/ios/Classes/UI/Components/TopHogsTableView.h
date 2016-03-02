@@ -11,4 +11,7 @@
 
 @interface TopHogsTableView : NSObject <UITableViewDataSource, UITableViewDelegate>
 @property (retain, nonatomic) NSArray *data;
+@property (retain, nonatomic) UIActivityIndicatorView *spinner;
+@property (retain, nonatomic) UIView *spinnerBackground;
+- (void)attachSpinner:(UIActivityIndicatorView *)spinner withBackground:(UIView *)spinnerBackGround;
 @end

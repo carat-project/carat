@@ -19,9 +19,10 @@
     [super viewDidLoad];
     
     // Assign reusable source for top hogs
-    TopHogsTableView *topHogsTable = [TopHogsTableView new];
-    [_topHogsTable setDelegate:topHogsTable];
-    [_topHogsTable setDataSource:topHogsTable];
+    TopHogsTableView *topHogs = [TopHogsTableView new];
+    [topHogs attachSpinner:_spinner withBackground:_spinnerBackground];
+    [_topHogsTable setDelegate:topHogs];
+    [_topHogsTable setDataSource:topHogs];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,6 +32,8 @@
 
 - (void)dealloc {
     [_topHogsTable release];
+    [_spinner release];
+    [_spinnerBackground release];
     [super dealloc];
 }
 @end

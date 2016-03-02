@@ -7,41 +7,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HogStatisticsViewController">
             <connections>
+                <outlet property="spinner" destination="bTb-4N-Xd8" id="Yay-Fq-jg2"/>
+                <outlet property="spinnerBackground" destination="ibr-Sp-V37" id="Kx4-KX-tpd"/>
                 <outlet property="topHogsTable" destination="euS-RX-6W2" id="fJj-Iv-Os3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="Hog statistics">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y8-lj-sSI">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="Top Hogs" id="gQo-XI-wDV">
-                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="gmv-a6-rxo">
-                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="barItemBackPressed" destination="-1" id="xfq-V5-xUE"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="8sL-9u-A3l">
-                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="barItemMorePressed" destination="-1" id="hRH-GL-lBE"/>
-                                </connections>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMc-Fr-Kiu">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="euS-RX-6W2" userLabel="Hogs table">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMc-Fr-Kiu" userLabel="Information label">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HogStatisticsDesc" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hF9-di-f5b" customClass="LocalizedLabel">
@@ -114,29 +95,66 @@
                         </mask>
                     </variation>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="euS-RX-6W2">
+                <view alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibr-Sp-V37" userLabel="Spinner background">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTb-4N-Xd8" userLabel="Spinner">
+                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y8-lj-sSI">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Top Hogs" id="gQo-XI-wDV">
+                            <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="gmv-a6-rxo">
+                                <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemBackPressed" destination="-1" id="xfq-V5-xUE"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" image="more_icon" id="8sL-9u-A3l">
+                                <inset key="imageInsets" minX="15" minY="7" maxX="0.0" maxY="7"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="barItemMorePressed" destination="-1" id="hRH-GL-lBE"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="K6m-qy-Jn9"/>
+                <constraint firstItem="ibr-Sp-V37" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="Ki5-MU-blp"/>
+                <constraint firstItem="ibr-Sp-V37" firstAttribute="top" secondItem="1Y8-lj-sSI" secondAttribute="bottom" id="M8Z-ce-Dwa"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UeS-EV-hqu"/>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Xed-D0-LUW"/>
                 <constraint firstItem="euS-RX-6W2" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="20" symbolic="YES" id="ZIq-S2-p2y"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="top" secondItem="1Y8-lj-sSI" secondAttribute="bottom" id="bte-Of-gzv"/>
                 <constraint firstItem="euS-RX-6W2" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" constant="20" symbolic="YES" id="cXQ-ec-WOl"/>
-                <constraint firstItem="tMc-Fr-Kiu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="20" symbolic="YES" id="iKZ-Vg-GCf"/>
+                <constraint firstItem="bTb-4N-Xd8" firstAttribute="centerY" secondItem="ibr-Sp-V37" secondAttribute="centerY" id="gCR-21-PCy"/>
+                <constraint firstItem="ibr-Sp-V37" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="h6x-Fs-XZV"/>
+                <constraint firstItem="tMc-Fr-Kiu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="iKZ-Vg-GCf"/>
                 <constraint firstItem="euS-RX-6W2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="kPb-EN-d06"/>
+                <constraint firstItem="bTb-4N-Xd8" firstAttribute="centerX" secondItem="ibr-Sp-V37" secondAttribute="centerX" id="kXU-g2-P6a"/>
                 <constraint firstItem="euS-RX-6W2" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="bottom" id="s87-U7-1YG"/>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vJg-3s-VDr"/>
+                <constraint firstItem="ibr-Sp-V37" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xnv-1l-elM"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="1Y8-lj-sSI"/>
-                    <exclude reference="tMc-Fr-Kiu"/>
                     <exclude reference="euS-RX-6W2"/>
+                    <exclude reference="tMc-Fr-Kiu"/>
+                    <exclude reference="ibr-Sp-V37"/>
+                    <exclude reference="bTb-4N-Xd8"/>
+                    <exclude reference="1Y8-lj-sSI"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="K6m-qy-Jn9"/>
@@ -145,17 +163,25 @@
                     <exclude reference="UeS-EV-hqu"/>
                     <exclude reference="bte-Of-gzv"/>
                     <exclude reference="iKZ-Vg-GCf"/>
+                    <exclude reference="Ki5-MU-blp"/>
+                    <exclude reference="M8Z-ce-Dwa"/>
+                    <exclude reference="h6x-Fs-XZV"/>
+                    <exclude reference="xnv-1l-elM"/>
                     <exclude reference="ZIq-S2-p2y"/>
                     <exclude reference="cXQ-ec-WOl"/>
                     <exclude reference="kPb-EN-d06"/>
                     <exclude reference="s87-U7-1YG"/>
+                    <exclude reference="gCR-21-PCy"/>
+                    <exclude reference="kXU-g2-P6a"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
-                    <include reference="1Y8-lj-sSI"/>
-                    <include reference="tMc-Fr-Kiu"/>
                     <include reference="euS-RX-6W2"/>
+                    <include reference="tMc-Fr-Kiu"/>
+                    <include reference="ibr-Sp-V37"/>
+                    <include reference="bTb-4N-Xd8"/>
+                    <include reference="1Y8-lj-sSI"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="K6m-qy-Jn9"/>
@@ -164,10 +190,16 @@
                     <include reference="UeS-EV-hqu"/>
                     <include reference="bte-Of-gzv"/>
                     <include reference="iKZ-Vg-GCf"/>
+                    <include reference="Ki5-MU-blp"/>
+                    <include reference="M8Z-ce-Dwa"/>
+                    <include reference="h6x-Fs-XZV"/>
+                    <include reference="xnv-1l-elM"/>
                     <include reference="ZIq-S2-p2y"/>
                     <include reference="cXQ-ec-WOl"/>
                     <include reference="kPb-EN-d06"/>
                     <include reference="s87-U7-1YG"/>
+                    <include reference="gCR-21-PCy"/>
+                    <include reference="kXU-g2-P6a"/>
                 </mask>
             </variation>
         </view>

@@ -20,7 +20,9 @@
 + (NSString *)doubleAsTimeNSString:(NSTimeInterval)timeInterval;
 + (BOOL) canUpgradeOS;
 + (CGSize) orientationIndependentScreenSize;
-+(BOOL) isOlderHeightDevice;
-+(NSDictionary*) getMemoryInfo;
++ (BOOL) isOlderHeightDevice;
++ (NSDictionary*) getMemoryInfo;
++ (NSString *) getDirectoryPath:(NSString *)fileName;
++ (NSString *) getDirectoryPath;
 
 @end

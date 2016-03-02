@@ -15,4 +15,5 @@ extern NSString* const kMemoryUsed;
 extern NSString* const kMemoryActive;
 extern NSString* const kUseWifiOnly;
 extern NSString* const kIsInternetActive;
+extern NSString* const kStatisticsDataURI;
 #define isUsingWifiOnly ([[[NSUserDefaults standardUserDefaults]objectForKey:kUseWifiOnly]boolValue]) ? 1 :0

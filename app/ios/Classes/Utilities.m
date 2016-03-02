@@ -96,4 +96,14 @@
 	return nil;
 }
 
++(NSString *) getDirectoryPath: (NSString * )fileName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:fileName];
+}
+
++(NSString *) getDirectoryPath {
+    return [self getDirectoryPath:@""];
+}
+
 @end

@@ -15,3 +15,4 @@ NSString* const kMemoryActive = @"memoryActive";
 NSString* const kUseWifiOnly = @"useWifiOnly";
 NSString* const kIsInternetActive = @"isInternetActive";
 NSString* const kUpdateNetworkStatusNotification = @"UpdateNetworkStatusNotification";
+NSString* const kStatisticsDataURI = @"http://carat.cs.helsinki.fi/statistics-data/apps/";
