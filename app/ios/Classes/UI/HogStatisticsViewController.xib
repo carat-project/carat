@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="euS-RX-6W2" userLabel="Hogs table">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="euS-RX-6W2" userLabel="Hogs table">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
@@ -95,11 +95,7 @@
                         </mask>
                     </variation>
                 </view>
-                <view alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibr-Sp-V37" userLabel="Spinner background">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTb-4N-Xd8" userLabel="Spinner">
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTb-4N-Xd8" userLabel="Spinner">
                     <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                     <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </activityIndicatorView>
@@ -110,7 +106,7 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </textAttributes>
                     <items>
-                        <navigationItem title="Top Hogs" id="gQo-XI-wDV">
+                        <navigationItem title="GLOBAL STATISTICS" id="gQo-XI-wDV">
                             <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="gmv-a6-rxo">
                                 <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -128,6 +124,10 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <view hidden="YES" alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibr-Sp-V37" userLabel="Spinner background">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -136,15 +136,15 @@
                 <constraint firstItem="ibr-Sp-V37" firstAttribute="top" secondItem="1Y8-lj-sSI" secondAttribute="bottom" id="M8Z-ce-Dwa"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UeS-EV-hqu"/>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Xed-D0-LUW"/>
-                <constraint firstItem="euS-RX-6W2" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="20" symbolic="YES" id="ZIq-S2-p2y"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="ZIq-S2-p2y"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="bottom" id="bHz-IG-IVJ"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="top" secondItem="1Y8-lj-sSI" secondAttribute="bottom" id="bte-Of-gzv"/>
-                <constraint firstItem="euS-RX-6W2" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" constant="20" symbolic="YES" id="cXQ-ec-WOl"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="cXQ-ec-WOl"/>
                 <constraint firstItem="bTb-4N-Xd8" firstAttribute="centerY" secondItem="ibr-Sp-V37" secondAttribute="centerY" id="gCR-21-PCy"/>
                 <constraint firstItem="ibr-Sp-V37" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="h6x-Fs-XZV"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="iKZ-Vg-GCf"/>
-                <constraint firstItem="euS-RX-6W2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="kPb-EN-d06"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kPb-EN-d06"/>
                 <constraint firstItem="bTb-4N-Xd8" firstAttribute="centerX" secondItem="ibr-Sp-V37" secondAttribute="centerX" id="kXU-g2-P6a"/>
-                <constraint firstItem="euS-RX-6W2" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="bottom" id="s87-U7-1YG"/>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vJg-3s-VDr"/>
                 <constraint firstItem="ibr-Sp-V37" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xnv-1l-elM"/>
             </constraints>
@@ -152,54 +152,54 @@
                 <mask key="subviews">
                     <exclude reference="euS-RX-6W2"/>
                     <exclude reference="tMc-Fr-Kiu"/>
-                    <exclude reference="ibr-Sp-V37"/>
                     <exclude reference="bTb-4N-Xd8"/>
                     <exclude reference="1Y8-lj-sSI"/>
+                    <exclude reference="ibr-Sp-V37"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="K6m-qy-Jn9"/>
                     <exclude reference="Xed-D0-LUW"/>
                     <exclude reference="vJg-3s-VDr"/>
-                    <exclude reference="UeS-EV-hqu"/>
-                    <exclude reference="bte-Of-gzv"/>
-                    <exclude reference="iKZ-Vg-GCf"/>
                     <exclude reference="Ki5-MU-blp"/>
                     <exclude reference="M8Z-ce-Dwa"/>
                     <exclude reference="h6x-Fs-XZV"/>
                     <exclude reference="xnv-1l-elM"/>
-                    <exclude reference="ZIq-S2-p2y"/>
-                    <exclude reference="cXQ-ec-WOl"/>
-                    <exclude reference="kPb-EN-d06"/>
-                    <exclude reference="s87-U7-1YG"/>
+                    <exclude reference="UeS-EV-hqu"/>
+                    <exclude reference="bte-Of-gzv"/>
+                    <exclude reference="iKZ-Vg-GCf"/>
                     <exclude reference="gCR-21-PCy"/>
                     <exclude reference="kXU-g2-P6a"/>
+                    <exclude reference="ZIq-S2-p2y"/>
+                    <exclude reference="bHz-IG-IVJ"/>
+                    <exclude reference="cXQ-ec-WOl"/>
+                    <exclude reference="kPb-EN-d06"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
                     <include reference="euS-RX-6W2"/>
                     <include reference="tMc-Fr-Kiu"/>
-                    <include reference="ibr-Sp-V37"/>
                     <include reference="bTb-4N-Xd8"/>
                     <include reference="1Y8-lj-sSI"/>
+                    <include reference="ibr-Sp-V37"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="K6m-qy-Jn9"/>
                     <include reference="Xed-D0-LUW"/>
                     <include reference="vJg-3s-VDr"/>
-                    <include reference="UeS-EV-hqu"/>
-                    <include reference="bte-Of-gzv"/>
-                    <include reference="iKZ-Vg-GCf"/>
                     <include reference="Ki5-MU-blp"/>
                     <include reference="M8Z-ce-Dwa"/>
                     <include reference="h6x-Fs-XZV"/>
                     <include reference="xnv-1l-elM"/>
-                    <include reference="ZIq-S2-p2y"/>
-                    <include reference="cXQ-ec-WOl"/>
-                    <include reference="kPb-EN-d06"/>
-                    <include reference="s87-U7-1YG"/>
+                    <include reference="UeS-EV-hqu"/>
+                    <include reference="bte-Of-gzv"/>
+                    <include reference="iKZ-Vg-GCf"/>
                     <include reference="gCR-21-PCy"/>
                     <include reference="kXU-g2-P6a"/>
+                    <include reference="ZIq-S2-p2y"/>
+                    <include reference="bHz-IG-IVJ"/>
+                    <include reference="cXQ-ec-WOl"/>
+                    <include reference="kPb-EN-d06"/>
                 </mask>
             </variation>
         </view>

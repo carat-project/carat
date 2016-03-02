@@ -23,6 +23,6 @@
 + (BOOL) isOlderHeightDevice;
 + (NSDictionary*) getMemoryInfo;
 + (NSString *) getDirectoryPath:(NSString *)fileName;
-+ (NSString *) getDirectoryPath;
-
++ (NSDate *) getLastModified:(NSString *)path;
++ (NSInteger)daysSince:(NSDate*)date;
 @end

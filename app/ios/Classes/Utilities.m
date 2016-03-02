@@ -102,8 +102,26 @@
     return [documentsDirectory stringByAppendingPathComponent:fileName];
 }
 
-+(NSString *) getDirectoryPath {
-    return [self getDirectoryPath:@""];
++ (NSDate *) getLastModified:(NSString *) path {
+    NSURL *fileUrl = [NSURL fileURLWithPath:path];
+    NSDate *fileDate;
+    NSError *error;
+    if([fileUrl getResourceValue:&fileDate forKey:NSURLContentModificationDateKey error:&error]){
+        return fileDate;
+    }
+    return [[NSDate alloc]initWithTimeIntervalSince1970:0];
+}
+
++ (NSInteger)daysSince:(NSDate*)date
+{
+    NSUInteger unitFlag = NSDayCalendarUnit;
+    NSDate *dateThen;
+    NSDate *dateNow;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&dateThen interval:NULL forDate:date];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&dateNow interval:NULL forDate:[NSDate date]];
+    NSDateComponents *components = [calendar components:unitFlag fromDate:dateThen toDate:dateNow options:0];
+    return [components day];
 }
 
 @end
