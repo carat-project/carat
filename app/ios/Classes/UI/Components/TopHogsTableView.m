@@ -38,7 +38,7 @@
     NSArray *cache = [NSArray arrayWithContentsOfFile:path];
     
     // Check if there is a fresh copy in cache
-    NSLog(@"Days since last statistics check: %i", [Utilities daysSince:modified]);
+    NSLog(@"Days since last statistics check: %ld", [Utilities daysSince:modified]);
     if(cache && [Utilities daysSince:modified] < 1) {
         self.data = cache;
         return [data count];
@@ -58,7 +58,7 @@
     if(self.data == nil) {
         return cell;
     } else {
-        cell.textLabel.attributedText = [self decorateCellText:indexPath.row];
+        cell.textLabel.attributedText = [self decorateCellText:(int)indexPath.row];
     }
     return cell;
 }

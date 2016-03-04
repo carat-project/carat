@@ -95,10 +95,6 @@
                         </mask>
                     </variation>
                 </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTb-4N-Xd8" userLabel="Spinner">
-                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </activityIndicatorView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y8-lj-sSI">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -128,6 +124,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTb-4N-Xd8" userLabel="Spinner">
+                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -152,9 +152,9 @@
                 <mask key="subviews">
                     <exclude reference="euS-RX-6W2"/>
                     <exclude reference="tMc-Fr-Kiu"/>
-                    <exclude reference="bTb-4N-Xd8"/>
                     <exclude reference="1Y8-lj-sSI"/>
                     <exclude reference="ibr-Sp-V37"/>
+                    <exclude reference="bTb-4N-Xd8"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="K6m-qy-Jn9"/>
@@ -179,9 +179,9 @@
                 <mask key="subviews">
                     <include reference="euS-RX-6W2"/>
                     <include reference="tMc-Fr-Kiu"/>
-                    <include reference="bTb-4N-Xd8"/>
                     <include reference="1Y8-lj-sSI"/>
                     <include reference="ibr-Sp-V37"/>
+                    <include reference="bTb-4N-Xd8"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="K6m-qy-Jn9"/>
