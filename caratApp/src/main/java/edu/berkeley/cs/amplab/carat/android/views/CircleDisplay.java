@@ -1,6 +1,6 @@
 package edu.berkeley.cs.amplab.carat.android.views;
 
-import android.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
