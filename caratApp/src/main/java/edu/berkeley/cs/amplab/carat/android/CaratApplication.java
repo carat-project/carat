@@ -418,7 +418,7 @@ public class CaratApplication extends Application {
         main.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                main.refreshSummaryFragment();
+                main.refreshCurrentFragment();
                 main.setProgressCircle(false);
             }
         });

@@ -15,22 +15,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.HashMap;
 
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 
 /**
  * Created by Valto on 30.9.2015.
+ * Refactored by Jonatan on 7.3.2015
  */
 public class GlobalFragment extends Fragment implements Runnable, View.OnClickListener {
 
     private MainActivity mainActivity;
-    private ScrollView mainFrame;
+    private RelativeLayout mainFrame;
+    private RelativeLayout loadingScreen;
+    private ScrollView scrollContent;
     private boolean locker;
     private Thread drawingThread;
 
@@ -64,7 +69,7 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mainFrame = (ScrollView) inflater.inflate(R.layout.fragment_global, container, false);
+        mainFrame = (RelativeLayout) inflater.inflate(R.layout.fragment_global, container, false);
         return mainFrame;
     }
 
@@ -78,16 +83,31 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
         super.onResume();
         mainActivity.setUpActionBar(R.string.global_results, true);
         locker = true;
+
         initViewRefs();
         initListeners();
-        setValues();
 
-        // Do this on viewCreated
-        // drawValues();
+        // Check if data is not yet available
+        if(mainActivity.appWellbehaved != Constants.VALUE_NOT_AVAILABLE){
+            this.refresh();
+        }
     }
 
 
+    public void refresh(){
+        this.setValues();
+        this.mainFrame.post(this);
+
+        // Hide loading screen, show content
+        scrollContent.setVisibility(View.VISIBLE);
+        loadingScreen.setVisibility(View.INVISIBLE);
+    }
+
     private void initViewRefs() {
+        // Main content views
+        loadingScreen = (RelativeLayout) mainFrame.findViewById(R.id.global_loadingscreen);
+        scrollContent = (ScrollView) mainFrame.findViewById(R.id.global_scrollview);
+
         // Percentage bars
         wellBehavedImage = (ImageView) mainFrame.findViewById(R.id.well_behaved_imageview);
         bugsImage = (ImageView) mainFrame.findViewById(R.id.bugs_imageview);
@@ -202,15 +222,11 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
 
         userText.setText(getString(R.string.out_of) + " " + userSum + " " + getString(R.string.users)
                 + " " + userBugPercent + "% " + getString(R.string.user_intensity));
-
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-
-        // This queue will happen after layout pass
-        view.post(this);
     }
 
     private void drawValues() {
@@ -234,6 +250,8 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
             setPercentageBar(userImage, 3);
             locker = false;
         }
+
+        scrollContent.setVisibility(View.VISIBLE);
     }
 
     private void setPercentageBar(ImageView view, int id){

@@ -5,16 +5,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckedTextView;
-import android.widget.FrameLayout;
 
-import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
@@ -100,7 +94,7 @@ public class PreferenceListDialog extends Dialog implements View.OnClickListener
     private void save(int amount) {
         SharedPreferences p = mainActivity.getSharedPreferences(Constants.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
         p.edit().putString(mainActivity.getString(R.string.hog_hide_threshold), String.valueOf(amount)).commit();
-        mainActivity.refreshSummaryFragment();
+        mainActivity.refreshCurrentFragment();
     }
 
     private int load() {

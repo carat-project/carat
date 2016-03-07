@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.TreeMap;
 
+import edu.berkeley.cs.amplab.carat.android.fragments.GlobalFragment;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.utils.PrefetchData;
 import edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity;
@@ -285,9 +286,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
-    public void refreshSummaryFragment() {
+    public void refreshCurrentFragment() {
         if (getSupportFragmentManager() != null) {
-            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
+            if(fragment instanceof GlobalFragment){
+                ((GlobalFragment) fragment).refresh();
+            }
+            else if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
                 dashboardFragment.scheduleRefresh();
             }
         }

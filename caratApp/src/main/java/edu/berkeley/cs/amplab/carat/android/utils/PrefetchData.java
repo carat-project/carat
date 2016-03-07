@@ -11,7 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -20,12 +19,10 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
-import edu.berkeley.cs.amplab.carat.android.utils.JsonParser;
 
 public class PrefetchData extends AsyncTask<Void, Void, Void> {
 
@@ -215,7 +212,7 @@ public class PrefetchData extends AsyncTask<Void, Void, Void> {
         // sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
         // Log.d(TAG, "asyncTask.onPstExecute(). mWellbehaved=" + mWellbehaved);
         // TODO REFRESH SUMMARY FRAGMENT
-        a.refreshSummaryFragment();
+        a.refreshCurrentFragment();
     }
 
     /**

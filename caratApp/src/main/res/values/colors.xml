@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="red">#F33535</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#ffffff</color>
     <color name="blue">#122134</color>
     <color name="lightblue">#86CBE1</color>    
     <color name="darkblue">#122134</color>
@@ -27,6 +27,8 @@
     <color name="actionbar_color">#F8B03A</color>
     <color name="statusbar_color">#F7A71B</color>
     <color name="yellow">#FFC600</color>
+    <color name="percentage_bar_inactive">#b4b4b4</color>
+    <color name="activity_indicator_background_transparent">#bf000000</color>
 </resources>
 
 <!-- 	<color name="green">#FF00FF00</color> -->
