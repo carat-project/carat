@@ -1,7 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android.fragments;
 
 import android.app.Activity;
-import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -11,21 +11,14 @@ import android.graphics.Shader;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.sql.BatchUpdateException;
 import java.util.HashMap;
-import java.util.TreeMap;
 
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
@@ -39,28 +32,15 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
     private MainActivity mainActivity;
     private ScrollView mainFrame;
     private boolean locker;
-
-    private SurfaceHolder wellBehavecSurfaceHolder;
-    private SurfaceHolder bugsSurfaceHolder;
-    private SurfaceHolder hogsSurfaceHolder;
-    private SurfaceHolder globalSurfaceHolder;
-    private SurfaceHolder androidSurfaceHolder;
-    private SurfaceHolder iOSSurfaceHolder;
-    private SurfaceHolder userSurfaceHolder;
     private Thread drawingThread;
 
-    private SurfaceView wellBehavedSurface;
-    private SurfaceView bugsSurface;
-    private SurfaceView hogsSurface;
-    private SurfaceView globalSurface;
-    private SurfaceView androidSurface;
-    private SurfaceView iOSSurface;
-    private SurfaceView userSurface;
-
-    private ImageView globalStats;
-    private ImageView androidStats;
-    private ImageView iOSStats;
-    private ImageView userStats;
+    private ImageView wellBehavedImage;
+    private ImageView bugsImage;
+    private ImageView hogsImage;
+    private ImageView globalImage;
+    private ImageView androidImage;
+    private ImageView iOSImage;
+    private ImageView userImage;
 
     private Button wellButton, bugsButton, hogsButton;
 
@@ -71,8 +51,8 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
     private BaseDialog dialog;
 
     private float wellBehavedValue, hogsValue, bugsValue;
-    private float appWellBehavedValue, appHogsValue, appBugsValue;
-    private float iosWellBehavedValue, iosHogsValue, iosBugsValue;
+    private float appHogsValue, appBugsValue;
+    private float iosHogsValue, iosBugsValue;
     private float userBugsValue, userNoBugsValue;
 
     @Override
@@ -101,45 +81,40 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
         initViewRefs();
         initListeners();
         setValues();
-        drawValues();
+
+        // Do this on viewCreated
+        // drawValues();
     }
 
 
     private void initViewRefs() {
-        wellBehavedSurface = (SurfaceView) mainFrame.findViewById(R.id.well_behaved_surface);
-        bugsSurface = (SurfaceView) mainFrame.findViewById(R.id.bugs_surface);
-        hogsSurface = (SurfaceView) mainFrame.findViewById(R.id.hogs_surface);
+        // Percentage bars
+        wellBehavedImage = (ImageView) mainFrame.findViewById(R.id.well_behaved_imageview);
+        bugsImage = (ImageView) mainFrame.findViewById(R.id.bugs_imageview);
+        hogsImage = (ImageView) mainFrame.findViewById(R.id.hogs_imageview);
+        globalImage = (ImageView) mainFrame.findViewById(R.id.all_stats_imageview);
+        androidImage = (ImageView) mainFrame.findViewById(R.id.android_stats_imageview);
+        iOSImage = (ImageView) mainFrame.findViewById(R.id.ios_stats_imageview);
+        userImage = (ImageView) mainFrame.findViewById(R.id.user_stats_imageview);
 
-        globalSurface = (SurfaceView) mainFrame.findViewById(R.id.all_stats_surface);
-        androidSurface = (SurfaceView) mainFrame.findViewById(R.id.android_stats_surface);
-        iOSSurface = (SurfaceView) mainFrame.findViewById(R.id.ios_stats_surface);
-        userSurface = (SurfaceView) mainFrame.findViewById(R.id.user_stats_surface);
-        wellBehavecSurfaceHolder = wellBehavedSurface.getHolder();
-        bugsSurfaceHolder = bugsSurface.getHolder();
-        hogsSurfaceHolder = hogsSurface.getHolder();
-        globalSurfaceHolder = globalSurface.getHolder();
-        androidSurfaceHolder = androidSurface.getHolder();
-        iOSSurfaceHolder = iOSSurface.getHolder();
-        userSurfaceHolder = userSurface.getHolder();
-        globalStats = (ImageView) mainFrame.findViewById(R.id.all_stats);
-        androidStats = (ImageView) mainFrame.findViewById(R.id.android_stats);
-        iOSStats = (ImageView) mainFrame.findViewById(R.id.ios_stats);
-        userStats = (ImageView) mainFrame.findViewById(R.id.user_stats);
+        // Statistics
         deviceList = (TextView) mainFrame.findViewById(R.id.device_list);
 
+        // Titles
         wellTitle = (TextView) mainFrame.findViewById(R.id.well_behaved_title);
         bugsTitle = (TextView) mainFrame.findViewById(R.id.bugs_title);
         hogsTitle = (TextView) mainFrame.findViewById(R.id.hogs_title);
 
+        // Buttons
         wellButton = (Button) mainFrame.findViewById(R.id.well_behaved_button);
         bugsButton = (Button) mainFrame.findViewById(R.id.bugs_button);
         hogsButton = (Button) mainFrame.findViewById(R.id.hogs_button);
 
+        // Texts
         allText = (TextView) mainFrame.findViewById(R.id.all_general_text);
         androidText = (TextView) mainFrame.findViewById(R.id.android_general_text);
         iosText = (TextView) mainFrame.findViewById(R.id.ios_general_text);
         userText = (TextView) mainFrame.findViewById(R.id.user_general_text);
-
     }
 
     private void initListeners() {
@@ -189,11 +164,9 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
         bugsValue = (float)mainActivity.mBugs / sum;
         hogsValue = (float)mainActivity.mHogs / sum;
 
-        appWellBehavedValue = (float)mainActivity.appWellbehaved / appSum;
         appBugsValue = (float)mainActivity.appBugs / appSum;
         appHogsValue = (float)mainActivity.appHogs / appSum;
 
-        iosWellBehavedValue = (float)mainActivity.iosWellbehaved / iosSum;
         iosBugsValue = (float)mainActivity.iosBugs / iosSum;
         iosHogsValue = (float)mainActivity.iosHogs / iosSum;
 
@@ -224,12 +197,20 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
                 "% " + getString(R.string.bug_intensity));
 
         iosText.setText(getString(R.string.out_of) + " " + iosSum + " " + getString(R.string.ios_installed)
-                + "% " + iosHogPercent + " " + getString(R.string.hog_intensity) + " " + iosBugPercent +
+                + " " + iosHogPercent + "% " + getString(R.string.hog_intensity) + " " + iosBugPercent +
                 "% " + getString(R.string.bug_intensity));
 
         userText.setText(getString(R.string.out_of) + " " + userSum + " " + getString(R.string.users)
                 + " " + userBugPercent + "% " + getString(R.string.user_intensity));
 
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        // This queue will happen after layout pass
+        view.post(this);
     }
 
     private void drawValues() {
@@ -240,56 +221,26 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
     @Override
     public void run() {
         while (locker) {
-            if (!wellBehavecSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c4 = wellBehavecSurfaceHolder.lockCanvas();
-            draw(c4, 4);
-            wellBehavecSurfaceHolder.unlockCanvasAndPost(c4);
+            if(wellBehavedImage == null
+                    || wellBehavedImage.getWidth() <= 0
+                    || wellBehavedImage.getHeight() <= 0) continue;
 
-            if (!bugsSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c5 = bugsSurfaceHolder.lockCanvas();
-            draw(c5, 5);
-            bugsSurfaceHolder.unlockCanvasAndPost(c5);
-
-            if (!hogsSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c6 = hogsSurfaceHolder.lockCanvas();
-            draw(c6, 6);
-            hogsSurfaceHolder.unlockCanvasAndPost(c6);
-
-            if (!globalSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c = globalSurfaceHolder.lockCanvas();
-            draw(c, 0);
-            globalSurfaceHolder.unlockCanvasAndPost(c);
-
-            if (!androidSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c1 = androidSurfaceHolder.lockCanvas();
-            draw(c1, 1);
-            androidSurfaceHolder.unlockCanvasAndPost(c1);
-
-            if (!iOSSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c2 = iOSSurfaceHolder.lockCanvas();
-            draw(c2, 2);
-            iOSSurfaceHolder.unlockCanvasAndPost(c2);
-
-            if (!userSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c3 = userSurfaceHolder.lockCanvas();
-            draw(c3, 3);
-            userSurfaceHolder.unlockCanvasAndPost(c3);
+            setPercentageBar(wellBehavedImage, 4);
+            setPercentageBar(bugsImage, 5);
+            setPercentageBar(hogsImage, 6);
+            setPercentageBar(globalImage, 0);
+            setPercentageBar(androidImage, 1);
+            setPercentageBar(iOSImage, 2);
+            setPercentageBar(userImage, 3);
             locker = false;
         }
+    }
+
+    private void setPercentageBar(ImageView view, int id){
+        Bitmap image = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(image);
+        draw(canvas, id);
+        view.setImageBitmap(image);
     }
 
     private void draw(Canvas canvas, int which) {

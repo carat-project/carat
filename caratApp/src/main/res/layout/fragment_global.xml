@@ -40,8 +40,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <SurfaceView
-                    android:id="@+id/well_behaved_surface"
+                <ImageView
+                    android:id="@+id/well_behaved_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentBottom="true"
@@ -93,8 +93,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <SurfaceView
-                    android:id="@+id/bugs_surface"
+                <ImageView
+                    android:id="@+id/bugs_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -147,8 +147,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <SurfaceView
-                    android:id="@+id/hogs_surface"
+                <ImageView
+                    android:id="@+id/hogs_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -216,8 +216,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
-            <SurfaceView
-                android:id="@+id/all_stats_surface"
+            <ImageView
+                android:id="@+id/all_stats_imageview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
@@ -245,8 +245,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
-            <SurfaceView
-                android:id="@+id/android_stats_surface"
+            <ImageView
+                android:id="@+id/android_stats_imageview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
@@ -274,8 +274,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
-            <SurfaceView
-                android:id="@+id/ios_stats_surface"
+            <ImageView
+                android:id="@+id/ios_stats_imageview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
@@ -303,8 +303,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
-            <SurfaceView
-                android:id="@+id/user_stats_surface"
+            <ImageView
+                android:id="@+id/user_stats_imageview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
