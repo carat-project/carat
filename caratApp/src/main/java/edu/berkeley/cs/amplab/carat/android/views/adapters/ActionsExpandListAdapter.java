@@ -1,12 +1,17 @@
 package edu.berkeley.cs.amplab.carat.android.views.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.net.Uri;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -25,8 +30,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
-import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
+import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
@@ -50,14 +55,17 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private TextView samplesAmount;
     private TextView appCategory;
     private Button killAppButton;
+    private Button appManagerButton;
+    private Context context;
 
     private SimpleHogBug storedHogBug;
 
     private int previousGroup = -1;
 
     public ActionsExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication,
-                                    SimpleHogBug[] hogReport, SimpleHogBug[] bugReport) {
+                                    SimpleHogBug[] hogReport, SimpleHogBug[] bugReport, Context context) {
 
+        this.context = context;
         this.caratApplication = caratApplication;
         this.lv = lv;
         this.lv.setOnGroupClickListener(this);
@@ -160,17 +168,30 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         TextView samplesText = (TextView) v.findViewById(R.id.samples_title);
         samplesAmount = (TextView) v.findViewById(R.id.samples_amount);
         killAppButton = (Button) v.findViewById(R.id.stop_app_button);
+        appManagerButton = (Button) v.findViewById(R.id.app_manager_button);
         appCategory = (TextView) v.findViewById(R.id.app_category);
         samplesText.setText(R.string.samples);
         samplesAmount.setText(String.valueOf(item.getSamples()));
         killAppButton.setTag(item.getAppName());
-        killAppButton.setEnabled(true);
+
+        // Currently these need to be set each time, refactor?
         killAppButton.setBackgroundResource(R.drawable.button_rounded_orange);
-        killAppButton.setText(caratApplication.getString(R.string.stop_app_title));
+        killAppButton.setText(context.getString(R.string.stop_app_title));
+
+        killAppButton.setEnabled(true);
         killAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 killApp(item, v);
+            }
+        });
+
+        appManagerButton.setEnabled(true);
+        appManagerButton.setTag(item.getAppName()+"_manager");
+        appManagerButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openAppDetails(item);
             }
         });
 
@@ -215,6 +236,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             }
 
             if (SamplingLibrary.killApp(mainActivity, raw, label)) {
+                Log.d("debug", "disabling "+((label != null) ? label : "null"));
                 killAppButton = (Button) v.findViewWithTag(fullObject.getAppName());
                 killAppButton.setEnabled(false);
                 killAppButton.setBackgroundResource(R.drawable.button_rounded_gray);
@@ -222,6 +244,10 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             }
 
         }
+    }
+
+    public boolean openAppDetails(SimpleHogBug fullObject) {
+        return SamplingLibrary.openAppManager(mainActivity, fullObject.getAppName());
     }
 
     @Override

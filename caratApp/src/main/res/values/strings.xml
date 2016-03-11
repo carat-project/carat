@@ -189,6 +189,7 @@
 
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>
+    <string name="app_manager_title">APP MANAGER</string>
     <string name="app_category_title">Foreground App</string>
     <string name="actions_list_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
     <string name="actions_expanded_info">Stopping an application closes it, so it no longer drains your
@@ -207,7 +208,13 @@
         The app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground,
         but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.
     </string>
+
     <string name="stopped">STOPPED</string>
+    <string name="opening_manager">Opening app manager</string>
+    <string name="opening_manager_failed">Opening app manager failed</string>
+
+    <string name="stopping">Stopping </string>
+    <string name="stopping_failed">Could not stop app</string>string>
 
     <string name="about">ABOUT</string>
 

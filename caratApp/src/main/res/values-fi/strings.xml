@@ -183,6 +183,7 @@
 
     <!-- ACTIONS -->
     <string name="stop_app_title">PYSÄYTÄ</string>
+    <string name="app_manager_title">SOVELLUSTENHALLINTA</string>
     <string name="app_category_title">Foreground App</string>
     <string name="actions_list_message">Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.</string>
     <string name="actions_expanded_info">Pysäyttäminen sulkee sovelluksen, jotta se ei voi enää kuluttaa akkuasi.
@@ -194,6 +195,13 @@
         Jos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä.
         Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.
     </string>
+
+
+    <string name="opening_manager">Avataan sovellustenhallintaa</string>
+    <string name="opening_manager_failed">Sovellustenhallinnan avaaminen epäonnistui</string>
+
+    <string name="stopping">Pysäytetään sovellusta </string>
+    <string name="stopping_failed">Pysäyttäminen epäonnistui</string>
     <string name="stopped">PYSÄYTETTY</string>
 
     <string name="about">TIETOJA</string>

@@ -89,7 +89,7 @@ public class ActionsFragment extends Fragment implements Serializable {
             expandableListView.setVisibility(View.VISIBLE);
             expandableListView.setAdapter(new ActionsExpandListAdapter(mainActivity,
                     expandableListView, (CaratApplication) getActivity().getApplication(),
-                    hogReport, bugReport));
+                    hogReport, bugReport, mainActivity));
         }
 
     }

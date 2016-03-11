@@ -8,6 +8,49 @@
     android:focusable="false">
 
     <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp"
+    android:clickable="false"
+    android:focusable="false"
+    android:weightSum="2">
+
+    <Button
+        android:id="@+id/stop_app_button"
+        style="@style/StopAppButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:layout_weight="1"
+        android:text="@string/stop_app_title" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:clickable="false"
+        android:focusable="false"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/app_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/stop_app_button"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="Foreground App" />
+    </LinearLayout>
+
+</LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="15dp"
@@ -18,7 +61,7 @@
         android:weightSum="2">
 
         <Button
-            android:id="@+id/stop_app_button"
+            android:id="@+id/app_manager_button"
             style="@style/StopAppButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,27 +71,7 @@
             android:clickable="false"
             android:focusable="false"
             android:layout_weight="1"
-            android:text="@string/stop_app_title" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:clickable="false"
-            android:focusable="false"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/app_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/stop_app_button"
-                android:clickable="false"
-                android:focusable="false"
-                android:text="Foreground App" />
-
-        </LinearLayout>
+            android:text="@string/app_manager_title" />
 
     </LinearLayout>
 

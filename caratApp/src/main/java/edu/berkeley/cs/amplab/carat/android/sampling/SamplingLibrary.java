@@ -53,9 +53,11 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -66,11 +68,13 @@ import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.flurry.android.FlurryAgent;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
+import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.thrift.BatteryDetails;
 import edu.berkeley.cs.amplab.carat.thrift.CallMonth;
 import edu.berkeley.cs.amplab.carat.thrift.CellInfo;
@@ -1963,13 +1967,63 @@ public final class SamplingLibrary {
 				FlurryAgent.logEvent("Killing app=" + (label == null ? "null" : label) + " proc=" + packageName
 						+ " pak=" + (p == null ? "null" : p.packageName));
 				am.killBackgroundProcesses(packageName);
+				Toast.makeText(context, context.getResources().getString(R.string.stopping) + ((label == null) ? "" : " "+label),
+						Toast.LENGTH_SHORT).show();
 
 				return true;
 			} catch (Throwable th) {
+				Toast.makeText(context,  context.getResources().getString(R.string.stopping_failed),
+						Toast.LENGTH_SHORT).show();
 				Log.e(STAG, "Could not kill process: " + packageName, th);
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Open application manager
+	 *
+	 * @param context
+	 * @param packageName
+     * @return
+     */
+	public static boolean openAppManager(Context context, String packageName){
+		Intent intent = new Intent();
+		// Use this in case of frequent AndroidRuntimeExceptions
+		// intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		final int sdkLevel = Build.VERSION.SDK_INT;
+
+		// API levels greater or equal than 9
+		if (sdkLevel >= Build.VERSION_CODES.GINGERBREAD) {
+			intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+			Uri uri = Uri.fromParts("package", packageName, null);
+			intent.setData(uri);
+		} else {
+			//API levels 8 and below
+			final String extension = (sdkLevel == Build.VERSION_CODES.FROYO
+					? "pkg"
+					: "com.android.settings.ApplicationPkgName");
+			intent.setAction(Intent.ACTION_VIEW);
+			intent.setClassName(
+					"com.android.settings",
+					"com.android.settings.InstalledAppDetails"
+			);
+			//Send information to activity
+			intent.putExtra(extension, packageName);
+		}
+		try{
+			context.startActivity(intent);
+			Toast.makeText(context,  context.getResources().getString(R.string.opening_manager),
+					Toast.LENGTH_SHORT).show();
+		} catch(Exception e){
+			if(e.getLocalizedMessage() != null){
+				Toast.makeText(context,  context.getResources().getString(R.string.opening_manager_failed),
+						Toast.LENGTH_SHORT).show();
+				Log.v("error", "Failed to open application manager", e);
+			}
+			return false;
+		}
+		return true;
 	}
 
 	private static String convertToHex(byte[] data) {
