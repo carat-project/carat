@@ -203,7 +203,7 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
                 dialog = new BaseDialog(getContext(),
                         getString(R.string.cpu_usage_title),
                         getString(R.string.cpu_usage_explanation),
-                        "memoryinfo");
+                        null);
                 dialog.showDialog();
                 break;
             case R.id.what_are_jscore_numbers:

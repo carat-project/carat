@@ -64,6 +64,6 @@ dependencies {
     compile project(':mPChartLib')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:support-v4:23.0.1'
-    compile 'com.android.support:appcompat-v7:22.1.0'
     compile files('libs/universal-image-loader-1.9.5.jar')
+    compile 'com.android.support:appcompat-v7:23.1.1'
 }

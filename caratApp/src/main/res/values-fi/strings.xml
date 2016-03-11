@@ -28,7 +28,12 @@
         of active memory may increase. The OS also preloads often used applications into memory,
         shortening wait times.
     </string>
-    <string name="cpu_usage_explanation">CPU USAGE Lorem ipsum TODO...</string>
+    <string name="cpu_usage_explanation">Suorittimen käyttö kertoo, kuinka paljon laitteesi
+    suoritustehosta on käytössä. Suuri prosenttiluku tarkoittaa, että laite on täyskuormituksessa
+    suoritustehon suhteen, joka tapahtuu tyypillisesti pelatessa tai asentaessa uusia sovelluksia.</string>
+    <string name="well_behaved_explanation">
+        Hyvin käyttäytyvät sovellukset käyttävät sopivasti energiaa, eivätkä vaadi käyttäjältä erityisiä toimenpiteitä.
+    </string>
     <string name="jscore_dialog_title">J-SCORE</string>
     <string name="what_are_these_numbers_title">Mitä nämä numerot ovat?</string>
     <string name="what_are_these_numbers_explanation">Arvioitu parannus näyttää, kuinka paljon lisää käyttöaikaa bugin tai hogin korjaamisesta Carat arvioi sinun saavan. Hogin korjaaminen tarkoittaa kyseessä olevan sovelluksen lopettamista ja sen käytön vähentämistä. Bugin korjaaminen voi tarkoittaa sovelluksen lopettamista ja uudelleenkäynnistämistä, sen päivittämistä uudempaan versioon, tai sovelluksen asetuksien muuttamista.
@@ -50,7 +55,9 @@
     <string name="tutorial_fragment_hogs_title">HOGIT</string>
     <string name="tutorial_fragment_hogs_message">Hogit ovat sovelluksia joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akunkestoa.</string>
     <string name="tutorial_fragment_eula_title">EULA</string>
-    <string name="tutorial_fragment_eula_message">Lorem ipsum TODO...</string>
+
+    <string name="tutorial_fragment_eula_message">Carat kerää yleistä tietoa laitteestasti ja sen käytöstä. Käyttääksesi tätä sovellusta, sinun tulee hyväksyä EULA.</string>
+    <string name ="tutorial_fragment_eula_link">Lue EULA</string>
 
     <!-- MENU -->
     <string name="action_settings">Asetukset</string>
@@ -178,6 +185,10 @@
     <string name="stop_app_title">PYSÄYTÄ</string>
     <string name="app_category_title">Foreground App</string>
     <string name="actions_list_message">Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.</string>
+    <string name="actions_expanded_info">Pysäyttäminen sulkee sovelluksen, jotta se ei voi enää kuluttaa akkuasi.
+        Jotkin sovellukset, kuten Facebook, saattavat käynnistyä automaattisesti uudestaan pysäyttämisen jälkeen.
+        Jos sovellusta ei voi pysäyttää, voit silti pakottaa pysäytyksen tai poistaa sen sovellusten hallinnasta.
+    </string>
     <string name="no_actions_title">Sinulla ei ole ehdotuksia.</string>
     <string name="no_actions_message">
         Jos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä.

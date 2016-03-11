@@ -29,12 +29,19 @@
         of active memory may increase. The OS also preloads often used applications into memory,
         shortening wait times.
     </string>
-    <string name="cpu_usage_explanation">CPU USAGE Lorem ipsum TODO...</string>
+    <string name="cpu_usage_explanation">CPU Usage shows a percentage of how much of your device\'s
+        processing power is currently being used. High percentages mean that the device is fully loaded
+        in terms of processing power, such as when playing games or installing new applications.</string>
+    <string name="well_behaved_explanation">
+        Well-behaved apps use an appropriate amount of energy and don\'t usually require user intervention.
+    </string>
     <string name="jscore_dialog_title">J-SCORE</string>
     <string name="what_are_these_numbers_title">What are these numbers?</string>
     <string name="what_are_these_numbers_explanation">Expected benefit is the amount of battery life
         that fixing the hog/bug is expected to yield. Fixing hogs means killing the app and using
-        it less, while fixing a bug may mean just...</string>
+        it less, while fixing a bug may mean just restarting the app, updating it to the latest version, or changing some of the app\'s settings.
+        <b>Samples</b> shows how many measurements we have of this app, across all users. More samples means the app is common and its energy use well known.
+    </string>
 
     <!-- TUTORIAL -->
     <string name="tutorial_accept">ACCEPT</string>
@@ -50,7 +57,11 @@
     <string name="tutorial_fragment_hogs_message">Hogs are apps that are correlated with higher
         energy use across many devices. Closing hogs may improve battery life.</string>
     <string name="tutorial_fragment_eula_title">EULA</string>
-    <string name="tutorial_fragment_eula_message">Lorem ipsum TODO...</string>
+    <string name="tutorial_fragment_eula_message">
+            Carat periodically collects generic information about your device and how you are using it.
+            In order to use this application, you need to accept the End-user License Agreement.
+    </string>
+    <string name="tutorial_fragment_eula_link"><b><u>Read EULA</u></b></string>
 
     <!-- MENU -->
     <string name="action_settings">Settings</string>
@@ -180,6 +191,10 @@
     <string name="stop_app_title">STOP</string>
     <string name="app_category_title">Foreground App</string>
     <string name="actions_list_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
+    <string name="actions_expanded_info">Stopping an application closes it, so it no longer drains your
+        battery. Some applications that also run on the background, such as Facebook, may automatically
+        start up again after being stopped. If an app cannot be stopped, you can still force stop or uninstall it
+        from the Application Manager.</string>
     <string name="no_actions_title">You have no actions.</string>
     <string name="no_actions_message">
         You should open Carat regularly so it can take samples of your device state and communicate these to our servers.\n

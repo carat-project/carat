@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:clickable="false"
             android:focusable="false"
-            android:text="LOREMOdalmsdsaöldmsaölmrasormoireewoihrekhrh aslkjdsalkdjsalksajölsakjdlsakjdsalkdjsalkdsjsaöldjaölkjdsaöldjsadölkasdsaölkda" />
+            android:text="@string/actions_expanded_info" />
 
     </LinearLayout>
 

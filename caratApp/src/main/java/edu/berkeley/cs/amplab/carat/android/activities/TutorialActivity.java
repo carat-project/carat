@@ -9,6 +9,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -112,7 +113,7 @@ public class TutorialActivity extends ActionBarActivity implements View.OnClickL
                 finish();
             }
         }
-        if (v.getId() == R.id.eula_link) {
+        if (v.getId() == R.id.eula_link  || v.getId() == R.id.eula_message_link) {
             eulaViewVisivibility = true;
             eulaView.getSettings().setJavaScriptEnabled(true);
             eulaView.loadUrl("file:///android_asset/consent.html");
