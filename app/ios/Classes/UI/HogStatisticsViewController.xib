@@ -102,7 +102,7 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </textAttributes>
                     <items>
-                        <navigationItem title="GLOBAL STATISTICS" id="gQo-XI-wDV">
+                        <navigationItem title="HOG STATISTICS" id="gQo-XI-wDV">
                             <barButtonItem key="leftBarButtonItem" image="arrow_icon" id="gmv-a6-rxo">
                                 <inset key="imageInsets" minX="0.0" minY="15" maxX="30" maxY="15"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,9 +157,15 @@
                     <exclude reference="bTb-4N-Xd8"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="gCR-21-PCy"/>
+                    <exclude reference="kXU-g2-P6a"/>
                     <exclude reference="K6m-qy-Jn9"/>
                     <exclude reference="Xed-D0-LUW"/>
                     <exclude reference="vJg-3s-VDr"/>
+                    <exclude reference="ZIq-S2-p2y"/>
+                    <exclude reference="bHz-IG-IVJ"/>
+                    <exclude reference="cXQ-ec-WOl"/>
+                    <exclude reference="kPb-EN-d06"/>
                     <exclude reference="Ki5-MU-blp"/>
                     <exclude reference="M8Z-ce-Dwa"/>
                     <exclude reference="h6x-Fs-XZV"/>
@@ -167,12 +173,6 @@
                     <exclude reference="UeS-EV-hqu"/>
                     <exclude reference="bte-Of-gzv"/>
                     <exclude reference="iKZ-Vg-GCf"/>
-                    <exclude reference="gCR-21-PCy"/>
-                    <exclude reference="kXU-g2-P6a"/>
-                    <exclude reference="ZIq-S2-p2y"/>
-                    <exclude reference="bHz-IG-IVJ"/>
-                    <exclude reference="cXQ-ec-WOl"/>
-                    <exclude reference="kPb-EN-d06"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
@@ -184,9 +184,15 @@
                     <include reference="bTb-4N-Xd8"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="gCR-21-PCy"/>
+                    <include reference="kXU-g2-P6a"/>
                     <include reference="K6m-qy-Jn9"/>
                     <include reference="Xed-D0-LUW"/>
                     <include reference="vJg-3s-VDr"/>
+                    <include reference="ZIq-S2-p2y"/>
+                    <include reference="bHz-IG-IVJ"/>
+                    <include reference="cXQ-ec-WOl"/>
+                    <include reference="kPb-EN-d06"/>
                     <include reference="Ki5-MU-blp"/>
                     <include reference="M8Z-ce-Dwa"/>
                     <include reference="h6x-Fs-XZV"/>
@@ -194,12 +200,6 @@
                     <include reference="UeS-EV-hqu"/>
                     <include reference="bte-Of-gzv"/>
                     <include reference="iKZ-Vg-GCf"/>
-                    <include reference="gCR-21-PCy"/>
-                    <include reference="kXU-g2-P6a"/>
-                    <include reference="ZIq-S2-p2y"/>
-                    <include reference="bHz-IG-IVJ"/>
-                    <include reference="cXQ-ec-WOl"/>
-                    <include reference="kPb-EN-d06"/>
                 </mask>
             </variation>
         </view>

@@ -12,6 +12,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2417658D1C60D896007EB0CD /* Icon144.png in Resources */ = {isa = PBXBuildFile; fileRef = 2417658C1C60D896007EB0CD /* Icon144.png */; };
 		2417658F1C60E64C007EB0CD /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417658E1C60E64C007EB0CD /* CoreBluetooth.framework */; };
+		245897461C9063F1001D3FE2 /* TopHogsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 245897441C9063F1001D3FE2 /* TopHogsTableViewCell.m */; };
+		245897471C9063F1001D3FE2 /* TopHogsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245897451C9063F1001D3FE2 /* TopHogsTableViewCell.xib */; };
 		245A59801C526D7D003DC25C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A597E1C526D7D003DC25C /* SettingsViewController.m */; };
 		245A59811C526D7D003DC25C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245A597F1C526D7D003DC25C /* SettingsViewController.xib */; };
 		245A59841C529039003DC25C /* CoreDataSystemTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59831C529039003DC25C /* CoreDataSystemTree.m */; };
@@ -187,6 +189,9 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2417658C1C60D896007EB0CD /* Icon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon144.png; path = ../Images.xcassets/AppIcon.appiconset/Icon144.png; sourceTree = "<group>"; };
 		2417658E1C60E64C007EB0CD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		245897431C9063F1001D3FE2 /* TopHogsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHogsTableViewCell.h; sourceTree = "<group>"; };
+		245897441C9063F1001D3FE2 /* TopHogsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopHogsTableViewCell.m; sourceTree = "<group>"; };
+		245897451C9063F1001D3FE2 /* TopHogsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopHogsTableViewCell.xib; sourceTree = "<group>"; };
 		245A597D1C526D7D003DC25C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		245A597E1C526D7D003DC25C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		245A597F1C526D7D003DC25C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -837,6 +842,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		245897361C904CD0001D3FE2 /* TopHogsTable */ = {
+			isa = PBXGroup;
+			children = (
+				24E3D7171C85F69C00A33236 /* TopHogsTableView.h */,
+				24E3D7181C85F69C00A33236 /* TopHogsTableView.m */,
+				245897431C9063F1001D3FE2 /* TopHogsTableViewCell.h */,
+				245897441C9063F1001D3FE2 /* TopHogsTableViewCell.m */,
+				245897451C9063F1001D3FE2 /* TopHogsTableViewCell.xib */,
+			);
+			name = TopHogsTable;
+			sourceTree = "<group>";
+		};
 		245A59881C564728003DC25C /* Device */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1007,7 @@
 		894A23EC1BC250E70059850A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				245897361C904CD0001D3FE2 /* TopHogsTable */,
 				894A23FC1BC251800059850A /* DashboardNavigationButton.xib */,
 				894A23FA1BC251800059850A /* DashboardNavigationButton.h */,
 				894A23FB1BC251800059850A /* DashboardNavigationButton.m */,
@@ -1025,8 +1043,6 @@
 				89554B5A1BDCD98C00ECE919 /* ProgressUpdateView.xib */,
 				89554B5C1BDCD99900ECE919 /* ProgressUpdateView.h */,
 				89554B5D1BDCD99900ECE919 /* ProgressUpdateView.m */,
-				24E3D7171C85F69C00A33236 /* TopHogsTableView.h */,
-				24E3D7181C85F69C00A33236 /* TopHogsTableView.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1713,6 +1729,7 @@
 				AB9525B014EA1B6F00343418 /* killapp.html in Resources */,
 				89554B5B1BDCD98C00ECE919 /* ProgressUpdateView.xib in Resources */,
 				8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */,
+				245897471C9063F1001D3FE2 /* TopHogsTableViewCell.xib in Resources */,
 				8988B1631BDC181B0022524B /* jscoreplot.png in Resources */,
 				89FF8B8C1BDBAA3E00147943 /* HogsViewController.xib in Resources */,
 				C7534EB71BF9F09600AA6F78 /* Launch Screen.storyboard in Resources */,
@@ -1873,6 +1890,7 @@
 				24AC38C41C6BA0CB00FA3572 /* TNSStreamTransport.m in Sources */,
 				894AF06D1BCCEC5F003E7D76 /* AboutListItemData.m in Sources */,
 				89FF8B521BDBAA3300147943 /* StatisticsViewController.m in Sources */,
+				245897461C9063F1001D3FE2 /* TopHogsTableViewCell.m in Sources */,
 				245A59871C529110003DC25C /* CoreDataSystemNode.m in Sources */,
 				89FF8B8D1BDBAA3E00147943 /* InfoViewController.m in Sources */,
 				24AC38BD1C6BA0CB00FA3572 /* TApplicationException.m in Sources */,
