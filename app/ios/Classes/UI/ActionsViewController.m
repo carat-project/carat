@@ -158,7 +158,7 @@
     // data collection action
     if ([myList count] == 0) {
         tmpAction = [[ActionObject alloc] init];
-        [tmpAction setActionText:@"Help Carat Collect Data"];
+        [tmpAction setActionText:NSLocalizedString(@"ActionHelpCollect", nil)];
         [tmpAction setActionType:ActionTypeCollectData];
         [tmpAction setActionBenefit:-1];
         [tmpAction setActionError:-1];
@@ -214,7 +214,7 @@
     //[cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"icon57.png"]];
     
     if (act.actionBenefit == -1) {
-        cell.actionValue.text = @"better Carat results!";
+        cell.actionValue.text = NSLocalizedString(@"ActionHelpCollectSubtext", nil);
         cell.actionType = ActionTypeCollectData;
     } else if (act.actionBenefit == -2) { // already filtered out benefits < 60 seconds
         cell.actionValue.text = @"+100 karma!";

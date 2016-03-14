@@ -15,7 +15,7 @@
 
 NSArray *pageDataContent;
 
-@interface TutorialViewController : UIViewController{
+@interface TutorialViewController :BaseViewController{
     NSArray *consentWebView;
     id callbackDelegate;
     SEL callbackSelector;
@@ -30,6 +30,8 @@ NSArray *pageDataContent;
 @property (retain, nonatomic) IBOutlet UIButton *acceptButton;
 @property (retain, nonatomic) IBOutlet UILabel *tutorialPageTitle;
 @property (retain, nonatomic) IBOutlet UILabel *tutorialPageDescription;
+@property (retain, nonatomic) IBOutlet UILabel *eulaButton;
+@property (retain, nonatomic) UIWindow *window;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil callbackTo:(id)delegate withSelector:(SEL)selector;
 

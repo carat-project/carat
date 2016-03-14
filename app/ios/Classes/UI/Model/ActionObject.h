@@ -15,6 +15,7 @@ typedef enum {
     ActionTypeDimScreen,
     ActionTypeSpreadTheWord,
     ActionTypeCollectData,
+    ActionTypeShowTopHogs,
     ActionTypeActiveBatteryLifeInfo,
     ActionTypeJScoreInfo,
     ActionTypeMemoryInfo,

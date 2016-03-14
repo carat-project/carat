@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -17,7 +17,6 @@
                 <outlet property="navBar" destination="MLN-M5-fNW" id="wY2-hh-hEV"/>
                 <outlet property="progressUpdateView" destination="NFu-mm-1qy" id="wKK-tL-ZwK"/>
                 <outlet property="scoreView" destination="KHS-1W-TCm" id="nYm-oh-v5l"/>
-                <outlet property="settingsBtn" destination="Svb-AR-0bX" id="2I4-6u-h4i"/>
                 <outlet property="shareBar" destination="EgJ-dC-XF2" id="6zy-H0-c5A"/>
                 <outlet property="shareBtn" destination="oEg-W8-5rf" id="9R2-0Q-1ru"/>
                 <outlet property="statisticsBtn" destination="2GU-Q5-Nte" id="vs3-Rv-Xto"/>
@@ -57,29 +56,12 @@
                                 <outletCollection property="gestureRecognizers" destination="wl9-6N-oL2" appends="YES" id="Ei1-PV-i8W"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ya-BJ-m5M" userLabel="actions" customClass="DashboardNavigationButton">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <gestureRecognizers/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="YUA-FK-yV6" appends="YES" id="D95-Ej-xNn"/>
-                            </connections>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqo-Fl-Cxb" userLabel="bugs" customClass="DashboardNavigationButton">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <gestureRecognizers/>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="Md1-jv-Hai" appends="YES" id="StS-JN-akd"/>
-                            </connections>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Svb-AR-0bX" userLabel="settings" customClass="DashboardNavigationButton">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <accessibility key="accessibilityConfiguration" label=""/>
-                            <gestureRecognizers/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="Ly1-eT-jc7" appends="YES" id="fIJ-Zy-gvH"/>
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GU-Q5-Nte" userLabel="stat" customClass="DashboardNavigationButton">
@@ -90,37 +72,40 @@
                                 <outletCollection property="gestureRecognizers" destination="ovN-Oe-n6j" appends="YES" id="otA-HX-Ub6"/>
                             </connections>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ya-BJ-m5M" userLabel="actions" customClass="DashboardNavigationButton">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="YUA-FK-yV6" appends="YES" id="D95-Ej-xNn"/>
+                            </connections>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="6Ya-BJ-m5M" firstAttribute="top" secondItem="Ia7-bT-aLn" secondAttribute="top" id="4IP-2f-cZ6"/>
                         <constraint firstItem="3Y6-d8-ikE" firstAttribute="top" secondItem="Ia7-bT-aLn" secondAttribute="top" id="7MC-JM-bcs"/>
-                        <constraint firstItem="3Y6-d8-ikE" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="centerX" multiplier="0.8" id="7dE-84-a3K"/>
+                        <constraint firstItem="3Y6-d8-ikE" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="centerX" id="7dE-84-a3K"/>
                         <constraint firstItem="3Y6-d8-ikE" firstAttribute="leading" secondItem="hqo-Fl-Cxb" secondAttribute="trailing" id="8zR-mN-q0e"/>
-                        <constraint firstItem="6Ya-BJ-m5M" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="centerX" multiplier="1.6" id="EdI-yj-ITS"/>
+                        <constraint firstItem="6Ya-BJ-m5M" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="centerX" multiplier="2" id="EdI-yj-ITS"/>
                         <constraint firstItem="2GU-Q5-Nte" firstAttribute="leading" secondItem="3Y6-d8-ikE" secondAttribute="trailing" id="Gz2-P7-fQm"/>
                         <constraint firstAttribute="bottom" secondItem="3Y6-d8-ikE" secondAttribute="bottom" id="HZK-5X-gH9"/>
-                        <constraint firstAttribute="bottom" secondItem="Svb-AR-0bX" secondAttribute="bottom" id="K5R-XJ-ua9"/>
-                        <constraint firstItem="Svb-AR-0bX" firstAttribute="leading" secondItem="6Ya-BJ-m5M" secondAttribute="trailing" id="OeU-1r-fdK"/>
                         <constraint firstAttribute="bottom" secondItem="2GU-Q5-Nte" secondAttribute="bottom" id="Ogj-ni-Mrh"/>
                         <constraint firstItem="hqo-Fl-Cxb" firstAttribute="top" secondItem="Ia7-bT-aLn" secondAttribute="top" id="PlR-Ud-oGy"/>
-                        <constraint firstItem="hqo-Fl-Cxb" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="centerX" multiplier="0.4" id="WlZ-eS-yHC"/>
+                        <constraint firstItem="hqo-Fl-Cxb" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="centerX" multiplier="0.5" id="WlZ-eS-yHC"/>
                         <constraint firstItem="hqo-Fl-Cxb" firstAttribute="leading" secondItem="Ia7-bT-aLn" secondAttribute="leading" id="YFe-sz-5XH"/>
-                        <constraint firstItem="Svb-AR-0bX" firstAttribute="top" secondItem="Ia7-bT-aLn" secondAttribute="top" id="hxd-gY-bsd"/>
-                        <constraint firstItem="Svb-AR-0bX" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="trailing" id="jKB-SW-2EE"/>
                         <constraint firstItem="6Ya-BJ-m5M" firstAttribute="leading" secondItem="2GU-Q5-Nte" secondAttribute="trailing" id="tMt-pf-vFv"/>
                         <constraint firstAttribute="bottom" secondItem="6Ya-BJ-m5M" secondAttribute="bottom" id="uDP-qt-jFF"/>
-                        <constraint firstItem="2GU-Q5-Nte" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="centerX" multiplier="1.2" id="w2I-ge-hyY"/>
+                        <constraint firstItem="2GU-Q5-Nte" firstAttribute="trailing" secondItem="Ia7-bT-aLn" secondAttribute="centerX" multiplier="1.5" id="w2I-ge-hyY"/>
                         <constraint firstAttribute="bottom" secondItem="hqo-Fl-Cxb" secondAttribute="bottom" id="wsA-KX-Zn4"/>
                         <constraint firstItem="2GU-Q5-Nte" firstAttribute="top" secondItem="Ia7-bT-aLn" secondAttribute="top" id="yJj-K5-F0f"/>
                     </constraints>
                     <variation key="default">
                         <mask key="subviews">
                             <exclude reference="3Y6-d8-ikE"/>
-                            <exclude reference="6Ya-BJ-m5M"/>
                             <exclude reference="hqo-Fl-Cxb"/>
-                            <exclude reference="Svb-AR-0bX"/>
                             <exclude reference="2GU-Q5-Nte"/>
+                            <exclude reference="6Ya-BJ-m5M"/>
                         </mask>
                         <mask key="constraints">
                             <exclude reference="Gz2-P7-fQm"/>
@@ -135,10 +120,6 @@
                             <exclude reference="EdI-yj-ITS"/>
                             <exclude reference="tMt-pf-vFv"/>
                             <exclude reference="uDP-qt-jFF"/>
-                            <exclude reference="K5R-XJ-ua9"/>
-                            <exclude reference="OeU-1r-fdK"/>
-                            <exclude reference="hxd-gY-bsd"/>
-                            <exclude reference="jKB-SW-2EE"/>
                             <exclude reference="PlR-Ud-oGy"/>
                             <exclude reference="WlZ-eS-yHC"/>
                             <exclude reference="YFe-sz-5XH"/>
@@ -148,10 +129,9 @@
                     <variation key="widthClass=compact">
                         <mask key="subviews">
                             <include reference="3Y6-d8-ikE"/>
-                            <include reference="6Ya-BJ-m5M"/>
                             <include reference="hqo-Fl-Cxb"/>
-                            <include reference="Svb-AR-0bX"/>
                             <include reference="2GU-Q5-Nte"/>
+                            <include reference="6Ya-BJ-m5M"/>
                         </mask>
                         <mask key="constraints">
                             <include reference="Gz2-P7-fQm"/>
@@ -166,10 +146,6 @@
                             <include reference="EdI-yj-ITS"/>
                             <include reference="tMt-pf-vFv"/>
                             <include reference="uDP-qt-jFF"/>
-                            <include reference="K5R-XJ-ua9"/>
-                            <include reference="OeU-1r-fdK"/>
-                            <include reference="hxd-gY-bsd"/>
-                            <include reference="jKB-SW-2EE"/>
                             <include reference="PlR-Ud-oGy"/>
                             <include reference="WlZ-eS-yHC"/>
                             <include reference="YFe-sz-5XH"/>
@@ -194,8 +170,7 @@
                             <exclude reference="fNJ-1v-nxn"/>
                         </mask>
                     </variation>
-                    <variation key="widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="139" y="89" width="97" height="98"/>
+                    <variation key="widthClass=compact">
                         <mask key="constraints">
                             <include reference="fNJ-1v-nxn"/>
                         </mask>

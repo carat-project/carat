@@ -22,6 +22,7 @@ bool genStatLoaded;
     [super viewDidLoad];
     
     [_spinner startAnimating];
+    _wellBehivedLabel.text = NSLocalizedString(@"WellBehaved", nil);
     
     popModelLoaded = false;
     genStatLoaded = false;
@@ -364,8 +365,8 @@ bool genStatLoaded;
     [super dealloc];
 }
 - (IBAction)showWellBehivedInfo:(id)sender {
-    NSLog(@"showWellBehivedInfo");
-     [self showInfoView:@"WellBehived" message:@"WellBehivedDesc"];
+    NSLog(@"showWellBehavedInfo");
+     [self showInfoView:@"WellBehaved" message:@"WellBehavedDesc"];
 }
 
 - (IBAction)showBugsInfo:(id)sender {

@@ -117,10 +117,14 @@ void onUncaughtException(NSException *exception)
 }
 
 - (BOOL)acquireConsentWithCallbackTarget:(CaratAppDelegate *)delegate withSelector:(SEL)selector {
-    // UI
+    // Create an initial navigation controller to handle showing EULA in a webview
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     TutorialViewController *viewController = [[TutorialViewController alloc] initWithNibName:@"TutorialViewController" bundle:nil callbackTo:delegate withSelector:selector];
     self.window.rootViewController = viewController;
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.navigationController.navigationBarHidden = YES;
+    
+    [self.window addSubview:self.navigationController.view];
     [self.window makeKeyAndVisible];
     [viewController release];
     

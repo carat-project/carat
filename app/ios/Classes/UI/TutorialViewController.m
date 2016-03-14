@@ -116,10 +116,12 @@
     _pagePos = pageNumber;
     TutorialPageContent* pageCont = _pageDataContent[pageNumber];
      NSLog(@"****** setPage title ******** %@", pageCont.title);
+    _eulaButton.hidden = true;
     if(pageNumber == 3){
         //[_acceptButton setEnabled:YES];
         [_acceptButton setBackgroundColor:C_LIGHT_GRAY forState:UIControlStateDisabled];
         [_acceptButton setBackgroundColor:C_ORANGE forState:UIControlStateNormal];
+        _eulaButton.hidden = false;
     }
     [_ImageView setImage:[UIImage imageNamed:pageCont.imageName]];
     [_tutorialPageTitle setText:pageCont.title];
@@ -129,12 +131,10 @@
 
 - (IBAction)acceptInfoPressed
 {
-    DLog(@"%s", __PRETTY_FUNCTION__);
-    WebInfoViewController *controler = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
-    controler.webUrl = @"consent";
-    controler.titleForView =  NSLocalizedString(@"EulaPrivacyPolicy", nil);
-    [self.navigationController pushViewController:controler animated:YES];
-    
+    WebInfoViewController *controller = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
+    controller.webUrl = @"consent";
+    controller.titleForView =  NSLocalizedString(@"EulaPrivacyPolicy", nil);
+    [self.navigationController pushViewController:controller animated:true];
 }
 
 /*
@@ -154,6 +154,7 @@
     [_tutorialPageTitle release];
     [_tutorialPageDescription release];
     [_pageDataContent release];
+    [_eulaButton release];
     [super dealloc];
 }
 
