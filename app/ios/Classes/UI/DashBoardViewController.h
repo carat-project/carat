@@ -15,7 +15,6 @@
 #import "HogStatisticsViewController.h"
 #import "StatisticsViewController.h"
 #import "ActionsViewController.h"
-#import "SettingsViewController.h"
 #import "MyScoreViewController.h"
 #import "MoreViewController.h"
 #import "ProgressUpdateView.h"

@@ -8,35 +8,35 @@
 
 #import <CoreData/CoreData.h>
 #import <mach/mach.h>
+#import "CaratProtocol.h"
 
 #ifndef NSFoundationVersionNumber_iOS_9_0
 #define _iOS_9_0 NSFoundationVersionNumber_iOS_9_0
 #endif
 
-typedef struct NetworkUsage {
-    double wifiReceived;
-    double wifiSent;
-    double mobileReceived;
-    double mobileSent;
-} NetworkUsage;
 
-typedef struct DiskUsage {
-    int total;
-    int free;
-} DiskUsage;
+typedef struct MemoryInfo {
+    double wired;
+    double active;
+    double inactive;
+    double free;
+    double user;
+} MemoryInfo;
 
 @interface DeviceInformation : NSManagedObject
 
 + (NSString *) getMobileNetworkType;
 + (NSString *) getBatteryState;
++ (NSNumber *) getBatteryLevel;
 + (double) getCpuUsage;
 + (unsigned long) getNumCpu;
-+ (int) getScreenBrightness;
++ (NSNumber *) getScreenBrightness;
 + (NSString *) getNetworkStatus;
 + (bool) getLocationEnabled;
-+ (NetworkUsage) getDataUsage;
++ (NetworkStatistics *) getNetworkStatistics;
 + (time_t) getDeviceUptime;
 + (time_t) getDeviceSleepTime;
-+ (DiskUsage) getDiskUsage;
++ (StorageDetails *) getStorageDetails;
 + (bool) getPowersaverEnabled;
++ (MemoryInfo) getMemoryInformation;
 @end

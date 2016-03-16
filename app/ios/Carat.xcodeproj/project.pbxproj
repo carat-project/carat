@@ -14,8 +14,6 @@
 		2417658F1C60E64C007EB0CD /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417658E1C60E64C007EB0CD /* CoreBluetooth.framework */; };
 		245897461C9063F1001D3FE2 /* TopHogsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 245897441C9063F1001D3FE2 /* TopHogsTableViewCell.m */; };
 		245897471C9063F1001D3FE2 /* TopHogsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245897451C9063F1001D3FE2 /* TopHogsTableViewCell.xib */; };
-		245A59801C526D7D003DC25C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A597E1C526D7D003DC25C /* SettingsViewController.m */; };
-		245A59811C526D7D003DC25C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245A597F1C526D7D003DC25C /* SettingsViewController.xib */; };
 		245A59841C529039003DC25C /* CoreDataSystemTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59831C529039003DC25C /* CoreDataSystemTree.m */; };
 		245A59871C529110003DC25C /* CoreDataSystemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A59861C529110003DC25C /* CoreDataSystemNode.m */; };
 		245A598B1C5647A1003DC25C /* DeviceInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 245A598A1C5647A1003DC25C /* DeviceInformation.m */; };
@@ -192,9 +190,6 @@
 		245897431C9063F1001D3FE2 /* TopHogsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHogsTableViewCell.h; sourceTree = "<group>"; };
 		245897441C9063F1001D3FE2 /* TopHogsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopHogsTableViewCell.m; sourceTree = "<group>"; };
 		245897451C9063F1001D3FE2 /* TopHogsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopHogsTableViewCell.xib; sourceTree = "<group>"; };
-		245A597D1C526D7D003DC25C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		245A597E1C526D7D003DC25C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		245A597F1C526D7D003DC25C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		245A59821C529039003DC25C /* CoreDataSystemTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataSystemTree.h; sourceTree = "<group>"; };
 		245A59831C529039003DC25C /* CoreDataSystemTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataSystemTree.m; sourceTree = "<group>"; };
 		245A59851C529110003DC25C /* CoreDataSystemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataSystemNode.h; path = Classes/CoreDataSystemNode.h; sourceTree = SOURCE_ROOT; };
@@ -1232,9 +1227,6 @@
 				89FF8B471BDBAA3300147943 /* StatisticsViewController.h */,
 				89FF8B481BDBAA3300147943 /* StatisticsViewController.m */,
 				89FF8B5F1BDBAA3E00147943 /* ActionsViewController.xib */,
-				245A597D1C526D7D003DC25C /* SettingsViewController.h */,
-				245A597E1C526D7D003DC25C /* SettingsViewController.m */,
-				245A597F1C526D7D003DC25C /* SettingsViewController.xib */,
 				89FF8B5D1BDBAA3E00147943 /* ActionsViewController.h */,
 				89FF8B5E1BDBAA3E00147943 /* ActionsViewController.m */,
 				89FF8B7B1BDBAA3E00147943 /* MyScoreViewController.xib */,
@@ -1715,7 +1707,6 @@
 				8988B1651BDC181B0022524B /* procmanager2.png in Resources */,
 				89FF8B7F1BDBAA3E00147943 /* AboutViewController.xib in Resources */,
 				66EC15081A2A6A8E00153746 /* infoButton.png in Resources */,
-				245A59811C526D7D003DC25C /* SettingsViewController.xib in Resources */,
 				C75488D619963D04007A01CF /* 32-iphone.png in Resources */,
 				897B01B41BEA1ABA0025E051 /* Localizable.strings in Resources */,
 				ABC07A1B14859C7100FCC2C2 /* about.png in Resources */,
@@ -1902,7 +1893,6 @@
 				C754888719963D03007A01CF /* CoreDataSubReport.m in Sources */,
 				24AC38BE1C6BA0CB00FA3572 /* TBaseClient.m in Sources */,
 				24AC38BF1C6BA0CB00FA3572 /* TException.m in Sources */,
-				245A59801C526D7D003DC25C /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

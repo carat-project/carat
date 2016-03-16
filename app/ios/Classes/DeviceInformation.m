@@ -58,12 +58,13 @@ const unsigned long GB = MB * 1024;
 // @see https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/
 + (NSString *) getBatteryState {
     UIDeviceBatteryState bs = [UIDevice currentDevice].batteryState;
-    if(!bs) return @"unknown";
+    if(!bs) return @"Unknown";
     
     // UIDeviceBatteryStateFull indicates the device is plugged and 100% charged
-    if(bs == UIDeviceBatteryStateCharging || bs == UIDeviceBatteryStateFull) return @"charging";
-    else if(bs == UIDeviceBatteryStateUnplugged) return @"discharging";
-    else return @"unknown";
+    if(bs == UIDeviceBatteryStateCharging) return @"Charging";
+    else if(bs == UIDeviceBatteryStateUnplugged) return @"Unplugged";
+    else if(bs == UIDeviceBatteryStateFull) return @"Full";
+    else return @"Unknown";
 }
 
 + (unsigned long) getNumCpu {
@@ -113,14 +114,16 @@ const unsigned long GB = MB * 1024;
 
 // Screen brightness in range of 0-255
 // @see https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIScreen_Class/#//apple_ref/occ/instp/UIScreen/brightness
-+ (int) getScreenBrightness {
-    return (int)([UIScreen mainScreen].brightness*255);
++ (NSNumber *) getScreenBrightness {
+    float brightness = [UIScreen mainScreen].brightness*255;
+    return [NSNumber numberWithFloat:brightness];
 }
 
 // Battery level with accuracy of 1pp or 5pp
 // @see https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/batteryLevel
-+ (float) getBatteryLevel {
-    return [UIDevice currentDevice].batteryLevel;
++ (NSNumber *) getBatteryLevel {
+    float level = [UIDevice currentDevice].batteryLevel;
+    return [NSNumber numberWithFloat:level];
 }
 
 // Check network availability synchronously
@@ -132,12 +135,12 @@ const unsigned long GB = MB * 1024;
     SCNetworkReachabilityFlags flags;
     bool status = SCNetworkReachabilityGetFlags(reachability, &flags);
     CFRelease(reachability);
-    if(!status) return @"unknown";
+    if(!status) return @"Unknown";
     bool networkReachable = ((flags & kSCNetworkReachabilityFlagsReachable) != 0) &&
                             ((flags & kSCNetworkReachabilityFlagsConnectionRequired) != 0);
-    if (!networkReachable) return @"unavailable";
-    else if(flags & kSCNetworkReachabilityFlagsIsWWAN) return @"mobile";
-    else return @"wifi";
+    if (!networkReachable) return @"NotReachable";
+    else if(flags & kSCNetworkReachabilityFlagsIsWWAN) return @"ReachableWWAN";
+    else return @"ReachableWIFI";
 }
 
 
@@ -194,8 +197,8 @@ const unsigned long GB = MB * 1024;
 
 // Data sent and received by wifi and mobile interfaces in megabytes
 // @see https://developer.apple.com/library/ios/documentation/System/Conceptual/ManPages_iPhoneOS/man3/getifaddrs.3.html
-+ (NetworkUsage) getDataUsage {
-    NetworkUsage stats = {0,0,0,0};
++ (NetworkStatistics *) getNetworkStatistics {
+    NetworkStatistics *stats = [NetworkStatistics new];
     struct ifaddrs *ifaddr;
     const struct ifaddrs *cursor;
     
@@ -227,8 +230,8 @@ const unsigned long GB = MB * 1024;
 
 // Total and free filesystem space in megabytes
 // @see https://developer.apple.com/library/prerelease/mac/documentation/Cocoa/Reference/Foundation/Classes/NSFileManager_Class/index.html
-+ (DiskUsage) getDiskUsage {
-    DiskUsage storage = {0,0};
++ (StorageDetails *) getStorageDetails {
+    StorageDetails *storage = [StorageDetails new];
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
@@ -238,6 +241,42 @@ const unsigned long GB = MB * 1024;
         storage.free = (int)[[dictionary objectForKey: NSFileSystemFreeSize] unsignedLongLongValue]/MB;
     }
     return storage;
+}
+
+
+// Virtual memory statistics
+// @see http://web.mit.edu/darwin/src/modules/xnu/osfmk/man/host_statistics.html
++ (MemoryInfo) getMemoryInformation {
+    MemoryInfo memory = {0,0,0,0,0};
+    kern_return_t success;
+    mach_msg_type_number_t infoCount = HOST_VM_INFO_COUNT;
+    vm_statistics_data_t vmStats;
+    
+    memory.user = [DeviceInformation getHardwareValue:HW_USERMEM];
+    
+    NSInteger pageSize = [DeviceInformation getHardwareValue:HW_PAGESIZE];
+    success = host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t)&vmStats, &infoCount);
+    if(success == KERN_SUCCESS) {
+        memory.wired = vmStats.wire_count * pageSize;
+        memory.active = vmStats.active_count * pageSize;
+        memory.inactive = vmStats.inactive_count * pageSize;
+        memory.free = vmStats.free_count * pageSize;
+    }
+    
+    return memory;
+}
+
+// Generic hardware information
+// @see https://developer.apple.com/library/ios/documentation/System/Conceptual/ManPages_iPhoneOS/man3/sysctl.3.html
++ (NSInteger) getHardwareValue: (int) value;
+{
+    int result;
+    size_t size = sizeof(result);
+    int mib[2] = {CTL_HW, value};
+    if(sysctl(mib, 2, &result, &size, NULL, 0) != 1) {
+        return result;
+    }
+    return 0;
 }
 
 @end

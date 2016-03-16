@@ -910,115 +910,73 @@ static float cpuUsageVal;
 - (void) sampleForeground : (NSString *) triggeredBy
 {
     NSError *error = nil;
+    int secondsSinceEpoch = [[NSDate date] timeIntervalSince1970];
     
     NSManagedObjectContext *managedObjectContext = [[[NSManagedObjectContext alloc] init] autorelease];
     [managedObjectContext setUndoManager:nil];
     [managedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+    if (managedObjectContext == nil) return;
     
-    if (managedObjectContext == nil) { return; }
-    
-    CoreDataSample *cdataSample = (CoreDataSample *) [NSEntityDescription insertNewObjectForEntityForName:@"CoreDataSample" 
+    CoreDataSample *sample = (CoreDataSample *) [NSEntityDescription insertNewObjectForEntityForName:@"CoreDataSample" 
                                                                                    inManagedObjectContext:managedObjectContext];
-    [cdataSample setTriggeredBy:triggeredBy];
-    [cdataSample setTimestamp:[NSNumber numberWithDouble:
-                               [[Globals instance] utcSecondsSinceEpoch]]];
-    [cdataSample setNetworkStatus:[[CommunicationManager instance] networkStatusString]];
-    
-    [cdataSample setDistanceTraveled:0];
-    if ([triggeredBy isEqualToString:@"didUpdateToLocation"])
-        [cdataSample setDistanceTraveled:[NSNumber numberWithDouble:[[Globals instance] getDistanceTraveled]]];
     
     //
-    //  Running processes.
-    //
-    [self sampleProcessInfo:cdataSample withManagedObjectContext:managedObjectContext];
-    
-    //
-    //  Battery state and level.
-    //
-    [cdataSample setBatteryLevel:[NSNumber numberWithFloat:
-                                  [UIDevice currentDevice].batteryLevel]];
-    [cdataSample setBatteryState:[UIDevice currentDevice].batteryStateString];
-    
-    //
-    //  Memory info.
-    //
-    mach_msg_type_number_t count = HOST_VM_INFO_COUNT;
-    vm_statistics_data_t vmstat;
-    if (host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t)&vmstat, &count) != KERN_SUCCESS)
-    {
-        DLog(@"Failed to get VM statistics.");
-    }
-    else 
-    {
-        int pagesize = [[UIDevice currentDevice] pageSize];
-        int wired = vmstat.wire_count * pagesize;
-        int active = vmstat.active_count * pagesize;
-        int inactive = vmstat.inactive_count * pagesize;
-        int free = vmstat.free_count * pagesize;
-        [cdataSample setMemoryWired:[NSNumber numberWithInt:wired]];
-        [cdataSample setMemoryActive:[NSNumber numberWithInt:active]];
-        [cdataSample setMemoryInactive:[NSNumber numberWithInt:inactive]];
-        [cdataSample setMemoryFree:[NSNumber numberWithInt:free]];
-        [cdataSample setMemoryUser:[NSNumber numberWithUnsignedInteger:[[UIDevice currentDevice] userMemory]]];
-    }
-    
-    //
-    // System data
+    // Prepare nested structures
     //
     
-    // Some fields are encoded here and decoded in fetchAndSendSamples
-    // This is in order to save thrift-generated classes in core data
+    NetworkDetails *networkDetails = [NetworkDetails new];
+    networkDetails.networkType = [DeviceInformation getNetworkStatus];
+    networkDetails.mobileNetworkType = [DeviceInformation getMobileNetworkType];
+    networkDetails.networkStatistics = [DeviceInformation getNetworkStatistics];
     
-    // Screen brightness
-    int brightness = [DeviceInformation getScreenBrightness];
-    [cdataSample setScreenBrightness:[NSNumber numberWithInt:brightness]];
+    NSData *networkEncoded = [NSKeyedArchiver archivedDataWithRootObject:networkDetails];
+    [sample setNetworkDetails:networkEncoded];
     
-    // Network statistics
-    struct NetworkUsage usage = [DeviceInformation getDataUsage];
-    NetworkStatistics *nwStats = [NetworkStatistics new];
-    nwStats.wifiReceived = usage.wifiReceived;
-    nwStats.wifiSent = usage.wifiSent;
-    nwStats.mobileReceived = usage.mobileReceived;
-    nwStats.mobileSent = usage.mobileSent;
-    
-    // Network details
-    NetworkDetails *nwDetails = [NetworkDetails new];
-    nwDetails.networkType = [DeviceInformation getNetworkStatus];
-    nwDetails.mobileNetworkType = [DeviceInformation getMobileNetworkType];
-    nwDetails.networkStatistics = nwStats;
-    
-    NSData *nwEncoded = [NSKeyedArchiver archivedDataWithRootObject:nwDetails];
-    [cdataSample setNetworkDetails:nwEncoded];
-    
-    // CPU usage
     CpuStatus *cpuStat = [CpuStatus new];
     cpuStat.cpuUsage = [DeviceInformation getCpuUsage];
     cpuStat.uptime = [DeviceInformation getDeviceUptime];
     cpuStat.sleeptime = [DeviceInformation getDeviceSleepTime];
-    
     NSData * cpuEncoded = [NSKeyedArchiver archivedDataWithRootObject:cpuStat];
-    [cdataSample setCpuStatus:cpuEncoded];
     
-    // Storage space
-    DiskUsage diskUsage = [DeviceInformation getDiskUsage];
-    StorageDetails *storageDetails = [StorageDetails new];
-    storageDetails.total = diskUsage.total;
-    storageDetails.free = diskUsage.free;
+    StorageDetails *storageDetails = [DeviceInformation getStorageDetails];
     NSData *storageEncoded = [NSKeyedArchiver archivedDataWithRootObject:storageDetails];
-    [cdataSample setStorageDetails:storageEncoded];
     
-    // Other settings, on/off
     Settings *sysSettings = [Settings new];
     sysSettings.locationEnabled = [DeviceInformation getLocationEnabled];
-    sysSettings.bluetoothEnabled = bluetoothEnabled;
     sysSettings.powersaverEnabled = [DeviceInformation getPowersaverEnabled];
-    
     NSData *settingsEncoded = [NSKeyedArchiver archivedDataWithRootObject:sysSettings];
-    [cdataSample setSettings:settingsEncoded];
     
     //
-    //  Now save the sample.
+    // Create a sample
+    //
+    
+    MemoryInfo memoryInfo = [DeviceInformation getMemoryInformation];
+    
+    sample.triggeredBy = triggeredBy;
+    sample.timestamp = [NSNumber numberWithDouble:secondsSinceEpoch];
+    sample.batteryLevel = [DeviceInformation getBatteryLevel];
+    sample.batteryState = [DeviceInformation getBatteryState];
+    sample.screenBrightness = [DeviceInformation getScreenBrightness];
+    sample.networkStatus = [DeviceInformation getNetworkStatus];
+    sample.memoryWired = [NSNumber numberWithDouble:memoryInfo.wired];
+    sample.memoryActive = [NSNumber numberWithDouble:memoryInfo.active];
+    sample.memoryInactive = [NSNumber numberWithDouble:memoryInfo.inactive];
+    sample.memoryFree = [NSNumber numberWithDouble:memoryInfo.free];
+    sample.memoryUser = [NSNumber numberWithDouble:memoryInfo.user];
+    sample.networkDetails = networkEncoded;
+    sample.cpuStatus = cpuEncoded;
+    sample.storageDetails = storageEncoded;
+    sample.settings = settingsEncoded;
+    sample.distanceTraveled = 0;
+    if ([triggeredBy isEqualToString:@"didUpdateToLocation"]) {
+        double distance = [[Globals instance] getDistanceTraveled];
+        sample.distanceTraveled = [NSNumber numberWithDouble:distance];
+    }
+    
+    [self sampleProcessInfo:sample withManagedObjectContext:managedObjectContext];
+    
+    //
+    //  Save the sample
     //
     @try 
     {
@@ -1033,8 +991,6 @@ static float cpuUsageVal;
         DLog(@"%s Exception while trying to save coredata, details: %@, %@", 
              __PRETTY_FUNCTION__, [exception name], [exception reason]);
     }
-    
-    
 }
 
 - (void) sampleBackground : (NSString *) triggeredBy
