@@ -61,6 +61,7 @@ public class ProcessListFragment extends Fragment {
 
     private void refresh() {
         CaratApplication app = (CaratApplication) getActivity().getApplication();
+        SamplingLibrary.resetRunningProcessInfo();
         List<ProcessInfo> searchResults = SamplingLibrary
                 .getRunningAppInfo(getActivity());
         expandableListView.setAdapter(new ProcessExpandListAdapter((MainActivity) getActivity(),

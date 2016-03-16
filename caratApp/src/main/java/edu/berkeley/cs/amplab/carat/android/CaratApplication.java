@@ -226,8 +226,11 @@ public class CaratApplication extends Application {
                 return main.getString(R.string.prioritysuggestion);
             } else
                 return main.getString(R.string.priorityDefault);
-        } else
-            return importanceString;
+        } else if(importanceString == null) {
+            return "Not running";
+        }
+
+        return importanceString;
     }
 
     /**

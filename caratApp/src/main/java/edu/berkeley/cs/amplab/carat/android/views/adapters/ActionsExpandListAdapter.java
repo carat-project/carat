@@ -1,5 +1,6 @@
 package edu.berkeley.cs.amplab.carat.android.views.adapters;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -170,9 +171,11 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         killAppButton = (Button) v.findViewById(R.id.stop_app_button);
         appManagerButton = (Button) v.findViewById(R.id.app_manager_button);
         appCategory = (TextView) v.findViewById(R.id.app_category);
+
         samplesText.setText(R.string.samples);
         samplesAmount.setText(String.valueOf(item.getSamples()));
         killAppButton.setTag(item.getAppName());
+        appCategory.setText(SamplingLibrary.getAppPriority(context, item.getAppName()));
 
         // Currently these need to be set each time, refactor?
         killAppButton.setBackgroundResource(R.drawable.button_rounded_orange);

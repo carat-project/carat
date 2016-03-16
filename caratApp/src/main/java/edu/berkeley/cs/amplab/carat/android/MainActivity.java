@@ -449,9 +449,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         long min = CaratApplication.myDeviceData.getFreshnessMinutes();
         long hour = CaratApplication.myDeviceData.getFreshnessHours();
 
-        if (lastUpdateTime <= 0)
+        if (CaratApplication.getStorage().getFreshness() <=0)
             lastUpdated = getString(R.string.neverupdated);
-        else if (min == 0)
+        else if (min == 0 && hour == 0)
             lastUpdated = getString(R.string.updatedjustnow);
         else
             lastUpdated = getString(R.string.updated)

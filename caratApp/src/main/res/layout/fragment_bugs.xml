@@ -9,11 +9,6 @@
     android:weightSum="100"
     android:clickable="true">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="15">
-
     <RelativeLayout
         android:id="@+id/bugs_header"
         android:layout_width="match_parent"
@@ -39,14 +34,12 @@
 
     </RelativeLayout>
 
-    </ScrollView>
-
     <ExpandableListView
-        android:layout_weight="85"
         android:id="@+id/expandable_bugs_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:groupIndicator="@null"></ExpandableListView>
+        android:groupIndicator="@null"
+        android:layout_weight="100"></ExpandableListView>
 
     <LinearLayout
         android:id="@+id/empty_bugs_layout"
@@ -54,7 +47,6 @@
         android:layout_height="match_parent"
         android:padding="30dp"
         android:orientation="vertical"
-        android:layout_weight="100"
         android:visibility="gone">
 
         <ImageView

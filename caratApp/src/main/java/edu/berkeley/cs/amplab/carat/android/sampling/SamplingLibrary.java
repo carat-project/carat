@@ -19,6 +19,7 @@ import java.security.interfaces.DSAPublicKey;
 import java.security.interfaces.RSAPublicKey;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
@@ -36,6 +37,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningServiceInfo;
+import android.app.Service;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -71,6 +73,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.flurry.android.FlurryAgent;
+
+import org.apache.http.protocol.RequestUserAgent;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -627,6 +631,9 @@ public final class SamplingLibrary {
 		return l;
 	}
 
+	private static WeakReference<List<RunningServiceInfo>> runningServiceInfo = null;
+
+
 	/**
 	 * Populate running process info into the runningAppInfo WeakReference list, and return its value.
 	 * @param context the Context
@@ -661,8 +668,12 @@ public final class SamplingLibrary {
 	 * @return Returns a list of currently running Services.
 	 */
 	public static List<RunningServiceInfo> getRunningServiceInfo(Context c) {
-		ActivityManager pActivityManager = (ActivityManager) c.getSystemService(Activity.ACTIVITY_SERVICE);
-		return pActivityManager.getRunningServices(255);
+		if(runningServiceInfo == null || runningServiceInfo.get() == null) {
+			ActivityManager pActivityManager = (ActivityManager) c.getSystemService(Activity.ACTIVITY_SERVICE);
+			List<RunningServiceInfo> runningServices = pActivityManager.getRunningServices(255);
+			runningServiceInfo = new WeakReference<List<RunningServiceInfo>>(runningServices);
+			return runningServices;
+		} else return runningServiceInfo.get();
 	}
 
 	/**
@@ -699,10 +710,11 @@ public final class SamplingLibrary {
 	}
 	
 	/**
-	 * Used to clear the runningAppInfo WeakReference list when Carat is paused, so that it is refreshed when the process list view is shown.
+	 * Used to clear the runningAppInfo WeakReference list when the process list view needs to be refreshed.
 	 */
 	public static void resetRunningProcessInfo() {
 		runningAppInfo = null;
+		runningServiceInfo = null;
 	}
 
 	/**
@@ -1969,7 +1981,7 @@ public final class SamplingLibrary {
 				am.killBackgroundProcesses(packageName);
 				Toast.makeText(context, context.getResources().getString(R.string.stopping) + ((label == null) ? "" : " "+label),
 						Toast.LENGTH_SHORT).show();
-
+				resetRunningProcessInfo();
 				return true;
 			} catch (Throwable th) {
 				Toast.makeText(context,  context.getResources().getString(R.string.stopping_failed),
@@ -2024,6 +2036,36 @@ public final class SamplingLibrary {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Get highest priority process for the package
+	 * @param c
+	 * @param packageName
+     * @return
+     */
+	public static String getAppPriority(Context c, String packageName){
+		List<RunningAppProcessInfo> processInfos = getRunningProcessInfo(c);
+		List<RunningServiceInfo> serviceInfos = getRunningServiceInfo(c);
+		int highestPriority = Integer.MAX_VALUE;
+
+		// Check if there are running services for the package
+		for(RunningServiceInfo si : serviceInfos) {
+			if(si.service.getPackageName().equals(packageName)){
+				highestPriority = RunningAppProcessInfo.IMPORTANCE_SERVICE;
+			}
+
+		}
+		// Check if there are running processes for the package
+		for(RunningAppProcessInfo pi : processInfos){
+			if(Arrays.asList(pi.pkgList).contains(packageName)) {
+				if(pi.importance < highestPriority){
+					highestPriority = pi.importance;
+				}
+			}
+		}
+		String importance = CaratApplication.importanceString(highestPriority);
+		return CaratApplication.translatedPriority(importance);
 	}
 
 	private static String convertToHex(byte[] data) {
