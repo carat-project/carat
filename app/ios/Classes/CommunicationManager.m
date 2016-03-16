@@ -38,8 +38,7 @@ static NSString * networkStatusString;
         instance = [[self alloc] init];
     }
     
-    //caratServerAddress = @"server.caratproject.com";
-    caratServerAddress = @"caratserver.kurolabs.co";
+    caratServerAddress = @"caratserver.cs.helsinki.fi";
     
     [instance setupReachabilityNotifications];
 }
@@ -92,6 +91,7 @@ static NSString * networkStatusString;
 //
 - (bool) setupCaratService
 {
+    
     //if ([self isCaratServiceSetup]) 
     //    return YES;
     
@@ -119,20 +119,22 @@ static NSString * networkStatusString;
 //
 - (BOOL) sendRegistrationMessage:(Registration *) registrationMessage
 {
-    BOOL ret = NO;
-    
-    if ([self setupCaratService] == YES) {
-        @try {
-            [service registerMe:registrationMessage];
-            ret = YES;
-            DLog(@"%s Success!", __PRETTY_FUNCTION__);
+    @synchronized(self) {
+        BOOL ret = NO;
+        
+        if ([self setupCaratService] == YES) {
+            @try {
+                [service registerMe:registrationMessage];
+                ret = YES;
+                DLog(@"%s Success!", __PRETTY_FUNCTION__);
+            }
+            @catch (NSException *exception) {
+                DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
+            }
+            [self shutdownCaratService];
         }
-        @catch (NSException *exception) {
-            DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
-        }
-        [self shutdownCaratService];
+        return ret;
     }
-    return ret;
 }
 
 //
@@ -150,68 +152,71 @@ static NSString * networkStatusString;
 - (BOOL) sendSample:(Sample *)sample
 {
     BOOL ret = NO;
-    
-    if ([self setupCaratService] == YES) 
-    {
-        @try {
-            [service uploadSample:sample];
-            ret = YES;
-			[[CoreDataManager instance] updateSamplesSentCount];
-
-			dispatch_async(dispatch_get_main_queue(), ^{
-				NSDictionary* userInfo = @{kSamplesSent:[NSNumber numberWithInteger:[[CoreDataManager instance] getSampleSent]]};
-				[[NSNotificationCenter defaultCenter] postNotificationName:kSamplesSentCountUpdateNotification object:nil userInfo:userInfo];
-			});
-
-
-            DLog(@"%s Success!", __PRETTY_FUNCTION__);
+    @synchronized(self) {
+        if ([self setupCaratService] == YES)
+        {
+            @try {
+                [service uploadSample:sample];
+                ret = YES;
+                [[CoreDataManager instance] updateSamplesSentCount];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSDictionary* userInfo = @{kSamplesSent:[NSNumber numberWithInteger:[[CoreDataManager instance] getSampleSent]]};
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kSamplesSentCountUpdateNotification object:nil userInfo:userInfo];
+                });
+                
+                
+                DLog(@"%s Success!", __PRETTY_FUNCTION__);
+            }
+            @catch (NSException *exception) {
+                DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
+            }
+            [self shutdownCaratService];
         }
-        @catch (NSException *exception) {
-            DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
-        }
-        [self shutdownCaratService];
     }
-    
     return ret;
 }
 
 - (Reports *) getReports
 {
-    if ([self setupCaratService] == YES) 
-    {
-        @try {
-            Feature *feature1 = [[[Feature alloc] init] autorelease];
-            Feature *feature2 = [[[Feature alloc] init] autorelease];
-            [feature1 setKey:@"OS"];
-            [feature1 setValue:[UIDevice currentDevice].systemVersion];
-            [feature2 setKey:@"Model"];
-            UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
-            [feature2 setValue:[h platformString]];
-            [h release];
-            FeatureList featureList = [[NSArray alloc] initWithObjects:feature1, feature2, nil];
-            return [service getReports:[[Globals instance] getUUID]
-                                      :featureList];
+    @synchronized(self) {
+        
+        if ([self setupCaratService] == YES)
+        {
+            @try {
+                Feature *feature1 = [[[Feature alloc] init] autorelease];
+                Feature *feature2 = [[[Feature alloc] init] autorelease];
+                [feature1 setKey:@"OS"];
+                [feature1 setValue:[UIDevice currentDevice].systemVersion];
+                [feature2 setKey:@"Model"];
+                UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
+                [feature2 setValue:[h platformString]];
+                [h release];
+                FeatureList featureList = [[NSArray alloc] initWithObjects:feature1, feature2, nil];
+                return [self.service getReports:[[Globals instance] getUUID] features:featureList];
+            }
+            @catch (NSException *exception) {
+                DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
+            }
+            [self shutdownCaratService];
         }
-        @catch (NSException *exception) {
-            DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
-        }
-        [self shutdownCaratService];
     }
     return nil;
 }
 
 - (HogBugReport *) getHogOrBugReport:(FeatureList) featureList
 {
-    if ([self setupCaratService] == YES) 
-    {
-        @try {
-            return [service getHogOrBugReport:[[Globals instance] getUUID ]
-                                             :featureList];
+    @synchronized(self) {
+        if ([self setupCaratService] == YES)
+        {
+            @try {
+                return [service getHogOrBugReport:[[Globals instance] getUUID ] features:featureList];
+            }
+            @catch (NSException *exception) {
+                DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
+            }
+            [self shutdownCaratService];
         }
-        @catch (NSException *exception) {
-            DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
-        }
-        [self shutdownCaratService];
     }
     return nil;
 }
@@ -272,8 +277,6 @@ static NSString * networkStatusString;
 		[[NSNotificationCenter defaultCenter] postNotificationName:kUpdateNetworkStatusNotification object:nil userInfo:userInfo];
 	});
 }
-
-
 
 //
 // Cleanup stuff.
