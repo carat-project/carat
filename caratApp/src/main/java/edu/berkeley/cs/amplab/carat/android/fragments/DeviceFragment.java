@@ -1,6 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android.fragments;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,11 +10,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -34,14 +35,9 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     private RelativeLayout mainFrame;
     private CircleDisplay cd;
 
-    private SurfaceHolder memoryUsedSurfaceHolder;
-    private SurfaceHolder memoryActiveSurfaceHolder;
-    private SurfaceHolder cpuUsageSurfaceHolder;
-    private Thread drawingThread;
-
-    private SurfaceView memoryUsedSurface;
-    private SurfaceView memoryActiveSurface;
-    private SurfaceView cpuUsageSurface;
+    private ImageView memoryUsedBar;
+    private ImageView memoryActiveBar;
+    private ImageView cpuUsageBar;
 
     private Button memoryUsedButton;
     private Button memoryActiveButton;
@@ -92,16 +88,15 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         generateJScoreCircle();
         initListeners();
         setValues();
+
+        mainFrame.post(this);
     }
 
     private void initViewRefs() {
         cd = (CircleDisplay) mainFrame.findViewById(R.id.jscore_progress_circle);
-        memoryUsedSurface = (SurfaceView) mainFrame.findViewById(R.id.memory_used_surface);
-        memoryActiveSurface = (SurfaceView) mainFrame.findViewById(R.id.memory_active_surface);
-        cpuUsageSurface = (SurfaceView) mainFrame.findViewById(R.id.cpu_usage_surface);
-        memoryUsedSurfaceHolder = memoryUsedSurface.getHolder();
-        memoryActiveSurfaceHolder = memoryActiveSurface.getHolder();
-        cpuUsageSurfaceHolder = cpuUsageSurface.getHolder();
+        memoryUsedBar = (ImageView) mainFrame.findViewById(R.id.memory_used_bar);
+        memoryActiveBar = (ImageView) mainFrame.findViewById(R.id.memory_active_bar);
+        cpuUsageBar = (ImageView) mainFrame.findViewById(R.id.cpu_usage_bar);
 
         caratID = (TextView) mainFrame.findViewById(R.id.carat_id_value);
         deviceModel = (TextView) mainFrame.findViewById(R.id.device_model_value);
@@ -162,13 +157,6 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         }
 
         cpuUsageConverted = mainActivity.getCpuValue();
-        drawMemoryValues();
-
-    }
-
-    private void drawMemoryValues() {
-        drawingThread = new Thread(this);
-        drawingThread.start();
     }
 
     @Override
@@ -221,26 +209,12 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
     @Override
     public void run() {
         while (locker) {
-            if (!memoryUsedSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c = memoryUsedSurfaceHolder.lockCanvas();
-            draw(c, 0);
-            memoryUsedSurfaceHolder.unlockCanvasAndPost(c);
-
-            if (!memoryActiveSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c1 = memoryActiveSurfaceHolder.lockCanvas();
-            draw(c1, 1);
-            memoryActiveSurfaceHolder.unlockCanvasAndPost(c1);
-
-            if (!cpuUsageSurfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas c2 = cpuUsageSurfaceHolder.lockCanvas();
-            draw(c2, 2);
-            cpuUsageSurfaceHolder.unlockCanvasAndPost(c2);
+            if(memoryUsedBar == null
+                    || memoryUsedBar.getWidth() <= 0
+                    || memoryUsedBar.getHeight() <= 0) continue;
+            setPercentageBar(memoryUsedBar, 0);
+            setPercentageBar(memoryActiveBar, 1);
+            setPercentageBar(cpuUsageBar, 2);
             locker = false;
         }
     }
@@ -265,5 +239,12 @@ public class DeviceFragment extends Fragment implements View.OnClickListener, Ru
         Paint paint = new Paint();
         paint.setARGB(255, 75, 200, 127);
         canvas.drawRect(r, paint);
+    }
+
+    private void setPercentageBar(ImageView view, int id) {
+        Bitmap image = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(image);
+        draw(canvas, id);
+        view.setImageBitmap(image);
     }
 }

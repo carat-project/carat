@@ -13,22 +13,27 @@
         android:orientation="vertical"
         android:weightSum="100">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="30"
             android:background="@drawable/chart_background"
             android:orientation="horizontal">
 
-            <TextView
+                <edu.berkeley.cs.amplab.carat.android.views.CircleDisplay
+                    android:id="@+id/jscore_progress_circle"
+                    android:layout_width="120dp"
+                    android:layout_centerInParent="true"
+                    android:layout_height="120dp" />
+            <!--<TextView
                 style="@style/LargeBoldBlackText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="@string/your_jscore_title" />
+                android:text="@string/your_jscore_title" />-->
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -220,6 +225,8 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:layout_weight="1">
 
                         <View
@@ -229,8 +236,8 @@
                             android:layout_alignParentTop="true"
                             android:background="@color/lightgray" />
 
-                        <SurfaceView
-                            android:id="@+id/memory_used_surface"
+                        <ImageView
+                            android:id="@+id/memory_used_bar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -261,7 +268,6 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true"
-                            android:paddingTop="5dp"
                             android:text="@string/memory_used_title" />
 
                         <Button
@@ -269,7 +275,7 @@
                             style="@style/InfoButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/memory_used_surface"
+                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:text="i" />
@@ -280,10 +286,12 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:layout_weight="1">
 
-                        <SurfaceView
-                            android:id="@+id/memory_active_surface"
+                        <ImageView
+                            android:id="@+id/memory_active_bar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -314,7 +322,6 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true"
-                            android:paddingTop="5dp"
                             android:text="@string/memory_active_title" />
 
                         <Button
@@ -322,7 +329,7 @@
                             style="@style/InfoButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/memory_active_surface"
+                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:text="i" />
@@ -332,10 +339,12 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:layout_weight="1">
 
-                        <SurfaceView
-                            android:id="@+id/cpu_usage_surface"
+                        <ImageView
+                            android:id="@+id/cpu_usage_bar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -366,7 +375,6 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true"
-                            android:paddingTop="5dp"
                             android:text="@string/cpu_usage_title" />
 
                         <Button
@@ -374,7 +382,7 @@
                             style="@style/InfoButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/cpu_usage_surface"
+                            android:layout_centerInParent="true"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:text="i" />
@@ -387,26 +395,6 @@
 
         </ScrollView>
 
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal|bottom"
-        android:orientation="vertical"
-        android:weightSum="100">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="89">
-
-            <edu.berkeley.cs.amplab.carat.android.views.CircleDisplay
-                android:id="@+id/jscore_progress_circle"
-                android:layout_width="120dp"
-                android:layout_height="120dp" />
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

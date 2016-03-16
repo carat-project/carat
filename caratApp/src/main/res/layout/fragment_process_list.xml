@@ -7,39 +7,33 @@
     android:orientation="vertical"
     android:weightSum="100">
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/process_header"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="15"
-        android:background="@color/lightgray">
+        android:layout_height="wrap_content"
+        android:background="@color/lightgray"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/process_header"
-            android:layout_width="match_parent"
+        <TextView
+            style="@style/SmallGrayText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/lightgray"
-            android:orientation="horizontal">
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/bug_icon"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/process_list_message" />
 
-            <TextView
-                style="@style/SmallGrayText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/bug_icon"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="@string/process_list_message" />
-
-        </RelativeLayout>
-
-    </ScrollView>
+    </RelativeLayout>
 
     <ExpandableListView
         android:id="@+id/expandable_process_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="85"
-        android:groupIndicator="@null"></ExpandableListView>
+        android:groupIndicator="@null"
+        android:layout_weight="100"></ExpandableListView>
 
 
 </LinearLayout>
