@@ -76,6 +76,7 @@
     <string name="jscore_value">69</string>
     <string name="jscore_title">J-score</string>
     <string name="dashboard_updated_text">Updated just now</string>
+    <string name="dashboard_text_loading">Updating status</string>
 
     <string name="bugs_amount">7</string>
     <string name="hogs_amount">4</string>
@@ -331,10 +332,10 @@ delete these from your file.
     <string name="priority">Priority:</string>
     <string name="priorityDefault">Not running</string>
     <string name="prioritynotrunning">Not running</string>
-    <string name="priorityforeground">Foreground App</string>
-    <string name="prioritybackground">Background App</string>
-    <string name="priorityservice">Service</string>
-    <string name="priorityperceptible">Perceptible App</string>
+    <string name="priorityforeground">Current App</string>
+    <string name="prioritybackground">Running App</string>
+    <string name="priorityservice">Background Service</string>
+    <string name="priorityperceptible">Running App</string>
     <string name="priorityvisible">Visible App</string>
     <string name="prioritysuggestion">Suggestion</string>
 

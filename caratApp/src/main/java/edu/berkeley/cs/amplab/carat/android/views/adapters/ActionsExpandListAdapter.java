@@ -74,14 +74,18 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         this.lv.setOnChildClickListener(this);
         this.mainActivity = mainActivity;
 
-        for (SimpleHogBug s : hogReport) {
-            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
-                allReports.add(s);
+        if(hogReport != null){
+            for (SimpleHogBug s : hogReport) {
+                if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                    allReports.add(s);
+                }
             }
         }
-        for (SimpleHogBug s : bugReport) {
-            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
-                allReports.add(s);
+        if(bugReport != null){
+            for (SimpleHogBug s : bugReport) {
+                if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                    allReports.add(s);
+                }
             }
         }
 

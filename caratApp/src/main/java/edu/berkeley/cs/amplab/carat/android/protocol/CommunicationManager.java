@@ -43,6 +43,7 @@ public class CommunicationManager {
 	private boolean register = true;
 	private boolean newuuid = false;
 	private boolean timeBasedUuid = false;
+	private boolean gettingReports = false;
 	private SharedPreferences p = null;
 
 	public CommunicationManager(CaratApplication a) {
@@ -194,18 +195,29 @@ public class CommunicationManager {
 		}
 	}
 
+	// Flag to check if there is an ongoing refresh
+	public boolean isRefreshingReports(){
+		return gettingReports;
+	}
+
 	/**
 	 * Used by UiRefreshThread which needs to know about exceptions.
 	 * 
 	 * @throws TException
 	 */
-	public void refreshAllReports() {
+	public synchronized boolean refreshAllReports() {
 		registerLocal();
 		// Do not refresh if not connected
-		if (!SamplingLibrary.networkAvailable(a.getApplicationContext()))
-			return;
-		if (System.currentTimeMillis() - CaratApplication.getStorage().getFreshness() < Constants.FRESHNESS_TIMEOUT)
-			return;
+		if (!SamplingLibrary.networkAvailable(a.getApplicationContext())){
+			return false;
+		}
+		if (System.currentTimeMillis() - CaratApplication.getStorage().getFreshness() < Constants.FRESHNESS_TIMEOUT){
+			return false;
+		} else {
+			if(Constants.DEBUG){
+				Log.d(TAG, "Enough time passed, time to check for new reports.");
+			}
+		}
 		// Establish connection
 		if (register) {
 			CaratService.Client instance = null;
@@ -229,21 +241,28 @@ public class CommunicationManager {
 			model = "GT-I9300";
 			OS = "4.0.4";
 		}
-		if (Constants.DEBUG)
-		    Log.d(TAG, "Getting reports for " + uuId + " model=" + model + " os=" + OS);
+		if (Constants.DEBUG){
+			Log.d(TAG, "Getting reports for " + uuId + " model=" + model + " os=" + OS);
+		}
 		FlurryAgent.logEvent("Getting reports for " + uuId + "," + model + "," + OS);
 
 		int progress = 0;
-		
 		String[] titles = CaratApplication.getTitles();
 		if (titles != null){
 			String[] temp = Arrays.copyOfRange(titles, 2, 5);
 			titles = temp;
 		}
 
+		// This flag is used to make sure action progress
+		// is not changed while updating is happening
+		gettingReports = true;
+
+		//
+		// Main reports
+		//
 		CaratApplication.setActionProgress(progress, titles[0], false);
-		boolean success = refreshMainReports(uuId, OS, model);
-		if (success) {
+		boolean mainSuccess = refreshMainReports(uuId, OS, model);
+		if (mainSuccess) {
 			progress += 20;
 			CaratApplication.setActionProgress(progress, titles[1], false);
 			if (Constants.DEBUG)
@@ -253,9 +272,13 @@ public class CommunicationManager {
 			if (Constants.DEBUG)
 			    Log.d(TAG, "Failed getting main report");
 		}
-		success = refreshBugReports(uuId, model);
+
+		//
+		// Bug reports
+		//
+		boolean bugsSuccess = refreshBugReports(uuId, model);
 		
-		if (success) {
+		if (bugsSuccess) {
 			progress += 20;
 			CaratApplication.setActionProgress(progress, titles[2], false);
 			if (Constants.DEBUG)
@@ -265,28 +288,20 @@ public class CommunicationManager {
 			if (Constants.DEBUG)
 			    Log.d(TAG, "Failed getting bug report");
 		}
-		
-//		success = refreshSettingsReports(uuId, model);
-//		
-//		if (success) {
-//			progress += 20;
-//			CaratApplication.setActionProgress(progress, a.getString(R.string.tab_hogs), false);
-//			Log.d(TAG, "Successfully got settings report");
-//		} else {
-//			CaratApplication.setActionProgress(progress, a.getString(R.string.tab_settings), true);
-//			Log.d(TAG, "Failed getting settings report");
-//		}
-		
-		success = refreshHogReports(uuId, model);
 
-		boolean bl = true;
+		//
+		// Hog reports
+		//
+		boolean hogsSuccess = refreshHogReports(uuId, model);
+
+		boolean blacklistShouldBeRefreshed = true;
 		if (System.currentTimeMillis() - CaratApplication.getStorage().getBlacklistFreshness() < Constants.FRESHNESS_TIMEOUT_BLACKLIST)
-			bl = false;
+			blacklistShouldBeRefreshed = false;
 
-		if (success) {
+		if (hogsSuccess) {
 			progress += 40; // changed to 40
 			CaratApplication.setActionProgress(progress,
-					bl ? a.getString(R.string.blacklist) : a.getString(R.string.finishing), false);
+					blacklistShouldBeRefreshed ? a.getString(R.string.blacklist) : a.getString(R.string.finishing), false);
 			if (Constants.DEBUG)
 			    Log.d(TAG, "Successfully got hog report");
 		} else {
@@ -298,24 +313,31 @@ public class CommunicationManager {
 		// NOTE: Check for having a J-Score, and in case there is none, send the
 		// new message
 		Reports r = CaratApplication.getStorage().getReports();
+		boolean quickHogsSuccess = false;
 		if (r == null || r.jScoreWith == null || r.jScoreWith.expectedValue <= 0) {
-            success = getQuickHogsAndMaybeRegister(uuId, OS, model);
+            quickHogsSuccess = getQuickHogsAndMaybeRegister(uuId, OS, model);
             if (Constants.DEBUG) {
-                if (success)
+                if (quickHogsSuccess)
                     Log.d(TAG, "Got quickHogs.");
                 else
                     Log.d(TAG, "Failed getting GuickHogs.");
             }
 		}
 
-		if (bl) {
+		if (blacklistShouldBeRefreshed) {
 			refreshBlacklist();
 			refreshQuestionnaireLink();
 		}
 
-		CaratApplication.getStorage().writeFreshness();
-		if (Constants.DEBUG)
-		    Log.d(TAG, "Wrote freshness");
+		gettingReports = false;
+
+		// Only write freshness if we managed to get something
+		if(mainSuccess || hogsSuccess || bugsSuccess || quickHogsSuccess){
+			CaratApplication.getStorage().writeFreshness();
+			if (Constants.DEBUG) Log.d(TAG, "Wrote freshness");
+			return true;
+		}
+		return false;
 	}
 
 	private boolean refreshMainReports(String uuid, String os, String model) {
@@ -328,14 +350,13 @@ public class CommunicationManager {
 			// Assume multiple invocations, do not close
 			// ProtocolClient.close();
 			if (r != null) {
-			    if (Constants.DEBUG)
-			        Log.d("CommunicationManager.refreshMainReports()",
-						"got the main report (action list)" + ", model=" + r.getModel() 
+			    if (Constants.DEBUG) Log.d("CommunicationManager.refreshMainReports()",
+						"got the main report (action list)" + ", model=" + r.getModel()
 						+ ", jscore=" + r.getJScore() + ". Storing the report in the databse");
 				CaratApplication.getStorage().writeReports(r);
 			} else {
 			    if (Constants.DEBUG)
-			        Log.d("CommunicationManager.refreshMainReports()", 
+			        Log.d("CommunicationManager.refreshMainReports()",
 						"the fetched MAIN report is null");
 			}
 			// Assume freshness written by caller.
@@ -358,7 +379,9 @@ public class CommunicationManager {
 			HogBugReport r = instance.getHogOrBugReport(uuid, getFeatures("ReportType", "Bug", "Model", model));
 			// Assume multiple invocations, do not close
 			// ProtocolClient.close();
-			if (r != null) {
+
+			// Do not write empty bugs either
+			if (r != null && !r.getHbList().isEmpty()) {
 				CaratApplication.getStorage().writeBugReport(r);
 				if (Constants.DEBUG)
 				    Log.d("CommunicationManager.refreshBugReports()", 
@@ -387,7 +410,9 @@ public class CommunicationManager {
 
 			// Assume multiple invocations, do not close
 			// ProtocolClient.close();
-			if (r != null) {
+
+			// Do not write empty hogs, it clears the quick hogs!
+			if (r != null && !r.getHbList().isEmpty()) {
 				CaratApplication.getStorage().writeHogReport(r);
 				if (Constants.DEBUG)
 				    Log.d("CommunicationManager.refreshHogReports()", 
@@ -519,7 +544,7 @@ public class CommunicationManager {
 			HogBugReport r = instance.getQuickHogsAndMaybeRegister(registration, processList);
 			// Assume multiple invocations, do not close
 			// ProtocolClient.close();
-			if (r != null) {
+			if (r != null && !r.getHbList().isEmpty()) {
 				CaratApplication.getStorage().writeHogReport(r);
 				CaratApplication.getStorage().writeQuickHogsFreshness();
 			}

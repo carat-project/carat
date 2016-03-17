@@ -72,6 +72,7 @@
     <string name="jscore_value">69</string>
     <string name="jscore_title">J-score</string>
     <string name="dashboard_updated_text">Päivitetty juuri nyt</string>
+    <string name="dashboard_text_loading">Päivitetään tilaa</string>
 
     <string name="bugs_amount">7</string>
     <string name="hogs_amount">4</string>
@@ -290,10 +291,10 @@
     <string name="priority">Prioriteetti:</string>
     <string name="priorityDefault">Ei käynnissä</string>
     <string name="prioritynotrunning">Ei käynnissä</string>
-    <string name="priorityforeground">Pääsovellus</string>
-    <string name="prioritybackground">Taustasovellus</string>
-    <string name="priorityservice">Palvelu</string>
-    <string name="priorityperceptible">Havaittava</string>
+    <string name="priorityforeground">Nykyinen sovellus</string>
+    <string name="prioritybackground">Käynnissä</string>
+    <string name="priorityservice">Taustapalvelu</string>
+    <string name="priorityperceptible">Käynnissä</string>
     <string name="priorityvisible">Näkyvä</string>
     <string name="prioritysuggestion">Ehdotus</string>
 

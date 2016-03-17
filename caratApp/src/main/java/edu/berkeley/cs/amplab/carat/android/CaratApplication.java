@@ -342,13 +342,8 @@ public class CaratApplication extends Application {
 
     public void refreshUi() {
         boolean connecting = false;
+        boolean newData = false;
         Log.d("debug", "*** Start refresh");
-        main.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                main.setProgressCircle(true);
-            }
-        });
         Context co = getApplicationContext();
         // TODO: using a shared preferences object might cause problem in different OS versions. replace with a private one. see MainActivity.AsyncTask.doInBackground().
         final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(co);
@@ -361,12 +356,28 @@ public class CaratApplication extends Application {
         boolean connected = (!useWifiOnly && networkStatus == SamplingLibrary.NETWORKSTATUS_CONNECTED)
                 || networkType.equals("WIFI");
 
-        if (connected && commManager != null) {
+        long freshness = getStorage().getFreshness();
+        long elapsed = System.currentTimeMillis() - freshness;
+
+        // Check freshness here to avoid unnecessary load on older devices
+        if (connected && commManager != null && elapsed > Constants.FRESHNESS_TIMEOUT) {
             // Show we are updating...
+            main.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    main.setProgressCircle(true);
+                }
+            });
             CaratApplication.setActionInProgress();
             try {
-                commManager.refreshAllReports();
-                // Log.d(TAG, "Reports refreshed.");
+                if(commManager.refreshAllReports()){
+                    main.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {main.refreshCurrentFragment();
+                        }
+                    });
+                    newData = true;
+                }
             } catch (Throwable th) {
                 // Any sort of malformed response, too short string,
                 // etc...
@@ -374,7 +385,12 @@ public class CaratApplication extends Application {
                 th.printStackTrace();
             }
             connecting = false;
-
+            main.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    main.setProgressCircle(true);
+                }
+            });
         } else if (networkStatus.equals(SamplingLibrary.NETWORKSTATUS_CONNECTING)) {
             Log.w(TAG, "Network status: " + networkStatus + ", trying again in 10s.");
             connecting = true;
@@ -382,25 +398,33 @@ public class CaratApplication extends Application {
 
         // do this regardless
         setReportData();
-
         CaratApplication.setActionProgress(90, getString(R.string.finishing), false);
-
-        if (!connecting)
-            CaratApplication.setActionFinished();
 
         if (connecting) {
             // wait for WiFi to come up
+            main.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    main.setProgressCircle(true);
+                }
+            });
             try {
                 Thread.sleep(Constants.COMMS_WIFI_WAIT);
             } catch (InterruptedException e1) {
                 // ignore
             }
-            connecting = false;
 
             // Show we are updating...
             CaratApplication.setActionInProgress();
             try {
-                commManager.refreshAllReports();
+                if(commManager.refreshAllReports()){
+                    main.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {main.refreshCurrentFragment();
+                        }
+                    });
+                    newData = true;
+                }
                 // Log.d(TAG, "Reports refreshed.");
             } catch (Throwable th) {
                 // Any sort of malformed response, too short string,
@@ -408,25 +432,41 @@ public class CaratApplication extends Application {
                 Log.w(TAG, "Failed to refresh reports: " + th + Constants.MSG_TRY_AGAIN);
                 th.printStackTrace();
             }
-            connecting = false;
 
             // do this regardless
             setReportData();
 
             setActionProgress(90, getString(R.string.finishing), false);
+            main.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    main.setProgressCircle(false);
+                }
+            });
         }
+
         CaratApplication.setActionFinished();
         SampleSender.sendSamples(CaratApplication.this);
         CaratApplication.setActionFinished();
-        main.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                main.refreshCurrentFragment();
-                main.setProgressCircle(false);
-            }
-        });
 
+        // Update status text if we did not succeed
+        if(!newData){
+            main.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    main.refreshDashboardStatus();
+                }
+            });
+        }
         Log.d("debug", "*** End refresh");
+    }
+
+    // Checks if communication manager is busy
+    public boolean isUpdatingReports(){
+        if(commManager != null){
+            return commManager.isRefreshingReports();
+        }
+        return false;
     }
 
     public static boolean isInternetAvailable2() {

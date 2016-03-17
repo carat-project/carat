@@ -44,7 +44,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
                 android:layout_alignParentTop="true"
-                android:text="@string/dashboard_updated_text" />
+                android:text="@string/dashboard_text_loading" />
 
             <TextView
                 android:id="@+id/battery_life_title"

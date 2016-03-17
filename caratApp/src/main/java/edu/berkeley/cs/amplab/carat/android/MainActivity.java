@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -30,7 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Properties;
-import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 import edu.berkeley.cs.amplab.carat.android.fragments.GlobalFragment;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
@@ -52,6 +53,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private float cpu;
     private int jScore;
     private long[] lastPoint = null;
+    private String lastUpdatingValue;
 
     private TextView actionBarTitle;
     private ImageView backArrow;
@@ -112,7 +114,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         dashboardFragment = new DashboardFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_holder, dashboardFragment).commit();
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                onFragmentPop();
+            }
+        });
 
+        lastUpdatingValue = getString(R.string.dashboard_text_loading);
     }
 
     @Override
@@ -224,7 +233,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onPause() {
         super.onPause();
         SamplingLibrary.resetRunningProcessInfo();
-
     }
 
     public void setValues() {
@@ -283,18 +291,38 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             progressCircle.setVisibility(View.VISIBLE);
         } else {
             progressCircle.setVisibility(View.GONE);
-        }
-    }
+}
+}
 
     public void refreshCurrentFragment() {
         if (getSupportFragmentManager() != null) {
             Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
+            Log.d("debug", "fragment is: "+fragment.toString());
             if(fragment instanceof GlobalFragment){
                 ((GlobalFragment) fragment).refresh();
             }
-            else if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-                dashboardFragment.scheduleRefresh();
+            else if (fragment instanceof  DashboardFragment
+                    || getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                Log.d("debug", "DONE LOADING, REFRESHING DASHBOARD");
+                dashboardFragment.refresh();
             }
+        }
+    }
+
+    public void refreshDashboardStatus(){
+        if (getSupportFragmentManager() != null) {
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
+            if (fragment instanceof DashboardFragment ||
+                    getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                dashboardFragment.refreshProgress();
+            }
+        }
+    }
+
+    public void onFragmentPop(){
+        Fragment top = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
+        if(top instanceof DashboardFragment){
+            ((DashboardFragment) top).refreshProgress();
         }
     }
 
@@ -356,6 +384,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
+        Log.d("debug", "POPPING "+fragment.toString());
         final String FRAGMENT_TAG = tag;
         setProgressCircle(false);
         boolean fragmentPopped = getSupportFragmentManager().popBackStackImmediate(FRAGMENT_TAG, 0);
@@ -369,11 +398,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                         .addToBackStack(FRAGMENT_TAG).commitAllowingStateLoss();
             }
         }
-
     }
 
     public void setTitleUpdating(String what) {
+        lastUpdatingValue = what;
         dashboardFragment.setUpdatingValue(what);
+    }
+
+    public String getUpdatingValue(){
+        return lastUpdatingValue;
     }
 
     public void setTitleUpdatingFailed(String what) {
@@ -445,17 +478,24 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     public String getLastUpdated() {
         String lastUpdated;
-        long lastUpdateTime = CaratApplication.myDeviceData.getLastReportsTimeMillis();
-        long min = CaratApplication.myDeviceData.getFreshnessMinutes();
-        long hour = CaratApplication.myDeviceData.getFreshnessHours();
+        long freshness = CaratApplication.getStorage().getFreshness();
+        long elapsed = System.currentTimeMillis() - freshness;
+        long hour = TimeUnit.MILLISECONDS.toHours(elapsed);
+        long min =  TimeUnit.MILLISECONDS.toMinutes(elapsed);
+        long days = TimeUnit.MILLISECONDS.toDays(elapsed);
 
-        if (CaratApplication.getStorage().getFreshness() <=0)
+        if (CaratApplication.getStorage().getFreshness() <=0){
             lastUpdated = getString(R.string.neverupdated);
-        else if (min == 0 && hour == 0)
+        }
+        else if (min == 0 && hour == 0){
             lastUpdated = getString(R.string.updatedjustnow);
-        else
-            lastUpdated = getString(R.string.updated)
-                    + " " + hour + "h " + min + "m " + getString(R.string.ago);
+        }
+        else if (days > 0){
+            lastUpdated = getString(R.string.updated) + " " + days + "d " + hour + "h " + getString(R.string.ago);
+        }
+        else {
+            lastUpdated = getString(R.string.updated) + " " + hour + "h " + min + "m " + getString(R.string.ago);
+        }
 
         return lastUpdated;
     }

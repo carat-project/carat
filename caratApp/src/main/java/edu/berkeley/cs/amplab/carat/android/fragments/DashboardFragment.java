@@ -4,6 +4,7 @@ package edu.berkeley.cs.amplab.carat.android.fragments;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import edu.berkeley.cs.amplab.carat.android.views.CircleDisplay;
  */
 public class DashboardFragment extends Fragment implements View.OnClickListener {
 
+    private CaratApplication application;
     private MainActivity mainActivity;
     private RelativeLayout ll;
     private RelativeLayout shareBar;
@@ -47,16 +49,21 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private TextView batteryText;
     private TextView updatedText;
     private CircleDisplay cd;
+    private Thread reportsThread;
+
+    private boolean schedulerRunning;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.mainActivity = (MainActivity) activity;
+        this.application = (CaratApplication) mainActivity.getApplication();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        schedulerRunning = false;
         ll = (RelativeLayout) inflater.inflate(R.layout.fragment_dashboard, container, false);
         return ll;
     }
@@ -72,11 +79,16 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         mainActivity.setUpActionBar(R.string.title_activity_dashboard, false);
         initViewRefs();
         initListeners();
+        refreshProgress();
         generateJScoreCircle();
         setValues();
         shareButton.setVisibility(View.VISIBLE);
         shareBar.setVisibility(View.GONE);
-        scheduleRefresh();
+
+        // Keep refreshing view
+        if(!schedulerRunning){
+            scheduleRefresh();
+        }
     }
 
     private void initViewRefs() {
@@ -137,12 +149,23 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         bugAmountText.setText(mainActivity.getBugAmount());
         hogAmountText.setText(mainActivity.getHogAmount());
         actionsAmountText.setText(mainActivity.getActionsAmount());
-        updatedText.setText(mainActivity.getLastUpdated());
     }
 
+    // Allows status string to be changed when updating
     public void setUpdatingValue(String what) {
         if (isAdded()) {
             updatedText.setText(getString(R.string.updating) + " " + what);
+        }
+    }
+
+    // Refresh status string and progress indicator
+    public void refreshProgress() {
+        // Make sure we don't overwrite an updating status
+        if(application.isUpdatingReports()) {
+            mainActivity.setProgressCircle(true);
+            setUpdatingValue(mainActivity.getUpdatingValue());
+        } else {
+            updatedText.setText(mainActivity.getLastUpdated());
         }
     }
 
@@ -198,58 +221,94 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    private boolean done = false;
-
+    // Schedules a dashboard refresh timer
     public void scheduleRefresh() {
-        Log.d("debug", "*** SCHELUDE START");
-        if (mainActivity != null)
-            mainActivity.runOnUiThread(new Runnable() {
-                public void run() {
-                    View v = getView();
-                    if (v != null) {
-                        Log.d("debug", "*** battery");
-                        String batteryLife = CaratApplication.myDeviceData.getBatteryLife();
-                        mainActivity.setBatteryLife(batteryLife);
-                        batteryText.setText(batteryLife);
-                    }
+        // Allow only one timer at a time
+        if(schedulerRunning) return;
 
-                    int actionsAmount = 0;
-                    int hogsCount = 0;
-                    int bugsCount = 0;
-                    if (CaratApplication.getStorage() != null && v != null) {
-                        SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
-                        SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
-                        if (h != null) {
-                            hogsCount = h.length;
-                            for (SimpleHogBug s : h) {
-                                if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
-                                    actionsAmount++;
-                                }
-                            }
-                            Log.d("debug", "*** hogsCount: " + h.length);
-                        }
-                        if (b != null) {
-                            bugsCount = b.length;
+        checkReportsAndRefresh(); // Fire immediately
 
-                            for (SimpleHogBug s : b) {
-                                if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
-                                    actionsAmount++;
-                                }
-                            }
-                            Log.d("debug", "*** bugsCount: " + b.length);
-                        }
-                        hogAmountText.setText(String.valueOf(hogsCount));
-                        bugAmountText.setText(String.valueOf(bugsCount));
-                        actionsAmountText.setText(String.valueOf(actionsAmount));
-                        mainActivity.setBugAmount(String.valueOf(bugsCount));
-                        mainActivity.setHogAmount(String.valueOf(hogsCount));
-                        mainActivity.setActionsAmount(actionsAmount);
-                    }
+        // Set offset so the initial minute won't take so long
+        final long interval = Constants.DASHBOARD_REFRESH_INTERVAL;
+        long freshness = CaratApplication.getStorage().getFreshness();
+        long elapsed = System.currentTimeMillis() - freshness;
+        long offset = (elapsed % interval)-1;
+        if(offset < 0) offset = 0;
+
+        // Use handler so it gets destroyed with the fragment
+        final Handler timer = new Handler();
+        timer.postDelayed(new Runnable(){
+            @Override
+            public void run(){
+                checkReportsAndRefresh();
+                timer.postDelayed(this, interval);
+            }
+        }, interval-offset);
+        schedulerRunning = true;
+    }
+
+    // Refreshes most of the view
+    public void refresh() {
+        mainActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                refreshProgress(); // Prioritize status
+                View v = getView();
+                if (v != null) {
+                    String batteryLife = CaratApplication.myDeviceData.getBatteryLife();
+                    mainActivity.setBatteryLife(batteryLife);
+                    batteryText.setText(batteryLife);
                 }
-            });
+
+                int actionsAmount = 0;
+                int hogsCount = 0;
+                int bugsCount = 0;
+                if (CaratApplication.getStorage() != null && v != null) {
+                    SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+                    SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
+                    if (h != null) {
+                        hogsCount = h.length;
+                        for (SimpleHogBug s : h) {
+                            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                                actionsAmount++;
+                            }
+                        }
+                    }
+                    if (b != null) {
+                        bugsCount = b.length;
+
+                        for (SimpleHogBug s : b) {
+                            if (SamplingLibrary.isRunning(mainActivity, s.getAppName())) {
+                                actionsAmount++;
+                            }
+                        }
+                    }
+                    hogAmountText.setText(String.valueOf(hogsCount));
+                    bugAmountText.setText(String.valueOf(bugsCount));
+                    actionsAmountText.setText(String.valueOf(actionsAmount));
+                    mainActivity.setBugAmount(String.valueOf(bugsCount));
+                    mainActivity.setHogAmount(String.valueOf(hogsCount));
+                    mainActivity.setActionsAmount(actionsAmount);
+                }
+            }
+        });
         mainActivity.setJScore(CaratApplication.getJscore());
         mainActivity.setCpuValue();
         setValues();
-        Log.d("debug", "*** SCHELUDE END");
+    }
+
+    // Check if we should update and refresh afterwards
+    public void checkReportsAndRefresh() {
+        if(application == null) return;
+
+        // Download new reports in separate networking thread
+        // Ignore if already updating
+        if(reportsThread != null && reportsThread.isAlive()) return;
+        reportsThread = new Thread(new Runnable() {
+            @Override
+            public void run(){
+                application.refreshUi();
+            }
+        });
+        reportsThread.start();
     }
 }

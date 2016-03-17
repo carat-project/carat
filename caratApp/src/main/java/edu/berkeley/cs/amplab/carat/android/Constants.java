@@ -3,6 +3,8 @@ package edu.berkeley.cs.amplab.carat.android;
 import android.app.AlarmManager;
 import android.graphics.Color;
 
+import java.util.concurrent.TimeUnit;
+
 public class Constants {
     // Whether to output debug messages.
     public static final boolean DEBUG = true;
@@ -16,6 +18,12 @@ public class Constants {
     // Blacklist freshness timeout. Default 2 days.
     // public static final long FRESHNESS_TIMEOUT_QUICKHOGS = 30 * 1000;
     public static final long FRESHNESS_TIMEOUT_QUICKHOGS = 2 * 24 * 3600 * 1000;
+
+    // Dashboard refresh interval
+    public static final long DASHBOARD_REFRESH_INTERVAL = TimeUnit.MINUTES.toMillis(1);
+
+    // Thrift connection timeout
+    public static final int THRIFT_CONNECTION_TIMEOUT = (int)TimeUnit.MINUTES.toMillis(1);
 
     // If this preference is true, register this as a new device on the Carat
     // server.
