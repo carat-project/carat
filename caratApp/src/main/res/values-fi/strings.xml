@@ -283,7 +283,7 @@
     <string name="didntget">ei saatu</string>
     <string name="updatingreports">Päivitetään raporttia</string>
     <string name="blacklist">Poistolista</string>
-    <string name="finishing">näkymää</string>
+    <string name="finishing">Viimeistellään</string>
 
     <string name="expected">Arvioitu parannus:</string>
     <string name="killappname">Tapa Sovellus</string>
