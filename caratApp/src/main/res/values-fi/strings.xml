@@ -407,6 +407,8 @@
     </string-array>
 
     <string name="hog_thresh">Piilota sovellukset joiden vaikutus on pieni</string>
+    <string name="neverupdated">Ei päivitetty</string>
+    <string name="updatedjustnow">Päivitetty äsken</string>
 </resources>
 
 
