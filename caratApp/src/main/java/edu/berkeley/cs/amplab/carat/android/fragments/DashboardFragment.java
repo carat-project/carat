@@ -160,12 +160,18 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    public void setSampleProgress(String what) {
+        if(isAdded()){
+            updatedText.setText(what);
+        }
+    }
+
     // Refresh status string and progress indicator
     public void refreshProgress() {
         // Make sure we don't overwrite an updating status
         if(application.isSendingSamples()) {
             mainActivity.setProgressCircle(true);
-            setUpdatingValue(application.getSampleStatus());
+            setUpdatingValue(mainActivity.getSampleValue());
         } else if(application.isUpdatingReports()) {
             mainActivity.setProgressCircle(true);
             setUpdatingValue(mainActivity.getUpdatingValue());

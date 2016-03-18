@@ -54,6 +54,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private int jScore;
     private long[] lastPoint = null;
     private String lastUpdatingValue;
+    private String lastSampleValue;
 
     private TextView actionBarTitle;
     private ImageView backArrow;
@@ -390,6 +391,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void setTitleUpdating(String what) {
         lastUpdatingValue = what;
         dashboardFragment.setUpdatingValue(what);
+    }
+
+    public void setSampleProgress(String what){
+        lastSampleValue = what;
+        dashboardFragment.setSampleProgress(what);
+    }
+
+    public String getSampleValue(){
+        return lastSampleValue;
     }
 
     public String getUpdatingValue(){

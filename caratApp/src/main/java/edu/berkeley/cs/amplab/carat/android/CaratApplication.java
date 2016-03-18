@@ -317,6 +317,16 @@ public class CaratApplication extends Application {
         }
     }
 
+    public static void setSampleProgress(final String what){
+        if (main != null) {
+            main.runOnUiThread(new Runnable() {
+                public void run() {
+                    main.setSampleProgress(what);
+                }
+            });
+        }
+    }
+
     public static void setActionFinished() {
         if (main != null) {
             main.runOnUiThread(new Runnable() {
@@ -439,10 +449,6 @@ public class CaratApplication extends Application {
 
     public boolean isSendingSamples(){
         return SampleSender.isSendingSamples();
-    }
-
-    public String getSampleStatus(){
-        return SampleSender.getSampleStatus();
     }
 
     // Checks if communication manager is busy

@@ -32,7 +32,6 @@ public class SampleSender {
     private static final Object sendLock = new Object();
 
     public static boolean sendingSamples = false;
-    public static String sampleStatus = "";
 
     CaratApplication app = null;
 
@@ -76,8 +75,7 @@ public class SampleSender {
                     if (map.size() > 0) {
                         int progress = (int) (successSum * 1.0 / samples * 100.0);
                         sendingSamples = true;
-                        sampleStatus = successSum + "/" + samples +" "+ app.getString(R.string.samplesreported);
-                        CaratApplication.setActionProgress(progress, sampleStatus, false);
+                        CaratApplication.setSampleProgress(successSum + "/" + samples +" "+ app.getString(R.string.samplesreported));
                         if (app.commManager != null) {
                             int tries = 0;
                             while (tries < 2) {
@@ -180,10 +178,6 @@ public class SampleSender {
                 }
             }*/
         }
-    }
-
-    public static String getSampleStatus(){
-        return sampleStatus;
     }
 
     public static boolean isSendingSamples(){
