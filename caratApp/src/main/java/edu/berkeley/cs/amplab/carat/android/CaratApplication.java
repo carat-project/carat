@@ -370,14 +370,7 @@ public class CaratApplication extends Application {
             });
             CaratApplication.setActionInProgress();
             try {
-                if(commManager.refreshAllReports()){
-                    main.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {main.refreshCurrentFragment();
-                        }
-                    });
-                    newData = true;
-                }
+                commManager.refreshAllReports();
             } catch (Throwable th) {
                 // Any sort of malformed response, too short string,
                 // etc...
@@ -385,20 +378,17 @@ public class CaratApplication extends Application {
                 th.printStackTrace();
             }
             connecting = false;
+            CaratApplication.setActionProgress(90, getString(R.string.finishing), false);
             main.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    main.setProgressCircle(true);
+                    main.setProgressCircle(false);
                 }
             });
         } else if (networkStatus.equals(SamplingLibrary.NETWORKSTATUS_CONNECTING)) {
             Log.w(TAG, "Network status: " + networkStatus + ", trying again in 10s.");
             connecting = true;
         }
-
-        // do this regardless
-        setReportData();
-        CaratApplication.setActionProgress(90, getString(R.string.finishing), false);
 
         if (connecting) {
             // wait for WiFi to come up
@@ -417,24 +407,13 @@ public class CaratApplication extends Application {
             // Show we are updating...
             CaratApplication.setActionInProgress();
             try {
-                if(commManager.refreshAllReports()){
-                    main.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {main.refreshCurrentFragment();
-                        }
-                    });
-                    newData = true;
-                }
-                // Log.d(TAG, "Reports refreshed.");
+                commManager.refreshAllReports();
             } catch (Throwable th) {
                 // Any sort of malformed response, too short string,
                 // etc...
                 Log.w(TAG, "Failed to refresh reports: " + th + Constants.MSG_TRY_AGAIN);
                 th.printStackTrace();
             }
-
-            // do this regardless
-            setReportData();
 
             setActionProgress(90, getString(R.string.finishing), false);
             main.runOnUiThread(new Runnable() {
@@ -445,20 +424,25 @@ public class CaratApplication extends Application {
             });
         }
 
-        CaratApplication.setActionFinished();
+        //CaratApplication.setActionFinished();
         SampleSender.sendSamples(CaratApplication.this);
-        CaratApplication.setActionFinished();
+        setReportData();
+        //CaratApplication.setActionFinished();
 
-        // Update status text if we did not succeed
-        if(!newData){
-            main.runOnUiThread(new Runnable() {
+        main.runOnUiThread(new Runnable() {
                 @Override
-                public void run() {
-                    main.refreshDashboardStatus();
+                public void run() {main.refreshCurrentFragment();
                 }
-            });
-        }
+        });
         Log.d("debug", "*** End refresh");
+    }
+
+    public boolean isSendingSamples(){
+        return SampleSender.isSendingSamples();
+    }
+
+    public String getSampleStatus(){
+        return SampleSender.getSampleStatus();
     }
 
     // Checks if communication manager is busy
@@ -468,6 +452,7 @@ public class CaratApplication extends Application {
         }
         return false;
     }
+
 
     public static boolean isInternetAvailable2() {
         try {

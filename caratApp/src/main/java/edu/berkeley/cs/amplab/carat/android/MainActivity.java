@@ -179,7 +179,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         final SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
         final boolean useWifiOnly = p.getBoolean(getString(R.string.wifi_only_key), false);
         menu.findItem(R.id.action_wifi_only).setChecked(useWifiOnly);
-        setProgressCircle(false);
+        //setProgressCircle(false);
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -291,30 +291,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             progressCircle.setVisibility(View.VISIBLE);
         } else {
             progressCircle.setVisibility(View.GONE);
-}
-}
+        }
+    }
 
     public void refreshCurrentFragment() {
         if (getSupportFragmentManager() != null) {
             Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
-            Log.d("debug", "fragment is: "+fragment.toString());
             if(fragment instanceof GlobalFragment){
                 ((GlobalFragment) fragment).refresh();
             }
             else if (fragment instanceof  DashboardFragment
                     || getSupportFragmentManager().getBackStackEntryCount() == 0) {
-                Log.d("debug", "DONE LOADING, REFRESHING DASHBOARD");
                 dashboardFragment.refresh();
-            }
-        }
-    }
-
-    public void refreshDashboardStatus(){
-        if (getSupportFragmentManager() != null) {
-            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
-            if (fragment instanceof DashboardFragment ||
-                    getSupportFragmentManager().getBackStackEntryCount() == 0) {
-                dashboardFragment.refreshProgress();
             }
         }
     }
@@ -384,7 +372,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
-        Log.d("debug", "POPPING "+fragment.toString());
         final String FRAGMENT_TAG = tag;
         setProgressCircle(false);
         boolean fragmentPopped = getSupportFragmentManager().popBackStackImmediate(FRAGMENT_TAG, 0);

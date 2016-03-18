@@ -28,10 +28,11 @@ import edu.berkeley.cs.amplab.carat.thrift.Sample;
 public class SampleSender {
     
     private static final String TAG = "sendSamples";
-    
     private static final String TRY_AGAIN = " will try again later.";
-    
     private static final Object sendLock = new Object();
+
+    public static boolean sendingSamples = false;
+    public static String sampleStatus = "";
 
     CaratApplication app = null;
 
@@ -63,7 +64,8 @@ public class SampleSender {
                 options.put("count", samples+"");
                 ClickTracking.track(uuId, "sendingsamples", options, c);
                 /* End Click Tracking: Track sample sending. */
-                
+
+
                 int successSum = 0;
                 for (int batches = 0; batches < Constants.COMMS_MAX_BATCHES
                         && batches < samples
@@ -73,8 +75,9 @@ public class SampleSender {
                                     Constants.COMMS_MAX_UPLOAD_BATCH);
                     if (map.size() > 0) {
                         int progress = (int) (successSum * 1.0 / samples * 100.0);
-                        CaratApplication.setActionProgress(progress, successSum + "/"
-                                + samples +" "+ app.getString(R.string.samplesreported), false);
+                        sendingSamples = true;
+                        sampleStatus = successSum + "/" + samples +" "+ app.getString(R.string.samplesreported);
+                        CaratApplication.setActionProgress(progress, sampleStatus, false);
                         if (app.commManager != null) {
                             int tries = 0;
                             while (tries < 2) {
@@ -136,6 +139,7 @@ public class SampleSender {
                             Log.w(TAG, "CommunicationManager is not ready yet."
                                     + TRY_AGAIN);
                         }
+                        sendingSamples = false;
                     } else {
                         Log.w(TAG, "No samples to send." + TRY_AGAIN);
                     }
@@ -176,5 +180,13 @@ public class SampleSender {
                 }
             }*/
         }
+    }
+
+    public static String getSampleStatus(){
+        return sampleStatus;
+    }
+
+    public static boolean isSendingSamples(){
+        return sendingSamples;
     }
 }

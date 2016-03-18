@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,15 +81,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         mainActivity.setUpActionBar(R.string.title_activity_dashboard, false);
         initViewRefs();
         initListeners();
-        refreshProgress();
         generateJScoreCircle();
         setValues();
         shareButton.setVisibility(View.VISIBLE);
         shareBar.setVisibility(View.GONE);
-
         // Keep refreshing view
         if(!schedulerRunning){
             scheduleRefresh();
+        } else {
+            refresh();
         }
     }
 
@@ -110,7 +112,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         twitterButton = (ImageView) ll.findViewById(R.id.twitter_icon);
         emailButton = (ImageView) ll.findViewById(R.id.email_icon);
         closeButton = (ImageView) ll.findViewById(R.id.hide_button);
-
     }
 
     private void initListeners() {
@@ -143,6 +144,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         if (mainActivity.getJScore() == -1 || mainActivity.getJScore() == 0) {
             cd.setCustomText(new String[]{"N/A"});
         } else {
+            cd.setCustomText(null);
             cd.showValue((float) mainActivity.getJScore(), 99f, false);
         }
         batteryText.setText(CaratApplication.myDeviceData.getBatteryLife());
@@ -161,10 +163,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     // Refresh status string and progress indicator
     public void refreshProgress() {
         // Make sure we don't overwrite an updating status
-        if(application.isUpdatingReports()) {
+        if(application.isSendingSamples()) {
+            mainActivity.setProgressCircle(true);
+            setUpdatingValue(application.getSampleStatus());
+        } else if(application.isUpdatingReports()) {
             mainActivity.setProgressCircle(true);
             setUpdatingValue(mainActivity.getUpdatingValue());
         } else {
+            mainActivity.setProgressCircle(false);
             updatedText.setText(mainActivity.getLastUpdated());
         }
     }
@@ -224,7 +230,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     // Schedules a dashboard refresh timer
     public void scheduleRefresh() {
         // Allow only one timer at a time
-        if(schedulerRunning) return;
+        if(schedulerRunning) {
+            refresh();
+            return;
+        }
 
         checkReportsAndRefresh(); // Fire immediately
 
@@ -251,7 +260,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public void refresh() {
         mainActivity.runOnUiThread(new Runnable() {
             public void run() {
-                refreshProgress(); // Prioritize status
+                // Prioritize status text
+                refreshProgress();
                 View v = getView();
                 if (v != null) {
                     String batteryLife = CaratApplication.myDeviceData.getBatteryLife();
@@ -291,6 +301,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 }
             }
         });
+
         mainActivity.setJScore(CaratApplication.getJscore());
         mainActivity.setCpuValue();
         setValues();
