@@ -83,7 +83,7 @@ public class CommunicationManager {
 		}
 	}
 
-	private void registerMe(CaratService.Client instance, String uuId, String os, String model) throws TException {
+	private void registerMe(CaratService.Client instance, String uuId, String os, String model, String countryCode) throws TException {
 		if (uuId == null || os == null || model == null) {
 			Log.e("registerMe", "Null uuId, os, or model given to registerMe!");
 			System.exit(1);
@@ -92,6 +92,7 @@ public class CommunicationManager {
 		Registration registration = new Registration(uuId);
 		registration.setPlatformId(model);
 		registration.setSystemVersion(os);
+		registration.setCountryCode(countryCode);
 		registration.setTimestamp(System.currentTimeMillis() / 1000.0);
 		registration.setKernelVersion(SamplingLibrary.getKernelVersion());
 		registration.setSystemDistribution(SamplingLibrary.getManufacturer() + ";" + SamplingLibrary.getBrand());
@@ -178,10 +179,11 @@ public class CommunicationManager {
 			}
 			String os = SamplingLibrary.getOsVersion();
 			String model = SamplingLibrary.getModel();
+			String countryCode = SamplingLibrary.getCountryCode(a.getApplicationContext());
 			if (Constants.DEBUG)
 			    Log.d("CommunicationManager", "First run, registering this device: " + uuId + ", " + os + ", " + model);
 			try {
-				registerMe(instance, uuId, os, model);
+				registerMe(instance, uuId, os, model, countryCode);
 				p.edit().putBoolean(Constants.PREFERENCE_FIRST_RUN, false).commit();
 				register = false;
 				registered = true;
@@ -234,6 +236,7 @@ public class CommunicationManager {
 		String uuId = p.getString(CaratApplication.getRegisteredUuid(), null);
 		String model = SamplingLibrary.getModel();
 		String OS = SamplingLibrary.getOsVersion();
+		String countryCode = SamplingLibrary.getCountryCode(a.getApplicationContext());
 
 		// NOTE: Fake data for simulator
 		if (model.equals("sdk")) {
@@ -311,11 +314,12 @@ public class CommunicationManager {
 		}
 		
 		// NOTE: Check for having a J-Score, and in case there is none, send the
-		// new message
+		// new message. Also check if normal hogs exist.
 		Reports r = CaratApplication.getStorage().getReports();
+		boolean hogsEmpty = CaratApplication.getStorage().hogsIsEmpty();
 		boolean quickHogsSuccess = false;
-		if (r == null || r.jScoreWith == null || r.jScoreWith.expectedValue <= 0) {
-            quickHogsSuccess = getQuickHogsAndMaybeRegister(uuId, OS, model);
+		if (r == null || r.jScoreWith == null || r.jScoreWith.expectedValue <= 0 || hogsEmpty) {
+            quickHogsSuccess = getQuickHogsAndMaybeRegister(uuId, OS, model, countryCode);
             if (Constants.DEBUG) {
                 if (quickHogsSuccess)
                     Log.d(TAG, "Got quickHogs.");
@@ -526,7 +530,7 @@ public class CommunicationManager {
 		}.start();
 	}
 
-	private boolean getQuickHogsAndMaybeRegister(String uuid, String os, String model) {
+	private boolean getQuickHogsAndMaybeRegister(String uuid, String os, String model, String countryCode) {
 		if (System.currentTimeMillis() - CaratApplication.getStorage().getQuickHogsFreshness() < Constants.FRESHNESS_TIMEOUT_QUICKHOGS)
 			return false;
 		CaratService.Client instance = null;
@@ -535,6 +539,7 @@ public class CommunicationManager {
 			Registration registration = new Registration(uuid);
 			registration.setPlatformId(model);
 			registration.setSystemVersion(os);
+			registration.setCountryCode(countryCode);
 			registration.setTimestamp(System.currentTimeMillis() / 1000.0);
 			List<ProcessInfo> pi = SamplingLibrary.getRunningAppInfo(a.getApplicationContext());
 			List<String> processList = new ArrayList<String>();

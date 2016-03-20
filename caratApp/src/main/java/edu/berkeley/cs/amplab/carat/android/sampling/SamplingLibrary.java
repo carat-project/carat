@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
@@ -37,7 +38,6 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningServiceInfo;
-import android.app.Service;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -73,8 +73,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.flurry.android.FlurryAgent;
-
-import org.apache.http.protocol.RequestUserAgent;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -2337,6 +2335,82 @@ public final class SamplingLibrary {
 			mySample.setExtra(extras);
 		
 		return mySample;
+	}
+
+	/**
+	 * Returns a two letter ISO3166-1 alpha-2 standard country code
+	 * https://en.wikipedia.org/wiki/ISO_3166-1
+     * GetCellLocation returns longitude and latitude
+ 	 * @param context Application context
+	 * @return Two letter country code
+     */
+	public static String getCountryCode(Context context) {
+		TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String cc;
+        if(telephonyManager.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA){
+            /// Network location is most accurate
+            cc = telephonyManager.getNetworkCountryIso();
+            if(cc != null && cc.length() == 2) return cc;
+            cc = getCountryCodeFromProperty(context, "gsm.operator.numeric");
+            if(cc != null && cc.length() == 2) return cc;
+            cc = telephonyManager.getSimCountryIso();
+            if(cc != null && cc.length() == 2) return cc;
+        } else {
+            // Telephony manager is unreliable with CDMA
+            cc = getCountryCodeFromProperty(context, "ro.cdma.home.operator.numeric");
+            if(cc != null && cc.length() == 2) return cc;
+        }
+        return "Unknown";
+	}
+
+    /**
+     * Retrieves a two-letter country code from system properties.
+     * Uses undocumented calls to private APIs.
+     * @param context Application context
+     * @param property Property name
+     * @return Two-letter country code
+     */
+    private static String getCountryCodeFromProperty(Context context, String property) {
+        try {
+            String operator = getSystemProperty(context, property);
+            if(operator != null && operator.length() >= 5){
+                int mcc = Integer.parseInt(operator.substring(0,3));
+                return getCountryCodeForMcc(context, mcc);
+            }
+        } catch(Exception e){
+            if(Constants.DEBUG && e != null && e.getLocalizedMessage() != null){
+                Log.d(STAG, "Failed getting network location: " + e.getLocalizedMessage());
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Private call to read a string value from system properties.
+     * Uses reflection.
+     * @param context Application context
+     * @param property Property name
+     * @return Property value
+     * @throws Exception
+     */
+    private static String getSystemProperty(Context context, String property) throws Exception {
+		Class<?> systemProperties = Class.forName("android.os.SystemProperties");
+		Method get = systemProperties.getMethod("get", String.class);
+		return ((String) get.invoke(context, property));
+	}
+
+    /**
+     * Private call to look up a two-letter country code with an mcc.
+     * Uses reflection.
+     * @param context Application context
+     * @param mcc Numeric country code
+     * @return Country code
+     * @throws Exception
+     */
+	private static String getCountryCodeForMcc(Context context, int mcc) throws Exception{
+		Class<?> mccTable = Class.forName("com.android.internal.telephony.MccTable");
+		Method countryCodeForMcc = mccTable.getMethod("countryCodeForMcc", int.class);
+		return ((String) countryCodeForMcc.invoke(context, mcc));
 	}
 
 	/**
