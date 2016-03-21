@@ -1,22 +1,11 @@
 package edu.berkeley.cs.amplab.carat.android.views.adapters;
 
-import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.net.Uri;
-import android.os.Build;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -24,18 +13,20 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.nineoldandroids.view.ViewHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
+import edu.berkeley.cs.amplab.carat.android.fragments.CallbackWebViewFragment;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
+import edu.berkeley.cs.amplab.carat.thrift.Reports;
 
 /**
  * Created by Valto on 2.10.2015.
@@ -44,13 +35,28 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         ExpandableListView.OnGroupClickListener, ExpandableListView.OnGroupExpandListener,
         ExpandableListView.OnChildClickListener {
 
+    private enum ActionType{
+        SURVEY, HELP
+    }
+
+    private class StaticAction {
+        public ActionType type;
+        public int icon;
+        public String title;
+        public String subtitle;
+        public boolean expandable;
+        public String text;
+    }
+
     private CaratApplication caratApplication;
     private ArrayList<SimpleHogBug> allReports = new ArrayList<>();
+    private ArrayList<StaticAction> staticActions = new ArrayList<>();
     private LayoutInflater mInflater;
     private ExpandableListView lv;
     private MainActivity mainActivity;
 
     private ImageView processIcon;
+    private ImageView collapseIcon;
     private TextView processName;
     private TextView processImprovement;
     private TextView samplesAmount;
@@ -89,6 +95,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             }
         }
 
+        createStaticActions();
+
         mInflater = LayoutInflater.from(caratApplication);
 
     }
@@ -112,6 +120,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             convertView = infalInflater.inflate(R.layout.actions_list_child_item, null);
         }
 
+        if(groupPosition >= allReports.size()) return convertView;
+
         SimpleHogBug item = allReports.get(groupPosition);
         setViewsInChild(convertView, item);
         return convertView;
@@ -129,7 +139,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public int getGroupCount() {
-        return allReports.size();
+        return allReports.size() + staticActions.size();
     }
 
     @Override
@@ -146,15 +156,17 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             convertView = inf.inflate(R.layout.bug_hog_list_header, null);
         }
 
-        if (allReports == null || groupPosition < 0
-                || groupPosition >= allReports.size())
-            return convertView;
-
-        SimpleHogBug item = allReports.get(groupPosition);
-        if (item == null)
-            return convertView;
-
-        setItemViews(convertView, item, groupPosition);
+        if (allReports == null || groupPosition < 0) return convertView;
+        if(groupPosition >= allReports.size()){
+            int offset = groupPosition-allReports.size();
+            StaticAction staticAction = staticActions.get(offset);
+            if(staticAction == null) return convertView;
+            setStaticViews(convertView, staticAction);
+        } else {
+            SimpleHogBug item = allReports.get(groupPosition);
+            if (item == null) return convertView;
+            setItemViews(convertView, item, groupPosition);
+        }
 
         return convertView;
     }
@@ -216,6 +228,30 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         processImprovement.setText(item.getBenefitText());
     }
 
+    private void setStaticViews(View v, StaticAction action){
+        processIcon = (ImageView) v.findViewById(R.id.process_icon);
+        processName = (TextView) v.findViewById(R.id.process_name);
+        processImprovement = (TextView) v.findViewById(R.id.process_improvement);
+        collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+
+        processIcon.setImageResource(action.icon);
+        processName.setText(action.title);
+        processImprovement.setText(action.subtitle);
+        collapseIcon.setImageResource(R.drawable.collapse_right);
+    }
+
+    private void createStaticActions(){
+        // TODO: Replace with localized strings
+        StaticAction surveyAction = new StaticAction();
+        surveyAction.type = ActionType.SURVEY;
+        surveyAction.title = "Tell us about yourself!";
+        surveyAction.subtitle = "Participate in Carat survey";
+        surveyAction.expandable = false;
+        surveyAction.icon = R.drawable.ic_launcher_transp;
+
+        staticActions.add(surveyAction);
+    }
+
     public void killApp(SimpleHogBug fullObject, View v) {
         final String raw = fullObject.getAppName();
         final PackageInfo pak = SamplingLibrary.getPackageInfo(mainActivity, raw);
@@ -259,6 +295,17 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+        // Static cells
+        if(groupPosition >= allReports.size()){
+            int offset = groupPosition-allReports.size();
+            StaticAction action = staticActions.get(offset);
+            if(!action.expandable){
+                handleStationaryAction(action);
+                return true;
+            }
+        }
+
+        // Normal cells
         if (parent.isGroupExpanded(groupPosition)) {
             ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
             collapseIcon.setImageResource(R.drawable.collapse_down);
@@ -271,14 +318,75 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public void onGroupExpand(int groupPosition) {
-        if (groupPosition != previousGroup)
+        if(groupPosition >= allReports.size()){
+            int offset = groupPosition-allReports.size();
+            StaticAction action = staticActions.get(offset);
+            if(!action.expandable) return;
+        }
+
+        if (groupPosition != previousGroup){
             lv.collapseGroup(previousGroup);
+        }
         previousGroup = groupPosition;
     }
 
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
         return false;
+    }
+    
+    private void handleStationaryAction(StaticAction action){
+        switch(action.type){
+            case SURVEY:
+                // Construct form url and open in a custom webview fragment
+                String surveyUrl = constructSurveyURL();
+                CallbackWebViewFragment webView = createCallbackFragment(surveyUrl);
+                mainActivity.setUpActionBar(R.string.survey_title, true);
+                mainActivity.replaceFragment(webView, Constants.FRAGMENT_CB_WEBVIEW_TAG);
+                break;
+        }
+    }
+
+    private CallbackWebViewFragment createCallbackFragment(String surveyUrl){
+        // Add a navigation callback to the fragment to catch form submission
+        CallbackWebViewFragment fragment = CallbackWebViewFragment.getInstance(surveyUrl);
+        fragment.setNavigationCallback(new CallbackWebViewFragment.NavigationCallback(){
+            @Override
+            public void onElementClicked() {
+                mainActivity.runOnUiThread(new Runnable(){
+                    @Override
+                    public void run(){
+                        String submitted = context.getString(R.string.submitted);
+                        String thanks = context.getString(R.string.thank_you);
+                        String message = submitted + ". " + thanks;
+                        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    }
+                });
+                mainActivity.onBackPressed();
+            }
+        });
+        return fragment;
+    }
+
+    private String constructSurveyURL() {
+        // These fields will be prefilled
+        String surveyUrl = Constants.SURVEY_ROOT_URL;
+        String uuid = SamplingLibrary.getUuid(mainActivity);
+        String cc = SamplingLibrary.getCountryCode(context);
+        Reports r = CaratApplication.getStorage().getReports();
+        String os = SamplingLibrary.getOsVersion();
+        String model = SamplingLibrary.getModel();
+
+        // Format the url properly, %0A is a line break, + is a space
+        if(uuid != null) surveyUrl += "Carat+ID:+"+uuid.replace(" ", "+")+"%0A";
+        if(cc != null) surveyUrl += "Country:+"+cc.replace(" ", "+")+"%0A";
+        if(r != null) surveyUrl += "JScore:+"+r.jScore+"%0A";
+        if(os != null) surveyUrl += "OS+Version:+"+os.replace(" ", "+")+"%0A";
+        if(model != null) surveyUrl += "Device+Model:+"+model.replace(" ", "+")+"%0A";
+
+        // Strip last line break
+
+        return surveyUrl;
     }
 
 }

@@ -298,9 +298,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                             }
                         }
                     }
+
+                    int staticActionsAmount = mainActivity.getStaticActionsAmount();
+
                     hogAmountText.setText(String.valueOf(hogsCount));
                     bugAmountText.setText(String.valueOf(bugsCount));
-                    actionsAmountText.setText(String.valueOf(actionsAmount));
+                    actionsAmountText.setText(String.valueOf(actionsAmount+staticActionsAmount));
                     mainActivity.setBugAmount(String.valueOf(bugsCount));
                     mainActivity.setHogAmount(String.valueOf(hogsCount));
                     mainActivity.setActionsAmount(actionsAmount);

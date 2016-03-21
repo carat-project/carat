@@ -138,7 +138,12 @@ public class Constants {
     public static final String FRAGMENT_ACTIONS_TAG = "fragment_actions";
     public static final String FRAGMENT_MY_DEVICE_TAG = "fragment_my_device";
     public static final String FRAGMENT_ABOUT_TAG = "fragment_about";
+    public static final String FRAGMENT_CB_WEBVIEW_TAG = "fragment_callback_webview";
     public static final String FRAGMENT_PROCESS_LIST = "fragment_process_list";
     public static final String FRAGMENT_HIDE_SMALL = "fragment_hide_small";
+
+    // Should always end in entry.<id>= where id is a numeric identifier for the prefilled field
+    // You can get the identifier by appending /prefill to your form url with correct permissions.
+    public static final String SURVEY_ROOT_URL = "https://docs.google.com/forms/d/<id>/viewform?entry.<id>=";
 
 }

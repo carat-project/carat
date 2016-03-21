@@ -50,6 +50,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private String batteryLife;
     private String bugAmount, hogAmount, actionsAmount;
+    private int staticActionsAmount;
     private float cpu;
     private int jScore;
     private long[] lastPoint = null;
@@ -121,6 +122,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 onFragmentPop();
             }
         });
+
+        // TODO: Add this as an accessible flag
+        boolean hasCompletedSurvey = false;
+        staticActionsAmount = 1;
+        if(hasCompletedSurvey) staticActionsAmount--;
 
         lastUpdatingValue = getString(R.string.dashboard_text_loading);
     }
@@ -368,8 +374,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return actionsAmount;
     }
 
+    public int getStaticActionsAmount(){
+        return staticActionsAmount;
+    }
+
     public void setActionsAmount(int actionsAmount) {
-        this.actionsAmount = String.valueOf(actionsAmount);
+        this.actionsAmount = String.valueOf(actionsAmount+staticActionsAmount);
     }
 
     public void replaceFragment(Fragment fragment, String tag) {

@@ -197,6 +197,9 @@
         Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.
     </string>
 
+    <string name="submitted">Lähetetty</string>
+    <string name="thank_you">Kiitos!</string>
+    <string name="survey_title">KYSELY</string>
 
     <string name="opening_manager">Avataan sovellustenhallintaa</string>
     <string name="opening_manager_failed">Sovellustenhallinnan avaaminen epäonnistui</string>
