@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
@@ -24,7 +25,7 @@ public class HogsFragment extends Fragment {
     private MainActivity mainActivity;
     private LinearLayout mainFrame;
     private RelativeLayout hogsHeader;
-    private LinearLayout noHogsLayout;
+    private ScrollView noHogsLayout;
     private ExpandableListView expandableListView;
 
     @Override
@@ -54,7 +55,7 @@ public class HogsFragment extends Fragment {
     }
 
     private void initViewRefs() {
-        noHogsLayout = (LinearLayout) mainFrame.findViewById(R.id.empty_hogs_layout);
+        noHogsLayout = (ScrollView) mainFrame.findViewById(R.id.empty_hogs_layout);
         hogsHeader = (RelativeLayout) mainFrame.findViewById(R.id.hogs_header);
         expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_hogs_list);
     }

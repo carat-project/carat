@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="DASHBOARD"
+        android:text="@string/title_activity_dashboard"
         android:textColor="@color/white"
         android:textSize="25sp" />
 
@@ -21,12 +21,17 @@
         android:layout_centerVertical="true"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/back_arrow"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+    <RelativeLayout
+        android:layout_width="64dp"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/back_arrow" />
+        android:layout_height="match_parent"
+        android:id="@+id/back_arrow">
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_arrow" />
+    </RelativeLayout>
 
 </RelativeLayout>

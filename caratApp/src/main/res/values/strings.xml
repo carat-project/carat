@@ -210,9 +210,11 @@
         but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.
     </string>
 
+    <string name="survey_title">SURVEY</string>
+    <string name="survey_action_title">Tell us about yourself!</string>
+    <string name="survey_action_subtitle">Participate in Carat survey</string>
     <string name="submitted">Submitted</string>
     <string name="thank_you">Thank you!</string>
-    <string name="survey_title">SURVEY</string>
 
     <string name="stopped">STOPPED</string>
     <string name="opening_manager">Opening app manager</string>

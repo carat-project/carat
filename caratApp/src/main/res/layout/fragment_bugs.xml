@@ -39,38 +39,43 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:groupIndicator="@null"
-        android:layout_weight="100"></ExpandableListView>
+        android:layout_weight="100" />
 
-    <LinearLayout
-        android:id="@+id/empty_bugs_layout"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="30dp"
-        android:orientation="vertical"
+        android:id="@+id/empty_bugs_layout"
+        android:fillViewport="true"
         android:visibility="gone">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/empty_bugs_icon"/>
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/LargeBoldBlackText"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:text="@string/no_bugs_title"/>
+            android:padding="30dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            style="@style/LargeBlackText"
-            android:text="@string/no_bugs_message"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/empty_bugs_icon"/>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/LargeBoldBlackText"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:text="@string/no_bugs_title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                style="@style/LargeBlackText"
+                android:text="@string/no_bugs_message"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

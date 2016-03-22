@@ -20,8 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +60,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private String lastSampleValue;
 
     private TextView actionBarTitle;
-    private ImageView backArrow;
+    private RelativeLayout backArrow;
     private ProgressBar progressCircle;
     private DashboardFragment dashboardFragment;
 
@@ -280,7 +282,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_title);
-        backArrow = (ImageView) getSupportActionBar().getCustomView().findViewById(R.id.back_arrow);
+        backArrow = (RelativeLayout) getSupportActionBar().getCustomView().findViewById(R.id.back_arrow);
         backArrow.setOnClickListener(this);
         actionBarTitle.setText(resId);
         if (canGoBack) {
@@ -291,10 +293,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setProgressCircle(boolean visibility) {
+        backArrow = (RelativeLayout) getSupportActionBar().getCustomView().findViewById(R.id.back_arrow);
         progressCircle = (ProgressBar) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_progress_circle);
         progressCircle.getIndeterminateDrawable().setColorFilter(0xF2FFFFFF,
                 android.graphics.PorterDuff.Mode.SRC_ATOP);
-        if (visibility) {
+        if((backArrow.getVisibility() != View.VISIBLE) && visibility){
             progressCircle.setVisibility(View.VISIBLE);
         } else {
             progressCircle.setVisibility(View.GONE);

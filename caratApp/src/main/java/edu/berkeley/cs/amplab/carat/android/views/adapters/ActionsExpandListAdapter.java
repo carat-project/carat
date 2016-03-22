@@ -241,11 +241,13 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     }
 
     private void createStaticActions(){
-        // TODO: Replace with localized strings
+        String title = mainActivity.getString(R.string.survey_action_title);
+        String subtitle = mainActivity.getString(R.string.survey_action_subtitle);
+
         StaticAction surveyAction = new StaticAction();
         surveyAction.type = ActionType.SURVEY;
-        surveyAction.title = "Tell us about yourself!";
-        surveyAction.subtitle = "Participate in Carat survey";
+        surveyAction.title = title;
+        surveyAction.subtitle = subtitle;
         surveyAction.expandable = false;
         surveyAction.icon = R.drawable.ic_launcher_transp;
 

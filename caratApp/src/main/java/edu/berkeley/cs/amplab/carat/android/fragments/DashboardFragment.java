@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -35,10 +36,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private MainActivity mainActivity;
     private RelativeLayout ll;
     private RelativeLayout shareBar;
-    private ImageView bugButton;
-    private ImageView hogButton;
-    private ImageView globeButton;
-    private ImageView actionsButton;
+    private LinearLayout bugButton;
+    private LinearLayout hogButton;
+    private LinearLayout globeButton;
+    private LinearLayout actionsButton;
     private Button myDeviceButton;
     private ImageView shareButton;
     private ImageView facebookButton;
@@ -97,10 +98,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         cd = (CircleDisplay) ll.findViewById(R.id.jscore_progress_circle);
         shareBar = (RelativeLayout) ll.findViewById(R.id.share_bar);
         shareBar.setVisibility(View.GONE);
-        bugButton = (ImageView) ll.findViewById(R.id.bugs_button);
-        hogButton = (ImageView) ll.findViewById(R.id.hogs_button);
-        globeButton = (ImageView) ll.findViewById(R.id.globe_button);
-        actionsButton = (ImageView) ll.findViewById(R.id.actions_button);
+        bugButton = (LinearLayout) ll.findViewById(R.id.bugs_layout);
+        hogButton = (LinearLayout) ll.findViewById(R.id.hogs_layout);
+        globeButton = (LinearLayout) ll.findViewById(R.id.globe_layout);
+        actionsButton = (LinearLayout) ll.findViewById(R.id.actions_layout);
         myDeviceButton = (Button) ll.findViewById(R.id.my_device_button);
         shareButton = (ImageView) ll.findViewById(R.id.share_button);
         batteryText = (TextView) ll.findViewById(R.id.battery_value);
@@ -191,19 +192,19 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                         "jscoreinfo");
                 dialog.showDialog();
                 break;
-            case R.id.bugs_button:
+            case R.id.bugs_layout:
                 BugsFragment bugsFragment = new BugsFragment();
                 mainActivity.replaceFragment(bugsFragment, Constants.FRAGMENT_BUGS_TAG);
                 break;
-            case R.id.hogs_button:
+            case R.id.hogs_layout:
                 HogsFragment hogsFragment = new HogsFragment();
                 mainActivity.replaceFragment(hogsFragment, Constants.FRAGMENT_HOGS_TAG);
                 break;
-            case R.id.globe_button:
+            case R.id.globe_layout:
                 GlobalFragment globalFragment = new GlobalFragment();
                 mainActivity.replaceFragment(globalFragment, Constants.FRAGMENT_GLOBAL_TAG);
                 break;
-            case R.id.actions_button:
+            case R.id.actions_layout:
                 ActionsFragment actionsFragment = new ActionsFragment();
                 mainActivity.replaceFragment(actionsFragment, Constants.FRAGMENT_ACTIONS_TAG);
                 break;

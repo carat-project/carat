@@ -1,6 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android.fragments;
 
 import android.app.Activity;
+import android.bluetooth.le.ScanRecord;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
@@ -23,7 +25,7 @@ public class BugsFragment extends Fragment {
 
     private MainActivity mainActivity;
     private LinearLayout mainFrame;
-    private LinearLayout noBugsLayout;
+    private ScrollView noBugsLayout;
     private RelativeLayout bugsHeader;
     private ExpandableListView expandableListView;
 
@@ -56,7 +58,7 @@ public class BugsFragment extends Fragment {
     }
 
     private void initViewRefs() {
-        noBugsLayout = (LinearLayout) mainFrame.findViewById(R.id.empty_bugs_layout);
+        noBugsLayout = (ScrollView) mainFrame.findViewById(R.id.empty_bugs_layout);
         bugsHeader = (RelativeLayout) mainFrame.findViewById(R.id.bugs_header);
         expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_bugs_list);
     }
