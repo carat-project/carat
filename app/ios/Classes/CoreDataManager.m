@@ -28,9 +28,9 @@ static NSUInteger samplesSent;
 static NSString * reportUpdateStatus = nil;
 static dispatch_semaphore_t sendStoredDataToServerSemaphore;
 static NSMutableDictionary * daemonsList = nil;
-static bool bluetoothEnabled = false;
-
-static float cpuUsageVal;
+static NSNumber * bluetoothEnabled;
+static int currentSample = 0;
+static int previousSample = 0;
 
 - (void) postNotification
 {
@@ -72,7 +72,7 @@ static float cpuUsageVal;
         
         for (NSString * subReportName in SubReports)
         {
-            CoreDataSubReport *cdataSubReport = (CoreDataSubReport *) [NSEntityDescription 
+            CoreDataSubReport *cdataSubReport = (CoreDataSubReport *) [NSEntityDescription
                                                                        insertNewObjectForEntityForName:@"CoreDataSubReport" 
                                                                        inManagedObjectContext:managedObjectContext];
             cdataSubReport.name = subReportName;
@@ -910,7 +910,9 @@ static float cpuUsageVal;
 - (void) sampleForeground : (NSString *) triggeredBy
 {
     NSError *error = nil;
+    BOOL shouldWaitForBluetooth = false;
     int secondsSinceEpoch = [[NSDate date] timeIntervalSince1970];
+    NSNumber *timestamp = [NSNumber numberWithDouble:secondsSinceEpoch];
     
     NSManagedObjectContext *managedObjectContext = [[[NSManagedObjectContext alloc] init] autorelease];
     [managedObjectContext setUndoManager:nil];
@@ -944,6 +946,13 @@ static float cpuUsageVal;
     Settings *sysSettings = [Settings new];
     sysSettings.locationEnabled = [DeviceInformation getLocationEnabled];
     sysSettings.powersaverEnabled = [DeviceInformation getPowersaverEnabled];
+    if(bluetoothEnabled != nil){
+        sysSettings.bluetoothEnabled = [bluetoothEnabled boolValue];
+    } else {
+        // Bluetooth is added to the sample retrospectively as it becomes available.
+        // Sample will not be updated if another one has been stored by then.
+        shouldWaitForBluetooth = true;
+    }
     NSData *settingsEncoded = [NSKeyedArchiver archivedDataWithRootObject:sysSettings];
     
     //
@@ -951,9 +960,8 @@ static float cpuUsageVal;
     //
     
     MemoryInfo memoryInfo = [DeviceInformation getMemoryInformation];
-    
     sample.triggeredBy = triggeredBy;
-    sample.timestamp = [NSNumber numberWithDouble:secondsSinceEpoch];
+    sample.timestamp = timestamp;
     sample.batteryLevel = [DeviceInformation getBatteryLevel];
     sample.batteryState = [DeviceInformation getBatteryState];
     sample.screenBrightness = [DeviceInformation getScreenBrightness];
@@ -967,11 +975,55 @@ static float cpuUsageVal;
     sample.cpuStatus = cpuEncoded;
     sample.storageDetails = storageEncoded;
     sample.settings = settingsEncoded;
-    sample.distanceTraveled = 0;
+    sample.distanceTraveled = [NSNumber numberWithDouble:0.0];
     if ([triggeredBy isEqualToString:@"didUpdateToLocation"]) {
         double distance = [[Globals instance] getDistanceTraveled];
         sample.distanceTraveled = [NSNumber numberWithDouble:distance];
     }
+    
+    DLog(@"%sCollected new sample!\n\
+         \ttriggeredBy: %@\n\
+         \ttimestamp: %@\n\
+         \tbatteryLevel: %@\n\
+         \tbatteryState: %@\n\
+         \tscreenBrightness: %@\n\
+         \tnetworkStatus: %@\n\
+         \tmemoryWired: %@\n\
+         \tmemoryActive: %@\n\
+         \tmemoryInactive: %@\n\
+         \tmemoryFree: %@\n\
+         \tmemoryUser: %@\n\
+         \tnetworkDetails:\n\
+            \t\tnetworkType: %@\n\
+            \t\tmobileNetworkType: %@\n\
+            \t\tnetworkStatistics:\n\
+                \t\t\twifiSent: %f\n\
+                \t\t\twifiReceived: %f\n\
+                \t\t\tmobileSent: %f\n\
+                \t\t\tmobileReceived: %f\n\
+         \tcpuStatus:\n\
+            \t\tcpuUsage: %f\n\
+            \t\tuptime: %f\n\
+            \t\tsleeptime: %f\n\
+         \tstorageDetails:\n\
+            \t\ttotal: %i\n\
+            \t\tfree: %i\n\
+         \tsettings:\n\
+            \t\tlocationEnabled: %s\n\
+            \t\tpowersaverEnabled: %s\n\
+            \t\tbluetoothEnabled: %s\n\
+         \tdistanceTraveled: %@\n", __PRETTY_FUNCTION__,
+         sample.triggeredBy, sample.timestamp, sample.batteryLevel,
+         sample.batteryState, sample.screenBrightness, sample.networkStatus, sample.memoryWired, sample.memoryActive,
+         sample.memoryInactive, sample.memoryFree, sample.memoryUser,
+         networkDetails.networkType, networkDetails.mobileNetworkType, networkDetails.networkStatistics.wifiSent,
+         networkDetails.networkStatistics.wifiReceived, networkDetails.networkStatistics.mobileSent,
+         networkDetails.networkStatistics.mobileReceived,
+         cpuStat.cpuUsage, cpuStat.uptime, cpuStat.sleeptime,
+         storageDetails.total, storageDetails.free,
+         sysSettings.locationEnabled ? "true" : "false", sysSettings.powersaverEnabled ? "true" : "false",
+         (![sysSettings bluetoothEnabledIsSet]) ? "not set" : (sysSettings.bluetoothEnabled) ? "true": "false",
+         sample.distanceTraveled);
     
     [self sampleProcessInfo:sample withManagedObjectContext:managedObjectContext];
     
@@ -985,11 +1037,22 @@ static float cpuUsageVal;
             DLog(@"%s Could not save sample in coredata, error: %@, %@.", __PRETTY_FUNCTION__, error, [error userInfo]);
             [Flurry logEvent:@"sampleForeground Error"
                        withParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Unresolved error %@, %@", error, [error userInfo]], @"Error Info", nil]];
+            return;
         }
     }
     @catch (NSException *exception) {
         DLog(@"%s Exception while trying to save coredata, details: %@, %@", 
              __PRETTY_FUNCTION__, [exception name], [exception reason]);
+        return;
+    }
+    
+    // Theoretically there could be multiple threads handling different samples.
+    // This enforces thread safety by making sure that a thread does not update
+    // the bluetooth status based on a cached record of the latest sample.
+    @synchronized(self) {
+        if(shouldWaitForBluetooth) {
+            currentSample = [timestamp intValue];
+        }
     }
 }
 
@@ -1074,7 +1137,8 @@ static float cpuUsageVal;
             registrationToSend.uuId = [[Globals instance] getUUID ];
             registrationToSend.timestamp = [[registration valueForKey:@"timestamp"] doubleValue]; 
             registrationToSend.platformId = (NSString*) [registration valueForKey:@"platformId"];
-            registrationToSend.systemVersion = (NSString*) [registration valueForKey:@"systemVersion"]; 
+            registrationToSend.systemVersion = (NSString*) [registration valueForKey:@"systemVersion"];
+            registrationToSend.countryCode = (NSString*)[registration valueForKey:@"countryCode"];
             
             DLog(@"%s\ttimestamp: %f", __PRETTY_FUNCTION__, registrationToSend.timestamp);
             DLog(@"%s\tplatformId: %@", __PRETTY_FUNCTION__,registrationToSend.platformId);
@@ -1124,7 +1188,7 @@ static float cpuUsageVal;
     if (managedObjectContext != nil) 
     {
         NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" 
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp"
                                                                        ascending:YES];
         NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
         [fetchRequest setSortDescriptors:sortDescriptors];
@@ -1188,7 +1252,7 @@ static float cpuUsageVal;
             DLog(@"%s\ttriggeredBy: %@",__PRETTY_FUNCTION__, sampleToSend.triggeredBy);
             DLog(@"%s\tnetworkStatus: %@",__PRETTY_FUNCTION__, sampleToSend.networkStatus);
             DLog(@"%s\tdistanceTraveled: %f",__PRETTY_FUNCTION__, sampleToSend.distanceTraveled);
-
+            DLog(@"%s\tbluetoothEnabled: %s",__PRETTY_FUNCTION__, sampleToSend.settings.bluetoothEnabled ? "true" : "false");
             
             if (sample.processInfos == nil || sample.processInfos == NULL) {
                 DLog(@"%s Process Info list is Nil in the sample!!", __PRETTY_FUNCTION__);
@@ -1289,10 +1353,58 @@ static id instance = nil;
     return instance;
 }
 
-// Listen to bluetooth state changes and update accordingly
+// Listen to bluetooth state changes and update latest sample accordingly
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
-    bluetoothEnabled = (_bluetoothManager.state == CBCentralManagerStatePoweredOn);
+    DLog(@"%s bluetooth state updated: %s", __PRETTY_FUNCTION__,
+         (_bluetoothManager.state == CBCentralManagerStatePoweredOn) ? "on":"off");
+    @synchronized(self) {
+        // Make sure samples are not updated multiple times
+        if(previousSample == currentSample) return;
+        
+        BOOL enabled = (_bluetoothManager.state == CBCentralManagerStatePoweredOn);
+        bluetoothEnabled = [NSNumber numberWithBool:enabled];
+        NSError *error = nil;
+        
+        // Not keeping a reference to context for thread safety
+        NSManagedObjectContext *context = [self getManagedObjectContext];
+        if(context == nil) return;
+        
+        // Request samples sorted by timestamp
+        NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CoreDataSample"
+                                                  inManagedObjectContext:context];
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
+        
+        [request setEntity:entity];
+        [request setSortDescriptors:[NSArray arrayWithObject:sort]];
+        [request setFetchLimit:1]; // Still needs to load all in memory
+        
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if(results == nil || [results count] ==0) return;
+        CoreDataSample *latest = [results objectAtIndex:0];
+        
+        // Unarchive, add bluetooth information and rearchive
+        NSData *settingsEncoded = [latest valueForKey:@"settings"];
+        Settings *settings = [NSKeyedUnarchiver unarchiveObjectWithData:settingsEncoded];
+        if([settings bluetoothEnabledIsSet]) return; // No need to update
+        settings.bluetoothEnabled = (_bluetoothManager.state == CBCentralManagerStatePoweredOn);
+        settingsEncoded = [NSKeyedArchiver archivedDataWithRootObject:settings];
+        latest.settings = settingsEncoded;
+        
+        if([context hasChanges] && ![context save:&error]){
+            DLog(@"%s Could not update latest sample with bluetooth state, error: %@ %@",
+                 __PRETTY_FUNCTION__, error, [error userInfo]);
+            return;
+        }
+        
+        DLog(@"%s Updated sample (%@) with bluetooth status: (%s)",
+             __PRETTY_FUNCTION__, latest.timestamp, bluetoothEnabled ? "on" : "off");
+        
+        // This only happens when the update is successful
+        // Otherwise we might want to try again
+        previousSample = latest.timestamp;
+    }
 }
 
 - (void) dealloc
@@ -1342,6 +1454,7 @@ static id instance = nil;
     [h release];
     
     [cdataRegistration setSystemVersion:[UIDevice currentDevice].systemVersion];
+    [cdataRegistration setCountryCode:[DeviceInformation getCountryCode]];
     
     //
     //  Now save it.

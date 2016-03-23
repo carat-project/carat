@@ -182,6 +182,7 @@
 "Updated" = "Updated ";
 "Ago" = " ago";
 "Samples" = "   %i Samples sent";
+"SamplesLabel" = "Samples";
 "None" = "None";
 
 

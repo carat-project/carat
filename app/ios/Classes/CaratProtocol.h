@@ -27,6 +27,7 @@ typedef NSMutableArray * FeatureList;
   NSString * __systemVersion;
   NSString * __systemDistribution;
   NSString * __kernelVersion;
+  NSString * __countryCode;
 
   BOOL __uuId_isset;
   BOOL __timestamp_isset;
@@ -34,6 +35,7 @@ typedef NSMutableArray * FeatureList;
   BOOL __systemVersion_isset;
   BOOL __systemDistribution_isset;
   BOOL __kernelVersion_isset;
+  BOOL __countryCode_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -43,10 +45,11 @@ typedef NSMutableArray * FeatureList;
 @property (nonatomic, retain, getter=systemVersion, setter=setSystemVersion:) NSString * systemVersion;
 @property (nonatomic, retain, getter=systemDistribution, setter=setSystemDistribution:) NSString * systemDistribution;
 @property (nonatomic, retain, getter=kernelVersion, setter=setKernelVersion:) NSString * kernelVersion;
+@property (nonatomic, retain, getter=countryCode, setter=setCountryCode:) NSString * countryCode;
 #endif
 
 - (id) init;
-- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp platformId: (NSString *) platformId systemVersion: (NSString *) systemVersion systemDistribution: (NSString *) systemDistribution kernelVersion: (NSString *) kernelVersion;
+- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp platformId: (NSString *) platformId systemVersion: (NSString *) systemVersion systemDistribution: (NSString *) systemDistribution kernelVersion: (NSString *) kernelVersion countryCode: (NSString *) countryCode;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -86,6 +89,12 @@ typedef NSMutableArray * FeatureList;
 - (void) setKernelVersion: (NSString *) kernelVersion;
 #endif
 - (BOOL) kernelVersionIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) countryCode;
+- (void) setCountryCode: (NSString *) countryCode;
+#endif
+- (BOOL) countryCodeIsSet;
 
 @end
 

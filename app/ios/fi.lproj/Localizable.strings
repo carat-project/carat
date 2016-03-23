@@ -178,7 +178,8 @@
 "UpdatedNever" = "Updated never   %i Samples sent";
 "Updated" = "Updated ";
 "Ago" = " ago";
-"Samples" = "   %i Samples sent";
+"Samples" = "   %i mittausta lähetetty";
+"SamplesLabel" = "Mittauksia";
 "None" = "None";
 
 

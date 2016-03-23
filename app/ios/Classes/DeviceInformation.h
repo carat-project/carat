@@ -26,6 +26,7 @@ typedef struct MemoryInfo {
 @interface DeviceInformation : NSManagedObject
 
 + (NSString *) getMobileNetworkType;
++ (NSString *) getCountryCode;
 + (NSString *) getBatteryState;
 + (NSNumber *) getBatteryLevel;
 + (double) getCpuUsage;

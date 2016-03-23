@@ -17,6 +17,7 @@
 #import <mach/processor_info.h>
 #import <mach/mach_host.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <WatchConnectivity/WatchConnectivity.h>
 #import <CoreLocation/CoreLocation.h>
@@ -52,6 +53,15 @@ const unsigned long GB = MB * 1024;
     else if([radioAccessTechnology isEqualToString:CTRadioAccessTechnologyLTE]) return @"lte";
     else if([radioAccessTechnology isEqualToString:CTRadioAccessTechnologyWCDMA]) return @"umts"; //wcdma
     else return radioAccessTechnology;
+}
+
+// Country code representation in ISO 3661-1 standard
+// @see https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/index.html
++ (NSString *) getCountryCode {
+    CTTelephonyNetworkInfo *networkInfo= [CTTelephonyNetworkInfo new];
+    CTCarrier *carrier = networkInfo.subscriberCellularProvider;
+    if(!carrier || !carrier.isoCountryCode) return @"Unknown";
+    return carrier.isoCountryCode;
 }
 
 // Battery state: Unknown, unplugged, charging, full

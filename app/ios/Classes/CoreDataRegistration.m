@@ -14,5 +14,6 @@
 @dynamic platformId;
 @dynamic systemVersion;
 @dynamic timestamp;
+@dynamic countryCode;
 
 @end

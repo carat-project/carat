@@ -15,6 +15,7 @@ struct Registration {
 	4: optional string systemVersion;	// iOS version, eg. 3.1.3 or 4.0.2
 	5: optional string systemDistribution; // CyanogenMod, MIUI, etc.
 	6: optional string kernelVersion; // 2.6.32-cyanogenmod-... etc.
+	7: optional string countryCode; // Carrier country code from SIM-card
 }
 
 //
@@ -234,4 +235,3 @@ service CaratService {
 	HogBugReport getHogOrBugReport(1: string uuId, 2: FeatureList features)
 	HogBugReport getQuickHogsAndMaybeRegister(1:Registration registration, 2:list<string> processList)
 }
-

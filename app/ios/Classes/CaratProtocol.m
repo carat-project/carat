@@ -26,7 +26,7 @@
   return self;
 }
 
-- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp platformId: (NSString *) platformId systemVersion: (NSString *) systemVersion systemDistribution: (NSString *) systemDistribution kernelVersion: (NSString *) kernelVersion
+- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp platformId: (NSString *) platformId systemVersion: (NSString *) systemVersion systemDistribution: (NSString *) systemDistribution kernelVersion: (NSString *) kernelVersion countryCode: (NSString *) countryCode
 {
   self = [super init];
   __uuId = [uuId retain_stub];
@@ -41,6 +41,8 @@
   __systemDistribution_isset = YES;
   __kernelVersion = [kernelVersion retain_stub];
   __kernelVersion_isset = YES;
+  __countryCode = [countryCode retain_stub];
+  __countryCode_isset = YES;
   return self;
 }
 
@@ -77,6 +79,11 @@
     __kernelVersion = [[decoder decodeObjectForKey: @"kernelVersion"] retain_stub];
     __kernelVersion_isset = YES;
   }
+  if ([decoder containsValueForKey: @"countryCode"])
+  {
+    __countryCode = [[decoder decodeObjectForKey: @"countryCode"] retain_stub];
+    __countryCode_isset = YES;
+  }
   return self;
 }
 
@@ -106,6 +113,10 @@
   {
     [encoder encodeObject: __kernelVersion forKey: @"kernelVersion"];
   }
+  if (__countryCode_isset)
+  {
+    [encoder encodeObject: __countryCode forKey: @"countryCode"];
+  }
 }
 
 - (void) dealloc
@@ -115,6 +126,7 @@
   [__systemVersion release_stub];
   [__systemDistribution release_stub];
   [__kernelVersion release_stub];
+  [__countryCode release_stub];
   [super dealloc_stub];
 }
 
@@ -240,6 +252,27 @@
   __kernelVersion_isset = NO;
 }
 
+- (NSString *) countryCode {
+  return [[__countryCode retain_stub] autorelease_stub];
+}
+
+- (void) setCountryCode: (NSString *) countryCode {
+  [countryCode retain_stub];
+  [__countryCode release_stub];
+  __countryCode = countryCode;
+  __countryCode_isset = YES;
+}
+
+- (BOOL) countryCodeIsSet {
+  return __countryCode_isset;
+}
+
+- (void) unsetCountryCode {
+  [__countryCode release_stub];
+  __countryCode = nil;
+  __countryCode_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -303,6 +336,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setCountryCode: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -354,6 +395,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__countryCode_isset) {
+    if (__countryCode != nil) {
+      [outProtocol writeFieldBeginWithName: @"countryCode" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __countryCode];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -372,6 +420,8 @@
   [ms appendFormat: @"\"%@\"", __systemDistribution];
   [ms appendString: @",kernelVersion:"];
   [ms appendFormat: @"\"%@\"", __kernelVersion];
+  [ms appendString: @",countryCode:"];
+  [ms appendFormat: @"\"%@\"", __countryCode];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
