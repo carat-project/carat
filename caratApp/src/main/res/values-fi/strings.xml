@@ -255,6 +255,9 @@
 
     <string name="copied">Kopioitu:</string>
     <string name="helpcarat">Auta Caratia keräämään dataa</string>
+    <string name="helpcarat_subtitle">Saat parempia tuloksia</string>
+    <string name="helpcarat_expanded_title">Kuinka autan Caratia keräämään dataa?</string>
+
     <string name="questionnaire">Auta meitä parantamaan Caratia</string>
     <string name="questionnaire2">Vastaa kyselyyn (5&#8211;10 min)</string>
     <string name="feedback">Anna palautetta (email)</string>

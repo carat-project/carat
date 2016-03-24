@@ -126,10 +126,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         });
 
         // TODO: Add this as an accessible flag
-        boolean hasCompletedSurvey = false;
-        staticActionsAmount = 1;
-        if(hasCompletedSurvey) staticActionsAmount--;
 
+        staticActionsAmount = CaratApplication.getStaticActions().size();
         lastUpdatingValue = getString(R.string.dashboard_text_loading);
     }
 

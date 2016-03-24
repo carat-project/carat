@@ -199,14 +199,14 @@
         from the Application Manager.</string>
     <string name="no_actions_title">You have no actions.</string>
     <string name="no_actions_message">
-        You should open Carat regularly so it can take samples of your device state and communicate these to our servers.\n
-        We suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\n
-        It can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\n
-        Make sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\n
+        You should open Carat regularly so it can take samples of your device state and communicate these to our servers.\n\nWe
+        suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.
+        It can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\n\nMake
+        sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).
         The more often you open the app, the more quickly it will generate reports, the more information those reports will contain,
-        and the more accurate the recommendations will be.\n
-        Carat does not run as a background service, which is why it needs your help.\n
-        The app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground,
+        and the more accurate the recommendations will be.\n\nCarat
+        does not run as a background service, which is why it needs your help.\n\nThe
+        app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground,
         but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.
     </string>
 
@@ -296,6 +296,9 @@ delete these from your file.
 
     <string name="copied">Copied:</string>
     <string name="helpcarat">Help Carat collect data</string>
+    <string name="helpcarat_subtitle">Get better results</string>
+    <string name="helpcarat_expanded_title">How to help Carat collect data?</string>
+
     <string name="questionnaire">Please help us improve Carat</string>
     <string name="questionnaire2">Answer a questionnaire (takes 5&#8211;10 minutes)</string>
     <string name="feedback">Give feedback (email)</string>

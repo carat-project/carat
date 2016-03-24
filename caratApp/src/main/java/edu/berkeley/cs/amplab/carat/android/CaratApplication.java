@@ -1,6 +1,8 @@
 package edu.berkeley.cs.amplab.carat.android;
 
+import java.lang.ref.WeakReference;
 import java.net.InetAddress;
+import java.util.ArrayList;
 
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -21,12 +23,15 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import edu.berkeley.cs.amplab.carat.android.model_classes.MyDeviceData;
+import edu.berkeley.cs.amplab.carat.android.model_classes.StaticAction;
 import edu.berkeley.cs.amplab.carat.android.protocol.CommunicationManager;
 import edu.berkeley.cs.amplab.carat.android.protocol.SampleSender;
 import edu.berkeley.cs.amplab.carat.android.sampling.Sampler;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
 import edu.berkeley.cs.amplab.carat.thrift.Reports;
+
+import static edu.berkeley.cs.amplab.carat.android.model_classes.StaticAction.ActionType;
 
 /**
  * Application class for Carat Android App. Place App-global static constants
@@ -39,6 +44,7 @@ public class CaratApplication extends Application {
     private static CaratApplication mInstance;
     // Used for logging
     private static final String TAG = "CaratApp";
+    private static WeakReference<ArrayList<StaticAction>> staticActions;
 
     public static Context mAppContext = null;
     public static SharedPreferences mPrefs = null;
@@ -204,6 +210,31 @@ public class CaratApplication extends Application {
             s = "Unknown";
         }
         return s;
+    }
+
+    /**
+     * Here is where you define static actions
+     * @return List of static actions
+     */
+    public static ArrayList<StaticAction> getStaticActions(){
+        if(staticActions == null || staticActions.get() == null){
+            ArrayList<StaticAction> actions = new ArrayList<>();
+
+            // Google forms survey
+            actions.add(new StaticAction(ActionType.SURVEY,
+                    R.string.survey_action_title,
+                    R.string.survey_action_subtitle));
+
+            // Help Carat collect data
+            actions.add(new StaticAction(ActionType.COLLECT,
+                    R.string.helpcarat, R.string.helpcarat_subtitle)
+                    .makeExpandable(R.string.helpcarat_expanded_title,
+                            R.string.no_actions_message));
+
+            staticActions = new WeakReference<>(actions);
+            return actions;
+        }
+        return staticActions.get();
     }
 
     public static String translatedPriority(String importanceString) {
