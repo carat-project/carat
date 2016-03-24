@@ -7,6 +7,24 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.4" />
         <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../androidsupportv4preferencefragment" />
+            <option value="$PROJECT_DIR$/../androidswitchbackport" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../mPChartLib" />
+          </set>
+        </option>
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../androidsupportv4preferencefragment" />
+            <option value="$PROJECT_DIR$/../androidswitchbackport" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../mPChartLib" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>

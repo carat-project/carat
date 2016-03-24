@@ -111,8 +111,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="i"
-                        android:layout_alignBaseline="@+id/well_behaved_surface"
-                        android:layout_alignBottom="@+id/well_behaved_surface"
+                        android:layout_alignBaseline="@+id/well_behaved_imageview"
+                        android:layout_alignBottom="@+id/well_behaved_imageview"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true" />
 
@@ -167,8 +167,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="i"
-                        android:layout_alignBaseline="@+id/bugs_surface"
-                        android:layout_alignBottom="@+id/bugs_surface"
+                        android:layout_alignBaseline="@+id/bugs_imageview"
+                        android:layout_alignBottom="@+id/bugs_imageview"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true" />
 
@@ -221,8 +221,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="i"
-                        android:layout_alignBaseline="@+id/hogs_surface"
-                        android:layout_alignBottom="@+id/hogs_surface"
+                        android:layout_alignBaseline="@+id/hogs_imageview"
+                        android:layout_alignBottom="@+id/hogs_imageview"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true" />
 

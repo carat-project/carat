@@ -173,7 +173,7 @@
     <string name="global_general_popular_title">YLEISET PUHELINMALLIT</string>
     <string name="global_general_android">Android</string>
     <string name="well_behaved">Hyvin käyttäytyvät</string>
-    <string name="out_of"></string>
+    <string name="out_of">/</string>
     <string name="all_installed">asennetusta applikaatiosta,</string>
     <string name="hog_intensity">on energiaintensiivisiä (Hogeja) ja</string>
     <string name="bug_intensity">on energiapoikkeuksia (Bugeja).</string>

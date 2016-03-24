@@ -243,34 +243,34 @@
 These are the same for all languages. When translating,
 delete these from your file.
     -->
-    <string name="app_name">Carat</string>
-    <string name="version_name">2.04</string>
+    <string name="app_name" translatable="false">Carat</string>
+    <string name="version_name" translatable="false">2.05</string>
 
-    <string name="jsna">N/A</string>
-    <string name="fake_id">0</string>
-    <string name="fake_os">4.0.3</string>
-    <string name="fake_device">Samsung Galaxy Nexus</string>
+    <string name="jsna" translatable="false">N/A</string>
+    <string name="fake_id" translatable="false">0</string>
+    <string name="fake_os" translatable="false">4.0.3</string>
+    <string name="fake_device" translatable="false">Samsung Galaxy Nexus</string>
 
     <color name="brown">#744618</color>
     <color name="black">#000000</color>
     <color name="with">#f3b14d</color>
     <color name="without">#007777</color>
 
-    <string name="blackBackground">false</string>
+    <string name="blackBackground" translatable="false">false</string>
 
     <color name="background">#FFFFFFFF</color>
     <color name="text">#000000</color>
 
-    <string name="zeroh">0h 0m 0s</string>
-    <string name="zero">0</string>
-    <string name="benefitdefault">1d 9h 15m 40s</string>
+    <string name="zeroh" translatable="false">0h 0m 0s</string>
+    <string name="zero" translatable="false">0</string>
+    <string name="benefitdefault" translatable="false">1d 9h 15m 40s</string>
     <!-- <string name="confidence">Confidence:</string> -->
 
     <!-- These will be different -->
 
     <string name="jscore">Your J-Score:</string>
     <string name="batterylife">Active Battery Life:</string>
-    <string name="caratid">Carat ID:</string>
+    <string name="caratid" translatable="false">Carat ID:</string>
     <string name="osver">OS version:</string>
     <string name="dev">Device model:</string>
     <string name="running_apps">Running apps:</string>
@@ -279,8 +279,8 @@ delete these from your file.
     <string name="cpu">CPU Usage:</string>
     <string name="updated0">Updated 0m 0s ago</string>
     <string name="viewprocess">View Process List</string>
-    <string name="alogo">AmpLab Logo</string>
-    <string name="ulogo">University of Helsinki Logo</string>
+    <string name="alogo" translatable="false">AmpLab Logo</string>
+    <string name="ulogo" translatable="false">University of Helsinki Logo</string>
     <string name="moreinfo">More Information</string>
     <string name="appicon">App Icon</string>
     <string name="default_type">Foreground App</string>
@@ -429,7 +429,7 @@ delete these from your file.
     <string name="summary_chart_center_text">Other\nApps</string>
     <string name="morestatsat">More at carat.cs.helsinki.fi/statistics</string>
     <!-- Does not need translation -->
-    <string name="statsurl">http://carat.cs.helsinki.fi/statistics/</string>
+    <string name="statsurl" translatable="false">http://carat.cs.helsinki.fi/statistics/</string>
 
     <!-- Carat settings screen -->
     <!-- switch backport strings -->
@@ -458,7 +458,7 @@ delete these from your file.
     </string-array>
 
     <!-- Hog threshold values used by the system, do not translate -->
-    <string-array name="hog_thresh_minutes">
+    <string-array name="hog_thresh_minutes" translatable="false">
         <item>0</item>
         <item>5</item>
         <item>10</item>
@@ -468,13 +468,13 @@ delete these from your file.
 
     <string name="hog_thresh">Hide apps with a small impact</string>
 
-    <string name="hog_hide_threshold">hoghidethreshold</string>
-    <string name="wifi_only_key">wifionly</string>
+    <string name="hog_hide_threshold" translatable="false">hoghidethreshold</string>
+    <string name="wifi_only_key" translatable="false">wifionly</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
     <string name="title_activity_dashboard">DASHBOARD</string>
 </resources>
 
