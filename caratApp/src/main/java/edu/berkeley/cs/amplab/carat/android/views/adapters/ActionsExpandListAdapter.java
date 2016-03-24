@@ -339,8 +339,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
         // Static actions might have a different action
         if(groupPosition >= allReports.size()){
-            groupPosition -= allReports.size();
-            StaticAction action = staticActions.get(groupPosition);
+            int offset = groupPosition - allReports.size();
+            StaticAction action = staticActions.get(offset);
             if(!action.isExpandable()){
                 handleStationaryAction(action);
                 return true;
@@ -367,6 +367,11 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         }
         if (groupPosition != previousGroup){
             lv.collapseGroup(previousGroup);
+            View v = lv.getChildAt(previousGroup);
+            if(v != null){
+                ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
+                collapseIcon.setImageResource(R.drawable.collapse_down);
+            }
         }
         previousGroup = groupPosition;
     }
