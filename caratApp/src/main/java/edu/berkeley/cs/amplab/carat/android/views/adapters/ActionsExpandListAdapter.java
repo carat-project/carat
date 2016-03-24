@@ -246,7 +246,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     }
 
     private void setViewsInChild(View v, final SimpleHogBug item) {
-        ExpandedViewHolder holder = (ExpandedViewHolder)v.getTag();
+        final ExpandedViewHolder holder = (ExpandedViewHolder)v.getTag();
         holder.samplesText.setText(R.string.samples);
         holder.samplesAmount.setText(String.valueOf(item.getSamples()));
         holder.killAppButton.setTag(item.getAppName());
@@ -260,7 +260,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         holder.killAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                killApp(item, v);
+                killApp(item, v, holder);
             }
         });
 
@@ -304,8 +304,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         holder.expandedText.setText(text);
     }
 
-    public void killApp(SimpleHogBug fullObject, View v) {
-        ExpandedViewHolder holder = (ExpandedViewHolder) v.getTag();
+    public void killApp(SimpleHogBug fullObject, View v, ExpandedViewHolder holder) {
         final String raw = fullObject.getAppName();
         final PackageInfo pak = SamplingLibrary.getPackageInfo(mainActivity, raw);
         final String label = CaratApplication.labelForApp(mainActivity, raw);
@@ -326,7 +325,6 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
         if (SamplingLibrary.killApp(mainActivity, raw, label)) {
             Log.d("debug", "disabling "+((label != null) ? label : "null"));
-            holder.killAppButton = (Button) v.findViewWithTag(fullObject.getAppName());
             holder.killAppButton.setEnabled(false);
             holder.killAppButton.setBackgroundResource(R.drawable.button_rounded_gray);
             holder.killAppButton.setText(caratApplication.getString(R.string.stopped));
