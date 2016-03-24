@@ -411,7 +411,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     private String constructSurveyURL() {
         // These fields will be prefilled
-        String surveyUrl = Constants.SURVEY_ROOT_URL;
+        String surveyUrl = CaratApplication.getStorage().getQuestionnaireUrl();
         String uuid = SamplingLibrary.getUuid(mainActivity);
         String cc = SamplingLibrary.getCountryCode(context);
         Reports r = CaratApplication.getStorage().getReports();

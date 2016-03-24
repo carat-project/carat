@@ -220,10 +220,13 @@ public class CaratApplication extends Application {
         if(staticActions == null || staticActions.get() == null){
             ArrayList<StaticAction> actions = new ArrayList<>();
 
-            // Google forms survey
-            actions.add(new StaticAction(ActionType.SURVEY,
-                    R.string.survey_action_title,
-                    R.string.survey_action_subtitle));
+            // Participate in Carat survey
+            String surveyUrl = CaratApplication.getStorage().getQuestionnaireUrl();
+            if(surveyUrl != null && surveyUrl.contains("http")){
+                actions.add(new StaticAction(ActionType.SURVEY,
+                        R.string.survey_action_title,
+                        R.string.survey_action_subtitle));
+            }
 
             // Help Carat collect data
             actions.add(new StaticAction(ActionType.COLLECT,

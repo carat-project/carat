@@ -79,7 +79,7 @@ public class ActionsFragment extends Fragment implements Serializable {
         // TODO: This condition is incorrect and might need to be fixed
         // Even when there are hogs/bugs stored, there may not be actions
         // It is likely that the user has at least some quick hogs
-        if (s.hogsIsEmpty() && s.bugsIsEmpty()) {
+        if (s.hogsIsEmpty() && s.bugsIsEmpty() && CaratApplication.getStaticActions().isEmpty()) {
             noActionsScroll.setVisibility(View.VISIBLE);
             noActionsLayout.setVisibility(View.VISIBLE);
             actionsHeader.setVisibility(View.GONE);

@@ -142,8 +142,4 @@ public class Constants {
     public static final String FRAGMENT_PROCESS_LIST = "fragment_process_list";
     public static final String FRAGMENT_HIDE_SMALL = "fragment_hide_small";
 
-    // Should always end in entry.<id>= where id is a numeric identifier for the prefilled field
-    // You can get the identifier by appending /prefill to your form url with correct permissions.
-    public static final String SURVEY_ROOT_URL = "https://docs.google.com/forms/d/<id>/viewform?entry.<id>=";
-
 }
