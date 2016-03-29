@@ -2477,7 +2477,7 @@ public final class SamplingLibrary {
 		}
 
 		// Make sure external storage isn't a secondary device
-		if(!Environment.isExternalStorageRemovable() || isExternalStorageEmulated()){
+		if(!isExternalStorageRemovable() || isExternalStorageEmulated()){
 			path = Environment.getExternalStorageDirectory();
 			if(path != null && path.exists()){
 				long[] storage = getStorageDetailsForPath(path);
@@ -2498,7 +2498,7 @@ public final class SamplingLibrary {
 			return storage;
 		}
 		// Make sure external storage is a secondary device
-		if(Environment.isExternalStorageRemovable() && !isExternalStorageEmulated()){
+		if(isExternalStorageRemovable() && !isExternalStorageEmulated()){
 			path = Environment.getExternalStorageDirectory();
 			if(path != null && path.exists()){
 				long[] storage = getStorageDetailsForPath(path);
@@ -2523,13 +2523,20 @@ public final class SamplingLibrary {
 		}
 	}
 
+	private static boolean isExternalStorageRemovable(){
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD){
+			return Environment.isExternalStorageRemovable();
+		}
+		return false;
+	}
+
 	/**
 	 * Checks if external storage is emulated, works on API level 11+.
 	 * @return True if method is supported and storage is emulated
      */
 	private static boolean isExternalStorageEmulated(){
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
-			return (Environment.isExternalStorageEmulated());
+			return Environment.isExternalStorageEmulated();
 		}
 		return false;
 	}
