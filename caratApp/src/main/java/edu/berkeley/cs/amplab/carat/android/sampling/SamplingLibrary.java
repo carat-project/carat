@@ -33,11 +33,13 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningServiceInfo;
+import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -60,6 +62,8 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.Build;
+import android.os.Environment;
+import android.os.StatFs;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -83,8 +87,10 @@ import edu.berkeley.cs.amplab.carat.thrift.CellInfo;
 import edu.berkeley.cs.amplab.carat.thrift.CpuStatus;
 import edu.berkeley.cs.amplab.carat.thrift.Feature;
 import edu.berkeley.cs.amplab.carat.thrift.NetworkDetails;
+import edu.berkeley.cs.amplab.carat.thrift.NetworkStatistics;
 import edu.berkeley.cs.amplab.carat.thrift.ProcessInfo;
 import edu.berkeley.cs.amplab.carat.thrift.Sample;
+import edu.berkeley.cs.amplab.carat.thrift.StorageDetails;
 
 /**
  * Library class for methods that obtain information about the phone that is
@@ -128,6 +134,13 @@ public final class SamplingLibrary {
 	public static String WIFI_STATE_ENABLING = "enabling";
 	public static String WIFI_STATE_ENABLED = "enabled";
 	public static String WIFI_STATE_UNKNOWN = "unknown";
+	// Wifi AP State constants
+	public static final int WIFI_AP_STATE_DISABLING = 10;
+	public static final int WIFI_AP_STATE_DISABLED = 11;
+	public static final int WIFI_AP_STATE_ENABLING = 12;
+	public static final int WIFI_AP_STATE_ENABLED = 13;
+	public static final int WIFI_AP_STATE_FAILED = 14;
+
 	// Call state constants
 	public static String CALL_STATE_IDLE = "idle";
 	public static String CALL_STATE_OFFHOOK = "offhook";
@@ -1294,18 +1307,22 @@ public final class SamplingLibrary {
 	}
 
 	/**
-	 * Return time in seconds since last boot.
+	 * @return Real time in seconds since last boot
 	 */
 	public static double getUptime() {
 		long uptime = SystemClock.elapsedRealtime();
-		/*
-		 * int seconds = (int) (uptime / 1000) % 60; int minutes = (int) (uptime
-		 * / (1000 * 60) % 60); int hours = (int) (uptime / (1000 * 60 * 60) %
-		 * 24); String tmp = "\nThe uptime is :" + hours + "hr:" + minutes +
-		 * "mins:" + seconds + "sec.\n"; return tmp;
-		 */
-		Log.v("uptime", String.valueOf(uptime));
-		return uptime / 1000.0;
+		return TimeUnit.MILLISECONDS.toSeconds(uptime);
+	}
+
+	/**
+	 * @return CPU sleep time in seconds
+     */
+	public static double getSleepTime(){
+		long active = SystemClock.uptimeMillis();
+		long real = SystemClock.elapsedRealtime();
+		long sleep = real-active;
+		if(sleep < 0) return 0; // Just in case
+		return TimeUnit.MILLISECONDS.toSeconds(sleep);
 	}
 
 	/**
@@ -2176,6 +2193,13 @@ public final class SamplingLibrary {
 		nd.setWifiSignalStrength(wifiSignalStrength);
 		int wifiLinkSpeed = SamplingLibrary.getWifiLinkSpeed(context);
 		nd.setWifiLinkSpeed(wifiLinkSpeed);
+		String wifiApStatus = SamplingLibrary.getWifiHotspotState(context);
+		nd.setWifiApStatus(wifiApStatus);
+
+		// No easy way to check this as API keeps changing
+		// Possible by using reflection and checking build version
+		// NetworkStatistics ns = new NetworkStatistics();
+
 		// Add NetworkDetails substruct to Sample
 		mySample.setNetworkDetails(nd);
 
@@ -2203,6 +2227,7 @@ public final class SamplingLibrary {
 
 		// Bundle b = intent.getExtras();
 
+		// Battery details
 		int health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
 		int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, 0);
 		// This is really an int.
@@ -2289,18 +2314,15 @@ public final class SamplingLibrary {
 		// BatteryManager is millivolts)
 		double voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0) / 1000;
 		bd.setBatteryVoltage(voltage);
-
 		// otherInfo.setBatteryVoltage(voltage);
 		bd.setBatteryTechnology(batteryTechnology);
-
 		bd.setBatteryCharger(batteryCharger);
 		bd.setBatteryHealth(batteryHealth);
-
 		mySample.setBatteryDetails(bd);
-
 		mySample.setBatteryLevel(currentBatteryLevel);
 		mySample.setBatteryState(batteryStatus);
 
+		// Memory statistics
 		int[] usedFreeActiveInactive = SamplingLibrary.readMeminfo();
 		if (usedFreeActiveInactive != null && usedFreeActiveInactive.length == 4) {
 			mySample.setMemoryUser(usedFreeActiveInactive[0]);
@@ -2308,32 +2330,51 @@ public final class SamplingLibrary {
 			mySample.setMemoryActive(usedFreeActiveInactive[2]);
 			mySample.setMemoryInactive(usedFreeActiveInactive[3]);
 		}
-		// TODO: Memory Wired should have memory that is "unevictable", that
-		// will always be used even when all apps are killed
-
-		// Log.d(STAG, "serial=" + getBuildSerial());
 
 		// Record second data point for cpu/idle time
-		now = System.currentTimeMillis();
 		long[] idleAndCpu2 = readUsagePoint();
 
+		// CPU status
 		CpuStatus cs = new CpuStatus();
-
+		double uptime = getUptime();
+		double sleep = getSleepTime();
 		cs.setCpuUsage(getUsage(idleAndCpu1, idleAndCpu2));
-		cs.setUptime(getUptime());
+		cs.setUptime(uptime);
+		cs.setSleeptime(sleep);
 		mySample.setCpuStatus(cs);
 
+		// Storage details
+		mySample.setStorageDetails(getStorageDetails());
+
+		// System settings
+		edu.berkeley.cs.amplab.carat.thrift.Settings settings = new edu.berkeley.cs.amplab.carat.thrift.Settings();
+		settings.setBluetoothEnabled(getBluetoothEnabled());
+		mySample.setSettings(settings);
+
+		// Other fields
 		mySample.setDeveloperMode(isDeveloperModeOn(context));
 		mySample.setUnknownSources(allowUnknownSources(context));
 		mySample.setScreenOn(isScreenOn(context));
 		mySample.setTimeZone(getTimeZone(context));
-		// printAverageFeaturePower(context);
 
 		// If there are extra fields, include them into the sample.
 		List<Feature> extras = getExtras(context);
 		if (extras != null && extras.size() > 0)
 			mySample.setExtra(extras);
-		
+
+		if(Constants.DEBUG){
+			// Need to split since output is over 1000 characters
+			Log.d("debug", "Created the following sample:");
+			String sampleString = mySample.toString();
+			int limit = 1000;
+			for(int i = 0; i <= sampleString.length() / limit; i++) {
+				int start = i * limit;
+				int end = (i+1) * limit;
+				end = (end > sampleString.length()) ? sampleString.length() : end;
+				Log.d("debug", sampleString.substring(start, end));
+			}
+		}
+
 		return mySample;
 	}
 
@@ -2361,6 +2402,166 @@ public final class SamplingLibrary {
             if(cc != null && cc.length() == 2) return cc;
         }
         return "Unknown";
+	}
+
+	/**
+	 * @param context Application context
+	 * @return Wifi access point state
+     */
+	public static String getWifiHotspotState(Context context){
+		try {
+			int state = getWifiApState(context);
+			switch(state){
+				case WIFI_AP_STATE_DISABLED: return "Disabled";
+				case WIFI_AP_STATE_DISABLING: return "Disabling";
+				case WIFI_AP_STATE_ENABLED: return "Enabled";
+				case WIFI_AP_STATE_ENABLING: return "Enabling";
+				case WIFI_AP_STATE_FAILED: return "Failed";
+				default: return "Unknown";
+			}
+		} catch(Exception e){
+			return "Unknown";
+		}
+	}
+
+	/**
+	 * Storage details for internal, external, secondary and system partitions.
+	 * External and secondary storage details are not exactly reliable.
+	 * @return Thrift-compatible StorageDetails object
+     */
+	public static StorageDetails getStorageDetails(){
+		StorageDetails sd = new StorageDetails();
+
+		// Internal
+		File path = Environment.getDataDirectory();
+		long[] internal = getStorageDetailsForPath(path);
+		if(internal.length == 2){
+			sd.setFree((int)internal[0]);
+			sd.setTotal((int)internal[1]);
+		}
+
+		// External
+		long[] external = getExternalStorageDetails();
+		if(external.length == 2){
+			sd.setFreeExternal((int)external[0]);
+			sd.setTotalExternal((int)external[1]);
+		}
+
+		// Secondary
+		long[] secondary = getSecondaryStorageDetails();
+		if(secondary.length == 2){
+			sd.setFreeSecondary((int)secondary[0]);
+			sd.setTotalSecondary((int)secondary[1]);
+		}
+
+		// System
+		path = Environment.getRootDirectory();
+		long[] system = getStorageDetailsForPath(path);
+		if(system.length == 2){
+			sd.setFreeSystem((int)system[0]);
+			sd.setTotalSystem((int)system[1]);
+		}
+
+		return sd;
+	}
+
+	/**
+	 * Returns free and total external storage space
+	 * @return Two values as a pair or none
+     */
+	private static long[] getExternalStorageDetails(){
+		File path = getStoragePathFromEnv("EXTERNAL_STORAGE");
+		if(path != null && path.exists()){
+			long[] storage = getStorageDetailsForPath(path);
+			if(storage.length == 2) return storage;
+		}
+
+		// Make sure external storage isn't a secondary device
+		if(!Environment.isExternalStorageRemovable() || isExternalStorageEmulated()){
+			path = Environment.getExternalStorageDirectory();
+			if(path != null && path.exists()){
+				long[] storage = getStorageDetailsForPath(path);
+				return storage;
+			}
+		}
+		return new long[]{};
+	}
+
+	/**
+	 * Returns free and total secondary storage space
+	 * @return Two values as a pair or none
+     */
+	private static long[] getSecondaryStorageDetails(){
+		File path = getStoragePathFromEnv("SECONDARY_STORAGE");
+		if(path != null && path.exists()){
+			long[] storage = getStorageDetailsForPath(path);
+			return storage;
+		}
+		// Make sure external storage is a secondary device
+		if(Environment.isExternalStorageRemovable() && !isExternalStorageEmulated()){
+			path = Environment.getExternalStorageDirectory();
+			if(path != null && path.exists()){
+				long[] storage = getStorageDetailsForPath(path);
+				return storage;
+			}
+		}
+		return new long[]{};
+	}
+
+	/**
+	 * Returns a storage path from an environment variable, if supported.
+	 * @param variable Variable name
+	 * @return Storage path or null if not found
+     */
+	private static File getStoragePathFromEnv(String variable){
+		String path;
+		try{
+			path = System.getenv(variable);
+			return new File(path);
+		} catch (Exception e){
+			return null;
+		}
+	}
+
+	/**
+	 * Checks if external storage is emulated, works on API level 11+.
+	 * @return True if method is supported and storage is emulated
+     */
+	private static boolean isExternalStorageEmulated(){
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+			return (Environment.isExternalStorageEmulated());
+		}
+		return false;
+	}
+
+	/**
+	 * Returns free and total storage space in bytes
+	 * @param path Path to the storage medium
+	 * @return Free and total space in long[]
+     */
+	private static long[] getStorageDetailsForPath(File path){
+		if(path == null) return new long[]{};
+		final int KB = 1024;
+		final int MB = KB*1024;
+		long free;
+		long total;
+		long blockSize;
+		try {
+			StatFs stats = new StatFs(path.getAbsolutePath());
+			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
+				free = stats.getAvailableBytes()/MB;
+				total = stats.getTotalBytes()/MB;
+				return new long[]{free, total};
+			} else {
+				blockSize = (long)stats.getBlockSize();
+				free = ((long)stats.getAvailableBlocks()*blockSize)/MB;
+				total = ((long)stats.getBlockCount()*blockSize)/MB;
+				if(free < 0 || total < 0) return new long[]{};
+				return new long[]{free, total};
+			}
+		} catch(Exception e){
+			return new long[]{};
+		}
 	}
 
     /**
@@ -2396,6 +2597,7 @@ public final class SamplingLibrary {
     private static String getSystemProperty(Context context, String property) throws Exception {
 		Class<?> systemProperties = Class.forName("android.os.SystemProperties");
 		Method get = systemProperties.getMethod("get", String.class);
+		get.setAccessible(true);
 		return ((String) get.invoke(context, property));
 	}
 
@@ -2410,7 +2612,31 @@ public final class SamplingLibrary {
 	private static String getCountryCodeForMcc(Context context, int mcc) throws Exception{
 		Class<?> mccTable = Class.forName("com.android.internal.telephony.MccTable");
 		Method countryCodeForMcc = mccTable.getMethod("countryCodeForMcc", int.class);
+		countryCodeForMcc.setAccessible(true);
 		return ((String) countryCodeForMcc.invoke(context, mcc));
+	}
+
+	/**
+	 * Private call to check if wifi access point is enabled.
+	 * @param context Application context
+	 * @return State integer, see WIFI_AP statics
+	 * @throws Exception
+     */
+	private static int getWifiApState(Context context) throws Exception {
+		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+		Method getWifiApState = wifiManager.getClass().getDeclaredMethod("getWifiApState");
+		getWifiApState.setAccessible(true);
+		return (int)getWifiApState.invoke(wifiManager);
+	}
+
+	/**
+	 * Checks if bluetooth is enabled on the device
+	 * @return True if bluetooth is enabled
+     */
+	public static boolean getBluetoothEnabled(){
+		BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+		if(adapter == null) return false;
+		return (adapter.isEnabled());
 	}
 
 	/**

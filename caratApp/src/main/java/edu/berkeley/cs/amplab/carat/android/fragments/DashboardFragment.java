@@ -309,12 +309,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     mainActivity.setHogAmount(String.valueOf(hogsCount));
                     mainActivity.setActionsAmount(actionsAmount);
                 }
+                mainActivity.setJScore(CaratApplication.getJscore());
+                mainActivity.setCpuValue();
+                setValues();
             }
         });
 
-        mainActivity.setJScore(CaratApplication.getJscore());
-        mainActivity.setCpuValue();
-        setValues();
     }
 
     // Check if we should update and refresh afterwards

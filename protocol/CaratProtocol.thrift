@@ -52,18 +52,22 @@ struct NetworkDetails {
 	// Android-only: network settings
 	1: optional string networkType;	// Currently wifi,mobile,wimax,or unknown
 	2: optional string mobileNetworkType; // GPRS, EDGE, UMTS, ...
-	
+
 	// Android-only: Mobile data settings
 	3: optional string mobileDataStatus; // connecting, connected, disconnected, suspended
 	4: optional string mobileDataActivity; // none,in,out,inout,dormant
 	5: optional bool roamingEnabled; // true if currently roaming in a foreign mobile network.
-	
+
 	// Android-only: Wifi settings
 	6: optional string wifiStatus;	 // disabled, disabling, enabled, enabling, unknown
 	7: optional i32 wifiSignalStrength;	// as given by getRssi() on Android
 	8: optional i32 wifiLinkSpeed;	    // link speed in Mbps
 
+	// Sent and received data
 	9: optional NetworkStatistics networkStatistics;
+
+	// Android-only: Wifi access point status
+	10: optional string WifiApStatus; 	// disabled, disabling, enabled, enabling, unknown
 }
 
 //
@@ -117,9 +121,18 @@ struct Settings {
 	3: optional bool powersaverEnabled;
 }
 
+//
+// Free and total storage space in megabytes
+//
 struct StorageDetails {
-	1: optional i32 free;
-	2: optional i32 total;
+	1: optional i32 free; 			// Free internal storagfe
+	2: optional i32 total; 			// Total internal storage
+	3: optional i32 freeExternal; 	// Free external storage
+	4: optional i32 totalExternal;	// Total external storage
+	5: optional i32 freeSystem; 	// Free system storage
+	6: optional i32 totalSystem;	// Total system storage
+	7: optional i32 freeSecondary;	// Free secondary storage
+	8: optional i32 totalSecondary; // Total secondary storage
 }
 
 //
