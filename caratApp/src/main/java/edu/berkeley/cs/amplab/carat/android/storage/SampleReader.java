@@ -6,17 +6,22 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.thrift.meta_data.FieldMetaData;
 
+import android.net.Network;
 import android.util.Log;
 import edu.berkeley.cs.amplab.carat.thrift.BatteryDetails;
 import edu.berkeley.cs.amplab.carat.thrift.CpuStatus;
 import edu.berkeley.cs.amplab.carat.thrift.Feature;
 import edu.berkeley.cs.amplab.carat.thrift.NetworkDetails;
+import edu.berkeley.cs.amplab.carat.thrift.NetworkStatistics;
 import edu.berkeley.cs.amplab.carat.thrift.ProcessInfo;
 import edu.berkeley.cs.amplab.carat.thrift.Sample;
 import edu.berkeley.cs.amplab.carat.thrift.Sample._Fields;
+import edu.berkeley.cs.amplab.carat.thrift.Settings;
+import edu.berkeley.cs.amplab.carat.thrift.StorageDetails;
 
 /**
  * 
@@ -86,10 +91,26 @@ public class SampleReader {
                             b.append("\n");
                     }
                     m.put(sf.getFieldName(), b.toString());
-                }/*
-                  * else if (md.fieldName.equals("CallInfo")){ }
-                  */
-                break;
+                } else if (md.fieldName.equals(_Fields.STORAGE_DETAILS.getFieldName()) && s.storageDetails != null) {
+                    int len = StorageDetails._Fields.values().length;
+                    StringBuilder b = new StringBuilder();
+                    for (int i = 1; i <= len; i++) {
+                        b.append(cleanStr("" + s.storageDetails.getFieldValue(StorageDetails._Fields.findByThriftId(i))));
+                        if (i < len)
+                            b.append("\n");
+                    }
+                    m.put(sf.getFieldName(), b.toString());
+                } else if (md.fieldName.equals(_Fields.SETTINGS.getFieldName()) && s.settings != null) {
+                    int len = Settings._Fields.values().length;
+                    StringBuilder b = new StringBuilder();
+                    for (int i = 1; i <= len; i++) {
+                        b.append(cleanStr("" + s.settings.getFieldValue(Settings._Fields.findByThriftId(i))));
+                        if (i < len)
+                            b.append("\n");
+                    }
+                    m.put(sf.getFieldName(), b.toString());
+                    break;
+                }
             case org.apache.thrift.protocol.TType.LIST:
                 if (md.fieldName.equals(Sample._Fields.EXTRA.getFieldName()) && s.extra != null) {
                     StringBuilder b = new StringBuilder();
@@ -160,6 +181,9 @@ public class SampleReader {
             // CallInfo calli = new CallInfo();
             // CallMonth cm = new CallMonth();
             CpuStatus cs = new CpuStatus();
+            StorageDetails sd = new StorageDetails();
+            Settings sys = new Settings();
+
             // Set single fields automatically:
             for (String k : m.keySet()) {
                 _Fields sf = Sample._Fields.findByName(k);
@@ -198,9 +222,13 @@ public class SampleReader {
                         } else if (md.fieldName.equals(Sample._Fields.CPU_STATUS.getFieldName())) {
                             fillCpuStatusDetails(m.get(k), cs);
                             s.setCpuStatus(cs);
-                        }/*
-                          * else if (md.fieldName.equals("CallInfo")){ }
-                          */
+                        } else if(md.fieldName.equals(_Fields.STORAGE_DETAILS.getFieldName())){
+                            fillStorageDetails(m.get(k), sd);
+                            s.setStorageDetails(sd);
+                        } else if(md.fieldName.equals(_Fields.SETTINGS.getFieldName())){
+                            fillSettings(m.get(k), sys);
+                            s.setSettings(sys);
+                        }
                         break;
                     case org.apache.thrift.protocol.TType.LIST:
                         if (md.fieldName.equals(Sample._Fields.EXTRA.getFieldName())) {
@@ -422,6 +450,100 @@ public class SampleReader {
 				break;
 			default:
 			}
+        }
+    }
+
+    private static void fillStorageDetails(String string, StorageDetails sd){
+        String[] items = string.split("\n");
+        for (int i = 1; i <= items.length; i++) {
+            StorageDetails._Fields pif = StorageDetails._Fields
+                    .findByThriftId(i);
+            FieldMetaData md = StorageDetails.metaDataMap.get(pif);
+            String cleaned = origStr(items[i - 1]);
+            switch (md.valueMetaData.type) {
+            case org.apache.thrift.protocol.TType.STRING:
+                sd.setFieldValue(pif, cleaned);
+                break;
+            case org.apache.thrift.protocol.TType.I32:
+                try {
+                    sd.setFieldValue(pif, Integer.parseInt(cleaned));
+                } catch (NumberFormatException e) {
+                    Log.e(TAG, "Could not read " + md.fieldName + ": \""
+                            + cleaned + "\" as an int");
+                }
+                break;
+            case org.apache.thrift.protocol.TType.DOUBLE:
+                try {
+                    sd.setFieldValue(pif, Double.parseDouble(cleaned));
+                } catch (NumberFormatException e) {
+                    Log.e(TAG, "Could not read " + md.fieldName + ": \""
+                            + cleaned + "\" as a double");
+                }
+                break;
+            case org.apache.thrift.protocol.TType.BOOL:
+                try {
+                    sd.setFieldValue(pif, Boolean.parseBoolean(cleaned));
+                } catch (NumberFormatException e) {
+                    Log.e(TAG, "Could not read " + md.fieldName + ": \""
+                            + cleaned + "\" as a bool");
+                }
+                break;
+            case org.apache.thrift.protocol.TType.LIST:
+                List<String> list = new LinkedList<String>();
+                String[] arr = items[i - 1].split(";");
+                for (String sig : arr)
+                    list.add(sig);
+                sd.setFieldValue(pif, list);
+                break;
+            default:
+            }
+        }
+    }
+
+    private static void fillSettings(String string, Settings s){
+        String[] items = string.split("\n");
+        for (int i = 1; i <= items.length; i++) {
+            Settings._Fields pif = Settings._Fields
+                    .findByThriftId(i);
+            FieldMetaData md = Settings.metaDataMap.get(pif);
+            String cleaned = origStr(items[i - 1]);
+            switch (md.valueMetaData.type) {
+                case org.apache.thrift.protocol.TType.STRING:
+                    s.setFieldValue(pif, cleaned);
+                    break;
+                case org.apache.thrift.protocol.TType.I32:
+                    try {
+                        s.setFieldValue(pif, Integer.parseInt(cleaned));
+                    } catch (NumberFormatException e) {
+                        Log.e(TAG, "Could not read " + md.fieldName + ": \""
+                                + cleaned + "\" as an int");
+                    }
+                    break;
+                case org.apache.thrift.protocol.TType.DOUBLE:
+                    try {
+                        s.setFieldValue(pif, Double.parseDouble(cleaned));
+                    } catch (NumberFormatException e) {
+                        Log.e(TAG, "Could not read " + md.fieldName + ": \""
+                                + cleaned + "\" as a double");
+                    }
+                    break;
+                case org.apache.thrift.protocol.TType.BOOL:
+                    try {
+                        s.setFieldValue(pif, Boolean.parseBoolean(cleaned));
+                    } catch (NumberFormatException e) {
+                        Log.e(TAG, "Could not read " + md.fieldName + ": \""
+                                + cleaned + "\" as a bool");
+                    }
+                    break;
+                case org.apache.thrift.protocol.TType.LIST:
+                    List<String> list = new LinkedList<String>();
+                    String[] arr = items[i - 1].split(";");
+                    for (String sig : arr)
+                        list.add(sig);
+                    s.setFieldValue(pif, list);
+                    break;
+                default:
+            }
         }
     }
 	
