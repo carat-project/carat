@@ -6,17 +6,14 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.thrift.meta_data.FieldMetaData;
 
-import android.net.Network;
 import android.util.Log;
 import edu.berkeley.cs.amplab.carat.thrift.BatteryDetails;
 import edu.berkeley.cs.amplab.carat.thrift.CpuStatus;
 import edu.berkeley.cs.amplab.carat.thrift.Feature;
 import edu.berkeley.cs.amplab.carat.thrift.NetworkDetails;
-import edu.berkeley.cs.amplab.carat.thrift.NetworkStatistics;
 import edu.berkeley.cs.amplab.carat.thrift.ProcessInfo;
 import edu.berkeley.cs.amplab.carat.thrift.Sample;
 import edu.berkeley.cs.amplab.carat.thrift.Sample._Fields;
@@ -104,7 +101,9 @@ public class SampleReader {
                     int len = Settings._Fields.values().length;
                     StringBuilder b = new StringBuilder();
                     for (int i = 1; i <= len; i++) {
-                        b.append(cleanStr("" + s.settings.getFieldValue(Settings._Fields.findByThriftId(i))));
+                        String value = cleanStr("" + s.settings.getFieldValue(Settings._Fields.findByThriftId(i)));
+                        if(value == null || "".equals(value.trim())) continue;
+                        b.append(value);
                         if (i < len)
                             b.append("\n");
                     }
@@ -289,8 +288,8 @@ public class SampleReader {
                                         break;
                                     case org.apache.thrift.protocol.TType.BOOL:
                                     	try{
-                                        pi.setFieldValue(pif,
-                                                Boolean.parseBoolean(cleaned));
+                                            if(cleaned == null || "".equals(cleaned.trim())) break;
+                                            pi.setFieldValue(pif, Boolean.parseBoolean(cleaned));
                                     	}catch (NumberFormatException e){
                                     		Log.e(TAG, "Could not read "+md.fieldName+": \""+cleaned+"\" as a bool");
                                     	}
@@ -345,7 +344,8 @@ public class SampleReader {
                 break;
             case org.apache.thrift.protocol.TType.BOOL:
             	try{
-                cs.setFieldValue(pif, Boolean.parseBoolean(cleaned));
+                    if(cleaned == null || "".equals(cleaned.trim())) break;
+                    cs.setFieldValue(pif, Boolean.parseBoolean(cleaned));
             	}catch (NumberFormatException e){
             		Log.e(TAG, "Could not read "+md.fieldName+": \""+cleaned+"\" as a bool");
             	}
@@ -389,6 +389,7 @@ public class SampleReader {
 				break;
 			case org.apache.thrift.protocol.TType.BOOL:
 				try {
+                    if(cleaned == null || "".equals(cleaned.trim())) break;
 					bd.setFieldValue(pif, Boolean.parseBoolean(cleaned));
 				} catch (NumberFormatException e) {
 					Log.e(TAG, "Could not read "+md.fieldName+": \"" + cleaned + "\" as a bool");
@@ -435,6 +436,7 @@ public class SampleReader {
 				break;
 			case org.apache.thrift.protocol.TType.BOOL:
 				try {
+                    if(cleaned == null || "".equals(cleaned.trim())) break;
 					nd.setFieldValue(pif, Boolean.parseBoolean(cleaned));
 				} catch (NumberFormatException e) {
 					Log.e(TAG, "Could not read " + md.fieldName + ": \""
@@ -482,6 +484,7 @@ public class SampleReader {
                 break;
             case org.apache.thrift.protocol.TType.BOOL:
                 try {
+                    if(cleaned == null || "".equals(cleaned.trim())) break;
                     sd.setFieldValue(pif, Boolean.parseBoolean(cleaned));
                 } catch (NumberFormatException e) {
                     Log.e(TAG, "Could not read " + md.fieldName + ": \""
@@ -529,6 +532,7 @@ public class SampleReader {
                     break;
                 case org.apache.thrift.protocol.TType.BOOL:
                     try {
+                        if(cleaned == null || "".equals(cleaned.trim())) break;
                         s.setFieldValue(pif, Boolean.parseBoolean(cleaned));
                     } catch (NumberFormatException e) {
                         Log.e(TAG, "Could not read " + md.fieldName + ": \""

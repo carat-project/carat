@@ -87,7 +87,6 @@ import edu.berkeley.cs.amplab.carat.thrift.CellInfo;
 import edu.berkeley.cs.amplab.carat.thrift.CpuStatus;
 import edu.berkeley.cs.amplab.carat.thrift.Feature;
 import edu.berkeley.cs.amplab.carat.thrift.NetworkDetails;
-import edu.berkeley.cs.amplab.carat.thrift.NetworkStatistics;
 import edu.berkeley.cs.amplab.carat.thrift.ProcessInfo;
 import edu.berkeley.cs.amplab.carat.thrift.Sample;
 import edu.berkeley.cs.amplab.carat.thrift.StorageDetails;
@@ -2356,6 +2355,7 @@ public final class SamplingLibrary {
 		mySample.setUnknownSources(allowUnknownSources(context));
 		mySample.setScreenOn(isScreenOn(context));
 		mySample.setTimeZone(getTimeZone(context));
+		mySample.setCountryCode(getCountryCode(context));
 
 		// If there are extra fields, include them into the sample.
 		List<Feature> extras = getExtras(context);
@@ -2412,15 +2412,15 @@ public final class SamplingLibrary {
 		try {
 			int state = getWifiApState(context);
 			switch(state){
-				case WIFI_AP_STATE_DISABLED: return "Disabled";
-				case WIFI_AP_STATE_DISABLING: return "Disabling";
-				case WIFI_AP_STATE_ENABLED: return "Enabled";
-				case WIFI_AP_STATE_ENABLING: return "Enabling";
-				case WIFI_AP_STATE_FAILED: return "Failed";
-				default: return "Unknown";
+				case WIFI_AP_STATE_DISABLED: return "disabled";
+				case WIFI_AP_STATE_DISABLING: return "disabling";
+				case WIFI_AP_STATE_ENABLED: return "enabled";
+				case WIFI_AP_STATE_ENABLING: return "enabling";
+				case WIFI_AP_STATE_FAILED: return "failed";
+				default: return "unknown";
 			}
 		} catch(Exception e){
-			return "Unknown";
+			return "unknown";
 		}
 	}
 

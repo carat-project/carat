@@ -92,7 +92,6 @@ public class CommunicationManager {
 		Registration registration = new Registration(uuId);
 		registration.setPlatformId(model);
 		registration.setSystemVersion(os);
-		registration.setCountryCode(countryCode);
 		registration.setTimestamp(System.currentTimeMillis() / 1000.0);
 		registration.setKernelVersion(SamplingLibrary.getKernelVersion());
 		registration.setSystemDistribution(SamplingLibrary.getManufacturer() + ";" + SamplingLibrary.getBrand());
@@ -539,7 +538,6 @@ public class CommunicationManager {
 			Registration registration = new Registration(uuid);
 			registration.setPlatformId(model);
 			registration.setSystemVersion(os);
-			registration.setCountryCode(countryCode);
 			registration.setTimestamp(System.currentTimeMillis() / 1000.0);
 			List<ProcessInfo> pi = SamplingLibrary.getRunningAppInfo(a.getApplicationContext());
 			List<String> processList = new ArrayList<String>();
