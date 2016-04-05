@@ -93,7 +93,8 @@
         int users = [usersString intValue];
         int totalUsers = [self.users intValue];
         float usage = ((float)users / (float)totalUsers)*100;
-        cell.usagePercentage.text = [NSString stringWithFormat:@"Seen in %.2f%% of all devices", usage];
+        NSString *reportedBy = [NSString stringWithFormat:NSLocalizedString(@"PercentageCaratUsers", nil), usage];
+        cell.usagePercentage.text = reportedBy;
     } else {
         cell.usagePercentage.text = @"Popularity currently unknown";
     }

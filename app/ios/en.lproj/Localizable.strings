@@ -61,6 +61,12 @@
 "NoHogs"="You have no hogs.";
 "NoHogsMessage"="Please check back in a week.\n\nIf your apps are behaving normally, there will be no bugs here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
 //HogsView ends
+//TopHogsView starts
+"SamplesText"="Samples:";
+"BatteryLifeImpact"="Battery life impact:";
+"ReportedBy"="Reported by:";
+"PercentageCaratUsers"="%.2f%% of Carat users";
+//TopHogsView ends
 //Global results starts
 "GlobalResults"="Global results";
 "AllReports"="All reports";

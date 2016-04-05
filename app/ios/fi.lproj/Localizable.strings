@@ -40,7 +40,7 @@
 "MyDeviceHudLabel" = "Päivitä laitteen tiedot";
 //"BatteryLifeLabel"="Active Battery Life" dashboard
 "DeviceModel"="Laite malli";
-"ProcessList"="PROSESSI LISTA";
+"ProcessList"="PROSESSILISTA";
 "DeviceUsage"="LAITTEEN KÄYTTÖ";
 "MemoryUsed"="Muistia käytössä";
 "MemoryActive"="Muistia aktiivisena";
@@ -56,9 +56,15 @@
 "NoBugsMessage"="Tarkista tilanne viikon päästä.\n\nJos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä. Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.";
 //BugsView ends
 //HogsView starts
-"NoHogs"="You have no hogs.";
+"NoHogs"="Sinulla ei ole hogeja.";
 "NoHogsMessage"="Tarkista tilanne viikon päästä.\n\nJos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä. Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.";
 //HogsView ends
+//TopHogsView starts
+"SamplesText"="Otoksia:";
+"BatteryLifeImpact"="Vaikutus akkukestoon:";
+"ReportedBy"="Raportoinut:";
+"PercentageCaratUsers"="%.2f%% Carat-käyttäjistä";
+//TopHogsView ends
 //Global results starts
 "GlobalResults"="Globaalit tulokset";
 "AllReports"="Kaikki raportit";

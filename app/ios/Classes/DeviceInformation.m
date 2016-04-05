@@ -140,7 +140,7 @@ const unsigned long GB = MB * 1024;
 // @see https://developer.apple.com/library/prerelease/ios/documentation/SystemConfiguration/Reference/SCNetworkReachabilityRef/
 + (NSString *) getNetworkStatus {
     
-    // Check connectivity to an address, in this case google dns
+    // Check connectivity to an address, in this case using google dns
     SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, "8.8.8.8");
     SCNetworkReachabilityFlags flags;
     bool status = SCNetworkReachabilityGetFlags(reachability, &flags);
@@ -247,8 +247,8 @@ const unsigned long GB = MB * 1024;
     NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
         
     if (dictionary) {
-        storage.total = (int)[[dictionary objectForKey: NSFileSystemSize] unsignedLongLongValue]/MB;
-        storage.free = (int)[[dictionary objectForKey: NSFileSystemFreeSize] unsignedLongLongValue]/MB;
+        storage.total = (int)([[dictionary objectForKey: NSFileSystemSize] unsignedLongLongValue]/MB);
+        storage.free = (int)([[dictionary objectForKey: NSFileSystemFreeSize] unsignedLongLongValue]/MB);
     }
     return storage;
 }
