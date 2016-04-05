@@ -26,7 +26,7 @@
   return self;
 }
 
-- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp platformId: (NSString *) platformId systemVersion: (NSString *) systemVersion systemDistribution: (NSString *) systemDistribution kernelVersion: (NSString *) kernelVersion countryCode: (NSString *) countryCode
+- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp platformId: (NSString *) platformId systemVersion: (NSString *) systemVersion systemDistribution: (NSString *) systemDistribution kernelVersion: (NSString *) kernelVersion
 {
   self = [super init];
   __uuId = [uuId retain_stub];
@@ -41,8 +41,6 @@
   __systemDistribution_isset = YES;
   __kernelVersion = [kernelVersion retain_stub];
   __kernelVersion_isset = YES;
-  __countryCode = [countryCode retain_stub];
-  __countryCode_isset = YES;
   return self;
 }
 
@@ -79,11 +77,6 @@
     __kernelVersion = [[decoder decodeObjectForKey: @"kernelVersion"] retain_stub];
     __kernelVersion_isset = YES;
   }
-  if ([decoder containsValueForKey: @"countryCode"])
-  {
-    __countryCode = [[decoder decodeObjectForKey: @"countryCode"] retain_stub];
-    __countryCode_isset = YES;
-  }
   return self;
 }
 
@@ -113,10 +106,6 @@
   {
     [encoder encodeObject: __kernelVersion forKey: @"kernelVersion"];
   }
-  if (__countryCode_isset)
-  {
-    [encoder encodeObject: __countryCode forKey: @"countryCode"];
-  }
 }
 
 - (void) dealloc
@@ -126,7 +115,6 @@
   [__systemVersion release_stub];
   [__systemDistribution release_stub];
   [__kernelVersion release_stub];
-  [__countryCode release_stub];
   [super dealloc_stub];
 }
 
@@ -252,27 +240,6 @@
   __kernelVersion_isset = NO;
 }
 
-- (NSString *) countryCode {
-  return [[__countryCode retain_stub] autorelease_stub];
-}
-
-- (void) setCountryCode: (NSString *) countryCode {
-  [countryCode retain_stub];
-  [__countryCode release_stub];
-  __countryCode = countryCode;
-  __countryCode_isset = YES;
-}
-
-- (BOOL) countryCodeIsSet {
-  return __countryCode_isset;
-}
-
-- (void) unsetCountryCode {
-  [__countryCode release_stub];
-  __countryCode = nil;
-  __countryCode_isset = NO;
-}
-
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -336,14 +303,6 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 7:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setCountryCode: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -395,13 +354,6 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__countryCode_isset) {
-    if (__countryCode != nil) {
-      [outProtocol writeFieldBeginWithName: @"countryCode" type: TType_STRING fieldID: 7];
-      [outProtocol writeString: __countryCode];
-      [outProtocol writeFieldEnd];
-    }
-  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -420,8 +372,6 @@
   [ms appendFormat: @"\"%@\"", __systemDistribution];
   [ms appendString: @",kernelVersion:"];
   [ms appendFormat: @"\"%@\"", __kernelVersion];
-  [ms appendString: @",countryCode:"];
-  [ms appendFormat: @"\"%@\"", __countryCode];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1195,7 +1145,7 @@
   return self;
 }
 
-- (id) initWithNetworkType: (NSString *) networkType mobileNetworkType: (NSString *) mobileNetworkType mobileDataStatus: (NSString *) mobileDataStatus mobileDataActivity: (NSString *) mobileDataActivity roamingEnabled: (BOOL) roamingEnabled wifiStatus: (NSString *) wifiStatus wifiSignalStrength: (int32_t) wifiSignalStrength wifiLinkSpeed: (int32_t) wifiLinkSpeed networkStatistics: (NetworkStatistics *) networkStatistics
+- (id) initWithNetworkType: (NSString *) networkType mobileNetworkType: (NSString *) mobileNetworkType mobileDataStatus: (NSString *) mobileDataStatus mobileDataActivity: (NSString *) mobileDataActivity roamingEnabled: (BOOL) roamingEnabled wifiStatus: (NSString *) wifiStatus wifiSignalStrength: (int32_t) wifiSignalStrength wifiLinkSpeed: (int32_t) wifiLinkSpeed networkStatistics: (NetworkStatistics *) networkStatistics wifiApStatus: (NSString *) wifiApStatus
 {
   self = [super init];
   __networkType = [networkType retain_stub];
@@ -1216,6 +1166,8 @@
   __wifiLinkSpeed_isset = YES;
   __networkStatistics = [networkStatistics retain_stub];
   __networkStatistics_isset = YES;
+  __wifiApStatus = [wifiApStatus retain_stub];
+  __wifiApStatus_isset = YES;
   return self;
 }
 
@@ -1267,6 +1219,11 @@
     __networkStatistics = [[decoder decodeObjectForKey: @"networkStatistics"] retain_stub];
     __networkStatistics_isset = YES;
   }
+  if ([decoder containsValueForKey: @"wifiApStatus"])
+  {
+    __wifiApStatus = [[decoder decodeObjectForKey: @"wifiApStatus"] retain_stub];
+    __wifiApStatus_isset = YES;
+  }
   return self;
 }
 
@@ -1308,6 +1265,10 @@
   {
     [encoder encodeObject: __networkStatistics forKey: @"networkStatistics"];
   }
+  if (__wifiApStatus_isset)
+  {
+    [encoder encodeObject: __wifiApStatus forKey: @"wifiApStatus"];
+  }
 }
 
 - (void) dealloc
@@ -1318,6 +1279,7 @@
   [__mobileDataActivity release_stub];
   [__wifiStatus release_stub];
   [__networkStatistics release_stub];
+  [__wifiApStatus release_stub];
   [super dealloc_stub];
 }
 
@@ -1498,6 +1460,27 @@
   __networkStatistics_isset = NO;
 }
 
+- (NSString *) wifiApStatus {
+  return [[__wifiApStatus retain_stub] autorelease_stub];
+}
+
+- (void) setWifiApStatus: (NSString *) wifiApStatus {
+  [wifiApStatus retain_stub];
+  [__wifiApStatus release_stub];
+  __wifiApStatus = wifiApStatus;
+  __wifiApStatus_isset = YES;
+}
+
+- (BOOL) wifiApStatusIsSet {
+  return __wifiApStatus_isset;
+}
+
+- (void) unsetWifiApStatus {
+  [__wifiApStatus release_stub];
+  __wifiApStatus = nil;
+  __wifiApStatus_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1587,6 +1570,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 10:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setWifiApStatus: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1655,6 +1646,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__wifiApStatus_isset) {
+    if (__wifiApStatus != nil) {
+      [outProtocol writeFieldBeginWithName: @"wifiApStatus" type: TType_STRING fieldID: 10];
+      [outProtocol writeString: __wifiApStatus];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1679,6 +1677,8 @@
   [ms appendFormat: @"%i", __wifiLinkSpeed];
   [ms appendString: @",networkStatistics:"];
   [ms appendFormat: @"%@", __networkStatistics];
+  [ms appendString: @",wifiApStatus:"];
+  [ms appendFormat: @"\"%@\"", __wifiApStatus];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -2856,13 +2856,25 @@
   return self;
 }
 
-- (id) initWithFree: (int32_t) free total: (int32_t) total
+- (id) initWithFree: (int32_t) free total: (int32_t) total freeExternal: (int32_t) freeExternal totalExternal: (int32_t) totalExternal freeSystem: (int32_t) freeSystem totalSystem: (int32_t) totalSystem freeSecondary: (int32_t) freeSecondary totalSecondary: (int32_t) totalSecondary
 {
   self = [super init];
   __free = free;
   __free_isset = YES;
   __total = total;
   __total_isset = YES;
+  __freeExternal = freeExternal;
+  __freeExternal_isset = YES;
+  __totalExternal = totalExternal;
+  __totalExternal_isset = YES;
+  __freeSystem = freeSystem;
+  __freeSystem_isset = YES;
+  __totalSystem = totalSystem;
+  __totalSystem_isset = YES;
+  __freeSecondary = freeSecondary;
+  __freeSecondary_isset = YES;
+  __totalSecondary = totalSecondary;
+  __totalSecondary_isset = YES;
   return self;
 }
 
@@ -2879,6 +2891,36 @@
     __total = [decoder decodeInt32ForKey: @"total"];
     __total_isset = YES;
   }
+  if ([decoder containsValueForKey: @"freeExternal"])
+  {
+    __freeExternal = [decoder decodeInt32ForKey: @"freeExternal"];
+    __freeExternal_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"totalExternal"])
+  {
+    __totalExternal = [decoder decodeInt32ForKey: @"totalExternal"];
+    __totalExternal_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"freeSystem"])
+  {
+    __freeSystem = [decoder decodeInt32ForKey: @"freeSystem"];
+    __freeSystem_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"totalSystem"])
+  {
+    __totalSystem = [decoder decodeInt32ForKey: @"totalSystem"];
+    __totalSystem_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"freeSecondary"])
+  {
+    __freeSecondary = [decoder decodeInt32ForKey: @"freeSecondary"];
+    __freeSecondary_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"totalSecondary"])
+  {
+    __totalSecondary = [decoder decodeInt32ForKey: @"totalSecondary"];
+    __totalSecondary_isset = YES;
+  }
   return self;
 }
 
@@ -2891,6 +2933,30 @@
   if (__total_isset)
   {
     [encoder encodeInt32: __total forKey: @"total"];
+  }
+  if (__freeExternal_isset)
+  {
+    [encoder encodeInt32: __freeExternal forKey: @"freeExternal"];
+  }
+  if (__totalExternal_isset)
+  {
+    [encoder encodeInt32: __totalExternal forKey: @"totalExternal"];
+  }
+  if (__freeSystem_isset)
+  {
+    [encoder encodeInt32: __freeSystem forKey: @"freeSystem"];
+  }
+  if (__totalSystem_isset)
+  {
+    [encoder encodeInt32: __totalSystem forKey: @"totalSystem"];
+  }
+  if (__freeSecondary_isset)
+  {
+    [encoder encodeInt32: __freeSecondary forKey: @"freeSecondary"];
+  }
+  if (__totalSecondary_isset)
+  {
+    [encoder encodeInt32: __totalSecondary forKey: @"totalSecondary"];
   }
 }
 
@@ -2933,6 +2999,108 @@
   __total_isset = NO;
 }
 
+- (int32_t) freeExternal {
+  return __freeExternal;
+}
+
+- (void) setFreeExternal: (int32_t) freeExternal {
+  __freeExternal = freeExternal;
+  __freeExternal_isset = YES;
+}
+
+- (BOOL) freeExternalIsSet {
+  return __freeExternal_isset;
+}
+
+- (void) unsetFreeExternal {
+  __freeExternal_isset = NO;
+}
+
+- (int32_t) totalExternal {
+  return __totalExternal;
+}
+
+- (void) setTotalExternal: (int32_t) totalExternal {
+  __totalExternal = totalExternal;
+  __totalExternal_isset = YES;
+}
+
+- (BOOL) totalExternalIsSet {
+  return __totalExternal_isset;
+}
+
+- (void) unsetTotalExternal {
+  __totalExternal_isset = NO;
+}
+
+- (int32_t) freeSystem {
+  return __freeSystem;
+}
+
+- (void) setFreeSystem: (int32_t) freeSystem {
+  __freeSystem = freeSystem;
+  __freeSystem_isset = YES;
+}
+
+- (BOOL) freeSystemIsSet {
+  return __freeSystem_isset;
+}
+
+- (void) unsetFreeSystem {
+  __freeSystem_isset = NO;
+}
+
+- (int32_t) totalSystem {
+  return __totalSystem;
+}
+
+- (void) setTotalSystem: (int32_t) totalSystem {
+  __totalSystem = totalSystem;
+  __totalSystem_isset = YES;
+}
+
+- (BOOL) totalSystemIsSet {
+  return __totalSystem_isset;
+}
+
+- (void) unsetTotalSystem {
+  __totalSystem_isset = NO;
+}
+
+- (int32_t) freeSecondary {
+  return __freeSecondary;
+}
+
+- (void) setFreeSecondary: (int32_t) freeSecondary {
+  __freeSecondary = freeSecondary;
+  __freeSecondary_isset = YES;
+}
+
+- (BOOL) freeSecondaryIsSet {
+  return __freeSecondary_isset;
+}
+
+- (void) unsetFreeSecondary {
+  __freeSecondary_isset = NO;
+}
+
+- (int32_t) totalSecondary {
+  return __totalSecondary;
+}
+
+- (void) setTotalSecondary: (int32_t) totalSecondary {
+  __totalSecondary = totalSecondary;
+  __totalSecondary_isset = YES;
+}
+
+- (BOOL) totalSecondaryIsSet {
+  return __totalSecondary_isset;
+}
+
+- (void) unsetTotalSecondary {
+  __totalSecondary_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2964,6 +3132,54 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setFreeExternal: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setTotalExternal: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setFreeSystem: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setTotalSystem: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setFreeSecondary: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 8:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setTotalSecondary: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2985,6 +3201,36 @@
     [outProtocol writeI32: __total];
     [outProtocol writeFieldEnd];
   }
+  if (__freeExternal_isset) {
+    [outProtocol writeFieldBeginWithName: @"freeExternal" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __freeExternal];
+    [outProtocol writeFieldEnd];
+  }
+  if (__totalExternal_isset) {
+    [outProtocol writeFieldBeginWithName: @"totalExternal" type: TType_I32 fieldID: 4];
+    [outProtocol writeI32: __totalExternal];
+    [outProtocol writeFieldEnd];
+  }
+  if (__freeSystem_isset) {
+    [outProtocol writeFieldBeginWithName: @"freeSystem" type: TType_I32 fieldID: 5];
+    [outProtocol writeI32: __freeSystem];
+    [outProtocol writeFieldEnd];
+  }
+  if (__totalSystem_isset) {
+    [outProtocol writeFieldBeginWithName: @"totalSystem" type: TType_I32 fieldID: 6];
+    [outProtocol writeI32: __totalSystem];
+    [outProtocol writeFieldEnd];
+  }
+  if (__freeSecondary_isset) {
+    [outProtocol writeFieldBeginWithName: @"freeSecondary" type: TType_I32 fieldID: 7];
+    [outProtocol writeI32: __freeSecondary];
+    [outProtocol writeFieldEnd];
+  }
+  if (__totalSecondary_isset) {
+    [outProtocol writeFieldBeginWithName: @"totalSecondary" type: TType_I32 fieldID: 8];
+    [outProtocol writeI32: __totalSecondary];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2995,6 +3241,18 @@
   [ms appendFormat: @"%i", __free];
   [ms appendString: @",total:"];
   [ms appendFormat: @"%i", __total];
+  [ms appendString: @",freeExternal:"];
+  [ms appendFormat: @"%i", __freeExternal];
+  [ms appendString: @",totalExternal:"];
+  [ms appendFormat: @"%i", __totalExternal];
+  [ms appendString: @",freeSystem:"];
+  [ms appendFormat: @"%i", __freeSystem];
+  [ms appendString: @",totalSystem:"];
+  [ms appendFormat: @"%i", __totalSystem];
+  [ms appendString: @",freeSecondary:"];
+  [ms appendFormat: @"%i", __freeSecondary];
+  [ms appendString: @",totalSecondary:"];
+  [ms appendFormat: @"%i", __totalSecondary];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -3011,7 +3269,7 @@
   return self;
 }
 
-- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp piList: (ProcessInfoList) piList batteryState: (NSString *) batteryState batteryLevel: (double) batteryLevel memoryWired: (int32_t) memoryWired memoryActive: (int32_t) memoryActive memoryInactive: (int32_t) memoryInactive memoryFree: (int32_t) memoryFree memoryUser: (int32_t) memoryUser triggeredBy: (NSString *) triggeredBy networkStatus: (NSString *) networkStatus distanceTraveled: (double) distanceTraveled screenBrightness: (int32_t) screenBrightness networkDetails: (NetworkDetails *) networkDetails batteryDetails: (BatteryDetails *) batteryDetails cpuStatus: (CpuStatus *) cpuStatus locationProviders: (NSMutableArray *) locationProviders callInfo: (CallInfo *) callInfo screenOn: (int32_t) screenOn timeZone: (NSString *) timeZone unknownSources: (int32_t) unknownSources developerMode: (int32_t) developerMode extra: (NSMutableArray *) extra settings: (Settings *) settings storageDetails: (StorageDetails *) storageDetails
+- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp piList: (ProcessInfoList) piList batteryState: (NSString *) batteryState batteryLevel: (double) batteryLevel memoryWired: (int32_t) memoryWired memoryActive: (int32_t) memoryActive memoryInactive: (int32_t) memoryInactive memoryFree: (int32_t) memoryFree memoryUser: (int32_t) memoryUser triggeredBy: (NSString *) triggeredBy networkStatus: (NSString *) networkStatus distanceTraveled: (double) distanceTraveled screenBrightness: (int32_t) screenBrightness networkDetails: (NetworkDetails *) networkDetails batteryDetails: (BatteryDetails *) batteryDetails cpuStatus: (CpuStatus *) cpuStatus locationProviders: (NSMutableArray *) locationProviders callInfo: (CallInfo *) callInfo screenOn: (int32_t) screenOn timeZone: (NSString *) timeZone unknownSources: (int32_t) unknownSources developerMode: (int32_t) developerMode extra: (NSMutableArray *) extra settings: (Settings *) settings storageDetails: (StorageDetails *) storageDetails countryCode: (NSString *) countryCode
 {
   self = [super init];
   __uuId = [uuId retain_stub];
@@ -3066,6 +3324,8 @@
   __settings_isset = YES;
   __storageDetails = [storageDetails retain_stub];
   __storageDetails_isset = YES;
+  __countryCode = [countryCode retain_stub];
+  __countryCode_isset = YES;
   return self;
 }
 
@@ -3202,6 +3462,11 @@
     __storageDetails = [[decoder decodeObjectForKey: @"storageDetails"] retain_stub];
     __storageDetails_isset = YES;
   }
+  if ([decoder containsValueForKey: @"countryCode"])
+  {
+    __countryCode = [[decoder decodeObjectForKey: @"countryCode"] retain_stub];
+    __countryCode_isset = YES;
+  }
   return self;
 }
 
@@ -3311,6 +3576,10 @@
   {
     [encoder encodeObject: __storageDetails forKey: @"storageDetails"];
   }
+  if (__countryCode_isset)
+  {
+    [encoder encodeObject: __countryCode forKey: @"countryCode"];
+  }
 }
 
 - (void) dealloc
@@ -3329,6 +3598,7 @@
   [__extra release_stub];
   [__settings release_stub];
   [__storageDetails release_stub];
+  [__countryCode release_stub];
   [super dealloc_stub];
 }
 
@@ -3830,6 +4100,27 @@
   __storageDetails_isset = NO;
 }
 
+- (NSString *) countryCode {
+  return [[__countryCode retain_stub] autorelease_stub];
+}
+
+- (void) setCountryCode: (NSString *) countryCode {
+  [countryCode retain_stub];
+  [__countryCode release_stub];
+  __countryCode = countryCode;
+  __countryCode_isset = YES;
+}
+
+- (BOOL) countryCodeIsSet {
+  return __countryCode_isset;
+}
+
+- (void) unsetCountryCode {
+  [__countryCode release_stub];
+  __countryCode = nil;
+  __countryCode_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -4099,6 +4390,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 27:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setCountryCode: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -4292,6 +4591,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__countryCode_isset) {
+    if (__countryCode != nil) {
+      [outProtocol writeFieldBeginWithName: @"countryCode" type: TType_STRING fieldID: 27];
+      [outProtocol writeString: __countryCode];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -4350,6 +4656,8 @@
   [ms appendFormat: @"%@", __settings];
   [ms appendString: @",storageDetails:"];
   [ms appendFormat: @"%@", __storageDetails];
+  [ms appendString: @",countryCode:"];
+  [ms appendFormat: @"\"%@\"", __countryCode];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

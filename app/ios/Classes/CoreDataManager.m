@@ -975,6 +975,7 @@ static int previousSample = 0;
     sample.cpuStatus = cpuEncoded;
     sample.storageDetails = storageEncoded;
     sample.settings = settingsEncoded;
+    sample.countryCode = [DeviceInformation getCountryCode];
     sample.distanceTraveled = [NSNumber numberWithDouble:0.0];
     if ([triggeredBy isEqualToString:@"didUpdateToLocation"]) {
         double distance = [[Globals instance] getDistanceTraveled];
@@ -1012,7 +1013,8 @@ static int previousSample = 0;
             \t\tlocationEnabled: %s\n\
             \t\tpowersaverEnabled: %s\n\
             \t\tbluetoothEnabled: %s\n\
-         \tdistanceTraveled: %@\n", __PRETTY_FUNCTION__,
+         \tdistanceTraveled: %@\n\
+         \tcountryCode: %@\n", __PRETTY_FUNCTION__,
          sample.triggeredBy, sample.timestamp, sample.batteryLevel,
          sample.batteryState, sample.screenBrightness, sample.networkStatus, sample.memoryWired, sample.memoryActive,
          sample.memoryInactive, sample.memoryFree, sample.memoryUser,
@@ -1023,7 +1025,7 @@ static int previousSample = 0;
          storageDetails.total, storageDetails.free,
          sysSettings.locationEnabled ? "true" : "false", sysSettings.powersaverEnabled ? "true" : "false",
          (![sysSettings bluetoothEnabledIsSet]) ? "not set" : (sysSettings.bluetoothEnabled) ? "true": "false",
-         sample.distanceTraveled);
+         sample.distanceTraveled, sample.countryCode);
     
     [self sampleProcessInfo:sample withManagedObjectContext:managedObjectContext];
     
@@ -1138,7 +1140,6 @@ static int previousSample = 0;
             registrationToSend.timestamp = [[registration valueForKey:@"timestamp"] doubleValue]; 
             registrationToSend.platformId = (NSString*) [registration valueForKey:@"platformId"];
             registrationToSend.systemVersion = (NSString*) [registration valueForKey:@"systemVersion"];
-            registrationToSend.countryCode = (NSString*)[registration valueForKey:@"countryCode"];
             
             DLog(@"%s\ttimestamp: %f", __PRETTY_FUNCTION__, registrationToSend.timestamp);
             DLog(@"%s\tplatformId: %@", __PRETTY_FUNCTION__,registrationToSend.platformId);
@@ -1231,6 +1232,7 @@ static int previousSample = 0;
             sampleToSend.networkStatus = (NSString *) [sample valueForKey:@"networkStatus"];
             sampleToSend.distanceTraveled = (double) [[sample valueForKey:@"distanceTraveled"] doubleValue];
             sampleToSend.screenBrightness = [[sample valueForKey:@"screenBrightness"] intValue];
+            sampleToSend.countryCode = [sample valueForKey:@"countryCode"];
             
             // Unarchive structures to their original format
             NSData * cpuEncoded = [sample valueForKey:@"cpuStatus"];
@@ -1454,7 +1456,6 @@ static id instance = nil;
     [h release];
     
     [cdataRegistration setSystemVersion:[UIDevice currentDevice].systemVersion];
-    [cdataRegistration setCountryCode:[DeviceInformation getCountryCode]];
     
     //
     //  Now save it.

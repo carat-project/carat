@@ -27,7 +27,6 @@ typedef NSMutableArray * FeatureList;
   NSString * __systemVersion;
   NSString * __systemDistribution;
   NSString * __kernelVersion;
-  NSString * __countryCode;
 
   BOOL __uuId_isset;
   BOOL __timestamp_isset;
@@ -35,7 +34,6 @@ typedef NSMutableArray * FeatureList;
   BOOL __systemVersion_isset;
   BOOL __systemDistribution_isset;
   BOOL __kernelVersion_isset;
-  BOOL __countryCode_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -45,11 +43,10 @@ typedef NSMutableArray * FeatureList;
 @property (nonatomic, retain, getter=systemVersion, setter=setSystemVersion:) NSString * systemVersion;
 @property (nonatomic, retain, getter=systemDistribution, setter=setSystemDistribution:) NSString * systemDistribution;
 @property (nonatomic, retain, getter=kernelVersion, setter=setKernelVersion:) NSString * kernelVersion;
-@property (nonatomic, retain, getter=countryCode, setter=setCountryCode:) NSString * countryCode;
 #endif
 
 - (id) init;
-- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp platformId: (NSString *) platformId systemVersion: (NSString *) systemVersion systemDistribution: (NSString *) systemDistribution kernelVersion: (NSString *) kernelVersion countryCode: (NSString *) countryCode;
+- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp platformId: (NSString *) platformId systemVersion: (NSString *) systemVersion systemDistribution: (NSString *) systemDistribution kernelVersion: (NSString *) kernelVersion;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -89,12 +86,6 @@ typedef NSMutableArray * FeatureList;
 - (void) setKernelVersion: (NSString *) kernelVersion;
 #endif
 - (BOOL) kernelVersionIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) countryCode;
-- (void) setCountryCode: (NSString *) countryCode;
-#endif
-- (BOOL) countryCodeIsSet;
 
 @end
 
@@ -255,6 +246,7 @@ typedef NSMutableArray * FeatureList;
   int32_t __wifiSignalStrength;
   int32_t __wifiLinkSpeed;
   NetworkStatistics * __networkStatistics;
+  NSString * __wifiApStatus;
 
   BOOL __networkType_isset;
   BOOL __mobileNetworkType_isset;
@@ -265,6 +257,7 @@ typedef NSMutableArray * FeatureList;
   BOOL __wifiSignalStrength_isset;
   BOOL __wifiLinkSpeed_isset;
   BOOL __networkStatistics_isset;
+  BOOL __wifiApStatus_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -277,10 +270,11 @@ typedef NSMutableArray * FeatureList;
 @property (nonatomic, getter=wifiSignalStrength, setter=setWifiSignalStrength:) int32_t wifiSignalStrength;
 @property (nonatomic, getter=wifiLinkSpeed, setter=setWifiLinkSpeed:) int32_t wifiLinkSpeed;
 @property (nonatomic, retain, getter=networkStatistics, setter=setNetworkStatistics:) NetworkStatistics * networkStatistics;
+@property (nonatomic, retain, getter=wifiApStatus, setter=setWifiApStatus:) NSString * wifiApStatus;
 #endif
 
 - (id) init;
-- (id) initWithNetworkType: (NSString *) networkType mobileNetworkType: (NSString *) mobileNetworkType mobileDataStatus: (NSString *) mobileDataStatus mobileDataActivity: (NSString *) mobileDataActivity roamingEnabled: (BOOL) roamingEnabled wifiStatus: (NSString *) wifiStatus wifiSignalStrength: (int32_t) wifiSignalStrength wifiLinkSpeed: (int32_t) wifiLinkSpeed networkStatistics: (NetworkStatistics *) networkStatistics;
+- (id) initWithNetworkType: (NSString *) networkType mobileNetworkType: (NSString *) mobileNetworkType mobileDataStatus: (NSString *) mobileDataStatus mobileDataActivity: (NSString *) mobileDataActivity roamingEnabled: (BOOL) roamingEnabled wifiStatus: (NSString *) wifiStatus wifiSignalStrength: (int32_t) wifiSignalStrength wifiLinkSpeed: (int32_t) wifiLinkSpeed networkStatistics: (NetworkStatistics *) networkStatistics wifiApStatus: (NSString *) wifiApStatus;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -338,6 +332,12 @@ typedef NSMutableArray * FeatureList;
 - (void) setNetworkStatistics: (NetworkStatistics *) networkStatistics;
 #endif
 - (BOOL) networkStatisticsIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) wifiApStatus;
+- (void) setWifiApStatus: (NSString *) wifiApStatus;
+#endif
+- (BOOL) wifiApStatusIsSet;
 
 @end
 
@@ -581,18 +581,36 @@ typedef NSMutableArray * FeatureList;
 @interface StorageDetails : NSObject <NSCoding> {
   int32_t __free;
   int32_t __total;
+  int32_t __freeExternal;
+  int32_t __totalExternal;
+  int32_t __freeSystem;
+  int32_t __totalSystem;
+  int32_t __freeSecondary;
+  int32_t __totalSecondary;
 
   BOOL __free_isset;
   BOOL __total_isset;
+  BOOL __freeExternal_isset;
+  BOOL __totalExternal_isset;
+  BOOL __freeSystem_isset;
+  BOOL __totalSystem_isset;
+  BOOL __freeSecondary_isset;
+  BOOL __totalSecondary_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=free, setter=setFree:) int32_t free;
 @property (nonatomic, getter=total, setter=setTotal:) int32_t total;
+@property (nonatomic, getter=freeExternal, setter=setFreeExternal:) int32_t freeExternal;
+@property (nonatomic, getter=totalExternal, setter=setTotalExternal:) int32_t totalExternal;
+@property (nonatomic, getter=freeSystem, setter=setFreeSystem:) int32_t freeSystem;
+@property (nonatomic, getter=totalSystem, setter=setTotalSystem:) int32_t totalSystem;
+@property (nonatomic, getter=freeSecondary, setter=setFreeSecondary:) int32_t freeSecondary;
+@property (nonatomic, getter=totalSecondary, setter=setTotalSecondary:) int32_t totalSecondary;
 #endif
 
 - (id) init;
-- (id) initWithFree: (int32_t) free total: (int32_t) total;
+- (id) initWithFree: (int32_t) free total: (int32_t) total freeExternal: (int32_t) freeExternal totalExternal: (int32_t) totalExternal freeSystem: (int32_t) freeSystem totalSystem: (int32_t) totalSystem freeSecondary: (int32_t) freeSecondary totalSecondary: (int32_t) totalSecondary;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -608,6 +626,42 @@ typedef NSMutableArray * FeatureList;
 - (void) setTotal: (int32_t) total;
 #endif
 - (BOOL) totalIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) freeExternal;
+- (void) setFreeExternal: (int32_t) freeExternal;
+#endif
+- (BOOL) freeExternalIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) totalExternal;
+- (void) setTotalExternal: (int32_t) totalExternal;
+#endif
+- (BOOL) totalExternalIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) freeSystem;
+- (void) setFreeSystem: (int32_t) freeSystem;
+#endif
+- (BOOL) freeSystemIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) totalSystem;
+- (void) setTotalSystem: (int32_t) totalSystem;
+#endif
+- (BOOL) totalSystemIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) freeSecondary;
+- (void) setFreeSecondary: (int32_t) freeSecondary;
+#endif
+- (BOOL) freeSecondaryIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) totalSecondary;
+- (void) setTotalSecondary: (int32_t) totalSecondary;
+#endif
+- (BOOL) totalSecondaryIsSet;
 
 @end
 
@@ -638,6 +692,7 @@ typedef NSMutableArray * FeatureList;
   NSMutableArray * __extra;
   Settings * __settings;
   StorageDetails * __storageDetails;
+  NSString * __countryCode;
 
   BOOL __uuId_isset;
   BOOL __timestamp_isset;
@@ -665,6 +720,7 @@ typedef NSMutableArray * FeatureList;
   BOOL __extra_isset;
   BOOL __settings_isset;
   BOOL __storageDetails_isset;
+  BOOL __countryCode_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -694,10 +750,11 @@ typedef NSMutableArray * FeatureList;
 @property (nonatomic, retain, getter=extra, setter=setExtra:) NSMutableArray * extra;
 @property (nonatomic, retain, getter=settings, setter=setSettings:) Settings * settings;
 @property (nonatomic, retain, getter=storageDetails, setter=setStorageDetails:) StorageDetails * storageDetails;
+@property (nonatomic, retain, getter=countryCode, setter=setCountryCode:) NSString * countryCode;
 #endif
 
 - (id) init;
-- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp piList: (ProcessInfoList) piList batteryState: (NSString *) batteryState batteryLevel: (double) batteryLevel memoryWired: (int32_t) memoryWired memoryActive: (int32_t) memoryActive memoryInactive: (int32_t) memoryInactive memoryFree: (int32_t) memoryFree memoryUser: (int32_t) memoryUser triggeredBy: (NSString *) triggeredBy networkStatus: (NSString *) networkStatus distanceTraveled: (double) distanceTraveled screenBrightness: (int32_t) screenBrightness networkDetails: (NetworkDetails *) networkDetails batteryDetails: (BatteryDetails *) batteryDetails cpuStatus: (CpuStatus *) cpuStatus locationProviders: (NSMutableArray *) locationProviders callInfo: (CallInfo *) callInfo screenOn: (int32_t) screenOn timeZone: (NSString *) timeZone unknownSources: (int32_t) unknownSources developerMode: (int32_t) developerMode extra: (NSMutableArray *) extra settings: (Settings *) settings storageDetails: (StorageDetails *) storageDetails;
+- (id) initWithUuId: (NSString *) uuId timestamp: (double) timestamp piList: (ProcessInfoList) piList batteryState: (NSString *) batteryState batteryLevel: (double) batteryLevel memoryWired: (int32_t) memoryWired memoryActive: (int32_t) memoryActive memoryInactive: (int32_t) memoryInactive memoryFree: (int32_t) memoryFree memoryUser: (int32_t) memoryUser triggeredBy: (NSString *) triggeredBy networkStatus: (NSString *) networkStatus distanceTraveled: (double) distanceTraveled screenBrightness: (int32_t) screenBrightness networkDetails: (NetworkDetails *) networkDetails batteryDetails: (BatteryDetails *) batteryDetails cpuStatus: (CpuStatus *) cpuStatus locationProviders: (NSMutableArray *) locationProviders callInfo: (CallInfo *) callInfo screenOn: (int32_t) screenOn timeZone: (NSString *) timeZone unknownSources: (int32_t) unknownSources developerMode: (int32_t) developerMode extra: (NSMutableArray *) extra settings: (Settings *) settings storageDetails: (StorageDetails *) storageDetails countryCode: (NSString *) countryCode;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -857,6 +914,12 @@ typedef NSMutableArray * FeatureList;
 - (void) setStorageDetails: (StorageDetails *) storageDetails;
 #endif
 - (BOOL) storageDetailsIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) countryCode;
+- (void) setCountryCode: (NSString *) countryCode;
+#endif
+- (BOOL) countryCodeIsSet;
 
 @end
 

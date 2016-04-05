@@ -28,6 +28,7 @@
 @dynamic networkDetails;
 @dynamic storageDetails;
 @dynamic settings;
+@dynamic countryCode;
 
 
 @end

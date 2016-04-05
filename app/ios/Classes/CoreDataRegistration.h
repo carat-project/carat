@@ -12,7 +12,6 @@
 
 @interface CoreDataRegistration : NSManagedObject
 
-@property (nonatomic, retain) NSString * countryCode;
 @property (nonatomic, retain) NSString * platformId;
 @property (nonatomic, retain) NSString * systemVersion;
 @property (nonatomic, retain) NSNumber * timestamp;

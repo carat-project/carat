@@ -32,6 +32,7 @@
 @property (nonatomic, retain) NSData * networkDetails;
 @property (nonatomic, retain) NSData * settings;
 @property (nonatomic, retain) NSData * storageDetails;
+@property (nonatomic, retain) NSString * countryCode;
 
 @end
 
