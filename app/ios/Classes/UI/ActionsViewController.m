@@ -242,7 +242,11 @@
     switch (act.actionType) {
         case ActionTypeKillApp:
             DLog(@"Loading Kill App instructions");
-            cell.descValue = NSLocalizedString(@"KillAppDesc", nil);
+            if(floor(NSFoundationVersionNumber) >= NSFoundationVersionNumber_iOS_7_0){
+                cell.descValue = NSLocalizedString(@"KillAppDescModern", nil);
+            } else {
+                cell.descValue = NSLocalizedString(@"KillAppDesc", nil);
+            }
             //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"killapp.html" relativeToURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]]]];
             break;
             
