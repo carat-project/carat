@@ -62,6 +62,7 @@
 "NoHogsMessage"="Please check back in a week.\n\nIf your apps are behaving normally, there will be no bugs here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
 //HogsView ends
 //TopHogsView starts
+"TopHogs"="Top 20 hogs globally";
 "SamplesText"="Samples:";
 "BatteryLifeImpact"="Battery life impact:";
 "ReportedBy"="Reported by:";
@@ -184,11 +185,11 @@
 "UpdatingMainReports" = "Updating main reports...";
 "UpdatingMainReports" = "Updating main reports...";
 "UpdatingMainReports" = "Updating main reports...";
-"UpdatedJust" = "Just Updated    %i Samples sent";
-"UpdatedNever" = "Updated never   %i Samples sent";
+"UpdatedJust" = "Just Updated\r%i Samples sent";
+"UpdatedNever" = "Updated never\r%i Samples sent";
 "Updated" = "Updated ";
-"Ago" = " ago";
-"Samples" = "   %i Samples sent";
+"Ago" = "ago";
+"Samples" = "%i Samples sent";
 "SamplesLabel" = "Samples";
 "None" = "None";
 

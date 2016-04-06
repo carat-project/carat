@@ -27,7 +27,7 @@
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Top hogs";
+    return NSLocalizedString(@"TopHogs", nil);
 }
 
 // Initialize data here because of the call order

@@ -60,6 +60,7 @@
 "NoHogsMessage"="Tarkista tilanne viikon päästä.\n\nJos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä. Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.";
 //HogsView ends
 //TopHogsView starts
+"TopHogs"="Pahimmat 20 hogia maailmanlaajuisesti";
 "SamplesText"="Otoksia:";
 "BatteryLifeImpact"="Vaikutus akkukestoon:";
 "ReportedBy"="Raportoinut:";
@@ -172,20 +173,14 @@
 //HUD
 "CCDMReportUpdateStatusNotification" = "CCDMReportUpdateStatusNotification";
 //Progress updates
-"UpdatingMainReports" = "Updating main reports...";
-"UpdatingHogReports" = "Updating hog reports...";
-"UpdatingBugReports" = "Updating bug report...";
-"UpdatingMainReports" = "Updating main reports...";
-"UpdatingMainReports" = "Updating main reports...";
-"UpdatingMainReports" = "Updating main reports...";
-"UpdatingMainReports" = "Updating main reports...";
-"UpdatingMainReports" = "Updating main reports...";
-"UpdatingMainReports" = "Updating main reports...";
-"UpdatedJust" = "Just Updated    %i Samples sent";
-"UpdatedNever" = "Updated never   %i Samples sent";
-"Updated" = "Updated ";
-"Ago" = " ago";
-"Samples" = "   %i mittausta lähetetty";
+"UpdatingMainReports" = "Päivitetään laitetietoja...";
+"UpdatingHogReports" = "Päivitetään hogeja...";
+"UpdatingBugReports" = "Päivitetään bugeja...";
+"UpdatedJust" = "Päivitetty juuri nyt\r%i otosta lähetetty";
+"UpdatedNever" = "Ei koskaan päivitetty\r%i otosta lähetetty";
+"Updated" = "Päivitetty ";
+"Ago" = "sitten";
+"Samples" = "%i mittausta lähetetty";
 "SamplesLabel" = "Mittauksia";
 "None" = "None";
 

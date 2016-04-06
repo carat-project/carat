@@ -22,11 +22,14 @@
     [_tableView registerNib:[UINib nibWithNibName:expandedCell bundle:nil] forCellReuseIdentifier:expandedCell];
     
     [self.tableView addPullToRefreshWithActionHandler:^{
-        if ([[CommunicationManager instance] isInternetReachable] == YES && // online
+        if (//![self isFresh] && // Not fresh
+            [[CommunicationManager instance] isInternetReachable] == YES && // online
             [[CoreDataManager instance] getReportUpdateStatus] == nil) // not already updating
         {
             [[CoreDataManager instance] updateLocalReportsFromServer];
             [self updateView];
+        } else {
+            [self.tableView.pullToRefreshView stopAnimating];
         }
     }];
     

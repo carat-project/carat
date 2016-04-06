@@ -224,7 +224,7 @@
         cell.actionType = ActionTypeGlobalStats;
     }
     else {
-        NSString *impValue = [NSString stringWithFormat:@"%@ ± %@", [Utilities doubleAsTimeNSString:act.actionBenefit], [Utilities doubleAsTimeNSString:act.actionError]];
+        NSString *impValue = [NSString stringWithFormat:@"%@± %@", [Utilities doubleAsTimeNSString:act.actionBenefit], [Utilities doubleAsTimeNSString:act.actionError]];
         NSString *bodyText = NSLocalizedString(@"ExpectedImp", nil);
         NSMutableString *expImpLabelText = [[NSMutableString alloc]init];
         [expImpLabelText appendString:bodyText];

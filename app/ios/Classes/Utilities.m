@@ -17,10 +17,10 @@
 	NSString* result = @"";
 	;
     if (timeInterval < 0) {
-		result = [NSString stringWithFormat:@"Updated in the future. How did you do that?    %i Samples sent", [[CoreDataManager instance] getSampleSent]];
+		result = [NSString stringWithFormat:@"Updated in the future. How did you do that?\n%li Samples sent", (long)[[CoreDataManager instance] getSampleSent]];
 		return result;
 	}
-    else if (timeInterval < 5) {
+    else if (timeInterval < 60) {
 		result = [NSString stringWithFormat:NSLocalizedString(@"UpdatedJust", nil), [[CoreDataManager instance] getSampleSent]];
 		return result;
 	}
@@ -29,7 +29,8 @@
 		return result;
 	}
     else { 
-		result =  [NSLocalizedString(@"Updated", nil) stringByAppendingString:[[Utilities doubleAsTimeNSString:timeInterval] stringByAppendingString:NSLocalizedString(@"Ago", nil)]];
+        result =  [NSLocalizedString(@"Updated", nil) stringByAppendingString:[[Utilities doubleAsTimeNSString:timeInterval trim:YES] stringByAppendingString:NSLocalizedString(@"Ago", nil)]];
+        result = [result stringByAppendingString:@"\n"];
 		result = [result stringByAppendingFormat:NSLocalizedString(@"Samples", nil), [[CoreDataManager instance] getSampleSent]];
 		return result;
     }
@@ -37,6 +38,10 @@
 
 
 + (NSString *)doubleAsTimeNSString:(double)timeInterval {
+    return [self doubleAsTimeNSString:timeInterval trim:false];
+}
+
++ (NSString *)doubleAsTimeNSString:(double)timeInterval trim:(BOOL)trim {
     // some custom strings for character
     if (timeInterval < 1) { return NSLocalizedString(@"None", nil); }
     else {
@@ -44,11 +49,16 @@
         int days = (int)(timeInterval / 86400);
         int hours = (int)((timeInterval - (days * 86400)) / 3600);
         int mins = (int)((timeInterval - (days * 86400) - (hours * 3600)) / 60);
-        int secs = (int)((int)timeInterval % 60);
-        NSString *sDays = days > 0 ? [NSString stringWithFormat:@"%dd", days] : @"";
-        NSString *sHours = hours > 0 ? [NSString stringWithFormat:@"%dh", hours] : @"";
-        NSString *sMins = mins > 0 ? [NSString stringWithFormat:@"%dm", mins] : @"";
-        NSString *sSecs = secs > 0 ? [NSString stringWithFormat:@"%ds", secs] : @"";
+        //int secs = (int)((int)timeInterval % 60);
+        
+        NSString *sDays = days > 0 ? [NSString stringWithFormat:@"%dd ", days] : @"";
+        NSString *sHours = hours > 0 ? [NSString stringWithFormat:@"%dh ", hours] : @"";
+        NSString *sMins = mins > 0 ? [NSString stringWithFormat:@"%dmin ", mins] : @"";
+        NSString *sSecs = /*secs > 0 ? [NSString stringWithFormat:@"%ds ", secs] :*/ @"";
+        
+        if(trim && (days > 0 || hours > 0)) {
+            sMins = @"";
+        }
         
         return [sDays stringByAppendingString:[sHours stringByAppendingString:[sMins stringByAppendingString:sSecs]]];
     }

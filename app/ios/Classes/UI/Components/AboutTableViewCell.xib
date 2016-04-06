@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -79,13 +80,13 @@
                             <mask key="constraints">
                                 <exclude reference="4ek-qQ-t9w"/>
                                 <exclude reference="fv7-Ci-cwb"/>
+                                <exclude reference="3Ns-Y4-dcc"/>
+                                <exclude reference="brB-Dw-F9V"/>
+                                <exclude reference="duv-hC-rmh"/>
                                 <exclude reference="Dpv-rQ-WoP"/>
                                 <exclude reference="VBb-KV-06e"/>
                                 <exclude reference="VHW-4r-lPZ"/>
                                 <exclude reference="h06-TH-3KI"/>
-                                <exclude reference="3Ns-Y4-dcc"/>
-                                <exclude reference="brB-Dw-F9V"/>
-                                <exclude reference="duv-hC-rmh"/>
                                 <exclude reference="1Na-dm-0v0"/>
                                 <exclude reference="EVe-Tq-mjD"/>
                                 <exclude reference="VyN-fp-fZK"/>
@@ -101,13 +102,13 @@
                             <mask key="constraints">
                                 <include reference="4ek-qQ-t9w"/>
                                 <include reference="fv7-Ci-cwb"/>
+                                <include reference="3Ns-Y4-dcc"/>
+                                <include reference="brB-Dw-F9V"/>
+                                <include reference="duv-hC-rmh"/>
                                 <include reference="Dpv-rQ-WoP"/>
                                 <include reference="VBb-KV-06e"/>
                                 <include reference="VHW-4r-lPZ"/>
                                 <include reference="h06-TH-3KI"/>
-                                <include reference="3Ns-Y4-dcc"/>
-                                <include reference="brB-Dw-F9V"/>
-                                <include reference="duv-hC-rmh"/>
                                 <include reference="1Na-dm-0v0"/>
                                 <include reference="EVe-Tq-mjD"/>
                                 <include reference="VyN-fp-fZK"/>

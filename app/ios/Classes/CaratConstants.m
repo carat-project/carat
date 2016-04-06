@@ -9,6 +9,7 @@
 #import "CaratConstants.h"
 
 NSString* const kSamplesSentCountUpdateNotification = @"SampleSentCountUpdateNotification";
+NSString* const kShouldRefreshViewsNotification = @"CCDMReportUpdateStatusNotification";
 NSString* const kSamplesSent = @"SamplesSent";
 NSString* const kMemoryUsed = @"memoryUsed";
 NSString* const kMemoryActive = @"memoryActive";

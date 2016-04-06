@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString* const kSamplesSentCountUpdateNotification;
+extern NSString* const kShouldRefreshViewsNotification;
 extern NSString* const kUpdateNetworkStatusNotification;
 extern NSString* const kSamplesSent;
 extern NSString* const kMemoryUsed;

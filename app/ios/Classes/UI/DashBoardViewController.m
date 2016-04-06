@@ -43,29 +43,20 @@ BOOL isUpdateProgressVisible;
     
     isUpdateProgressVisible = false;
     
-    int count = [self getBugsCount];
     [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
-    [_bugsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     [_bugsBtn setButtonTitle:NSLocalizedString(@"Bugs", nil)];
     
-    count = [self getHogsCount];
     [_hogsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
-    [_hogsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     [_hogsBtn setButtonTitle:NSLocalizedString(@"Hogs", nil)];
     
     [_statisticsBtn setButtonImage:[UIImage imageNamed:@"globe_icon"]];
     [_statisticsBtn setButtonExtraInfo:@"VIEW"];
     [_statisticsBtn setButtonTitle:NSLocalizedString(@"Statistics", nil)];
     
-    count = [self getActivityCount];
     [_actionsBtn setButtonImage:[UIImage imageNamed:@"action_icon"]];
-    [_actionsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     [_actionsBtn setButtonTitle:NSLocalizedString(@"Actions", nil)];
     
-    // count = [self getSettingCount];
-    [_settingsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
-    [_settingsBtn setButtonExtraInfo:@"?"];
-    [_settingsBtn setButtonTitle:NSLocalizedString(@"Settings", nil)];
+    [self updateCounts];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,22 +67,36 @@ BOOL isUpdateProgressVisible;
     [self updateView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sampleCountUpdated:) name:kSamplesSentCountUpdateNotification object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldUpdateView:) name:kShouldRefreshViewsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(shouldUpdateView:)
+        name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(shouldUpdateView:)
+        name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self checkReportsAndSamples];
+    [self loadDataWithHUD:nil];
+}
+
+- (void) checkReportsAndSamples {
     if ([[CoreDataManager instance] getReportUpdateStatus] == nil) {
         // For this screen, let's put sending samples/registrations here so that we don't conflict
         // with the report syncing (need to limit memory/CPU/thread usage so that we don't get killed).
+        if(![self isFresh] &&
+           [[CommunicationManager instance] isInternetReachable]){
+            [[CoreDataManager instance] updateLocalReportsFromServer];
+        }
         [[CoreDataManager instance] checkConnectivityAndSendStoredDataToServer];
         [self setProgressUpdateViewHeight:40.0f];
     }
     else{
         [self setProgressUpdateViewHeight:0.0f];
     }
-    [self loadDataWithHUD:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -116,8 +121,39 @@ BOOL isUpdateProgressVisible;
     
     [self.scoreView setScore:vScore];
     self.batteryLastLabel.text = vBatteryLife;
+    if(self.timer == nil) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:30.0f
+                                target:self
+                                selector:@selector(shouldUpdateView:)
+                                userInfo:nil
+                                repeats:true];
+    }
     
+     // Update hog, bug and action count
+    [self updateCounts];
     [self.view setNeedsDisplay];
+}
+
+-(void) updateCounts {
+    int count = [self getBugsCount];
+    [_bugsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
+    count = [self getHogsCount];
+    [_hogsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
+    count = [self getActivityCount];
+    [_actionsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
+}
+
+-(void) shouldUpdateView:(NSNotification*)notification{
+    DLog(@"%s Refreshing dashboard..", __PRETTY_FUNCTION__);
+    if([self isViewLoaded]) {
+        if (![self isFresh]
+            && [[CoreDataManager instance] getReportUpdateStatus] == nil
+            && [[CommunicationManager instance] isInternetReachable]) {
+                [[CoreDataManager instance] updateLocalReportsFromServer];
+        }
+        [[CoreDataManager instance] checkConnectivityAndSendStoredDataToServer];
+        [self updateView];
+    }
 }
 
 -(void)sampleCountUpdated:(NSNotification*)notification{

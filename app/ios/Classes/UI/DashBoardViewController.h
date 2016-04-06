@@ -43,6 +43,7 @@
 @property (retain, nonatomic) IBOutlet DashboardNavigationButton *actionsBtn;
 @property (retain, nonatomic) IBOutlet DashboardNavigationButton *settingsBtn;
 @property (retain, nonatomic) IBOutlet ProgressUpdateView *progressUpdateView;
+@property (retain, nonatomic) NSTimer *timer;
 
 
 - (IBAction)showFacebook:(id)sender;
