@@ -16,6 +16,7 @@
 "Actions"="Actions";
 "MyDevice"="MY DEVICE";
 "View"="View";
+"ViewText"="VIEW";
 "UpdatedNowTxt"= "Updated just now";
 "JScore"="J-Score";
 "NA" = "N/A";
@@ -67,6 +68,7 @@
 "BatteryLifeImpact"="Battery life impact:";
 "ReportedBy"="Reported by:";
 "PercentageCaratUsers"="%.2f%% of Carat users";
+"Unknown"="Unknown";
 //TopHogsView ends
 //Global results starts
 "GlobalResults"="Global results";

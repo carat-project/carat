@@ -33,23 +33,32 @@
 // Initialize data here because of the call order
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(data) return [data count];
+    if(self.data){
+        return [self.data count];
+    }
     
+    // Avoid multiple downloads
+    if([self isBusy]) return 0;
+    self.busy = true;
     NSError *error = nil;
+    
+    // Load cached data
     NSString *path = [Utilities getDirectoryPath:@"stats-ios.json"];
     NSString *usersPath = [Utilities getDirectoryPath:@"stats-users"];
-    NSDate *modified = [Utilities getLastModified:path];
-    NSArray *cache = [NSArray arrayWithContentsOfFile:path];
+    NSArray *hogsCache = [NSArray arrayWithContentsOfFile:path];
     NSString *usersCache = [NSString stringWithContentsOfFile:usersPath encoding:NSUTF8StringEncoding error:&error];
     
-    // Check if there is a fresh copy in cache
-    NSLog(@"Days since last statistics check: %ld", [Utilities daysSince:modified]);
-    if(usersCache && cache && [Utilities daysSince:modified] < 1) {
-        self.users = usersCache;
-        self.data = cache;
+    // Update from server only when caches are too old or not available
+    NSDate *modified = [Utilities getLastModified:usersPath];
+    DLog(@"Days since last top hogs download: %ld", (long)[Utilities daysSince:modified]);
+    
+    if(usersCache && usersCache != 0) self.users = usersCache;
+    if(hogsCache && hogsCache.count) self.data = hogsCache;
+    if([Utilities daysSince:modified] < 4 && self.data && self.users) {
+        self.busy = false;
         return [data count];
     } else {
-        [self loadDataFor:tableView withFallbackCache:cache];
+        [self loadDataFor:tableView];
         return 0;
     }
 }
@@ -96,7 +105,7 @@
         NSString *reportedBy = [NSString stringWithFormat:NSLocalizedString(@"PercentageCaratUsers", nil), usage];
         cell.usagePercentage.text = reportedBy;
     } else {
-        cell.usagePercentage.text = @"Popularity currently unknown";
+        cell.usagePercentage.text = NSLocalizedString(@"Unknown", nil);
     }
     
     // Expanded/collapsed arrow state
@@ -155,8 +164,8 @@
     }
 }
 
-// Download the latest app list date
--(void)loadDataFor:(UITableView *) tableView withFallbackCache:(NSArray *)cache{
+// Fetch latest file name and total user count from server
+-(void)loadDataFor:(UITableView *) tableView {
     NSString *dataURL = [kStatisticsDataURI stringByAppendingString:@"data.json"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:dataURL]];
     __block NSArray *platforms;
@@ -172,44 +181,42 @@
              NSError *error = nil;
              platforms = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:&error];
              if(error == nil) {
-                 int users = 0;
-                 NSString *date = [self filterPlatforms:platforms withTableView:tableView users:&users];
+                 int usersCount = 0;
+                 NSString *date = [self filterPlatforms:platforms withTableView:tableView users:&usersCount];
                  if(date) {
-                     // Find latest
-                     NSString *freshnessPath = [Utilities getDirectoryPath:@"stats-freshness"];
                      NSString *usersPath = [Utilities getDirectoryPath:@"stats-users"];
-                     NSString *cachedDate = [NSString stringWithContentsOfFile:freshnessPath encoding:NSUTF8StringEncoding error:&error];
-                     NSString *cachedUsers = [NSString stringWithContentsOfFile:usersPath encoding:NSUTF8StringEncoding error:&error];
-                     
-                     if(users){
-                         NSString *usersSave = [NSString stringWithFormat:@"%i", users];
-                         self.users = usersSave;
-                         [usersSave writeToFile:usersPath atomically:true encoding:NSUTF8StringEncoding error:&error];
+                     NSString *lastDatePath = [Utilities getDirectoryPath:@"stats-freshness"];
+                     NSString *lastDate = [NSString stringWithContentsOfFile:lastDatePath encoding:NSUTF8StringEncoding error:&error];
+                
+                     // Save and update total user count
+                     if(usersCount) {
+                         NSString *users = [NSString stringWithFormat:@"%i", usersCount];
+                         self.users = users;
+                         [users writeToFile:usersPath atomically:true encoding:NSUTF8StringEncoding error:&error];
                      }
                      
-                     // Avoid downloading the same data again
-                     if(!cachedDate || !cachedUsers || ![cachedDate isEqualToString:date] || !cache) {
-                         [self loadDataFor:tableView withDate:date withFallbackCache:cache];
-                         [date writeToFile:freshnessPath atomically:true encoding:NSUTF8StringEncoding error:&error];
+                     // Start downloading the actual statistics if needed
+                     if(!self.data.count || (lastDate && ![lastDate isEqualToString:date])) {
+                         [self loadDataFor:tableView withDate:date];
                          return;
                      }
                  }
              }
          }
          
-         // Use cache as a fallback
-         if(cache) {
-             self.data = cache;
+         // Stop the spinner only if there is something to show
+         if(self.data && self.data.count) {
              [self stopSpinner];
+             self.busy = false;
              [tableView reloadData];
          }
      }];
-    
 }
 
 // Download the list for a given date
--(void)loadDataFor:(UITableView *)tableView withDate:(NSString *)date withFallbackCache:(NSArray*) cache
+-(void)loadDataFor:(UITableView *)tableView withDate:(NSString *)date
 {
+    // Url is constructed from the date like so <date>-ios.json
     NSString *dataURL = [[kStatisticsDataURI stringByAppendingString:date] stringByAppendingString:@"-ios.json"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:dataURL]];
     __block NSArray *hogsJSON;
@@ -220,23 +227,32 @@
              NSError *error = nil;
              hogsJSON = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:&error];
              if(!error) {
-                 self.data = [self filterHogs:hogsJSON];
-                 [tableView reloadData];
-                 [self stopSpinner];
-                 
-                 // Cache the results
-                 NSString *path = [Utilities getDirectoryPath:@"stats-ios.json"];
-                 [self.data writeToFile:path atomically:true];
-                 return;
+                 NSArray * result = [self filterHogs:hogsJSON];
+                 if(result && result.count) {
+                     self.data = result;
+                     [tableView reloadData];
+                     [self stopSpinner];
+                     
+                     // Cache the results
+                     NSString *path = [Utilities getDirectoryPath:@"stats-ios.json"];
+                     [self.data writeToFile:path atomically:true];
+                     
+                     // Save last update date
+                     NSString *lastDatePath = [Utilities getDirectoryPath:@"stats-freshness"];
+                     [date writeToFile:lastDatePath atomically:true encoding:NSUTF8StringEncoding error:&error];
+                     self.busy = false;
+                     return;
+                 }
              }
          }
          
-         // Old data is better than no data
-         if(cache) {
-             self.data = cache;
+         // Stop the spinner only if there is something to show
+         if(self.data && self.data.count) {
              [self stopSpinner];
+             self.busy = false;
              [tableView reloadData];
          }
+         
      }];
 }
 

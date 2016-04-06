@@ -12,6 +12,7 @@
 @interface TopHogsTableView : NSObject <UITableViewDataSource, UITableViewDelegate>
 @property (retain, nonatomic) NSArray *data;
 @property (retain, nonatomic) NSString *users;
+@property (assign, getter=isBusy) BOOL busy;
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;
 @property (retain, nonatomic) UIView *spinnerBackground;
 @property (retain, nonatomic) UINib *cell;

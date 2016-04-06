@@ -50,7 +50,7 @@ BOOL isUpdateProgressVisible;
     [_hogsBtn setButtonTitle:NSLocalizedString(@"Hogs", nil)];
     
     [_statisticsBtn setButtonImage:[UIImage imageNamed:@"globe_icon"]];
-    [_statisticsBtn setButtonExtraInfo:@"VIEW"];
+    [_statisticsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
     [_statisticsBtn setButtonTitle:NSLocalizedString(@"Statistics", nil)];
     
     [_actionsBtn setButtonImage:[UIImage imageNamed:@"action_icon"]];
@@ -137,10 +137,19 @@ BOOL isUpdateProgressVisible;
 -(void) updateCounts {
     int count = [self getBugsCount];
     [_bugsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
-    count = [self getHogsCount];
-    [_hogsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
+    
+    // iOS 9+ has no hogs, so we have no count
+    if(NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_9_0) {
+        count = [self getHogsCount];
+        [_hogsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
+    } else {
+        [_hogsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
+    }
+    
     count = [self getActivityCount];
     [_actionsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
+    
+    
 }
 
 -(void) shouldUpdateView:(NSNotification*)notification{

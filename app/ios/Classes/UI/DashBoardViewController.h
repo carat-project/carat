@@ -57,7 +57,6 @@
 - (IBAction)showHogs:(id)sender;
 - (IBAction)showStatistics:(id)sender;
 - (IBAction)showActions:(id)sender;
-- (IBAction)showSettings:(id)sender;
 
 // Facebook
 - (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults :(NSDictionary *)results;

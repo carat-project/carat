@@ -16,6 +16,7 @@
 "Actions"="Ehdotukset";
 "MyDevice"="LAITTEENI";
 "View"="Näkymä";
+"ViewText"="NÄYTÄ";
 "UpdatedNowTxt"= "Juuri päivitetty";
 "JScore"="J-Score";
 "NA" = "N/A";
@@ -65,6 +66,7 @@
 "BatteryLifeImpact"="Vaikutus akkukestoon:";
 "ReportedBy"="Raportoinut:";
 "PercentageCaratUsers"="%.2f%% Carat-käyttäjistä";
+"Unknown"="Ei tiedossa";
 //TopHogsView ends
 //Global results starts
 "GlobalResults"="Globaalit tulokset";
