@@ -40,6 +40,7 @@ BOOL isUpdateProgressVisible;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _navbarTitle.title = [NSLocalizedString(@"MyDevice", nil) uppercaseString];
     isUpdateProgressVisible = false;
     // Do any additional setup after loading the view from its nib.
 }
@@ -287,6 +288,7 @@ BOOL isUpdateProgressVisible;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_lastUpdatedLabel release];
     [_progressUpdateView release];
+    [_navbarTitle release];
     [super dealloc];
 }
 @end

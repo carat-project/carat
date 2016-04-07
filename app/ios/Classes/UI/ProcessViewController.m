@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     expandedCell = @"BugHogExpandedTableViewCell";
     collapsedCell = @"BugHogTableViewCell";
+    _navigationBar.title = [NSLocalizedString(@"ProcessList", nil) uppercaseString];
 
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -123,6 +124,7 @@
 
 - (void)dealloc {
     [processList release];
+    [_navigationBar release];
     [super dealloc];
 }
 @end

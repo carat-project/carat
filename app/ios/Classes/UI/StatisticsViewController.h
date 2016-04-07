@@ -31,6 +31,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *androidPopularModelLabel;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView* spinner;
 @property (retain, nonatomic) IBOutlet UIView *spinnerBackGround;
+@property (retain, nonatomic) IBOutlet UINavigationItem *navbarTitle;
 
 - (IBAction)showWellBehivedInfo:(id)sender;
 - (IBAction)showBugsInfo:(id)sender;

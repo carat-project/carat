@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _navigationBar.title = [NSLocalizedString(@"Settings", nil) uppercaseString];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     _versionLabel.text = [NSString stringWithFormat:@"%@ v%@", NSLocalizedString(@"AboutTittle", nil), version];
     // Do any additional setup after loading the view from its nib.
@@ -141,6 +141,7 @@
 
 - (void)dealloc {
     [_versionLabel release];
+    [_navigationBar release];
     [super dealloc];
 }
 @end

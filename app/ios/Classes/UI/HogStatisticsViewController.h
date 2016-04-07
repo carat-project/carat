@@ -11,5 +11,6 @@
 @interface HogStatisticsViewController : BaseViewController
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (retain, nonatomic) IBOutlet UIView *spinnerBackground;
+@property (retain, nonatomic) IBOutlet UINavigationItem *navbarTitle;
 @property (retain, nonatomic) IBOutlet UITableView *topHogsTable;
 @end

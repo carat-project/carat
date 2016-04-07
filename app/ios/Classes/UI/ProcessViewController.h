@@ -18,5 +18,6 @@
 @interface ProcessViewController : ListNetworkBaseViewController{
     NSArray *processList;
 }
+@property (retain, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (retain, nonatomic) NSArray *processList;
 @end

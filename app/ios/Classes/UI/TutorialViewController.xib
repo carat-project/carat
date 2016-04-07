@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -88,14 +88,13 @@
                                 </mask>
                             </variation>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2q-gE-xab">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2q-gE-xab" customClass="LocalizedLabel">
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                             <attributedString key="attributedText">
-                                <fragment content="Read EULA">
+                                <fragment content="ReadEula">
                                     <attributes>
                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="16" name=".AppleSystemUIFontBold"/>
-                                        <font key="NSOriginalFont" size="16" name=".AppleSystemUIFontBold"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         <integer key="NSUnderline" value="1"/>
                                     </attributes>
@@ -137,10 +136,6 @@
                             <exclude reference="y2q-gE-xab"/>
                         </mask>
                         <mask key="constraints">
-                            <exclude reference="1Bf-xl-3hd"/>
-                            <exclude reference="AZY-3v-vHd"/>
-                            <exclude reference="TI3-K2-ccT"/>
-                            <exclude reference="qBs-C4-pjJ"/>
                             <exclude reference="Al6-JB-o6F"/>
                             <exclude reference="juK-jS-lLD"/>
                             <exclude reference="xLA-v9-LjA"/>
@@ -155,6 +150,10 @@
                             <exclude reference="PVr-Zx-ita"/>
                             <exclude reference="fZB-2E-Fmd"/>
                             <exclude reference="sWg-Dc-zUP"/>
+                            <exclude reference="1Bf-xl-3hd"/>
+                            <exclude reference="AZY-3v-vHd"/>
+                            <exclude reference="TI3-K2-ccT"/>
+                            <exclude reference="qBs-C4-pjJ"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
@@ -166,10 +165,6 @@
                             <include reference="y2q-gE-xab"/>
                         </mask>
                         <mask key="constraints">
-                            <include reference="1Bf-xl-3hd"/>
-                            <include reference="AZY-3v-vHd"/>
-                            <include reference="TI3-K2-ccT"/>
-                            <include reference="qBs-C4-pjJ"/>
                             <include reference="Al6-JB-o6F"/>
                             <include reference="juK-jS-lLD"/>
                             <include reference="xLA-v9-LjA"/>
@@ -184,6 +179,10 @@
                             <include reference="PVr-Zx-ita"/>
                             <include reference="fZB-2E-Fmd"/>
                             <include reference="sWg-Dc-zUP"/>
+                            <include reference="1Bf-xl-3hd"/>
+                            <include reference="AZY-3v-vHd"/>
+                            <include reference="TI3-K2-ccT"/>
+                            <include reference="qBs-C4-pjJ"/>
                         </mask>
                     </variation>
                 </view>

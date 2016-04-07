@@ -8,6 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BugsViewController">
             <connections>
+                <outlet property="content" destination="88T-Y3-hy8" id="s3X-hc-ecy"/>
+                <outlet property="contentTitle" destination="Acc-yh-h4A" id="kAl-NB-mDb"/>
                 <outlet property="navBar" destination="MYD-b9-YVC" id="yrX-Cu-zBQ"/>
                 <outlet property="tableView" destination="zyF-3Z-UIQ" id="pMi-zf-Q1Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

@@ -13,6 +13,7 @@
 @interface HideAppsViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) NSArray *hideChoises;
 @property (retain, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (retain, nonatomic) IBOutlet UINavigationItem *navbarTitle;
 - (IBAction)selectClicked:(id)sender;
 
 @end

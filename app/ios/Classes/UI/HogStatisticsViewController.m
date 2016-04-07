@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _navbarTitle.title = [NSLocalizedString(@"WorstHogsTitle", nil) uppercaseString];
+    
     // Assign reusable source for top hogs
     TopHogsTableView *topHogs = [TopHogsTableView new];
     [topHogs attachSpinner:_spinner withBackground:_spinnerBackground];
@@ -34,6 +36,7 @@
     [_topHogsTable release];
     [_spinner release];
     [_spinnerBackground release];
+    [_navbarTitle release];
     [super dealloc];
 }
 @end

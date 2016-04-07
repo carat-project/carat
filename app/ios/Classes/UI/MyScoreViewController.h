@@ -26,6 +26,7 @@
 @property (retain, nonatomic) IBOutlet MeasurementBar *cpuUsageBar;
 @property (retain, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
 @property (retain, nonatomic) IBOutlet ProgressUpdateView *progressUpdateView;
+@property (retain, nonatomic) IBOutlet UINavigationItem *navbarTitle;
 
 - (IBAction)showJScoreExplanation:(id)sender;
 - (IBAction)showProcessList:(id)sender;

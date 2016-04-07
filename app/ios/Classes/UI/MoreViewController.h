@@ -27,5 +27,6 @@
 - (IBAction)tutorialClicked:(id)sender;
 - (IBAction)aboutClicked:(id)sender;
 @property (retain, nonatomic) IBOutlet UILabel *versionLabel;
+@property (retain, nonatomic) IBOutlet UINavigationItem *navigationBar;
 
 @end

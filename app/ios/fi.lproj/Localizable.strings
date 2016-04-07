@@ -7,14 +7,14 @@
 */
 //DashBoard starts
 
-"Dashboard"="Dashboard";
+"Dashboard"="Yleisnäkymä";
 "Carat" = "Carat";
 "BatteryLifeLabel"="Akun kesto";
 "Bugs"="Bugit";
 "Hogs"="Hogit";
 "Statistics"="Statistiikka";
 "Actions"="Ehdotukset";
-"MyDevice"="LAITTEENI";
+"MyDevice"="LAITETIEDOT";
 "View"="Näkymä";
 "ViewText"="NÄYTÄ";
 "UpdatedNowTxt"= "Juuri päivitetty";
@@ -25,12 +25,13 @@
 "MainTitle"="Carat Collaborative Energy Diagnosis";
 "MainDesc"="Carat on tutkimusprojekti Helsingin Yliopistolta ja UC Berkeleyn AMP Labista. Carat auttaa löytämään ja korjaamaan akunkeston ongelmia, ja antaa henkilökohtaisia ehdotuksia. Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa. Carat kerää ja raportoi puhelimestasi yleistä käyttötietoa, joka mahdollistaa Caratin tarjoamat toiminnot. Tähän ei missään tapauksessa sisälly henkilökohtaista tietoa.\nCaratia kehitetään jatkuvasti, joten kannattaa tarkistaa uudet ehdotukset silloin tällöin. Mitä enemmän käytät Caratia, sitä tarkempaa tietoa se tarjoaa.";
 "BugsDesc"="Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa.";
-"HogsStatisticsDesc"="Hogit ovat sovelluksia, joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Tässä 20 pahinta hogia maailmanlaajuisesti.";
+"HogStatisticsDesc"="Hogit ovat sovelluksia, joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Tässä 20 pahinta hogia maailmanlaajuisesti.";
 "HogsDesc"="Hogit ovat sovelluksia, joita käyttäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akkukestoa.";
 "Eula"="Eula";
+"ReadEula"="Lue EULA";
 "EulaShortDesc"="Carat kerää yleistä tietoa laitteestasti ja sen käytöstä. Käyttääksesi tätä sovellusta, sinun tulee hyväksyä EULA.";
-"Accept"="ACCEPT";
-"AcceptInfo"="By proceeding you accept EULA and privacy policy.";
+"Accept"="Hyväksy";
+"AcceptInfo"="Jatkamalla hyväksyt EULA:n ja yksityisyyskäytännön";
 "EulaPrivacyPolicy" = "Eula privacy policy";
 //Tutorial ends
 //My Device starts (Old CurrentView)
@@ -61,14 +62,16 @@
 "NoHogsMessage"="Tarkista tilanne viikon päästä.\n\nJos sovelluksesi käyttäytyvät normaalisti, tämä välilehti on tyhjä. Kun jokin sovellus alkaa käyttää huomattavasti enemmän energiaa tällä laitteella verrattuna muihin, se ilmestyy tähän.";
 //HogsView ends
 //TopHogsView starts
-"TopHogs"="Pahimmat 20 hogia maailmanlaajuisesti";
-"SamplesText"="Otoksia:";
+"WorstHogsTitle"="Pahimmat hogit";
+"TopHogs"="Pahimmat 20 hogia";
+"SamplesText"="Mittauksia:";
 "BatteryLifeImpact"="Vaikutus akkukestoon:";
 "ReportedBy"="Raportoinut:";
-"PercentageCaratUsers"="%.2f%% Carat-käyttäjistä";
+"PercentageCaratUsers"="%.2f%% Caratin käyttäjistä";
 "Unknown"="Ei tiedossa";
 //TopHogsView ends
 //Global results starts
+"GlobalStatistics"="Statistiikka";
 "GlobalResults"="Globaalit tulokset";
 "AllReports"="Kaikki raportit";
 "GeneralStatistics"="Yleinen statistiikka";
@@ -89,7 +92,7 @@
 "OK"="OK";
 //No network connection alert ends
 //Actions view start
-"ActionsDesc"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
+"ActionsDesc"="Ehdotukset-lista kertoo, kuinka saat akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.";
 "ActionsEmpty"="You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...";
 "Stop"="Stop";
 "ForeGroundApp"="Foreground App";
@@ -119,24 +122,25 @@
 "ProcessMessage"="Prosessilista näyttää käynnissä olevat sovellukset, taustaprosessit, ja järjestelmän osat.";
 //ProcessView ends
 //Empty view starts
-"NothingToReport" = "Nothing to report!";
-"EmptyViewDesc" = "You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...";
+"NothingToReport" = "Ei raportoitavaa vielä!";
+"EmptyViewDesc" = "Jos juuri aloit käyttää Caratia, tarvitsemme lisää aikaa tietojen keräämiseen laitteeltasi, joskus viikon tai enemmän. Tarkistathan uudelleen myöhemmin. Silläaikaa yritämme kovasti ottaa selvää mitä akunkestollesi tapahtuu..\n\nParhaiden tulosten saamiseksi avaa Carat kerran päivässä viikon ajan. Tarkistathan uudelleen myöhemmin.";
 //Empty view ends
 // EXPLANATIONS
-"JScoreDesc"="The J-Score represents the percentile battery life you see relative to all other devices being measured by Carat. \n\nSo, if you have a J-Score of 50, that means your expected battery life is better than half of our users; a score of 99 means you have better battery life than 99 of our users. Of course, a single number does not provide a complete description of your battery life. \n\nA low J-Score could mean that your device is using a big battery inefficiently or a small battery with average efficiency. Similarly, a high J-Score could simply mean that you don\'t use your device heavily. Carat computes a huge variety of statistics, and the J-Score is just one of them.";
+"JScoreDesc"="J-Score kertoo, kuinka monen parhaan joukossa Caratin käyttäjistä olet akunkeston suhteen\n\nJos J-Scoresi on 55, akunkestosi on parempi kuin 55%:lla käyttäjistä. J-Score 99 tarkoittaa, että akunkestosi on parhaiden 1% joukossa.\n\nTämä ei välttämättä kerro kaikkea akunkestostasi. Pieni J-Score voi johtua kovasta kulutuksesta isolla akulla, tai keskitason käytöstä pienellä akulla. Voit samasta syystä saada korkean J-Scoren unohtamalla puhelimesi lentotilaan viikoksi.";
 
-"MemoryDesc"="The operating system (OS) classifies your device\'s physical memory as either used or free. If memory is used, it means there is currently data there that belongs to some process (like one of your apps or the OS, itself). When the device runs out of free memory, it needs to make room so it can store new data, which means closing apps that might be running in the background or asking your apps to throw away data they aren\'t using. The OS then further subcategorizes used memory as being either active or inactive, depending on whether it was accessed recently or not, respectively. When the OS runs out of free memory, it starts reclaiming inactive memory. When you open a bunch of apps, the fraction of used memory may increase; when the apps you have running are working with lots of data (often an energy-intensive task), the fraction of active memory may increase. The OS also preloads often used applications into memory, shortening wait times.";
-"CpuUsageDesc"="CPU-käyttö kertoo kuinka kovassa käytössä laitteesi prosessori on.";
+"MemoryDesc"="Käyttöjärjestelmä (KJ) luokittelee laitteen muistin joko käytetyksi tai vapaaksi. Jos muisti on käytössä, siellä on jonkin prosessin tietoja (esim. jonkin sovelluksen tai itse käyttöjärjestelmän). Kun vapaa muisti loppuu, KJ sulkee sovelluksia tai käskee niitä poistamaan tilapäisiä tietoja muistin vapauttamiseksi.\n\nKJ luokittelee käytetyn muistin joko aktiiviseksi tai passiviseksi, riippuen siitä milloin sitä on viimeksi käytetty. Kun vapaa muisti loppuu, KJ vapauttaa ensin passiivista muistia.\n\nKun avaat useita ohjelmia, käytetyn muistin määrä voi kasvaa. Kun käyttämäsi sovellukset avaavat paljon tiedostoja, (ja siten myös käyttävät energiaa), aktiivisen muistin määrä voi kasvaa. KJ myös lataa etukäteen usein käytettyjä sovelluksia muistiin, jotta niiden käyttö olisi jouhevampaa.";
+"CpuUsageDesc"="Suorittimen käyttö kertoo, kuinka paljon laitteesi suoritustehosta on käytössä. Suuri prosenttiluku tarkoittaa, että laite on täyskuormituksessa suoritustehon suhteen, joka tapahtuu tyypillisesti pelatessa tai asentaessa uusia sovelluksia.";
 "WhatAreTheseNumbersDesc"="Expected benefit is the amount of battery life that fixing the hog/bug is expected to yield. Fixing hogs means killing the app and using it less, while fixing a bug may mean just...";
 "WellBehavedDesc"="Hyvin käyttäytyvät sovellukset käyttävät sopivasti energiaa, eivätkä vaadi käyttäjältä erityisiä toimenpiteitä.";
 
 // MENU
-"Settings"="Settings";
-"WifiOnly"="Use Wifi only";
-"HideApps"="Hide apps with a small impact";
-"FeedBack"="Give feedback";
-"Tutorial"="Show tutorial";
-"About"="About";
+"Settings"="Asetukset";
+"WifiOnly"="Käytä vain wifiä";
+"HideApps"="Piilota pienen vaikutuksen sovellukset";
+"HideAppsTitle"="Piilota sovelluksia";
+"FeedBack"="Anna palautetta";
+"Tutorial"="Näytä esittely";
+"About"="Tietoja";
 
 //About
 "AboutTittle"="Carat";
@@ -167,7 +171,7 @@
 "Select"="Valitse";
 
 //Share messages
-"JScoreShareMessage" = "J-Scoresi on %@. Selvitä omasi ja paranna akkusi kestävyyttä!";
+"JScoreShareMessage" = "J-Scoreni on %@. Selvitä omasi ja paranna akkusi kestävyyttä!";
 "CaratShareMessage" = "Carat on ilmainen sovellus, jolla pystyt selvittämään mikä kuluttaa akkuasi ja onko tämä normaalia vai voitko tehdä asialle jotain.";
 "CaratHomePage" = "http://carat.cs.helsinki.fi";
 "EmailMessageTittle" = "Akun diagnosointi Caratilla";
@@ -178,8 +182,8 @@
 "UpdatingMainReports" = "Päivitetään laitetietoja...";
 "UpdatingHogReports" = "Päivitetään hogeja...";
 "UpdatingBugReports" = "Päivitetään bugeja...";
-"UpdatedJust" = "Päivitetty juuri nyt\r%i otosta lähetetty";
-"UpdatedNever" = "Ei koskaan päivitetty\r%i otosta lähetetty";
+"UpdatedJust" = "Päivitetty juuri nyt\r%i mittausta lähetetty";
+"UpdatedNever" = "Ei koskaan päivitetty\r%i mittausta lähetetty";
 "Updated" = "Päivitetty ";
 "Ago" = "sitten";
 "Samples" = "%i mittausta lähetetty";

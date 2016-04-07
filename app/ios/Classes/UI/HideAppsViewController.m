@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _navbarTitle.title = [NSLocalizedString(@"HideAppsTitle", nil) uppercaseString];
     _hideChoises = [[NSArray alloc] initWithObjects:NSLocalizedString(@"ShowAll", nil), NSLocalizedString(@"Five", nil),
                   NSLocalizedString(@"Ten", nil), NSLocalizedString(@"Twenty", nil), NSLocalizedString(@"Hour", nil), nil];
     float limit = [[Globals instance] getHideConsumptionLimit];
@@ -111,6 +112,7 @@ numberOfRowsInComponent:(NSInteger)component
 - (void)dealloc {
     [_hideChoises release];
     [_pickerView release];
+    [_navbarTitle release];
     [super dealloc];
 }
 - (IBAction)selectClicked:(id)sender {

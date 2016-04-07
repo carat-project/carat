@@ -28,6 +28,7 @@
 "HogsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Closing hogs may improve battery life.";
 "HogStatisticsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Here are the top 20 worst hogs globally.";
 "Eula"="Eula";
+"ReadEula"="Read EULA";
 
 // Unicode character U+2011 is a non-breaking hyphen
 "EulaShortDesc"="Carat periodically collects generic information about your device and how you are using it. In order to use this application, you need to accept the End\U2011user License Agreement.";
@@ -63,6 +64,7 @@
 "NoHogsMessage"="Please check back in a week.\n\nIf your apps are behaving normally, there will be no bugs here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
 //HogsView ends
 //TopHogsView starts
+"WorstHogsTitle"="Hog statistics";
 "TopHogs"="Top 20 hogs globally";
 "SamplesText"="Samples:";
 "BatteryLifeImpact"="Battery life impact:";
@@ -71,6 +73,7 @@
 "Unknown"="Unknown";
 //TopHogsView ends
 //Global results starts
+"GlobalStatistics"="Statistics";
 "GlobalResults"="Global results";
 "AllReports"="All reports";
 "GeneralStatistics"="General statistics";
@@ -136,6 +139,7 @@
 "Settings"="Settings";
 "WifiOnly"="Use Wifi only";
 "HideApps"="Hide apps with a small impact";
+"HideAppsTitle"="Hide apps";
 "FeedBack"="Give feedback";
 "Tutorial"="Show tutorial";
 "About"="About";

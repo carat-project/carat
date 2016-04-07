@@ -23,6 +23,7 @@ bool genStatLoaded;
     
     [_spinner startAnimating];
     _wellBehivedLabel.text = NSLocalizedString(@"WellBehaved", nil);
+    _navbarTitle.title = [NSLocalizedString(@"GlobalStatistics", nil) uppercaseString];
     
     popModelLoaded = false;
     genStatLoaded = false;
@@ -362,6 +363,7 @@ bool genStatLoaded;
     [_androidPopularModelLabel release];
     [_spinnerBackGround release];
     alert = nil;
+    [_navbarTitle release];
     [super dealloc];
 }
 - (IBAction)showWellBehivedInfo:(id)sender {

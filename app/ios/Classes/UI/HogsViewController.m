@@ -16,6 +16,8 @@
 #pragma mark - View Life Cycle methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _contentTitle.text = NSLocalizedString(@"NothingToReport",nil);
+    _content.text = NSLocalizedString(@"EmptyViewDesc",nil);
     // Do any additional setup after loading the view from its nib.
     [self setHogBugReport:[[CoreDataManager instance] getHogs:NO withoutHidden:YES]];
     
@@ -55,6 +57,8 @@
 }
 
 - (void)dealloc {
+    [_content release];
+    [_contentTitle release];
     [super dealloc];
 }
 @end
