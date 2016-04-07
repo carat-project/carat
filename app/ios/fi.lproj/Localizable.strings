@@ -49,7 +49,7 @@
 "CPUUsage"="Processorin käyttö";
 //My Device ends
 //BugsView start
-"ExpectedImp"="Odotettava parannus ";
+"ExpectedImp"="Odotettava parannus: ";
 "Samples"="Mittauksia";
 "Error"="Virheitä";
 "SamplesWithout"="Mittauksia ilman";
@@ -114,8 +114,9 @@
 "KillAppDesc" = "Paina kotinäkymässäsi koti-painiketta nopeasti kaksi kertaa avataksesi sovellusten hallinnan. Jos tarpeen, pyyhkäise eteen tai taakse löytääksesi sovelluksen, jonka haluat sulkea. Kun olet löytänyt sen, paina ja pidä sovelluksen kuvaketta pohjassa kunnes punainen ympyrä ilmestyy sen ylälaitaan. Paina tuota punaista ympyrää.\n\nKun olet sulkenut haluamasi sovellukset, paina koti-painiketta sulkeaksesi prosessinhallinnan. Jos tarkoituksenasi oli käynnistää sovellus uudestaan, voit avata sen normaaliin tapaan.";
 "KillAppDescModern" = "Paina koti-painiketta nopeasti kaksi kertaa nähdäksesi äskettäin käyttämäsi sovellukset. Jos tarpeen, pyyhkäise vasemmalle tai oikealle löytääksesi sen sovelluksen, jonka haluat sulkea. Voit sulkea sovelluksen pyyhkäisemällä sen esikatselukuvaa ylöspäin.\n\nKun haluat poistua näkymästä, paina koti-painiketta tai napauta sovellusta, johon haluat palata. Jos tarkoituksenasi oli käynnistää sovellus uudelleen, voit avata sen uudelleen normaaliin tapaan.";
 "UpgradeOSDesc" = "Plug your device into a computer with iTunes installed and with access to the internet. Your device should show up in the side bar under a Devices category.\n\nSelect it, and make sure the Summary tab is selected along the iTunes title bar. Under the Version section of this window, you should see a button \"Check for Update\"\n\nPre ss this button. iTunes will walk you through the rest of the upgrade process.";
-"CollectDataTitle" = "How to Help Carat Collect Data";
-"CollectDataDesc" = "You should open Carat regularly so it can take samples of your device state and communicate these to our servers. We suggest opening Carat every day, or as often as you remember, especially for the first week after installing it. It can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports. Make sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\n\nThe more often you open the app, the more quickly it will generate reports, the more information those reports will contain, and the more accurate the recommendations will be.\n\nCarat is not allowed to run as a background app, which is why it needs your help. The app subscribes to various notifications that let it take a few samples when it's not in the foreground, but Carat cannot reopen itself after iOS closes it (to free up resources) or after the device is restarted.";
+"CollectDataTitle" = "Kuinka autan Caratia keräämään dataa?";
+"CollectDataDesc" = "Kun käytät Caratia säännöllisesti, se kerää ja lähettää mittauksia laittesi tilasta palvelimillemme. Suosittelemme avaamaan Caratin kerran päivässä, tai niin usein kuin muistat, erityisesti ensimmäisen viikon ajan. Voi mennä viikko tai pidempään ennen kuin Carat on kerännyt tarpeeksi dataa henkilökohtaisten raporttien generoimiseksi. Varmista, että Caratilla on mahdollisuus kommunikoida palvelimiemme kanssa (avaa Carat kun sinulla on aktiivinen Internet-yhteys).\n\nMitä useammin käytät Caratia, sitä nopeammin se generoi raportteja, sitä enemmän tietoa raportit sisältävät, ja sitä tarkempia suositukset ovat.\n\nCarat ei käytä taustapalveluja laitteellasi, ja siksi se tarvitsee apuasi. Carat ottaa vastaan akunmuutosilmoituksia, jotka auttavat sitä ottamaan mittauksia kun se ei ole näkyvillä, mutta Carat ei voi avata itseään automaattisesti jos se suljetaan sovellustenhallinnasta, automaattisesti muistin säästämiseksi, tai jos puhelin käynnistetään uudelleen.
+";
 //Actions view ends
 //ProcessView starts
 "Version"="Version";

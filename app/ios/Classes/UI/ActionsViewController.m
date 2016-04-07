@@ -206,7 +206,6 @@
 
 -(void)setTopRowData:(ActionObject *)act cell:(ActionTableViewCell *)cell
 {
-     DLog(@"setTopRowData");
     NSString *appName = act.actionText;
     cell.actionString.text = appName;
     
@@ -224,7 +223,11 @@
         cell.actionType = ActionTypeGlobalStats;
     }
     else {
-        NSString *impValue = [NSString stringWithFormat:@"%@± %@", [Utilities doubleAsTimeNSString:act.actionBenefit], [Utilities doubleAsTimeNSString:act.actionError]];
+        NSString *impValue = [NSString stringWithFormat:@"%@", [Utilities doubleAsTimeNSString:act.actionBenefit]];
+        NSString *error = [Utilities doubleAsTimeNSString:act.actionError];
+        if(error && error.length > 0){
+            impValue = [impValue stringByAppendingString:[NSString stringWithFormat:@"± %@", error]];
+        }
         NSString *bodyText = NSLocalizedString(@"ExpectedImp", nil);
         NSMutableString *expImpLabelText = [[NSMutableString alloc]init];
         [expImpLabelText appendString:bodyText];
@@ -334,16 +337,14 @@
     
     if ([self.expandedCells containsObject:indexPath])
     {
-        DLog(@"heightForRowAtIndexPath");
         ActionTableViewCell *cell = [tableViewCellsList objectAtIndex:indexPath.row];
         
         if(cell.descValue.length > 0){
         //UIFont *font = [UIFont fontWithName:@"System" size:15];
         UIFont *font =  cell.actionString.font;
         [font fontWithSize:15];
-        CGRect frame = [self getTextFrame:cell.descValue font:font top:0];
-        CGFloat expandedTextHeight = 56.0f + frame.size.height + 16.0f;//margins 8 + 8
-        NSLog(@"expandedTextHeight: %f", expandedTextHeight);
+        CGFloat height = [self getLabelHeight:cell.actionString withText:cell.descValue];
+        CGFloat expandedTextHeight = 56.0f + height + 16.0f;//margins 8 + 8
             return expandedTextHeight;
         }
         else{
@@ -356,13 +357,10 @@
     }
 }
 
-
--(CGFloat)getTextHeight:(UILabel *)label
-{
-    UIFont *font = label.font;//[UIFont systemFontOfSize:12];//[UIFont fontWithName:@"HelveticaNeue" size:fontSize];
-    
-    CGRect frame = [self getTextFrame:label.text font:font top:0];
-    return frame.size.height;
+-(CGFloat)getLabelHeight:(UILabel*)label withText:(NSString*)text{
+    CGFloat width = UI_SCREEN_W-16.0f;
+    CGSize expected = [text boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:label.font} context:nil].size;
+    return expected.height;
 }
 
 -(CGRect)getTextFrame:(NSString *)text font:(UIFont *) font top:(CGFloat)top
