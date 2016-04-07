@@ -105,7 +105,11 @@
     double benefit = (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
     double benefit_max = (100/([hb expectedValueWithout]-[hb errorWithout]) - 100/([hb expectedValue]+[hb error]));
     double error = benefit_max-benefit;
-    NSString *impValue =  [NSString stringWithFormat:@"%@ ± %@", [Utilities doubleAsTimeNSString:benefit], [Utilities doubleAsTimeNSString:error]];
+    NSString *impValue = [NSString stringWithFormat:@"%@", [Utilities doubleAsTimeNSString:benefit]];
+    NSString *errorString = [Utilities doubleAsTimeNSString:error];
+    if(errorString && errorString.length > 0){
+        impValue = [impValue stringByAppendingString:[NSString stringWithFormat:@"± %@", errorString]];
+    }
     NSString *bodyText = NSLocalizedString(@"ExpectedImp", nil);
     NSMutableString *expImpLabelText = [[NSMutableString alloc]init];
     [expImpLabelText appendString:bodyText];
