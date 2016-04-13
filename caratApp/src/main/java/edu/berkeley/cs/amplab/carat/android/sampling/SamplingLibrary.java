@@ -1993,8 +1993,8 @@ public final class SamplingLibrary {
 				FlurryAgent.logEvent("Killing app=" + (label == null ? "null" : label) + " proc=" + packageName
 						+ " pak=" + (p == null ? "null" : p.packageName));
 				am.killBackgroundProcesses(packageName);
-				Toast.makeText(context, context.getResources().getString(R.string.stopping) + ((label == null) ? "" : " "+label),
-						Toast.LENGTH_SHORT).show();
+				/*Toast.makeText(context, context.getResources().getString(R.string.stopping) + ((label == null) ? "" : " "+label),
+						Toast.LENGTH_SHORT).show();*/
 				resetRunningProcessInfo();
 				return true;
 			} catch (Throwable th) {

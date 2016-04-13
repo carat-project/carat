@@ -22,6 +22,7 @@ import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
+import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
 import edu.berkeley.cs.amplab.carat.android.fragments.CallbackWebViewFragment;
 import edu.berkeley.cs.amplab.carat.android.model_classes.StaticAction;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
@@ -49,6 +50,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         private Button killAppButton;
         private Button appManagerButton;
         private TextView appCategory;
+        private TextView informationLink;
     }
 
     private static class StaticViewHolder extends ActionViewHolder {
@@ -63,6 +65,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private ArrayList<StaticAction> staticActions = new ArrayList<>();
     private ExpandableListView lv;
     private MainActivity mainActivity;
+    private BaseDialog dialog;
 
     private int previousGroup = -1;
     private final int NORMAL_ACTION = 0;
@@ -161,6 +164,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         holder.killAppButton = (Button) v.findViewById(R.id.stop_app_button);
         holder.appManagerButton = (Button) v.findViewById(R.id.app_manager_button);
         holder.appCategory = (TextView) v.findViewById(R.id.app_category);
+        holder.informationLink = (TextView) v.findViewById(R.id.action_information);
         return holder;
     }
 
@@ -262,6 +266,17 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                 openAppDetails(item);
             }
         });
+
+        holder.informationLink.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                dialog = new BaseDialog(context,
+                        context.getString(R.string.actions_info_title),
+                        context.getString(R.string.actions_expanded_info),
+                        null);
+                dialog.showDialog();
+            }
+        });
     }
 
     private void setItemViews(View v, SimpleHogBug item) {
@@ -360,7 +375,9 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             View v = lv.getChildAt(previousGroup);
             if(v != null){
                 ImageView collapseIcon = (ImageView) v.findViewById(R.id.collapse_icon);
-                collapseIcon.setImageResource(R.drawable.collapse_down);
+                if(collapseIcon != null){
+                    collapseIcon.setImageResource(R.drawable.collapse_down);
+                }
             }
         }
         previousGroup = groupPosition;
@@ -395,7 +412,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                         String submitted = context.getString(R.string.submitted);
                         String thanks = context.getString(R.string.thank_you);
                         String message = submitted + ". " + thanks;
-                        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
                     }
                 });
                 mainActivity.onBackPressed();

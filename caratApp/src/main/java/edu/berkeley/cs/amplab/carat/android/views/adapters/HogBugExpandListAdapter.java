@@ -1,5 +1,6 @@
 package edu.berkeley.cs.amplab.carat.android.views.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -153,11 +154,19 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
     private void setViewsInChild(View v, SimpleHogBug item) {
         TextView samplesText = (TextView) v.findViewById(R.id.samples_title);
         TextView samplesValue = (TextView) v.findViewById(R.id.samples_amount);
+        TextView samplesError = (TextView) v.findViewById(R.id.error_amount);
         TextView samplesWithoutText = (TextView) v.findViewById(R.id.samples_without_title);
         TextView samplesWithoutValue = (TextView) v.findViewById(R.id.samples_without_amount);
         TextView whatAreTheseNumbers = (TextView) v.findViewById(R.id.what_are_these_numbers);
 
         samplesText.setText(R.string.samples);
+        int[] info = item.getBenefit();
+        if(info.length >= 5){
+            int errorMin = info[3];
+            int errorSec = info[4];
+            String error = errorMin >0 ? errorMin+"m" : errorSec+"s";
+            samplesError.setText(error);
+        }
         samplesValue.setText(String.valueOf(item.getSamples()));
         samplesWithoutText.setText(R.string.samplesWithout);
         samplesWithoutValue.setText(String.valueOf(item.getSamplesWithout()));

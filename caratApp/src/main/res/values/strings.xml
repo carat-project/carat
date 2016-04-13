@@ -190,12 +190,12 @@
 
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>
-    <string name="app_manager_title">APP MANAGER</string>
+    <string name="app_manager_title">MANAGE</string>
     <string name="app_category_title">Foreground App</string>
     <string name="actions_list_message">The Actions list tells you how to make your battery last longer and how much improvement to expect.</string>
     <string name="actions_expanded_info">Stopping an application closes it, so it no longer drains your
         battery. Some applications that also run on the background, such as Facebook, may automatically
-        start up again after being stopped. If an app cannot be stopped, you can still force stop or uninstall it
+        start up again after being stopped.\n\nIf an app cannot be stopped, you can still force stop or uninstall it
         from the Application Manager.</string>
     <string name="no_actions_title">You have no actions.</string>
     <string name="no_actions_message">
@@ -209,6 +209,9 @@
         app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground,
         but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.
     </string>
+
+    <string name="show_information">Show information about actions</string>
+    <string name="actions_info_title">Managing applications</string>
 
     <string name="survey_title">SURVEY</string>
     <string name="survey_action_title">Tell us about yourself!</string>
@@ -341,11 +344,11 @@ delete these from your file.
     <string name="priority">Priority:</string>
     <string name="priorityDefault">Not running</string>
     <string name="prioritynotrunning">Not running</string>
-    <string name="priorityforeground">Current App</string>
-    <string name="prioritybackground">Running App</string>
+    <string name="priorityforeground">Current app</string>
+    <string name="prioritybackground">Running</string>
     <string name="priorityservice">Background Service</string>
-    <string name="priorityperceptible">Running App</string>
-    <string name="priorityvisible">Visible App</string>
+    <string name="priorityperceptible">Running</string>
+    <string name="priorityvisible">Visible</string>
     <string name="prioritysuggestion">Suggestion</string>
 
     <!-- Settings screen related -->

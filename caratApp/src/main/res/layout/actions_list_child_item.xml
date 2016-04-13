@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="15dp"
-    android:paddingRight="15dp"
+    android:paddingRight="5dp"
     android:paddingTop="15dp"
     android:clickable="false"
     android:focusable="false"
@@ -20,8 +20,8 @@
     <Button
         android:id="@+id/stop_app_button"
         style="@style/StopAppButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
@@ -30,7 +30,19 @@
         android:layout_weight="1"
         android:text="@string/stop_app_title" />
 
-    <LinearLayout
+        <Button
+            android:id="@+id/app_manager_button"
+            style="@style/StopAppButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_weight="1"
+            android:text="@string/app_manager_title" />
+
+        <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -38,14 +50,6 @@
         android:clickable="false"
         android:focusable="false"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/app_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/stop_app_button"
-            android:clickable="false"
-            android:focusable="false"
-            android:text="Foreground App" />
     </LinearLayout>
 
 </LinearLayout>
@@ -55,23 +59,10 @@
         android:layout_height="wrap_content"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:paddingTop="15dp"
+        android:paddingTop="5dp"
         android:clickable="false"
         android:focusable="false"
         android:weightSum="2">
-
-        <Button
-            android:id="@+id/app_manager_button"
-            style="@style/StopAppButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="10dp"
-            android:clickable="false"
-            android:focusable="false"
-            android:layout_weight="1"
-            android:text="@string/app_manager_title" />
 
     </LinearLayout>
 
@@ -83,8 +74,38 @@
         android:padding="15dp">
 
         <TextView
+            android:id="@+id/type_title"
+            style="@style/MediumBlackText"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/priority" />
+
+        <TextView
+            android:id="@+id/app_category"
+            style="@style/MediumBlackText"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/prioritybackground" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:id="@+id/app_category_separator"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/app_category"
+            android:background="@color/lightgray" />
+
+        <TextView
             android:id="@+id/samples_title"
-            style="@style/LargeBlackText"
+            style="@style/MediumBlackText"
+            android:layout_below="@+id/app_category_separator"
+            android:layout_marginTop="15dp"
             android:clickable="false"
             android:focusable="false"
             android:layout_width="wrap_content"
@@ -94,7 +115,9 @@
 
         <TextView
             android:id="@+id/samples_amount"
-            style="@style/LargeBlackText"
+            style="@style/MediumBlackText"
+            android:layout_below="@+id/app_category_separator"
+            android:layout_marginTop="15dp"
             android:clickable="false"
             android:focusable="false"
             android:layout_width="wrap_content"
@@ -102,42 +125,36 @@
             android:layout_alignParentRight="true"
             android:text="263" />
 
+        <View
+            android:layout_marginTop="10dp"
+            android:id="@+id/samples_amount_separator"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/samples_amount"
+            android:background="@color/lightgray" />
+
+
+
+        <TextView
+            android:id="@+id/action_information"
+            style="@style/MediumOrangeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/samples_amount_separator"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="@string/show_information" />
+
+
     </RelativeLayout>
 
-    <View
+   <!-- <View
         android:id="@+id/view2"
         android:layout_width="fill_parent"
         android:clickable="false"
         android:focusable="false"
         android:layout_height="1dp"
-        android:background="@color/lightgray" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:clickable="false"
-        android:focusable="false"
-        android:padding="15dp">
-
-        <TextView
-            style="@style/LargeBoldBlackText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:focusable="false"
-            android:layout_marginBottom="15dp"
-            android:text="INFO" />
-
-        <TextView
-            android:id="@+id/actions_info_message"
-            style="@style/MediumBlackText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:focusable="false"
-            android:text="@string/actions_expanded_info" />
-
-    </LinearLayout>
+        android:background="@color/lightgray" />-->
 
 </LinearLayout>
