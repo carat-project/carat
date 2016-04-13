@@ -300,14 +300,16 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                         }
                     }
 
+                    // Subtract the 'help carat collect data' from action count if needed.
                     int staticActionsAmount = mainActivity.getStaticActionsAmount();
+                    if(actionsAmount > 0) staticActionsAmount--;
 
                     hogAmountText.setText(String.valueOf(hogsCount));
                     bugAmountText.setText(String.valueOf(bugsCount));
                     actionsAmountText.setText(String.valueOf(actionsAmount+staticActionsAmount));
                     mainActivity.setBugAmount(String.valueOf(bugsCount));
                     mainActivity.setHogAmount(String.valueOf(hogsCount));
-                    mainActivity.setActionsAmount(actionsAmount);
+                    mainActivity.setActionsAmount(actionsAmount+staticActionsAmount);
                 }
                 mainActivity.setJScore(CaratApplication.getJscore());
                 mainActivity.setCpuValue();

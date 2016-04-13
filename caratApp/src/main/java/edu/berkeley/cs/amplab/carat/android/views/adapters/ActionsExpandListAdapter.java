@@ -59,7 +59,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private Context context;
     private LayoutInflater inflater;
     private CaratApplication caratApplication;
-    private ArrayList<SimpleHogBug> allReports = new ArrayList<>();
+    private ArrayList<SimpleHogBug> appActions = new ArrayList<>();
     private ArrayList<StaticAction> staticActions = new ArrayList<>();
     private ExpandableListView lv;
     private MainActivity mainActivity;
@@ -68,8 +68,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     private final int NORMAL_ACTION = 0;
     private final int STATIC_ACTION = 1;
 
-    public ActionsExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication,
-                                    SimpleHogBug[] hogReport, SimpleHogBug[] bugReport, Context context) {
+    public ActionsExpandListAdapter(MainActivity mainActivity, ExpandableListView lv,
+                                    CaratApplication caratApplication, ArrayList<SimpleHogBug> appActions, Context context) {
 
         this.context = context;
         this.caratApplication = caratApplication;
@@ -78,25 +78,15 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         this.lv.setOnGroupExpandListener(this);
         this.lv.setOnChildClickListener(this);
         this.mainActivity = mainActivity;
+        this.appActions = appActions;
 
-        allReports.addAll(filterByRunning(hogReport));
-        allReports.addAll(filterByRunning(bugReport));
-
-        this.staticActions = CaratApplication.getStaticActions();
+        if(appActions.isEmpty()){
+            this.staticActions = CaratApplication.getStaticActions();
+        } else {
+            this.staticActions = new ArrayList<>();
+        }
         inflater = LayoutInflater.from(caratApplication);
     }
-
-    private ArrayList<SimpleHogBug> filterByRunning(SimpleHogBug[] report){
-        ArrayList<SimpleHogBug> running = new ArrayList<>();
-        if(report == null) return running;
-        for(SimpleHogBug s : report){
-            if(SamplingLibrary.isRunning(mainActivity, s.getAppName())){
-                running.add(s);
-            }
-        }
-        return running;
-    }
-
     @Override
     public Object getChild(int groupPosition, int childPosition) {
         return childPosition;
@@ -121,7 +111,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                     convertView.setTag(expandedHolder);
                     break;
                 case STATIC_ACTION:
-                    int offset = groupPosition - allReports.size();
+                    int offset = groupPosition - appActions.size();
                     StaticAction item = staticActions.get(offset);
                     if(!item.isExpandable()) return convertView;
                     convertView = inflater.inflate(R.layout.actions_list_static_child, null);
@@ -136,11 +126,11 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         // Set child values
         switch(type) {
             case NORMAL_ACTION:
-                SimpleHogBug app = allReports.get(groupPosition);
+                SimpleHogBug app = appActions.get(groupPosition);
                 setViewsInChild(convertView, app);
                 break;
             case STATIC_ACTION:
-                groupPosition -= allReports.size();
+                groupPosition -= appActions.size();
                 StaticAction action = staticActions.get(groupPosition);
                 if(action.isExpandable()){
                     setStaticViewInChild(convertView, action);
@@ -188,17 +178,17 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public Object getGroup(int groupPosition) {
-        return allReports.get(groupPosition);
+        return appActions.get(groupPosition);
     }
 
     @Override
     public int getGroupCount() {
-        return allReports.size() + staticActions.size();
+        return appActions.size() + staticActions.size();
     }
 
     @Override
     public int getChildType(int groupPosition, int childPosition){
-        return (groupPosition >= allReports.size()) ? STATIC_ACTION : NORMAL_ACTION;
+        return (groupPosition >= appActions.size()) ? STATIC_ACTION : NORMAL_ACTION;
     }
 
     @Override
@@ -220,14 +210,14 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             convertView.setTag(holder);
         }
 
-        if (allReports == null || groupPosition < 0) return convertView;
-        if(groupPosition >= allReports.size()){
-            groupPosition -= allReports.size();
+        if (appActions == null || groupPosition < 0) return convertView;
+        if(groupPosition >= appActions.size()){
+            groupPosition -= appActions.size();
             StaticAction staticAction = staticActions.get(groupPosition);
             if(staticAction == null) return convertView;
             setStaticViews(convertView, staticAction);
         } else {
-            SimpleHogBug item = allReports.get(groupPosition);
+            SimpleHogBug item = appActions.get(groupPosition);
             if (item == null) return convertView;
             setItemViews(convertView, item);
         }
@@ -338,8 +328,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     @Override
     public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
         // Static actions might have a different action
-        if(groupPosition >= allReports.size()){
-            int offset = groupPosition - allReports.size();
+        if(groupPosition >= appActions.size()){
+            int offset = groupPosition - appActions.size();
             StaticAction action = staticActions.get(offset);
             if(!action.isExpandable()){
                 handleStationaryAction(action);
@@ -360,8 +350,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public void onGroupExpand(int groupPosition) {
-        if(groupPosition >= allReports.size()){
-            int offset = groupPosition - allReports.size();
+        if(groupPosition >= appActions.size()){
+            int offset = groupPosition - appActions.size();
             StaticAction action = staticActions.get(offset);
             if(!action.isExpandable()) return;
         }

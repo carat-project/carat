@@ -380,7 +380,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setActionsAmount(int actionsAmount) {
-        this.actionsAmount = String.valueOf(actionsAmount+staticActionsAmount);
+        this.actionsAmount = String.valueOf(actionsAmount);
     }
 
     public void replaceFragment(Fragment fragment, String tag) {

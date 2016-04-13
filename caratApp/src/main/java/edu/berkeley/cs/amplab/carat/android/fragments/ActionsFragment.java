@@ -12,10 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
+import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.views.adapters.ActionsExpandListAdapter;
@@ -76,26 +78,39 @@ public class ActionsFragment extends Fragment implements Serializable {
         hogReport = s.getHogReport();
         bugReport = s.getBugReport();
 
-        // TODO: This condition is incorrect and might need to be fixed
-        // Even when there are hogs/bugs stored, there may not be actions
-        // It is likely that the user has at least some quick hogs
-        if (s.hogsIsEmpty() && s.bugsIsEmpty() && CaratApplication.getStaticActions().isEmpty()) {
-            noActionsScroll.setVisibility(View.VISIBLE);
-            noActionsLayout.setVisibility(View.VISIBLE);
-            actionsHeader.setVisibility(View.GONE);
-            expandableListView.setVisibility(View.GONE);
-            return;
-        } else {
+        ArrayList<SimpleHogBug> running = new ArrayList<>();
+        running.addAll(filterByRunning(hogReport));
+        running.addAll(filterByRunning(bugReport));
+
+        // Populate actions list with running applications
+        if (!s.hogsIsEmpty() || !s.bugsIsEmpty() || !CaratApplication.getStaticActions().isEmpty()) {
             noActionsScroll.setVisibility(View.GONE);
             noActionsLayout.setVisibility(View.GONE);
             actionsHeader.setVisibility(View.VISIBLE);
             expandableListView.setVisibility(View.VISIBLE);
             expandableListView.setAdapter(new ActionsExpandListAdapter(mainActivity,
                     expandableListView, (CaratApplication) getActivity().getApplication(),
-                    hogReport, bugReport, mainActivity));
+                    running, mainActivity));
+        } else {
+            // Show a separate information screen when there are no actions
+            noActionsScroll.setVisibility(View.VISIBLE);
+            noActionsLayout.setVisibility(View.VISIBLE);
+            actionsHeader.setVisibility(View.GONE);
+            expandableListView.setVisibility(View.GONE);
         }
-
     }
+
+    private ArrayList<SimpleHogBug> filterByRunning(SimpleHogBug[] report){
+        ArrayList<SimpleHogBug> running = new ArrayList<>();
+        if(report == null) return running;
+        for(SimpleHogBug s : report){
+            if(SamplingLibrary.isRunning(mainActivity, s.getAppName())){
+                running.add(s);
+            }
+        }
+        return running;
+    }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
