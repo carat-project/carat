@@ -206,6 +206,9 @@
 
     <string name="show_information">Näytä lisätietoja toiminnoista</string>
     <string name="actions_info_title">Tietoa toiminnoista</string>
+    <string name="action_app_type">Sovelluksen tyyppi:</string>
+    <string name="hog">Hogi</string>
+    <string name="bug">Bugi</string>
 
     <string name="survey_title">KYSELY</string>
     <string name="survey_action_title">Esittele itsesi!</string>

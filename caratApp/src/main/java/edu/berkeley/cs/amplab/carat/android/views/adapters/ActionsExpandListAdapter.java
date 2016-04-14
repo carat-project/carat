@@ -23,7 +23,9 @@ import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
+import edu.berkeley.cs.amplab.carat.android.fragments.AboutFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.CallbackWebViewFragment;
+import edu.berkeley.cs.amplab.carat.android.fragments.DeviceFragment;
 import edu.berkeley.cs.amplab.carat.android.model_classes.StaticAction;
 import edu.berkeley.cs.amplab.carat.android.protocol.ClickTracking;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
@@ -50,6 +52,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         private Button killAppButton;
         private Button appManagerButton;
         private TextView appCategory;
+        private TextView reportType;
         private TextView informationLink;
     }
 
@@ -165,6 +168,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         holder.appManagerButton = (Button) v.findViewById(R.id.app_manager_button);
         holder.appCategory = (TextView) v.findViewById(R.id.app_category);
         holder.informationLink = (TextView) v.findViewById(R.id.action_information);
+        holder.reportType = (TextView) v.findViewById(R.id.hogbug_text);
         return holder;
     }
 
@@ -275,6 +279,16 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                         context.getString(R.string.actions_expanded_info),
                         null);
                 dialog.showDialog();
+            }
+        });
+
+        holder.reportType.setText(item.isBug() ? context.getString(R.string.bug) : context.getString(R.string.hog));
+        holder.reportType.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                AboutFragment aboutFragment = new AboutFragment();
+                aboutFragment.openGroup(item.isBug() ? 2 : 3);
+                mainActivity.replaceFragment(aboutFragment, Constants.FRAGMENT_ABOUT_TAG);
             }
         });
     }

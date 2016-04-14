@@ -22,6 +22,7 @@ public class AboutFragment extends Fragment {
     private LinearLayout mainFrame;
     private ExpandableListView expandableListView;
     private ArrayList<AboutItem> allAboutItems = new ArrayList<>();
+    private int defaultGroup = 0;
 
     @Override
     public void onAttach(Activity activity) {
@@ -53,6 +54,10 @@ public class AboutFragment extends Fragment {
         initViewRefs();
     }
 
+    public void openGroup(int groupId){
+        defaultGroup = groupId;
+    }
+
     private void initViewRefs() {
         CaratApplication app = (CaratApplication) getActivity().getApplication();
         expandableListView = (ExpandableListView) mainFrame.findViewById(R.id.expandable_about_list);
@@ -60,7 +65,7 @@ public class AboutFragment extends Fragment {
                 (mainActivity, expandableListView, app, allAboutItems));
         expandableListView.setFastScrollEnabled(true);
         expandableListView.setScrollingCacheEnabled(false);
-        expandableListView.expandGroup(0);
+        expandableListView.expandGroup(defaultGroup);
     }
 
     private void setAboutItems() {

@@ -212,6 +212,9 @@
 
     <string name="show_information">Show information about actions</string>
     <string name="actions_info_title">Managing applications</string>
+    <string name="action_app_type">Application type:</string>
+    <string name="hog">Hog</string>
+    <string name="bug">Bug</string>
 
     <string name="survey_title">SURVEY</string>
     <string name="survey_action_title">Tell us about yourself!</string>
