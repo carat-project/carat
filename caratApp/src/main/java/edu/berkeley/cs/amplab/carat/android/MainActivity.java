@@ -470,15 +470,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             memoryActiveConverted = (float) totalAndUsed[2] / (totalAndUsed[3] + totalAndUsed[2]);
         }
 
+        String caratVersion = "Carat " + BuildConfig.VERSION_NAME;
         String caratId = "Carat ID: " + CaratApplication.myDeviceData.getCaratId();
         String jScore = "JScore: " + getJScore();
         String osVersion = "OS Version: " + SamplingLibrary.getOsVersion();
         String deviceModel = "Device Model: " + Build.MODEL;
         String memoryUsed = "Memory Used: " + (memoryUsedConverted * 100) + "%";
         String memoryActive = "Memory Active: " + (memoryActiveConverted * 100) + "%";
+        String title = "[Carat][Android] Feedback from " + Build.MODEL + ", v"+BuildConfig.VERSION_NAME;
 
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "carat@cs.helsinki.fi", null));
-        intent.putExtra(Intent.EXTRA_TEXT, caratId + "\n" + jScore + "\n" + osVersion + "\n" + deviceModel
+        intent.putExtra(Intent.EXTRA_SUBJECT, title);
+        intent.putExtra(Intent.EXTRA_TEXT, caratVersion + "\n" + caratId + "\n" + jScore + "\n" + osVersion + "\n" + deviceModel
                 + "\n" + memoryUsed + "\n" + memoryActive);
 
         startActivity(Intent.createChooser(intent, "Send email"));
