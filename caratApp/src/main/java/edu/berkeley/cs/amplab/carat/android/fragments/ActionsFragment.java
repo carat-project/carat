@@ -13,6 +13,7 @@ import android.widget.ScrollView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.R;
@@ -101,14 +102,20 @@ public class ActionsFragment extends Fragment implements Serializable {
     }
 
     private ArrayList<SimpleHogBug> filterByRunning(SimpleHogBug[] report){
-        ArrayList<SimpleHogBug> running = new ArrayList<>();
-        if(report == null) return running;
+        HashMap<String, SimpleHogBug> running = new HashMap<>();
+        if(report == null) return new ArrayList<>();
         for(SimpleHogBug s : report){
             if(SamplingLibrary.isRunning(mainActivity, s.getAppName())){
-                running.add(s);
+                SimpleHogBug duplicate = running.get(s.getAppName());
+                if(duplicate != null
+                        && s.getAppPriority() == duplicate.getAppPriority()
+                        && s.getBenefit() == duplicate.getBenefit()){
+                    continue;
+                }
+                running.put(s.getAppName(), s);
             }
         }
-        return running;
+        return new ArrayList<>(running.values());
     }
 
 
