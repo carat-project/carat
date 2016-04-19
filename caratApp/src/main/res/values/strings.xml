@@ -250,7 +250,7 @@ These are the same for all languages. When translating,
 delete these from your file.
     -->
     <string name="app_name" translatable="false">Carat</string>
-    <string name="version_name" translatable="false">2.06</string>
+    <string name="version_name" translatable="false">2.07</string>
 
     <string name="jsna" translatable="false">N/A</string>
     <string name="fake_id" translatable="false">0</string>
