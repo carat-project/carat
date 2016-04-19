@@ -129,6 +129,7 @@ public class CaratApplication extends Application {
         }.start();
 
         setStorage(new CaratDataStorage(this));
+        setReportData(); // Show initial data asap
 
         new Thread() {
             private IntentFilter intentFilter;
