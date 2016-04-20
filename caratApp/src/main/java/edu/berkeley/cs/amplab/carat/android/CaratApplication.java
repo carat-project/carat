@@ -3,6 +3,7 @@ package edu.berkeley.cs.amplab.carat.android;
 import java.lang.ref.WeakReference;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -29,6 +30,7 @@ import edu.berkeley.cs.amplab.carat.android.protocol.SampleSender;
 import edu.berkeley.cs.amplab.carat.android.sampling.Sampler;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
+import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.thrift.Reports;
 
 import static edu.berkeley.cs.amplab.carat.android.model_classes.StaticAction.ActionType;
@@ -230,15 +232,45 @@ public class CaratApplication extends Application {
             }
 
             // Help Carat collect data
-            actions.add(new StaticAction(ActionType.COLLECT,
-                    R.string.helpcarat, R.string.helpcarat_subtitle)
-                    .makeExpandable(R.string.helpcarat_expanded_title,
-                            R.string.no_actions_message));
+            if(getActionsAmount() == 0){
+                actions.add(new StaticAction(ActionType.COLLECT,
+                        R.string.helpcarat, R.string.helpcarat_subtitle)
+                        .makeExpandable(R.string.helpcarat_expanded_title,
+                                R.string.no_actions_message));
+            }
 
             staticActions = new WeakReference<>(actions);
             return actions;
         }
         return staticActions.get();
+    }
+
+    public static int getActionsAmount(){
+        int actionsAmount=0;
+        if(CaratApplication.getStorage() != null){
+            SimpleHogBug[] report = CaratApplication.getStorage().getBugReport();
+            actionsAmount += filterByRunning(report).size();
+            report = CaratApplication.getStorage().getHogReport();
+            actionsAmount += filterByRunning(report).size();
+        }
+        return actionsAmount;
+    }
+
+    public static ArrayList<SimpleHogBug> filterByRunning(SimpleHogBug[] report){
+        HashMap<String, SimpleHogBug> running = new HashMap<>();
+        if(report == null) return new ArrayList<>();
+        for(SimpleHogBug s : report){
+            if(SamplingLibrary.isRunning(getContext(), s.getAppName())){
+                SimpleHogBug duplicate = running.get(s.getAppName());
+                if(duplicate != null
+                        && s.getAppPriority() == duplicate.getAppPriority()
+                        && s.getBenefit() == duplicate.getBenefit()){
+                    continue;
+                }
+                running.put(s.getAppName(), s);
+            }
+        }
+        return new ArrayList<>(running.values());
     }
 
     public static String translatedPriority(String importanceString) {

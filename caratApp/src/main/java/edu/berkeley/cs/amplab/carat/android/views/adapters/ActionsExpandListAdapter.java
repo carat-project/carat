@@ -86,11 +86,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         this.mainActivity = mainActivity;
         this.appActions = appActions;
 
-        if(appActions.isEmpty()){
-            this.staticActions = CaratApplication.getStaticActions();
-        } else {
-            this.staticActions = new ArrayList<>();
-        }
+        this.staticActions = CaratApplication.getStaticActions();
+
         inflater = LayoutInflater.from(caratApplication);
     }
     @Override

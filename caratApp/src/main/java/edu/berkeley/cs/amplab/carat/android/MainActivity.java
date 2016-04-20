@@ -257,16 +257,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
         if (CaratApplication.getStorage().getHogReport() != null && CaratApplication.getStorage().getBugReport() != null) {
             int actionsAmount = 0;
-            for (SimpleHogBug s : CaratApplication.getStorage().getBugReport()) {
-                if (SamplingLibrary.isRunning(this, s.getAppName())) {
-                    actionsAmount++;
-                }
-            }
-            for (SimpleHogBug s : CaratApplication.getStorage().getHogReport()) {
-                if (SamplingLibrary.isRunning(this, s.getAppName())) {
-                    actionsAmount++;
-                }
-            }
+            SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
+            actionsAmount += CaratApplication.filterByRunning(b).size();
+            SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+            actionsAmount += CaratApplication.filterByRunning(h).size();
             setActionsAmount(actionsAmount);
         } else {
             setActionsAmount(0);
@@ -277,12 +271,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setUpActionBar(int resId, boolean canGoBack) {
+        this.setUpActionBar(getString(resId), canGoBack);
+    }
+
+    public void setUpActionBar(String title, boolean canGoBack){
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
         actionBarTitle = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.action_bar_title);
         backArrow = (RelativeLayout) getSupportActionBar().getCustomView().findViewById(R.id.back_arrow);
         backArrow.setOnClickListener(this);
-        actionBarTitle.setText(resId);
+        actionBarTitle.setText(title);
         if (canGoBack) {
             backArrow.setVisibility(View.VISIBLE);
         } else {
@@ -383,14 +381,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         this.actionsAmount = String.valueOf(actionsAmount);
     }
 
-    public void replaceFragment(Fragment fragment, String tag) {
+    public void replaceFragment(Fragment fragment, String tag){
         final String FRAGMENT_TAG = tag;
         setProgressCircle(false);
         boolean fragmentPopped = getSupportFragmentManager().popBackStackImmediate(FRAGMENT_TAG, 0);
 
         if (!fragmentPopped) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
+            transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2 || !isDestroyed()) {
                 transaction.replace(R.id.fragment_holder, fragment, FRAGMENT_TAG)
@@ -456,7 +454,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void shareViaEmail() {
         String caratText = getString(R.string.sharetext1) + " " + getJScore() + getString(R.string.sharetext2);
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "", null));
-        intent.putExtra(Intent.EXTRA_SUBJECT, R.string.sharetitle);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.sharetitle));
         intent.putExtra(Intent.EXTRA_TEXT, caratText);
         startActivity(Intent.createChooser(intent, "Send email"));
     }
