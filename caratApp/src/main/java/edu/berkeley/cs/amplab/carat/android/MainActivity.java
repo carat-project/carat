@@ -456,6 +456,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void shareViaEmail() {
         String caratText = getString(R.string.sharetext1) + " " + getJScore() + getString(R.string.sharetext2);
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "", null));
+        intent.putExtra(Intent.EXTRA_SUBJECT, R.string.sharetitle);
         intent.putExtra(Intent.EXTRA_TEXT, caratText);
         startActivity(Intent.createChooser(intent, "Send email"));
     }
@@ -470,14 +471,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             memoryActiveConverted = (float) totalAndUsed[2] / (totalAndUsed[3] + totalAndUsed[2]);
         }
 
-        String caratVersion = "Carat " + BuildConfig.VERSION_NAME;
+        String caratVersion = "Carat " + getString(R.string.version_name);
         String caratId = "Carat ID: " + CaratApplication.myDeviceData.getCaratId();
         String jScore = "JScore: " + getJScore();
         String osVersion = "OS Version: " + SamplingLibrary.getOsVersion();
         String deviceModel = "Device Model: " + Build.MODEL;
         String memoryUsed = "Memory Used: " + (memoryUsedConverted * 100) + "%";
         String memoryActive = "Memory Active: " + (memoryActiveConverted * 100) + "%";
-        String title = "[Carat][Android] Feedback from " + Build.MODEL + ", v"+BuildConfig.VERSION_NAME;
+        String title = "[Carat][Android] Feedback from " + Build.MODEL + ", v"+getString(R.string.version_name);
 
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "carat@cs.helsinki.fi", null));
         intent.putExtra(Intent.EXTRA_SUBJECT, title);

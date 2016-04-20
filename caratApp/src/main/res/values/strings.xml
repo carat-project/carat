@@ -250,7 +250,7 @@ These are the same for all languages. When translating,
 delete these from your file.
     -->
     <string name="app_name" translatable="false">Carat</string>
-    <string name="version_name" translatable="false">2.07</string>
+    <string name="version_name" translatable="false">2.08</string>
 
     <string name="jsna" translatable="false">N/A</string>
     <string name="fake_id" translatable="false">0</string>
@@ -312,6 +312,7 @@ delete these from your file.
     <string name="sharewith">Share with:</string>
     <string name="chooseemail">Choose email application</string>
     <string name="feedbackfrom">Feedback from a</string>
+    <string name="sharetitle">Check out Carat app and improve your battery life</string>
     <string name="sharetext1">Carat is improving my battery life. My J-Score is</string>
     <string name="sharetext2">!\nWhat\'s yours?\nFind out here: \nhttp://carat.cs.berkeley.edu/</string>
     <string name="myjscoreis">My J-Score is</string>

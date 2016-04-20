@@ -8,8 +8,6 @@ android {
         applicationId "edu.berkeley.cs.amplab.carat.android"
         minSdkVersion 10
         targetSdkVersion 21
-        versionCode 97
-        versionName "2.07"
     }
 
     // Create gradle.properties file to caratApp folder and define KEYSTORE_PASSWORD=xxx and
