@@ -345,6 +345,8 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
             holder.killAppButton.setBackgroundResource(R.drawable.button_rounded_gray);
             holder.killAppButton.setText(caratApplication.getString(R.string.stopped));
         }
+
+        CaratApplication.refreshStaticActionCount();
     }
 
     public boolean openAppDetails(SimpleHogBug fullObject) {

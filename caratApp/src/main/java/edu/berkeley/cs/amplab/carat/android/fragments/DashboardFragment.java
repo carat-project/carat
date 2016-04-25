@@ -79,6 +79,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onResume() {
         super.onResume();
+        CaratApplication.refreshStaticActionCount();
         mainActivity.setUpActionBar(R.string.title_activity_dashboard, false);
         initViewRefs();
         initListeners();
@@ -292,6 +293,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     }
 
                     // Subtract the 'help carat collect data' from action count if needed.
+                    CaratApplication.refreshStaticActionCount();
                     int staticActionsAmount = mainActivity.getStaticActionsAmount();
 
                     hogAmountText.setText(String.valueOf(hogsCount));
