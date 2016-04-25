@@ -373,6 +373,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return actionsAmount;
     }
 
+    public void setStaticActionsAmount(int amount){
+        staticActionsAmount = amount;
+    }
+
     public int getStaticActionsAmount(){
         return staticActionsAmount;
     }

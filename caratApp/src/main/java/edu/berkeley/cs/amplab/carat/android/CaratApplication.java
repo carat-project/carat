@@ -46,7 +46,6 @@ public class CaratApplication extends Application {
     private static CaratApplication mInstance;
     // Used for logging
     private static final String TAG = "CaratApp";
-    private static WeakReference<ArrayList<StaticAction>> staticActions;
 
     public static Context mAppContext = null;
     public static SharedPreferences mPrefs = null;
@@ -220,7 +219,6 @@ public class CaratApplication extends Application {
      * @return List of static actions
      */
     public static ArrayList<StaticAction> getStaticActions(){
-        if(staticActions == null || staticActions.get() == null){
             ArrayList<StaticAction> actions = new ArrayList<>();
 
             // Participate in Carat survey
@@ -238,11 +236,11 @@ public class CaratApplication extends Application {
                         .makeExpandable(R.string.helpcarat_expanded_title,
                                 R.string.no_actions_message));
             }
-
-            staticActions = new WeakReference<>(actions);
             return actions;
-        }
-        return staticActions.get();
+    }
+
+    public static void refreshStaticActionCount(){
+        main.setStaticActionsAmount(getStaticActions().size());
     }
 
     public static int getActionsAmount(){
@@ -615,7 +613,13 @@ public class CaratApplication extends Application {
 
         errorMin = (int) (error / 60);
 
-        final String blS = blh + "h " + blmin + "m \u00B1 " + (errorH > 0 ? errorH + "h " : "") + errorMin + " m";
+
+        String blS;
+        if(blh == 0 && blmin == 0){
+            blS = getContext().getString(R.string.calibrating);
+        } else {
+            blS =  blh + "h " + blmin + "m \u00B1 " + (errorH > 0 ? errorH + "h " : "") + errorMin + " m";
+        }
 
 		/*
 		 * we removed direct manipulation of MyDevice fragment,

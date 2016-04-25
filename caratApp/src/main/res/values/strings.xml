@@ -276,6 +276,7 @@ delete these from your file.
 
     <string name="jscore">Your J-Score:</string>
     <string name="batterylife">Active Battery Life:</string>
+    <string name="calibrating">Calibrating</string>
     <string name="caratid" translatable="false">Carat ID:</string>
     <string name="osver">OS version:</string>
     <string name="dev">Device model:</string>

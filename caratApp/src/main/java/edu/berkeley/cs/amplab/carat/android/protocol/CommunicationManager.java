@@ -334,6 +334,8 @@ public class CommunicationManager {
 
 		gettingReports = false;
 
+		CaratApplication.refreshStaticActionCount();
+
 		// Only write freshness if we managed to get something
 		if(mainSuccess || hogsSuccess || bugsSuccess || quickHogsSuccess){
 			CaratApplication.getStorage().writeFreshness();

@@ -244,6 +244,7 @@
 
     <string name="jscore">J-Scoresi:</string>
     <string name="batterylife">Aktiivinen akunkesto:</string>
+    <string name="calibrating">Kalibroidaan</string>
     <string name="osver">KJ-versio:</string>
     <string name="dev">Laitemalli:</string>
     <string name="running_apps">Käynnissä:</string>
