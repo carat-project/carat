@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
@@ -85,6 +86,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
         this.lv.setOnChildClickListener(this);
         this.mainActivity = mainActivity;
         this.appActions = appActions;
+        Collections.sort(this.appActions);
 
         this.staticActions = CaratApplication.getStaticActions();
 

@@ -1,6 +1,8 @@
 package edu.berkeley.cs.amplab.carat.android.views.adapters;
 
+import android.content.Context;
 import android.content.pm.PackageInfo;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +11,15 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
+import edu.berkeley.cs.amplab.carat.android.model_classes.SimpleProcessInfo;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.thrift.ProcessInfo;
 
@@ -26,15 +30,19 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
 
     private MainActivity mainActivity;
     private CaratApplication caratApplication;
-    private List<ProcessInfo> processInfoList = new ArrayList<>();
+    private SimpleProcessInfo[] processInfoList;
     private ExpandableListView lv;
     private LayoutInflater mInflater;
 
     public ProcessExpandListAdapter(MainActivity mainActivity, ExpandableListView lv,
-                                    CaratApplication caratApplication, List<ProcessInfo> processInfoList) {
+                                    final CaratApplication caratApplication, List<ProcessInfo> processInfoList) {
+
         this.caratApplication = caratApplication;
         this.mainActivity = mainActivity;
-        this.processInfoList = processInfoList;
+
+        SimpleProcessInfo[] convertedResults = convertProcessInfo(processInfoList);
+        Arrays.sort(convertedResults);
+        this.processInfoList = convertedResults;
         this.lv = lv;
         this.lv.setOnGroupClickListener(this);
 
@@ -57,12 +65,10 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) caratApplication.getApplicationContext()
-                    .getSystemService(caratApplication.getApplicationContext().LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.process_list_child_item, null);
+            convertView = mInflater.inflate(R.layout.process_list_child_item, null);
         }
 
-        ProcessInfo item = processInfoList.get(groupPosition);
+        SimpleProcessInfo item = processInfoList[groupPosition];
         setViewsInChild(convertView, item);
         return convertView;
     }
@@ -74,12 +80,12 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
 
     @Override
     public Object getGroup(int groupPosition) {
-        return processInfoList.get(groupPosition);
+        return processInfoList[groupPosition];
     }
 
     @Override
     public int getGroupCount() {
-        return processInfoList.size();
+        return processInfoList.length;
     }
 
     @Override
@@ -91,16 +97,14 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         if (convertView == null) {
-            LayoutInflater inf = (LayoutInflater) caratApplication.getApplicationContext()
-                    .getSystemService(caratApplication.getApplicationContext().LAYOUT_INFLATER_SERVICE);
-            convertView = inf.inflate(R.layout.process_list_header, null);
+            convertView = mInflater.inflate(R.layout.process_list_header, null);
         }
 
         if (processInfoList == null || groupPosition < 0
-                || groupPosition >= processInfoList.size())
+                || groupPosition >= processInfoList.length)
             return convertView;
 
-        ProcessInfo item = processInfoList.get(groupPosition);
+        SimpleProcessInfo item = processInfoList[groupPosition];
         if (item == null)
             return convertView;
 
@@ -119,37 +123,22 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
         return true;
     }
 
-    private void setViewsInChild(View v, ProcessInfo item) {
+    private void setViewsInChild(View v, SimpleProcessInfo item) {
         TextView priorityValue = (TextView) v.findViewById(R.id.priority_value);
         TextView processVersion = (TextView) v.findViewById(R.id.version_amount);
-
-        String p = item.getPName();
-        String versionName;
-        PackageInfo pkgInfo = SamplingLibrary.getPackageInfo(caratApplication.getApplicationContext(), p);
-        if (pkgInfo != null) {
-            versionName = pkgInfo.versionName;
-            if (versionName == null) {
-                versionName = pkgInfo.versionCode + "";
-            }
-        } else {
-            versionName = "N/A";
-        }
-
-        processVersion.setText(versionName);
+        processVersion.setText(item.getVersionName());
         priorityValue.setText(item.getImportance());
 
     }
 
-    private void setItemViews(View v, ProcessInfo item, int groupPosition) {
+    private void setItemViews(View v, SimpleProcessInfo item, int groupPosition) {
         ImageView processIcon = (ImageView) v.findViewById(R.id.process_icon);
         TextView processName = (TextView) v.findViewById(R.id.process_name);
         TextView processPackage = (TextView) v.findViewById(R.id.process_package);
 
-        String p = item.getPName();
-
-        processIcon.setImageDrawable(CaratApplication.iconForApp(caratApplication.getApplicationContext(), p));
-        processName.setText(CaratApplication.labelForApp(caratApplication.getApplicationContext(), p));
-        processPackage.setText(p);
+        processIcon.setImageDrawable(item.getIcon());
+        processName.setText(item.getLocalizedName());
+        processPackage.setText(item.getPackageName());
 
     }
 
@@ -177,4 +166,28 @@ public class ProcessExpandListAdapter extends BaseExpandableListAdapter implemen
         }
         return false;
     }
+
+    private SimpleProcessInfo[] convertProcessInfo(List<ProcessInfo> list){
+        List<SimpleProcessInfo> result = new LinkedList<SimpleProcessInfo>();
+        Context context = caratApplication.getApplicationContext();
+        for(ProcessInfo pi : list){
+            String pName = pi.getPName();
+            String localizedName = CaratApplication.labelForApp(context, pName);
+            String importance = SamplingLibrary.getAppPriority(context, pName);
+            Drawable icon = CaratApplication.iconForApp(context, pName);
+            PackageInfo pInfo = SamplingLibrary.getPackageInfo(context, pName);
+            String versionName;
+            if (pInfo != null) {
+                versionName = pInfo.versionName;
+                if (versionName == null) {
+                    versionName = pInfo.versionCode + "";
+                }
+            } else {
+                versionName = "N/A";
+            }
+            result.add(new SimpleProcessInfo(pName, localizedName, importance, versionName, icon));
+        }
+        return result.toArray(new SimpleProcessInfo[result.size()]);
+    }
+
 }
