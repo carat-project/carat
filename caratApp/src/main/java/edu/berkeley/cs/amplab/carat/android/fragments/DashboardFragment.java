@@ -284,11 +284,11 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
                     SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
                     if (h != null) {
-                        hogsCount = h.length;
+                        hogsCount = CaratApplication.filterByVisibility(h).size();
                         actionsAmount += CaratApplication.filterByRunning(h).size();
                     }
                     if (b != null) {
-                        bugsCount = b.length;
+                        bugsCount = CaratApplication.filterByVisibility(b).size();
                         actionsAmount += CaratApplication.filterByRunning(b).size();
                     }
 

@@ -1,8 +1,8 @@
 package edu.berkeley.cs.amplab.carat.android;
 
-import java.lang.ref.WeakReference;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -254,8 +256,11 @@ public class CaratApplication extends Application {
         return actionsAmount;
     }
 
-    public static ArrayList<SimpleHogBug> filterByRunning(SimpleHogBug[] report){
-        HashMap<String, SimpleHogBug> running = new HashMap<>();
+    public static ArrayList<SimpleHogBug> filterByRunning(SimpleHogBug[] packages){
+        if(packages == null || packages.length == 0) return new ArrayList<>();
+
+        ArrayList<SimpleHogBug> report = filterByVisibility(packages);
+;        HashMap<String, SimpleHogBug> running = new HashMap<>();
         if(report == null) return new ArrayList<>();
         for(SimpleHogBug s : report){
             if(SamplingLibrary.isRunning(getContext(), s.getAppName())){
@@ -269,6 +274,25 @@ public class CaratApplication extends Application {
             }
         }
         return new ArrayList<>(running.values());
+    }
+
+    public static ArrayList<SimpleHogBug> filterByVisibility(SimpleHogBug[] reports){
+        ArrayList<SimpleHogBug> result = new ArrayList<>();
+        if(reports == null) return result;
+        ArrayList<SimpleHogBug> temp = new ArrayList<>(Arrays.asList(reports));
+
+        for (SimpleHogBug app : temp) {
+            String packageName = app.getAppName();
+            if(packageName == null) continue;
+            if(!CaratApplication.isPackageInstalled(packageName)) continue;
+            // Enable this when we can reliably detect killable apps
+            //if(CaratApplication.isPackageSystemApp(packageName)) continue;
+            if(packageName.equalsIgnoreCase(Constants.CARAT_PACKAGE_NAME)) continue;;
+            if(packageName.equalsIgnoreCase(Constants.CARAT_OLD)) continue;
+            result.add(app);
+        }
+
+        return result;
     }
 
     public static String translatedPriority(String importanceString) {
@@ -334,6 +358,65 @@ public class CaratApplication extends Application {
         }
     }
 
+    /**
+     * Searches system for a matching package and tells if it's installed.
+     * This considers apps that are disabled uninstalled.
+     *
+     * @param packageName Package name
+     * @return True if package is found, otherwise false
+     */
+    public static boolean isPackageInstalled(String packageName){
+        PackageManager packageManager = getContext().getPackageManager();
+        ApplicationInfo applicationInfo = null;
+        try {
+            // Throws an exception when there is no such package installed
+            applicationInfo = packageManager.getApplicationInfo(packageName, 0);
+            return applicationInfo.enabled;
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Compares package flags and signature with those of a system app.
+     *
+     * @param packageName Package name
+     * @return True if package is a system app
+     */
+    public static boolean isPackageSystemApp(String packageName){
+        if(packageName == null) return false;
+
+        PackageManager packageManager = getContext().getPackageManager();
+        try{
+            ApplicationInfo info = packageManager.getApplicationInfo(packageName, 0);
+            if(info != null){
+                return (isSystemPackage(info) && isSystemSigned(packageName));
+            }
+            return false;
+        } catch(Exception e){
+            return false;
+        }
+    }
+
+    private static boolean isSystemPackage(ApplicationInfo info){
+        return (info.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                || (info.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
+    }
+
+    private static boolean isSystemSigned(String packageName){
+        try {
+
+            PackageManager pm = getContext().getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+            PackageInfo sys = pm.getPackageInfo("android", PackageManager.GET_SIGNATURES);
+            if(pi==null || pi.signatures == null) return false;
+            if(sys==null || sys.signatures == null) return false;
+            return (sys.signatures[0].equals(pi.signatures[0]));
+        } catch (Exception e) {
+            // Package not found
+            return false;
+        }
+    }
 
     public static int getJscore() {
         final Reports reports = getStorage().getReports();
@@ -500,8 +583,9 @@ public class CaratApplication extends Application {
         }
 
         //CaratApplication.setActionFinished();
-        SampleSender.sendSamples(CaratApplication.this);
         setReportData();
+        CaratApplication.refreshStaticActionCount();
+        SampleSender.sendSamples(CaratApplication.this);
         //CaratApplication.setActionFinished();
 
         main.runOnUiThread(new Runnable() {

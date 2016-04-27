@@ -1,5 +1,6 @@
 package edu.berkeley.cs.amplab.carat.android.views.adapters;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,10 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -26,7 +30,7 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
 
     private LayoutInflater mInflater;
     private CaratApplication a = null;
-    private SimpleHogBug[] allBugsOrHogs = null;
+    private ArrayList<SimpleHogBug> allBugsOrHogs = null;
     private ExpandableListView lv;
     private MainActivity mainActivity;
 
@@ -37,40 +41,10 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
         this.mainActivity = mainActivity;
         this.lv.setOnChildClickListener(this);
         this.lv.setOnGroupClickListener(this);
-        int items = 0;
-        if (results != null)
-            for (SimpleHogBug app : results) {
-                String appName = app.getAppName();
-                if (appName == null)
-                    appName = caratApplication.getString(R.string.unknown);
-                // don't show special apps: Carat or system apps
-                // (DISABLED FOR DEBUGGING. TODO: ENABLE IT AFTER DEBUGGING, and check whether this has any problem)
-                //                if (SpecialAppCases.isSpecialApp(appName))
-                if (appName.equals(Constants.CARAT_PACKAGE_NAME) || appName.equals(Constants.CARAT_OLD))
-                    continue;
-                items++;
-            }
-        allBugsOrHogs = new SimpleHogBug[items];
-        int i = 0;
-        if (results != null && results.length > 0 && allBugsOrHogs.length > 0
-                && i < allBugsOrHogs.length)
-            for (SimpleHogBug b : results) {
-                String appName = b.getAppName();
-                if (appName == null)
-                    appName = caratApplication.getString(R.string.unknown);
-                if (appName.equals(Constants.CARAT_PACKAGE_NAME)
-                        || appName.equals(Constants.CARAT_OLD))
-                    continue;
-                // Apparently the number of items changes from "items" above?
-                /*
-                 * This must be handled by Carat data storage.
-    			 * */
-                if (i < allBugsOrHogs.length) {
-                    allBugsOrHogs[i] = b;
-                    i++;
-                }
-            }
-        Arrays.sort(allBugsOrHogs);
+
+        allBugsOrHogs = CaratApplication.filterByVisibility(results);
+        Collections.sort(allBugsOrHogs);
+
         mInflater = LayoutInflater.from(a);
     }
 
@@ -89,12 +63,10 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) a.getApplicationContext()
-                    .getSystemService(a.getApplicationContext().LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.bug_hog_list_child_item, null);
+            convertView = mInflater.inflate(R.layout.bug_hog_list_child_item, null);
         }
 
-        SimpleHogBug item = allBugsOrHogs[groupPosition];
+        SimpleHogBug item = allBugsOrHogs.get(groupPosition);
         setViewsInChild(convertView, item);
         return convertView;
     }
@@ -106,12 +78,12 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
 
     @Override
     public Object getGroup(int groupPosition) {
-        return allBugsOrHogs[groupPosition];
+        return allBugsOrHogs.get(groupPosition);
     }
 
     @Override
     public int getGroupCount() {
-        return allBugsOrHogs.length;
+        return allBugsOrHogs.size();
     }
 
     @Override
@@ -123,16 +95,14 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         if (convertView == null) {
-            LayoutInflater inf = (LayoutInflater) a.getApplicationContext()
-                    .getSystemService(a.getApplicationContext().LAYOUT_INFLATER_SERVICE);
-            convertView = inf.inflate(R.layout.bug_hog_list_header, null);
+            convertView = mInflater.inflate(R.layout.bug_hog_list_header, null);
         }
 
         if (allBugsOrHogs == null || groupPosition < 0
-                || groupPosition >= allBugsOrHogs.length)
+                || groupPosition >= allBugsOrHogs.size())
             return convertView;
 
-        SimpleHogBug item = allBugsOrHogs[groupPosition];
+        SimpleHogBug item = allBugsOrHogs.get(groupPosition);
         if (item == null)
             return convertView;
 

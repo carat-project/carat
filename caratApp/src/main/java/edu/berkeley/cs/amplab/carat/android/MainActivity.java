@@ -245,26 +245,25 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void setValues() {
         setJScore(CaratApplication.getJscore());
         setBatteryLife(CaratApplication.myDeviceData.getBatteryLife());
-        if (CaratApplication.getStorage().getBugReport() != null) {
-            setBugAmount(String.valueOf(CaratApplication.getStorage().getBugReport().length));
+        SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
+        SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
+        int actionsAmount = 0;
+        if (b != null) {
+            int bugsAmount = CaratApplication.filterByVisibility(b).size();
+            setBugAmount(String.valueOf(bugsAmount));
+            actionsAmount += CaratApplication.filterByRunning(b).size();
         } else {
             setBugAmount("0");
         }
-        if (CaratApplication.getStorage().getHogReport() != null) {
-            setHogAmount(String.valueOf(CaratApplication.getStorage().getHogReport().length));
+        if (h != null) {
+            int hogsAmount = CaratApplication.filterByVisibility(h).size();
+            setHogAmount(String.valueOf(hogsAmount));
+            actionsAmount += CaratApplication.filterByRunning(h).size();
         } else {
             setHogAmount("0");
         }
-        if (CaratApplication.getStorage().getHogReport() != null && CaratApplication.getStorage().getBugReport() != null) {
-            int actionsAmount = 0;
-            SimpleHogBug[] b = CaratApplication.getStorage().getBugReport();
-            actionsAmount += CaratApplication.filterByRunning(b).size();
-            SimpleHogBug[] h = CaratApplication.getStorage().getHogReport();
-            actionsAmount += CaratApplication.filterByRunning(h).size();
-            setActionsAmount(actionsAmount);
-        } else {
-            setActionsAmount(0);
-        }
+
+        setActionsAmount(actionsAmount);
 
         setCpuValue();
         Log.d("debug", "*** Values set");

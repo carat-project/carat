@@ -112,6 +112,11 @@ public class ActionsFragment extends Fragment implements Serializable {
                         && s.getBenefit() == duplicate.getBenefit()){
                     continue;
                 }
+
+                // Enable this when we can reliably detect killable apps
+                // if(CaratApplication.isPackageSystemApp(s.getAppName())){
+                //   continue;
+                // }
                 running.put(s.getAppName(), s);
             }
         }
