@@ -18,6 +18,8 @@ public class Constants {
     // Blacklist freshness timeout. Default 2 days.
     // public static final long FRESHNESS_TIMEOUT_QUICKHOGS = 30 * 1000;
     public static final long FRESHNESS_TIMEOUT_QUICKHOGS = 2 * 24 * 3600 * 1000;
+    // Hog statistics freshness timeout. Default 1 day.
+    public static final long FRESHNESS_TIMEOUT_HOGSTATS = TimeUnit.DAYS.toMillis(1);
 
     // Dashboard refresh interval
     public static final long DASHBOARD_REFRESH_INTERVAL = TimeUnit.MINUTES.toMillis(1);

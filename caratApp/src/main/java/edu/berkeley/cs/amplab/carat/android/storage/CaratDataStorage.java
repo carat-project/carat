@@ -9,12 +9,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.util.LongSparseArray;
+import android.support.v4.util.Pair;
 import android.util.Log;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
@@ -35,6 +37,9 @@ public class CaratDataStorage {
     public static final String BUGFILE = "carat-bugs.dat";
     public static final String HOGFILE = "carat-hogs.dat";
     public static final String SETTINGSFILE = "carat-settings.dat";
+    public static final String HOGSTATS_FRESHNESS = "carat-hogstats-freshness.dat";
+    public static final String HOGSTATS_DATE = "carat-hogstats-date.dat";
+    public static final String HOGSTATS_FILE = "carat-hogstats.dat";
 
     public static final String SAMPLES_REPORTED = "carat-samples-reported.dat";
 
@@ -45,11 +50,14 @@ public class CaratDataStorage {
     private long blacklistFreshness = 0;
     private long quickHogsFreshness = 0;
     private long samples_reported = 0;
+    private long hogStatsFreshness = 0;
+    private String hogStatsDate = null;
     private String questionnaireUrl = null;
     private WeakReference<Reports> caratData = null;
     private WeakReference<SimpleHogBug[]> bugData = null;
     private WeakReference<SimpleHogBug[]> hogData = null;
     private WeakReference<SimpleHogBug[]> settingsData = null;
+    private WeakReference<List<HogStat>> hogStatsData = null;
     private WeakReference<List<String>> blacklistedApps = null;
     private WeakReference<List<String>> blacklistedGlobs = null;
 
@@ -87,6 +95,21 @@ public class CaratDataStorage {
         writeText(quickHogsFreshness + "", QUICKHOGS_FRESHNESS);
     }
 
+    public void writeHogStats(List<HogStat> stats){
+        if(stats == null) return;
+        hogStatsData = new WeakReference<List<HogStat>>(stats);
+        writeObject(stats, HOGSTATS_FILE);
+    }
+
+    public void writeHogStatsFreshness(){
+        hogStatsFreshness = System.currentTimeMillis();
+        writeText(hogStatsFreshness + "", HOGSTATS_FRESHNESS);
+    }
+
+    public void writeHogStatsDate(String date){
+        hogStatsDate = date;
+        writeText(date, HOGSTATS_DATE);
+    }
 
     public void writeObject(Object o, String fname) {
         FileOutputStream fos = getFos(fname);
@@ -214,6 +237,34 @@ public class CaratDataStorage {
             return null;
     }
 
+    @SuppressWarnings("unchecked")
+    public List<HogStat> readHogStats(){
+        Object o = readObject(HOGSTATS_FILE);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read Hog stats: " + o);
+        if(o != null){
+            hogStatsData = new WeakReference<>((List<HogStat>) o);
+            return (List<HogStat>) o;
+        }
+        return new ArrayList<>();
+    }
+
+    public long readHogStatsFreshness(){
+        String s = readText(HOGSTATS_FRESHNESS);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read Hog stats freshness: " + s);
+        if(s != null){
+            return Long.parseLong(s);
+        } else return -1;
+    }
+
+    public String readHogStatsDate(){
+        String s = readText(HOGSTATS_DATE);
+        if (Constants.DEBUG)
+            Log.d("CaratDataStorage", "Read Hog stats date: " + s);
+        return s;
+    }
+
     /**
      * @return the freshness
      */
@@ -326,6 +377,29 @@ public class CaratDataStorage {
             return questionnaireUrl;
         else
             return readQuestionnaireUrl();
+    }
+
+    public List<HogStat> getHogStats(){
+        if (hogStatsData != null && hogStatsData.get() != null)
+            return hogStatsData.get();
+        else
+            return readHogStats();
+    }
+
+    public Long getHogStatsFreshness(){
+        if(hogStatsFreshness != 0){
+            return hogStatsFreshness;
+        } else {
+            return readHogStatsFreshness();
+        }
+    }
+
+    public String getHogStatsDate(){
+        if(hogStatsDate != null){
+            return hogStatsDate;
+        } else {
+            return readHogStatsDate();
+        }
     }
 
     /**

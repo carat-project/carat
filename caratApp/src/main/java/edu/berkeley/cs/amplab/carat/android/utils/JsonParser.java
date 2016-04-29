@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
@@ -16,6 +18,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.HTTP;
+import org.json.JSONArray;
 
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import android.util.Log;
@@ -23,7 +27,7 @@ import android.util.Log;
 
 public class JsonParser {
 	
-	public String getJSONFromUrl(String url) {
+	public static String getJSONFromUrl(String url) {
 		InputStream inputStream = null;
 	    String result = null; 
 	    
