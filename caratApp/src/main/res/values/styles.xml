@@ -151,6 +151,8 @@
         <item name="android:background">@color/actionbar_color</item>
         <item name="android:textColor">@color/white</item>
 
+        <item name="actionBarTabStyle">@style/MyActionBar.TabStyle</item>
+
         <!-- Support library compatibility -->
         <item name="background">@color/actionbar_color</item>
         <item name="titleTextStyle">@style/MyActionBarTitleText</item>

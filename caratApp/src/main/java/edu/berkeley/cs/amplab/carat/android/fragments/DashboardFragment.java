@@ -23,6 +23,7 @@ import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
+import edu.berkeley.cs.amplab.carat.android.protocol.CommunicationManager;
 import edu.berkeley.cs.amplab.carat.android.sampling.SamplingLibrary;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.views.CircleDisplay;
@@ -198,8 +199,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 mainActivity.replaceFragment(bugsFragment, Constants.FRAGMENT_BUGS_TAG);
                 break;
             case R.id.hogs_layout:
-                HogsFragment hogsFragment = new HogsFragment();
-                mainActivity.replaceFragment(hogsFragment, Constants.FRAGMENT_HOGS_TAG);
+                //HogsFragment hogsFragment = new HogsFragment();
+                TabbedFragment tabbedHogs = new TabbedFragment();
+                mainActivity.enableTabbedNavigation(tabbedHogs);
+                mainActivity.replaceFragment(tabbedHogs, Constants.FRAGMENT_HOGS_TAG);
                 break;
             case R.id.globe_layout:
                 GlobalFragment globalFragment = new GlobalFragment();
@@ -210,6 +213,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 mainActivity.replaceFragment(actionsFragment, Constants.FRAGMENT_ACTIONS_TAG);
                 break;
             case R.id.my_device_button:
+
                 DeviceFragment myDeviceFragment = new DeviceFragment();
                 mainActivity.replaceFragment(myDeviceFragment, Constants.FRAGMENT_MY_DEVICE_TAG);
                 break;
