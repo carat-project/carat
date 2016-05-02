@@ -152,7 +152,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="8dp"
                         android:orientation="vertical"
                         android:weightSum="19">
 
@@ -163,7 +163,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="5"
-                            android:gravity="bottom|center|right"
+                            android:gravity="bottom|left"
                             android:paddingBottom="7dp"
                             android:text="@string/what_are_jscore_numbers">
 
@@ -178,7 +178,7 @@
 
                             <TextView
                                 style="@style/LargeBlackText"
-                                android:gravity="center"
+                                android:gravity="left"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingBottom="4dp"
@@ -188,7 +188,7 @@
                             <TextView
                                 android:id="@+id/battery_value"
                                 style="@style/LargeBoldBlackText"
-                                android:gravity="center"
+                                android:gravity="left"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/battery_life_value" />
@@ -201,8 +201,7 @@
                             android:layout_weight="3"
                             android:gravity="bottom|center"
                             android:orientation="vertical"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
+                            android:paddingRight="25dp">
 
                             <Button
                                 android:id="@+id/process_list_button"
