@@ -307,7 +307,7 @@
     <string name="blacklist">Poistolista</string>
     <string name="finishing">Viimeistellään</string>
 
-    <string name="expected">Vaikutus akkukestoon:</string>
+    <string name="expected">Vaikutus akunkestoon:</string>
     <string name="killappname">Tapa Sovellus</string>
     <string name="appname">Sovelluksen nimi</string>
     <string name="priority">Prioriteetti:</string>
