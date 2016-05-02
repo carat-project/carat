@@ -179,7 +179,7 @@
     <string name="global_general_popular_title">POPULAR DEVICE MODELS</string>
     <string name="global_general_android">Android</string>
     <string name="well_behaved">Well-behaved</string>
-    <string name="out_of">Out of</string>
+    <string name="out_of"><![CDATA[Out of ]]></string>
     <string name="all_installed">installed applications,</string>
     <string name="hog_intensity">are energy-intensive (Hogs in the Carat App) and</string>
     <string name="bug_intensity">are energy anomalies (Bugs).</string>
