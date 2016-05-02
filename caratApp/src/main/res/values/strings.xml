@@ -123,7 +123,7 @@
     <string name="os_version_title">OS Version</string>
     <string name="device_model_title">Device model</string>
     <string name="device_usage_title">DEVICE USAGE</string>
-    <string name="what_are_jscore_numbers">What are j-score numbers?</string>
+    <string name="what_are_jscore_numbers">What is a J-Score?</string>
     <string name="process_list_title">PROCESS LIST</string>
     <string name="memory_used_title">Memory used</string>
     <string name="memory_active_title">Memory active</string>
@@ -212,7 +212,7 @@
 
     <string name="show_information">Show information about actions</string>
     <string name="actions_info_title">Managing applications</string>
-    <string name="action_app_type">Application type:</string>
+    <string name="action_app_type">Behavior type:</string>
     <string name="hog">Hog</string>
     <string name="bug">Bug</string>
 
@@ -343,7 +343,7 @@ delete these from your file.
     <string name="blacklist">Blacklist</string>
     <string name="finishing">Finishing up</string>
 
-    <string name="expected">Expected improvement:</string>
+    <string name="expected">Battery life impact:</string>
     <string name="killappname">Kill App Name</string>
     <string name="appname">App Name</string>
     <string name="priority">Priority:</string>

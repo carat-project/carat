@@ -48,6 +48,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     }
 
     private static class ExpandedViewHolder extends ActionViewHolder {
+        private TextView batteryImpact;
         private TextView samplesText;
         private TextView samplesAmount;
         private Button killAppButton;
@@ -161,6 +162,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
     }
     private ExpandedViewHolder getExpandedViewHolder(View v){
         ExpandedViewHolder holder = new ExpandedViewHolder();
+        holder.batteryImpact = (TextView) v.findViewById(R.id.impact_text);
         holder.samplesText = (TextView) v.findViewById(R.id.samples_title);
         holder.samplesAmount = (TextView) v.findViewById(R.id.samples_amount);
         holder.killAppButton = (Button) v.findViewById(R.id.stop_app_button);
@@ -244,6 +246,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
 
     private void setViewsInChild(View v, final SimpleHogBug item) {
         final ExpandedViewHolder holder = (ExpandedViewHolder)v.getTag();
+        holder.batteryImpact.setText(item.getBenefitText());
         holder.samplesText.setText(R.string.samples);
         holder.samplesAmount.setText(String.valueOf(item.getSamples()));
         holder.killAppButton.setTag(item.getAppName());
@@ -299,6 +302,7 @@ public class ActionsExpandListAdapter extends BaseExpandableListAdapter implemen
                 item.getAppName()));
         holder.title.setText(CaratApplication.labelForApp(caratApplication.getApplicationContext(),
                 item.getAppName()));
+
         holder.subtitle.setText(item.getBenefitText());
     }
 

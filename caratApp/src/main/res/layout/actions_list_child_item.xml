@@ -74,8 +74,38 @@
         android:padding="15dp">
 
         <TextView
+            android:id="@+id/impact"
+            style="@style/MediumBlackText"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/expected" />
+
+        <TextView
+            android:id="@+id/impact_text"
+            style="@style/MediumBlackText"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="2h 56m" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:id="@+id/separator1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/impact_text"
+            android:background="@color/lightgray" />
+
+        <TextView
             android:id="@+id/hogbug_title"
             style="@style/MediumBlackText"
+            android:layout_below="@+id/separator1"
+            android:layout_marginTop="15dp"
             android:clickable="false"
             android:focusable="false"
             android:layout_width="wrap_content"
@@ -86,6 +116,8 @@
         <TextView
             android:id="@+id/hogbug_text"
             style="@style/MediumOrangeText"
+            android:layout_below="@+id/separator1"
+            android:layout_marginTop="15dp"
             android:clickable="false"
             android:focusable="false"
             android:layout_width="wrap_content"
@@ -95,7 +127,7 @@
 
         <View
             android:layout_marginTop="10dp"
-            android:id="@+id/separator1"
+            android:id="@+id/separator2"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_below="@id/hogbug_text"
@@ -104,7 +136,7 @@
         <TextView
             android:id="@+id/app_category_title"
             style="@style/MediumBlackText"
-            android:layout_below="@+id/separator1"
+            android:layout_below="@+id/separator2"
             android:layout_marginTop="15dp"
             android:clickable="false"
             android:focusable="false"
@@ -116,7 +148,7 @@
         <TextView
             android:id="@+id/app_category"
             style="@style/MediumBlackText"
-            android:layout_below="@+id/separator1"
+            android:layout_below="@+id/separator2"
             android:layout_marginTop="15dp"
             android:clickable="false"
             android:focusable="false"
@@ -127,7 +159,7 @@
 
         <View
             android:layout_marginTop="10dp"
-            android:id="@+id/separator2"
+            android:id="@+id/separator3"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_below="@id/app_category"
@@ -136,7 +168,7 @@
         <TextView
             android:id="@+id/samples_title"
             style="@style/MediumBlackText"
-            android:layout_below="@+id/separator2"
+            android:layout_below="@+id/separator3"
             android:layout_marginTop="15dp"
             android:clickable="false"
             android:focusable="false"
@@ -148,7 +180,7 @@
         <TextView
             android:id="@+id/samples_amount"
             style="@style/MediumBlackText"
-            android:layout_below="@+id/separator2"
+            android:layout_below="@+id/separator3"
             android:layout_marginTop="15dp"
             android:clickable="false"
             android:focusable="false"
@@ -159,7 +191,7 @@
 
         <View
             android:layout_marginTop="10dp"
-            android:id="@+id/separator3"
+            android:id="@+id/separator4"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_below="@id/samples_amount"
@@ -171,7 +203,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/separator3"
+            android:layout_below="@id/separator4"
             android:clickable="false"
             android:focusable="false"
             android:text="@string/show_information" />
