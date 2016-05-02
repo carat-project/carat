@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context="edu.berkeley.cs.amplab.carat.android.fragments.HogsFragment">
+
+    <RelativeLayout
+        android:id="@+id/hogs_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightgray"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/hog_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@drawable/gray_hog_icon" />
+
+        <TextView
+            style="@style/SmallGrayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/hog_icon"
+            android:paddingRight="5dp"
+            android:text="Top 20 hogs worldwide" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.SearchView
+        android:paddingLeft="-10dp"
+        android:paddingRight="10dp"
+        android:id="@+id/hog_statistics_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:iconifiedByDefault="false"
+        android:queryHint="Type your searc here"/>
+
+    <ExpandableListView
+        android:id="@+id/expandable_hog_stats"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:groupIndicator="@null"
+        android:layout_weight="100" />
+
+    <!--
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/empty_hogs_icon"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/LargeBoldBlackText"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:text="@string/no_hogs_title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                style="@style/LargeBlackText"
+                android:text="@string/no_hogs_message"/>
+        </LinearLayout>
+    </ScrollView>
+    -->
+</LinearLayout>

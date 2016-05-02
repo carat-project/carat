@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.R;
@@ -19,8 +20,10 @@ import edu.berkeley.cs.amplab.carat.android.R;
  */
 public class TabbedFragment extends Fragment {
 
+    private LinearLayout mainFrame;
     private MainActivity mainActivity;
     private ViewPager pager;
+    TabPagerAdapter adapter;
 
     @Override
     public void onAttach(Activity activity) {
@@ -32,17 +35,13 @@ public class TabbedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        pager = (ViewPager) inflater.inflate(R.layout.fragment_tabs, container, false);
-        final TabPagerAdapter adapter = new TabPagerAdapter(getChildFragmentManager());
+
+        mainFrame = (LinearLayout) inflater.inflate(R.layout.fragment_tabs, container, false);
+        pager = (ViewPager)mainFrame.findViewById(R.id.pager);
+        adapter = new TabPagerAdapter(getChildFragmentManager());
         pager.setAdapter(adapter);
-        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
-            @Override
-            public void onPageSelected(int position){
-                mainActivity.setUpActionBar(adapter.getPageTitle(position), true);
-                mainActivity.selectActionBarTab(position);
-            }
-        });
-        return pager;
+        pager.setCurrentItem(0);
+        return mainFrame;
     }
 
     @Override
@@ -52,8 +51,14 @@ public class TabbedFragment extends Fragment {
 
     @Override
     public void onResume() {
-        mainActivity.setUpActionBar("MY HOGS", true);
         super.onResume();
+        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position){
+               mainActivity.setUpActionBar(adapter.getPageTitle(position), true);
+            }
+        });
+        mainActivity.setUpActionBar("MY HOGS", true);
     }
 
     public ViewPager getViewPager(){

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.dialogs.BaseDialog;
+import edu.berkeley.cs.amplab.carat.android.fragments.HogStatsFragment;
+import edu.berkeley.cs.amplab.carat.android.fragments.HogsFragment;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 
 /**
@@ -30,13 +33,28 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
 
     private LayoutInflater mInflater;
     private CaratApplication a = null;
+    private LinearLayout buttonView = null;
     private ArrayList<SimpleHogBug> allBugsOrHogs = null;
     private ExpandableListView lv;
     private MainActivity mainActivity;
 
-    public HogBugExpandListAdapter(MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication, SimpleHogBug[] results) {
+    public HogBugExpandListAdapter(final MainActivity mainActivity, ExpandableListView lv, CaratApplication caratApplication, SimpleHogBug[] results) {
         this.a = caratApplication;
+        mInflater = LayoutInflater.from(this.a);
         this.lv = lv;
+        buttonView = (LinearLayout)lv.findViewById(R.id.footer_button_view);
+        if(!results[0].isBug() && buttonView == null){
+            LinearLayout footer = (LinearLayout)mInflater.inflate(R.layout.button_footer_item, lv, false);
+            this.lv.addFooterView(footer);
+            LinearLayout showStats = (LinearLayout)this.lv.findViewById(R.id.footer_button);
+            showStats.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    HogStatsFragment hogStats = new HogStatsFragment();
+                    mainActivity.replaceFragment(hogStats, Constants.FRAGMENG_HOG_STATS_TAG);
+                }
+            });
+        }
         this.lv.setOnGroupExpandListener(this);
         this.mainActivity = mainActivity;
         this.lv.setOnChildClickListener(this);
@@ -44,8 +62,6 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
 
         allBugsOrHogs = CaratApplication.filterByVisibility(results);
         Collections.sort(allBugsOrHogs);
-
-        mInflater = LayoutInflater.from(a);
     }
 
     @Override
@@ -158,6 +174,7 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
         processImprovement.setText(item.getBenefitText());
 
     }
+
     // TODO COLLAPSE IMAGES NOT WORKING
     @Override
     public void onGroupExpand(int groupPosition) {

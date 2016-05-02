@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
+import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.R;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.views.adapters.HogBugExpandListAdapter;
@@ -38,6 +39,14 @@ public class HogsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mainFrame = (LinearLayout) inflater.inflate(R.layout.fragment_hogs, container, false);
+        LinearLayout footer = (LinearLayout)mainFrame.findViewById(R.id.footer_button);
+        footer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HogStatsFragment hogStats = new HogStatsFragment();
+                mainActivity.replaceFragment(hogStats, Constants.FRAGMENG_HOG_STATS_TAG);
+            }
+        });
         return mainFrame;
     }
 

@@ -85,6 +85,7 @@
 
     <string name="bugs">BUGS</string>
     <string name="hogs">HOGS</string>
+    <string name="global_hogs">GLOBAL HOGS</string>
     <string name="statistics">STATISTICS</string>
     <string name="actions">ACTIONS</string>
 
@@ -166,6 +167,7 @@
 
     <!-- GLOBAL RESULTS -->
     <string name="global_results">GLOBAL RESULTS</string>
+    <string name="show_global">SHOW GLOBAL</string>
     <string name="all_reports">ALL REPORTS</string>
     <string name="global_general_statistics">GENERAL STATISTICS</string>
     <string name="global_general_all_message">Out of 431,882 installed applications, 9 are energy-intensive
@@ -187,6 +189,11 @@
     <string name="ios_installed">installed iOS applications,</string>
     <string name="users">users,</string>
     <string name="user_intensity">have at least a single energy anomaly.</string>
+
+    <!-- HOG STATISTICS -->
+    <string name="packageName">Package:</string>
+    <string name="reported_by">Reported by:</string>
+    <string name="by_users">users</string>
 
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>
@@ -344,6 +351,7 @@ delete these from your file.
     <string name="finishing">Finishing up</string>
 
     <string name="expected">Expected improvement:</string>
+    <string name="impact">Impact:</string>
     <string name="killappname">Kill App Name</string>
     <string name="appname">App Name</string>
     <string name="priority">Priority:</string>

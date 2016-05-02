@@ -38,6 +38,7 @@ import java.util.concurrent.TimeUnit;
 
 import edu.berkeley.cs.amplab.carat.android.fragments.GlobalFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.TabbedFragment;
+import edu.berkeley.cs.amplab.carat.android.protocol.AsyncStats;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
 import edu.berkeley.cs.amplab.carat.android.utils.PrefetchData;
 import edu.berkeley.cs.amplab.carat.android.activities.TutorialActivity;
@@ -305,10 +306,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
-    public void selectActionBarTab(int position){
-        getSupportActionBar().setSelectedNavigationItem(position);
-    }
-
     public void setUpActionBar(int resId, boolean canGoBack) {
         this.setUpActionBar(getString(resId), canGoBack);
     }
@@ -470,12 +467,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @SuppressLint("NewApi")
     private void getStatsFromServer() {
         PrefetchData prefetchData = new PrefetchData(this);
+        AsyncStats hogStats = new AsyncStats(this);
         // run this asyncTask in a new thread [from the thread pool] (run in parallel to other asyncTasks)
         // (do not wait for them to finish, it takes a long time)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
             prefetchData.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        else
+            hogStats.executeOnExecutor(AsyncStats.THREAD_POOL_EXECUTOR);
+        } else {
+            hogStats.execute();
             prefetchData.execute();
+        }
     }
 
     public void shareOnFacebook() {

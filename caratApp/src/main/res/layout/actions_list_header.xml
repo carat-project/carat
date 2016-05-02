@@ -33,6 +33,7 @@
             android:layout_alignLeft="@+id/process_improvement"
             android:layout_alignStart="@+id/process_improvement"
             android:layout_alignTop="@+id/process_icon"
+            android:layout_toLeftOf="@+id/collapse_icon"
             android:paddingBottom="5dp"
             android:text="Carat" />
 

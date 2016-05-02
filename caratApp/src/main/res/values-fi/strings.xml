@@ -81,6 +81,7 @@
 
     <string name="bugs">BUGIT</string>
     <string name="hogs">HOGIT</string>
+    <string name="global_hogs">YLEISET HOGIT</string>
     <string name="statistics">STATISTIIKKA</string>
     <string name="actions">EHDOTUKSET</string>
 
@@ -160,6 +161,7 @@
 
     <!-- GLOBAL RESULTS -->
     <string name="global_results">STATISTIIKKA</string>
+    <string name="show_global">YLEISIMMÄT HOGIT</string>
     <string name="all_reports">KAIKKI RAPORTIT</string>
     <string name="global_general_statistics">YLEINEN STATISTIIKKA</string>
     <string name="global_general_all_message">Out of 431,882 installed applications, 9 are energy-intensive
@@ -181,6 +183,11 @@
     <string name="ios_installed">asennetusta iOS-applikaatiosta,</string>
     <string name="users">käyttäjästä,</string>
     <string name="user_intensity">:lla on ainakin yksi energiapoikkeus.</string>
+
+    <!-- HOG STATISTICS -->
+    <string name="packageName">Pakkaus:</string>
+    <string name="reported_by">Raportoinut:</string>
+    <string name="by_users">käyttäjää</string>
 
     <!-- ACTIONS -->
     <string name="stop_app_title">PYSÄYTÄ</string>
@@ -309,6 +316,7 @@
     <string name="finishing">Viimeistellään</string>
 
     <string name="expected">Arvioitu parannus:</string>
+    <string name="impact">Vaikutus:</string>
     <string name="killappname">Tapa Sovellus</string>
     <string name="appname">Sovelluksen nimi</string>
     <string name="priority">Prioriteetti:</string>

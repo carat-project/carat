@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footer_button_view"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <LinearLayout
+        android:id="@+id/footer_button"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        style="@style/ShowStatsButtonStyle"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/footer_button_image"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dashboard_globe_icon_white"/>
+        <TextView
+            android:id="@+id/footer_button_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_marginLeft="7dp"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:text="@string/show_global"/>
+    </LinearLayout>
+</LinearLayout>

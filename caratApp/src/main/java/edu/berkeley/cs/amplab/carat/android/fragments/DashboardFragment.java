@@ -199,10 +199,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 mainActivity.replaceFragment(bugsFragment, Constants.FRAGMENT_BUGS_TAG);
                 break;
             case R.id.hogs_layout:
-                //HogsFragment hogsFragment = new HogsFragment();
-                TabbedFragment tabbedHogs = new TabbedFragment();
-                mainActivity.enableTabbedNavigation(tabbedHogs);
-                mainActivity.replaceFragment(tabbedHogs, Constants.FRAGMENT_HOGS_TAG);
+                HogsFragment hogsFragment = new HogsFragment();
+                mainActivity.replaceFragment(hogsFragment, Constants.FRAGMENT_HOGS_TAG);
                 break;
             case R.id.globe_layout:
                 GlobalFragment globalFragment = new GlobalFragment();

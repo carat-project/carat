@@ -141,6 +141,7 @@ public class Constants {
     public static final String FRAGMENT_MY_DEVICE_TAG = "fragment_my_device";
     public static final String FRAGMENT_ABOUT_TAG = "fragment_about";
     public static final String FRAGMENT_CB_WEBVIEW_TAG = "fragment_callback_webview";
+    public static final String FRAGMENG_HOG_STATS_TAG = "fragment_hog_stats";
     public static final String FRAGMENT_PROCESS_LIST = "fragment_process_list";
     public static final String FRAGMENT_HIDE_SMALL = "fragment_hide_small";
 

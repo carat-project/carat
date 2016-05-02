@@ -7,13 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
 import edu.berkeley.cs.amplab.carat.android.MainActivity;
 import edu.berkeley.cs.amplab.carat.android.storage.CaratDataStorage;
-import edu.berkeley.cs.amplab.carat.android.storage.HogStat;
+import edu.berkeley.cs.amplab.carat.android.storage.HogStats;
 import edu.berkeley.cs.amplab.carat.android.utils.JsonParser;
 
 /**
@@ -24,10 +23,10 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
     private CaratDataStorage storage;
     private CaratApplication application;
     private String date;
-    private ArrayList<HogStat> hogStats;
+    private ArrayList<HogStats> hogStats;
     public AsyncStats(MainActivity mainActivity){
         this.application = (CaratApplication)mainActivity.getApplication();
-        this.storage = application.getStorage();
+        this.storage = CaratApplication.getStorage();
         this.hogStats = new ArrayList<>();
     }
 
@@ -42,7 +41,9 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
         long freshness = storage.getHogStatsFreshness();
         if(System.currentTimeMillis() - freshness > Constants.FRESHNESS_TIMEOUT_HOGSTATS
                 || hogStats.isEmpty()){
-            date = getLatestStatsDate();
+            JSONObject platform = getPlatformData("android");
+            date = getLatestDate(platform);
+
             if(shouldUpdate()){
                 storage.writeHogStatsDate(date);
                 hogStats = getHogStats();
@@ -62,6 +63,21 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
+    private String getLatestDate(JSONObject platform){
+        try{
+            JSONArray days = platform.getJSONArray("days");
+            if(days != null && days.length() > 0){
+                String latest = days.getString(days.length()-1);
+                Log.d("debug", "Successfully read stats date from data.json: "+latest);
+                return latest;
+            }
+        }
+        catch (Exception e){
+            Log.d("debug", "Failed reading latest stats date from data.json");
+        }
+        return null;
+    }
+
     public boolean shouldUpdate(){
         String previous = storage.getHogStatsDate();
 
@@ -70,7 +86,7 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
         // we need to check if a previous timestamp is available for fetching
         // at least some old data for the user.
         if(date == null){
-            if(!hogStats.isEmpty() && (previous != null)){
+            if(hogStats.isEmpty() && (previous != null)){
                 date = previous;
                 return true;
             }
@@ -89,7 +105,7 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
 
     }
 
-    public String getLatestStatsDate(){
+    public JSONObject getPlatformData(String platformName){
         String url = "http://carat.cs.helsinki.fi/statistics-data/apps/data.json";
         String jsonData = JsonParser.getJSONFromUrl(url);
         if(jsonData == null || jsonData.isEmpty()) return null;
@@ -105,14 +121,8 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
 
                 // Find our platform, which is Android and attempt to get
                 // the "days" array, making sure the data is available
-                if("android".equalsIgnoreCase(platform.getString("name"))){
-                    // These are the days, the time is now
-                    JSONArray days = platform.getJSONArray("days");
-                    if(days != null && days.length() > 0){
-                        String latest = days.getString(days.length()-1);
-                        Log.d("debug", "Successfully downloaded stats date from server: "+latest);
-                        return latest;
-                    }
+                if(platformName.equalsIgnoreCase(platform.getString("name"))){
+                    return platform;
                 }
             }
         } catch(Exception e){
@@ -123,10 +133,10 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-    private ArrayList<HogStat> getHogStats(){
+    private ArrayList<HogStats> getHogStats(){
         String url = "http://carat.cs.helsinki.fi/statistics-data/apps/" + date + "-android.json";
         String jsonData = JsonParser.getJSONFromUrl(url);
-        ArrayList<HogStat> result = new ArrayList<>();
+        ArrayList<HogStats> result = new ArrayList<>();
         if(jsonData == null || jsonData.isEmpty()) return null;
         try {
             JSONArray dataArray = new JSONArray(jsonData);
@@ -135,9 +145,9 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
             for(int i=0; i<dataArray.length(); i++){
                 JSONObject app = dataArray.getJSONObject(i);
                 if(app == null || app.length() == 0) continue;
-                HogStat hogStat = convert(app);
-                if(hogStat != null){
-                    result.add(hogStat);
+                HogStats hogStats = convert(app);
+                if(hogStats != null){
+                    result.add(hogStats);
                 }
             }
         } catch(Exception e){
@@ -148,7 +158,7 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
         return result;
     }
 
-    private HogStat convert(JSONObject app){
+    private HogStats convert(JSONObject app){
         // Discard application if its format is inadequate or malformed.
         // Note that json operations throw an exception when a field does
         // not exist or has an invalid type.
@@ -158,7 +168,7 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
             long users = app.getLong("users");
             long samples = app.getLong("samples");
             String packageName = app.getString("package");
-            return new HogStat(name, killBenefit, users, samples, packageName);
+            return new HogStats(name, killBenefit, users, samples, packageName);
         } catch(Exception e){
             if(e.getLocalizedMessage() != null){
                 Log.d("debug", "Skipping an app with invalid json format", e);

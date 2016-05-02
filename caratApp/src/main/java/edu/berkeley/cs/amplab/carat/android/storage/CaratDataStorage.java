@@ -15,8 +15,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v4.util.LongSparseArray;
-import android.support.v4.util.Pair;
 import android.util.Log;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
@@ -57,7 +55,7 @@ public class CaratDataStorage {
     private WeakReference<SimpleHogBug[]> bugData = null;
     private WeakReference<SimpleHogBug[]> hogData = null;
     private WeakReference<SimpleHogBug[]> settingsData = null;
-    private WeakReference<List<HogStat>> hogStatsData = null;
+    private WeakReference<List<HogStats>> hogStatsData = null;
     private WeakReference<List<String>> blacklistedApps = null;
     private WeakReference<List<String>> blacklistedGlobs = null;
 
@@ -95,9 +93,9 @@ public class CaratDataStorage {
         writeText(quickHogsFreshness + "", QUICKHOGS_FRESHNESS);
     }
 
-    public void writeHogStats(List<HogStat> stats){
+    public void writeHogStats(List<HogStats> stats){
         if(stats == null) return;
-        hogStatsData = new WeakReference<List<HogStat>>(stats);
+        hogStatsData = new WeakReference<List<HogStats>>(stats);
         writeObject(stats, HOGSTATS_FILE);
     }
 
@@ -238,13 +236,13 @@ public class CaratDataStorage {
     }
 
     @SuppressWarnings("unchecked")
-    public List<HogStat> readHogStats(){
+    public List<HogStats> readHogStats(){
         Object o = readObject(HOGSTATS_FILE);
         if (Constants.DEBUG)
             Log.d("CaratDataStorage", "Read Hog stats: " + o);
         if(o != null){
-            hogStatsData = new WeakReference<>((List<HogStat>) o);
-            return (List<HogStat>) o;
+            hogStatsData = new WeakReference<>((List<HogStats>) o);
+            return (List<HogStats>) o;
         }
         return new ArrayList<>();
     }
@@ -379,7 +377,7 @@ public class CaratDataStorage {
             return readQuestionnaireUrl();
     }
 
-    public List<HogStat> getHogStats(){
+    public List<HogStats> getHogStats(){
         if (hogStatsData != null && hogStatsData.get() != null)
             return hogStatsData.get();
         else
