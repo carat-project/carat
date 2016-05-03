@@ -194,6 +194,10 @@
     <string name="packageName">Package:</string>
     <string name="reported_by">Reported by:</string>
     <string name="by_users">users</string>
+    <string name="hog_stats_description">Here are the top 200 hogs globally.
+        They have a high average energy use across many devices.
+        You can search for an app.</string>
+    <string name="query_hint">Type your search here</string>
 
     <!-- ACTIONS -->
     <string name="stop_app_title">STOP</string>

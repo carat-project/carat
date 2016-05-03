@@ -3,10 +3,12 @@ package edu.berkeley.cs.amplab.carat.android.protocol;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.apache.log4j.chainsaw.Main;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import edu.berkeley.cs.amplab.carat.android.CaratApplication;
 import edu.berkeley.cs.amplab.carat.android.Constants;
@@ -20,11 +22,15 @@ import edu.berkeley.cs.amplab.carat.android.utils.JsonParser;
  */
 public class AsyncStats extends AsyncTask<Void, Void, Void> {
 
+    private MainActivity mainActivity;
     private CaratDataStorage storage;
     private CaratApplication application;
+    private boolean didDataUpdate;
     private String date;
     private ArrayList<HogStats> hogStats;
     public AsyncStats(MainActivity mainActivity){
+        didDataUpdate = false;
+        this.mainActivity = mainActivity;
         this.application = (CaratApplication)mainActivity.getApplication();
         this.storage = CaratApplication.getStorage();
         this.hogStats = new ArrayList<>();
@@ -53,6 +59,7 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
                 if(hogStats != null && hogStats.size() > 0){
                     storage.writeHogStats(hogStats);
                     storage.writeHogStatsFreshness();
+                    didDataUpdate = true;
                 }
             } else {
                 Log.d("debug", "Update not needed or possible");
@@ -61,6 +68,13 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
             Log.d("debug", "Stored statistics are fresh enough, skipping update");
         }
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void result) {
+        if(didDataUpdate){
+            mainActivity.refreshHogStatsFragment();
+        }
     }
 
     private String getLatestDate(JSONObject platform){
@@ -155,6 +169,7 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
                 Log.d("debug", "Error checking hog statistics", e);
             }
         }
+        result = sortAndAssignIndexes(result);
         return result;
     }
 
@@ -175,5 +190,21 @@ public class AsyncStats extends AsyncTask<Void, Void, Void> {
             }
         }
         return null;
+    }
+
+    /**
+     * Sorts stats by their impact and assigns indexes to enable filtering.
+     * @param unsorted Unsorted list of stats
+     * @return Sorted and indexed list of stats
+     */
+    private ArrayList<HogStats> sortAndAssignIndexes(ArrayList<HogStats> unsorted){
+        Collections.sort(unsorted);
+        ArrayList<HogStats> result = new ArrayList<>();
+        for(int i=0; i<unsorted.size(); i++){
+            HogStats stats = unsorted.get(i);
+            stats.assignIndex(i+1); // Ranks begin from 1 unlike arrays
+            result.add(stats);
+        }
+        return result;
     }
 }

@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -37,6 +38,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import edu.berkeley.cs.amplab.carat.android.fragments.GlobalFragment;
+import edu.berkeley.cs.amplab.carat.android.fragments.HogStatsFragment;
 import edu.berkeley.cs.amplab.carat.android.fragments.TabbedFragment;
 import edu.berkeley.cs.amplab.carat.android.protocol.AsyncStats;
 import edu.berkeley.cs.amplab.carat.android.storage.SimpleHogBug;
@@ -349,6 +351,24 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
+    public void refreshHogStatsFragment() {
+        if (getSupportFragmentManager() != null) {
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
+            if(fragment instanceof HogStatsFragment){
+                ((HogStatsFragment) fragment).refresh();
+            }
+        }
+    }
+
+    public void refreshDashboardProgress() {
+        if (getSupportFragmentManager() != null) {
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
+            if (fragment instanceof DashboardFragment) {
+                ((DashboardFragment) fragment).refreshProgress();
+            }
+        }
+    }
+
     public void onFragmentPop(){
         Fragment top = getSupportFragmentManager().findFragmentById(R.id.fragment_holder);
         if(top instanceof DashboardFragment){
@@ -639,8 +659,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
+    public void hideKeyboard(View v){
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(INPUT_METHOD_SERVICE);
+        if (v == null) v = this.getCurrentFocus();
+        if (v == null) v = new View(this);
+        imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+    }
+
     @Override
     public void onBackPressed() {
+        hideKeyboard(null);
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
@@ -656,6 +684,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.back_arrow) {
+            hideKeyboard(null);
             if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);

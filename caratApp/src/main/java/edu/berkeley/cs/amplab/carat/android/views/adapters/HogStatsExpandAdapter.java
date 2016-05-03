@@ -1,14 +1,19 @@
 package edu.berkeley.cs.amplab.carat.android.views.adapters;
 
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,12 +26,13 @@ import edu.berkeley.cs.amplab.carat.android.storage.HogStats;
  * Created by Jonatan Hamberg on 2.5.2016.
  */
 public class HogStatsExpandAdapter extends BaseExpandableListAdapter implements ExpandableListView.OnGroupExpandListener,
-        ExpandableListView.OnChildClickListener, View.OnClickListener, ExpandableListView.OnGroupClickListener {
+        ExpandableListView.OnChildClickListener, View.OnClickListener, ExpandableListView.OnGroupClickListener, Filterable{
     private MainActivity mainActivity;
     private LayoutInflater mInflater;
     private ExpandableListView lv;
     private CaratApplication a = null;
     private List<HogStats> allHogStats = null;
+    private List<HogStats> filteredHogStats = null;
     private int previousGroup = -1;
 
     private static class CollapsedViewHolder {
@@ -45,20 +51,30 @@ public class HogStatsExpandAdapter extends BaseExpandableListAdapter implements 
         this.mainActivity = mainActivity;
         this.lv = lv;
         this.a = (CaratApplication) mainActivity.getApplication();
-        this.allHogStats = hogStats;
+        this.allHogStats = new ArrayList<>(hogStats);
+        this.filteredHogStats = new ArrayList<>(hogStats);
+
         this.mInflater = LayoutInflater.from(a);
 
         // Setup listeners
         this.lv.setOnGroupExpandListener(this);
         this.lv.setOnChildClickListener(this);
         this.lv.setOnGroupClickListener(this);
+    }
 
-        Collections.sort(allHogStats);
+    /**
+     * Updates current list view when new data arrives.
+     * @param hogStats Updated data
+     */
+    public void refresh(List<HogStats> hogStats){
+        this.allHogStats = hogStats;
+        this.filteredHogStats = hogStats;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getGroupCount() {
-        return allHogStats.size();
+        return filteredHogStats.size();
     }
 
     @Override
@@ -68,7 +84,7 @@ public class HogStatsExpandAdapter extends BaseExpandableListAdapter implements 
 
     @Override
     public Object getGroup(int groupPosition) {
-        return allHogStats.get(groupPosition);
+        return filteredHogStats.get(groupPosition);
     }
 
     @Override
@@ -99,8 +115,8 @@ public class HogStatsExpandAdapter extends BaseExpandableListAdapter implements 
             convertView.setTag(holder);
         }
 
-        if(allHogStats == null || groupPosition < 0) return convertView;
-        HogStats item = allHogStats.get(groupPosition);
+        if(filteredHogStats == null || groupPosition < 0) return convertView;
+        HogStats item = filteredHogStats.get(groupPosition);
         if(item == null) return convertView;
 
         setupCollapsedValues(convertView, item, groupPosition);
@@ -119,7 +135,9 @@ public class HogStatsExpandAdapter extends BaseExpandableListAdapter implements 
     public void setupCollapsedValues(View v, HogStats stats, int position){
         CollapsedViewHolder holder = (CollapsedViewHolder) v.getTag();
 
-        String rank = (position+1)+")";
+        // Not using position here since we need to filter data
+        // while retaining the original rank
+        String rank = stats.getIndex()+")";
         long benefit = stats.getKillBenefit();
 
         holder.rank.setText(rank);
@@ -143,8 +161,8 @@ public class HogStatsExpandAdapter extends BaseExpandableListAdapter implements 
             convertView.setTag(holder);
         }
 
-        if(allHogStats == null || groupPosition < 0) return convertView;
-        HogStats item = allHogStats.get(groupPosition);
+        if(filteredHogStats == null || groupPosition < 0) return convertView;
+        HogStats item = filteredHogStats.get(groupPosition);
         if(item == null) return convertView;
 
         setupExpandedValues(convertView, item);
@@ -209,5 +227,45 @@ public class HogStatsExpandAdapter extends BaseExpandableListAdapter implements 
             }
         }
         previousGroup = groupPosition;
+    }
+
+    @Override
+    public Filter getFilter() {
+        final Filter filter = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults results = new FilterResults();
+
+                // Even when the query user entered is empty, we want to
+                // reset the view back to its original state.
+                if(constraint == null || constraint.length() == 0){
+                    results.count = allHogStats.size();
+                    results.values = allHogStats;
+                } else {
+
+                    // Filter by app names and include items that contain the
+                    // search query. Both are first converted lowercase.
+                    ArrayList<HogStats> filtered = new ArrayList<>();
+                    for(HogStats stats : allHogStats){
+                        String appName = stats.getAppName().toLowerCase();
+                        if(appName.contains(constraint.toString().toLowerCase())){
+                            filtered.add(stats);
+                        }
+                    }
+                    results.count = filtered.size();
+                    results.values = filtered;
+                }
+                return results;
+            }
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                filteredHogStats.clear();
+                filteredHogStats.addAll((ArrayList<HogStats>) results.values);
+                notifyDataSetChanged();
+            }
+        };
+        return filter;
     }
 }

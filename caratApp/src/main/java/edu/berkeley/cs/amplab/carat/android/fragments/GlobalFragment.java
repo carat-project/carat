@@ -105,7 +105,7 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
 
     private void initViewRefs() {
         // Main content views
-        loadingScreen = (RelativeLayout) mainFrame.findViewById(R.id.global_loadingscreen);
+        loadingScreen = (RelativeLayout) mainFrame.findViewById(R.id.loading_screen);
         scrollContent = (ScrollView) mainFrame.findViewById(R.id.global_scrollview);
 
         // Percentage bars

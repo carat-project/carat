@@ -593,6 +593,11 @@ public class CaratApplication extends Application {
         //CaratApplication.setActionFinished();
 
         SampleSender.sendSamples(CaratApplication.this);
+        main.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {main.refreshDashboardProgress();
+            }
+        });
 
         Log.d("debug", "*** End refresh");
     }

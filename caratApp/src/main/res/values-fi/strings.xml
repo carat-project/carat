@@ -188,6 +188,10 @@
     <string name="packageName">Pakkaus:</string>
     <string name="reported_by">Raportoinut:</string>
     <string name="by_users">käyttäjää</string>
+    <string name="hog_stats_description">Tässä 200 pahinta hogia kaikilta laitteilta.
+        Niiden akunkulutus on keskimäärin korkea muihin sovelluksiin verrattuna.
+        Voit hakea sovellusta sen nimellä.</string>
+    <string name="query_hint">Kirjoita hakusi tähän</string>
 
     <!-- ACTIONS -->
     <string name="stop_app_title">PYSÄYTÄ</string>

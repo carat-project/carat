@@ -12,6 +12,7 @@ public class HogStats implements Serializable, Comparable<HogStats> {
      */
     private static final long serialVersionUID = -7501985396874679871L;
 
+    private int index;
     private String appName;
     private long killBenefit;
     private long users;
@@ -20,11 +21,20 @@ public class HogStats implements Serializable, Comparable<HogStats> {
 
     public HogStats(String appName, long killBenefit, long users,
                     long samples, String packageName){
+        this.index = -1;
         this.appName = appName;
         this.killBenefit = killBenefit;
         this.users = users;
         this.samples = samples;
         this.packageName = packageName;
+    }
+
+    public void assignIndex(int index){
+        this.index = index;
+    }
+
+    public int getIndex(){
+        return index;
     }
 
     public String getPackageName() {

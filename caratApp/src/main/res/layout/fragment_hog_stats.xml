@@ -5,9 +5,13 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:weightSum="100"
     tools:context="edu.berkeley.cs.amplab.carat.android.fragments.HogsFragment">
+
+    <include layout="@layout/loading_screen" />
 
     <RelativeLayout
         android:id="@+id/hogs_header"
@@ -29,13 +33,13 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/hog_icon"
-            android:paddingRight="5dp"
-            android:text="Top 20 hogs worldwide" />
+            android:paddingRight="8dp"
+            android:text="@string/hog_stats_description" />
 
     </RelativeLayout>
 
     <android.support.v7.widget.SearchView
-        android:paddingLeft="-10dp"
+        android:paddingLeft="-8dp"
         android:paddingRight="10dp"
         android:id="@+id/hog_statistics_search"
         android:layout_width="match_parent"
@@ -43,7 +47,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:iconifiedByDefault="false"
-        android:queryHint="Type your searc here"/>
+        android:queryHint="@string/query_hint"/>
 
     <ExpandableListView
         android:id="@+id/expandable_hog_stats"
