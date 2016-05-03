@@ -4802,11 +4802,11 @@
   __score_isset = NO;
 }
 
-- (NSMutableArray *) xVals {
+- (NSArray *) xVals {
   return [[__xVals retain_stub] autorelease_stub];
 }
 
-- (void) setXVals: (NSMutableArray *) xVals {
+- (void) setXVals: (NSArray *) xVals {
   [xVals retain_stub];
   [__xVals release_stub];
   __xVals = xVals;
@@ -4823,11 +4823,11 @@
   __xVals_isset = NO;
 }
 
-- (NSMutableArray *) yVals {
+- (NSArray *) yVals {
   return [[__yVals retain_stub] autorelease_stub];
 }
 
-- (void) setYVals: (NSMutableArray *) yVals {
+- (void) setYVals: (NSArray *) yVals {
   [yVals retain_stub];
   [__yVals release_stub];
   __yVals = yVals;

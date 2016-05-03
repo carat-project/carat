@@ -83,10 +83,10 @@ static int previousSample = 0;
             cdataSubReport.errorWithout = [NSNumber numberWithDouble:0.0];
             cdataSubReport.samples = [NSNumber numberWithDouble:0.0];
             cdataSubReport.samplesWithout = [NSNumber numberWithDouble:0.0];
-            cdataSubReport.distributionXWith = [[[NSArray alloc] init] autorelease];
-            cdataSubReport.distributionXWithout = [[[NSArray alloc] init] autorelease];
-            cdataSubReport.distributionYWith = [[[NSArray alloc] init] autorelease];
-            cdataSubReport.distributionYWithout = [[[NSArray alloc] init] autorelease];
+            cdataSubReport.distributionXWith = [[[NSMutableArray alloc] init] autorelease];
+            cdataSubReport.distributionXWithout = [[[NSMutableArray alloc] init] autorelease];
+            cdataSubReport.distributionYWith = [[[NSMutableArray alloc] init] autorelease];
+            cdataSubReport.distributionYWithout = [[[NSMutableArray alloc] init] autorelease];
             [cdataSubReport setMainreport:cdataMainReport];
             [cdataMainReport addSubreportsObject:cdataSubReport];
         }
@@ -166,8 +166,8 @@ static int previousSample = 0;
                     if (JScoreInfo == nil)
                         JScoreInfo = [[DetailScreenReport alloc] init];
                     JScoreInfo.score = [[subReport valueForKey:@"score"] doubleValue];
-                    JScoreInfo.xVals = (NSArray *) [subReport valueForKey:@"distributionXWith"];  
-                    JScoreInfo.yVals = (NSArray *) [subReport valueForKey:@"distributionYWith"];
+                    JScoreInfo.xVals = [subReport valueForKey:@"distributionXWith"];
+                    JScoreInfo.yVals = [subReport valueForKey:@"distributionYWith"];
                     JScoreInfo.expectedValue = [[subReport valueForKey:@"expectedValue"] doubleValue];
                     JScoreInfo.error = [[subReport valueForKey:@"error"] doubleValue];
                     JScoreInfo.samples = [[subReport valueForKey:@"samples"] doubleValue];
@@ -177,16 +177,16 @@ static int previousSample = 0;
                     JScoreInfoWithout.expectedValue = [[subReport valueForKey:@"expectedValueWithout"] doubleValue];
                     JScoreInfoWithout.error = [[subReport valueForKey:@"errorWithout"] doubleValue];
                     JScoreInfoWithout.samples = [[subReport valueForKey:@"samplesWithout"] doubleValue];
-                    JScoreInfoWithout.xVals = (NSArray *) [subReport valueForKey:@"distributionXWithout"];  
-                    JScoreInfoWithout.yVals = (NSArray *) [subReport valueForKey:@"distributionYWithout"];
+                    JScoreInfoWithout.xVals = [subReport valueForKey:@"distributionXWithout"];
+                    JScoreInfoWithout.yVals = [subReport valueForKey:@"distributionYWithout"];
                 }
                 else if ([subReportName isEqualToString:@"OSInfo"]) 
                 {
                     if (OSInfo == nil)
                         OSInfo = [[DetailScreenReport alloc] init];
                     OSInfo.score = [[subReport valueForKey:@"score"] doubleValue];
-                    OSInfo.xVals = (NSArray *) [subReport valueForKey:@"distributionXWith"];  
-                    OSInfo.yVals = (NSArray *) [subReport valueForKey:@"distributionYWith"];
+                    OSInfo.xVals = [subReport valueForKey:@"distributionXWith"];
+                    OSInfo.yVals = [subReport valueForKey:@"distributionYWith"];
                     OSInfo.expectedValue = [[subReport valueForKey:@"expectedValue"] doubleValue];
                     OSInfo.error = [[subReport valueForKey:@"error"] doubleValue];
                     OSInfo.samples = [[subReport valueForKey:@"samples"] doubleValue];
@@ -196,16 +196,16 @@ static int previousSample = 0;
                     OSInfoWithout.expectedValue = [[subReport valueForKey:@"expectedValueWithout"] doubleValue];
                     OSInfoWithout.error = [[subReport valueForKey:@"errorWithout"] doubleValue];
                     OSInfoWithout.samples = [[subReport valueForKey:@"samplesWithout"] doubleValue];
-                    OSInfoWithout.xVals = (NSArray *) [subReport valueForKey:@"distributionXWithout"];
-                    OSInfoWithout.yVals = (NSArray *) [subReport valueForKey:@"distributionYWithout"];
+                    OSInfoWithout.xVals = [subReport valueForKey:@"distributionXWithout"];
+                    OSInfoWithout.yVals = [subReport valueForKey:@"distributionYWithout"];
                 } 
                 else if ([subReportName isEqualToString:@"ModelInfo"]) 
                 {
                     if (ModelInfo == nil)
                         ModelInfo = [[DetailScreenReport alloc] init];
                     ModelInfo.score = [[subReport valueForKey:@"score"] doubleValue];
-                    ModelInfo.xVals = (NSArray *) [subReport valueForKey:@"distributionXWith"];  
-                    ModelInfo.yVals = (NSArray *) [subReport valueForKey:@"distributionYWith"];
+                    ModelInfo.xVals = [subReport valueForKey:@"distributionXWith"];
+                    ModelInfo.yVals = [subReport valueForKey:@"distributionYWith"];
                     ModelInfo.expectedValue = [[subReport valueForKey:@"expectedValue"] doubleValue];
                     ModelInfo.error = [[subReport valueForKey:@"error"] doubleValue];
                     ModelInfo.samples = [[subReport valueForKey:@"samples"] doubleValue];
@@ -215,16 +215,16 @@ static int previousSample = 0;
                     ModelInfoWithout.expectedValue = [[subReport valueForKey:@"expectedValueWithout"] doubleValue];
                     ModelInfoWithout.error = [[subReport valueForKey:@"errorWithout"] doubleValue];
                     ModelInfoWithout.samples = [[subReport valueForKey:@"samplesWithout"] doubleValue];
-                    ModelInfoWithout.xVals = (NSArray *) [subReport valueForKey:@"distributionXWithout"];
-                    ModelInfoWithout.yVals = (NSArray *) [subReport valueForKey:@"distributionYWithout"];
+                    ModelInfoWithout.xVals = [subReport valueForKey:@"distributionXWithout"];
+                    ModelInfoWithout.yVals = [subReport valueForKey:@"distributionYWithout"];
                 }
                 else if ([subReportName isEqualToString:@"SimilarAppsInfo"])
                 {
                     if (SimilarAppsInfo == nil)
                         SimilarAppsInfo = [[DetailScreenReport alloc] init];
                     SimilarAppsInfo.score = [[subReport valueForKey:@"score"] doubleValue];
-                    SimilarAppsInfo.xVals = (NSArray *) [subReport valueForKey:@"distributionXWith"];  
-                    SimilarAppsInfo.yVals = (NSArray *) [subReport valueForKey:@"distributionYWith"];
+                    SimilarAppsInfo.xVals = [subReport valueForKey:@"distributionXWith"];
+                    SimilarAppsInfo.yVals = [subReport valueForKey:@"distributionYWith"];
                     SimilarAppsInfo.expectedValue = [[subReport valueForKey:@"expectedValue"] doubleValue];
                     SimilarAppsInfo.error = [[subReport valueForKey:@"error"] doubleValue];
                     SimilarAppsInfo.samples = [[subReport valueForKey:@"samples"] doubleValue];
@@ -234,8 +234,8 @@ static int previousSample = 0;
                     SimilarAppsInfoWithout.expectedValue = [[subReport valueForKey:@"expectedValueWithout"] doubleValue];
                     SimilarAppsInfoWithout.error = [[subReport valueForKey:@"errorWithout"] doubleValue];
                     SimilarAppsInfoWithout.samples = [[subReport valueForKey:@"samplesWithout"] doubleValue];
-                    SimilarAppsInfoWithout.xVals = (NSArray *) [subReport valueForKey:@"distributionXWithout"];
-                    SimilarAppsInfoWithout.yVals = (NSArray *) [subReport valueForKey:@"distributionYWithout"];
+                    SimilarAppsInfoWithout.xVals = [subReport valueForKey:@"distributionXWithout"];
+                    SimilarAppsInfoWithout.yVals = [subReport valueForKey:@"distributionYWithout"];
                 }
             }
         }
@@ -711,7 +711,7 @@ static int previousSample = 0;
         UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
         [feature2 setValue: [h platformString]];
         
-        FeatureList list = [[NSArray alloc] initWithObjects:feature1,feature2, nil];
+        FeatureList list = [[NSMutableArray alloc] initWithObjects:feature1,feature2, nil];
         
         HogBugReport *hogReport = [[CommunicationManager instance] getHogOrBugReport:list];
         
@@ -798,7 +798,7 @@ static int previousSample = 0;
         [self postNotificationOnMainThread];
         
         [feature1 setValue:entityType];
-        list = [[NSArray alloc] initWithObjects:feature1, feature2, nil];
+        list = [[NSMutableArray alloc] initWithObjects:feature1, feature2, nil];
         
         HogBugReport *bugReport = [[CommunicationManager instance] getHogOrBugReport:list];
         //if (bugReport == nil || bugReport == NULL) return;
@@ -1691,10 +1691,10 @@ static id instance = nil;
             [bug setExpectedValue:[[cdataAppReport valueForKey:@"expectedValue"] doubleValue]];
             [bug setExpectedValueWithout:[[cdataAppReport valueForKey:@"expectedValueWithout"] doubleValue]];
             CoreDataDetail *cdataDetail = cdataAppReport.appDetails;
-            [bug setXVals:(NSArray *) [cdataDetail valueForKey:@"distributionXWith"]];
-            [bug setXValsWithout:(NSArray *) [cdataDetail valueForKey:@"distributionXWithout"]];
-            [bug setYVals:(NSArray *) [cdataDetail valueForKey:@"distributionYWith"]];
-            [bug setYValsWithout:(NSArray *) [cdataDetail valueForKey:@"distributionYWithout"]];
+            [bug setXVals: [cdataDetail valueForKey:@"distributionXWith"]];
+            [bug setXValsWithout: [cdataDetail valueForKey:@"distributionXWithout"]];
+            [bug setYVals: [cdataDetail valueForKey:@"distributionYWith"]];
+            [bug setYValsWithout: [cdataDetail valueForKey:@"distributionYWithout"]];
             
             [bug setError:[[cdataAppReport valueForKey:@"error"] doubleValue]];
             [bug setErrorWithout:[[cdataAppReport valueForKey:@"errorWithout"] doubleValue]];
@@ -1780,10 +1780,10 @@ static id instance = nil;
             [hog setExpectedValue:[[cdataAppReport valueForKey:@"expectedValue"] doubleValue]];
             [hog setExpectedValueWithout:[[cdataAppReport valueForKey:@"expectedValueWithout"] doubleValue]];
             CoreDataDetail *cdataDetail = cdataAppReport.appDetails;
-            [hog setXVals:(NSArray *) [cdataDetail valueForKey:@"distributionXWith"]];
-            [hog setXValsWithout:(NSArray *) [cdataDetail valueForKey:@"distributionXWithout"]];
-            [hog setYVals:(NSArray *) [cdataDetail valueForKey:@"distributionYWith"]];
-            [hog setYValsWithout:(NSArray *) [cdataDetail valueForKey:@"distributionYWithout"]];
+            [hog setXVals: [cdataDetail valueForKey:@"distributionXWith"]];
+            [hog setXValsWithout: [cdataDetail valueForKey:@"distributionXWithout"]];
+            [hog setYVals: [cdataDetail valueForKey:@"distributionYWith"]];
+            [hog setYValsWithout: [cdataDetail valueForKey:@"distributionYWithout"]];
             
             [hog setError:[[cdataAppReport valueForKey:@"error"] doubleValue]];
             [hog setErrorWithout:[[cdataAppReport valueForKey:@"errorWithout"] doubleValue]];
