@@ -14,8 +14,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4O-zD-yrT" userLabel="topCont">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4O-zD-yrT" userLabel="topCont">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="def_app_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6sG-wh-asO">
                                 <rect key="frame" x="8" y="8" width="40" height="40"/>
@@ -31,8 +31,8 @@
                                     <constraint firstAttribute="height" constant="20" id="MTJ-bC-6x4"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDo-4i-qu9" userLabel="Improvement">
-                                <rect key="frame" x="56" y="33" width="256" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDo-4i-qu9" userLabel="Improvement">
+                                <rect key="frame" x="56" y="-23" width="256" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="rO3-d1-zlf"/>
                                 </constraints>

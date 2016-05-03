@@ -14,11 +14,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kde-Oc-rRH" userLabel="topCont">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kde-Oc-rRH" userLabel="topCont">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-Tl-dKh" userLabel="Improvement">
-                                <rect key="frame" x="8" y="39" width="304" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-Tl-dKh" userLabel="Improvement">
+                                <rect key="frame" x="8" y="37" width="304" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Qt4-b4-tCn"/>
                                 </constraints>

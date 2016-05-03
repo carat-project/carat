@@ -70,8 +70,8 @@
                                         <constraint firstAttribute="width" secondItem="av9-JB-eeg" secondAttribute="height" multiplier="200:79" id="vkW-tO-KxE"/>
                                     </constraints>
                                 </imageView>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJt-eY-rn5" userLabel="Score" customClass="ScoreView">
-                                    <rect key="frame" x="210" y="28" width="180" height="181"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJt-eY-rn5" userLabel="Score" customClass="ScoreView">
+                                    <rect key="frame" x="210" y="28" width="181" height="181"/>
                                     <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="CJt-eY-rn5" secondAttribute="height" multiplier="1:1" id="P9f-th-108"/>
