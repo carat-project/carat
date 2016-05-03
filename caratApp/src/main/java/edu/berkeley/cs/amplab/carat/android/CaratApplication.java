@@ -585,14 +585,15 @@ public class CaratApplication extends Application {
         //CaratApplication.setActionFinished();
         setReportData();
         CaratApplication.refreshStaticActionCount();
-        SampleSender.sendSamples(CaratApplication.this);
+        main.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {main.refreshCurrentFragment();
+            }
+        });
         //CaratApplication.setActionFinished();
 
-        main.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {main.refreshCurrentFragment();
-                }
-        });
+        SampleSender.sendSamples(CaratApplication.this);
+
         Log.d("debug", "*** End refresh");
     }
 
