@@ -11,24 +11,7 @@
     android:orientation="vertical"
     tools:context="edu.berkeley.cs.amplab.carat.android.fragments.GlobalFragment">
 
-    <RelativeLayout
-        android:id="@+id/global_loadingscreen"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:background="@color/activity_indicator_background_transparent"
-        android:visibility="visible">
-        <ProgressBar
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@android:color/transparent"
-            android:visibility="visible"
-            android:indeterminate="true"
-            android:indeterminateDrawable="@drawable/progress_circle_orange"
-            />
-    </RelativeLayout>
+    <include layout="@layout/loading_screen" />
 
     <ScrollView
         android:id="@+id/global_scrollview"
