@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TIg-dE-gCv">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TIg-dE-gCv">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -25,8 +25,8 @@
                         <outlet property="delegate" destination="-1" id="kxS-73-QKZ"/>
                     </connections>
                 </tableView>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTA-wv-ACX">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oTA-wv-ACX">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,36 +54,7 @@
                 <constraint firstItem="oTA-wv-ACX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Hjz-aU-eQq"/>
                 <constraint firstItem="TIg-dE-gCv" firstAttribute="top" secondItem="oTA-wv-ACX" secondAttribute="bottom" id="S1o-Zy-8Sa"/>
             </constraints>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="TIg-dE-gCv"/>
-                    <exclude reference="oTA-wv-ACX"/>
-                </mask>
-                <mask key="constraints">
-                    <exclude reference="CZo-iU-lLG"/>
-                    <exclude reference="CvB-0h-6TD"/>
-                    <exclude reference="Hjz-aU-eQq"/>
-                    <exclude reference="1jy-M6-ZsH"/>
-                    <exclude reference="9PB-Cd-FET"/>
-                    <exclude reference="HZL-Iq-txk"/>
-                    <exclude reference="S1o-Zy-8Sa"/>
-                </mask>
-            </variation>
-            <variation key="widthClass=compact">
-                <mask key="subviews">
-                    <include reference="TIg-dE-gCv"/>
-                    <include reference="oTA-wv-ACX"/>
-                </mask>
-                <mask key="constraints">
-                    <include reference="CZo-iU-lLG"/>
-                    <include reference="CvB-0h-6TD"/>
-                    <include reference="Hjz-aU-eQq"/>
-                    <include reference="1jy-M6-ZsH"/>
-                    <include reference="9PB-Cd-FET"/>
-                    <include reference="HZL-Iq-txk"/>
-                    <include reference="S1o-Zy-8Sa"/>
-                </mask>
-            </variation>
+            <point key="canvasLocation" x="412" y="380"/>
         </view>
     </objects>
     <resources>

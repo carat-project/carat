@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-5G-W8x" customClass="LocalizedUIButton">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <rect key="frame" x="150" y="287" width="300" height="34"/>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" red="0.070588235289999995" green="0.12549019610000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Select">
@@ -31,14 +31,14 @@
                     </connections>
                 </button>
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lf7-8j-QYz">
-                    <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                    <rect key="frame" x="0.0" y="64" width="600" height="216"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Lye-JJ-CYF"/>
                         <outlet property="delegate" destination="-1" id="Z4q-Gl-Piy"/>
                     </connections>
                 </pickerView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMm-xN-Zja">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,44 +69,7 @@
                 <constraint firstItem="cVb-5G-W8x" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="1.5" id="ntS-lD-VwJ"/>
                 <constraint firstItem="cVb-5G-W8x" firstAttribute="top" secondItem="Lf7-8j-QYz" secondAttribute="bottom" constant="7" id="tiL-jG-oIr"/>
             </constraints>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="cVb-5G-W8x"/>
-                    <exclude reference="Lf7-8j-QYz"/>
-                    <exclude reference="OMm-xN-Zja"/>
-                </mask>
-                <mask key="constraints">
-                    <exclude reference="211-Q7-XSh"/>
-                    <exclude reference="4YG-pF-hvW"/>
-                    <exclude reference="RyR-BH-7RG"/>
-                    <exclude reference="hHF-jD-8yy"/>
-                    <exclude reference="h5f-z2-dgL"/>
-                    <exclude reference="ntS-lD-VwJ"/>
-                    <exclude reference="tiL-jG-oIr"/>
-                    <exclude reference="GP1-cP-jdn"/>
-                    <exclude reference="IlX-b5-f4U"/>
-                    <exclude reference="QCb-FK-tcY"/>
-                </mask>
-            </variation>
-            <variation key="widthClass=compact">
-                <mask key="subviews">
-                    <include reference="cVb-5G-W8x"/>
-                    <include reference="Lf7-8j-QYz"/>
-                    <include reference="OMm-xN-Zja"/>
-                </mask>
-                <mask key="constraints">
-                    <include reference="211-Q7-XSh"/>
-                    <include reference="4YG-pF-hvW"/>
-                    <include reference="RyR-BH-7RG"/>
-                    <include reference="hHF-jD-8yy"/>
-                    <include reference="h5f-z2-dgL"/>
-                    <include reference="ntS-lD-VwJ"/>
-                    <include reference="tiL-jG-oIr"/>
-                    <include reference="GP1-cP-jdn"/>
-                    <include reference="IlX-b5-f4U"/>
-                    <include reference="QCb-FK-tcY"/>
-                </mask>
-            </variation>
+            <point key="canvasLocation" x="412" y="380"/>
         </view>
     </objects>
     <resources>

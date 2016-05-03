@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoViewController">
@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGg-jp-Alj">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpx-p7-rLH" userLabel="content">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doe-we-gd1" customClass="LocalizedLabel">
-                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                    <rect key="frame" x="12" y="12" width="576" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -39,28 +39,6 @@
                                 <constraint firstItem="doe-we-gd1" firstAttribute="leading" secondItem="hpx-p7-rLH" secondAttribute="leading" constant="12" id="thR-Zn-x0m"/>
                                 <constraint firstItem="doe-we-gd1" firstAttribute="trailing" secondItem="hpx-p7-rLH" secondAttribute="trailing" constant="-12" id="wdf-Ot-79n"/>
                             </constraints>
-                            <variation key="default">
-                                <mask key="subviews">
-                                    <exclude reference="doe-we-gd1"/>
-                                </mask>
-                                <mask key="constraints">
-                                    <exclude reference="1ud-ZE-sdc"/>
-                                    <exclude reference="3xi-tL-WGx"/>
-                                    <exclude reference="thR-Zn-x0m"/>
-                                    <exclude reference="wdf-Ot-79n"/>
-                                </mask>
-                            </variation>
-                            <variation key="widthClass=compact">
-                                <mask key="subviews">
-                                    <include reference="doe-we-gd1"/>
-                                </mask>
-                                <mask key="constraints">
-                                    <include reference="1ud-ZE-sdc"/>
-                                    <include reference="3xi-tL-WGx"/>
-                                    <include reference="thR-Zn-x0m"/>
-                                    <include reference="wdf-Ot-79n"/>
-                                </mask>
-                            </variation>
                         </view>
                     </subviews>
                     <constraints>
@@ -71,35 +49,9 @@
                         <constraint firstItem="hpx-p7-rLH" firstAttribute="trailing" secondItem="gGg-jp-Alj" secondAttribute="trailing" id="b5y-JS-JMD"/>
                         <constraint firstItem="hpx-p7-rLH" firstAttribute="leading" secondItem="gGg-jp-Alj" secondAttribute="leading" id="tgv-AN-ZLb"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="subviews">
-                            <exclude reference="hpx-p7-rLH"/>
-                        </mask>
-                        <mask key="constraints">
-                            <exclude reference="1Ec-ah-a3M"/>
-                            <exclude reference="H15-fw-czD"/>
-                            <exclude reference="M31-dP-Hb7"/>
-                            <exclude reference="Xy3-Uz-kbv"/>
-                            <exclude reference="b5y-JS-JMD"/>
-                            <exclude reference="tgv-AN-ZLb"/>
-                        </mask>
-                    </variation>
-                    <variation key="widthClass=compact">
-                        <mask key="subviews">
-                            <include reference="hpx-p7-rLH"/>
-                        </mask>
-                        <mask key="constraints">
-                            <include reference="1Ec-ah-a3M"/>
-                            <include reference="H15-fw-czD"/>
-                            <include reference="M31-dP-Hb7"/>
-                            <include reference="Xy3-Uz-kbv"/>
-                            <include reference="b5y-JS-JMD"/>
-                            <include reference="tgv-AN-ZLb"/>
-                        </mask>
-                    </variation>
                 </scrollView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWH-BB-lU4">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,36 +79,7 @@
                 <constraint firstItem="gGg-jp-Alj" firstAttribute="top" secondItem="lWH-BB-lU4" secondAttribute="bottom" id="hb8-Mk-Ln2"/>
                 <constraint firstAttribute="trailing" secondItem="lWH-BB-lU4" secondAttribute="trailing" id="qZZ-ah-hHI"/>
             </constraints>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="gGg-jp-Alj"/>
-                    <exclude reference="lWH-BB-lU4"/>
-                </mask>
-                <mask key="constraints">
-                    <exclude reference="Ki4-Ja-f0U"/>
-                    <exclude reference="Str-Af-3un"/>
-                    <exclude reference="qZZ-ah-hHI"/>
-                    <exclude reference="49I-gC-5MX"/>
-                    <exclude reference="BC8-6H-s4v"/>
-                    <exclude reference="Q8Z-bR-aYl"/>
-                    <exclude reference="hb8-Mk-Ln2"/>
-                </mask>
-            </variation>
-            <variation key="widthClass=compact">
-                <mask key="subviews">
-                    <include reference="gGg-jp-Alj"/>
-                    <include reference="lWH-BB-lU4"/>
-                </mask>
-                <mask key="constraints">
-                    <include reference="Ki4-Ja-f0U"/>
-                    <include reference="Str-Af-3un"/>
-                    <include reference="qZZ-ah-hHI"/>
-                    <include reference="49I-gC-5MX"/>
-                    <include reference="BC8-6H-s4v"/>
-                    <include reference="Q8Z-bR-aYl"/>
-                    <include reference="hb8-Mk-Ln2"/>
-                </mask>
-            </variation>
+            <point key="canvasLocation" x="412" y="380"/>
         </view>
     </objects>
     <resources>

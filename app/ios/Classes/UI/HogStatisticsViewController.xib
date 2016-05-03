@@ -20,84 +20,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="euS-RX-6W2" userLabel="Hogs table">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="134" width="600" height="466"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMc-Fr-Kiu" userLabel="Information label">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="64" width="600" height="70"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HogStatisticsDesc" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hF9-di-f5b" customClass="LocalizedLabel">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <rect key="frame" x="68" y="7" width="522" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery_icon" translatesAutoresizingMaskIntoConstraints="NO" id="U5e-7m-XNn">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="4S4-Fc-bsO"/>
                                 <constraint firstAttribute="height" constant="70" id="EZH-5o-Zxm"/>
                             </constraints>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="4S4-Fc-bsO"/>
-                                    <exclude reference="EZH-5o-Zxm"/>
-                                </mask>
-                            </variation>
-                            <variation key="widthClass=compact">
-                                <mask key="constraints">
-                                    <include reference="4S4-Fc-bsO"/>
-                                    <include reference="EZH-5o-Zxm"/>
-                                </mask>
-                            </variation>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.83137254901960778" green="0.83921568627450982" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="U5e-7m-XNn" firstAttribute="leading" secondItem="tMc-Fr-Kiu" secondAttribute="leading" constant="20" symbolic="YES" id="5UR-Hc-dUY">
-                            <variation key="widthClass=compact" constant="0.0"/>
-                        </constraint>
-                        <constraint firstItem="U5e-7m-XNn" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="top" constant="20" symbolic="YES" id="62V-qa-Wum">
-                            <variation key="widthClass=compact" constant="0.0"/>
-                        </constraint>
+                        <constraint firstItem="U5e-7m-XNn" firstAttribute="leading" secondItem="tMc-Fr-Kiu" secondAttribute="leading" id="5UR-Hc-dUY"/>
+                        <constraint firstItem="U5e-7m-XNn" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="top" id="62V-qa-Wum"/>
                         <constraint firstItem="hF9-di-f5b" firstAttribute="trailing" secondItem="tMc-Fr-Kiu" secondAttribute="trailing" constant="-10" id="DdF-rL-8sM"/>
                         <constraint firstAttribute="height" constant="70" id="Egt-Ft-zMQ"/>
                         <constraint firstItem="hF9-di-f5b" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="top" constant="7" id="siE-Na-ZxH" userLabel="HogsDesc.top = top + 10"/>
-                        <constraint firstItem="hF9-di-f5b" firstAttribute="leading" secondItem="U5e-7m-XNn" secondAttribute="trailing" id="uwf-c5-mlR">
-                            <variation key="widthClass=compact" constant="-2"/>
-                        </constraint>
+                        <constraint firstItem="hF9-di-f5b" firstAttribute="leading" secondItem="U5e-7m-XNn" secondAttribute="trailing" constant="-2" id="uwf-c5-mlR"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="subviews">
-                            <exclude reference="hF9-di-f5b"/>
-                            <exclude reference="U5e-7m-XNn"/>
-                        </mask>
-                        <mask key="constraints">
-                            <exclude reference="Egt-Ft-zMQ"/>
-                            <exclude reference="DdF-rL-8sM"/>
-                            <exclude reference="siE-Na-ZxH"/>
-                            <exclude reference="uwf-c5-mlR"/>
-                            <exclude reference="5UR-Hc-dUY"/>
-                            <exclude reference="62V-qa-Wum"/>
-                        </mask>
-                    </variation>
-                    <variation key="widthClass=compact">
-                        <mask key="subviews">
-                            <include reference="hF9-di-f5b"/>
-                            <include reference="U5e-7m-XNn"/>
-                        </mask>
-                        <mask key="constraints">
-                            <include reference="Egt-Ft-zMQ"/>
-                            <include reference="DdF-rL-8sM"/>
-                            <include reference="siE-Na-ZxH"/>
-                            <include reference="uwf-c5-mlR"/>
-                            <include reference="5UR-Hc-dUY"/>
-                            <include reference="62V-qa-Wum"/>
-                        </mask>
-                    </variation>
                 </view>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y8-lj-sSI">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                     <color key="barTintColor" red="0.96862745100000003" green="0.65490196079999996" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,11 +76,11 @@
                     </items>
                 </navigationBar>
                 <view hidden="YES" alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibr-Sp-V37" userLabel="Spinner background">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTb-4N-Xd8" userLabel="Spinner">
-                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                    <rect key="frame" x="282" y="314" width="37" height="37"/>
                     <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </activityIndicatorView>
             </subviews>
@@ -149,60 +103,7 @@
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vJg-3s-VDr"/>
                 <constraint firstItem="ibr-Sp-V37" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xnv-1l-elM"/>
             </constraints>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="euS-RX-6W2"/>
-                    <exclude reference="tMc-Fr-Kiu"/>
-                    <exclude reference="1Y8-lj-sSI"/>
-                    <exclude reference="ibr-Sp-V37"/>
-                    <exclude reference="bTb-4N-Xd8"/>
-                </mask>
-                <mask key="constraints">
-                    <exclude reference="gCR-21-PCy"/>
-                    <exclude reference="kXU-g2-P6a"/>
-                    <exclude reference="K6m-qy-Jn9"/>
-                    <exclude reference="Xed-D0-LUW"/>
-                    <exclude reference="vJg-3s-VDr"/>
-                    <exclude reference="ZIq-S2-p2y"/>
-                    <exclude reference="bHz-IG-IVJ"/>
-                    <exclude reference="cXQ-ec-WOl"/>
-                    <exclude reference="kPb-EN-d06"/>
-                    <exclude reference="Ki5-MU-blp"/>
-                    <exclude reference="M8Z-ce-Dwa"/>
-                    <exclude reference="h6x-Fs-XZV"/>
-                    <exclude reference="xnv-1l-elM"/>
-                    <exclude reference="UeS-EV-hqu"/>
-                    <exclude reference="bte-Of-gzv"/>
-                    <exclude reference="iKZ-Vg-GCf"/>
-                </mask>
-            </variation>
-            <variation key="widthClass=compact">
-                <mask key="subviews">
-                    <include reference="euS-RX-6W2"/>
-                    <include reference="tMc-Fr-Kiu"/>
-                    <include reference="1Y8-lj-sSI"/>
-                    <include reference="ibr-Sp-V37"/>
-                    <include reference="bTb-4N-Xd8"/>
-                </mask>
-                <mask key="constraints">
-                    <include reference="gCR-21-PCy"/>
-                    <include reference="kXU-g2-P6a"/>
-                    <include reference="K6m-qy-Jn9"/>
-                    <include reference="Xed-D0-LUW"/>
-                    <include reference="vJg-3s-VDr"/>
-                    <include reference="ZIq-S2-p2y"/>
-                    <include reference="bHz-IG-IVJ"/>
-                    <include reference="cXQ-ec-WOl"/>
-                    <include reference="kPb-EN-d06"/>
-                    <include reference="Ki5-MU-blp"/>
-                    <include reference="M8Z-ce-Dwa"/>
-                    <include reference="h6x-Fs-XZV"/>
-                    <include reference="xnv-1l-elM"/>
-                    <include reference="UeS-EV-hqu"/>
-                    <include reference="bte-Of-gzv"/>
-                    <include reference="iKZ-Vg-GCf"/>
-                </mask>
-            </variation>
+            <point key="canvasLocation" x="447" y="380"/>
         </view>
     </objects>
     <resources>

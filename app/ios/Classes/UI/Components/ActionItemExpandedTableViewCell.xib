@@ -12,14 +12,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Udx-Q5-5pZ" id="YeM-Cc-in4">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyw-p2-9PO" userLabel="topCont">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPe-Xt-lGJ" userLabel="AppName">
-                                <rect key="frame" x="8" y="8" width="272" height="19.5"/>
+                                <rect key="frame" x="8" y="8" width="272" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,8 +55,8 @@
                             <constraint firstItem="XHQ-Fl-o1D" firstAttribute="leading" secondItem="qyw-p2-9PO" secondAttribute="leading" constant="8" id="x7F-Vr-B5P"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4J-Fy-Kfl" userLabel="ExpContent">
-                        <rect key="frame" x="0.0" y="56" width="320" height="22.5"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4J-Fy-Kfl" userLabel="ExpContent">
+                        <rect key="frame" x="0.0" y="56" width="320" height="23"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-Og-b1P" userLabel="separator1">
                                 <rect key="frame" x="0.0" y="1" width="320" height="1"/>

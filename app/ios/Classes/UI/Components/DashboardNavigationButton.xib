@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardNavigationButton">
@@ -54,6 +54,7 @@
                 <constraint firstItem="SyE-UN-qff" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hE6-8Z-VEr"/>
                 <constraint firstItem="mbV-MH-pdW" firstAttribute="top" secondItem="qOZ-09-Btk" secondAttribute="bottom" id="oQk-sU-AZw"/>
             </constraints>
+            <point key="canvasLocation" x="380" y="380"/>
         </view>
     </objects>
     <resources>
