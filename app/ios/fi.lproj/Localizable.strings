@@ -10,6 +10,7 @@
 "Dashboard"="Yleisnäkymä";
 "Carat" = "Carat";
 "BatteryLifeLabel"="Akun kesto";
+"Calibrating"="Kalibroidaan..";
 "Bugs"="Bugit";
 "Hogs"="Hogit";
 "Statistics"="Statistiikka";
@@ -27,7 +28,7 @@
 "BugsDesc"="Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa.";
 "HogStatisticsDesc"="Hogit ovat sovelluksia, joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Tässä 20 pahinta hogia maailmanlaajuisesti.";
 "HogsDesc"="Hogit ovat sovelluksia, joita käyttäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akkukestoa.";
-"Eula"="Eula";
+"Eula"="END-USER LICENSE AGREEMENT";
 "ReadEula"="Lue EULA";
 "EulaShortDesc"="Carat kerää yleistä tietoa laitteestasti ja sen käytöstä. Käyttääksesi tätä sovellusta, sinun tulee hyväksyä EULA.";
 "Accept"="Hyväksy";

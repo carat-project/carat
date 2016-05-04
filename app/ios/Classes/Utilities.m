@@ -38,6 +38,9 @@
 
 
 + (NSString *)doubleAsTimeNSString:(double)timeInterval {
+    if(timeInterval == 0){
+        return NSLocalizedString(@"Calibrating", nil);
+    }
     return [self doubleAsTimeNSString:timeInterval trim:false];
 }
 

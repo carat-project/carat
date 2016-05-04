@@ -112,10 +112,12 @@ BOOL isUpdateProgressVisible;
     // Expected Battery Life
     NSTimeInterval eb; // expected life in seconds
     double jev = [[[CoreDataManager instance] getJScoreInfo:YES] expectedValue];
+    if(jev <= 0) jev = [[[CoreDataManager instance] getModelInfo:YES] expectedValue];
     if (jev > 0) eb = MIN(MAX_LIFE,100/jev);
-    else eb = MAX_LIFE;
+    else eb = 0;
     NSString *vBatteryLife = [[Utilities doubleAsTimeNSString:eb] stringByTrimmingCharactersInSet:
                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
     //Last updated
     [self sampleCountUpdated:nil];
     
