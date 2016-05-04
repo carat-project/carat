@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -62,7 +61,7 @@
                     <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lz-c2-lM5" userLabel="ScrollContent" customClass="LocalizedLabel">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="1307"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="894"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart_image" translatesAutoresizingMaskIntoConstraints="NO" id="av9-JB-eeg" userLabel="topImg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
@@ -475,18 +474,19 @@
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hy_logo" translatesAutoresizingMaskIntoConstraints="NO" id="fpa-3b-j2n">
-                                    <rect key="frame" x="20" y="794" width="560" height="513"/>
+                                    <rect key="frame" x="250" y="794" width="100" height="100"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="fpa-3b-j2n" secondAttribute="height" multiplier="380:348" id="K2n-ld-0Hj"/>
+                                        <constraint firstAttribute="height" constant="100" id="IWJ-qZ-D1E"/>
+                                        <constraint firstAttribute="width" constant="100" id="cyQ-GY-Xyj"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <gestureRecognizers/>
                             <constraints>
+                                <constraint firstItem="fpa-3b-j2n" firstAttribute="centerX" secondItem="2lz-c2-lM5" secondAttribute="centerX" id="0Ej-Um-sYs"/>
                                 <constraint firstItem="PU2-Fg-glv" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" id="1QK-jo-FHR"/>
                                 <constraint firstItem="av9-JB-eeg" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" id="3BX-CC-tji"/>
-                                <constraint firstAttribute="trailing" secondItem="fpa-3b-j2n" secondAttribute="trailing" constant="20" id="5as-tk-e4P"/>
                                 <constraint firstItem="fpa-3b-j2n" firstAttribute="bottom" secondItem="2lz-c2-lM5" secondAttribute="bottom" id="6K5-gd-Mdr"/>
                                 <constraint firstItem="fpa-3b-j2n" firstAttribute="top" secondItem="PU2-Fg-glv" secondAttribute="bottom" constant="8" id="6Vn-lt-zMh"/>
                                 <constraint firstItem="WDE-xB-80C" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" id="74X-D2-jHQ"/>
@@ -501,7 +501,6 @@
                                 <constraint firstItem="WDE-xB-80C" firstAttribute="top" secondItem="av9-JB-eeg" secondAttribute="bottom" id="XFL-yF-ouK"/>
                                 <constraint firstAttribute="trailing" secondItem="WDE-xB-80C" secondAttribute="trailing" id="f0W-by-Qes"/>
                                 <constraint firstAttribute="trailing" secondItem="PU2-Fg-glv" secondAttribute="trailing" id="fxJ-Xw-oHl"/>
-                                <constraint firstItem="fpa-3b-j2n" firstAttribute="leading" secondItem="2lz-c2-lM5" secondAttribute="leading" constant="20" id="gmg-iC-Dhu"/>
                                 <constraint firstItem="CJt-eY-rn5" firstAttribute="bottom" secondItem="av9-JB-eeg" secondAttribute="bottom" multiplier="0.88" id="yjc-eC-LJd"/>
                             </constraints>
                         </view>
