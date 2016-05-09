@@ -73,7 +73,14 @@
         [self setTopRowData:hb cell:cellView];
         cellView.samplesValueLabel.text = [[NSNumber numberWithDouble:[hb samples]] stringValue];
         cellView.samplesWithoutValueLabel.text = [[NSNumber numberWithDouble:[hb samplesWithout]] stringValue];
-        cellView.errorValueLabel.text = [[NSNumber numberWithDouble:[hb error]] stringValue];
+        
+        
+        double error = [self getErrorMinutes:hb];
+        NSString *errorLabel = [Utilities doubleAsTimeNSString:error];
+        if(errorLabel == nil || [errorLabel length] == 0) {
+            errorLabel = NSLocalizedString(@"None", nil);
+        }
+        cellView.errorValueLabel.text = errorLabel;
 
         cellView.numerHelpTapArea.tag = indexPath.row;
         UITapGestureRecognizer *singleFingerTap =
@@ -90,6 +97,12 @@
     return cell;
 }
 
+-(double)getErrorMinutes:(HogsBugs *)hb {
+    double benefit = (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
+    double benefit_max = (100/([hb expectedValueWithout]-[hb errorWithout]) - 100/([hb expectedValue]+[hb error]));
+    return benefit_max-benefit;
+}
+
 -(void)setTopRowData:(HogsBugs *)hb cell:(BugHogTableViewCell *)cell
 {
     NSString *appName = [hb appName];
@@ -102,9 +115,8 @@
                          placeholderImage:[UIImage imageNamed:@"def_app_icon"]];
     
     
+    double error = [self getErrorMinutes:hb];
     double benefit = (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
-    double benefit_max = (100/([hb expectedValueWithout]-[hb errorWithout]) - 100/([hb expectedValue]+[hb error]));
-    double error = benefit_max-benefit;
     NSString *impValue = [NSString stringWithFormat:@"%@", [Utilities doubleAsTimeNSString:benefit]];
     NSString *errorString = [Utilities doubleAsTimeNSString:error];
     if(errorString && errorString.length > 0){
