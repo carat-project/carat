@@ -124,7 +124,7 @@
     if([self.expandedPaths containsObject:indexPath]){
         return 129;
     }
-    return 44.0; // Normal height
+    return 70.0; // Normal height
 }
 
 // Toggle expanded/collapsed by tapping
@@ -279,11 +279,14 @@
     NSDictionary *hog;
     for(hog in hogs){
         // Filter out hogs with too few users
-        if([[hog objectForKey:@"users"] intValue] < 1000) continue;
+        // if([[hog objectForKey:@"users"] intValue] < 1000) continue;
+        
+        // Filter out hogs with a benefit of less than 10 minutes
+        if([[hog objectForKey:@"killBenefit"] intValue] < 10) continue;
         [result addObject:hog];
         
         // Stop when we have enough
-        if([result count] >= 20) break;
+        // if([result count] >= 20) break;
     }
     return [result copy];
 }

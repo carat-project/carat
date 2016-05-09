@@ -27,7 +27,7 @@
 "MainDesc"="Carat is a research project of the University of Helsinki, originally created in collaboration with the AMP Lab at UC Berkeley, that helps detect and diagnose battery problems, giving you personalized recommendations.";
 "BugsDesc"="Bugs are apps that use a lot of energy on a small number of devices, including yours. Restarting a buggy app may improve battery life.";
 "HogsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Closing hogs may improve battery life.";
-"HogStatisticsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Here are the top 20 worst hogs globally.";
+"HogStatisticsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Here are the top hogs globally.";
 "Eula"="END-USER LICENSE AGREEMENT";
 "ReadEula"="Read EULA";
 
@@ -66,7 +66,7 @@
 //HogsView ends
 //TopHogsView starts
 "WorstHogsTitle"="Hog statistics";
-"TopHogs"="Top 20 hogs globally";
+"TopHogs"="Top hogs worldwide";
 "SamplesText"="Samples:";
 "BatteryLifeImpact"="Battery life impact:";
 "ReportedBy"="Reported by:";
