@@ -138,6 +138,7 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
     }
 
     private void setViewsInChild(View v, SimpleHogBug item) {
+        TextView batteryImpact = (TextView) v.findViewById(R.id.impact_text);
         TextView samplesText = (TextView) v.findViewById(R.id.samples_title);
         TextView samplesValue = (TextView) v.findViewById(R.id.samples_amount);
         TextView samplesError = (TextView) v.findViewById(R.id.error_amount);
@@ -153,6 +154,7 @@ public class HogBugExpandListAdapter extends BaseExpandableListAdapter implement
             String error = errorMin >0 ? errorMin+"m" : errorSec+"s";
             samplesError.setText(error);
         }
+        batteryImpact.setText(item.getBenefitText());
         samplesValue.setText(String.valueOf(item.getSamples()));
         samplesWithoutText.setText(R.string.samplesWithout);
         samplesWithoutValue.setText(String.valueOf(item.getSamplesWithout()));

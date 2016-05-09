@@ -119,7 +119,7 @@
     <string name="os_version_title">OS Versio</string>
     <string name="device_model_title">Puhelimen malli</string>
     <string name="device_usage_title">Puhelimen käyttö</string>
-    <string name="what_are_jscore_numbers">Mitä ovat J-Score-numerot?</string>
+    <string name="what_are_jscore_numbers">Mikä on J-Score?</string>
     <string name="process_list_title">PROSESSILISTA</string>
     <string name="memory_used_title">Muistia käytetty</string>
     <string name="memory_active_title">Muistia aktiivisena</string>
@@ -175,14 +175,13 @@
     <string name="global_general_popular_title">YLEISET PUHELINMALLIT</string>
     <string name="global_general_android">Android</string>
     <string name="well_behaved">Hyvin käyttäytyvät</string>
-    <string name="out_of">/</string>
-    <string name="all_installed">asennetusta applikaatiosta,</string>
+    <string name="all_installed">asennetusta applikaatiosta</string>
     <string name="hog_intensity">on energiaintensiivisiä (Hogeja) ja</string>
-    <string name="bug_intensity">on energiapoikkeuksia (Bugeja).</string>
-    <string name="android_installed">asennetusta Android-applikaatiosta,</string>
-    <string name="ios_installed">asennetusta iOS-applikaatiosta,</string>
-    <string name="users">käyttäjästä,</string>
-    <string name="user_intensity">:lla on ainakin yksi energiapoikkeus.</string>
+    <string name="bug_intensity">on energiapoikkeamia (Bugeja).</string>
+    <string name="android_installed">asennetusta Android-applikaatiosta</string>
+    <string name="ios_installed">asennetusta iOS-applikaatiosta</string>
+    <string name="users">käyttäjästä</string>
+    <string name="user_intensity">:lla on ainakin yksi energiapoikkeama.</string>
 
     <!-- HOG STATISTICS -->
     <string name="packageName">Pakkaus:</string>
@@ -217,7 +216,7 @@
 
     <string name="show_information">Näytä lisätietoja toiminnoista</string>
     <string name="actions_info_title">Tietoa toiminnoista</string>
-    <string name="action_app_type">Sovelluksen tyyppi:</string>
+    <string name="action_app_type">Ongelman tyyppi:</string>
     <string name="hog">Hogi</string>
     <string name="bug">Bugi</string>
 
@@ -319,8 +318,8 @@
     <string name="blacklist">Poistolista</string>
     <string name="finishing">Viimeistellään</string>
 
-    <string name="expected">Arvioitu parannus:</string>
     <string name="impact">Vaikutus:</string>
+    <string name="expected">Vaikutus akunkestoon:</string>
     <string name="killappname">Tapa Sovellus</string>
     <string name="appname">Sovelluksen nimi</string>
     <string name="priority">Prioriteetti:</string>
@@ -446,6 +445,7 @@
     <string name="updatedjustnow">Päivitetty äsken</string>
 
     <string name="title_activity_dashboard">YLEISNÄKYMÄ</string>
+    <string name="out_of"> </string>
 </resources>
 
 

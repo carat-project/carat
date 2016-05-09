@@ -152,18 +152,20 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:layout_marginRight="15dp"
                         android:orientation="vertical"
                         android:weightSum="19">
 
                         <TextView
                             android:id="@+id/what_are_jscore_numbers"
                             style="@style/MediumOrangeText"
+                            android:layout_marginRight="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="5"
-                            android:gravity="bottom"
                             android:paddingBottom="7dp"
-                            android:text="@string/what_are_jscore_numbers">
+                            android:text="@string/what_are_jscore_numbers"
+                            android:gravity="center_vertical|center_horizontal">
 
                         </TextView>
 
@@ -180,14 +182,16 @@
                                 android:layout_height="wrap_content"
                                 android:paddingBottom="4dp"
                                 android:paddingTop="5dp"
-                                android:text="@string/active_battery_life" />
+                                android:text="@string/active_battery_life"
+                                android:gravity="center_horizontal" />
 
                             <TextView
                                 android:id="@+id/battery_value"
                                 style="@style/LargeBoldBlackText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/battery_life_value" />
+                                android:text="@string/battery_life_value"
+                                android:gravity="center_horizontal" />
 
                         </LinearLayout>
 
@@ -195,18 +199,17 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="3"
-                            android:gravity="bottom"
-                            android:orientation="vertical"
-                            android:paddingRight="15dp">
+                            android:gravity="bottom|center"
+                            android:orientation="vertical">
 
                             <Button
                                 android:id="@+id/process_list_button"
                                 style="@style/ProcessListButtonStyle"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="0dp"
                                 android:layout_below="@+id/battery_value"
-                                android:layout_weight="3"
-                                android:text="@string/process_list_title"></Button>
+                                android:text="@string/process_list_title"
+                                android:layout_weight="1"></Button>
                         </LinearLayout>
 
                     </LinearLayout>

@@ -208,19 +208,19 @@ public class GlobalFragment extends Fragment implements Runnable, View.OnClickLi
         bugsTitle.setText(getString(R.string.bugs_camel) + " " + bugs + "%");
         hogsTitle.setText(getString(R.string.hogs_camel) + " " + hogs + "%");
 
-        allText.setText(getString(R.string.out_of) + " " + appSum + " " + getString(R.string.all_installed)
+        allText.setText(getString(R.string.out_of)+ appSum + " " + getString(R.string.all_installed)
             + " " + appHogPercent + "% " + getString(R.string.hog_intensity) + " " + appBugPercent +
             "% " + getString(R.string.bug_intensity));
 
-        androidText.setText(getString(R.string.out_of) + " " + sum + " " + getString(R.string.android_installed)
+        androidText.setText(getString(R.string.out_of) + sum + " " + getString(R.string.android_installed)
                 + " " + hogs + "% " + getString(R.string.hog_intensity) + " " + bugs +
                 "% " + getString(R.string.bug_intensity));
 
-        iosText.setText(getString(R.string.out_of) + " " + iosSum + " " + getString(R.string.ios_installed)
+        iosText.setText(getString(R.string.out_of) + iosSum + " " + getString(R.string.ios_installed)
                 + " " + iosHogPercent + "% " + getString(R.string.hog_intensity) + " " + iosBugPercent +
                 "% " + getString(R.string.bug_intensity));
 
-        userText.setText(getString(R.string.out_of) + " " + userSum + " " + getString(R.string.users)
+        userText.setText(getString(R.string.out_of) + userSum + " " + getString(R.string.users)
                 + " " + userBugPercent + "% " + getString(R.string.user_intensity));
     }
 

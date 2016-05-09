@@ -51,6 +51,8 @@ public class Reports implements org.apache.thrift.TBase<Reports, Reports._Fields
   private static final org.apache.thrift.protocol.TField J_SCORE_WITHOUT_FIELD_DESC = new org.apache.thrift.protocol.TField("jScoreWithout", org.apache.thrift.protocol.TType.STRUCT, (short)11);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+  private static final long serialVersionUID = 8208626153741813352L;
+
   static {
     schemes.put(StandardScheme.class, new ReportsStandardSchemeFactory());
     schemes.put(TupleScheme.class, new ReportsTupleSchemeFactory());
