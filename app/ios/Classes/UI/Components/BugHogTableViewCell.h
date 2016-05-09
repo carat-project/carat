@@ -15,6 +15,7 @@
 
 @property (retain, nonatomic) IBOutlet UIImageView *thumbnailAppImg;
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
+@property (retain, nonatomic) IBOutlet UIButton *hideButton;
 @property (retain, nonatomic) IBOutlet UILabel *expImpTimeLabel;
 @property (retain, nonatomic) IBOutlet UILabel *samplesValueLabel;
 @property (retain, nonatomic) IBOutlet UILabel *samplesWithoutValueLabel;

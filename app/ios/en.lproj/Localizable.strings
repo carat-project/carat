@@ -21,6 +21,7 @@
 "UpdatedNowTxt"= "Updated just now";
 "JScore"="J-Score";
 "NA" = "N/A";
+"Done" = "Done";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
@@ -28,7 +29,7 @@
 "BugsDesc"="Bugs are apps that use a lot of energy on a small number of devices, including yours. Restarting a buggy app may improve battery life.";
 "HogsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Closing hogs may improve battery life.";
 "HogStatisticsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Here are the top hogs globally.";
-"Eula"="END-USER LICENSE AGREEMENT";
+"Eula"="END-USER LICENSE\nAGREEMENT";
 "ReadEula"="Read EULA";
 
 // Unicode character U+2011 is a non-breaking hyphen
@@ -52,7 +53,7 @@
 "CPUUsage"="CPU Usage";
 //My Device ends
 //BugsView start
-"ExpectedImp"="Expected improvement: ";
+"ExpectedImp"="Impact: ";
 "Samples"="Samples";
 "Error"="Error";
 "SamplesWithout"="Samples without";
@@ -141,6 +142,9 @@
 "WifiOnly"="Use Wifi only";
 "HideApps"="Hide apps with a small impact";
 "HideAppsTitle"="Hide apps";
+"HideShowApps"="Hide/Show apps";
+"Hide"="Hide";
+"Show"="Show";
 "FeedBack"="Give feedback";
 "Tutorial"="Show tutorial";
 "About"="About";

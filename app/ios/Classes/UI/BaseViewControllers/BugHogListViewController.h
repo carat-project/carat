@@ -10,6 +10,7 @@
 #import "WebInfoViewController.h"
 #import "BugHogTableViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "Globals.h"
 
 @interface BugHogListViewController : ListNetworkBaseViewController <ShowNumberHelpDelegate>{
     HogBugReport *report;
@@ -17,9 +18,11 @@
 }
 @property (retain, nonatomic) HogBugReport *report;
 @property (nonatomic, strong) NSMutableArray *filteredCells;
+@property (nonatomic, assign) BOOL editing;
 
 - (void)reloadReport;
 - (void)setHogBugReport:(HogBugReport *)report;
 - (void)showWhatTheseNumbersMeanInfo;
+- (void)setBug:(BOOL)isBug;
 
 @end

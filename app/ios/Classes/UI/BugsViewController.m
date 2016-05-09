@@ -20,6 +20,7 @@
     _contentTitle.text = NSLocalizedString(@"NothingToReport",nil);
     _content.text = NSLocalizedString(@"EmptyViewDesc",nil);
     // Do any additional setup after loading the view from its nib.
+    [self setBug:YES];
     [self setHogBugReport:[[CoreDataManager instance] getBugs:NO withoutHidden:YES]];
 
 }

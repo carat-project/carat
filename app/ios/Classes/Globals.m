@@ -102,6 +102,16 @@ static id instance = nil;
     return [defaults arrayForKey:@"HiddenApps"];
 }
 
+- (BOOL) isAppHidden:(NSString *) appName{
+    NSArray *hiddenApps = [defaults arrayForKey:@"HiddenApps"];
+    if(hiddenApps != nil){
+        for(NSString *appStr in hiddenApps){
+            if([appStr isEqualToString:appName]) return true;
+        }
+    }
+    return false;
+}
+
 //
 // Convert local datetime to UTC.
 // From: http://stackoverflow.com/questions/1081647/how-to-convert-time-to-the-timezone-of-the-iphone-device

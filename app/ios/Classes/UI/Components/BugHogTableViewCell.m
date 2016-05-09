@@ -18,6 +18,7 @@
 @synthesize helpLabel = _helpLabel;
 @synthesize expandBtn = _expandBtn;
 @synthesize numerHelpTapArea = _numerHelpTapArea;
+@synthesize hideButton = _hideButton;
 
 - (void)awakeFromNib {
     // Initialization code
@@ -42,6 +43,7 @@
     [_helpLabel release];
     [_expandBtn release];
     [_numerHelpTapArea release];
+    [_hideButton release];
     [super dealloc];
 }
 

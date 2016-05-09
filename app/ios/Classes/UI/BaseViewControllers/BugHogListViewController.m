@@ -9,21 +9,94 @@
 #import "BugHogListViewController.h"
 
 @interface BugHogListViewController ()
-
+@property (nonatomic, retain) UIButton *button;
+@property (nonatomic, assign) BOOL handlesBugs;
 @end
 
 @implementation BugHogListViewController
 @synthesize report;
 @synthesize filteredCells;
 
+
 #pragma mark - View Life Cycle methods
 - (void)viewDidLoad {
+    _editing = false;
     expandedCell = @"BugHogExpandedTableViewCell";
     collapsedCell = @"BugHogTableViewCell";
     filteredCells = [[NSMutableArray alloc]init];
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    [self addFooter];
+}
+
+- (void) addFooter {
+    long width = self.tableView.frame.size.width;
+    long height = 50;
+    long buttonWidth = width;
+    long buttonHeight = 30;
+    
+    // Create a centered button for hiding items
+    CGRect buttonFrame = CGRectMake((width/2)-(buttonWidth/2),
+                                    (height/2)-buttonHeight, buttonWidth, buttonHeight);
+    _button = [[UIButton alloc] initWithFrame:buttonFrame];
+    _button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin
+    | UIViewAutoresizingFlexibleLeftMargin;
+    [_button.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [_button setTitleColor: [UIColor grayColor] forState:UIControlStateNormal];
+    [_button setTitleColor: [UIColor darkGrayColor] forState:UIControlStateHighlighted];
+    [_button addTarget:self action:@selector(changeEditingState) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSString *buttonTitle = [NSLocalizedString(@"HideShowApps", nil) uppercaseString];
+    [_button setTitle:buttonTitle forState:UIControlStateNormal];
+    
+    // Create footer view and attach button to it
+    CGRect frame = CGRectMake(0, 0, width, height);
+    UIView *footer = [[UIView alloc] initWithFrame:frame];
+    footer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [footer addSubview:_button];
+    
+    self.tableView.tableFooterView = footer;
+}
+
+- (void) setBug:(BOOL)isBug{
+    _handlesBugs = isBug;
+}
+
+- (void) changeEditingState {
+    HogBugReport *array = nil;
+    NSString *buttonTitle = @"";
+    if(_editing) {
+        buttonTitle = [NSLocalizedString(@"HideShowApps", nil) uppercaseString];
+    } else {
+        buttonTitle = [NSLocalizedString(@"Done", nil) uppercaseString];
+    }
+    [UIView animateWithDuration:0.3f animations:^{
+        [_button setAlpha:0.0f];
+        [_button setTitle:buttonTitle forState:UIControlStateNormal];
+        [_button setAlpha:1.0f];
+    }];
+    
+    _editing = !_editing;
+    
+    // Toggle between filtered and all applications
+    if(_handlesBugs) {
+        array = [[CoreDataManager instance] getBugs:NO withoutHidden:!_editing];
+    } else {
+        array = [[CoreDataManager instance] getHogs:NO withoutHidden:!_editing];
+    }
+
+    self.tableView.allowsSelection = !_editing;
+    [self.expandedCells removeAllObjects];
+    [self setHogBugReport:array];
+    [self.tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(!_editing) { // Just in case
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,6 +142,9 @@
     
     HogsBugs *hb = [filteredCells objectAtIndex:indexPath.row];
     BugHogTableViewCell *cellView = (BugHogTableViewCell *)cell;
+    
+    [self setupHideButton:hb cell:cellView indexPath:indexPath];
+    
     if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
         [self setTopRowData:hb cell:cellView];
         cellView.samplesValueLabel.text = [[NSNumber numberWithDouble:[hb samples]] stringValue];
@@ -95,6 +171,60 @@
     }
     
     return cell;
+}
+
+- (void) setupHideButton:(HogsBugs *)hb cell:(BugHogTableViewCell *)cell indexPath:(NSIndexPath *)path {
+    NSString *show = [NSLocalizedString(@"Show", nil) uppercaseString];
+    UIColor *red = [UIColor colorWithRed:65.0f/255.0f green:164.0f/255.0f blue:26.0f/255.0f alpha:1.0f];
+    UIColor *green = [UIColor colorWithRed:146.0f/255.0f green:19.0f/255.0f blue:10.0f/255.0f alpha:1.0f];
+    NSString *hide = [NSLocalizedString(@"Hide", nil) uppercaseString];
+    [UIView performWithoutAnimation:^{
+        [cell.hideButton setTitle:show forState:UIControlStateNormal];
+        [cell.hideButton setTitleColor:green forState:UIControlStateNormal];
+        if(![[Globals instance] isAppHidden:hb.appName]){
+            [cell.hideButton setTitle:hide forState:UIControlStateNormal];
+            [cell.hideButton setTitleColor:red forState:UIControlStateNormal];
+        }
+        cell.hideButton.tag = path.row;
+        [self addHideListener: cell];
+        if(_editing){
+            cell.hideButton.hidden = NO;
+            cell.expandBtn.hidden = YES;
+        } else {
+            cell.hideButton.hidden = YES;
+            cell.expandBtn.hidden = NO;
+        }
+    }];
+}
+
+-(void) addHideListener:(BugHogTableViewCell *) cell {
+    [cell.hideButton addTarget:self action:@selector(toggleHidden:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void) toggleHidden:(UIButton *)sender{
+    UIColor *red = [UIColor colorWithRed:65.0f/255.0f green:164.0f/255.0f blue:26.0f/255.0f alpha:1.0f];
+    UIColor *green = [UIColor colorWithRed:146.0f/255.0f green:19.0f/255.0f blue:10.0f/255.0f alpha:1.0f];
+    
+    NSInteger *tag = sender.tag;
+    HogsBugs *hb = [filteredCells objectAtIndex:tag];
+    NSString *appName = [hb appName];
+    if([[Globals instance] isAppHidden:appName]) {
+        [UIView animateWithDuration:0.3f animations:^{
+            [sender setAlpha:0.0f];
+            [sender setTitleColor:red forState:UIControlStateNormal];
+            [sender setTitle:@"HIDE" forState:UIControlStateNormal];
+            [sender setAlpha:1.0f];
+        }];
+        [[Globals instance] showApp:appName];
+    } else {
+        [UIView animateWithDuration:0.3f animations:^{
+            [sender setAlpha:0.0f];
+            [sender setTitleColor:green forState:UIControlStateNormal];
+            [sender setTitle:@"SHOW" forState:UIControlStateNormal];
+            [sender setAlpha:1.0f];
+        }];
+        [[Globals instance] hideApp:appName];
+    }
 }
 
 -(double)getErrorMinutes:(HogsBugs *)hb {
@@ -137,7 +267,7 @@
     CGFloat kExpandedCellHeight = 196;
     CGFloat kNormalCellHeigh = 56;
     
-    if ([self.expandedCells containsObject:indexPath])
+    if ([self.expandedCells containsObject:indexPath] && !_editing)
     {
         NSLog(@"expanded View");
         return kExpandedCellHeight; //It's not necessary a constant, though

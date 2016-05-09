@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BugHogTableViewCell"/>
@@ -26,7 +27,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collapse_btn_open" translatesAutoresizingMaskIntoConstraints="NO" id="FHW-wK-8Lt">
-                                <rect key="frame" x="288" y="8" width="24" height="20"/>
+                                <rect key="frame" x="288" y="9" width="24" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="ABz-f9-mZO"/>
                                     <constraint firstAttribute="height" constant="20" id="Qnb-IL-Pw5"/>
@@ -47,11 +48,18 @@
                                 <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8T-VW-SnA" userLabel="Hide button">
+                                <rect key="frame" x="274" y="11" width="30" height="34"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FHW-wK-8Lt" firstAttribute="leading" secondItem="ooZ-KI-3Kr" secondAttribute="trailing" constant="8" id="27A-cd-U1m"/>
                             <constraint firstAttribute="bottom" secondItem="AQk-gU-Ynv" secondAttribute="bottom" constant="8" id="6Os-i9-bN8"/>
+                            <constraint firstAttribute="trailing" secondItem="B8T-VW-SnA" secondAttribute="trailing" constant="16" id="D6w-eP-93x"/>
                             <constraint firstAttribute="bottom" secondItem="wtx-7B-OkJ" secondAttribute="bottom" constant="8" id="H3A-Je-uvV"/>
                             <constraint firstItem="AQk-gU-Ynv" firstAttribute="top" secondItem="Pei-fe-Lui" secondAttribute="top" constant="8" id="IYG-rf-jEg"/>
                             <constraint firstItem="wtx-7B-OkJ" firstAttribute="leading" secondItem="AQk-gU-Ynv" secondAttribute="trailing" constant="8" id="OLl-rO-ZRv"/>
@@ -61,8 +69,8 @@
                             <constraint firstItem="wtx-7B-OkJ" firstAttribute="leading" secondItem="AQk-gU-Ynv" secondAttribute="trailing" constant="8" id="b3t-yP-Cwy"/>
                             <constraint firstItem="ooZ-KI-3Kr" firstAttribute="top" secondItem="Pei-fe-Lui" secondAttribute="top" constant="8" id="gLo-HA-qe8"/>
                             <constraint firstAttribute="height" constant="56" id="heo-df-Dwz"/>
+                            <constraint firstItem="B8T-VW-SnA" firstAttribute="centerY" secondItem="Pei-fe-Lui" secondAttribute="centerY" id="kLB-vi-JQb"/>
                             <constraint firstAttribute="trailing" secondItem="FHW-wK-8Lt" secondAttribute="trailing" constant="8" id="n6B-TT-6pS"/>
-                            <constraint firstItem="FHW-wK-8Lt" firstAttribute="top" secondItem="Pei-fe-Lui" secondAttribute="top" constant="8" id="nRx-et-QzD"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zbi-26-l4t" userLabel="ExpContent">
@@ -196,6 +204,7 @@
                     <constraint firstItem="Zbi-26-l4t" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailing" id="Ohm-Nb-M1r"/>
                     <constraint firstItem="Pei-fe-Lui" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailing" id="QD0-jU-KFP"/>
                     <constraint firstItem="Zbi-26-l4t" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" id="fKY-gz-Yvj"/>
+                    <constraint firstItem="FHW-wK-8Lt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="ggn-gc-wQ6"/>
                     <constraint firstItem="Pei-fe-Lui" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hXx-ny-oJl"/>
                 </constraints>
             </tableViewCellContentView>
@@ -204,6 +213,7 @@
                 <outlet property="errorValueLabel" destination="qp2-1c-5Ra" id="PaW-2n-CdV"/>
                 <outlet property="expImpTimeLabel" destination="wtx-7B-OkJ" id="9Qo-1q-njH"/>
                 <outlet property="expandBtn" destination="FHW-wK-8Lt" id="zQG-IW-Lq0"/>
+                <outlet property="hideButton" destination="B8T-VW-SnA" id="P6y-0L-Pwk"/>
                 <outlet property="nameLabel" destination="ooZ-KI-3Kr" id="xDM-NA-VAQ"/>
                 <outlet property="numerHelpTapArea" destination="1Xq-uF-Noi" id="Ga6-Be-N6m"/>
                 <outlet property="samplesValueLabel" destination="UB8-KV-gkS" id="O1T-TX-DuW"/>

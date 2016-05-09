@@ -21,6 +21,7 @@
 "UpdatedNowTxt"= "Juuri päivitetty";
 "JScore"="J-Score";
 "NA" = "N/A";
+"Done" = "Valmis";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
@@ -28,7 +29,7 @@
 "BugsDesc"="Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa.";
 "HogStatisticsDesc"="Hogit ovat sovelluksia, joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Tässä pahimmat hogit maailmanlaajuisesti.";
 "HogsDesc"="Hogit ovat sovelluksia, joita käyttäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akkukestoa.";
-"Eula"="END-USER LICENSE AGREEMENT";
+"Eula"="END-USER LICENSE\nAGREEMENT";
 "ReadEula"="Lue EULA";
 "EulaShortDesc"="Carat kerää yleistä tietoa laitteestasti ja sen käytöstä. Käyttääksesi tätä sovellusta, sinun tulee hyväksyä EULA.";
 "Accept"="Hyväksy";
@@ -50,7 +51,7 @@
 "CPUUsage"="Processorin käyttö";
 //My Device ends
 //BugsView start
-"ExpectedImp"="Odotettava parannus: ";
+"ExpectedImp"="Vaikutus: ";
 "Samples"="Mittauksia";
 "Error"="Virheitä";
 "SamplesWithout"="Mittauksia ilman";
@@ -140,6 +141,9 @@
 "WifiOnly"="Käytä vain wifiä";
 "HideApps"="Piilota pienen vaikutuksen sovellukset";
 "HideAppsTitle"="Piilota sovelluksia";
+"HideShowApps"="Piilota/Näytä sovelluksia";
+"Hide"="Piilota";
+"Show"="Näytä";
 "FeedBack"="Anna palautetta";
 "Tutorial"="Näytä esittely";
 "About"="Tietoja";
