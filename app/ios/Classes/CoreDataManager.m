@@ -23,7 +23,7 @@
 @implementation CoreDataManager (hidden)
 
 static NSArray * SubReports = nil;
-static double JScore;
+static double JScore = -1;
 static NSUInteger samplesSent;
 static NSString * reportUpdateStatus = nil;
 static dispatch_semaphore_t sendStoredDataToServerSemaphore;
@@ -874,6 +874,7 @@ static int previousSample = 0;
         
         // Reload data in memory.
         [self loadLocalReportsToMemory : managedObjectContext];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DataUpdated" object:nil];
     }    
 }
 
@@ -1814,7 +1815,16 @@ static id instance = nil;
 - (double) getJScore
 {
     //DLog(@"%s %f", __PRETTY_FUNCTION__, JScore);
-    return JScore;
+    if(JScore == -1){
+        NSManagedObjectContext *context = [self getManagedObjectContext];
+        if(context != nil){
+            [self loadLocalReportsToMemory:context];
+        }
+    }
+    if(JScore != -1) {
+        return JScore;
+    }
+    return 0;
 }
 
 - (NSString *) getJScoreString
@@ -1829,6 +1839,13 @@ static id instance = nil;
 
 - (DetailScreenReport *) getJScoreInfo : (BOOL) with
 {
+    // In case information has been garbage collected
+    if(self.JScoreInfo == nil && self.JScoreInfoWithout == nil) {
+        NSManagedObjectContext* managedObjectContext = [self getManagedObjectContext];
+        if(managedObjectContext != nil){
+            [self loadLocalReportsToMemory:managedObjectContext];
+        }
+    }
     if (with) 
     {
         if (self.JScoreInfo != nil)

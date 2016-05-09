@@ -74,6 +74,12 @@ BOOL isUpdateProgressVisible;
     [[NSNotificationCenter defaultCenter] addObserver:self
         selector:@selector(shouldUpdateView:)
         name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView)
+        name:@"DataUpdated" object:nil];
+}
+
+- (void)refreshView:(NSNotification *)notification {
+    [self updateView];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -50,9 +50,14 @@ BOOL isUpdateProgressVisible;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [super viewWillAppear:animated];
-    // This should happen automatically
-    // [self updateView];
+    [self updateView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sampleCountUpdated:) name:kSamplesSentCountUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView)
+     name:@"DataUpdated" object:nil];
+}
+
+- (void)refreshView:(NSNotification *)notification {
+    [self updateView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
