@@ -52,7 +52,7 @@ BOOL isUpdateProgressVisible;
     [super viewWillAppear:animated];
     [self updateView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sampleCountUpdated:) name:kSamplesSentCountUpdateNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
      name:@"DataUpdated" object:nil];
 }
 
@@ -81,6 +81,7 @@ BOOL isUpdateProgressVisible;
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kSamplesSentCountUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DataUpdated" object:nil];
 }
 
 - (void)updateView

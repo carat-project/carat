@@ -74,7 +74,7 @@ BOOL isUpdateProgressVisible;
     [[NSNotificationCenter defaultCenter] addObserver:self
         selector:@selector(shouldUpdateView:)
         name:UIApplicationWillEnterForegroundNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
         name:@"DataUpdated" object:nil];
 }
 
@@ -109,6 +109,7 @@ BOOL isUpdateProgressVisible;
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kSamplesSentCountUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DataUpdated" object:nil];
 }
 
 - (void)updateView
