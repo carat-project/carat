@@ -127,7 +127,6 @@ BOOL isUpdateProgressVisible;
     
     //Last updated
     [self sampleCountUpdated:nil];
-    
     [self.scoreView setScore:vScore];
     self.batteryLastLabel.text = vBatteryLife;
     if(self.timer == nil) {

@@ -16,7 +16,7 @@
 @implementation ScoreView{
     CGFloat startAngle;
     CGFloat endAngle;
-    
+    CGRect scoreFrame;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -30,6 +30,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
+    scoreFrame = frame;
     self = [super initWithFrame:frame];
     if (self) {
         [self commonInit];
@@ -193,9 +194,13 @@
 {
     _scoreTitle = title;
 }
+
 -(void)setScore:(int)score
 {
-    _score = score;
+    if(_score != score){
+        _score = score;
+        [self initWithFrame:scoreFrame];
+    }
 }
 
 - (void)dealloc {

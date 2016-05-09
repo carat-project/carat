@@ -38,6 +38,11 @@ static int previousSample = 0;
                                                         object:nil];
 }
 
+- (void) postDataUpdated
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DataUpdated" object:nil];
+}
+
 - (void) postNotificationOnMainThread
 {
     [self performSelectorOnMainThread:@selector(postNotification) 
@@ -240,6 +245,10 @@ static int previousSample = 0;
             }
         }
         
+        
+    [self performSelectorOnMainThread:@selector(postDataUpdated)
+                    withObject:nil
+                    waitUntilDone:YES];
     cleanup:
         return;
     }
@@ -874,7 +883,6 @@ static int previousSample = 0;
         
         // Reload data in memory.
         [self loadLocalReportsToMemory : managedObjectContext];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"DataUpdated" object:nil];
     }    
 }
 
@@ -1347,7 +1355,6 @@ static id instance = nil;
     SubReports = [[NSArray alloc] initWithObjects:@"JScoreInfo",@"OSInfo",@"ModelInfo",@"SimilarAppsInfo", nil];
     daemonsList = [[NSMutableDictionary alloc] init];
     [instance initialize];
-    //[instance loadLocalReportsToMemory];
     [[CommunicationManager instance] isInternetReachable]; // This is here just to make sure CommunicationManager subscribes 
                                                            // to reachability updates.
 }
