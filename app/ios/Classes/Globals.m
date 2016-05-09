@@ -73,6 +73,17 @@ static id instance = nil;
     return [[defaults objectForKey:@"ConsumptionLimit"] floatValue];
 }
 
+- (BOOL) hiddenChanges {
+    if([defaults objectForKey:@"HiddenChanges"]){
+        return [defaults boolForKey:@"HiddenChanges"];
+    }
+    return false;
+}
+
+- (void) acknowledgeHiddenChanges {
+     [defaults setBool:FALSE forKey:@"HiddenChanges"];
+}
+
 - (void) hideApp : (NSString *) appName {
     NSArray *hiddenApps = [defaults arrayForKey:@"HiddenApps"];
     if (hiddenApps != nil) {
@@ -83,6 +94,7 @@ static id instance = nil;
     } else {
         [defaults setObject:[NSArray arrayWithObject:appName] forKey:@"HiddenApps"];
     }
+    [defaults setBool:TRUE forKey:@"HiddenChanges"];
     [defaults synchronize];
 }
 

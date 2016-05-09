@@ -908,6 +908,19 @@ static int previousSample = 0;
             [cdataProcessInfo setCoredatasample:currentCDSample];
             [currentCDSample addProcessInfosObject:cdataProcessInfo];
         }
+        
+        if ([[Globals instance] hiddenChanges]){
+            NSArray *hidden = [[Globals instance] getHiddenApps];
+            if(hidden == nil) return;
+            for(NSString *appName in hidden){
+                CoreDataProcessInfo *cdataProcessInfo = (CoreDataProcessInfo *) [NSEntityDescription insertNewObjectForEntityForName:@"CoreDataProcessInfo" inManagedObjectContext:managedObjectContext];
+                [cdataProcessInfo setId: [NSNumber numberWithInt:-1]];
+                [cdataProcessInfo setName:appName];
+                [cdataProcessInfo setCoredatasample:currentCDSample];
+                [currentCDSample addProcessInfosObject:cdataProcessInfo];
+            }
+            [[Globals instance] acknowledgeHiddenChanges];
+        }
     }
 }
 
@@ -991,6 +1004,8 @@ static int previousSample = 0;
         sample.distanceTraveled = [NSNumber numberWithDouble:distance];
     }
     
+    [self sampleProcessInfo:sample withManagedObjectContext:managedObjectContext];
+    
     DLog(@"%sCollected new sample!\n\
          \ttriggeredBy: %@\n\
          \ttimestamp: %@\n\
@@ -1004,26 +1019,26 @@ static int previousSample = 0;
          \tmemoryFree: %@\n\
          \tmemoryUser: %@\n\
          \tnetworkDetails:\n\
-            \t\tnetworkType: %@\n\
-            \t\tmobileNetworkType: %@\n\
-            \t\tnetworkStatistics:\n\
-                \t\t\twifiSent: %f\n\
-                \t\t\twifiReceived: %f\n\
-                \t\t\tmobileSent: %f\n\
-                \t\t\tmobileReceived: %f\n\
+         \t\tnetworkType: %@\n\
+         \t\tmobileNetworkType: %@\n\
+         \t\tnetworkStatistics:\n\
+         \t\t\twifiSent: %f\n\
+         \t\t\twifiReceived: %f\n\
+         \t\t\tmobileSent: %f\n\
+         \t\t\tmobileReceived: %f\n\
          \tcpuStatus:\n\
-            \t\tcpuUsage: %f\n\
-            \t\tuptime: %f\n\
-            \t\tsleeptime: %f\n\
+         \t\tcpuUsage: %f\n\
+         \t\tuptime: %f\n\
+         \t\tsleeptime: %f\n\
          \tstorageDetails:\n\
-            \t\ttotal: %i\n\
-            \t\tfree: %i\n\
+         \t\ttotal: %i\n\
+         \t\tfree: %i\n\
          \tsettings:\n\
-            \t\tlocationEnabled: %s\n\
-            \t\tpowersaverEnabled: %s\n\
-            \t\tbluetoothEnabled: %s\n\
+         \t\tlocationEnabled: %s\n\
+         \t\tpowersaverEnabled: %s\n\
+         \t\tbluetoothEnabled: %s\n\
          \tdistanceTraveled: %@\n\
-         \tcountryCode: %@\n", __PRETTY_FUNCTION__,
+         \tcountryCode: %@", __PRETTY_FUNCTION__,
          sample.triggeredBy, sample.timestamp, sample.batteryLevel,
          sample.batteryState, sample.screenBrightness, sample.networkStatus, sample.memoryWired, sample.memoryActive,
          sample.memoryInactive, sample.memoryFree, sample.memoryUser,
@@ -1036,12 +1051,15 @@ static int previousSample = 0;
          (![sysSettings bluetoothEnabledIsSet]) ? "not set" : (sysSettings.bluetoothEnabled) ? "true": "false",
          sample.distanceTraveled, sample.countryCode);
     
-    [self sampleProcessInfo:sample withManagedObjectContext:managedObjectContext];
+    for(CoreDataProcessInfo *info in sample.processInfos){
+        NSString *processString = [NSString stringWithFormat:@"\n\t\t%@: %@", info.id, info.name];
+        DLog(@"%@", processString);
+    }
     
     //
     //  Save the sample
     //
-    @try 
+    @try
     {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
         {

@@ -29,9 +29,11 @@
 - (void) setHideConsumptionLimit:(float) limit;
 - (float) getHideConsumptionLimit;
 - (NSArray *) getHiddenApps;
+- (BOOL) hiddenChanges;
 - (BOOL) isAppHidden : (NSString *) appName;
 - (void) hideApp : (NSString *) appName;
 - (void) showApp : (NSString *) appName;
+- (void) acknowledgeHiddenChanges;
 
 @end
 #endif
