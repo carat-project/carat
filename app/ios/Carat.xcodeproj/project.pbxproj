@@ -184,6 +184,7 @@
 		23A0880239BF30A57C63EADE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2417658C1C60D896007EB0CD /* Icon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon144.png; path = ../Images.xcassets/AppIcon.appiconset/Icon144.png; sourceTree = "<group>"; };
 		2417658E1C60E64C007EB0CD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		2422EED91CE1EF5400637E06 /* Carat 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Carat 2.xcdatamodel"; sourceTree = "<group>"; };
 		245897431C9063F1001D3FE2 /* TopHogsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHogsTableViewCell.h; sourceTree = "<group>"; };
 		245897441C9063F1001D3FE2 /* TopHogsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopHogsTableViewCell.m; sourceTree = "<group>"; };
 		245897451C9063F1001D3FE2 /* TopHogsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopHogsTableViewCell.xib; sourceTree = "<group>"; };
@@ -2131,9 +2132,10 @@
 		C18E107014665E230028095B /* Carat.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2422EED91CE1EF5400637E06 /* Carat 2.xcdatamodel */,
 				C18E107114665E230028095B /* Carat.xcdatamodel */,
 			);
-			currentVersion = C18E107114665E230028095B /* Carat.xcdatamodel */;
+			currentVersion = 2422EED91CE1EF5400637E06 /* Carat 2.xcdatamodel */;
 			path = Carat.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

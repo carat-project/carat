@@ -2115,8 +2115,13 @@ static id instance = nil;
     DLog(@"%s Coredatastore location: %@", __PRETTY_FUNCTION__, storeURL);
     
     NSError *error = nil;
+    
+    // Lightweight migration
+    NSMutableDictionary *options = [NSMutableDictionary dictionary];
+    [options setValue:[NSNumber numberWithBool:YES] forKey:NSMigratePersistentStoresAutomaticallyOption];
+    [options setValue:[NSNumber numberWithBool:YES] forKey:NSInferMappingModelAutomaticallyOption];
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
     {
         /*
          Typical reasons for an error here include:
