@@ -897,8 +897,8 @@ static int previousSample = 0;
 {   
     if (managedObjectContext != nil)
     {
+        // Running processes
         NSArray *processes = [[UIDevice currentDevice] runningProcesses];
-        
         for (NSDictionary *dict in processes)
         {
             if([daemonsList objectForKey:[dict objectForKey:@"ProcessName"]] != nil) { continue; }
@@ -909,12 +909,15 @@ static int previousSample = 0;
             [currentCDSample addProcessInfosObject:cdataProcessInfo];
         }
         
+        // Include applications user has recently hidden from hogs/bugs.
+        // They might or might not be running, so don't include pid.
         if ([[Globals instance] hiddenChanges]){
             NSArray *hidden = [[Globals instance] getHiddenApps];
             if(hidden == nil) return;
             for(NSString *appName in hidden){
                 CoreDataProcessInfo *cdataProcessInfo = (CoreDataProcessInfo *) [NSEntityDescription insertNewObjectForEntityForName:@"CoreDataProcessInfo" inManagedObjectContext:managedObjectContext];
-                [cdataProcessInfo setId: [NSNumber numberWithInt:-1]];
+                
+                [cdataProcessInfo setImportance:@"Hidden"];
                 [cdataProcessInfo setName:appName];
                 [cdataProcessInfo setCoredatasample:currentCDSample];
                 [currentCDSample addProcessInfosObject:cdataProcessInfo];
@@ -1298,10 +1301,34 @@ static int previousSample = 0;
             for (CoreDataProcessInfo *processInfo in processInfoArray)
             {
                 ProcessInfo *pInfo = [[[ProcessInfo alloc] init] autorelease];
-                pInfo.pId = (int)[processInfo valueForKey:@"id"];
+                NSNumber *pId = [processInfo valueForKey:@"id"];
+                NSString *importance = (NSString *)[processInfo valueForKey:@"importance"];
+                
+                // Currently only hidden apps have an importance set
+                if(importance != nil && importance.length > 0){
+                    pInfo.importance = importance;
+                } else if(pId != nil){
+                    pInfo.pId = [pId intValue];
+                }
+                
                 pInfo.pName = (NSString *)[processInfo valueForKey:@"name"];
                 [pInfoList addObject:pInfo];
             }
+            
+            /* 
+            DLog(@"Created the following process list for a sample that's ready for sending:");
+            for(ProcessInfo *info in sampleToSend.piList) {
+                int pid = -1;
+                if(info.pIdIsSet) {
+                    pid = info.pId;
+                }
+                NSString *importance = @"Not set";
+                if(info.importanceIsSet){
+                    importance = info.importance;
+                }
+                DLog(@"\t%i %@ %@", pid, info.pName, importance);
+            } 
+            */
             
             //
             //  Try to send. If successful, delete. Note that the process info

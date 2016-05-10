@@ -14,6 +14,6 @@
 
 @dynamic id;
 @dynamic name;
+@dynamic importance;
 @dynamic coredatasample;
-
 @end
