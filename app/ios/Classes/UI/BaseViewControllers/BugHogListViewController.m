@@ -238,11 +238,17 @@
     NSString *appName = [hb appName];
     cell.nameLabel.text = appName;
     
-    NSString *imageURL = [[@"https://s3.amazonaws.com/carat.icons/"
+    /*NString *imageURL = [[@"https://s3.amazonaws.com/carat.icons/"
                            stringByAppendingString:appName]
-                          stringByAppendingString:@".jpg"];
-    [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURL]
-                         placeholderImage:[UIImage imageNamed:@"def_app_icon"]];
+                          stringByAppendingString:@".jpg"];*/
+    UIImage *defaultIcon = [UIImage imageNamed:@"def_app_icon"];
+    NSString *imageURI = [[Globals instance] getStringForKey:appName];
+    if(imageURI != nil && [imageURI length] > 0){
+        [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURI]
+                             placeholderImage:defaultIcon];
+    } else {
+        [cell.thumbnailAppImg setImage:defaultIcon];
+    }
     
     
     double error = [self getErrorMinutes:hb];

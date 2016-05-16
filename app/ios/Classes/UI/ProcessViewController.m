@@ -7,6 +7,12 @@
 //
 
 #import "ProcessViewController.h"
+#import "Preprocessor.h"
+#import "CoreDataManager.h"
+#import "UIImageView+WebCache.h"
+#ifdef USE_INTERNALS
+    #import "CaratInternals.h"
+#endif
 
 @interface ProcessViewController ()
 
@@ -33,10 +39,20 @@
 
 - (void)updateView
 {
-    self.processList = [[UIDevice currentDevice] runningProcesses];
-    // TODO filter (based on "Filter Daemons" button)
-    [self.tableView reloadData];
-    [self.view setNeedsDisplay];
+    if(floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
+        self.processList = [[UIDevice currentDevice] runningProcesses];
+        [self.tableView reloadData];
+        [self.view setNeedsDisplay];
+    }
+    #ifdef USE_INTERNALS
+    else {
+        [CaratInternals getActiveAsync:NO completion:^(NSMutableArray *result) {
+            self.processList = result;
+            [self.tableView reloadData];
+            [self.view setNeedsDisplay];
+        }];
+    }
+    #endif
 }
 
 
@@ -63,6 +79,16 @@
 {
     NSString *appName = [selectedProc objectForKey:@"ProcessName"];
     cell.nameLabel.text = appName;
+    
+    UIImage *defaultIcon = [UIImage imageNamed:@"def_app_icon"];
+    NSString *iconUri = [selectedProc objectForKey:@"ProcessIconURI"];
+    if(iconUri != nil){
+        [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:iconUri]
+                             placeholderImage:defaultIcon];
+    } else {
+        [cell.thumbnailAppImg setImage:defaultIcon];
+    }
+    
     
     /*
     NSString *imageURL = [[@"https://s3.amazonaws.com/carat.icons/"

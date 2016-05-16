@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionTableViewCell"/>
@@ -11,14 +11,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kde-Oc-rRH" userLabel="topCont">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="def_app_icon" translatesAutoresizingMaskIntoConstraints="NO" id="CB5-y6-IDV">
+                                <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="S8Q-Dt-dbc"/>
+                                    <constraint firstAttribute="height" constant="40" id="iWr-Kd-Tv8"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-Tl-dKh" userLabel="Improvement">
-                                <rect key="frame" x="8" y="37" width="304" height="15"/>
+                                <rect key="frame" x="56" y="37" width="256" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Qt4-b4-tCn"/>
                                 </constraints>
@@ -34,7 +41,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvf-o4-9EM" userLabel="AppName">
-                                <rect key="frame" x="8" y="8" width="272" height="20"/>
+                                <rect key="frame" x="56" y="8" width="224" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -46,11 +53,13 @@
                             <constraint firstItem="kdg-sU-C8U" firstAttribute="leading" secondItem="tvf-o4-9EM" secondAttribute="trailing" constant="8" id="8cy-Nr-scZ"/>
                             <constraint firstItem="tvf-o4-9EM" firstAttribute="top" secondItem="kde-Oc-rRH" secondAttribute="top" constant="8" id="AOP-wd-cht"/>
                             <constraint firstAttribute="trailing" secondItem="kdg-sU-C8U" secondAttribute="trailing" constant="8" id="C6J-vU-NXH"/>
-                            <constraint firstItem="tvf-o4-9EM" firstAttribute="leading" secondItem="kde-Oc-rRH" secondAttribute="leading" constant="8" id="OHa-cW-XCS"/>
+                            <constraint firstItem="CB5-y6-IDV" firstAttribute="top" secondItem="kde-Oc-rRH" secondAttribute="top" constant="8" id="Onf-3t-YA2"/>
                             <constraint firstAttribute="bottom" secondItem="yiG-Tl-dKh" secondAttribute="bottom" constant="8" id="YX2-Og-r59"/>
+                            <constraint firstItem="tvf-o4-9EM" firstAttribute="leading" secondItem="CB5-y6-IDV" secondAttribute="trailing" constant="8" id="b1s-Vl-HdL"/>
                             <constraint firstItem="kdg-sU-C8U" firstAttribute="top" secondItem="kde-Oc-rRH" secondAttribute="top" constant="8" id="cFO-CB-erS"/>
-                            <constraint firstItem="yiG-Tl-dKh" firstAttribute="leading" secondItem="kde-Oc-rRH" secondAttribute="leading" constant="8" id="f2J-gQ-NsG"/>
                             <constraint firstAttribute="trailing" secondItem="yiG-Tl-dKh" secondAttribute="trailing" constant="8" id="fUQ-hx-SII"/>
+                            <constraint firstItem="CB5-y6-IDV" firstAttribute="leading" secondItem="kde-Oc-rRH" secondAttribute="leading" constant="8" id="mgL-gb-DHv"/>
+                            <constraint firstItem="yiG-Tl-dKh" firstAttribute="leading" secondItem="CB5-y6-IDV" secondAttribute="trailing" constant="8" id="sI4-lx-4oQ"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -62,6 +71,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="actionIcon" destination="CB5-y6-IDV" id="LGR-9r-6yR"/>
                 <outlet property="actionString" destination="tvf-o4-9EM" id="BTz-6Q-EkV"/>
                 <outlet property="actionValue" destination="yiG-Tl-dKh" id="7Rf-aV-mc6"/>
             </connections>
@@ -70,5 +80,6 @@
     </objects>
     <resources>
         <image name="collapse_btn_open" width="81" height="63"/>
+        <image name="def_app_icon" width="120" height="120"/>
     </resources>
 </document>

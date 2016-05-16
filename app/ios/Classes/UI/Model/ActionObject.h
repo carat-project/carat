@@ -24,12 +24,14 @@ typedef enum {
 } ActionType;
 
 @interface ActionObject : NSObject {
+    NSString *appName;
     NSString *actionText;
     NSInteger actionBenefit;
     NSInteger actionError;
     ActionType actionType;
 }
 
+@property (nonatomic, retain) NSString *appName;
 @property (retain, nonatomic) NSString *actionText;
 @property (nonatomic)         NSInteger actionBenefit;
 @property (nonatomic)         NSInteger actionError;

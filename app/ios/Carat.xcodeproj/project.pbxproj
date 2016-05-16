@@ -1130,8 +1130,8 @@
 		AB91E431149024C3007786F0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C7547EB519963CFD007A01CF /* libCorePlot-CocoaTouch.a */,
 				C7547E5019963CFD007A01CF /* CorePlotHeaders */,
+				C7547EB519963CFD007A01CF /* libCorePlot-CocoaTouch.a */,
 				C7547E4819963CFD007A01CF /* CoreDataRegistration.h */,
 				C7547E4919963CFD007A01CF /* CoreDataRegistration.m */,
 				C7547E3E19963CFD007A01CF /* CoreDataAppReport.h */,
@@ -1931,6 +1931,28 @@
 					"$(PROJECT_DIR)/Classes",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKCoreKit\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKLoginKit\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKShareKit\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/TwitterCore\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/TwitterKit\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

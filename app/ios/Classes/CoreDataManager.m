@@ -15,6 +15,11 @@
 #import "DeviceInformation.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "CaratProtocol.h"
+#import "Preprocessor.h"
+
+#ifdef USE_INTERNALS
+    #import "CaratInternals.h"
+#endif
 
 @interface CoreDataManager () <CBCentralManagerDelegate>
 @property (nonatomic) CBCentralManager *bluetoothManager;
@@ -104,8 +109,8 @@ static int previousSample = 0;
     }
 }
 
-/** 
- *  Load the report data (except bug and hog report) to memory so that 
+/**
+ *  Load the report data (except bug and hog report) to memory so that
  *  we don't have to keep going to the core data store.
  */
 - (void) loadLocalReportsToMemory : (NSManagedObjectContext *) managedObjectContext
@@ -428,7 +433,6 @@ static int previousSample = 0;
                          forKey:CBCentralManagerOptionShowPowerAlertKey]];
     
     [self loadLocalReportsToMemory:self.managedObjectContext];
-    
     [self initDaemonCache];
 }
 
@@ -723,6 +727,25 @@ static int previousSample = 0;
         FeatureList list = [[NSMutableArray alloc] initWithObjects:feature1,feature2, nil];
         
         HogBugReport *hogReport = [[CommunicationManager instance] getHogOrBugReport:list];
+        if(hogReport == nil || [hogReport.hbList count] <= 0){
+            NSArray *runningProcesses= [[UIDevice currentDevice] runningProcessNames];
+            NSMutableArray *processList;
+            if(runningProcesses != nil && [runningProcesses count] > 0) {
+                processList = [NSMutableArray arrayWithArray:runningProcesses];
+                hogReport = [[CommunicationManager instance] getHogsImmediatelyAndMaybeRegister:processList];
+            }
+            #ifdef USE_INTERNALS
+            else {
+                processList = [CaratInternals getActiveNames:NO];
+                processList = [processList valueForKey:@"ProcessName"];
+                processList = [processList valueForKey:@"lowercaseString"];
+                if(processList != nil && [processList count] > 0){
+                    hogReport = [[CommunicationManager instance]
+                                 getHogsImmediatelyAndMaybeRegister:processList];
+                }
+            }
+            #endif
+        }
         
         //if (hogReport == nil || hogReport == NULL) return;
         if (hogReport != nil && hogReport != NULL)
@@ -898,7 +921,15 @@ static int previousSample = 0;
     if (managedObjectContext != nil)
     {
         // Running processes
-        NSArray *processes = [[UIDevice currentDevice] runningProcesses];
+        NSArray *processes;
+        if (floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0) {
+            processes = [[UIDevice currentDevice] runningProcesses];
+        }
+        #ifdef USE_INTERNALS
+        else {
+            processes = [NSArray arrayWithArray:[CaratInternals getActive:NO]];
+        }
+        #endif
         for (NSDictionary *dict in processes)
         {
             if([daemonsList objectForKey:[dict objectForKey:@"ProcessName"]] != nil) { continue; }
@@ -1481,6 +1512,7 @@ static id instance = nil;
     [lockReportSync release];
     [daemonsFilePath release];
     [daemonsList release];
+    [processInfos release];
     dispatch_release(sendStoredDataToServerSemaphore);
     [super dealloc];
 }
@@ -1708,16 +1740,30 @@ static id instance = nil;
         
         DLog(@"%s Found %d bug, loading...",__PRETTY_FUNCTION__, [fetchedObjects count]);
         
-        if (filterNonRunning) { runningProcessNames = [[UIDevice currentDevice] runningProcessNames]; }
+        if (filterNonRunning) {
+            if(floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
+                runningProcessNames = [[UIDevice currentDevice] runningProcessNames];
+            }
+            #ifdef USE_INTERNALS
+            else {
+                runningProcessNames = [CaratInternals getActiveNames:NO];
+                runningProcessNames = [runningProcessNames valueForKey:@"ProcessName"];
+            }
+            #endif
+        }
         
+        if(runningProcessNames != nil && [runningProcessNames count] > 0){
+            runningProcessNames = [runningProcessNames valueForKey:@"lowercaseString"];
+        }
         HogBugReport * bugs = [[[HogBugReport alloc] init] autorelease];
         NSMutableArray * hbList = [[[NSMutableArray alloc] init] autorelease];
         [bugs setHbList:hbList];
         for (CoreDataAppReport *cdataAppReport in fetchedObjects)
         {
-            if ((filterNonRunning) && (![runningProcessNames containsObject:[cdataAppReport valueForKey:@"appName"]]))
+            if ((filterNonRunning) &&
+                (![runningProcessNames containsObject:[[cdataAppReport valueForKey:@"appName"] lowercaseString]]))
             {
-                DLog(@"%s '%@' not in running processes, filtering it out.", 
+                DLog(@"%s '%@' is a system process or not running, filtering it out.",
                      __PRETTY_FUNCTION__,
                      [cdataAppReport valueForKey:@"appName"]);
                 continue; 
@@ -1772,6 +1818,9 @@ static id instance = nil;
     NSError *error = nil;
     NSArray *runningProcessNames = nil;
     NSArray *hiddenProcessNames = [[Globals instance] getHiddenApps];
+    if(hiddenProcessNames != nil && [hiddenProcessNames count] > 0){
+        hiddenProcessNames = [hiddenProcessNames valueForKey:@"lowercaseString"];
+    }
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) 
     {
@@ -1797,22 +1846,37 @@ static id instance = nil;
         if ([fetchedObjects count] == 0)
             return nil;
         
-        if (filterNonRunning) { runningProcessNames = [[UIDevice currentDevice] runningProcessNames]; }
+        if (filterNonRunning) {
+            if(floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
+                runningProcessNames = [[UIDevice currentDevice] runningProcessNames];
+            }
+            #ifdef USE_INTERNALS
+            else {
+                runningProcessNames = [CaratInternals getActiveNames:NO];
+                runningProcessNames = [runningProcessNames valueForKey:@"ProcessName"];
+            }
+            #endif
+        }
         
+        if(runningProcessNames != nil && [runningProcessNames count] > 0){
+            runningProcessNames = [runningProcessNames valueForKey:@"lowercaseString"];
+        }
         HogBugReport * hogs = [[[HogBugReport alloc] init] autorelease];
         NSMutableArray * hbList = [[[NSMutableArray alloc] init] autorelease];
         [hogs setHbList:hbList];
         for (CoreDataAppReport *cdataAppReport in fetchedObjects)
         {
-            if ((filterNonRunning) && (![runningProcessNames containsObject:[cdataAppReport valueForKey:@"appName"]]))
+            if ((filterNonRunning) &&
+                (![runningProcessNames containsObject:[[cdataAppReport valueForKey:@"appName"] lowercaseString]]))
             {
-                DLog(@"%s '%@' not in running processes, filtering it out.", 
+                DLog(@"%s '%@' is a system process or not running, filtering it out.",
                      __PRETTY_FUNCTION__,
                      [cdataAppReport valueForKey:@"appName"]);
                 continue; 
             }
             
-            if ((filterHidden) && ([hiddenProcessNames containsObject:[cdataAppReport valueForKey:@"appName"]]))
+            if ((filterHidden) &&
+                ([hiddenProcessNames containsObject:[cdataAppReport valueForKey:@"appName"]]))
             {
                 DLog(@"%s '%@' hidden by user, filtering it out.",
                      __PRETTY_FUNCTION__,
@@ -1863,6 +1927,7 @@ static id instance = nil;
     //return hogs;
     return [self getHogsFromCoreData];
 }*/
+
 
 - (double) getJScore
 {
@@ -2179,7 +2244,7 @@ static id instance = nil;
 {
     return (int) (100/(expValWithout-errWithout) - 100/(expVal+err));
 }
--(ActionObject*)createActionObject:(double)expVal expValWithout:(double)expValWithout errWithout:(double)errWithout err:(double)err actText:(NSString*)actText actType:(ActionType)actType
+-(ActionObject*)createActionObject:(double)expVal expValWithout:(double)expValWithout errWithout:(double)errWithout err:(double)err actText:(NSString*)actText actType:(ActionType)actType appName:(NSString *)appName
 {
     NSInteger benefit = [self calcBenefit:expVal expValWithout:expValWithout];
     NSInteger benefit_max = [self calcMaxBenefit:expVal expValWithout:expValWithout errWithout:errWithout err:err];
@@ -2187,6 +2252,7 @@ static id instance = nil;
     DLog(@"OS benefit is %d ± %f", benefit, err);
     if (benefit > 60) {
         ActionObject *tmpAction = [[ActionObject alloc] init];
+        [tmpAction setAppName:appName];
         [tmpAction setActionText:actText];
         [tmpAction setActionType:actType];
         [tmpAction setActionBenefit:benefit];
@@ -2214,7 +2280,7 @@ static id instance = nil;
             double errWithout = [hb errorWithout];
             if ([self valuesArePositive:expVal expValWithout:expValWithout errWithout:errWithout err:err] &&
                 [hb appName] != nil) {
-                ActionObject *tmpAction = [self createActionObject:expVal expValWithout:expValWithout errWithout:errWithout err:err actText:[actText stringByAppendingString:[hb appName]] actType:actTyp];
+                ActionObject *tmpAction = [self createActionObject:expVal expValWithout:expValWithout errWithout:errWithout err:err actText:[actText stringByAppendingString:[hb appName]] actType:actTyp appName:[hb appName]];
                 if(tmpAction != nil){
                     [myList addObject:tmpAction];
                     [tmpAction release];
@@ -2248,7 +2314,7 @@ static id instance = nil;
     if (dscWith != nil && dscWithout != nil) {
         if ([self valuesArePositive:dscWith.expectedValue expValWithout:dscWithout.expectedValue errWithout:dscWithout.error err:dscWith.error] &&
             canUpgradeOS) {
-            ActionObject *tmpAction = [self createActionObject:dscWith.expectedValue expValWithout:dscWithout.expectedValue errWithout:dscWithout.error err:dscWith.error actText:actText actType:ActionTypeUpgradeOS];
+            ActionObject *tmpAction = [self createActionObject:dscWith.expectedValue expValWithout:dscWithout.expectedValue errWithout:dscWithout.error err:dscWith.error actText:actText actType:ActionTypeUpgradeOS appName:nil];
             return tmpAction;
         }
     }

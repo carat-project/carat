@@ -34,6 +34,8 @@
 - (void) hideApp : (NSString *) appName;
 - (void) showApp : (NSString *) appName;
 - (void) acknowledgeHiddenChanges;
+- (NSString *) getStringForKey:(NSString *)key;
+- (void) saveString:(NSString *)string forKey:(NSString *)key;
 
 @end
 #endif

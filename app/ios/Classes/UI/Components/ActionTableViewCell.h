@@ -21,6 +21,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *actionString;
 @property (retain, nonatomic) IBOutlet UILabel *actionValue;
 @property (retain, nonatomic) IBOutlet UILabel *actionDescr;
+@property (retain, nonatomic) IBOutlet UIImageView *actionIcon;
 @property (retain, nonatomic) NSString *descValue;
 @property (nonatomic) ActionType actionType;
 

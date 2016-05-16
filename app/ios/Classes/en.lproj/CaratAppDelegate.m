@@ -13,6 +13,7 @@
 #import "Utilities.h"
 #import "CoreDataManager.h"
 #import "BugsViewController.h"
+#import "SDImageCache.h"
 #include <sys/sysctl.h>
 #include <sys/types.h>
 #include <mach/mach.h>
@@ -354,6 +355,8 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
+    SDImageCache *imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearMemory];
 }
 
 

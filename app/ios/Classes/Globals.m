@@ -31,10 +31,27 @@ static id instance = nil;
     return instance;
 }
 
+- (NSUserDefaults *) getDefaults {
+    if(self.defaults != nil){
+        return self.defaults;
+    }
+    return [NSUserDefaults standardUserDefaults];
+}
+
 - (void) getUUIDFromNSUserDefaults
 {
-    self.defaults = [NSUserDefaults standardUserDefaults];
+    self.defaults = [self getDefaults];
     self.myUUID = [[self defaults] objectForKey:@"CaratUUID"];
+}
+
+- (void) saveString:(NSString *)string forKey:(NSString *)key{
+    self.defaults = [self getDefaults];
+    [defaults setObject:string forKey:key];
+}
+
+- (NSString *) getStringForKey:(NSString *)key{
+    self.defaults = [self getDefaults];
+    return [defaults objectForKey:key];
 }
 
 //

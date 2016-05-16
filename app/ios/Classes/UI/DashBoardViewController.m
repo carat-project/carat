@@ -147,7 +147,7 @@ BOOL isUpdateProgressVisible;
     [_bugsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     
     // iOS 9+ has no hogs, so we have no count
-    if(NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_9_0) {
+    if(true || NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_9_0) {
         count = [self getHogsCount];
         [_hogsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     } else {
@@ -338,7 +338,7 @@ BOOL isUpdateProgressVisible;
 
 - (int)getActivityCount
 {
-    NSMutableArray *myList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
+    NSMutableArray *myList = [[CoreDataManager instance] getHogsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
     
     DLog(@"Loading Hogs");
     // get Bugs, add to array
@@ -387,7 +387,7 @@ BOOL isUpdateProgressVisible;
 - (IBAction)showHogs:(id)sender {
     
     // Check if we are running on iOS 9.0+, if so, show statistics instead
-    if(floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
+    if(true || floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
         HogsViewController *controller = [[HogsViewController alloc] initWithNibName:@"HogsViewController" bundle:nil];
         [self.navigationController pushViewController:controller animated:YES];
         [Flurry logEvent:NSLocalizedString(@"selectedHogsView", nil)];

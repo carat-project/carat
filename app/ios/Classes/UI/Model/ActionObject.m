@@ -10,7 +10,7 @@
 
 @implementation ActionObject
 
-@synthesize actionText, actionBenefit, actionError, actionType;
+@synthesize actionText, actionBenefit, actionError, actionType, appName;
 
 - (void) dealloc {
     [actionText release];

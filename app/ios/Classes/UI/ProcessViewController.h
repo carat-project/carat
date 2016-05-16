@@ -20,4 +20,5 @@
 }
 @property (retain, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (retain, nonatomic) NSArray *processList;
+@property (retain, nonatomic) NSDictionary *processInfos;
 @end

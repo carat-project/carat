@@ -39,6 +39,7 @@
     NSArray * ChangesSinceLastWeek;
     NSURLConnection *connection;
     NSMutableData *receivedData;
+    NSMutableDictionary *processInfos;
 }
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

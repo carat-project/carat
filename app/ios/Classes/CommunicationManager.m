@@ -140,9 +140,29 @@ static NSString * networkStatusString;
 //
 //
 //
-- (HogBugReport *) getHogsImmediatelyAndMaybeRegister:(Registration *) registrationMessage  : (NSArray *) processList {
-    //TODO
-    return nil;
+- (HogBugReport *) getHogsImmediatelyAndMaybeRegister:(NSMutableArray *)processList {
+    @synchronized(self) {
+        if ([self setupCaratService] == YES)
+        {
+            @try {
+                UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
+                Registration* registration = [[[Registration alloc] init] autorelease];
+                registration.uuId = [[Globals instance] getUUID ];
+                registration.timestamp = [[Globals instance] utcSecondsSinceEpoch];
+                registration.platformId = [h platformString];
+                registration.systemVersion = [UIDevice currentDevice].systemVersion;
+                [h release];
+        
+                HogBugReport *reports = [service getQuickHogsAndMaybeRegister:registration
+                                                                 processList:processList];
+                return reports;
+            }
+            @catch (NSException *exception) {
+                DLog(@"%s Caught %@: %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
+            }
+            [self shutdownCaratService];
+        }
+    }
 }
 
 

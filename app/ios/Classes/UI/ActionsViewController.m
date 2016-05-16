@@ -7,6 +7,7 @@
 //
 
 #import "ActionsViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface ActionsViewController ()
 
@@ -209,8 +210,20 @@
     NSString *appName = act.actionText;
     cell.actionString.text = appName;
     
-    //NSString *imageURL = [[@"https://s3.amazonaws.com/carat.icons/" stringByAppendingString:appName] stringByAppendingString:@".jpg"];
-    //[cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"icon57.png"]];
+    // Set action icon
+    UIImage *defaultIcon = [UIImage imageNamed:@"def_app_icon"];
+    NSString *name = act.appName;
+    
+    NSString *iconURI = nil;
+    if(name != nil && [name length] > 0){
+        iconURI = [[Globals instance] getStringForKey:[name lowercaseString]];
+    }
+    
+    if(iconURI != nil && [iconURI length] > 0){
+        [cell.actionIcon setImageWithURL:[NSURL URLWithString:iconURI] placeholderImage:defaultIcon];
+    } else {
+        [cell.actionIcon setImage:defaultIcon];
+    }
     
     if (act.actionBenefit == -1) {
         cell.actionValue.text = NSLocalizedString(@"ActionHelpCollectSubtext", nil);
