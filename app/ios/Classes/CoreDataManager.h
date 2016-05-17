@@ -88,6 +88,7 @@
 - (void) setCPUData:(float)used total:(float) total;
 
 -(ActionObject*)createActionObjectFromDetailScreenReport:(NSString *)actText actType:(ActionType)actTyp;
+-(NSMutableArray *)getActions:(NSArray *)processes;
 -(NSMutableArray *)getBugsActionList:(BOOL)getBugs withoutHidden:(BOOL)withoutHidden actText:(NSString *)actText actType:(ActionType)actType;
 -(NSMutableArray *)getHogsActionList:(BOOL)getHogs withoutHidden:(BOOL)withoutHidden actText:(NSString *)actText actType:(ActionType)actType;
 -(NSMutableArray *)getHogsBugsActionList:(NSArray *)list actText:(NSString *)actText actType:(ActionType)actTyp;

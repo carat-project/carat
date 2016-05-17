@@ -23,7 +23,7 @@
 + (id) instance;
 - (void) setupReachabilityNotifications;
 - (BOOL) sendRegistrationMessage:(Registration *) registrationMessage;
-- (HogBugReport *) getHogsImmediatelyAndMaybeRegister:(NSMutableArray *)processList;
+- (HogBugReport *) getQuickHogs:(NSMutableArray *)processList;
 - (BOOL) sendSample:(Sample *) sample;
 - (Reports *) getReports;
 - (HogBugReport *) getHogOrBugReport:(FeatureList) featureList;

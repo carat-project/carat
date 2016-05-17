@@ -16,6 +16,7 @@
 
 @synthesize myUUID;
 @synthesize defaults;
+@synthesize priorityChanged;
 
 static id instance = nil;
 //static NSUserDefaults* defaults = nil;
@@ -23,6 +24,7 @@ static id instance = nil;
 + (void) initialize {
     if (self == [Globals class]) {
         instance = [[self alloc] init];
+        [instance setPriorityChanged:false];
         [instance getUUIDFromNSUserDefaults];
     }
 }

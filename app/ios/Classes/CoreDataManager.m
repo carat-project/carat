@@ -13,6 +13,7 @@
 #import "UIDeviceHardware.h"
 #import "Utilities.h"
 #import "DeviceInformation.h"
+#import "CaratProcessCache.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "CaratProtocol.h"
 #import "Preprocessor.h"
@@ -583,8 +584,108 @@ static int previousSample = 0;
 	return managedObjectContext;
 }
 
+- (void) saveReport:(HogBugReport *)reports type:(NSString *)entityType context:(NSManagedObjectContext *)context{
+    NSError *error = nil;
+    if (reports != nil && reports != NULL && [reports.hbList count] > 0)
+    {
+        // Clear local reports only when we actually got some data
+        if ([self clearLocalAppReports:context forEntityType:entityType] == NO)
+            return;
+        
+        HogsBugsList reportList = reports.hbList;
+        for(HogsBugs * report in reportList)
+        {
+            CoreDataAppReport *cdataAppReport = (CoreDataAppReport *) [NSEntityDescription
+                                                                       insertNewObjectForEntityForName:@"CoreDataAppReport"
+                                                                       inManagedObjectContext:context];
+            if (!report.appNameIsSet) {
+                DLog([[@"%s App name not set for " stringByAppendingString:entityType] stringByAppendingString:@" report, ignoring..."], __PRETTY_FUNCTION__);
+                continue;
+            }
+            
+            [cdataAppReport setAppName:report.appName];
+            [cdataAppReport setAppScore:(report.wDistanceIsSet ?
+                                         [NSNumber numberWithDouble:report.wDistance] :
+                                         [NSNumber numberWithDouble:0.0])];
+            
+            [cdataAppReport setExpectedValue:(report.expectedValueIsSet ?
+                                              [NSNumber numberWithDouble:report.expectedValue] :
+                                              [NSNumber numberWithDouble:0.0])];
+            [cdataAppReport setExpectedValueWithout:(report.expectedValueWithoutIsSet ?
+                                                     [NSNumber numberWithDouble:report.expectedValueWithout] :
+                                                     [NSNumber numberWithDouble:0.0])];
+            [cdataAppReport setError:(report.errorIsSet ?
+                                      [NSNumber numberWithDouble:report.error] :
+                                      [NSNumber numberWithDouble:0.0])];
+            [cdataAppReport setErrorWithout:(report.errorWithoutIsSet ?
+                                             [NSNumber numberWithDouble:report.errorWithout] :
+                                             [NSNumber numberWithDouble:0.0])];
+            [cdataAppReport setSamples:(report.samplesIsSet ?
+                                        [NSNumber numberWithDouble:report.samples] :
+                                        [NSNumber numberWithDouble:0.0])];
+            [cdataAppReport setSamplesWithout:(report.samplesWithoutIsSet ?
+                                               [NSNumber numberWithDouble:report.samplesWithout] :
+                                               [NSNumber numberWithDouble:0.0])];
+            [cdataAppReport setReportType:entityType];
+            [cdataAppReport setLastUpdated:[NSDate date]];
+            CoreDataDetail *cdataDetail = (CoreDataDetail *) [NSEntityDescription
+                                                              insertNewObjectForEntityForName:@"CoreDataDetail"
+                                                              inManagedObjectContext:context];
+            [cdataDetail setDistance:(report.wDistanceIsSet ?
+                                      [NSNumber numberWithDouble:report.wDistance] :
+                                      [NSNumber numberWithDouble:0.0])];
+            cdataDetail.distributionXWith = report.xValsIsSet ? report.xVals : [[[NSArray alloc] init] autorelease];
+            cdataDetail.distributionXWithout = report.xValsWithoutIsSet ? report.xValsWithout : [[[NSArray alloc] init] autorelease];
+            cdataDetail.distributionYWith = report.yValsIsSet ? report.yVals : [[[NSArray alloc] init] autorelease];
+            cdataDetail.distributionYWithout = report.yValsWithoutIsSet ? report.yValsWithout : [[[NSArray alloc] init] autorelease];
+            
+            [cdataDetail setAppReport:cdataAppReport];
+            [cdataAppReport setAppDetails:cdataDetail];
+        }
+    } else {
+        DLog([[@"%s " stringByAppendingString:entityType] stringByAppendingString:@" report update failed."], __PRETTY_FUNCTION__);
+        [context rollback];
+    }
+    
+    // Save progress
+    @try {
+        if ([context hasChanges] && ![context save:&error])
+        {
+            DLog(@"%s Could not save coredata, error: %@, %@.", __PRETTY_FUNCTION__, error, [error userInfo]);
+            return;
+        }
+    }
+    @catch (NSException *exception) {
+        DLog(@"%s Exception while trying to save coredata, %@, %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
+    }
+}
+
+- (BOOL)hogsStored {
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil)
+    {
+        NSError *error = nil;
+        NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"reportType == %@", @"Hog"];
+        [fetchRequest setPredicate:predicate];
+        NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"appScore"
+                                                                        ascending:NO] autorelease];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+        [fetchRequest setSortDescriptors:sortDescriptors];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CoreDataAppReport"
+                                                  inManagedObjectContext:managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSArray *fetchedObjects = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        return !(fetchedObjects == nil || [fetchedObjects count] == 0);
+    }
+    
+    return false;
+}
+
 /**
- * Refresh all the local reports from server. 
+ * Refresh all the local reports from server.
  */
 - (void) updateReportsFromServer
 {
@@ -705,6 +806,9 @@ static int previousSample = 0;
             DLog(@"%s Exception while trying to save coredata, %@, %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
         }
         
+        // Reload report data in memory
+        [self loadLocalReportsToMemory : managedObjectContext];
+        
         entityType = @"Hog";
         
         // Hog report
@@ -722,106 +826,36 @@ static int previousSample = 0;
         [feature2 setValue: [h platformString]];
         
         FeatureList list = [[NSMutableArray alloc] initWithObjects:feature1,feature2, nil];
-        
         HogBugReport *hogReport = [[CommunicationManager instance] getHogOrBugReport:list];
-        if(hogReport == nil || [hogReport.hbList count] <= 0){
+        [list release];
+        
+        // Quick hogs
+        if(hogReport == nil || [hogReport.hbList count] <= 0 && ![self hogsStored]){
             NSArray *runningProcesses= [[UIDevice currentDevice] runningProcessNames];
-            NSMutableArray *processList;
+            __block NSMutableArray *processList;
             if(runningProcesses != nil && [runningProcesses count] > 0) {
                 processList = [NSMutableArray arrayWithArray:runningProcesses];
-                hogReport = [[CommunicationManager instance] getHogsImmediatelyAndMaybeRegister:processList];
+                hogReport = [[CommunicationManager instance] getQuickHogs:processList];
+                [self saveReport:hogReport type:entityType context:managedObjectContext];
             }
             #ifdef USE_INTERNALS
             else {
-                processList = [CaratInternals getActiveNames:NO];
-                processList = [processList valueForKey:@"ProcessName"];
-                processList = [processList valueForKey:@"lowercaseString"];
-                if(processList != nil && [processList count] > 0){
-                    hogReport = [[CommunicationManager instance]
-                                 getHogsImmediatelyAndMaybeRegister:processList];
-                }
+                [[CaratProcessCache instance] getProcessList:^(NSArray *result) {
+                    processList = [result valueForKey:@"ProcessName"];
+                    processList = [processList valueForKey:@"lowercaseString"];
+                    if(processList != nil && [processList count] > 0){
+                        HogBugReport *hogReport = [[CommunicationManager instance] getQuickHogs:processList];
+                        [self saveReport:hogReport type:entityType context:managedObjectContext];
+                    }
+                }];
             }
             #endif
+        } else {
+            [self saveReport:hogReport type:entityType context:managedObjectContext];
         }
-        
-        //if (hogReport == nil || hogReport == NULL) return;
-        if (hogReport != nil && hogReport != NULL && [hogReport.hbList count] > 0)
-        {
-            // Clear local hog reports only when we actually got some data
-            if ([self clearLocalAppReports:managedObjectContext forEntityType:entityType] == NO)
-                return;
-            
-            HogsBugsList hogList = hogReport.hbList;
-            for(HogsBugs * hog in hogList)
-            {
-                CoreDataAppReport *cdataAppReport = (CoreDataAppReport *) [NSEntityDescription 
-                                                                           insertNewObjectForEntityForName:@"CoreDataAppReport" 
-                                                                           inManagedObjectContext:managedObjectContext];
-                if (!hog.appNameIsSet) { 
-                    DLog([[@"%s App name not set for " stringByAppendingString:entityType] stringByAppendingString:@" report, ignoring..."], __PRETTY_FUNCTION__);
-                    continue; 
-                }
-                
-                [cdataAppReport setAppName:hog.appName];
-                [cdataAppReport setAppScore:(hog.wDistanceIsSet ? 
-                                             [NSNumber numberWithDouble:hog.wDistance] : 
-                                             [NSNumber numberWithDouble:0.0])];
-                
-                [cdataAppReport setExpectedValue:(hog.expectedValueIsSet ? 
-                                                  [NSNumber numberWithDouble:hog.expectedValue] :
-                                                  [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setExpectedValueWithout:(hog.expectedValueWithoutIsSet ? 
-                                                         [NSNumber numberWithDouble:hog.expectedValueWithout] : 
-                                                         [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setError:(hog.errorIsSet ?
-                                                  [NSNumber numberWithDouble:hog.error] :
-                                                  [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setErrorWithout:(hog.errorWithoutIsSet ?
-                                          [NSNumber numberWithDouble:hog.errorWithout] :
-                                          [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setSamples:(hog.samplesIsSet ?
-                                                  [NSNumber numberWithDouble:hog.samples] :
-                                                  [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setSamplesWithout:(hog.samplesWithoutIsSet ?
-                                            [NSNumber numberWithDouble:hog.samplesWithout] :
-                                            [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setReportType:entityType];
-                [cdataAppReport setLastUpdated:[NSDate date]];
-                CoreDataDetail *cdataDetail = (CoreDataDetail *) [NSEntityDescription 
-                                                                  insertNewObjectForEntityForName:@"CoreDataDetail" 
-                                                                  inManagedObjectContext:managedObjectContext];
-                [cdataDetail setDistance:(hog.wDistanceIsSet ? 
-                                          [NSNumber numberWithDouble:hog.wDistance] : 
-                                          [NSNumber numberWithDouble:0.0])];
-                cdataDetail.distributionXWith = hog.xValsIsSet ? hog.xVals : [[[NSArray alloc] init] autorelease];
-                cdataDetail.distributionXWithout = hog.xValsWithoutIsSet ? hog.xValsWithout : [[[NSArray alloc] init] autorelease];
-                cdataDetail.distributionYWith = hog.yValsIsSet ? hog.yVals : [[[NSArray alloc] init] autorelease];
-                cdataDetail.distributionYWithout = hog.yValsWithoutIsSet ? hog.yValsWithout : [[[NSArray alloc] init] autorelease];
-                
-                [cdataDetail setAppReport:cdataAppReport];
-                [cdataAppReport setAppDetails:cdataDetail];
-            }
-        } else { 
-            DLog([[@"%s " stringByAppendingString:entityType] stringByAppendingString:@" report update failed."], __PRETTY_FUNCTION__);
-            [managedObjectContext rollback];
-        }
-        [list release];
-        
-        // Save progress
-        @try {
-            if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
-            {
-                DLog(@"%s Could not save coredata, error: %@, %@.", __PRETTY_FUNCTION__, error, [error userInfo]);
-                return;
-            }
-        }
-        @catch (NSException *exception) {
-            DLog(@"%s Exception while trying to save coredata, %@, %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
-        }
-        
-        entityType = @"Bug";
         
         // Bug report
+        entityType = @"Bug";
         DLog(@"%s Updating bug report...", __PRETTY_FUNCTION__);
         reportUpdateStatus = @"(Updating bug report...)";
         [self postNotificationOnMainThread];
@@ -830,83 +864,7 @@ static int previousSample = 0;
         list = [[NSMutableArray alloc] initWithObjects:feature1, feature2, nil];
         
         HogBugReport *bugReport = [[CommunicationManager instance] getHogOrBugReport:list];
-        //if (bugReport == nil || bugReport == NULL) return;
-        if (bugReport != nil && bugReport != NULL && [bugReport.hbList count] > 0)
-        {
-            // Clear local bug reports only when we actually have some data
-            if ([self clearLocalAppReports:managedObjectContext forEntityType:entityType] == NO)
-                return;
-            
-            HogsBugsList bugList = bugReport.hbList;
-            for(HogsBugs * bug in bugList)
-            {
-                CoreDataAppReport *cdataAppReport = (CoreDataAppReport *) [NSEntityDescription 
-                                                                           insertNewObjectForEntityForName:@"CoreDataAppReport" 
-                                                                           inManagedObjectContext:managedObjectContext];
-                if (!bug.appNameIsSet) { 
-                    DLog([[@"%s App name not set for " stringByAppendingString:entityType] stringByAppendingString:@" report, ignoring..."], __PRETTY_FUNCTION__);
-                    continue; 
-                }
-                
-                [cdataAppReport setAppName:bug.appName];
-                [cdataAppReport setAppScore:(bug.wDistanceIsSet ? 
-                                             [NSNumber numberWithDouble:bug.wDistance] : 
-                                             [NSNumber numberWithDouble:0.0])];
-                
-                [cdataAppReport setExpectedValue:(bug.expectedValueIsSet ? 
-                                                  [NSNumber numberWithDouble:bug.expectedValue] :
-                                                  [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setExpectedValueWithout:(bug.expectedValueWithoutIsSet ? 
-                                                         [NSNumber numberWithDouble:bug.expectedValueWithout] : 
-                                                         [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setError:(bug.errorIsSet ?
-                                          [NSNumber numberWithDouble:bug.error] :
-                                          [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setErrorWithout:(bug.errorWithoutIsSet ?
-                                                 [NSNumber numberWithDouble:bug.errorWithout] :
-                                                 [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setSamples:(bug.samplesIsSet ?
-                                            [NSNumber numberWithDouble:bug.samples] :
-                                            [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setSamplesWithout:(bug.samplesWithoutIsSet ?
-                                                   [NSNumber numberWithDouble:bug.samplesWithout] :
-                                                   [NSNumber numberWithDouble:0.0])];
-                [cdataAppReport setReportType:entityType];
-                [cdataAppReport setLastUpdated:[NSDate date]];
-                CoreDataDetail *cdataDetail = (CoreDataDetail *) [NSEntityDescription 
-                                                                  insertNewObjectForEntityForName:@"CoreDataDetail" 
-                                                                  inManagedObjectContext:managedObjectContext];
-                [cdataDetail setDistance:(bug.wDistanceIsSet ? 
-                                          [NSNumber numberWithDouble:bug.wDistance] : 
-                                          [NSNumber numberWithDouble:0.0])];
-                cdataDetail.distributionXWith = bug.xValsIsSet ? bug.xVals : [[[NSArray alloc] init] autorelease];
-                cdataDetail.distributionXWithout = bug.xValsWithoutIsSet ? bug.xValsWithout : [[[NSArray alloc] init] autorelease];
-                cdataDetail.distributionYWith = bug.yValsIsSet ? bug.yVals : [[[NSArray alloc] init] autorelease];
-                cdataDetail.distributionYWithout = bug.yValsWithoutIsSet ? bug.yValsWithout : [[[NSArray alloc] init] autorelease];
-
-                [cdataDetail setAppReport:cdataAppReport];
-                [cdataAppReport setAppDetails:cdataDetail];
-            }
-        } else {
-            DLog([[@"%s " stringByAppendingString:entityType] stringByAppendingString:@" report update failed."], __PRETTY_FUNCTION__);
-            [managedObjectContext rollback];
-        }
-        [list release];
-        
-        // Save progress
-        @try {
-            if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
-            {
-                DLog(@"%s Could not save coredata, error: %@, %@.", __PRETTY_FUNCTION__, error, [error userInfo]);
-                return;
-            }
-        }
-        @catch (NSException *exception) {
-            DLog(@"%s Exception while trying to save coredata, %@, %@", __PRETTY_FUNCTION__, [exception name], [exception reason]);
-        }
-        
-        // Reload data in memory.
-        [self loadLocalReportsToMemory : managedObjectContext];
+        [self saveReport:bugReport type:entityType context:managedObjectContext];
     }    
 }
 
@@ -1708,6 +1666,66 @@ static id instance = nil;
     return interval;
 }
 
+- (NSMutableArray *)getActions:(NSArray *)processes {
+    NSManagedObjectContext *context = self.managedObjectContext;
+    if(context != nil){
+        NSArray *bugs = [self getBugs:NO withoutHidden:YES].hbList;
+        NSArray *hogs = [self getHogs:NO withoutHidden:YES].hbList;
+        NSArray *bugActions = [self createAndFilterActions:bugs running:processes bugs:YES];
+        NSArray *hogActions = [self createAndFilterActions:hogs running:processes bugs:NO];
+        
+        NSMutableArray *actions = [NSMutableArray arrayWithArray:bugActions];
+        [actions addObjectsFromArray:hogActions];
+        
+        if ([actions count] == 0) {
+            ActionObject *helpAction = [[ActionObject alloc] init];
+            [helpAction setActionText:NSLocalizedString(@"ActionHelpCollect", nil)];
+            [helpAction setActionType:ActionTypeCollectData];
+            [helpAction setActionBenefit:-1];
+            [helpAction setActionError:-1];
+            [actions addObject:helpAction];
+            [helpAction release];
+        }
+        
+        return actions;
+    }
+    return nil;
+}
+
+- (NSArray *)createAndFilterActions:(NSArray *)reports running:(NSArray *)processes bugs:(BOOL)bug{
+    NSMutableArray *result = [NSMutableArray array];
+
+    // Filter out system apps
+    NSString *systemFilter = @"ProcessSystem == [c] 'NO'";
+    NSPredicate *nonSystem = [NSPredicate predicateWithFormat:systemFilter];
+    processes = [processes filteredArrayUsingPredicate:nonSystem];
+    NSArray * names = [processes valueForKey:@"ProcessName"];
+    names = [names valueForKey:@"lowercaseString"];
+    
+    for(HogsBugs *report in reports){
+        NSString *appName = [report appName];
+        double ev = [report expectedValue];
+        double evW = [report expectedValueWithout];
+        double err = [report error];
+        double errW = [report errorWithout];
+        
+        // Keep running apps and reports that make sense
+        if(appName == nil) continue;
+        if(![names containsObject:[appName lowercaseString]]) continue;
+        if(ev <= 0 || evW <= 0 || err <= 0 || errW <= 0) continue;
+        
+        ActionType type = bug ? ActionTypeRestartApp : ActionTypeKillApp;
+        NSString *actionText = bug ? NSLocalizedString(@"ActionRestart", nil) : NSLocalizedString(@"ActionKill", nil);
+        NSString *text = [actionText stringByAppendingString:appName];
+        
+        ActionObject *action = [self createActionObject:ev expValWithout:evW
+                                            errWithout:errW err:err actText:text
+                                            actType:type appName:appName];
+        [result addObject:action];
+    }
+    return result;
+}
+
 /**
  * Fetch the list of bugs from core data.
  */
@@ -1747,7 +1765,7 @@ static id instance = nil;
             }
             #ifdef USE_INTERNALS
             else {
-                runningProcessNames = [CaratInternals getActiveNames:NO];
+                runningProcessNames = [CaratInternals getActiveInstalled:NO];
                 runningProcessNames = [runningProcessNames valueForKey:@"ProcessName"];
             }
             #endif
@@ -1853,7 +1871,7 @@ static id instance = nil;
             }
             #ifdef USE_INTERNALS
             else {
-                runningProcessNames = [CaratInternals getActiveNames:NO];
+                runningProcessNames = [CaratInternals getActiveInstalled:NO];
                 runningProcessNames = [runningProcessNames valueForKey:@"ProcessName"];
             }
             #endif

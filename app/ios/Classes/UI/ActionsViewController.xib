@@ -119,17 +119,42 @@
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEh-5K-72f">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFZ-6a-SQz" customClass="LocalizedLabel">
+                            <rect key="frame" x="131" y="8" width="58" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Fnz-oM-wpL">
+                            <rect key="frame" x="103" y="8" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Fnz-oM-wpL" firstAttribute="trailing" secondItem="FFZ-6a-SQz" secondAttribute="leading" constant="-8" id="pzU-jt-7Zv"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="pEh-5K-72f" secondAttribute="bottom" id="4HB-Ws-pmm"/>
+                <constraint firstItem="Fnz-oM-wpL" firstAttribute="top" secondItem="Kov-9o-mSf" secondAttribute="top" constant="8" id="8I3-dz-ppi"/>
+                <constraint firstItem="FFZ-6a-SQz" firstAttribute="centerX" secondItem="Kov-9o-mSf" secondAttribute="centerX" id="9Qc-Li-N6D"/>
                 <constraint firstItem="RHx-yc-Pb9" firstAttribute="top" secondItem="E15-4d-hfs" secondAttribute="bottom" id="ADf-Gd-2yd"/>
+                <constraint firstItem="pEh-5K-72f" firstAttribute="leading" secondItem="Kov-9o-mSf" secondAttribute="leading" id="NGl-aw-vdg"/>
                 <constraint firstItem="KlL-Kw-DrZ" firstAttribute="top" secondItem="RHx-yc-Pb9" secondAttribute="bottom" constant="8" id="QcS-n9-hXu"/>
                 <constraint firstItem="E15-4d-hfs" firstAttribute="leading" secondItem="Kov-9o-mSf" secondAttribute="leading" id="ZwE-Fj-4ut"/>
                 <constraint firstItem="RHx-yc-Pb9" firstAttribute="leading" secondItem="Kov-9o-mSf" secondAttribute="leading" constant="8" id="ar1-x1-KxO"/>
                 <constraint firstAttribute="trailing" secondItem="E15-4d-hfs" secondAttribute="trailing" id="cF4-HG-AOQ"/>
+                <constraint firstItem="FFZ-6a-SQz" firstAttribute="top" secondItem="Kov-9o-mSf" secondAttribute="top" constant="8" id="fcw-N8-uyP"/>
                 <constraint firstItem="E15-4d-hfs" firstAttribute="top" secondItem="Kov-9o-mSf" secondAttribute="top" constant="8" id="geO-5R-pmy"/>
                 <constraint firstAttribute="trailing" secondItem="RHx-yc-Pb9" secondAttribute="trailing" constant="8" id="kDM-HP-6rB"/>
+                <constraint firstAttribute="trailing" secondItem="pEh-5K-72f" secondAttribute="trailing" id="lPQ-1g-KfK"/>
                 <constraint firstAttribute="trailing" secondItem="KlL-Kw-DrZ" secondAttribute="trailing" constant="8" id="mLC-RJ-0PV"/>
+                <constraint firstItem="pEh-5K-72f" firstAttribute="top" secondItem="Kov-9o-mSf" secondAttribute="top" id="mRt-nk-pNJ"/>
                 <constraint firstItem="KlL-Kw-DrZ" firstAttribute="leading" secondItem="Kov-9o-mSf" secondAttribute="leading" constant="8" id="pvC-pV-t9n"/>
                 <constraint firstAttribute="bottom" secondItem="KlL-Kw-DrZ" secondAttribute="bottom" id="t0j-Ak-1xQ"/>
             </constraints>

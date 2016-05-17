@@ -14,6 +14,7 @@
 #import "UIDeviceHardware.h"
 #import "Globals.h"
 #import "Preprocessor.h"
+#import "CaratProcessCache.h"
 #import "UIImageDoNotCache.h"
 #import "CaratConstants.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -143,7 +144,7 @@ BOOL isUpdateProgressVisible;
 }
 
 -(void) updateCounts {
-    int count = [self getBugsCount];
+    __block int count = [self getBugsCount];
     [_bugsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
     
     // iOS 9+ has no hogs, so we have no count
@@ -154,10 +155,19 @@ BOOL isUpdateProgressVisible;
         [_hogsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
     }
     
+    #ifdef USE_INTERNALS
+    count = 0;
+    [[CaratProcessCache instance] getActionList:^(NSArray *result) {
+        if(result != nil) count = [result count];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_actionsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
+        });
+    }];
+    return;
+    #endif
+    
     count = [self getActivityCount];
     [_actionsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
-    
-    
 }
 
 -(void) shouldUpdateView:(NSNotification*)notification{

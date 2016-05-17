@@ -20,8 +20,9 @@
 "ViewText"="VIEW";
 "UpdatedNowTxt"= "Updated just now";
 "JScore"="J-Score";
-"NA" = "N/A";
-"Done" = "Done";
+"NA"= "N/A";
+"Done"="Done";
+"Loading"="Loading..";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";

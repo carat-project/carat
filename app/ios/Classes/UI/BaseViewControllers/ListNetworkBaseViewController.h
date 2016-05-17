@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NSString * collapsedCell;
 
 -(void)sampleCountUpdated:(NSNotification*)notification;
+-(void)collapseCells;
 
 
 @end

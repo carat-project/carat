@@ -237,6 +237,7 @@ void onUncaughtException(NSException *exception)
     if ([[Globals instance] hasUserConsented]) {
         [self setupNotificationSubscriptions];
         [self scheduleNotificationAfterInterval:-1]; // uses default of 5 days
+        [[Globals instance] setPriorityChanged:true];
     }
 }
 
@@ -254,7 +255,9 @@ void onUncaughtException(NSException *exception)
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
-    if ([[Globals instance] hasUserConsented]) [locationManager stopMonitoringSignificantLocationChanges];
+    if ([[Globals instance] hasUserConsented]){
+        [locationManager stopMonitoringSignificantLocationChanges];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

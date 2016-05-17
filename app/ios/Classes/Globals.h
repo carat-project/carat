@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) NSString * myUUID;
 @property (nonatomic, retain) NSUserDefaults * defaults;
+@property (nonatomic, assign) BOOL *priorityChanged;
 
 + (id) instance;
 - (void) getUUIDFromNSUserDefaults;

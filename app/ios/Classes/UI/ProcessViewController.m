@@ -10,6 +10,7 @@
 #import "Preprocessor.h"
 #import "CoreDataManager.h"
 #import "UIImageView+WebCache.h"
+#import "CaratProcessCache.h"
 #ifdef USE_INTERNALS
     #import "CaratInternals.h"
 #endif
@@ -26,7 +27,10 @@
     expandedCell = @"BugHogExpandedTableViewCell";
     collapsedCell = @"BugHogTableViewCell";
     _navigationBar.title = [NSLocalizedString(@"ProcessList", nil) uppercaseString];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
+                                         name:UIApplicationDidBecomeActiveNotification object:nil];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -35,6 +39,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
+}
+
+- (void)refreshView:(NSNotification *)notification {
+    [self updateView];
 }
 
 - (void)updateView
@@ -46,10 +54,12 @@
     }
     #ifdef USE_INTERNALS
     else {
-        [CaratInternals getActiveAsync:NO completion:^(NSMutableArray *result) {
+        [[CaratProcessCache instance] getProcessList:^(NSArray *result) {
             self.processList = result;
-            [self.tableView reloadData];
-            [self.view setNeedsDisplay];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+                [self.view setNeedsDisplay];
+            });
         }];
     }
     #endif
@@ -81,7 +91,7 @@
     cell.nameLabel.text = appName;
     
     UIImage *defaultIcon = [UIImage imageNamed:@"def_app_icon"];
-    NSString *iconUri = [selectedProc objectForKey:@"ProcessIconURI"];
+    NSString *iconUri = [selectedProc objectForKey:@"ProcessIcon"];
     if(iconUri != nil){
         [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:iconUri]
                              placeholderImage:defaultIcon];
@@ -149,6 +159,7 @@
 
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [processList release];
     [_navigationBar release];
     [super dealloc];

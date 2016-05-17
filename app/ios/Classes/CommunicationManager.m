@@ -140,7 +140,7 @@ static NSString * networkStatusString;
 //
 //
 //
-- (HogBugReport *) getHogsImmediatelyAndMaybeRegister:(NSMutableArray *)processList {
+- (HogBugReport *) getQuickHogs:(NSMutableArray *)processList {
     @synchronized(self) {
         if ([self setupCaratService] == YES)
         {

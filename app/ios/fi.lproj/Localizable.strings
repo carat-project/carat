@@ -20,8 +20,9 @@
 "ViewText"="NÄYTÄ";
 "UpdatedNowTxt"= "Juuri päivitetty";
 "JScore"="J-Score";
-"NA" = "N/A";
-"Done" = "Valmis";
+"NA"="N/A";
+"Done"="Valmis";
+"Loading"="Ladataan..";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";

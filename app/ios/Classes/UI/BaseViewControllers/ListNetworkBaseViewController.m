@@ -35,6 +35,10 @@
     
 }
 
+- (void) collapseCells {
+    [_expandedCells removeAllObjects];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

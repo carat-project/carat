@@ -8,6 +8,8 @@
 
 #import "ActionsViewController.h"
 #import "UIImageView+WebCache.h"
+#import "CaratProcessCache.h"
+#import "Preprocessor.h"
 
 @interface ActionsViewController ()
 
@@ -23,7 +25,9 @@
     collapsedCell = @"ActionItemCollapsedTableViewCell";
     [super viewDidLoad];
     tableViewCellsList = [[NSMutableArray alloc] init];
-    // Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,25 +35,56 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)refreshView:(NSNotification *)notification {
+    [self updateView];
+}
+
 //overrides super completely (super updateView is empty function)
 - (void)updateView {
-    NSMutableArray *myList = [self getActionsList];
+    __block NSMutableArray *myList;
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"actionBenefit" ascending:NO];
+    NSArray *descriptors = [NSArray arrayWithObject:sortDescriptor];
+    #ifdef USE_INTERNALS
+    if(floor(NSFoundationVersionNumber) >= NSFoundationVersionNumber_iOS_9_0){
+        [[CaratProcessCache instance] getActionList:^(NSArray *result) {
+            myList = [NSMutableArray arrayWithArray:result];
+            [myList sortUsingDescriptors:descriptors];
+            if(![self isActionList:myList equalTo:[self actionList]]){
+                [self setActionList:myList];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [super collapseCells];
+                    [self.tableView reloadData];
+                    [self.view setNeedsDisplay];
+                });
+            }
+        }];
+    }
+    return;
+    #endif
     
-    // sharing Action
-    /*tmpAction = [[ActionObject alloc] init];
-     [tmpAction setActionText:@"Help Spread the Word"];
-     [tmpAction setActionType:ActionTypeSpreadTheWord];
-     [tmpAction setActionBenefit:-2];
-     [tmpAction setActionError:-2];
-     [myList addObject:tmpAction];
-     [tmpAction release];
-     */
-    //the "key" is the *name* of the @property as a string.  So you can also sort by @"label" if you'd like
-    [myList sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"actionBenefit" ascending:NO]]];
+    myList = [self getActionsList];
+    [myList sortUsingDescriptors:descriptors];
+    if(![self isActionList:myList equalTo:[self actionList]]){
+        [self setActionList:myList];
+        [self.tableView reloadData];
+        [self.view setNeedsDisplay];
+    }
+}
+
+- (BOOL) isActionList:(NSMutableArray *)a equalTo:(NSMutableArray *)b {
+    if(a == nil && b == nil) return true;
+    if(a == nil || b == nil) return false;
+    if([a count] != [b count]) return false;
     
-    [self setActionList:myList];
-    [self.tableView reloadData];
-    [self.view setNeedsDisplay];
+    for(int i=0; i<[a count]; i++){
+        ActionObject *aa = [a objectAtIndex:i];
+        ActionObject *ab = [b objectAtIndex:i];
+        if(![[aa appName] isEqualToString:[ab appName]]){
+            return false;
+        }
+    }
+    return true;
 }
 
 - (NSMutableArray *) getActionsList
@@ -398,6 +433,7 @@
 */
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [actionList release];
     [tableViewCellsList release];
     [super dealloc];
