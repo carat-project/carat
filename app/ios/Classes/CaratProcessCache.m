@@ -61,17 +61,21 @@ static id instance = nil;
 }
 
 - (void) getProcessList:(void (^)(NSArray* result))callback {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-         [self checkUpdates];
-         callback([self processList]);
-    });
+    @synchronized (self) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self checkUpdates];
+            callback([self processList]);
+        });
+    }
 }
 
 - (void) getActionList:(void (^)(NSArray *result))callback {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self checkUpdates];
-        callback([self actionList]);
-    });
+    @synchronized (self) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self checkUpdates];
+            callback([self actionList]);
+        });
+    }
 }
 
 @end
