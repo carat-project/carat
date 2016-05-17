@@ -706,9 +706,6 @@ static int previousSample = 0;
         }
         
         entityType = @"Hog";
-        // Clear local hog reports.
-        if ([self clearLocalAppReports:managedObjectContext forEntityType:entityType] == NO)
-            return;
         
         // Hog report
         DLog(@"%s Updating hog report...", __PRETTY_FUNCTION__);
@@ -748,8 +745,12 @@ static int previousSample = 0;
         }
         
         //if (hogReport == nil || hogReport == NULL) return;
-        if (hogReport != nil && hogReport != NULL)
+        if (hogReport != nil && hogReport != NULL && [hogReport.hbList count] > 0)
         {
+            // Clear local hog reports only when we actually got some data
+            if ([self clearLocalAppReports:managedObjectContext forEntityType:entityType] == NO)
+                return;
+            
             HogsBugsList hogList = hogReport.hbList;
             for(HogsBugs * hog in hogList)
             {
@@ -820,10 +821,6 @@ static int previousSample = 0;
         
         entityType = @"Bug";
         
-        // Clear local bug reports.
-        if ([self clearLocalAppReports:managedObjectContext forEntityType:entityType] == NO)
-            return;
-        
         // Bug report
         DLog(@"%s Updating bug report...", __PRETTY_FUNCTION__);
         reportUpdateStatus = @"(Updating bug report...)";
@@ -834,8 +831,12 @@ static int previousSample = 0;
         
         HogBugReport *bugReport = [[CommunicationManager instance] getHogOrBugReport:list];
         //if (bugReport == nil || bugReport == NULL) return;
-        if (bugReport != nil && bugReport != NULL)
+        if (bugReport != nil && bugReport != NULL && [bugReport.hbList count] > 0)
         {
+            // Clear local bug reports only when we actually have some data
+            if ([self clearLocalAppReports:managedObjectContext forEntityType:entityType] == NO)
+                return;
+            
             HogsBugsList bugList = bugReport.hbList;
             for(HogsBugs * bug in bugList)
             {
