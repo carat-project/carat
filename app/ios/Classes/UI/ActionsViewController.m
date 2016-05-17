@@ -26,6 +26,7 @@
     [super viewDidLoad];
     tableViewCellsList = [[NSMutableArray alloc] init];
     
+    [self updateView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil];
 }
