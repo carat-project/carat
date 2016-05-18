@@ -1692,13 +1692,13 @@ static id instance = nil;
     return nil;
 }
 
-- (NSArray *)createAndFilterActions:(NSArray *)reports running:(NSArray *)processes bugs:(BOOL)bug{
+- (NSArray *)createAndFilterActions:(NSArray *)reports running:(NSArray *)processList bugs:(BOOL)bug{
     NSMutableArray *result = [NSMutableArray array];
 
     // Filter out system apps
     NSString *systemFilter = @"ProcessSystem == [c] 'NO'";
     NSPredicate *nonSystem = [NSPredicate predicateWithFormat:systemFilter];
-    processes = [processes filteredArrayUsingPredicate:nonSystem];
+    NSArray *processes = [processList filteredArrayUsingPredicate:nonSystem];
     NSArray * names = [processes valueForKey:@"ProcessName"];
     names = [names valueForKey:@"lowercaseString"];
     
