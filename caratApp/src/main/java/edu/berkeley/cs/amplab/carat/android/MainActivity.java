@@ -226,16 +226,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 setHideSmallPreference();
                 break;
             case R.id.action_feedback:
-                final String[] options = new String[]{"Great app!",
+                final String[] choices = new String[]{
+                        "Rate us on Play Store",
                         "Problem with app, please specify",
                         "No J-Score after 7 days of use",
-                        "Other, please specify"};
+                        "Other, please specify"
+                };
                 showOptionDialog("Give feedback", new DialogCallback<Integer>() {
                     @Override
                     public void run(Integer choice) {
-                        giveFeedback(options, choice);
+                        if(choice == 0) showStorePage();
+                        else giveFeedback(choices, choice);
                     }
-                }, options);
+                }, choices);
                 break;
             case R.id.action_about:
                 AboutFragment aboutFragment = new AboutFragment();
@@ -260,6 +263,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onPause() {
         super.onPause();
         SamplingLibrary.resetRunningProcessInfo();
+    }
+
+    private void showStorePage() {
+        final String appPackageName = getPackageName();
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+         }  catch (Exception e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+        }
     }
 
     public void setValues() {
