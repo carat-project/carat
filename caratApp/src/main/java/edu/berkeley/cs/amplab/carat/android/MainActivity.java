@@ -568,10 +568,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             memoryActiveConverted = (float) totalAndUsed[2] / (totalAndUsed[3] + totalAndUsed[2]);
         }
 
+        String versionName = BuildConfig.VERSION_NAME;
+        String title = "[Carat][Android] Feedback from " + Build.MODEL + ", v"+versionName;
 
-        String title = "[Carat][Android] Feedback from " + Build.MODEL + ", v"+getString(R.string.version_name);
-
-        String caratVersion = "Carat " + getString(R.string.version_name);
+        String caratVersion = "Carat " + versionName;
         String feedback = "Feedback: " + options[which];
         String caratId = "Carat ID: " + CaratApplication.myDeviceData.getCaratId();
         String jScore = "JScore: " + getJScore();

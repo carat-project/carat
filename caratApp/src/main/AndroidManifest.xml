@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.berkeley.cs.amplab.carat.android"
-    android:versionCode="103"
-    android:versionName="@string/version_name" >
-
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="21" />
+    package="edu.berkeley.cs.amplab.carat.android" >
 
     <!-- For reading the 10 recently used apps (to show the number of bugs/hogs among them (in the summary screen)). -->
     <!-- not working as expected. leave it out for now. -->
