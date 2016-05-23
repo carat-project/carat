@@ -7,6 +7,7 @@
 //
 
 #import "MoreViewController.h"
+#import "Preprocessor.h"
 
 @interface MoreViewController ()
 
@@ -52,11 +53,39 @@
 }
 
 - (IBAction)feedBackClicked:(id)sender {
+    UIActionSheet *choiceDialog = [[UIActionSheet alloc] initWithTitle:@"Give feedback" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                                   @"Rate us in App Store",
+                                   @"Problem with app, please specify",
+                                   @"No J-Score after 7 days of use",
+                                   @"Other, please specify", nil];
+    choiceDialog.tag = 1;
+    [choiceDialog showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)dialog clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(dialog.tag == 1){
+        if(buttonIndex == 0){
+            [self openStorePage];
+        } else {
+            [self sendFeedback:[dialog buttonTitleAtIndex:buttonIndex] index:buttonIndex];
+        }
+    }
+}
+
+-(void)openStorePage {
+    NSString *storeUrl = [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%d"
+                          "&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8", APP_STORE_ID];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:storeUrl]];
+}
+
+- (void) sendFeedback:(NSString *)feedback index:(int)index{
     // Device info
     UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSString *versionShort = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     
     /* create mail subject */
-    NSString *subject = [NSString stringWithFormat:@"[Carat IOS] Feedback from (%@) (%@)", [UIDevice currentDevice].systemVersion,[h platformString]];
+    NSString *subject = [NSString stringWithFormat:@"[Carat][iOS] Feedback from %@ (%@), v%@", [h platformString], [UIDevice currentDevice].systemVersion, versionShort];
     
     /* define email address */
     NSString *mail = [NSString stringWithFormat:@"Carat Team <carat@cs.helsinki.fi>"];
@@ -78,8 +107,12 @@
     if(Jscore > 0)
         JscoreStr = [NSString stringWithFormat:@"%.0f", Jscore];
     
+    NSString *pleaseSpecify = @"";
+    if(index == 1 || index == 3){
+        pleaseSpecify = @"\n\nPlease enter your feedback here";
+    }
     NSString *messageBody = [NSString stringWithFormat:
-                             @"Carat ID: %s\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@", [[[Globals instance] getUUID] UTF8String], JscoreStr, [UIDevice currentDevice].systemVersion,[h platformString], memoryUsed, memoryActive];
+                             @"Carat %@\n Carat ID: %s\n Feedback: %@\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@%@", version, [[[Globals instance] getUUID] UTF8String], feedback, JscoreStr, [UIDevice currentDevice].systemVersion,[h platformString], memoryUsed, memoryActive, pleaseSpecify];
     
     if ([MFMailComposeViewController canSendMail])
     {

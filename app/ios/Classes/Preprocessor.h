@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+// App store identifier, can be checked from store uri
+#define APP_STORE_ID 504771500
+
 // Safest and most accurate way of checking iOS versions
 // For future use: NSLog(@"%f", NSFoundationVersionNumber)
 

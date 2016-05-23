@@ -20,7 +20,7 @@
 
 #import <MessageUI/MessageUI.h>
 
-@interface MoreViewController : BaseViewController <MFMailComposeViewControllerDelegate>
+@interface MoreViewController : BaseViewController <MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
 - (IBAction)wifiOnlySwitcherValueChanged:(id)sender;
 - (IBAction)hideAppsClicked:(id)sender;
 - (IBAction)feedBackClicked:(id)sender;
