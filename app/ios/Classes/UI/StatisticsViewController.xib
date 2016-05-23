@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatisticsViewController">
@@ -63,7 +61,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lN-dL-KqY" userLabel="behaveBar" customClass="MeasurementBar">
-                                            <rect key="frame" x="8" y="29" width="442" height="30"/>
+                                            <rect key="frame" x="8" y="29" width="536" height="30"/>
                                             <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="i5q-bo-c8z"/>
@@ -102,8 +100,8 @@
                                     <constraints>
                                         <constraint firstItem="9lN-dL-KqY" firstAttribute="top" secondItem="e1s-KM-Zeg" secondAttribute="bottom" id="4XP-mn-Hen"/>
                                         <constraint firstItem="9lN-dL-KqY" firstAttribute="leading" secondItem="G9K-Rx-s8o" secondAttribute="leadingMargin" id="BHN-ry-SmO"/>
+                                        <constraint firstItem="9lN-dL-KqY" firstAttribute="trailing" secondItem="9Xs-hM-7Zw" secondAttribute="leading" constant="-8" id="EFN-LE-LyA"/>
                                         <constraint firstAttribute="bottom" secondItem="9lN-dL-KqY" secondAttribute="bottom" constant="8" id="EG0-2V-Edf"/>
-                                        <constraint firstItem="9lN-dL-KqY" firstAttribute="trailing" secondItem="G9K-Rx-s8o" secondAttribute="centerX" multiplier="1.5" id="EHm-ta-EbS"/>
                                         <constraint firstItem="e1s-KM-Zeg" firstAttribute="leading" secondItem="G9K-Rx-s8o" secondAttribute="leadingMargin" id="Eq4-Yi-6Iw"/>
                                         <constraint firstItem="e1s-KM-Zeg" firstAttribute="top" secondItem="G9K-Rx-s8o" secondAttribute="topMargin" id="Udb-Ny-jXP"/>
                                         <constraint firstItem="e1s-KM-Zeg" firstAttribute="trailing" secondItem="G9K-Rx-s8o" secondAttribute="trailingMargin" id="Yab-nI-trY"/>
@@ -125,7 +123,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9L-qg-gUB" userLabel="behaveBar" customClass="MeasurementBar">
-                                            <rect key="frame" x="8" y="29" width="442" height="30"/>
+                                            <rect key="frame" x="8" y="29" width="536" height="30"/>
                                             <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="f4N-Dg-Htl"/>
@@ -166,9 +164,9 @@
                                         <constraint firstItem="Fba-9L-gkb" firstAttribute="bottom" secondItem="s9L-qg-gUB" secondAttribute="bottom" id="Act-88-2Nl"/>
                                         <constraint firstItem="s9L-qg-gUB" firstAttribute="top" secondItem="pKU-MO-bHm" secondAttribute="bottom" id="BOU-Ct-DA9"/>
                                         <constraint firstItem="pKU-MO-bHm" firstAttribute="trailing" secondItem="sjq-9C-79n" secondAttribute="trailingMargin" id="Erx-h2-nQd"/>
+                                        <constraint firstItem="s9L-qg-gUB" firstAttribute="trailing" secondItem="Fba-9L-gkb" secondAttribute="leading" constant="-8" id="cx8-ws-lEd"/>
                                         <constraint firstItem="s9L-qg-gUB" firstAttribute="leading" secondItem="sjq-9C-79n" secondAttribute="leadingMargin" id="feO-wV-m2G"/>
                                         <constraint firstItem="Fba-9L-gkb" firstAttribute="top" secondItem="s9L-qg-gUB" secondAttribute="top" id="grc-7T-skq"/>
-                                        <constraint firstItem="s9L-qg-gUB" firstAttribute="trailing" secondItem="sjq-9C-79n" secondAttribute="centerX" multiplier="1.5" id="hKd-Kw-2zz"/>
                                         <constraint firstItem="pKU-MO-bHm" firstAttribute="leading" secondItem="sjq-9C-79n" secondAttribute="leadingMargin" id="l1N-u0-Kgx"/>
                                         <constraint firstItem="pKU-MO-bHm" firstAttribute="top" secondItem="sjq-9C-79n" secondAttribute="topMargin" id="niK-rq-zMi"/>
                                         <constraint firstAttribute="bottom" secondItem="s9L-qg-gUB" secondAttribute="bottom" constant="8" id="oOU-as-q1o"/>
@@ -187,7 +185,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBa-uB-SEa" userLabel="behaveBar" customClass="MeasurementBar">
-                                            <rect key="frame" x="8" y="29" width="442" height="30"/>
+                                            <rect key="frame" x="8" y="29" width="536" height="30"/>
                                             <color key="backgroundColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="LQ4-1X-XDj"/>
@@ -224,12 +222,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="SBa-uB-SEa" firstAttribute="trailing" secondItem="ETp-sq-Ya9" secondAttribute="leading" constant="-8" id="1WV-OQ-bBs"/>
                                         <constraint firstItem="SBa-uB-SEa" firstAttribute="leading" secondItem="GFZ-Ng-mvs" secondAttribute="leadingMargin" id="1b4-hg-4sH"/>
                                         <constraint firstItem="ETp-sq-Ya9" firstAttribute="bottom" secondItem="SBa-uB-SEa" secondAttribute="bottom" id="4lC-PM-pC3"/>
                                         <constraint firstItem="AAe-Y6-RLm" firstAttribute="trailing" secondItem="GFZ-Ng-mvs" secondAttribute="trailingMargin" id="C08-8G-iWv"/>
                                         <constraint firstItem="AAe-Y6-RLm" firstAttribute="top" secondItem="GFZ-Ng-mvs" secondAttribute="topMargin" id="FKi-Gk-TKH"/>
                                         <constraint firstAttribute="bottom" secondItem="SBa-uB-SEa" secondAttribute="bottom" constant="8" id="Mhl-ez-T0c"/>
-                                        <constraint firstItem="SBa-uB-SEa" firstAttribute="trailing" secondItem="GFZ-Ng-mvs" secondAttribute="centerX" multiplier="1.5" id="NDH-J1-Haq"/>
                                         <constraint firstItem="ETp-sq-Ya9" firstAttribute="top" secondItem="SBa-uB-SEa" secondAttribute="top" id="Uj7-aH-xgM"/>
                                         <constraint firstItem="SBa-uB-SEa" firstAttribute="top" secondItem="AAe-Y6-RLm" secondAttribute="bottom" id="auZ-42-wld"/>
                                         <constraint firstItem="ETp-sq-Ya9" firstAttribute="trailing" secondItem="AAe-Y6-RLm" secondAttribute="trailing" id="dfy-76-ekO"/>
