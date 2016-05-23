@@ -1,6 +1,7 @@
 package edu.berkeley.cs.amplab.carat.android;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,8 +24,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -90,6 +90,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     public int userHasBug = Constants.VALUE_NOT_AVAILABLE,
             userHasNoBugs = Constants.VALUE_NOT_AVAILABLE;
+
+    public static abstract class DialogCallback<T>{
+        public abstract void run(T value);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -222,7 +226,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 setHideSmallPreference();
                 break;
             case R.id.action_feedback:
-                giveFeedback();
+                final String[] options = new String[]{"Great app!",
+                        "Problem with app, please specify",
+                        "No J-Score after 7 days of use",
+                        "Other, please specify"};
+                showOptionDialog("Give feedback", new DialogCallback<Integer>() {
+                    @Override
+                    public void run(Integer choice) {
+                        giveFeedback(options, choice);
+                    }
+                }, options);
                 break;
             case R.id.action_about:
                 AboutFragment aboutFragment = new AboutFragment();
@@ -523,7 +536,29 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         startActivity(Intent.createChooser(intent, "Send email"));
     }
 
-    public void giveFeedback() {
+    // General purpose multi-choice dialog with a callback
+    public void showOptionDialog(String title, final DialogCallback<Integer> callback, final String... options){
+        if(title == null || title.length() == 0){
+            throw new IllegalArgumentException("Dialog title cannot be null!");
+        }
+        if(options == null || options.length == 0){
+            throw new IllegalArgumentException("You need to specify at least one option!");
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title);
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(callback != null){
+                    callback.run(which);
+                }
+            }
+        });
+        builder.show();
+    }
+
+    public void giveFeedback(String[] options, int which) {
         float memoryUsedConverted;
         float memoryActiveConverted = 0;
 
@@ -533,19 +568,26 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             memoryActiveConverted = (float) totalAndUsed[2] / (totalAndUsed[3] + totalAndUsed[2]);
         }
 
+
+        String title = "[Carat][Android] Feedback from " + Build.MODEL + ", v"+getString(R.string.version_name);
+
         String caratVersion = "Carat " + getString(R.string.version_name);
+        String feedback = "Feedback: " + options[which];
         String caratId = "Carat ID: " + CaratApplication.myDeviceData.getCaratId();
         String jScore = "JScore: " + getJScore();
         String osVersion = "OS Version: " + SamplingLibrary.getOsVersion();
         String deviceModel = "Device Model: " + Build.MODEL;
         String memoryUsed = "Memory Used: " + (memoryUsedConverted * 100) + "%";
         String memoryActive = "Memory Active: " + (memoryActiveConverted * 100) + "%";
-        String title = "[Carat][Android] Feedback from " + Build.MODEL + ", v"+getString(R.string.version_name);
+        String pleaseSpecify = "";
+        if(which == 1 || which == 3) {
+            pleaseSpecify = "\n\nPlease write your feedback here";
+        }
 
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "carat@cs.helsinki.fi", null));
         intent.putExtra(Intent.EXTRA_SUBJECT, title);
-        intent.putExtra(Intent.EXTRA_TEXT, caratVersion + "\n" + caratId + "\n" + jScore + "\n" + osVersion + "\n" + deviceModel
-                + "\n" + memoryUsed + "\n" + memoryActive);
+        intent.putExtra(Intent.EXTRA_TEXT, caratVersion + "\n" + feedback + "\n" + caratId + "\n" + jScore +
+                "\n" + osVersion + "\n" + deviceModel + "\n" + memoryUsed + "\n" + memoryActive + pleaseSpecify);
 
         startActivity(Intent.createChooser(intent, "Send email"));
     }
