@@ -51,7 +51,7 @@
        Carat kerää ja raportoi puhelimestasi yleistä käyttötietoa, joka mahdollistaa Caratin tarjoamat toiminnot. Tähän ei missään tapauksessa sisälly henkilökohtaista tietoa.
        Caratia kehitetään jatkuvasti, joten kannattaa tarkistaa uudet ehdotukset silloin tällöin. Mitä enemmän käytät Caratia, sitä tarkempaa tietoa se tarjoaa.</string>
     <string name="tutorial_fragment_bugs_title">BUGIT</string>
-    <string name="tutorial_fragment_bugs_message">Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin uudelleenkäynnistäminen voi parantaa akunkestoa.</string>
+    <string name="tutorial_fragment_bugs_message">Bugit ovat sovelluksia jotka käyttävät paljon energiaa joillakin laitteilla, kuten omallasi. Bugin käynnistäminen uudelleen voi parantaa akunkestoa.</string>
     <string name="tutorial_fragment_hogs_title">HOGIT</string>
     <string name="tutorial_fragment_hogs_message">Hogit ovat sovelluksia joita käytettäessä esiintyy korkeaa energiankulutusta monilla laitteilla. Hogien sulkeminen voi parantaa akunkestoa.</string>
     <string name="tutorial_fragment_eula_title">EULA</string>
