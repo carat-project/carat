@@ -144,6 +144,8 @@
 "HideApps"="Hide apps with a small impact";
 "HideAppsTitle"="Hide apps";
 "HideShowApps"="Hide/Show apps";
+"ShowHiddenApps"="Show hidden apps";
+"ShowStats"="Show statistics";
 "Hide"="Hide";
 "Show"="Show";
 "FeedBack"="Give feedback";

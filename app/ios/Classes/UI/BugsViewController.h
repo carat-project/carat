@@ -12,6 +12,6 @@
 @interface BugsViewController : BugHogListViewController
 @property (retain, nonatomic) IBOutlet UILabel *contentTitle;
 @property (retain, nonatomic) IBOutlet UITextView *content;
-
+@property (retain, nonatomic) IBOutlet UIButton *extraAction;
 
 @end

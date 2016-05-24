@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="content" destination="88T-Y3-hy8" id="s3X-hc-ecy"/>
                 <outlet property="contentTitle" destination="Acc-yh-h4A" id="kAl-NB-mDb"/>
+                <outlet property="extraAction" destination="bdr-9H-bCQ" id="lZL-EM-yjg"/>
                 <outlet property="navBar" destination="MYD-b9-YVC" id="yrX-Cu-zBQ"/>
                 <outlet property="tableView" destination="zyF-3Z-UIQ" id="pMi-zf-Q1Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -101,39 +102,75 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Acc-yh-h4A">
-                    <rect key="frame" x="8" y="173" width="304" height="29"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_bugs" translatesAutoresizingMaskIntoConstraints="NO" id="xWm-6F-1f9">
-                    <rect key="frame" x="0.0" y="8" width="320" height="165"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Im-Sz-umx">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVv-SI-sIe" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="427"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Acc-yh-h4A">
+                                    <rect key="frame" x="58" y="173" width="204.5" height="29"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_bugs" translatesAutoresizingMaskIntoConstraints="NO" id="xWm-6F-1f9">
+                                    <rect key="frame" x="0.0" y="8" width="320" height="165"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="xWm-6F-1f9" secondAttribute="height" multiplier="374:193" id="Veb-qQ-hi2"/>
+                                    </constraints>
+                                </imageView>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="88T-Y3-hy8">
+                                    <rect key="frame" x="8" y="202" width="304" height="120"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="5KS-R4-qWH"/>
+                                    </constraints>
+                                    <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdr-9H-bCQ">
+                                    <rect key="frame" x="120" y="322" width="79" height="30"/>
+                                    <state key="normal" title="ExtraAction">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="xWm-6F-1f9" secondAttribute="trailing" id="0cC-Ck-RvU"/>
+                                <constraint firstItem="88T-Y3-hy8" firstAttribute="leading" secondItem="fVv-SI-sIe" secondAttribute="leading" constant="8" id="0qZ-ZZ-kjj"/>
+                                <constraint firstItem="88T-Y3-hy8" firstAttribute="top" secondItem="Acc-yh-h4A" secondAttribute="bottom" id="BOL-2D-Seh"/>
+                                <constraint firstAttribute="trailing" secondItem="88T-Y3-hy8" secondAttribute="trailing" constant="8" id="BX0-bL-Aoz"/>
+                                <constraint firstItem="bdr-9H-bCQ" firstAttribute="top" secondItem="88T-Y3-hy8" secondAttribute="bottom" id="EX3-wJ-7cq"/>
+                                <constraint firstItem="xWm-6F-1f9" firstAttribute="top" secondItem="fVv-SI-sIe" secondAttribute="top" constant="8" id="GHQ-2R-3xb"/>
+                                <constraint firstItem="Acc-yh-h4A" firstAttribute="top" secondItem="xWm-6F-1f9" secondAttribute="bottom" id="GZz-rl-nA3"/>
+                                <constraint firstItem="Acc-yh-h4A" firstAttribute="centerX" secondItem="fVv-SI-sIe" secondAttribute="centerX" id="WXi-zB-RBp"/>
+                                <constraint firstItem="bdr-9H-bCQ" firstAttribute="centerX" secondItem="fVv-SI-sIe" secondAttribute="centerX" id="cPo-CO-ar0"/>
+                                <constraint firstItem="xWm-6F-1f9" firstAttribute="leading" secondItem="fVv-SI-sIe" secondAttribute="leading" id="rKi-qB-iNT"/>
+                                <constraint firstItem="xWm-6F-1f9" firstAttribute="centerX" secondItem="fVv-SI-sIe" secondAttribute="centerX" id="sQY-7p-qgs"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="xWm-6F-1f9" secondAttribute="height" multiplier="374:193" id="Veb-qQ-hi2"/>
+                        <constraint firstAttribute="bottom" secondItem="fVv-SI-sIe" secondAttribute="bottom" id="KT6-nF-rVe"/>
+                        <constraint firstItem="fVv-SI-sIe" firstAttribute="top" secondItem="8Im-Sz-umx" secondAttribute="top" id="WKk-eS-o7z"/>
+                        <constraint firstAttribute="trailing" secondItem="fVv-SI-sIe" secondAttribute="trailing" id="uUN-1k-sFe"/>
+                        <constraint firstItem="fVv-SI-sIe" firstAttribute="leading" secondItem="8Im-Sz-umx" secondAttribute="leading" id="wh4-c6-i72"/>
                     </constraints>
-                </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="88T-Y3-hy8">
-                    <rect key="frame" x="8" y="210" width="304" height="201"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="88T-Y3-hy8" firstAttribute="top" secondItem="Acc-yh-h4A" secondAttribute="bottom" constant="8" id="39L-eh-kF6"/>
-                <constraint firstItem="Acc-yh-h4A" firstAttribute="top" secondItem="xWm-6F-1f9" secondAttribute="bottom" id="7JI-o9-mRN"/>
-                <constraint firstItem="xWm-6F-1f9" firstAttribute="top" secondItem="mFn-ok-Ze2" secondAttribute="top" constant="8" id="BOv-85-flD"/>
-                <constraint firstAttribute="trailing" secondItem="xWm-6F-1f9" secondAttribute="trailing" id="EVL-Y1-8Ar"/>
-                <constraint firstAttribute="trailing" secondItem="88T-Y3-hy8" secondAttribute="trailing" constant="8" id="YMX-Ua-h4Y"/>
-                <constraint firstItem="88T-Y3-hy8" firstAttribute="leading" secondItem="mFn-ok-Ze2" secondAttribute="leading" constant="8" id="aK7-i5-iTT"/>
-                <constraint firstAttribute="bottom" secondItem="88T-Y3-hy8" secondAttribute="bottom" id="cjf-CA-u3y"/>
-                <constraint firstItem="Acc-yh-h4A" firstAttribute="leading" secondItem="mFn-ok-Ze2" secondAttribute="leading" constant="8" id="gIT-Si-FN0"/>
-                <constraint firstItem="xWm-6F-1f9" firstAttribute="leading" secondItem="mFn-ok-Ze2" secondAttribute="leading" id="itA-8K-4Ek"/>
-                <constraint firstAttribute="trailing" secondItem="Acc-yh-h4A" secondAttribute="trailing" constant="8" id="pVv-ln-L1u"/>
+                <constraint firstItem="8Im-Sz-umx" firstAttribute="leading" secondItem="mFn-ok-Ze2" secondAttribute="leading" id="8We-mG-ud6"/>
+                <constraint firstItem="fVv-SI-sIe" firstAttribute="height" secondItem="mFn-ok-Ze2" secondAttribute="height" constant="16" id="BTf-ZZ-mid"/>
+                <constraint firstItem="fVv-SI-sIe" firstAttribute="width" secondItem="mFn-ok-Ze2" secondAttribute="width" id="QGX-td-Ra8"/>
+                <constraint firstAttribute="trailing" secondItem="8Im-Sz-umx" secondAttribute="trailing" id="Vmk-uH-mg3"/>
+                <constraint firstItem="8Im-Sz-umx" firstAttribute="top" secondItem="mFn-ok-Ze2" secondAttribute="top" id="ckQ-ml-eON"/>
+                <constraint firstAttribute="bottom" secondItem="8Im-Sz-umx" secondAttribute="bottom" id="mSl-aK-a4W"/>
             </constraints>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

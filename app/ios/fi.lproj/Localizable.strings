@@ -143,6 +143,8 @@
 "HideApps"="Piilota pienen vaikutuksen sovellukset";
 "HideAppsTitle"="Piilota sovelluksia";
 "HideShowApps"="Piilota/Näytä sovelluksia";
+"ShowHiddenApps"="Näytä piilotut sovellukset";
+"ShowStats"="Näytä statistiikkaa";
 "Hide"="Piilota";
 "Show"="Näytä";
 "FeedBack"="Anna palautetta";

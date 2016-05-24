@@ -67,6 +67,7 @@
     HogBugReport *array = nil;
     NSString *buttonTitle = @"";
     if(_editing) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"EditingFinished" object:nil];
         buttonTitle = [NSLocalizedString(@"HideShowApps", nil) uppercaseString];
     } else {
         buttonTitle = [NSLocalizedString(@"Done", nil) uppercaseString];
@@ -139,6 +140,8 @@
 {
     DLog(@"%s", __PRETTY_FUNCTION__);
     UITableViewCell *cell = [super tableView: tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
+    
+    if(filteredCells == nil || [filteredCells count]==0) return cell;
     
     HogsBugs *hb = [filteredCells objectAtIndex:indexPath.row];
     BugHogTableViewCell *cellView = (BugHogTableViewCell *)cell;

@@ -66,8 +66,8 @@
 - (UIView*) hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
     // Prevent any interaction when the empty view is shown
-    const bool emptyViewShown = emptyView.superview != nil;
-    return emptyViewShown ? nil : [super hitTest:point withEvent:event];
+    // const bool emptyViewShown = emptyView.superview != nil;
+    return /*emptyViewShown ? nil : */ [super hitTest:point withEvent:event];
 }
 
 #pragma mark UITableView

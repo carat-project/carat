@@ -7,6 +7,7 @@
 //
 
 #import "HogsViewController.h"
+#import "HogStatisticsViewController.h"
 
 @interface HogsViewController ()
 @end
@@ -16,12 +17,33 @@
 #pragma mark - View Life Cycle methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
     _contentTitle.text = NSLocalizedString(@"NothingToReport",nil);
     _content.text = NSLocalizedString(@"EmptyViewDesc",nil);
-    // Do any additional setup after loading the view from its nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingFinished:)
+                                                 name:@"EditingFinished" object:nil];
+    [self updateExtraAction];
     [self setBug:NO];
     [self setHogBugReport:[[CoreDataManager instance] getHogs:NO withoutHidden:YES]];
     
+}
+
+- (void) updateExtraAction {
+    NSArray *hidden = [[Globals instance] getHiddenApps];
+    HogBugReport *all = [[CoreDataManager instance] getHogs:NO withoutHidden:NO];
+    [_extraButton removeTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    if(hidden != nil && [hidden count] != 0 && all != nil && [all.hbList count] != 0){
+        [_extraButton setTitle:[NSLocalizedString(@"ShowHiddenApps", nil) uppercaseString] forState:UIControlStateNormal];
+        [_extraButton addTarget:self action:@selector(showHiddenApps:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        [_extraButton setTitle:[NSLocalizedString(@"ShowStats", nil) uppercaseString] forState:UIControlStateNormal];
+        [_extraButton addTarget:self action:@selector(showHogStatistics:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+- (void) editingFinished:(NSNotification *)notification {
+    [self updateExtraAction];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -35,6 +57,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
+}
+
+-(IBAction) showHiddenApps:(id)sender {
+    [super changeEditingState];
+}
+
+- (IBAction) showHogStatistics:(id)sender {
+    HogStatisticsViewController *controller = [[HogStatisticsViewController alloc]initWithNibName:@"HogStatisticsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)updateView {
@@ -58,8 +89,10 @@
 }
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_content release];
     [_contentTitle release];
+    [_extraButton release];
     [super dealloc];
 }
 @end

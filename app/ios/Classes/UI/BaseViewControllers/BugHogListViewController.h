@@ -24,5 +24,6 @@
 - (void)setHogBugReport:(HogBugReport *)report;
 - (void)showWhatTheseNumbersMeanInfo;
 - (void)setBug:(BOOL)isBug;
+- (void)changeEditingState;
 
 @end

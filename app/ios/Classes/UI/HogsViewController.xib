@@ -3,13 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HogsViewController">
             <connections>
                 <outlet property="content" destination="l7u-KC-ecZ" id="dFb-Fc-5Ri"/>
                 <outlet property="contentTitle" destination="Xgp-Tj-fay" id="dfB-Iz-q3F"/>
+                <outlet property="extraButton" destination="5su-ql-yvv" id="2oM-c6-XbA"/>
                 <outlet property="navBar" destination="Xa1-j1-u9C" id="nko-AM-Vq6"/>
                 <outlet property="tableView" destination="d8A-Q0-RGX" id="5T8-Lf-o6g"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -102,39 +102,81 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-Tj-fay">
-                    <rect key="frame" x="8" y="173" width="304" height="29"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-KC-ecZ">
-                    <rect key="frame" x="8" y="210" width="304" height="201"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_hogs" translatesAutoresizingMaskIntoConstraints="NO" id="fjR-wE-EAn">
-                    <rect key="frame" x="0.0" y="8" width="320" height="165"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8j-2V-8UT">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLd-rd-zxe" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="427"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nothing to report!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-Tj-fay">
+                                    <rect key="frame" x="58" y="173.5" width="204.5" height="29"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_hogs" translatesAutoresizingMaskIntoConstraints="NO" id="fjR-wE-EAn">
+                                    <rect key="frame" x="0.0" y="8" width="320" height="165.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="165.5" id="dVe-c2-vWE"/>
+                                        <constraint firstAttribute="width" constant="320" id="s0G-sk-9X7"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5su-ql-yvv">
+                                    <rect key="frame" x="121" y="330" width="79" height="30"/>
+                                    <state key="normal" title="ExtraAction">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l7u-KC-ecZ">
+                                    <rect key="frame" x="8" y="202" width="304" height="120"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="9mK-uT-bt3"/>
+                                    </constraints>
+                                    <string key="text">You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...</string>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="fjR-wE-EAn" firstAttribute="centerX" secondItem="hLd-rd-zxe" secondAttribute="centerX" id="28C-xD-QzM"/>
+                                <constraint firstAttribute="trailing" secondItem="l7u-KC-ecZ" secondAttribute="trailing" constant="8" id="99C-bI-NwD"/>
+                                <constraint firstItem="5su-ql-yvv" firstAttribute="top" secondItem="l7u-KC-ecZ" secondAttribute="bottom" constant="8" symbolic="YES" id="HZk-q5-xtR"/>
+                                <constraint firstItem="fjR-wE-EAn" firstAttribute="top" secondItem="hLd-rd-zxe" secondAttribute="top" constant="8" id="IRX-cn-CZE"/>
+                                <constraint firstItem="5su-ql-yvv" firstAttribute="centerX" secondItem="hLd-rd-zxe" secondAttribute="centerX" id="JjS-Ty-PNU"/>
+                                <constraint firstAttribute="trailing" secondItem="fjR-wE-EAn" secondAttribute="trailing" id="QN4-mq-t8J"/>
+                                <constraint firstItem="Xgp-Tj-fay" firstAttribute="top" secondItem="fjR-wE-EAn" secondAttribute="bottom" id="Zav-YD-a05"/>
+                                <constraint firstItem="l7u-KC-ecZ" firstAttribute="top" secondItem="Xgp-Tj-fay" secondAttribute="bottom" id="odf-5y-fLQ"/>
+                                <constraint firstItem="l7u-KC-ecZ" firstAttribute="leading" secondItem="hLd-rd-zxe" secondAttribute="leading" constant="8" id="qQW-g9-aJR"/>
+                                <constraint firstItem="l7u-KC-ecZ" firstAttribute="centerX" secondItem="hLd-rd-zxe" secondAttribute="centerX" id="raR-DO-rw5"/>
+                                <constraint firstItem="fjR-wE-EAn" firstAttribute="leading" secondItem="hLd-rd-zxe" secondAttribute="leading" id="sRj-0V-BdF"/>
+                                <constraint firstItem="Xgp-Tj-fay" firstAttribute="centerX" secondItem="hLd-rd-zxe" secondAttribute="centerX" id="vd7-5v-pkN"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="fjR-wE-EAn" secondAttribute="height" multiplier="374:193" id="IMW-sg-KpA"/>
+                        <constraint firstItem="hLd-rd-zxe" firstAttribute="top" secondItem="f8j-2V-8UT" secondAttribute="top" id="RF7-nl-2fZ"/>
+                        <constraint firstItem="hLd-rd-zxe" firstAttribute="leading" secondItem="f8j-2V-8UT" secondAttribute="leading" id="YhA-DS-bec"/>
+                        <constraint firstAttribute="trailing" secondItem="hLd-rd-zxe" secondAttribute="trailing" id="qqN-Cv-yha"/>
+                        <constraint firstAttribute="bottom" secondItem="hLd-rd-zxe" secondAttribute="bottom" id="wAn-l8-EC8"/>
                     </constraints>
-                </imageView>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="fjR-wE-EAn" firstAttribute="leading" secondItem="oAO-uH-lWR" secondAttribute="leading" id="41v-hS-ypG"/>
-                <constraint firstAttribute="trailing" secondItem="fjR-wE-EAn" secondAttribute="trailing" id="5rL-5f-R3u"/>
-                <constraint firstItem="l7u-KC-ecZ" firstAttribute="leading" secondItem="oAO-uH-lWR" secondAttribute="leading" constant="8" id="9EG-lf-9Am"/>
-                <constraint firstItem="Xgp-Tj-fay" firstAttribute="leading" secondItem="oAO-uH-lWR" secondAttribute="leading" constant="8" id="DjW-ZM-JmO"/>
-                <constraint firstItem="fjR-wE-EAn" firstAttribute="top" secondItem="oAO-uH-lWR" secondAttribute="top" constant="8" id="GKw-4P-oAP"/>
-                <constraint firstAttribute="trailing" secondItem="l7u-KC-ecZ" secondAttribute="trailing" constant="8" id="jMA-KU-eIv"/>
-                <constraint firstItem="l7u-KC-ecZ" firstAttribute="top" secondItem="Xgp-Tj-fay" secondAttribute="bottom" constant="8" id="jlh-Cb-EbO"/>
-                <constraint firstItem="Xgp-Tj-fay" firstAttribute="top" secondItem="fjR-wE-EAn" secondAttribute="bottom" id="n05-hY-q3R"/>
-                <constraint firstAttribute="bottom" secondItem="l7u-KC-ecZ" secondAttribute="bottom" id="rhb-Q5-tjd"/>
-                <constraint firstAttribute="trailing" secondItem="Xgp-Tj-fay" secondAttribute="trailing" constant="8" id="vfL-id-85L"/>
+                <constraint firstItem="f8j-2V-8UT" firstAttribute="leading" secondItem="oAO-uH-lWR" secondAttribute="leading" id="0j9-9a-Jt7"/>
+                <constraint firstAttribute="bottom" secondItem="f8j-2V-8UT" secondAttribute="bottom" id="0zH-LJ-mJZ"/>
+                <constraint firstItem="hLd-rd-zxe" firstAttribute="height" secondItem="oAO-uH-lWR" secondAttribute="height" constant="16" id="86y-gR-jwF"/>
+                <constraint firstAttribute="trailing" secondItem="f8j-2V-8UT" secondAttribute="trailing" id="DwO-d9-AU0"/>
+                <constraint firstItem="f8j-2V-8UT" firstAttribute="top" secondItem="oAO-uH-lWR" secondAttribute="top" id="Fyz-59-UbD"/>
+                <constraint firstItem="f8j-2V-8UT" firstAttribute="leading" secondItem="oAO-uH-lWR" secondAttribute="leading" id="l1Z-st-jkb"/>
+                <constraint firstItem="hLd-rd-zxe" firstAttribute="width" secondItem="oAO-uH-lWR" secondAttribute="width" id="m6H-AN-Ko0"/>
+                <constraint firstItem="f8j-2V-8UT" firstAttribute="top" secondItem="oAO-uH-lWR" secondAttribute="top" id="oIl-6q-GnY"/>
+                <constraint firstAttribute="trailing" secondItem="f8j-2V-8UT" secondAttribute="trailing" id="sNG-5M-fIJ"/>
             </constraints>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

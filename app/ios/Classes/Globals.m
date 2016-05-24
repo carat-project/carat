@@ -100,7 +100,8 @@ static id instance = nil;
 }
 
 - (void) acknowledgeHiddenChanges {
-     [defaults setBool:FALSE forKey:@"HiddenChanges"];
+    [defaults setBool:FALSE forKey:@"HiddenChanges"];
+    [defaults synchronize];
 }
 
 - (void) hideApp : (NSString *) appName {
@@ -130,6 +131,7 @@ static id instance = nil;
 }
 
 - (NSArray *) getHiddenApps {
+    [defaults synchronize];
     return [defaults arrayForKey:@"HiddenApps"];
 }
 
