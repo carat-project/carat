@@ -78,7 +78,8 @@
 "GlobalResults"="Globaalit tulokset";
 "AllReports"="Kaikki raportit";
 "GeneralStatistics"="Yleinen statistiikka";
-"pop"="Suosituimmat laite mallit";
+"pop"="Suosituimmat laitemallit";
+"ShowHogStats"="Näytä statistiikkaa hogeista";
 "GenAllMessage"="Kaikista %ld asennetuista sovelluksista, %d%% kuluttaa voimakkasti virtaa (Hogi Carat sovelluksessa) ja %d%% ovat poikkeamia virran kulutuksessa (Bugs).";
 "GenAndroidMessage"="Kaikista %ld asennetuista android-sovelluksista, %d%% kuluttaa voimakkasti virtaa ja %d%% are energy anomalies.";
 "GenIOSMessage"="Kaikista %ld asennetuista iOS-sovelluksista, %d%% kuluttaa voimakkasti virtaa ja %d%% are energy anomalies.";

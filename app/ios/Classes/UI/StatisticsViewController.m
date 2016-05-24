@@ -7,6 +7,7 @@
 //
 
 #import "StatisticsViewController.h"
+#import "HogStatisticsViewController.h"
 
 @interface StatisticsViewController ()
 @end
@@ -27,6 +28,8 @@ bool genStatLoaded;
     
     popModelLoaded = false;
     genStatLoaded = false;
+    
+    [self setupStatsButton];
     
     //ios 9 doesnt allow this had to make info.plist file some changes (AllowArbitaryDownloads)
     //to get this to work needs that file from https url
@@ -102,6 +105,23 @@ bool genStatLoaded;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) setupStatsButton {
+    NSString *localizedPart = NSLocalizedString(@"ShowHogStats", nil);
+    NSString *text = [localizedPart stringByAppendingString:@"〉"];
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:text];
+    UIFont *font = [UIFont fontWithName:@"Arial-BoldMT" size:15.0f];
+    int len = [localizedPart length];
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, len)];
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(len, 1)];
+    [string addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, len)];
+    [_hogStatsButton addTarget:self action:@selector(showHogStats:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (IBAction)showHogStats:(id)sender {
+    HogStatisticsViewController *controller = [[HogStatisticsViewController alloc]initWithNibName:@"HogStatisticsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark NSURLConnectionDataDelegate
@@ -364,6 +384,7 @@ bool genStatLoaded;
     [_spinnerBackGround release];
     alert = nil;
     [_navbarTitle release];
+    [_hogStatsButton release];
     [super dealloc];
 }
 - (IBAction)showWellBehivedInfo:(id)sender {

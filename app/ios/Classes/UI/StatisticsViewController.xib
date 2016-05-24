@@ -17,6 +17,7 @@
                 <outlet property="bugsLabel" destination="pKU-MO-bHm" id="rtz-XP-Ugo"/>
                 <outlet property="genIntensiveBar" destination="diN-tI-9or" id="IG5-Y9-Os0"/>
                 <outlet property="genIntensiveDescLabel" destination="k5l-z6-bsr" id="tCl-8d-UwB"/>
+                <outlet property="hogStatsButton" destination="8fn-lX-0YZ" id="M71-1Y-DNM"/>
                 <outlet property="hogsBar" destination="SBa-uB-SEa" id="3YK-vU-oe4"/>
                 <outlet property="hogsLabel" destination="AAe-Y6-RLm" id="hp5-rZ-VAS"/>
                 <outlet property="iOSIntensiveBar" destination="ATo-Ci-DTq" id="bQS-ix-Ijm"/>
@@ -40,7 +41,7 @@
                     <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wt7-gk-JHY" userLabel="scrollContent">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="1136"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AllReports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFK-Fp-yrw" customClass="LocalizedLabel">
                                     <rect key="frame" x="8" y="8" width="584" height="24"/>
@@ -408,7 +409,7 @@
                                         <constraint firstItem="z5G-4Z-0Qb" firstAttribute="top" secondItem="LFG-Os-8ql" secondAttribute="bottom" constant="7" id="vNu-rr-OuR"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PopularDeviceModels" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UET-lV-TNu" customClass="LocalizedLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UET-lV-TNu" customClass="LocalizedLabel">
                                     <rect key="frame" x="8" y="513" width="584" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" red="0.070588235289999995" green="0.12549019610000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -438,6 +439,52 @@
                                     <color key="textColor" red="0.070588235289999995" green="0.12549019610000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-lX-0YZ">
+                                    <rect key="frame" x="8" y="657" width="212" height="43"/>
+                                    <state key="normal">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="SHOW ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="Arial-BoldMT"/>
+                                                    <font key="NSOriginalFont" size="18" name="Arial-BoldMT"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="HOG STATISTICS">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="Arial-BoldMT"/>
+                                                    <font key="NSOriginalFont" size="11" name="Arial-BoldMT"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                                    <font key="NSOriginalFont" size="11" name="Arial-BoldMT"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="〉">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="22" name="PingFangSC-Semibold"/>
+                                                    <font key="NSOriginalFont" size="24" name="PingFangSC-Semibold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </state>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nm0-yJ-vOE" userLabel="Spacer">
+                                    <rect key="frame" x="0.0" y="700" width="600" height="16"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="16" id="2I3-xg-X4l"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -447,10 +494,12 @@
                                 <constraint firstItem="fiB-TA-QKs" firstAttribute="top" secondItem="xeb-Vr-saY" secondAttribute="bottom" constant="8" id="5Re-tG-r2N"/>
                                 <constraint firstItem="wo9-OS-UnV" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" id="5rf-nR-ayd"/>
                                 <constraint firstItem="sjq-9C-79n" firstAttribute="top" secondItem="G9K-Rx-s8o" secondAttribute="bottom" id="6i4-la-Mtk"/>
+                                <constraint firstAttribute="trailing" secondItem="Nm0-yJ-vOE" secondAttribute="trailing" id="8Bu-8f-mHB"/>
                                 <constraint firstAttribute="trailing" secondItem="tGm-Sh-GdY" secondAttribute="trailing" constant="8" id="AP8-ru-n85"/>
                                 <constraint firstItem="UET-lV-TNu" firstAttribute="leading" secondItem="SXM-k1-ZJX" secondAttribute="leading" id="Br7-kX-Xoo"/>
                                 <constraint firstItem="bmX-Ji-DvN" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" id="G76-ID-T1z"/>
                                 <constraint firstItem="VnR-Um-SSE" firstAttribute="top" secondItem="bmX-Ji-DvN" secondAttribute="bottom" constant="8" symbolic="YES" id="GMM-f5-vw2"/>
+                                <constraint firstItem="Nm0-yJ-vOE" firstAttribute="top" secondItem="8fn-lX-0YZ" secondAttribute="bottom" id="I1G-GL-qXg"/>
                                 <constraint firstItem="tGm-Sh-GdY" firstAttribute="top" secondItem="UET-lV-TNu" secondAttribute="bottom" constant="8" id="J5a-Kq-LwJ"/>
                                 <constraint firstItem="Q75-7Z-5MT" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" id="K4w-xC-gCE"/>
                                 <constraint firstItem="G9K-Rx-s8o" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" id="KPp-Z4-d8G"/>
@@ -471,17 +520,20 @@
                                 <constraint firstItem="GFZ-Ng-mvs" firstAttribute="top" secondItem="sjq-9C-79n" secondAttribute="bottom" id="fPN-qY-fkt"/>
                                 <constraint firstItem="wo9-OS-UnV" firstAttribute="trailing" secondItem="Wt7-gk-JHY" secondAttribute="trailing" id="gHM-mR-7cH"/>
                                 <constraint firstItem="SXM-k1-ZJX" firstAttribute="top" secondItem="GFZ-Ng-mvs" secondAttribute="bottom" id="gIx-ax-Lnq"/>
+                                <constraint firstItem="8fn-lX-0YZ" firstAttribute="top" secondItem="fCU-4h-NWF" secondAttribute="bottom" constant="8" id="gVt-Mg-Ux2"/>
                                 <constraint firstItem="fCU-4h-NWF" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" constant="8" id="ge2-AX-TgQ"/>
                                 <constraint firstItem="Q75-7Z-5MT" firstAttribute="trailing" secondItem="Wt7-gk-JHY" secondAttribute="trailing" id="ggi-eV-JIr"/>
                                 <constraint firstAttribute="trailing" secondItem="fiB-TA-QKs" secondAttribute="trailing" constant="8" id="hSo-LP-aFz"/>
                                 <constraint firstItem="wo9-OS-UnV" firstAttribute="top" secondItem="Q75-7Z-5MT" secondAttribute="bottom" constant="8" id="ib9-z1-nEN"/>
                                 <constraint firstItem="fCU-4h-NWF" firstAttribute="top" secondItem="fiB-TA-QKs" secondAttribute="bottom" constant="8" id="kk6-n9-rTr"/>
+                                <constraint firstItem="8fn-lX-0YZ" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" constant="8" id="nwp-kw-Y1j"/>
+                                <constraint firstItem="Nm0-yJ-vOE" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" id="o09-kX-wYW"/>
                                 <constraint firstItem="fiB-TA-QKs" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" constant="8" id="qbR-Oq-2Rr"/>
                                 <constraint firstItem="KFK-Fp-yrw" firstAttribute="top" secondItem="Wt7-gk-JHY" secondAttribute="topMargin" id="qhd-OT-QSd"/>
                                 <constraint firstAttribute="trailing" secondItem="fCU-4h-NWF" secondAttribute="trailing" constant="8" id="sB9-wu-kxI"/>
                                 <constraint firstItem="GFZ-Ng-mvs" firstAttribute="leading" secondItem="sjq-9C-79n" secondAttribute="leading" id="swK-KL-Shn"/>
                                 <constraint firstItem="xeb-Vr-saY" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leading" constant="8" id="u8g-Wb-wMd"/>
-                                <constraint firstAttribute="height" constant="1100" id="wvx-3b-UTF"/>
+                                <constraint firstAttribute="height" constant="1136" id="wvx-3b-UTF"/>
                                 <constraint firstItem="SXM-k1-ZJX" firstAttribute="leading" secondItem="Wt7-gk-JHY" secondAttribute="leadingMargin" id="xDZ-dp-4se"/>
                                 <constraint firstItem="GFZ-Ng-mvs" firstAttribute="trailing" secondItem="sjq-9C-79n" secondAttribute="trailing" id="y2i-MH-PGA"/>
                                 <constraint firstItem="xeb-Vr-saY" firstAttribute="top" secondItem="tGm-Sh-GdY" secondAttribute="bottom" constant="8" id="zAc-LM-erT"/>

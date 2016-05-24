@@ -81,6 +81,7 @@
 "AllReports"="All reports";
 "GeneralStatistics"="General statistics";
 "pop"="Popular device models";
+"ShowHogStats"="Show hog statistics";
 "GenAllMessage"="Out of %ld installed applications, %d%% are energy-intensive (Hogs in the Carat App) and %d%% are energy anomalies (Bugs).";
 "GenAndroidMessage"="Out of %ld installed Android applications, %d%% are energy-intensive and %d%% are energy anomalies.";
 "GenIOSMessage"="Out of %ld installed iOS applications, %d%% are energy-intensive and %d%% are energy anomalies.";

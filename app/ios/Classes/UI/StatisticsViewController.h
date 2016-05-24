@@ -32,6 +32,7 @@
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView* spinner;
 @property (retain, nonatomic) IBOutlet UIView *spinnerBackGround;
 @property (retain, nonatomic) IBOutlet UINavigationItem *navbarTitle;
+@property (retain, nonatomic) IBOutlet UIButton *hogStatsButton;
 
 - (IBAction)showWellBehivedInfo:(id)sender;
 - (IBAction)showBugsInfo:(id)sender;
