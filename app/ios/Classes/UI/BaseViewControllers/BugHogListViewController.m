@@ -245,7 +245,7 @@
                            stringByAppendingString:appName]
                           stringByAppendingString:@".jpg"];*/
     UIImage *defaultIcon = [UIImage imageNamed:@"def_app_icon"];
-    NSString *imageURI = [[Globals instance] getStringForKey:appName];
+    NSString *imageURI = [[Globals instance] getStringForKey:[appName lowercaseString]];
     if(imageURI != nil && [imageURI length] > 0){
         [cell.thumbnailAppImg setImageWithURL:[NSURL URLWithString:imageURI]
                              placeholderImage:defaultIcon];

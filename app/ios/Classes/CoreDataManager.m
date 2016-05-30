@@ -586,7 +586,7 @@ static int previousSample = 0;
 
 - (void) saveReport:(HogBugReport *)reports type:(NSString *)entityType context:(NSManagedObjectContext *)context{
     NSError *error = nil;
-    if (reports != nil && reports != NULL && [reports.hbList count] > 0)
+    if (reports != nil && reports.hbList != nil && [reports.hbList count] > 0)
     {
         // Clear local reports only when we actually got some data
         if ([self clearLocalAppReports:context forEntityType:entityType] == NO)
@@ -830,7 +830,7 @@ static int previousSample = 0;
         [list release];
         
         // Quick hogs
-        if(hogReport == nil || [hogReport.hbList count] <= 0 && ![self hogsStored]){
+        if(hogReport == nil || [hogReport.hbList count] <= 0 || ![self hogsStored]){
             NSArray *runningProcesses= [[UIDevice currentDevice] runningProcessNames];
             __block NSMutableArray *processList;
             if(runningProcesses != nil && [runningProcesses count] > 0) {
@@ -842,7 +842,6 @@ static int previousSample = 0;
             else {
                 [[CaratProcessCache instance] getProcessList:^(NSArray *result) {
                     processList = [result valueForKey:@"ProcessName"];
-                    processList = [processList valueForKey:@"lowercaseString"];
                     if(processList != nil && [processList count] > 0){
                         HogBugReport *hogReport = [[CommunicationManager instance] getQuickHogs:processList];
                         [self saveReport:hogReport type:entityType context:managedObjectContext];
