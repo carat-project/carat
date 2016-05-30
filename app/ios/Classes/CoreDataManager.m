@@ -830,7 +830,7 @@ static int previousSample = 0;
         [list release];
         
         // Quick hogs
-        if(hogReport == nil || [hogReport.hbList count] <= 0 || ![self hogsStored]){
+        if(hogReport == nil || hogReport.hbList == nil || [hogReport.hbList count] <= 0 || ![self hogsStored]){
             NSArray *runningProcesses= [[UIDevice currentDevice] runningProcessNames];
             __block NSMutableArray *processList;
             if(runningProcesses != nil && [runningProcesses count] > 0) {
