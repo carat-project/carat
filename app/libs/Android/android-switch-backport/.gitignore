@@ -1,7 +1,0 @@
-bin
-gen
-local.properties
-target/
-**/build/
-.gradle/
-.idea
