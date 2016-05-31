@@ -944,6 +944,9 @@ static int previousSample = 0;
     networkDetails.networkType = [DeviceInformation getNetworkStatus];
     networkDetails.mobileNetworkType = [DeviceInformation getMobileNetworkType];
     networkDetails.networkStatistics = [DeviceInformation getNetworkStatistics];
+    networkDetails.networkOperator = [DeviceInformation getNetworkOperator];
+    networkDetails.mcc = [DeviceInformation getNetworkMcc];
+    networkDetails.mnc = [DeviceInformation getNetworkMnc];
     
     NSData *networkEncoded = [NSKeyedArchiver archivedDataWithRootObject:networkDetails];
     [sample setNetworkDetails:networkEncoded];
@@ -1018,6 +1021,9 @@ static int previousSample = 0;
          \t\t\twifiReceived: %f\n\
          \t\t\tmobileSent: %f\n\
          \t\t\tmobileReceived: %f\n\
+         \t\t\tnetworkOperator: %@\n\
+         \t\t\tmcc: %@\n\
+         \t\t\tmnc: %@\n\
          \tcpuStatus:\n\
          \t\tcpuUsage: %f\n\
          \t\tuptime: %f\n\
@@ -1037,6 +1043,7 @@ static int previousSample = 0;
          networkDetails.networkType, networkDetails.mobileNetworkType, networkDetails.networkStatistics.wifiSent,
          networkDetails.networkStatistics.wifiReceived, networkDetails.networkStatistics.mobileSent,
          networkDetails.networkStatistics.mobileReceived,
+         networkDetails.networkOperator, networkDetails.mcc, networkDetails.mnc,
          cpuStat.cpuUsage, cpuStat.uptime, cpuStat.sleeptime,
          storageDetails.total, storageDetails.free,
          sysSettings.locationEnabled ? "true" : "false", sysSettings.powersaverEnabled ? "true" : "false",

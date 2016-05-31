@@ -35,6 +35,9 @@ typedef struct MemoryInfo {
 + (NSString *) getNetworkStatus;
 + (bool) getLocationEnabled;
 + (NetworkStatistics *) getNetworkStatistics;
++ (NSString *) getNetworkOperator;
++ (NSString *) getNetworkMcc;
++ (NSString *) getNetworkMnc;
 + (time_t) getDeviceUptime;
 + (time_t) getDeviceSleepTime;
 + (StorageDetails *) getStorageDetails;

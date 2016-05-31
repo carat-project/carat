@@ -55,6 +55,41 @@ const unsigned long GB = MB * 1024;
     else return radioAccessTechnology;
 }
 
+// Numeric mobile country code, requires active SIM
++ (NSString *) getNetworkMcc {
+    CTTelephonyNetworkInfo *networkInfo = [CTTelephonyNetworkInfo new];
+    CTCarrier *carrier = [networkInfo subscriberCellularProvider];
+    NSString *mcc = [carrier mobileCountryCode];
+    if(mcc != nil && [mcc length] > 0){
+        return mcc;
+    }
+    else return @"Unknown";
+}
+
+// Numeric mobile network code, requires active SIM
++ (NSString *) getNetworkMnc {
+    CTTelephonyNetworkInfo *networkInfo = [CTTelephonyNetworkInfo new];
+    CTCarrier *carrier = [networkInfo subscriberCellularProvider];
+    NSString *mnc = [carrier mobileNetworkCode];
+    if(mnc != nil && [mnc length] > 0){
+        return mnc;
+    }
+    else return @"Unknown";
+}
+
+// Network operator responsible for the currently used infrastructure.
+// Not bound to the device or SIM card and might change at any time.
+// Note: Might display incorrectly on provider locked devices.
++ (NSString *) getNetworkOperator {
+    CTTelephonyNetworkInfo *networkInfo = [CTTelephonyNetworkInfo new];
+    CTCarrier *carrier = [networkInfo subscriberCellularProvider];
+    NSString *carrierName = [carrier carrierName];
+    if(carrierName != nil && [carrierName length] > 0){
+        return carrierName;
+    }
+    else return @"Unknown";
+}
+
 // Country code representation in ISO 3661-1 standard
 // @see https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/index.html
 + (NSString *) getCountryCode {
