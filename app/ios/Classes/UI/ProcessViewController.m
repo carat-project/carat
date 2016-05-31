@@ -55,7 +55,23 @@
     #ifdef USE_INTERNALS
     else {
         [[CaratProcessCache instance] getProcessList:^(NSArray *result) {
-            self.processList = result;
+            
+            // Sort by icon available, then alphabetical order
+            self.processList = [result sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                NSDictionary *p1 = (NSDictionary *)obj1;
+                NSDictionary *p2 = (NSDictionary *)obj2;
+                NSString *i1 = [p1 objectForKey:@"ProcessIcon"];
+                NSString *i2 = [p2 objectForKey:@"ProcessIcon"];
+                if(((i1 == nil || [i1 length] == 0) && (i2 == nil || [i2 length] == 0)) ||
+                   ((i1 != nil && [i1 length] > 0) && (i2 != nil && [i2 length] > 0))){
+                    NSString *n1 = [p1 objectForKey:@"ProcessName"];
+                    NSString *n2 = [p2 objectForKey:@"ProcessName"];
+                    return [n1 compare:n2];
+                }
+                if(i1 != nil && [i1 length] > 0) return NSOrderedAscending;
+                else return NSOrderedDescending;
+            }];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
                 [self.view setNeedsDisplay];
@@ -64,7 +80,6 @@
     }
     #endif
 }
-
 
 #pragma mark - table methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
