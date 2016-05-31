@@ -66,7 +66,12 @@ struct NetworkDetails {
 	9: optional NetworkStatistics networkStatistics;
 
 	// Android-only: Wifi access point status
-	10: optional string wifiApStatus; 	// disabled, disabling, enabled, enabling, unknown
+	10: optional string wifiApStatus; 	 // disabled, disabling, enabled, enabling, unknown
+
+	11: optional string networkOperator; // network infrastructure provider, unbound
+	12: optional string simOperator; 	 // service provider, bound to sim
+	13: optional string mcc; 			 // numeric country code
+	14: optional string mnc;			 // numeric network code
 }
 
 //
