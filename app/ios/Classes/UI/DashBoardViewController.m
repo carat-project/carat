@@ -441,9 +441,15 @@ BOOL isUpdateProgressVisible;
                             stringByAppendingString:@". Find out yours and improve your battery life!"];
     content.imageURL = [NSURL URLWithString:@"http://carat.cs.helsinki.fi/img/icon144.png"];
     content.contentDescription = @"Carat is a free app that tells you what is using up your battery, whether that's normal, and what you can do about it.";
-    [FBSDKShareDialog showFromViewController:self
-                                withContent:content
-                                delegate:self];
+    FBSDKShareDialog *dialog = [FBSDKShareDialog new];
+    dialog.mode = FBSDKShareDialogModeNative;
+    dialog.shareContent = content;
+    dialog.fromViewController = self;
+    dialog.delegate = self;
+    if(![dialog canShow]){
+        dialog.mode = FBSDKShareDialogModeWeb;
+    }
+    [dialog show];
     [Flurry logEvent:NSLocalizedString(@"selectedShareFacebook", nil)];
 }
 

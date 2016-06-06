@@ -111,7 +111,10 @@ void onUncaughtException(NSException *exception)
             openURL:(NSURL *)url
             sourceApplication:(NSString *)sourceApplication
             annotation:(id)annotation {
-    return YES;
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 - (BOOL)acquireConsentWithCallbackTarget:(CaratAppDelegate *)delegate withSelector:(SEL)selector {
