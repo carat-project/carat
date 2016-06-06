@@ -111,10 +111,7 @@ void onUncaughtException(NSException *exception)
             openURL:(NSURL *)url
             sourceApplication:(NSString *)sourceApplication
             annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+    return YES;
 }
 
 - (BOOL)acquireConsentWithCallbackTarget:(CaratAppDelegate *)delegate withSelector:(SEL)selector {
@@ -268,22 +265,11 @@ void onUncaughtException(NSException *exception)
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark -
-#pragma mark Facebook Connect methods
-
-/*- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url 
-  sourceApplication:(NSString *)sourceApplication 
-         annotation:(id)annotation 
-{
-    return [Socialize handleOpenURL:url];
-}
-
 - (BOOL)application:(UIApplication *)application 
       handleOpenURL:(NSURL *)url 
 {
-    return [Socialize handleOpenURL:url];
-}*/
+    return YES;
+}
 
 #pragma mark -
 #pragma mark UITabBarControllerDelegate methods
