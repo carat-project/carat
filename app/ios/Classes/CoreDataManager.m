@@ -890,7 +890,8 @@ static int previousSample = 0;
         #endif
         for (NSDictionary *dict in processes)
         {
-            if([daemonsList objectForKey:[dict objectForKey:@"ProcessName"]] != nil) { continue; }
+            // We do not need to filter out these here
+            // if([daemonsList objectForKey:[dict objectForKey:@"ProcessName"]] != nil) { continue; }
             CoreDataProcessInfo *cdataProcessInfo = (CoreDataProcessInfo *) [NSEntityDescription insertNewObjectForEntityForName:@"CoreDataProcessInfo" inManagedObjectContext:managedObjectContext];
             [cdataProcessInfo setId: [NSNumber numberWithInt:[[dict objectForKey:@"ProcessID"] intValue]]];
             [cdataProcessInfo setName:[dict objectForKey:@"ProcessName"]];
