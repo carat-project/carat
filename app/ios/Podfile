@@ -9,11 +9,13 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform:ios, '7.0'
 inhibit_all_warnings!
 
-pod 'AFNetworking', '~> 2.5'
-pod 'FBSDKCoreKit', '~> 4.9.1'
-pod 'FBSDKLoginKit', '~> 4.9.1'
-pod 'FBSDKShareKit', '~> 4.9.1'
-pod 'TwitterKit', '~> 1.15.1'
+target "Carat" do
+  pod 'AFNetworking', '~> 2.5'
+  pod 'FBSDKCoreKit', '~> 4.9.1'
+  pod 'FBSDKLoginKit', '~> 4.9.1'
+  pod 'FBSDKShareKit', '~> 4.9.1'
+  pod 'TwitterKit', '~> 1.15.1'
+end
 
 # pod 'Socialize', :podspec => 'https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec'
 # Append to your Podfile

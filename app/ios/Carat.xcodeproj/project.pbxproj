@@ -116,6 +116,7 @@
 		89FF8B991BDBB06C00147943 /* ActionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B981BDBB06C00147943 /* ActionObject.m */; };
 		89FF8B9D1BDBB2BA00147943 /* ListNetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B9C1BDBB2BA00147943 /* ListNetworkBaseViewController.m */; };
 		89FF8B9F1BDBF3A000147943 /* detailinfo.html in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B9E1BDBF3A000147943 /* detailinfo.html */; };
+		A46368A7DC6289168DF4D804 /* libPods-Carat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7CEB533A209025A71EBC73 /* libPods-Carat.a */; };
 		AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */; };
 		AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF6144E1E520090CC09 /* CaratAppDelegate.m */; };
 		AB41CDF8144E27200090CC09 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB41CDF7144E27200090CC09 /* CoreLocation.framework */; };
@@ -144,7 +145,6 @@
 		C18E106E1466591A0028095B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18E106D1466591A0028095B /* CoreData.framework */; };
 		C18E107214665E230028095B /* Carat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C18E107014665E230028095B /* Carat.xcdatamodeld */; };
 		C19D4207146D2AD6004C842A /* CoreDataSample.m in Sources */ = {isa = PBXBuildFile; fileRef = C19D4206146D2AD6004C842A /* CoreDataSample.m */; };
-		C4F4D3C1F7622BE9E989E515 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23A0880239BF30A57C63EADE /* libPods.a */; };
 		C704AE5E1A03B90200E4F13C /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = C704AE531A03B90200E4F13C /* bug.png */; };
 		C704AE621A03B90200E4F13C /* twologo.png in Resources */ = {isa = PBXBuildFile; fileRef = C704AE571A03B90200E4F13C /* twologo.png */; };
 		C74130C319EDC3E500A1E8CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3B89C816C03A26007C8596 /* Social.framework */; };
@@ -178,11 +178,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14E1A767FBF62E7B53601C6F /* Pods-Carat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Carat/Pods-Carat.debug.xcconfig"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* CaratAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratAppDelegate.h; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Carat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		23A0880239BF30A57C63EADE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		24112D261CEB219B008ABADE /* CaratProcessCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratProcessCache.h; sourceTree = "<group>"; };
 		24112D271CEB219B008ABADE /* CaratProcessCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaratProcessCache.m; sourceTree = "<group>"; };
 		2417658C1C60D896007EB0CD /* Icon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon144.png; path = ../Images.xcassets/AppIcon.appiconset/Icon144.png; sourceTree = "<group>"; };
@@ -248,14 +248,14 @@
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Carat_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carat_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		442D1E0B6ADC99B275F9544F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		378EDA605E778E4C69184DB1 /* Pods-Carat.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods-Carat/Pods-Carat.ad hoc.xcconfig"; sourceTree = "<group>"; };
+		3E7CEB533A209025A71EBC73 /* libPods-Carat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Carat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		661955B31A740E2D00865B2E /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		6676D13A1A4DDCDB0002FC1F /* CaratConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratConstants.h; sourceTree = "<group>"; };
 		6676D13B1A4DDCDB0002FC1F /* CaratConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaratConstants.m; sourceTree = "<group>"; };
 		66D41BCA1A8F8EF800044C66 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		66EC15051A2A6A8E00153746 /* infoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoButton@2x.png"; sourceTree = "<group>"; };
 		66EC15061A2A6A8E00153746 /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoButton.png; sourceTree = "<group>"; };
-		79232538B6627BDD4D603C66 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		89486E551BC55DFF00138F23 /* MeasurementBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementBar.h; sourceTree = "<group>"; };
 		89486E561BC55DFF00138F23 /* MeasurementBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementBar.m; sourceTree = "<group>"; };
 		894A23FA1BC251800059850A /* DashboardNavigationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardNavigationButton.h; sourceTree = "<group>"; };
@@ -364,7 +364,6 @@
 		89FF8B9C1BDBB2BA00147943 /* ListNetworkBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListNetworkBaseViewController.m; sourceTree = "<group>"; };
 		89FF8B9E1BDBF3A000147943 /* detailinfo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = detailinfo.html; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Carat-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Carat-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		8F35504DFD1C0120ECC89B4A /* Pods.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods/Pods.ad hoc.xcconfig"; sourceTree = "<group>"; };
 		AB105EBE14EDCCD2000DB145 /* jscoreinfo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jscoreinfo.html; sourceTree = "<group>"; };
 		AB3B89C816C03A26007C8596 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		AB41CDF1144E1AF60090CC09 /* UIDeviceProc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDeviceProc.h; sourceTree = "<group>"; };
@@ -739,6 +738,7 @@
 		C754886319963D03007A01CF /* UIDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDeviceHardware.m; sourceTree = "<group>"; };
 		C7E31C2D1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		C7E31C2E1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		E601D3EED0B997CE00282325 /* Pods-Carat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carat/Pods-Carat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -764,7 +764,7 @@
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
 				C14F5C33145BD54800087F74 /* CFNetwork.framework in Frameworks */,
 				AB8121E116C04EA2005FBE96 /* Accounts.framework in Frameworks */,
-				C4F4D3C1F7622BE9E989E515 /* libPods.a in Frameworks */,
+				A46368A7DC6289168DF4D804 /* libPods-Carat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,6 +823,16 @@
 				1D6058910D05DD3D006BFB54 /* Carat.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1CE05474CBDDED36099494E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				14E1A767FBF62E7B53601C6F /* Pods-Carat.debug.xcconfig */,
+				E601D3EED0B997CE00282325 /* Pods-Carat.release.xcconfig */,
+				378EDA605E778E4C69184DB1 /* Pods-Carat.ad hoc.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		245897361C904CD0001D3FE2 /* TopHogsTable */ = {
@@ -924,7 +934,7 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				D0F5BC36C58FAEDBB4B22C93 /* Pods */,
+				1CE05474CBDDED36099494E0 /* Pods */,
 			);
 			name = Carat;
 			sourceTree = "<group>";
@@ -973,7 +983,7 @@
 				AB3B89C816C03A26007C8596 /* Social.framework */,
 				AB41CDF9144E3B660090CC09 /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				23A0880239BF30A57C63EADE /* libPods.a */,
+				3E7CEB533A209025A71EBC73 /* libPods-Carat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1584,16 +1594,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D0F5BC36C58FAEDBB4B22C93 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				79232538B6627BDD4D603C66 /* Pods.debug.xcconfig */,
-				442D1E0B6ADC99B275F9544F /* Pods.release.xcconfig */,
-				8F35504DFD1C0120ECC89B4A /* Pods.ad hoc.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1601,12 +1601,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Carat" */;
 			buildPhases = (
-				5BF6D5B123424389BB01DEF3 /* Check Pods Manifest.lock */,
+				F73E073AF77ACA81D9CCC2F0 /* [CP] Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				AA1E504D4BF34D31BF9ADB81 /* Copy Pods Resources */,
-				58B65FBEC68E1E31C111B258 /* Embed Pods Frameworks */,
+				AB9C8BE3957F5FD30FDCA19C /* [CP] Embed Pods Frameworks */,
+				F676786DB4FC03FCB19AE231 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1727,49 +1727,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		58B65FBEC68E1E31C111B258 /* Embed Pods Frameworks */ = {
+		AB9C8BE3957F5FD30FDCA19C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Carat/Pods-Carat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5BF6D5B123424389BB01DEF3 /* Check Pods Manifest.lock */ = {
+		F676786DB4FC03FCB19AE231 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Carat/Pods-Carat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F73E073AF77ACA81D9CCC2F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AA1E504D4BF34D31BF9ADB81 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1900,7 +1900,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79232538B6627BDD4D603C66 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 14E1A767FBF62E7B53601C6F /* Pods-Carat.debug.xcconfig */;
 			buildSettings = {
 				ALTERNATE_GROUP = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1974,7 +1974,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 442D1E0B6ADC99B275F9544F /* Pods.release.xcconfig */;
+			baseConfigurationReference = E601D3EED0B997CE00282325 /* Pods-Carat.release.xcconfig */;
 			buildSettings = {
 				ALTERNATE_GROUP = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2045,7 +2045,7 @@
 		};
 		AB1E7AB214CF8E640010617A /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F35504DFD1C0120ECC89B4A /* Pods.ad hoc.xcconfig */;
+			baseConfigurationReference = 378EDA605E778E4C69184DB1 /* Pods-Carat.ad hoc.xcconfig */;
 			buildSettings = {
 				ALTERNATE_GROUP = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
