@@ -97,7 +97,7 @@
    // get Bugs, add to array
     NSMutableArray *bugsActionList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionRestart", nil) actType:ActionTypeRestartApp];
     [myList addObjectsFromArray:bugsActionList];
-    DLog(@"Loading Bugs");
+    DLog(@"Loading Personal Hogs");
     
     // get OS
     ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];

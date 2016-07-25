@@ -855,8 +855,8 @@ static int previousSample = 0;
         
         // Bug report
         entityType = @"Bug";
-        DLog(@"%s Updating bug report...", __PRETTY_FUNCTION__);
-        reportUpdateStatus = @"(Updating bug report...)";
+        DLog(@"%s Updating personal hog report...", __PRETTY_FUNCTION__);
+        reportUpdateStatus = @"(Updating personal hog report...)";
         [self postNotificationOnMainThread];
         
         [feature1 setValue:entityType];
@@ -1738,7 +1738,7 @@ static id instance = nil;
  */
 - (HogBugReport *) getBugs : (BOOL) filterNonRunning withoutHidden : (BOOL) filterHidden
 {
-    DLog(@"Getting bugs from core data...");
+    DLog(@"Getting personal hogs from core data...");
     NSError *error = nil;
     NSArray *runningProcessNames = nil;
     NSArray *hiddenProcessNames = [[Globals instance] getHiddenApps];
@@ -1764,7 +1764,7 @@ static id instance = nil;
             return nil;
         }
         
-        DLog(@"%s Found %d bug, loading...",__PRETTY_FUNCTION__, [fetchedObjects count]);
+        DLog(@"%s Found %d personal hogs, loading...",__PRETTY_FUNCTION__, [fetchedObjects count]);
         
         if (filterNonRunning) {
             if(floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
@@ -1828,7 +1828,7 @@ static id instance = nil;
             
             [hbList addObject:bug];
             
-            DLog(@"%s '%@' action list bug candidate: %.9f %.9f", __PRETTY_FUNCTION__, [cdataAppReport valueForKey:@"appName"], [bug error], [bug errorWithout]);
+            DLog(@"%s '%@' action list personal hog candidate: %.9f %.9f", __PRETTY_FUNCTION__, [cdataAppReport valueForKey:@"appName"], [bug error], [bug errorWithout]);
         }
         return bugs;
     }
