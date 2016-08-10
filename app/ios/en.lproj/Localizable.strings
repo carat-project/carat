@@ -160,7 +160,7 @@
 "ActionsSub"="How to use Carat";
 "ActionsMessage"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
 //Bugs
-"BugsSub"="See personal hogs";
+"PersonalSub"="See personal hogs";
 //Hogs
 "HogsSub"="See global hogs";
 //HogsMessage == HogsDesc

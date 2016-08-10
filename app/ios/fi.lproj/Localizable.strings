@@ -159,7 +159,7 @@
 "ActionsSub"="Ehdotukset";
 "ActionsMessage"="Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.";
 //Bugs
-"BugsSub"="Katso henk.koht. lista";
+"PersonalSub"="Katso henk.koht. lista";
 //Hogs
 "HogsSub"="Katso hogi lista";
 //HogsMessage == HogsDesc

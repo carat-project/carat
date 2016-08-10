@@ -60,7 +60,7 @@ static NSString * collapsedCell = @"AboutTableViewCell";
     
     AboutListItemData* d3 = [AboutListItemData new];
     d3.title = NSLocalizedString(@"Personal", nil);
-    d3.subTitle = NSLocalizedString(@"BugsSub", nil);
+    d3.subTitle = NSLocalizedString(@"PersonalSub", nil);
     d3.message = NSLocalizedString(@"PersonalDesc", nil);
     
     AboutListItemData* d4 = [AboutListItemData new];
