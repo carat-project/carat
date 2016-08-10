@@ -45,7 +45,7 @@ BOOL isUpdateProgressVisible;
     isUpdateProgressVisible = false;
     
     [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
-    [_bugsBtn setButtonTitle:NSLocalizedString(@"Bugs", nil)];
+    [_bugsBtn setButtonTitle:NSLocalizedString(@"Personal", nil)];
     
     [_hogsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
     [_hogsBtn setButtonTitle:NSLocalizedString(@"Hogs", nil)];
@@ -388,7 +388,7 @@ BOOL isUpdateProgressVisible;
 }
 
 - (IBAction)showBugs:(id)sender {
-    NSLog(@"bugsTapped");
+    NSLog(@"personalTapped");
     BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
     [self.navigationController pushViewController:controler animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedBugsView", nil)];

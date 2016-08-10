@@ -319,9 +319,6 @@ bool genStatLoaded;
     [_allUsersIntensiveBar setNeedsDisplay];
     
     _allUsersIntensiveDescLabel.text = [NSString stringWithFormat:NSLocalizedString(@"GenUsersMessage", nil), sum, lroundf(hasBugRatio)];
-    //[self applyGenStatisticDataToViews: json key:@"apps" stringID:@"GenAllMessage" label:_genIntensiveDescLabel bar:_genIntensiveBar];
-    
-    //"GenAllMessage"="Out of %@ installed applications, %@% are energy-intensive (Hogs in the Carat App) and %@% are energy anomalies (Bugs)."
 
 }
 
@@ -393,8 +390,8 @@ bool genStatLoaded;
 }
 
 - (IBAction)showBugsInfo:(id)sender {
-        NSLog(@"showBugsInfo");
-     [self showInfoView:@"Bugs" message:@"BugsDesc"];
+        NSLog(@"showPersonalInfo");
+     [self showInfoView:@"Bugs" message:@"PersonalDesc"];
 }
 
 - (IBAction)showHogsInfo:(id)sender {

@@ -146,7 +146,7 @@
                 NSInteger benefit = (int) (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
                 NSInteger benefit_max = (int) (100/([hb expectedValueWithout]-[hb errorWithout]) - 100/([hb expectedValue]+[hb error]));
                 NSInteger error = (int) (benefit_max-benefit);
-                DLog(@"Benefit is %d ± %d for bug '%@'", benefit, error, [hb appName]);
+                DLog(@"Benefit is %d ± %d for personal '%@'", benefit, error, [hb appName]);
                 if (benefit > 60) {
                     tmpAction = [[ActionObject alloc] init];
                     [tmpAction setActionText:[@"Restart " stringByAppendingString:[hb appName]]];

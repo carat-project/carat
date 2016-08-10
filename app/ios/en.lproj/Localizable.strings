@@ -11,7 +11,7 @@
 "Carat" = "Carat";
 "BatteryLifeLabel"="Active Battery Life";
 "Calibrating"="Calibrating..";
-"Bugs"="Personal";
+"Personal"="Personal";
 "Hogs"="Global";
 "Statistics"="Statistics";
 "Actions"="Actions";
@@ -27,7 +27,7 @@
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
 "MainDesc"="Carat is a research project of the University of Helsinki, originally created in collaboration with the AMP Lab at UC Berkeley, that helps detect and diagnose battery problems, giving you personalized recommendations.";
-"BugsDesc"="Personal Hogs are apps that use a lot of energy on a small number of devices, including yours. Restarting a the app may improve battery life.";
+"PersonalDesc"="Personal Hogs are apps that use a lot of energy on a small number of devices, including yours. Restarting a the app may improve battery life.";
 "HogsDesc"="Global Hogs are apps that are correlated with higher energy use across many devices. Closing hogs may improve battery life.";
 "HogStatisticsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Here are the top hogs of all users.";
 "Eula"="END-USER LICENSE\nAGREEMENT";
@@ -161,7 +161,6 @@
 "ActionsMessage"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
 //Bugs
 "BugsSub"="See personal hogs";
-//BugsMessage==BugsDesc
 //Hogs
 "HogsSub"="See global hogs";
 //HogsMessage == HogsDesc

@@ -89,12 +89,12 @@
     TutorialPageContent *eula = [TutorialPageContent new];
 
     main.title = NSLocalizedString(@"MainTitle", nil);
-    bugs.title = NSLocalizedString(@"Bugs", nil);
+    bugs.title = NSLocalizedString(@"Personal", nil);
     hogs.title = NSLocalizedString(@"Hogs", nil);
     eula.title = NSLocalizedString(@"Eula", nil);
     
     main.text = NSLocalizedString(@"MainDesc", nil);
-    bugs.text = NSLocalizedString(@"BugsDesc", nil);
+    bugs.text = NSLocalizedString(@"PersonalDesc", nil);
     hogs.text = NSLocalizedString(@"HogsDesc", nil);
     eula.text = NSLocalizedString(@"EulaShortDesc", nil);
     
