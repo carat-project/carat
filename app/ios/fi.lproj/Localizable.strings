@@ -159,7 +159,7 @@
 "ActionsSub"="Ehdotukset";
 "ActionsMessage"="Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa.";
 //Bugs
-"BugsSub"="Katso bugi lista";
+"BugsSub"="Katso henk.koht. lista";
 //BugsMessage==BugsDesc
 //Hogs
 "HogsSub"="Katso hogi lista";
@@ -191,7 +191,7 @@
 //Progress updates
 "UpdatingMainReports" = "Päivitetään laitetietoja...";
 "UpdatingHogReports" = "Päivitetään hogeja...";
-"UpdatingBugReports" = "Päivitetään bugeja...";
+"UpdatingBugReports" = "Päivitetään henk.koht...";
 "UpdatedJust" = "Päivitetty juuri nyt\r%i mittausta lähetetty";
 "UpdatedNever" = "Ei koskaan päivitetty\r%i mittausta lähetetty";
 "Updated" = "Päivitetty ";
@@ -203,7 +203,7 @@
 
 //Flurry Logs
 "selectedProcessList" = "selectedProcessList";
-"selectedBugsView" = "selectedBugsView";
+"selectedBugsView" = "selectedPersonalView";
 "selectedHogsView" = "selectedHogsView";
 "selectedActionsView" = "selectedActionsView";
 "selectedStatisticsView" = "selectedStatisticsView";

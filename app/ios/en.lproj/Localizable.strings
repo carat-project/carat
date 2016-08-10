@@ -59,7 +59,7 @@
 "Error"="Error";
 "SamplesWithout"="Samples without";
 "NumberHelpLabel"="What are these numbers?";
-"NoBugs"="You have no bugs.";
+"NoBugs"="You have no personal hogs.";
 "NoBugsMessage"="Please check back in a week.\n\nIf your apps are using the usual amount of energy, there will be no hogs here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
 //BugsView ends
 //HogsView starts
@@ -211,7 +211,7 @@
 
 //Flurry Logs
 "selectedProcessList" = "selectedProcessList";
-"selectedBugsView" = "selectedBugsView";
+"selectedBugsView" = "selectedPersonalView";
 "selectedHogsView" = "selectedHogsView";
 "selectedActionsView" = "selectedActionsView";
 "selectedStatisticsView" = "selectedStatisticsView";
