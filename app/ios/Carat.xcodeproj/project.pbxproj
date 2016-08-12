@@ -40,12 +40,6 @@
 		24B3BBFF1C5F92DD00F43A0D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3BBFE1C5F92DD00F43A0D /* libsqlite3.tbd */; };
 		24E3D7191C85F69C00A33236 /* TopHogsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E3D7181C85F69C00A33236 /* TopHogsTableView.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
-		661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */ = {isa = PBXBuildFile; fileRef = ABD75498162F5FC100817924 /* activebatterylife.html */; };
-		661955AD1A73FE2F00865B2E /* collectdata.html in Resources */ = {isa = PBXBuildFile; fileRef = ABE5C2A416F0F36300780085 /* collectdata.html */; };
-		661955AE1A73FE3900865B2E /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = AB9525AD14EA1B5900343418 /* about.html */; };
-		661955AF1A73FE3D00865B2E /* consent.html in Resources */ = {isa = PBXBuildFile; fileRef = AB7568D7151B0DAC0082AEE9 /* consent.html */; };
-		661955B01A73FE4200865B2E /* jscoreinfo.html in Resources */ = {isa = PBXBuildFile; fileRef = AB105EBE14EDCCD2000DB145 /* jscoreinfo.html */; };
-		661955B11A73FE4500865B2E /* memoryinfo.html in Resources */ = {isa = PBXBuildFile; fileRef = ABFCF9F714F6CDF600A508E0 /* memoryinfo.html */; };
 		6676D13C1A4DDCDB0002FC1F /* CaratConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6676D13B1A4DDCDB0002FC1F /* CaratConstants.m */; };
 		66D41BCB1A8F8EF800044C66 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D41BCA1A8F8EF800044C66 /* settings.png */; };
 		66EC15071A2A6A8E00153746 /* infoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EC15051A2A6A8E00153746 /* infoButton@2x.png */; };
@@ -115,7 +109,6 @@
 		89FF8B951BDBAA3E00147943 /* NetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B7D1BDBAA3E00147943 /* NetworkBaseViewController.m */; };
 		89FF8B991BDBB06C00147943 /* ActionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B981BDBB06C00147943 /* ActionObject.m */; };
 		89FF8B9D1BDBB2BA00147943 /* ListNetworkBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FF8B9C1BDBB2BA00147943 /* ListNetworkBaseViewController.m */; };
-		89FF8B9F1BDBF3A000147943 /* detailinfo.html in Resources */ = {isa = PBXBuildFile; fileRef = 89FF8B9E1BDBF3A000147943 /* detailinfo.html */; };
 		A46368A7DC6289168DF4D804 /* libPods-Carat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7CEB533A209025A71EBC73 /* libPods-Carat.a */; };
 		AB41CDF3144E1AF60090CC09 /* UIDeviceProc.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */; };
 		AB41CDF4144E1E520090CC09 /* CaratAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CDF6144E1E520090CC09 /* CaratAppDelegate.m */; };
@@ -126,8 +119,6 @@
 		AB41CE09144F56E90090CC09 /* CaratAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = AB41CE08144F56E90090CC09 /* CaratAppDelegate_iPad.m */; };
 		AB41CE1C1450BC060090CC09 /* hog.png in Resources */ = {isa = PBXBuildFile; fileRef = AB41CE1A1450BC060090CC09 /* hog.png */; };
 		AB8121E116C04EA2005FBE96 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8121E016C04EA2005FBE96 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		AB9525B014EA1B6F00343418 /* killapp.html in Resources */ = {isa = PBXBuildFile; fileRef = AB9525AF14EA1B6F00343418 /* killapp.html */; };
-		AB99EB0114EA6C130008E440 /* upgradeos.html in Resources */ = {isa = PBXBuildFile; fileRef = AB99EB0014EA6C130008E440 /* upgradeos.html */; };
 		AB9B580B148FEA10004F92F2 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9B580A148FEA10004F92F2 /* 37x-Checkmark.png */; };
 		AB9B580D148FF31D004F92F2 /* 37x-X.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9B580C148FF31D004F92F2 /* 37x-X.png */; };
 		ABAAA9FB161F7A0400504A9E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABAAA9F9161F79D600504A9E /* MapKit.framework */; };
@@ -1102,7 +1093,6 @@
 				89EFCC131BC66ABF00480C56 /* BugHogTableViewCell.xib in Resources */,
 				89FF8B941BDBAA3E00147943 /* MyScoreViewController.xib in Resources */,
 				245FC0771C8499800092A831 /* HogStatisticsViewController.xib in Resources */,
-				661955AF1A73FE3D00865B2E /* consent.html in Resources */,
 				89FF8B571BDBAA3300147943 /* WebInfoViewController.xib in Resources */,
 				C704AE5E1A03B90200E4F13C /* bug.png in Resources */,
 				8988B1661BDC181B0022524B /* updatecheck.png in Resources */,
@@ -1121,9 +1111,6 @@
 				894AF06A1BCCD9BF003E7D76 /* AboutTableViewCell.xib in Resources */,
 				89FF8B881BDBAA3E00147943 /* DashBoardViewController.xib in Resources */,
 				AB9B580D148FF31D004F92F2 /* 37x-X.png in Resources */,
-				661955AE1A73FE3900865B2E /* about.html in Resources */,
-				89FF8B9F1BDBF3A000147943 /* detailinfo.html in Resources */,
-				AB9525B014EA1B6F00343418 /* killapp.html in Resources */,
 				89554B5B1BDCD98C00ECE919 /* ProgressUpdateView.xib in Resources */,
 				8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */,
 				245897471C9063F1001D3FE2 /* TopHogsTableViewCell.xib in Resources */,
@@ -1136,17 +1123,12 @@
 				8988B1641BDC181B0022524B /* procmanager1.png in Resources */,
 				8958183C1BD7D372005E3C32 /* ActionItemCollapsedTableViewCell.xib in Resources */,
 				89FF8B551BDBAA3300147943 /* TutorialViewController.xib in Resources */,
-				661955B01A73FE4200865B2E /* jscoreinfo.html in Resources */,
 				894AF0651BCCD992003E7D76 /* AboutExpandedTableViewCell.xib in Resources */,
 				89FF8B8A1BDBAA3E00147943 /* HideAppsViewController.xib in Resources */,
-				AB99EB0114EA6C130008E440 /* upgradeos.html in Resources */,
-				661955AD1A73FE2F00865B2E /* collectdata.html in Resources */,
 				89FF8B901BDBAA3E00147943 /* Main.storyboard in Resources */,
-				661955AC1A73FE2900865B2E /* activebatterylife.html in Resources */,
 				2417658D1C60D896007EB0CD /* Icon144.png in Resources */,
 				ABEC9B6814F1DA00005CE813 /* license.txt in Resources */,
 				89FF8B511BDBAA3300147943 /* ProcessViewController.xib in Resources */,
-				661955B11A73FE4500865B2E /* memoryinfo.html in Resources */,
 				89FF8B8E1BDBAA3E00147943 /* InfoViewController.xib in Resources */,
 				89FF8B861BDBAA3E00147943 /* BugsViewController.xib in Resources */,
 			);
