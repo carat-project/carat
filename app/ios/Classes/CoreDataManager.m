@@ -1844,8 +1844,9 @@ static id instance = nil;
     NSError *error = nil;
     NSArray *runningProcessNames = nil;
     NSArray *hiddenProcessNames = [[Globals instance] getHiddenApps];
+    NSArray *hiddenLC = [NSArray array];
     if(hiddenProcessNames != nil && [hiddenProcessNames count] > 0){
-        hiddenProcessNames = [hiddenProcessNames valueForKey:@"lowercaseString"];
+        hiddenLC = [hiddenProcessNames valueForKey:@"lowercaseString"];
     }
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) 
@@ -1902,7 +1903,8 @@ static id instance = nil;
             }
             
             if ((filterHidden) &&
-                ([hiddenProcessNames containsObject:[cdataAppReport valueForKey:@"appName"]]))
+                (([hiddenProcessNames containsObject:[cdataAppReport valueForKey:@"appName"]]
+                  || [hiddenLC containsObject:[cdataAppReport valueForKey:@"appName"]])))
             {
                 DLog(@"%s '%@' hidden by user, filtering it out.",
                      __PRETTY_FUNCTION__,
