@@ -12,6 +12,7 @@
 @interface HogsViewController : BugHogListViewController
 @property (retain, nonatomic) IBOutlet UILabel *contentTitle;
 @property (retain, nonatomic) IBOutlet UIButton *extraButton;
+@property (retain, nonatomic) IBOutlet UINavigationItem *navBarTitle;
 @property (retain, nonatomic) IBOutlet UITextView *content;
 
 @end

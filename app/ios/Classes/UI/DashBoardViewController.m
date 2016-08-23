@@ -45,10 +45,10 @@ BOOL isUpdateProgressVisible;
     isUpdateProgressVisible = false;
     
     [_bugsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
-    [_bugsBtn setButtonTitle:@"Apps"];
+    [_bugsBtn setButtonTitle:NSLocalizedString(@"Apps", nil)];
     
     [_hogsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
-    [_hogsBtn setButtonTitle:@"Top"];
+    [_hogsBtn setButtonTitle:NSLocalizedString(@"Top", nil)];
     
     [_statisticsBtn setButtonImage:[UIImage imageNamed:@"globe_icon"]];
     [_statisticsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];

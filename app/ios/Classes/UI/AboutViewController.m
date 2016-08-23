@@ -59,7 +59,7 @@ static NSString * collapsedCell = @"AboutTableViewCell";
     d2.message = NSLocalizedString(@"ActionsMessage", nil);
     
     AboutListItemData* d3 = [AboutListItemData new];
-    d3.title = NSLocalizedString(@"Personal", nil);
+    d3.title = NSLocalizedString(@"Apps", nil);
     d3.subTitle = NSLocalizedString(@"PersonalSub", nil);
     d3.message = NSLocalizedString(@"PersonalDesc", nil);
     
@@ -113,7 +113,7 @@ static NSString * collapsedCell = @"AboutTableViewCell";
         [viewCell.subTabArea addGestureRecognizer:singleFingerTap];
         [singleFingerTap release];
     }
-    else if([rowData.title isEqualToString: NSLocalizedString(@"Hogs", nil)]){
+    else if([rowData.title isEqualToString: NSLocalizedString(@"Apps", nil)]){
         viewCell.subTitle.textColor = C_ORANGE;
 
         UITapGestureRecognizer *singleFingerTap =

@@ -20,6 +20,7 @@
     // Do any additional setup after loading the view from its nib.
     _contentTitle.text = NSLocalizedString(@"NothingToReport",nil);
     _content.text = NSLocalizedString(@"EmptyViewDesc",nil);
+    _navBarTitle.title = [NSLocalizedString(@"Apps", nil) uppercaseString];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingFinished:)
                                                  name:@"EditingFinished" object:nil];
@@ -112,6 +113,7 @@
     [_content release];
     [_contentTitle release];
     [_extraButton release];
+    [_navBarTitle release];
     [super dealloc];
 }
 @end

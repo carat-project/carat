@@ -90,7 +90,7 @@
 
     main.title = NSLocalizedString(@"MainTitle", nil);
     bugs.title = NSLocalizedString(@"Personal", nil);
-    hogs.title = NSLocalizedString(@"Hogs", nil);
+    hogs.title = NSLocalizedString(@"Apps", nil);
     eula.title = NSLocalizedString(@"Eula", nil);
     
     main.text = NSLocalizedString(@"MainDesc", nil);
