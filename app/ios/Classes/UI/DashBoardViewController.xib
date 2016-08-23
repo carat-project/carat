@@ -210,7 +210,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="319" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ve-Lw-Lse" userLabel="facebook">
-                                    <rect key="frame" x="60" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="92" y="0.0" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="1Ve-Lw-Lse" secondAttribute="height" multiplier="1:1" id="Enc-sD-hED"/>
                                     </constraints>
@@ -221,17 +221,18 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vak-7e-QBJ" userLabel="twitter">
-                                    <rect key="frame" x="140" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="164" y="0.0" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="vak-7e-QBJ" secondAttribute="height" multiplier="1:1" id="eP4-ox-Cow"/>
                                     </constraints>
                                     <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                    <state key="normal" image="twitter_icon"/>
                                     <connections>
                                         <action selector="showTwitter:" destination="-1" eventType="touchUpInside" id="BVS-zf-quA"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bX-Fb-yvd" userLabel="email">
-                                    <rect key="frame" x="219" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="235" y="0.0" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="3bX-Fb-yvd" secondAttribute="height" multiplier="1:1" id="LDJ-Qo-elz"/>
                                     </constraints>
@@ -244,11 +245,11 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="1Ve-Lw-Lse" firstAttribute="centerX" secondItem="UKV-rZ-CYU" secondAttribute="centerX" multiplier="0.5" id="00A-y9-Arl"/>
-                                <constraint firstItem="3bX-Fb-yvd" firstAttribute="centerX" secondItem="UKV-rZ-CYU" secondAttribute="centerX" multiplier="1.5" id="1Iu-1v-bD0"/>
+                                <constraint firstItem="1Ve-Lw-Lse" firstAttribute="centerX" secondItem="UKV-rZ-CYU" secondAttribute="centerX" multiplier="0.7" id="00A-y9-Arl"/>
+                                <constraint firstItem="3bX-Fb-yvd" firstAttribute="centerX" secondItem="UKV-rZ-CYU" secondAttribute="centerX" multiplier="1.6" id="1Iu-1v-bD0"/>
                                 <constraint firstAttribute="bottom" secondItem="3bX-Fb-yvd" secondAttribute="bottom" id="Pzw-Ha-us6"/>
                                 <constraint firstItem="vak-7e-QBJ" firstAttribute="top" secondItem="UKV-rZ-CYU" secondAttribute="top" id="SbP-FH-HcG"/>
-                                <constraint firstItem="vak-7e-QBJ" firstAttribute="centerX" secondItem="UKV-rZ-CYU" secondAttribute="centerX" id="UH8-VX-9OM"/>
+                                <constraint firstItem="vak-7e-QBJ" firstAttribute="centerX" secondItem="UKV-rZ-CYU" secondAttribute="centerX" constant="25" id="UH8-VX-9OM"/>
                                 <constraint firstItem="1Ve-Lw-Lse" firstAttribute="top" secondItem="UKV-rZ-CYU" secondAttribute="top" id="Zfh-bq-vYB"/>
                                 <constraint firstItem="vak-7e-QBJ" firstAttribute="centerY" secondItem="UKV-rZ-CYU" secondAttribute="centerY" id="a53-IY-QXW"/>
                                 <constraint firstAttribute="bottom" secondItem="vak-7e-QBJ" secondAttribute="bottom" id="gaC-kl-Krh"/>
@@ -355,5 +356,6 @@
         <image name="facebook_icon" width="48" height="48"/>
         <image name="more_icon" width="8" height="30"/>
         <image name="share_btn" width="81" height="81"/>
+        <image name="twitter_icon" width="48" height="48"/>
     </resources>
 </document>
