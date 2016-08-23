@@ -64,21 +64,16 @@ static NSString * collapsedCell = @"AboutTableViewCell";
     d3.message = NSLocalizedString(@"PersonalDesc", nil);
     
     AboutListItemData* d4 = [AboutListItemData new];
-    d4.title = NSLocalizedString(@"Hogs", nil);
-    d4.subTitle = NSLocalizedString(@"HogsSub", nil);
-    d4.message = NSLocalizedString(@"HogsDesc", nil);
+    d4.title = NSLocalizedString(@"CollectData", nil);
+    d4.subTitle = NSLocalizedString(@"CollectDataSub", nil);
+    d4.message = NSLocalizedString(@"CollectDataMessage", nil);
     
     AboutListItemData* d5 = [AboutListItemData new];
-    d5.title = NSLocalizedString(@"CollectData", nil);
-    d5.subTitle = NSLocalizedString(@"CollectDataSub", nil);
-    d5.message = NSLocalizedString(@"CollectDataMessage", nil);
+    d5.title = NSLocalizedString(@"ActiveBatteryLife", nil);
+    d5.subTitle = NSLocalizedString(@"ActiveBatteryLifeSub", nil);
+    d5.message = NSLocalizedString(@"ActiveBatteryLifeMessage", nil);
     
-    AboutListItemData* d6 = [AboutListItemData new];
-    d6.title = NSLocalizedString(@"ActiveBatteryLife", nil);
-    d6.subTitle = NSLocalizedString(@"ActiveBatteryLifeSub", nil);
-    d6.message = NSLocalizedString(@"ActiveBatteryLifeMessage", nil);
-    
-    _tableData = [[NSArray alloc] initWithObjects:d1, d2, d3, d4, d5, d6, nil];
+    _tableData = [[NSArray alloc] initWithObjects:d1, d2, d3, d4, d5, nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
