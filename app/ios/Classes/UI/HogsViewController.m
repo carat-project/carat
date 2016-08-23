@@ -25,8 +25,7 @@
                                                  name:@"EditingFinished" object:nil];
     [self updateExtraAction];
     [self setBug:NO];
-    [self setHogBugReport:[[CoreDataManager instance] getHogs:NO withoutHidden:YES]];
-    
+    [self setHogBugReport:[self getHogBugReport]];
 }
 
 - (void) updateExtraAction {
@@ -49,7 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setHogBugReport:[[CoreDataManager instance] getHogs:NO withoutHidden:YES]];
+    [self setHogBugReport:[self getHogBugReport]];
 }
 
 
@@ -77,10 +76,30 @@
 }
 
 - (void)reloadReport {
-    HogBugReport * hogs = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
-    if (hogs != nil) {
-        [self setHogBugReport:hogs];
+    HogBugReport *all = [self getHogBugReport];
+    if (all != nil) {
+        [self setHogBugReport:all];
     }
+}
+
+- (HogBugReport *)getHogBugReport {
+    HogBugReport *bugs = [[CoreDataManager instance] getBugs:NO withoutHidden:YES];
+    HogBugReport *hogs = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
+    NSMutableArray *hbList = [NSMutableArray array];
+    for(HogsBugs* bug in bugs.hbList){
+        DLog(@"Bug: %@", bug.appName);
+        bug.samplesWithout = 1;
+        [hbList addObject:bug];
+    }
+    for(HogsBugs* hog in hogs.hbList){
+        DLog(@"Hog: %@", hog.appName);
+        hog.samplesWithout = 0;
+        [hbList addObject:hog];
+    }
+    
+    HogBugReport *all = [HogBugReport new];
+    all.hbList = hbList;
+    return all;
 }
 
 -(void)sampleCountUpdated:(NSNotification*)notification{

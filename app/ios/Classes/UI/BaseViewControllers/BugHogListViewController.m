@@ -84,7 +84,22 @@
     if(_handlesBugs) {
         array = [[CoreDataManager instance] getBugs:NO withoutHidden:!_editing];
     } else {
-        array = [[CoreDataManager instance] getHogs:NO withoutHidden:!_editing];
+        HogBugReport *bugs = [[CoreDataManager instance] getBugs:NO withoutHidden:!_editing];
+        HogBugReport *hogs = [[CoreDataManager instance] getHogs:NO withoutHidden:!_editing];
+        NSMutableArray *hbList = [NSMutableArray array];
+        for(HogsBugs* bug in bugs.hbList){
+            DLog(@"Bug: %@", bug.appName);
+            bug.samplesWithout = 1;
+            [hbList addObject:bug];
+        }
+        for(HogsBugs* hog in hogs.hbList){
+            DLog(@"Hog: %@", hog.appName);
+            hog.samplesWithout = 0;
+            [hbList addObject:hog];
+        }
+        
+        array = [HogBugReport new];
+        array.hbList = hbList;
     }
 
     self.tableView.allowsSelection = !_editing;
@@ -150,8 +165,12 @@
     
     if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
         [self setTopRowData:hb cell:cellView];
+        if([hb samplesWithout] == 0){
+            cellView.typeValueLabel.text = NSLocalizedString(@"Hog", nil);
+        } else {
+            cellView.typeValueLabel.text = NSLocalizedString(@"Personal", nil);
+        }
         cellView.samplesValueLabel.text = [[NSNumber numberWithDouble:[hb samples]] stringValue];
-        cellView.samplesWithoutValueLabel.text = [[NSNumber numberWithDouble:[hb samplesWithout]] stringValue];
         
         
         double error = [self getErrorMinutes:hb];
@@ -183,10 +202,10 @@
     NSString *hide = [NSLocalizedString(@"Hide", nil) uppercaseString];
     [UIView performWithoutAnimation:^{
         [cell.hideButton setTitle:show forState:UIControlStateNormal];
-        [cell.hideButton setTitleColor:green forState:UIControlStateNormal];
+        [cell.hideButton setTitleColor:red forState:UIControlStateNormal];
         if(![[Globals instance] isAppHidden:hb.appName]){
             [cell.hideButton setTitle:hide forState:UIControlStateNormal];
-            [cell.hideButton setTitleColor:red forState:UIControlStateNormal];
+            [cell.hideButton setTitleColor:green forState:UIControlStateNormal];
         }
         cell.hideButton.tag = path.row;
         [self addHideListener: cell];
@@ -207,6 +226,8 @@
 -(void) toggleHidden:(UIButton *)sender{
     UIColor *red = [UIColor colorWithRed:65.0f/255.0f green:164.0f/255.0f blue:26.0f/255.0f alpha:1.0f];
     UIColor *green = [UIColor colorWithRed:146.0f/255.0f green:19.0f/255.0f blue:10.0f/255.0f alpha:1.0f];
+    NSString *hide = [NSLocalizedString(@"Hide", nil) uppercaseString];
+    NSString *show = [NSLocalizedString(@"Show", nil) uppercaseString];
     
     NSInteger *tag = sender.tag;
     HogsBugs *hb = [filteredCells objectAtIndex:tag];
@@ -214,16 +235,16 @@
     if([[Globals instance] isAppHidden:appName]) {
         [UIView animateWithDuration:0.3f animations:^{
             [sender setAlpha:0.0f];
-            [sender setTitleColor:red forState:UIControlStateNormal];
-            [sender setTitle:@"HIDE" forState:UIControlStateNormal];
+            [sender setTitleColor:green forState:UIControlStateNormal];
+            [sender setTitle:hide forState:UIControlStateNormal];
             [sender setAlpha:1.0f];
         }];
         [[Globals instance] showApp:appName];
     } else {
         [UIView animateWithDuration:0.3f animations:^{
             [sender setAlpha:0.0f];
-            [sender setTitleColor:green forState:UIControlStateNormal];
-            [sender setTitle:@"SHOW" forState:UIControlStateNormal];
+            [sender setTitleColor:red forState:UIControlStateNormal];
+            [sender setTitle:show forState:UIControlStateNormal];
             [sender setAlpha:1.0f];
         }];
         [[Globals instance] hideApp:appName];
