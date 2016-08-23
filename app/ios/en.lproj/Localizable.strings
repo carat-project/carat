@@ -11,6 +11,7 @@
 "Carat" = "Carat";
 "BatteryLifeLabel"="Active Battery Life";
 "Calibrating"="Calibrating..";
+"Global"="Global";
 "Personal"="Personal";
 "Apps"="Apps";
 "Top"="Top";
@@ -29,7 +30,7 @@
 "MainTitle"="Carat Collaborative Energy Diagnosis";
 "MainDesc"="Carat is a research project of the University of Helsinki, originally created in collaboration with the AMP Lab at UC Berkeley, that helps detect and diagnose battery problems, giving you personalized recommendations.";
 "PersonalDesc"="Global apps consume the same amount of battery on many devices, while personal apps use a lot of energy speficially on your device.";
-"HogsDesc"="Global apps consume the same amount of battery on many devices, while personal apps use a lot of energy speficially on your device.";
+"AppsDesc"="Global apps consume the same amount of battery on many devices, while personal apps use a lot of energy speficially on your device.";
 "HogStatisticsDesc"="Top list shows apps with highest battery consumption among all devices. It is based on worldwide results collected by Carat.";
 
 "Eula"="END-USER LICENSE\nAGREEMENT";
@@ -57,6 +58,7 @@
 //My Device ends
 //BugsView start
 "ExpectedImp"="Impact: ";
+"Type"="Type:";
 "Samples"="Samples";
 "Error"="Error";
 "SamplesWithout"="Samples without";

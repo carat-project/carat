@@ -11,7 +11,8 @@
 "Carat" = "Carat";
 "BatteryLifeLabel"="Akun kesto";
 "Calibrating"="Kalibroidaan..";
-"Personal"="Laitekohtaiset";
+"Global"="Yleinen";
+"Personal"="Laitekohtainen";
 "Apps"="Sovellukset";
 "Top"="Top-lista";
 "Statistics"="Statistiikka";
@@ -30,10 +31,10 @@
 "MainDesc"="Carat on tutkimusprojekti Helsingin Yliopistolta ja UC Berkeleyn AMP Labista. Carat auttaa löytämään ja korjaamaan akunkeston ongelmia, ja antaa henkilökohtaisia ehdotuksia. Ehdotukset-lista kertoo, kuinka saat sinun akkusi kestämään kauemmin, ja millaisia parannuksia on luvassa. Carat kerää ja raportoi puhelimestasi yleistä käyttötietoa, joka mahdollistaa Caratin tarjoamat toiminnot. Tähän ei missään tapauksessa sisälly henkilökohtaista tietoa.\nCaratia kehitetään jatkuvasti, joten kannattaa tarkistaa uudet ehdotukset silloin tällöin. Mitä enemmän käytät Caratia, sitä tarkempaa tietoa se tarjoaa.";
 "PersonalDesc"="Yleisten sovellusten energiankulutus on samankaltaista useilla laitteilla, kun taas laitekohtaiset sovellukset kuluttavat enemmän energiaa juuri sinun laitteellasi.";
 "HogStatisticsDesc"="Top-listalta löydät järjestyksessä ne sovellukset, jotka käyttävät kaikista eniten energiaa. Lista perustuu Caratin maailmanlaajuisiin tuloksiin.";
-"HogsDesc"="Yleisten sovellusten energiankulutus on samankaltaista useilla laitteilla, kun taas laitekohtaiset sovellukset kuluttavat enemmän energiaa juuri sinun laitteellasi.";
-"Eula"="END-USER LICENSE\nAGREEMENT";
-"ReadEula"="Lue EULA";
-"EulaShortDesc"="Carat kerää yleistä tietoa laitteestasti ja sen käytöstä. Käyttääksesi tätä sovellusta, sinun tulee hyväksyä EULA.";
+"AppsDesc"="Yleisten sovellusten energiankulutus on samankaltaista useilla laitteilla, kun taas laitekohtaiset sovellukset kuluttavat enemmän energiaa juuri sinun laitteellasi.";
+"Eula"="Loppukäyttäjän lisenssisopimus";
+"ReadEula"="Lue sopimus";
+"EulaShortDesc"="Carat kerää yleistä tietoa laitteestasti ja sen käytöstä. Käyttääksesi tätä sovellusta, sinun tulee hyväksyä loppukäyttäjän lisenssisopimus.";
 "Accept"="Hyväksy";
 "AcceptInfo"="Jatkamalla hyväksyt EULA:n ja yksityisyyskäytännön";
 "EulaPrivacyPolicy" = "Eula privacy policy";
@@ -54,8 +55,9 @@
 //My Device ends
 //BugsView start
 "ExpectedImp"="Vaikutus: ";
+"Type"="Tyyppi:";
 "Samples"="Mittauksia";
-"Error"="Virheitä";
+"Error"="Virhemarginaali";
 "SamplesWithout"="Mittauksia ilman";
 "NumberHelpLabel"="Mitä nämä numerot tarkoittavat?";
 "NoBugs"="Ei tuloksia, vielä!";
@@ -81,7 +83,7 @@
 "GeneralStatistics"="Yleinen statistiikka";
 "pop"="Suosituimmat laitemallit";
 "ShowHogStats"="Näytä statistiikkaa sovelluksista";
-"GenAllMessage"="Kaikista %ld asennetuista sovelluksista, %d%% kuluttaa paljon virtaa kaikilla laitteilla ja %d%% kuluttaa enemmän virtaa vain osalla laitteista.";
+"GenAllMessage"="Kaikista %ld asennetuista sovelluksista, %d%% kuluttaa paljon virtaa kaikilla laitteilla ja %d%% vain osalla laitteista.";
 "GenAndroidMessage"="Kaikista %ld asennetuista android-sovelluksista, %d%% kuluttaa paljon virtaa kaikilla laitteilla ja %d%% vain osalla laitteista.";
 "GenIOSMessage"="Kaikista %ld asennetuista iOS-sovelluksista, %d%% kuluttaa paljon virtaa kaikilla laitteilla ja %d%% vain osalla laitteista.";
 "GenUsersMessage"="Caratin %ld käyttäjästä %d%% laitteella on paljon energiaa käyttäviä sovelluksia.";

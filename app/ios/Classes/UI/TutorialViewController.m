@@ -51,7 +51,7 @@
 
 - (IBAction)acceptPressed{
     NSLog(@"****** acceptPressed *******");
-    if (_pagePos == 3){
+    if (_pagePos == 2){
         [[Globals instance] userHasConsented];
         if(callbackDelegate != nil){
             [[Globals instance] userHasConsented];
@@ -85,26 +85,22 @@
     NSLog(@"****** createTutorialData ********");
     TutorialPageContent *main = [TutorialPageContent new];
     TutorialPageContent *bugs = [TutorialPageContent new];
-    TutorialPageContent *hogs = [TutorialPageContent new];
     TutorialPageContent *eula = [TutorialPageContent new];
 
     main.title = NSLocalizedString(@"MainTitle", nil);
-    bugs.title = NSLocalizedString(@"Personal", nil);
-    hogs.title = NSLocalizedString(@"Apps", nil);
+    bugs.title = NSLocalizedString(@"Apps", nil);
     eula.title = NSLocalizedString(@"Eula", nil);
     
     main.text = NSLocalizedString(@"MainDesc", nil);
     bugs.text = NSLocalizedString(@"PersonalDesc", nil);
-    hogs.text = NSLocalizedString(@"HogsDesc", nil);
     eula.text = NSLocalizedString(@"EulaShortDesc", nil);
     
     main.imageName = @"tutorial_01";
     bugs.imageName = @"tutorial_02";
-    hogs.imageName = @"tutorial_03";
     eula.imageName = @"tutorial_04";
     
     
-    _pageDataContent = [[NSArray alloc] initWithObjects:main, bugs, hogs, eula, nil];
+    _pageDataContent = [[NSArray alloc] initWithObjects:main, bugs, eula, nil];
 
      NSLog(@"****** Check created data title ******** %@", ((TutorialPageContent*)_pageDataContent[1]).title);
     
@@ -117,7 +113,7 @@
     TutorialPageContent* pageCont = _pageDataContent[pageNumber];
      NSLog(@"****** setPage title ******** %@", pageCont.title);
     _eulaButton.hidden = true;
-    if(pageNumber == 3){
+    if(pageNumber == 2){
         //[_acceptButton setEnabled:YES];
         [_acceptButton setBackgroundColor:C_LIGHT_GRAY forState:UIControlStateDisabled];
         [_acceptButton setBackgroundColor:C_ORANGE forState:UIControlStateNormal];
