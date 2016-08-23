@@ -88,12 +88,10 @@
     HogBugReport *hogs = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
     NSMutableArray *hbList = [NSMutableArray array];
     for(HogsBugs* bug in bugs.hbList){
-        DLog(@"Bug: %@", bug.appName);
         bug.samplesWithout = 1;
         [hbList addObject:bug];
     }
     for(HogsBugs* hog in hogs.hbList){
-        DLog(@"Hog: %@", hog.appName);
         hog.samplesWithout = 0;
         [hbList addObject:hog];
     }

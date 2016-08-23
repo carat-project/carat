@@ -25,6 +25,7 @@
 "NA"="N/A";
 "Done"="Valmis";
 "Loading"="Ladataan..";
+"Information"="Tietoja";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
@@ -56,8 +57,8 @@
 //BugsView start
 "ExpectedImp"="Vaikutus: ";
 "Type"="Tyyppi:";
-"Samples"="Mittauksia";
-"Error"="Virhemarginaali";
+"Samples"="Mittauksia:";
+"Error"="Virhemarginaali:";
 "SamplesWithout"="Mittauksia ilman";
 "NumberHelpLabel"="Mitä nämä numerot tarkoittavat?";
 "NoBugs"="Ei tuloksia, vielä!";
@@ -168,7 +169,7 @@
 //HogsMessage == HogsDesc
 "CollectData"="Kerää dataa";
 "CollectDataSub"="Tietoa miten Carat kerää dataa";
-"CollectDataMessage"="Carat kerää ja raportoi yleisimmät käyttötiedot laitteestasi, joihin käyttöjärjestelmä sallii pääsyn. Tämä prosessi ei kerää yhtään henkilökohtaista tietoa. Piste";
+"CollectDataMessage"="Carat kerää ja raportoi yleisimmät käyttötiedot laitteestasi, joihin käyttöjärjestelmä sallii pääsyn. Tämä prosessi ei kerää yhtään henkilökohtaista tietoa.";
 "ActiveBatteryLife"="Aktiivinen akunkesto";
 "ActiveBatteryLifeSub"="Mitä aktiivinen akunkesto tarkoittaa?";
 "ActiveBatteryLifeMessage"="Aktiivinen akunkesto arvioi, kuinka kauan akkusi kestäisi aktiivisessa käytössä. Aktiivinen akunkesto ei ota huomioon laitteen lepojaksoja, eikä aikaa, jolloin Carat ei ole kerännyt mittauksia. Aktiivinen akunkesto voi olla paljon vähemmän tai enemmän kuin voisit olettaa, mutta se kuvaa tarkemmin aktiivisen käytön tilastollista intensiteettiä.";

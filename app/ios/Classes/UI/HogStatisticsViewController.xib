@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="euS-RX-6W2" userLabel="Hogs table">
-                    <rect key="frame" x="0.0" y="134" width="600" height="466"/>
+                    <rect key="frame" x="0.0" y="104" width="600" height="496"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMc-Fr-Kiu" userLabel="Information label">
@@ -92,7 +92,7 @@
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UeS-EV-hqu"/>
                 <constraint firstItem="1Y8-lj-sSI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Xed-D0-LUW"/>
                 <constraint firstItem="euS-RX-6W2" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="ZIq-S2-p2y"/>
-                <constraint firstItem="euS-RX-6W2" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="bottom" id="bHz-IG-IVJ"/>
+                <constraint firstItem="euS-RX-6W2" firstAttribute="top" secondItem="tMc-Fr-Kiu" secondAttribute="bottom" constant="-30" id="bHz-IG-IVJ"/>
                 <constraint firstItem="tMc-Fr-Kiu" firstAttribute="top" secondItem="1Y8-lj-sSI" secondAttribute="bottom" id="bte-Of-gzv"/>
                 <constraint firstItem="euS-RX-6W2" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="cXQ-ec-WOl"/>
                 <constraint firstItem="bTb-4N-Xd8" firstAttribute="centerY" secondItem="ibr-Sp-V37" secondAttribute="centerY" id="gCR-21-PCy"/>

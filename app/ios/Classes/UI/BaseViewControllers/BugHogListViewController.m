@@ -340,7 +340,7 @@
     DLog(@"%s", __PRETTY_FUNCTION__);
     WebInfoViewController *controler = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
     controler.webUrl = @"detailinfo";
-    controler.titleForView =  NSLocalizedString(@"NumberHelpLabel", nil);
+    controler.titleForView =  NSLocalizedString(@"Information", nil);
     [self.navigationController pushViewController:controler animated:YES];
 }
 

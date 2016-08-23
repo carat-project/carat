@@ -14,7 +14,7 @@
 "Global"="Global";
 "Personal"="Personal";
 "Apps"="Apps";
-"Top"="Top";
+"Top"="Top list";
 "Statistics"="Statistics";
 "Actions"="Actions";
 "MyDevice"="MY DEVICE";
@@ -25,6 +25,7 @@
 "NA"= "N/A";
 "Done"="Done";
 "Loading"="Loading..";
+"Information"="Information";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
@@ -59,8 +60,8 @@
 //BugsView start
 "ExpectedImp"="Impact: ";
 "Type"="Type:";
-"Samples"="Samples";
-"Error"="Error";
+"Samples"="Samples:";
+"Error"="Error:";
 "SamplesWithout"="Samples without";
 "NumberHelpLabel"="What are these numbers?";
 "NoBugs"="No results, yet!";
@@ -205,9 +206,8 @@
 "Updated" = "Updated ";
 "Ago" = "ago";
 "Samples" = "%i Samples sent";
-"SamplesLabel" = "Samples";
+"SamplesLabel" = "Samples:";
 "None" = "None";
-
 
 //Flurry Logs
 "selectedProcessList" = "selectedProcessList";

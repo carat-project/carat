@@ -812,8 +812,7 @@ static int previousSample = 0;
         entityType = @"Hog";
         
         // Hog report
-        DLog(@"%s Updating hog report...", __PRETTY_FUNCTION__);
-        reportUpdateStatus = @"(Updating hog report...)";
+        reportUpdateStatus = @"(Updating global apps...)";
         [self postNotificationOnMainThread];
         
         Feature *feature1 = [[[Feature alloc] init] autorelease];
@@ -856,7 +855,7 @@ static int previousSample = 0;
         // Bug report
         entityType = @"Bug";
         DLog(@"%s Updating personal hog report...", __PRETTY_FUNCTION__);
-        reportUpdateStatus = @"(Updating personal hog report...)";
+        reportUpdateStatus = @"(Updating personal apps...)";
         [self postNotificationOnMainThread];
         
         [feature1 setValue:entityType];
