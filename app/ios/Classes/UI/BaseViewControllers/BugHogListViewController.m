@@ -88,12 +88,10 @@
         HogBugReport *hogs = [[CoreDataManager instance] getHogs:NO withoutHidden:!_editing];
         NSMutableArray *hbList = [NSMutableArray array];
         for(HogsBugs* bug in bugs.hbList){
-            DLog(@"Bug: %@", bug.appName);
             bug.samplesWithout = 1;
             [hbList addObject:bug];
         }
         for(HogsBugs* hog in hogs.hbList){
-            DLog(@"Hog: %@", hog.appName);
             hog.samplesWithout = 0;
             [hbList addObject:hog];
         }
@@ -102,7 +100,7 @@
         array.hbList = hbList;
     }
 
-    self.tableView.allowsSelection = !_editing;
+     self.tableView.allowsSelection = !_editing;
     [self.expandedCells removeAllObjects];
     [self setHogBugReport:array];
     [self.tableView reloadData];
@@ -166,12 +164,11 @@
     if ([[cell reuseIdentifier] isEqualToString:expandedCell]) {
         [self setTopRowData:hb cell:cellView];
         if([hb samplesWithout] == 0){
-            cellView.typeValueLabel.text = NSLocalizedString(@"Hog", nil);
+            cellView.typeValueLabel.text = NSLocalizedString(@"Global", nil);
         } else {
             cellView.typeValueLabel.text = NSLocalizedString(@"Personal", nil);
         }
         cellView.samplesValueLabel.text = [[NSNumber numberWithDouble:[hb samples]] stringValue];
-        
         
         double error = [self getErrorMinutes:hb];
         NSString *errorLabel = [Utilities doubleAsTimeNSString:error];

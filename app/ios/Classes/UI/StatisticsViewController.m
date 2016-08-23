@@ -376,6 +376,6 @@ bool genStatLoaded;
 
 - (IBAction)showHogsInfo:(id)sender {
         NSLog(@"showHogsInfo");
-     [self showInfoView:@"Hogs" message:@"HogsDesc"];
+     [self showInfoView:@"Hogs" message:@"AppsDesc"];
 }
 @end

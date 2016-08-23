@@ -354,11 +354,9 @@ BOOL isUpdateProgressVisible;
 {
     NSMutableArray *myList = [[CoreDataManager instance] getHogsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
     
-    DLog(@"Loading Hogs");
     // get Bugs, add to array
     NSMutableArray *bugsActionList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionRestart", nil) actType:ActionTypeRestartApp];
     [myList addObjectsFromArray:bugsActionList];
-    DLog(@"Loading Personal Hogs");
     
     // get OS
     ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];

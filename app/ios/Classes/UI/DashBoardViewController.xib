@@ -38,7 +38,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ia7-bT-aLn" userLabel="bottomBar">
                     <rect key="frame" x="0.0" y="500" width="375" height="167"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Y6-d8-ikE" userLabel="hogs" customClass="DashboardNavigationButton">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Y6-d8-ikE" userLabel="Top" customClass="DashboardNavigationButton">
                             <rect key="frame" x="94" y="0.0" width="94" height="167"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <gestureRecognizers/>

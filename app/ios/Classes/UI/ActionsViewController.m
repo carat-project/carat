@@ -93,11 +93,9 @@
      // get Hogs, filter negative actionBenefits, fill mutable array
     NSMutableArray *myList = [[CoreDataManager instance] getHogsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
     
-    DLog(@"Loading Hogs");
    // get Bugs, add to array
     NSMutableArray *bugsActionList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionRestart", nil) actType:ActionTypeRestartApp];
     [myList addObjectsFromArray:bugsActionList];
-    DLog(@"Loading Personal Hogs");
     
     // get OS
     ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];
@@ -268,7 +266,7 @@
         cell.actionValue.text = @"+100 karma!";
         cell.actionType = ActionTypeSpreadTheWord;
     } else if (act.actionBenefit == -3) {
-        cell.actionValue.text = @"See top Hogs and devices";
+        cell.actionValue.text = @"See top apps and devices";
         cell.actionType = ActionTypeGlobalStats;
     }
     else {
