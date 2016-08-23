@@ -44,11 +44,11 @@ BOOL isUpdateProgressVisible;
     
     isUpdateProgressVisible = false;
     
-    [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
-    [_bugsBtn setButtonTitle:NSLocalizedString(@"Personal", nil)];
+    [_bugsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
+    [_bugsBtn setButtonTitle:@"Apps"];
     
-    [_hogsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
-    [_hogsBtn setButtonTitle:NSLocalizedString(@"Hogs", nil)];
+    [_hogsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
+    [_hogsBtn setButtonTitle:@"Top"];
     
     [_statisticsBtn setButtonImage:[UIImage imageNamed:@"globe_icon"]];
     [_statisticsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
@@ -388,24 +388,13 @@ BOOL isUpdateProgressVisible;
 }
 
 - (IBAction)showBugs:(id)sender {
-    NSLog(@"personalTapped");
-    BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
-    [Flurry logEvent:NSLocalizedString(@"selectedBugsView", nil)];
+    HogsViewController *controller = [[HogsViewController alloc] initWithNibName:@"HogsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (IBAction)showHogs:(id)sender {
-    
-    // Check if we are running on iOS 9.0+, if so, show statistics instead
-    if(true || floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
-        HogsViewController *controller = [[HogsViewController alloc] initWithNibName:@"HogsViewController" bundle:nil];
-        [self.navigationController pushViewController:controller animated:YES];
-        [Flurry logEvent:NSLocalizedString(@"selectedHogsView", nil)];
-    } else {
-        HogStatisticsViewController *controller = [[HogStatisticsViewController alloc] initWithNibName:@"HogStatisticsViewController" bundle:nil];
-        [self.navigationController pushViewController:controller animated:YES];
-        [Flurry logEvent:NSLocalizedString(@"selectedHogStatisticsView", nil)];
-    }
+    HogStatisticsViewController *controller = [[HogStatisticsViewController alloc] initWithNibName:@"HogStatisticsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (IBAction)showStatistics:(id)sender {
