@@ -329,9 +329,13 @@ BOOL isUpdateProgressVisible;
 - (int)getBugsCount
 {
     int count = 0;
-    HogBugReport *rep = [[CoreDataManager instance] getBugs:NO withoutHidden:YES];
+    HogBugReport *rep = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
+    HogBugReport *bugs = [[CoreDataManager instance] getBugs:NO withoutHidden: YES];
     if (rep != nil && [rep hbListIsSet]) {
         count = (int)[[rep hbList] count];
+    }
+    if(bugs != nil && [bugs hbListIsSet]){
+        count += (int)[[bugs hbList] count];
     }
     return count;
 }
