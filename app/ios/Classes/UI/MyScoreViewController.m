@@ -18,6 +18,7 @@
 #import "UIImageDoNotCache.h"
 #import "CaratConstants.h"
 #import "DeviceInformation.h"
+#import "Preprocessor.h"
 
 @interface MyScoreViewController ()
 
@@ -297,6 +298,7 @@ BOOL isUpdateProgressVisible;
     [_lastUpdatedLabel release];
     [_progressUpdateView release];
     [_navbarTitle release];
+    [_processListButton release];
     [super dealloc];
 }
 @end

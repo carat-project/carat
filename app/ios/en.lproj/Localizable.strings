@@ -212,7 +212,7 @@
 //Flurry Logs
 "selectedProcessList" = "selectedProcessList";
 "selectedBugsView" = "selectedPersonalView";
-"selectedHogsView" = "selectedHogsView";
+"selectedHogsView" = "selectedAppsView";
 "selectedActionsView" = "selectedActionsView";
 "selectedStatisticsView" = "selectedStatisticsView";
 "selectedMyDeviceView" = "selectedMyDeviceView";

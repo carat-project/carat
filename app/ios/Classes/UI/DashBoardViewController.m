@@ -149,6 +149,7 @@ BOOL isUpdateProgressVisible;
     
     // iOS 9+ has no hogs, so we have no count
     if(true || NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_9_0) {
+        count = [self getHogsCount];
         [_hogsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
     } else {
         [_hogsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
