@@ -25,4 +25,5 @@
 + (NSString *) getDirectoryPath:(NSString *)fileName;
 + (NSDate *) getLastModified:(NSString *)path;
 + (NSInteger)daysSince:(NSDate*)date;
++ (BOOL)array:(NSArray *)arr containsIgnoreCase:(NSString *)str;
 @end

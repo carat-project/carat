@@ -1776,41 +1776,43 @@ static id instance = nil;
             }
             #endif
         }
-        
-        if(runningProcessNames != nil && [runningProcessNames count] > 0){
-            runningProcessNames = [runningProcessNames valueForKey:@"lowercaseString"];
-        }
         HogBugReport * bugs = [[[HogBugReport alloc] init] autorelease];
         NSMutableArray * hbList = [[[NSMutableArray alloc] init] autorelease];
         [bugs setHbList:hbList];
         for (CoreDataAppReport *cdataAppReport in fetchedObjects)
         {
+            NSString *appName = [cdataAppReport valueForKey:@"appName"];
             if ((filterNonRunning) &&
-                (![runningProcessNames containsObject:[[cdataAppReport valueForKey:@"appName"] lowercaseString]]))
+                (![Utilities array:runningProcessNames containsIgnoreCase:appName]))
             {
                 DLog(@"%s '%@' is a system process or not running, filtering it out.",
-                     __PRETTY_FUNCTION__,
-                     [cdataAppReport valueForKey:@"appName"]);
-                continue; 
+                     __PRETTY_FUNCTION__, appName);
+                continue;
             }
-            
-            if ((filterHidden) && ([hiddenProcessNames containsObject:[cdataAppReport valueForKey:@"appName"]]))
+            if(daemonsList != nil && [daemonsList count] > 0){
+                NSArray *daemons = [daemonsList allKeys];
+                if([Utilities array:daemons containsIgnoreCase:appName]){
+                    DLog(@"%s '%@' is a blacklisted daemon, filtering it out.",
+                         __PRETTY_FUNCTION__, appName);
+                    continue;
+                }
+            }
+            if (filterHidden &&
+                [Utilities array:hiddenProcessNames containsIgnoreCase:appName])
             {
                 DLog(@"%s '%@' hidden by user, filtering it out.",
-                     __PRETTY_FUNCTION__,
-                     [cdataAppReport valueForKey:@"appName"]);
+                     __PRETTY_FUNCTION__, appName);
                 continue;
             }
             
             if ([[cdataAppReport valueForKey:@"samples"] doubleValue] <= 0) {
                 DLog(@"%s '%@' has no samples, filtering it out.",
-                     __PRETTY_FUNCTION__,
-                     [cdataAppReport valueForKey:@"appName"]);
+                     __PRETTY_FUNCTION__, appName);
                 continue;
             }
 
             HogsBugs *bug = [[[HogsBugs alloc] init] autorelease];
-            [bug setAppName:[cdataAppReport valueForKey:@"appName"]];
+            [bug setAppName:[cdataAppReport valueForKey:appName]];
             [bug setWDistance:[[cdataAppReport valueForKey:@"appScore"] doubleValue]];
             [bug setExpectedValue:[[cdataAppReport valueForKey:@"expectedValue"] doubleValue]];
             [bug setExpectedValueWithout:[[cdataAppReport valueForKey:@"expectedValueWithout"] doubleValue]];
@@ -1827,7 +1829,7 @@ static id instance = nil;
             
             [hbList addObject:bug];
             
-            DLog(@"%s '%@' action list personal hog candidate: %.9f %.9f", __PRETTY_FUNCTION__, [cdataAppReport valueForKey:@"appName"], [bug error], [bug errorWithout]);
+            DLog(@"%s '%@' action list personal hog candidate: %.9f %.9f", __PRETTY_FUNCTION__, appName, [bug error], [bug errorWithout]);
         }
         return bugs;
     }
@@ -1843,10 +1845,6 @@ static id instance = nil;
     NSError *error = nil;
     NSArray *runningProcessNames = nil;
     NSArray *hiddenProcessNames = [[Globals instance] getHiddenApps];
-    NSArray *hiddenLC = [NSArray array];
-    if(hiddenProcessNames != nil && [hiddenProcessNames count] > 0){
-        hiddenLC = [hiddenProcessNames valueForKey:@"lowercaseString"];
-    }
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) 
     {
@@ -1883,43 +1881,43 @@ static id instance = nil;
             }
             #endif
         }
-        
-        if(runningProcessNames != nil && [runningProcessNames count] > 0){
-            runningProcessNames = [runningProcessNames valueForKey:@"lowercaseString"];
-        }
         HogBugReport * hogs = [[[HogBugReport alloc] init] autorelease];
         NSMutableArray * hbList = [[[NSMutableArray alloc] init] autorelease];
         [hogs setHbList:hbList];
         for (CoreDataAppReport *cdataAppReport in fetchedObjects)
         {
+            NSString *appName = [cdataAppReport valueForKey:@"appName"];
             if ((filterNonRunning) &&
-                (![runningProcessNames containsObject:[[cdataAppReport valueForKey:@"appName"] lowercaseString]]))
+                (![Utilities array:runningProcessNames containsIgnoreCase:appName]))
             {
                 DLog(@"%s '%@' is a system process or not running, filtering it out.",
-                     __PRETTY_FUNCTION__,
-                     [cdataAppReport valueForKey:@"appName"]);
+                     __PRETTY_FUNCTION__, appName);
                 continue; 
             }
-            
-            if ((filterHidden) &&
-                (([hiddenProcessNames containsObject:[cdataAppReport valueForKey:@"appName"]]
-                  || [hiddenLC containsObject:[cdataAppReport valueForKey:@"appName"]])))
+            if(daemonsList != nil && [daemonsList count] > 0){
+                NSArray *daemons = [daemonsList allKeys];
+                if([Utilities array:daemons containsIgnoreCase:appName]){
+                    DLog(@"%s '%@' is a blacklisted daemon, filtering it out.",
+                         __PRETTY_FUNCTION__, appName);
+                    continue;
+                }
+            }
+            if (filterHidden &&
+                [Utilities array:hiddenProcessNames containsIgnoreCase:appName])
             {
                 DLog(@"%s '%@' hidden by user, filtering it out.",
-                     __PRETTY_FUNCTION__,
-                     [cdataAppReport valueForKey:@"appName"]);
+                     __PRETTY_FUNCTION__, appName);
                 continue;
             }
 
             if ([[cdataAppReport valueForKey:@"samples"] doubleValue] <= 0) {
                 DLog(@"%s '%@' has no samples, filtering it out.",
-                     __PRETTY_FUNCTION__,
-                     [cdataAppReport valueForKey:@"appName"]);
+                     __PRETTY_FUNCTION__, appName);
                 continue;
             }
             
             HogsBugs *hog = [[[HogsBugs alloc] init] autorelease];
-            [hog setAppName:[cdataAppReport valueForKey:@"appName"]];
+            [hog setAppName:appName];
             [hog setWDistance:[[cdataAppReport valueForKey:@"appScore"] doubleValue]];
             [hog setExpectedValue:[[cdataAppReport valueForKey:@"expectedValue"] doubleValue]];
             [hog setExpectedValueWithout:[[cdataAppReport valueForKey:@"expectedValueWithout"] doubleValue]];
@@ -1936,7 +1934,7 @@ static id instance = nil;
             
             [hbList addObject:hog];
             
-            DLog(@"%s '%@' action list hog candidate: %.9f %.9f", __PRETTY_FUNCTION__, [cdataAppReport valueForKey:@"appName"], [hog error], [hog errorWithout]);
+            DLog(@"%s '%@' action list hog candidate: %.9f %.9f", __PRETTY_FUNCTION__, appName, [hog error], [hog errorWithout]);
         }
         return hogs;
     } else {

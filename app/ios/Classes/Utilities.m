@@ -137,4 +137,16 @@
     return [components day];
 }
 
++ (BOOL)array:(NSArray*)arr containsIgnoreCase:(NSString *)target {
+    if(arr && arr.count && target && target.length){
+        target = [target lowercaseString];
+        for(NSString *str in arr){
+            if([[str lowercaseString] isEqualToString:target]){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 @end
