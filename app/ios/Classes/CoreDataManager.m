@@ -878,7 +878,7 @@ static int previousSample = 0;
     if (managedObjectContext != nil)
     {
         // Running processes
-        NSArray *processes;
+        NSArray *processes = [NSArray array];
         if (floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0) {
             processes = [[UIDevice currentDevice] runningProcesses];
         }

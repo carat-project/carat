@@ -1357,7 +1357,6 @@
 					"\"${PODS_ROOT}/Headers/Public/TwitterCore\"",
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/TwitterKit\"",
-					"-DUSE_INTERNALS",
 				);
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
