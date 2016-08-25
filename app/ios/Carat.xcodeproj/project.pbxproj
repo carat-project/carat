@@ -38,7 +38,6 @@
 		24AC38C71C6BA0CB00FA3572 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38B81C6BA0CB00FA3572 /* TSharedProcessorFactory.m */; };
 		24B3BBFB1C5F907F00F43A0D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3BBFA1C5F907F00F43A0D /* CoreTelephony.framework */; };
 		24B3BBFF1C5F92DD00F43A0D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3BBFE1C5F92DD00F43A0D /* libsqlite3.tbd */; };
-		24C413121D6C88A50055C92F /* CaratInternals.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C413111D6C88A50055C92F /* CaratInternals.m */; };
 		24E3D7191C85F69C00A33236 /* TopHogsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E3D7181C85F69C00A33236 /* TopHogsTableView.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		661955AF1A73FE3D00865B2E /* consent.html in Resources */ = {isa = PBXBuildFile; fileRef = AB7568D7151B0DAC0082AEE9 /* consent.html */; };
@@ -237,8 +236,6 @@
 		24B3BBFA1C5F907F00F43A0D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		24B3BBFC1C5F92A700F43A0D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		24B3BBFE1C5F92DD00F43A0D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		24C413101D6C88A50055C92F /* CaratInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratInternals.h; sourceTree = "<group>"; };
-		24C413111D6C88A50055C92F /* CaratInternals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaratInternals.m; sourceTree = "<group>"; };
 		24E3D7171C85F69C00A33236 /* TopHogsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHogsTableView.h; sourceTree = "<group>"; };
 		24E3D7181C85F69C00A33236 /* TopHogsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopHogsTableView.m; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -510,8 +507,6 @@
 				6676D13B1A4DDCDB0002FC1F /* CaratConstants.m */,
 				C136F09914662E5600F0A292 /* CommunicationManager.h */,
 				C136F09A14662E5600F0A292 /* CommunicationManager.m */,
-				24C413101D6C88A50055C92F /* CaratInternals.h */,
-				24C413111D6C88A50055C92F /* CaratInternals.m */,
 				C7547EA219963CFD007A01CF /* DatabaseManager.h */,
 				C7547EA319963CFD007A01CF /* DatabaseManager.m */,
 				24112D261CEB219B008ABADE /* CaratProcessCache.h */,
@@ -1190,7 +1185,6 @@
 				24AC38BA1C6BA0CB00FA3572 /* TProtocolException.m in Sources */,
 				89DAB8B61BC2B26B0053647E /* UiInsetLabel.m in Sources */,
 				89FF8B891BDBAA3E00147943 /* HideAppsViewController.m in Sources */,
-				24C413121D6C88A50055C92F /* CaratInternals.m in Sources */,
 				89FF8B851BDBAA3E00147943 /* BugsViewController.m in Sources */,
 				89DAB8B01BC29FB30053647E /* LocalizedUIButton.m in Sources */,
 				C74130C619EDC6EA00A1E8CE /* SDImageCache.m in Sources */,
