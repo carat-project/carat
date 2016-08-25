@@ -33,6 +33,8 @@
 "PersonalDesc"="Yleisten sovellusten energiankulutus on samankaltaista useilla laitteilla, kun taas laitekohtaiset sovellukset kuluttavat enemmän energiaa juuri sinun laitteellasi.";
 "HogStatisticsDesc"="Top-listalta löydät järjestyksessä ne sovellukset, jotka käyttävät kaikista eniten energiaa. Lista perustuu Caratin maailmanlaajuisiin tuloksiin.";
 "AppsDesc"="Yleisten sovellusten energiankulutus on samankaltaista useilla laitteilla, kun taas laitekohtaiset sovellukset kuluttavat enemmän energiaa juuri sinun laitteellasi.";
+"IOS933Warning"="Carat ei saa käynnissä olevien sovelluksien tietoja iOS-versiosta 9.3.3 alkaen. Carat kuitenkin seuraa laitteesi asetusten käyttöä ja tulee antamaan lähitulevaisuudessa suosituksia niiden vaikutuksesta!";
+
 "Eula"="Loppukäyttäjän lisenssisopimus";
 "ReadEula"="Lue sopimus";
 "EulaShortDesc"="Carat kerää yleistä tietoa laitteestasti ja sen käytöstä. Käyttääksesi tätä sovellusta, sinun tulee hyväksyä loppukäyttäjän lisenssisopimus.";
@@ -200,6 +202,7 @@
 "Updated" = "Päivitetty ";
 "Ago" = "sitten";
 "Samples" = "%i mittausta lähetetty";
+"PreviouslyObservedApps" = "Aiemmin havaitut sovellukset";
 "SamplesLabel" = "Mittauksia";
 "None" = "Ei yhtään";
 

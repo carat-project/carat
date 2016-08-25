@@ -10,6 +10,7 @@
 
 // App store identifier, can be checked from store uri
 #define APP_STORE_ID 504771500
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 // Safest and most accurate way of checking iOS versions
 // For future use: NSLog(@"%f", NSFoundationVersionNumber)

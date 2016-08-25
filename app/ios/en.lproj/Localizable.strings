@@ -33,6 +33,7 @@
 "PersonalDesc"="Global apps consume the same amount of battery on many devices, while personal apps use a lot of energy speficially on your device.";
 "AppsDesc"="Global apps consume the same amount of battery on many devices, while personal apps use a lot of energy speficially on your device.";
 "HogStatisticsDesc"="Top list shows apps with highest battery consumption among all devices. It is based on worldwide results collected by Carat.";
+"IOS933Warning"="Carat cannot access the list of running applications on iOS 9.3.3 and newer. However, Carat is monitoring the use of your settings, and will give you recommendations on their impact in the near future!";
 
 "Eula"="END-USER LICENSE\nAGREEMENT";
 "ReadEula"="Read EULA";
@@ -207,6 +208,7 @@
 "Ago" = "ago";
 "Samples" = "%i Samples sent";
 "SamplesLabel" = "Samples:";
+"PreviouslyObservedApps" = "Previously observed apps";
 "None" = "None";
 
 //Flurry Logs

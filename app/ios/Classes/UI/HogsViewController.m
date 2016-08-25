@@ -6,6 +6,7 @@
 //  Copyright © 2015 University of Helsinki. All rights reserved.
 //
 
+#import "Preprocessor.h"
 #import "HogsViewController.h"
 #import "HogStatisticsViewController.h"
 
@@ -24,6 +25,16 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingFinished:)
                                                  name:@"EditingFinished" object:nil];
+    
+    // Process list is unavailable starting from iOS 9.3.3 so we want to
+    // show a warning on the bottom of the view stating that apps are no
+    // longer updating, but data is still being collected for settings.
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.3.3")){
+        _bottomWarning.hidden = false;
+    } else {
+        _bottomWarning.hidden = true;
+        _warningHeight.constant = 0;
+    }
     [self updateExtraAction];
     [self setBug:NO];
     [self setHogBugReport:[self getHogBugReport]];
@@ -112,6 +123,8 @@
     [_contentTitle release];
     [_extraButton release];
     [_navBarTitle release];
+    [_bottomWarning release];
+    [_warningHeight release];
     [super dealloc];
 }
 @end

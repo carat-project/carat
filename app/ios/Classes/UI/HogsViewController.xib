@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HogsViewController">
             <connections>
+                <outlet property="bottomWarning" destination="ehg-Dp-pcO" id="JXX-VM-Gj4"/>
                 <outlet property="content" destination="l7u-KC-ecZ" id="dFb-Fc-5Ri"/>
                 <outlet property="contentTitle" destination="Xgp-Tj-fay" id="dfB-Iz-q3F"/>
                 <outlet property="extraButton" destination="5su-ql-yvv" id="2oM-c6-XbA"/>
@@ -14,6 +15,7 @@
                 <outlet property="navBarTitle" destination="E2S-6B-IOH" id="3yZ-aR-h2X"/>
                 <outlet property="tableView" destination="d8A-Q0-RGX" id="5T8-Lf-o6g"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="warningHeight" destination="ce3-ff-fVo" id="cgP-2S-S1t"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -49,7 +51,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="d8A-Q0-RGX" customClass="PGTableViewWithEmptyView">
-                    <rect key="frame" x="0.0" y="134" width="600" height="466"/>
+                    <rect key="frame" x="0.0" y="134" width="600" height="366"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FhH-wQ-cGv"/>
@@ -82,20 +84,61 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehg-Dp-pcO" userLabel="iOS9.3.3Info">
+                    <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSo-2f-tMB" userLabel="Separator">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                            <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="gQD-QV-XMq"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IOS933Warning" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMP-Wf-8hE" userLabel="9.3.3Notice" customClass="LocalizedLabel">
+                            <rect key="frame" x="58" y="8" width="532" height="84"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoButton.png" translatesAutoresizingMaskIntoConstraints="NO" id="kcA-BU-qEy">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="OlM-gE-Bcb"/>
+                                <constraint firstAttribute="height" constant="100" id="iQb-Vq-Jkq"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.83137254901960778" green="0.83921568627450982" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="oSo-2f-tMB" firstAttribute="top" secondItem="ehg-Dp-pcO" secondAttribute="top" id="2bK-5Z-cIJ"/>
+                        <constraint firstItem="kcA-BU-qEy" firstAttribute="leading" secondItem="ehg-Dp-pcO" secondAttribute="leading" id="4He-Tw-3Na"/>
+                        <constraint firstItem="FMP-Wf-8hE" firstAttribute="trailing" secondItem="ehg-Dp-pcO" secondAttribute="trailing" constant="-10" id="4aM-AA-XxS"/>
+                        <constraint firstAttribute="bottom" secondItem="FMP-Wf-8hE" secondAttribute="bottom" constant="8" id="7DL-zJ-DRJ"/>
+                        <constraint firstItem="oSo-2f-tMB" firstAttribute="leading" secondItem="ehg-Dp-pcO" secondAttribute="leading" id="Kfo-pF-1yy"/>
+                        <constraint firstItem="FMP-Wf-8hE" firstAttribute="top" secondItem="ehg-Dp-pcO" secondAttribute="top" constant="8" id="LiH-Tl-7nf" userLabel="HogsDesc.top = top + 10"/>
+                        <constraint firstItem="FMP-Wf-8hE" firstAttribute="leading" secondItem="kcA-BU-qEy" secondAttribute="trailing" constant="-2" id="QZ0-Bb-GCY"/>
+                        <constraint firstItem="kcA-BU-qEy" firstAttribute="top" secondItem="ehg-Dp-pcO" secondAttribute="top" id="W7O-C6-PKV"/>
+                        <constraint firstAttribute="height" constant="100" id="ce3-ff-fVo"/>
+                        <constraint firstItem="oSo-2f-tMB" firstAttribute="trailing" secondItem="ehg-Dp-pcO" secondAttribute="trailing" id="mt5-I9-Wj1"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="ehg-Dp-pcO" firstAttribute="top" secondItem="d8A-Q0-RGX" secondAttribute="bottom" id="1z9-OD-CQM"/>
+                <constraint firstAttribute="trailing" secondItem="ehg-Dp-pcO" secondAttribute="trailing" id="3o4-iu-ymG"/>
+                <constraint firstItem="EIz-wl-QuG" firstAttribute="top" secondItem="Xa1-j1-u9C" secondAttribute="bottom" id="GAA-Sg-FOQ"/>
                 <constraint firstItem="d8A-Q0-RGX" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="GZA-wm-Nfw"/>
+                <constraint firstItem="d8A-Q0-RGX" firstAttribute="top" secondItem="EIz-wl-QuG" secondAttribute="bottom" id="HWX-It-b7B"/>
                 <constraint firstItem="EIz-wl-QuG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IGk-ab-Yf3"/>
                 <constraint firstItem="Xa1-j1-u9C" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="KJh-bI-FWx"/>
+                <constraint firstItem="ehg-Dp-pcO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OSe-j0-VW5"/>
                 <constraint firstItem="EIz-wl-QuG" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Oc6-RE-0GC"/>
-                <constraint firstItem="d8A-Q0-RGX" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="Tc8-0c-loC"/>
+                <constraint firstItem="ehg-Dp-pcO" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="RQ6-5R-zbD"/>
                 <constraint firstItem="d8A-Q0-RGX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oea-v8-m9j"/>
                 <constraint firstItem="EIz-wl-QuG" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="ojN-Eg-37N"/>
-                <constraint firstItem="d8A-Q0-RGX" firstAttribute="top" secondItem="EIz-wl-QuG" secondAttribute="bottom" id="rg2-1X-G8a"/>
                 <constraint firstItem="Xa1-j1-u9C" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="sGG-21-ti0"/>
                 <constraint firstItem="Xa1-j1-u9C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ygg-oj-mg7"/>
-                <constraint firstItem="EIz-wl-QuG" firstAttribute="top" secondItem="Xa1-j1-u9C" secondAttribute="bottom" id="z5J-8Z-f68"/>
             </constraints>
             <point key="canvasLocation" x="447" y="380"/>
         </view>
@@ -188,6 +231,7 @@
         <image name="arrow_icon" width="48" height="48"/>
         <image name="battery_icon" width="48" height="48"/>
         <image name="empty_hogs" width="210" height="114"/>
+        <image name="infoButton.png" width="24" height="24"/>
         <image name="more_icon" width="8" height="30"/>
     </resources>
 </document>
