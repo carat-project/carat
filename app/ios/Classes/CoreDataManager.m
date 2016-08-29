@@ -2276,7 +2276,7 @@ static id instance = nil;
     NSInteger errorVal = (int) (benefit_max-benefit);
     DLog(@"OS benefit is %d ± %f", benefit, err);
     if (benefit > 60) {
-        ActionObject *tmpAction = [[ActionObject alloc] init];
+        ActionObject *tmpAction = [[[ActionObject alloc] init] autorelease];
         [tmpAction setAppName:appName];
         [tmpAction setActionText:actText];
         [tmpAction setActionType:actType];

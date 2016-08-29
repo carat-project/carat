@@ -37,7 +37,11 @@
     }
     else if(limit == 3600.0f){
         selectedRow = 4;
+    } else {
+        selectedRow = 0;
     }
+    
+    _pickerView = [UIPickerView new];
     [_pickerView selectRow:selectedRow inComponent:0 animated:YES];
 
     // Do any additional setup after loading the view from its nib.

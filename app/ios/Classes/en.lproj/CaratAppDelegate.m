@@ -122,7 +122,7 @@ void onUncaughtException(NSException *exception)
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     TutorialViewController *viewController = [[TutorialViewController alloc] initWithNibName:@"TutorialViewController" bundle:nil callbackTo:delegate withSelector:selector];
     self.window.rootViewController = viewController;
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
     self.navigationController.navigationBarHidden = YES;
     
     [self.window addSubview:self.navigationController.view];
@@ -142,10 +142,10 @@ void onUncaughtException(NSException *exception)
     NSLog(@"%s", __PRETTY_FUNCTION__);
     //[self startStoryboard];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.dashBoardViewController = [[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil];
+    self.dashBoardViewController = [[[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.dashBoardViewController;
     
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.window.rootViewController];
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:self.window.rootViewController] autorelease];
     self.navigationController.navigationBarHidden = YES;
     
     [self.window addSubview:self.navigationController.view];

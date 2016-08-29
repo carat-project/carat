@@ -71,7 +71,7 @@
     if(cell == nil) {
         UINib *nib = [UINib nibWithNibName:@"TopHogsTableViewCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:cellIdentifier];
-        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     }
     if(self.data == nil) {
         return cell;
@@ -131,7 +131,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!self.expandedPaths) {
-        self.expandedPaths = [NSMutableArray new];
+        self.expandedPaths = [[NSMutableArray new] autorelease];
     }
     
     // Expand or collapse
@@ -171,7 +171,7 @@
     __block NSArray *platforms;
     
     // Initialize or reset data
-    self.data = [NSArray new];
+    self.data = [[NSArray new] autorelease];
     
     // Start downloading
     [self startSpinner];
@@ -275,7 +275,7 @@
 // Prune the list before showing
 -(NSArray *)filterHogs:(NSArray *)hogs
 {
-    NSMutableArray *result = [NSMutableArray new];
+    NSMutableArray *result = [NSMutableArray array];
     NSDictionary *hog;
     for(hog in hogs){
         // Filter out hogs with too few users
@@ -288,7 +288,7 @@
         // Stop when we have enough
         // if([result count] >= 20) break;
     }
-    return [result copy];
+    return result;
 }
 
 -(void)startSpinner{

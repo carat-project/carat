@@ -362,7 +362,8 @@ BOOL isUpdateProgressVisible;
     ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];
     if(tmpAction != nil){
         [myList addObject:tmpAction];
-        [tmpAction release];
+        // Not owned by this class
+        // [tmpAction release];
     }
     DLog(@"Loading OS");
     // data collection action
@@ -384,30 +385,35 @@ BOOL isUpdateProgressVisible;
 }
 
 - (IBAction)showMyDevice:(id)sender {
-    MyScoreViewController *controler = [[MyScoreViewController alloc]initWithNibName:@"MyScoreViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    MyScoreViewController *controller = [[MyScoreViewController alloc]initWithNibName:@"MyScoreViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedMyDeviceView", nil)];
+    [controller release];
 }
 
 - (IBAction)showBugs:(id)sender {
     HogsViewController *controller = [[HogsViewController alloc] initWithNibName:@"HogsViewController" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (IBAction)showHogs:(id)sender {
     HogStatisticsViewController *controller = [[HogStatisticsViewController alloc] initWithNibName:@"HogStatisticsViewController" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (IBAction)showStatistics:(id)sender {
-    StatisticsViewController *controler = [[StatisticsViewController alloc]initWithNibName:@"StatisticsViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    StatisticsViewController *controller = [[StatisticsViewController alloc]initWithNibName:@"StatisticsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedStatisticsView", nil)];
+    [controller release];
 }
 - (IBAction)showActions:(id)sender {
-    ActionsViewController *controler = [[ActionsViewController alloc]initWithNibName:@"ActionsViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    ActionsViewController *controller = [[ActionsViewController alloc]initWithNibName:@"ActionsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedActionsView", nil)];
+    [controller release];
 }
 
 #pragma mark - FBSDKSharingDelegate
@@ -425,7 +431,7 @@ BOOL isUpdateProgressVisible;
 
 - (IBAction)showFacebook:(id)sender {
     int roundedJscore =(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
-    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    FBSDKShareLinkContent *content = [[[FBSDKShareLinkContent alloc] init] autorelease];
     content.contentURL = [NSURL URLWithString:@"http://carat.cs.helsinki.fi"];
     content.contentTitle = [[@"My J-Score is "
                             stringByAppendingString:[@(roundedJscore) stringValue]]
@@ -475,7 +481,7 @@ BOOL isUpdateProgressVisible;
         mail.mailComposeDelegate = self;
         [mail setSubject:NSLocalizedString(@"EmailMessageTittle", nil)];
         
-        NSMutableString *messageBody = [[NSMutableString alloc]init];
+        NSMutableString *messageBody = [[[NSMutableString alloc]init] autorelease];
         [messageBody appendString:[self getJScoreString]];
         [messageBody appendString:@"\n\n"];
         [messageBody appendString:[NSString stringWithFormat:NSLocalizedString(@"CaratEmailSalesPitch", nil), NSLocalizedString(@"Carat", nil)]];

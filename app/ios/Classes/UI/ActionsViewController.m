@@ -101,7 +101,8 @@
     ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];
     if(tmpAction != nil){
         [myList addObject:tmpAction];
-        [tmpAction release];
+        // Not owned by the caller, should not release
+        // [tmpAction release];
     }
     DLog(@"Loading OS");
 

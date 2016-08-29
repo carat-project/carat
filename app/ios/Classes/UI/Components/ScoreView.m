@@ -169,6 +169,7 @@
     attributes = @{ NSFontAttributeName: font,
                     NSParagraphStyleAttributeName: paragraphStyle,
                     NSForegroundColorAttributeName: C_LIGHT_GRAY};
+    [paragraphStyle release];
     [_scoreTitle drawInRect:labelRect withAttributes:attributes];
     
    

@@ -122,7 +122,7 @@
     if([fileUrl getResourceValue:&fileDate forKey:NSURLContentModificationDateKey error:&error]){
         return fileDate;
     }
-    return [[NSDate alloc]initWithTimeIntervalSince1970:0];
+    return [[[NSDate alloc]initWithTimeIntervalSince1970:0] autorelease];
 }
 
 + (NSInteger)daysSince:(NSDate*)date

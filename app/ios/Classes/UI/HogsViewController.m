@@ -77,6 +77,7 @@
 - (IBAction) showHogStatistics:(id)sender {
     HogStatisticsViewController *controller = [[HogStatisticsViewController alloc]initWithNibName:@"HogStatisticsViewController" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (void)updateView {
@@ -107,7 +108,7 @@
         [hbList addObject:hog];
     }
     
-    HogBugReport *all = [HogBugReport new];
+    HogBugReport *all = [[HogBugReport new] autorelease];
     all.hbList = hbList;
     return all;
 }

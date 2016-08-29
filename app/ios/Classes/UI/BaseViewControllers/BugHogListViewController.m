@@ -57,6 +57,7 @@
     [footer addSubview:_button];
     
     self.tableView.tableFooterView = footer;
+    [footer release];
 }
 
 - (void) setBug:(BOOL)isBug{
@@ -96,7 +97,7 @@
             [hbList addObject:hog];
         }
         
-        array = [HogBugReport new];
+        array = [[HogBugReport new] autorelease];
         array.hbList = hbList;
     }
 
@@ -338,10 +339,11 @@
 #pragma mark - Navigation methods
 - (void)showWhatTheseNumbersMeanInfo{
     DLog(@"%s", __PRETTY_FUNCTION__);
-    WebInfoViewController *controler = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
-    controler.webUrl = @"detailinfo";
-    controler.titleForView =  NSLocalizedString(@"Information", nil);
-    [self.navigationController pushViewController:controler animated:YES];
+    WebInfoViewController *controller = [[WebInfoViewController alloc]initWithNibName:@"WebInfoViewController" bundle:nil];
+    controller.webUrl = @"detailinfo";
+    controller.titleForView =  NSLocalizedString(@"Information", nil);
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 /*

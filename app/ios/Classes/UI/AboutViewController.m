@@ -48,27 +48,27 @@ static NSString * collapsedCell = @"AboutTableViewCell";
     
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     
-    AboutListItemData* d1 = [AboutListItemData new];
+    AboutListItemData* d1 = [[AboutListItemData new] autorelease];
     d1.title = [NSString stringWithFormat:@"%@ v%@", NSLocalizedString(@"AboutTittle", nil), version];
     d1.subTitle = NSLocalizedString(@"AboutSub", nil);
     d1.message = NSLocalizedString(@"AboutMessage", nil);
     
-    AboutListItemData* d2 = [AboutListItemData new];
+    AboutListItemData* d2 = [[AboutListItemData new] autorelease];
     d2.title = NSLocalizedString(@"Actions", nil);
     d2.subTitle = NSLocalizedString(@"ActionsSub", nil);
     d2.message = NSLocalizedString(@"ActionsMessage", nil);
     
-    AboutListItemData* d3 = [AboutListItemData new];
+    AboutListItemData* d3 = [[AboutListItemData new] autorelease];
     d3.title = NSLocalizedString(@"Apps", nil);
     d3.subTitle = NSLocalizedString(@"PersonalSub", nil);
     d3.message = NSLocalizedString(@"PersonalDesc", nil);
     
-    AboutListItemData* d4 = [AboutListItemData new];
+    AboutListItemData* d4 = [[AboutListItemData new] autorelease];
     d4.title = NSLocalizedString(@"CollectData", nil);
     d4.subTitle = NSLocalizedString(@"CollectDataSub", nil);
     d4.message = NSLocalizedString(@"CollectDataMessage", nil);
     
-    AboutListItemData* d5 = [AboutListItemData new];
+    AboutListItemData* d5 = [[AboutListItemData new] autorelease];
     d5.title = NSLocalizedString(@"ActiveBatteryLife", nil);
     d5.subTitle = NSLocalizedString(@"ActiveBatteryLifeSub", nil);
     d5.message = NSLocalizedString(@"ActiveBatteryLifeMessage", nil);
@@ -97,7 +97,7 @@ static NSString * collapsedCell = @"AboutTableViewCell";
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     }
     
     AboutListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
@@ -212,32 +212,36 @@ static NSString * collapsedCell = @"AboutTableViewCell";
 #pragma mark - Navigation methods
 - (void)showBugs:(UITapGestureRecognizer *)recognizer {
     DLog(@"%s", __PRETTY_FUNCTION__);
-    BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
+    BugsViewController *controller = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
    
     NSMutableArray *controllers=[[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers] ;
     
     //Remove the last view controller
     [controllers removeLastObject];
     [controllers removeLastObject];
-    [controllers addObject:controler];
+    [controllers addObject:controller];
+    [controller release];
     //set the new set of view controllers
     [[self retain] autorelease];
     [self.navigationController setViewControllers:controllers];
+    [controllers release];
 }
 
 - (void)showHogs:(UITapGestureRecognizer *)recognizer {
     DLog(@"%s", __PRETTY_FUNCTION__);
-    HogsViewController *controler = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
+    HogsViewController *controller = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
 
     NSMutableArray *controllers=[[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers] ;
     
     //Remove the last view controller
     [controllers removeLastObject];
     [controllers removeLastObject];
-    [controllers addObject:controler];
+    [controllers addObject:controller];
+    [controller release];
     //set the new set of view controllers
     [[self retain] autorelease];
     [self.navigationController setViewControllers:controllers];
+    [controllers release];
 }
 
 

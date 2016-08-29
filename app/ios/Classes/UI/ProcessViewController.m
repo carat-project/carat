@@ -123,12 +123,6 @@
                          placeholderImage:[UIImage imageNamed:@"def_app_icon"]];
     */
     
-    [UIImage newImageNotCached:[appName stringByAppendingString:@".png"]];
-    UIImage *img = [UIImage newImageNotCached:[appName stringByAppendingString:@".png"]];
-    if (img == nil) {
-        img = [UIImage newImageNotCached:@"def_app_icon"];
-    }
-    
     cell.expImpTimeLabel.text = [selectedProc objectForKey:@"ProcessID"];
 }
 

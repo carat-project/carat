@@ -45,10 +45,11 @@
 -(void)showInfoView:(NSString *)title message:(NSString *)message;
 {
     NSLog(@"showInfoView");
-    InfoViewController *controler = [[InfoViewController alloc]initWithNibName:@"InfoViewController" bundle:nil];
-    controler.titleForView = title;
-    controler.messageForView = message;
-    [self.navigationController pushViewController:controler animated:YES];
+    InfoViewController *controller = [[InfoViewController alloc]initWithNibName:@"InfoViewController" bundle:nil];
+    controller.titleForView = title;
+    controller.messageForView = message;
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
     /*
     InfoViewController *controler = [[InfoViewController alloc]initWithNibName:@"TutorialViewController" bundle:nil];
     //controler.messageForView = title;
@@ -67,8 +68,9 @@
 
 -(IBAction)barItemMorePressed{
     NSLog(@"barItemMorePressed");
-    MoreViewController *controler = [[MoreViewController alloc]initWithNibName:@"MoreViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    MoreViewController *controller = [[MoreViewController alloc]initWithNibName:@"MoreViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
     
 }
 

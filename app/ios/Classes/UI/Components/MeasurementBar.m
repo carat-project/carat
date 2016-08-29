@@ -127,7 +127,8 @@
 - (void)dealloc {
     [_containerView release];
     [_customConstraints release];
-    [_measureTopImg release];
+    // UIImage imageNamed is autoreleased
+    // [_measureTopImg release];
     [_largerBarColor release];
     [_smallerBarColor release];
     

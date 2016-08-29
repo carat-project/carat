@@ -83,9 +83,9 @@
 - (void)createTutorialData
 {
     NSLog(@"****** createTutorialData ********");
-    TutorialPageContent *main = [TutorialPageContent new];
-    TutorialPageContent *bugs = [TutorialPageContent new];
-    TutorialPageContent *eula = [TutorialPageContent new];
+    TutorialPageContent *main = [[TutorialPageContent new] autorelease];
+    TutorialPageContent *bugs = [[TutorialPageContent new] autorelease];
+    TutorialPageContent *eula = [[TutorialPageContent new] autorelease];
 
     main.title = NSLocalizedString(@"MainTitle", nil);
     bugs.title = NSLocalizedString(@"Apps", nil);
@@ -101,6 +101,7 @@
     
     
     _pageDataContent = [[NSArray alloc] initWithObjects:main, bugs, eula, nil];
+    
 
      NSLog(@"****** Check created data title ******** %@", ((TutorialPageContent*)_pageDataContent[1]).title);
     
@@ -131,6 +132,7 @@
     controller.webUrl = @"consent";
     controller.titleForView =  NSLocalizedString(@"EulaPrivacyPolicy", nil);
     [self.navigationController pushViewController:controller animated:true];
+    [controller release];
 }
 
 /*
