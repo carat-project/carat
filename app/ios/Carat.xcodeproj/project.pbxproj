@@ -38,6 +38,8 @@
 		24AC38C71C6BA0CB00FA3572 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38B81C6BA0CB00FA3572 /* TSharedProcessorFactory.m */; };
 		24B3BBFB1C5F907F00F43A0D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3BBFA1C5F907F00F43A0D /* CoreTelephony.framework */; };
 		24B3BBFF1C5F92DD00F43A0D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3BBFE1C5F92DD00F43A0D /* libsqlite3.tbd */; };
+		24B5AB721D81FA440040AF9D /* Carat-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24B5AB711D81FA440040AF9D /* Carat-Info.plist */; };
+		24B5AB7B1D81FC4E0040AF9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B5AB7D1D81FC4E0040AF9D /* InfoPlist.strings */; };
 		24E3D7191C85F69C00A33236 /* TopHogsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E3D7181C85F69C00A33236 /* TopHogsTableView.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		661955AF1A73FE3D00865B2E /* consent.html in Resources */ = {isa = PBXBuildFile; fileRef = AB7568D7151B0DAC0082AEE9 /* consent.html */; };
@@ -236,6 +238,9 @@
 		24B3BBFA1C5F907F00F43A0D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		24B3BBFC1C5F92A700F43A0D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		24B3BBFE1C5F92DD00F43A0D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		24B5AB711D81FA440040AF9D /* Carat-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Carat-Info.plist"; sourceTree = "<group>"; };
+		24B5AB7C1D81FC4E0040AF9D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		24B5AB7E1D81FC4F0040AF9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24E3D7171C85F69C00A33236 /* TopHogsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHogsTableView.h; sourceTree = "<group>"; };
 		24E3D7181C85F69C00A33236 /* TopHogsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopHogsTableView.m; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -356,7 +361,6 @@
 		89FF8B9B1BDBB2BA00147943 /* ListNetworkBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListNetworkBaseViewController.h; sourceTree = "<group>"; };
 		89FF8B9C1BDBB2BA00147943 /* ListNetworkBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListNetworkBaseViewController.m; sourceTree = "<group>"; };
 		89FF8B9E1BDBF3A000147943 /* detailinfo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = detailinfo.html; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Carat-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Carat-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		AB3B89C816C03A26007C8596 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		AB41CDF1144E1AF60090CC09 /* UIDeviceProc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDeviceProc.h; sourceTree = "<group>"; };
 		AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDeviceProc.m; sourceTree = "<group>"; };
@@ -662,13 +666,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107310486CEB800E47090 /* Carat-Info.plist */,
+				24B5AB711D81FA440040AF9D /* Carat-Info.plist */,
 				ABEC9B6714F1D9FF005CE813 /* license.txt */,
 				ABA3A10214E4A560009B3D33 /* html */,
 				C18E107014665E230028095B /* Carat.xcdatamodeld */,
 				AB41CE15144F78450090CC09 /* img */,
 				89685C751BBAA8440078C4C6 /* Images.xcassets */,
 				897B01B61BEA1ABA0025E051 /* Localizable.strings */,
+				24B5AB7D1D81FC4E0040AF9D /* InfoPlist.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1094,6 +1099,7 @@
 				66EC15081A2A6A8E00153746 /* infoButton.png in Resources */,
 				C75488D619963D04007A01CF /* 32-iphone.png in Resources */,
 				897B01B41BEA1ABA0025E051 /* Localizable.strings in Resources */,
+				24B5AB7B1D81FC4E0040AF9D /* InfoPlist.strings in Resources */,
 				ABC07A1B14859C7100FCC2C2 /* about.png in Resources */,
 				ABC07A331486C21A00FCC2C2 /* 53-house.png in Resources */,
 				AB9B580B148FEA10004F92F2 /* 37x-Checkmark.png in Resources */,
@@ -1104,6 +1110,7 @@
 				89554B5B1BDCD98C00ECE919 /* ProgressUpdateView.xib in Resources */,
 				8988B1591BDC03DE0022524B /* BugHogExpandedTableViewCell.xib in Resources */,
 				245897471C9063F1001D3FE2 /* TopHogsTableViewCell.xib in Resources */,
+				24B5AB721D81FA440040AF9D /* Carat-Info.plist in Resources */,
 				8988B1631BDC181B0022524B /* jscoreplot.png in Resources */,
 				89FF8B8C1BDBAA3E00147943 /* HogsViewController.xib in Resources */,
 				C7534EB71BF9F09600AA6F78 /* Launch Screen.storyboard in Resources */,
@@ -1278,6 +1285,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		24B5AB7D1D81FC4E0040AF9D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24B5AB7C1D81FC4E0040AF9D /* fi */,
+				24B5AB7E1D81FC4F0040AF9D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		897B01B61BEA1ABA0025E051 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
