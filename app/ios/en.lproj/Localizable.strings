@@ -6,7 +6,6 @@
   Copyright © 2015 University of Helsinki. All rights reserved.
 */
 //DashBoard starts
-
 "Dashboard"="Dashboard";
 "Carat" = "Carat";
 "BatteryLifeLabel"="Active Battery Life";

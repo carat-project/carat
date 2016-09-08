@@ -157,6 +157,10 @@ void onUncaughtException(NSException *exception)
     }
     
     // we do this to prompt the dialog asking for permission to share location info
+    if([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]){
+        // Needed to prompt location in newer iOS versions
+        [locationManager requestAlwaysAuthorization];
+    }
     [locationManager startMonitoringSignificantLocationChanges];
     [locationManager stopMonitoringSignificantLocationChanges];
         
@@ -247,7 +251,9 @@ void onUncaughtException(NSException *exception)
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
-    if ([[Globals instance] hasUserConsented]) [locationManager startMonitoringSignificantLocationChanges];
+    if ([[Globals instance] hasUserConsented]){
+        [locationManager startMonitoringSignificantLocationChanges];
+    }
 }
 
 
