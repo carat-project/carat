@@ -1567,7 +1567,7 @@ static id instance = nil;
             [self fetchAndSendSamples:10];
             dispatch_async( dispatch_get_main_queue(), ^{
                 dispatch_semaphore_signal(sendStoredDataToServerSemaphore);
-                DLog(@"%s Done!", __PRETTY_FUNCTION__);
+                DLog(@"%s Done sending/samples registrations!", __PRETTY_FUNCTION__);
             });
         });
     } 
@@ -1776,6 +1776,7 @@ static id instance = nil;
             }
             #endif
         }
+        
         HogBugReport * bugs = [[[HogBugReport alloc] init] autorelease];
         NSMutableArray * hbList = [[[NSMutableArray alloc] init] autorelease];
         [bugs setHbList:hbList];
@@ -1812,7 +1813,7 @@ static id instance = nil;
             }
 
             HogsBugs *bug = [[[HogsBugs alloc] init] autorelease];
-            [bug setAppName:[cdataAppReport valueForKey:appName]];
+            [bug setAppName:appName];
             [bug setWDistance:[[cdataAppReport valueForKey:@"appScore"] doubleValue]];
             [bug setExpectedValue:[[cdataAppReport valueForKey:@"expectedValue"] doubleValue]];
             [bug setExpectedValueWithout:[[cdataAppReport valueForKey:@"expectedValueWithout"] doubleValue]];
