@@ -122,7 +122,7 @@
     if([fileUrl getResourceValue:&fileDate forKey:NSURLContentModificationDateKey error:&error]){
         return fileDate;
     }
-    return [[NSDate alloc]initWithTimeIntervalSince1970:0];
+    return [[[NSDate alloc]initWithTimeIntervalSince1970:0] autorelease];
 }
 
 + (NSInteger)daysSince:(NSDate*)date
@@ -135,6 +135,18 @@
     [calendar rangeOfUnit:NSCalendarUnitDay startDate:&dateNow interval:NULL forDate:[NSDate date]];
     NSDateComponents *components = [calendar components:unitFlag fromDate:dateThen toDate:dateNow options:0];
     return [components day];
+}
+
++ (BOOL)array:(NSArray*)arr containsIgnoreCase:(NSString *)target {
+    if(arr && arr.count && target && target.length){
+        target = [target lowercaseString];
+        for(NSString *str in arr){
+            if([[str lowercaseString] isEqualToString:target]){
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 @end

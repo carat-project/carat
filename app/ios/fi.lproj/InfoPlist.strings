@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Carat
+
+  Created by Jonatan C Hamberg on 08/09/16.
+  Copyright © 2016 University of Helsinki. All rights reserved.
+*/
+
+"NSLocationAlwaysUsageDescription"="Carat käyttää sijaintia vain liikutun matkan mittaamiseen. Tarkkaa sijaintia ei koskaan kerätä.";
+"NSLocationWhenInUseUsageDescription"="Carat käyttää sijaintia vain liikutun matkan mittaamiseen. Tarkkaa sijaintia ei koskaan kerätä.";

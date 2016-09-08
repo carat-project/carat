@@ -44,11 +44,11 @@ BOOL isUpdateProgressVisible;
     
     isUpdateProgressVisible = false;
     
-    [_bugsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
-    [_bugsBtn setButtonTitle:NSLocalizedString(@"Bugs", nil)];
+    [_bugsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
+    [_bugsBtn setButtonTitle:NSLocalizedString(@"Apps", nil)];
     
-    [_hogsBtn setButtonImage:[UIImage imageNamed:@"battery_icon"]];
-    [_hogsBtn setButtonTitle:NSLocalizedString(@"Hogs", nil)];
+    [_hogsBtn setButtonImage:[UIImage imageNamed:@"bug_icon"]];
+    [_hogsBtn setButtonTitle:NSLocalizedString(@"Top", nil)];
     
     [_statisticsBtn setButtonImage:[UIImage imageNamed:@"globe_icon"]];
     [_statisticsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
@@ -150,7 +150,7 @@ BOOL isUpdateProgressVisible;
     // iOS 9+ has no hogs, so we have no count
     if(true || NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_9_0) {
         count = [self getHogsCount];
-        [_hogsBtn setButtonExtraInfo:[NSString stringWithFormat:@"%d",count]];
+        [_hogsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
     } else {
         [_hogsBtn setButtonExtraInfo:NSLocalizedString(@"ViewText", nil)];
     }
@@ -329,9 +329,13 @@ BOOL isUpdateProgressVisible;
 - (int)getBugsCount
 {
     int count = 0;
-    HogBugReport *rep = [[CoreDataManager instance] getBugs:NO withoutHidden:YES];
+    HogBugReport *rep = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
+    HogBugReport *bugs = [[CoreDataManager instance] getBugs:NO withoutHidden: YES];
     if (rep != nil && [rep hbListIsSet]) {
         count = (int)[[rep hbList] count];
+    }
+    if(bugs != nil && [bugs hbListIsSet]){
+        count += (int)[[bugs hbList] count];
     }
     return count;
 }
@@ -350,17 +354,16 @@ BOOL isUpdateProgressVisible;
 {
     NSMutableArray *myList = [[CoreDataManager instance] getHogsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
     
-    DLog(@"Loading Hogs");
     // get Bugs, add to array
     NSMutableArray *bugsActionList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionRestart", nil) actType:ActionTypeRestartApp];
     [myList addObjectsFromArray:bugsActionList];
-    DLog(@"Loading Bugs");
     
     // get OS
     ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];
     if(tmpAction != nil){
         [myList addObject:tmpAction];
-        [tmpAction release];
+        // Not owned by this class
+        // [tmpAction release];
     }
     DLog(@"Loading OS");
     // data collection action
@@ -382,41 +385,35 @@ BOOL isUpdateProgressVisible;
 }
 
 - (IBAction)showMyDevice:(id)sender {
-    MyScoreViewController *controler = [[MyScoreViewController alloc]initWithNibName:@"MyScoreViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    MyScoreViewController *controller = [[MyScoreViewController alloc]initWithNibName:@"MyScoreViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedMyDeviceView", nil)];
+    [controller release];
 }
 
 - (IBAction)showBugs:(id)sender {
-    NSLog(@"bugsTapped");
-    BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
-    [Flurry logEvent:NSLocalizedString(@"selectedBugsView", nil)];
+    HogsViewController *controller = [[HogsViewController alloc] initWithNibName:@"HogsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (IBAction)showHogs:(id)sender {
-    
-    // Check if we are running on iOS 9.0+, if so, show statistics instead
-    if(true || floor(NSFoundationVersionNumber) < NSFoundationVersionNumber_iOS_9_0){
-        HogsViewController *controller = [[HogsViewController alloc] initWithNibName:@"HogsViewController" bundle:nil];
-        [self.navigationController pushViewController:controller animated:YES];
-        [Flurry logEvent:NSLocalizedString(@"selectedHogsView", nil)];
-    } else {
-        HogStatisticsViewController *controller = [[HogStatisticsViewController alloc] initWithNibName:@"HogStatisticsViewController" bundle:nil];
-        [self.navigationController pushViewController:controller animated:YES];
-        [Flurry logEvent:NSLocalizedString(@"selectedHogStatisticsView", nil)];
-    }
+    HogStatisticsViewController *controller = [[HogStatisticsViewController alloc] initWithNibName:@"HogStatisticsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (IBAction)showStatistics:(id)sender {
-    StatisticsViewController *controler = [[StatisticsViewController alloc]initWithNibName:@"StatisticsViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    StatisticsViewController *controller = [[StatisticsViewController alloc]initWithNibName:@"StatisticsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedStatisticsView", nil)];
+    [controller release];
 }
 - (IBAction)showActions:(id)sender {
-    ActionsViewController *controler = [[ActionsViewController alloc]initWithNibName:@"ActionsViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    ActionsViewController *controller = [[ActionsViewController alloc]initWithNibName:@"ActionsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedActionsView", nil)];
+    [controller release];
 }
 
 #pragma mark - FBSDKSharingDelegate
@@ -434,7 +431,7 @@ BOOL isUpdateProgressVisible;
 
 - (IBAction)showFacebook:(id)sender {
     int roundedJscore =(int)(MIN( MAX([[CoreDataManager instance] getJScore], -1.0), 1.0)*100);
-    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    FBSDKShareLinkContent *content = [[[FBSDKShareLinkContent alloc] init] autorelease];
     content.contentURL = [NSURL URLWithString:@"http://carat.cs.helsinki.fi"];
     content.contentTitle = [[@"My J-Score is "
                             stringByAppendingString:[@(roundedJscore) stringValue]]
@@ -484,7 +481,7 @@ BOOL isUpdateProgressVisible;
         mail.mailComposeDelegate = self;
         [mail setSubject:NSLocalizedString(@"EmailMessageTittle", nil)];
         
-        NSMutableString *messageBody = [[NSMutableString alloc]init];
+        NSMutableString *messageBody = [[[NSMutableString alloc]init] autorelease];
         [messageBody appendString:[self getJScoreString]];
         [messageBody appendString:@"\n\n"];
         [messageBody appendString:[NSString stringWithFormat:NSLocalizedString(@"CaratEmailSalesPitch", nil), NSLocalizedString(@"Carat", nil)]];

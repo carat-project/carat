@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Carat
+
+  Created by Jonatan C Hamberg on 08/09/16.
+  Copyright © 2016 University of Helsinki. All rights reserved.
+*/
+
+"NSLocationAlwaysUsageDescription"="Carat uses location only to measure distance travelled. Exact location will never be collected.";
+"NSLocationWhenInUseUsageDescription"="Carat uses location only to measure distance travelled. Exact location will never be collected.";

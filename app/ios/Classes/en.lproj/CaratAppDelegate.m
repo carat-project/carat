@@ -122,7 +122,7 @@ void onUncaughtException(NSException *exception)
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     TutorialViewController *viewController = [[TutorialViewController alloc] initWithNibName:@"TutorialViewController" bundle:nil callbackTo:delegate withSelector:selector];
     self.window.rootViewController = viewController;
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
     self.navigationController.navigationBarHidden = YES;
     
     [self.window addSubview:self.navigationController.view];
@@ -142,10 +142,10 @@ void onUncaughtException(NSException *exception)
     NSLog(@"%s", __PRETTY_FUNCTION__);
     //[self startStoryboard];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.dashBoardViewController = [[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil];
+    self.dashBoardViewController = [[[DashBoardViewController alloc] initWithNibName:@"DashBoardViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.dashBoardViewController;
     
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.window.rootViewController];
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:self.window.rootViewController] autorelease];
     self.navigationController.navigationBarHidden = YES;
     
     [self.window addSubview:self.navigationController.view];
@@ -157,6 +157,10 @@ void onUncaughtException(NSException *exception)
     }
     
     // we do this to prompt the dialog asking for permission to share location info
+    if([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]){
+        // Needed to prompt location in newer iOS versions
+        [locationManager requestAlwaysAuthorization];
+    }
     [locationManager startMonitoringSignificantLocationChanges];
     [locationManager stopMonitoringSignificantLocationChanges];
         
@@ -247,7 +251,9 @@ void onUncaughtException(NSException *exception)
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
-    if ([[Globals instance] hasUserConsented]) [locationManager startMonitoringSignificantLocationChanges];
+    if ([[Globals instance] hasUserConsented]){
+        [locationManager startMonitoringSignificantLocationChanges];
+    }
 }
 
 

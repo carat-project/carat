@@ -48,8 +48,9 @@
 
 - (IBAction)hideAppsClicked:(id)sender {
     NSLog(@"hideAppsClicked");
-    HideAppsViewController *controler = [[HideAppsViewController alloc]initWithNibName:@"HideAppsViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    HideAppsViewController *controller = [[HideAppsViewController alloc]initWithNibName:@"HideAppsViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (IBAction)feedBackClicked:(id)sender {
@@ -139,13 +140,15 @@
 }
 
 - (IBAction)tutorialClicked:(id)sender {
-    TutorialViewController *controler = [[TutorialViewController alloc]initWithNibName:@"TutorialViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    TutorialViewController *controller = [[TutorialViewController alloc]initWithNibName:@"TutorialViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (IBAction)aboutClicked:(id)sender {
-    AboutViewController *controler = [[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    AboutViewController *controller = [[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error

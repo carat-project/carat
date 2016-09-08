@@ -37,8 +37,9 @@ const unsigned long GB = MB * 1024;
 // Mobile network type, available in iOS 7.0+
 // @see https://developer.apple.com/library/ios/releasenotes/General/iOS70APIDiffs/
 + (NSString *) getMobileNetworkType {
-    CTTelephonyNetworkInfo *ti = [CTTelephonyNetworkInfo new];
+    CTTelephonyNetworkInfo *ti = [[CTTelephonyNetworkInfo new] autorelease];
     NSString *radioAccessTechnology = ti.currentRadioAccessTechnology;
+    
     
     // String representations of different access technologies
     if(!radioAccessTechnology) return @"none";
@@ -57,7 +58,7 @@ const unsigned long GB = MB * 1024;
 
 // Numeric mobile country code, requires active SIM
 + (NSString *) getNetworkMcc {
-    CTTelephonyNetworkInfo *networkInfo = [CTTelephonyNetworkInfo new];
+    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo new] autorelease];
     CTCarrier *carrier = [networkInfo subscriberCellularProvider];
     NSString *mcc = [carrier mobileCountryCode];
     if(mcc != nil && [mcc length] > 0){
@@ -68,7 +69,7 @@ const unsigned long GB = MB * 1024;
 
 // Numeric mobile network code, requires active SIM
 + (NSString *) getNetworkMnc {
-    CTTelephonyNetworkInfo *networkInfo = [CTTelephonyNetworkInfo new];
+    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo new] autorelease];
     CTCarrier *carrier = [networkInfo subscriberCellularProvider];
     NSString *mnc = [carrier mobileNetworkCode];
     if(mnc != nil && [mnc length] > 0){
@@ -81,7 +82,7 @@ const unsigned long GB = MB * 1024;
 // Not bound to the device or SIM card and might change at any time.
 // Note: Might display incorrectly on provider locked devices.
 + (NSString *) getNetworkOperator {
-    CTTelephonyNetworkInfo *networkInfo = [CTTelephonyNetworkInfo new];
+    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo new] autorelease];
     CTCarrier *carrier = [networkInfo subscriberCellularProvider];
     NSString *carrierName = [carrier carrierName];
     if(carrierName != nil && [carrierName length] > 0){
@@ -93,7 +94,7 @@ const unsigned long GB = MB * 1024;
 // Country code representation in ISO 3661-1 standard
 // @see https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/index.html
 + (NSString *) getCountryCode {
-    CTTelephonyNetworkInfo *networkInfo= [CTTelephonyNetworkInfo new];
+    CTTelephonyNetworkInfo *networkInfo= [[CTTelephonyNetworkInfo new] autorelease];
     CTCarrier *carrier = networkInfo.subscriberCellularProvider;
     if(!carrier || !carrier.isoCountryCode) return @"Unknown";
     return carrier.isoCountryCode;
@@ -119,7 +120,7 @@ const unsigned long GB = MB * 1024;
 // Processor usage percentage as a value between 0 and 1
 // @see http://www.opensource.apple.com/source/xnu/xnu-344/osfmk/kern/host.c?txt
 + (double) getCpuUsage {
-    double used, total;
+    double used=0, total=-1;
     unsigned numCpu;
     processor_cpu_load_info_t loadInfo;
     mach_msg_type_number_t infoCount;
@@ -243,7 +244,7 @@ const unsigned long GB = MB * 1024;
 // Data sent and received by wifi and mobile interfaces in megabytes
 // @see https://developer.apple.com/library/ios/documentation/System/Conceptual/ManPages_iPhoneOS/man3/getifaddrs.3.html
 + (NetworkStatistics *) getNetworkStatistics {
-    NetworkStatistics *stats = [NetworkStatistics new];
+    NetworkStatistics *stats = [[NetworkStatistics new] autorelease];
     struct ifaddrs *ifaddr;
     const struct ifaddrs *cursor;
     
@@ -276,7 +277,7 @@ const unsigned long GB = MB * 1024;
 // Total and free filesystem space in megabytes
 // @see https://developer.apple.com/library/prerelease/mac/documentation/Cocoa/Reference/Foundation/Classes/NSFileManager_Class/index.html
 + (StorageDetails *) getStorageDetails {
-    StorageDetails *storage = [StorageDetails new];
+    StorageDetails *storage = [[StorageDetails new] autorelease];
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];

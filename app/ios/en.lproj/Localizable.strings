@@ -6,13 +6,14 @@
   Copyright © 2015 University of Helsinki. All rights reserved.
 */
 //DashBoard starts
-
 "Dashboard"="Dashboard";
 "Carat" = "Carat";
 "BatteryLifeLabel"="Active Battery Life";
 "Calibrating"="Calibrating..";
-"Bugs"="Bugs";
-"Hogs"="Hogs";
+"Global"="Global";
+"Personal"="Personal";
+"Apps"="Apps";
+"Top"="Top list";
 "Statistics"="Statistics";
 "Actions"="Actions";
 "MyDevice"="MY DEVICE";
@@ -23,13 +24,16 @@
 "NA"= "N/A";
 "Done"="Done";
 "Loading"="Loading..";
+"Information"="Information";
 //DashBoard ends
 //Tutorial starts
 "MainTitle"="Carat Collaborative Energy Diagnosis";
 "MainDesc"="Carat is a research project of the University of Helsinki, originally created in collaboration with the AMP Lab at UC Berkeley, that helps detect and diagnose battery problems, giving you personalized recommendations.";
-"BugsDesc"="Bugs are apps that use a lot of energy on a small number of devices, including yours. Restarting a buggy app may improve battery life.";
-"HogsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Closing hogs may improve battery life.";
-"HogStatisticsDesc"="Hogs are apps that are correlated with higher energy use across many devices. Here are the top hogs globally.";
+"PersonalDesc"="Global apps consume the same amount of battery on many devices, while personal apps use a lot of energy speficially on your device.";
+"AppsDesc"="Global apps consume the same amount of battery on many devices, while personal apps use a lot of energy speficially on your device.";
+"HogStatisticsDesc"="Top list shows apps with highest battery consumption among all devices. It is based on worldwide results collected by Carat.";
+"IOS933Warning"="Carat cannot access the list of running applications on iOS 9.3.3 and newer. However, Carat is monitoring the use of your settings, and will give you recommendations on their impact in the near future!";
+
 "Eula"="END-USER LICENSE\nAGREEMENT";
 "ReadEula"="Read EULA";
 
@@ -55,20 +59,21 @@
 //My Device ends
 //BugsView start
 "ExpectedImp"="Impact: ";
-"Samples"="Samples";
-"Error"="Error";
+"Type"="Type:";
+"Samples"="Samples:";
+"Error"="Error:";
 "SamplesWithout"="Samples without";
 "NumberHelpLabel"="What are these numbers?";
-"NoBugs"="You have no bugs.";
-"NoBugsMessage"="Please check back in a week.\n\nIf your apps are behaving normally, there will be no bugs here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
+"NoBugs"="No results, yet!";
+"NoBugsMessage"="Please check back in a week.\n\nIf your apps are using the usual amount of energy, there will be no applications here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
 //BugsView ends
 //HogsView starts
-"NoHogs"="You have no hogs.";
-"NoHogsMessage"="Please check back in a week.\n\nIf your apps are behaving normally, there will be no bugs here.\n\nWhen an app starts to use significantly more energy on your device than on others, it will show up here.";
+"NoHogs"="No results, yet!";
+"NoHogsMessage"="Please check back in a week.\n\nIf your apps are using the usual amount of energy, there will be no applications here.\n\nWhen an app uses more energy than average, it will show up here.";
 //HogsView ends
 //TopHogsView starts
-"WorstHogsTitle"="Hog statistics";
-"TopHogs"="Top hogs worldwide";
+"WorstHogsTitle"="Top list";
+"TopHogs"="Top list of all applications";
 "SamplesText"="Samples:";
 "BatteryLifeImpact"="Battery life impact:";
 "ReportedBy"="Reported by:";
@@ -81,12 +86,12 @@
 "AllReports"="All reports";
 "GeneralStatistics"="General statistics";
 "pop"="Popular device models";
-"ShowHogStats"="Show hog statistics";
-"GenAllMessage"="Out of %ld installed applications, %d%% are energy-intensive (Hogs in the Carat App) and %d%% are energy anomalies (Bugs).";
-"GenAndroidMessage"="Out of %ld installed Android applications, %d%% are energy-intensive and %d%% are energy anomalies.";
-"GenIOSMessage"="Out of %ld installed iOS applications, %d%% are energy-intensive and %d%% are energy anomalies.";
-"GenUsersMessage"="Out of %ld users, %d%% have at least a single energy anomaly.";
-"WellBehaved"="Well-behaved";
+"ShowHogStats"="Show application statistics";
+"GenAllMessage"="Out of %ld installed applications, %d%% are globally energy-intensive and %d%% are energy-intensive for specific users only.";
+"GenAndroidMessage"="Out of %ld installed Android applications, %d%% are globally energy-intensive and %d%% are energy-intensive for specific users only.";
+"GenIOSMessage"="Out of %ld installed iOS applications, %d%% are globally energy-intensive and %d%% are energy-intensive for specific users only.";
+"GenUsersMessage"="Out of %ld users, %d%% have at least one application with high energy consumption";
+"WellBehaved"="Normal Energy";
 "Android"="Android";
 "IOS"="iOS";
 "AndroidModelDesc"="Samsung Galaxy S2 : 17%\nGalaxy Nexus : 3%\nNexus 7 : 3%\nDROIDX : 2%\nSamsung Galaxy Note II : 2%\nNexus S : 1%\nHTC One X : 1%\nSamsung Droid Charge : 1%\nOther : 67%";
@@ -94,7 +99,7 @@
 //Global results ends
 //No network connection alert starts
 "NoNetwork"="No network connection";
-"NoGlobalData"="Failed to load from device or from network general statistic data.\nYou need network connection to see corect data";
+"NoGlobalData"="Failed to load from device or from network general statistic data.\nYou need a network connection to receive updated data.";
 "OK"="OK";
 //No network connection alert ends
 //Actions view start
@@ -108,8 +113,8 @@
 "ActionHelpCollect" = "Help Carat Collect Data";
 "ActionHelpCollectSubtext" = "Better Carat results!";
 
-"ActionViewTopHogs" = "View Worst Hogs";
-"ActionViewTopHogsSubtext" = "Top 20 hogs globally";
+"ActionViewTopHogs" = "View applications";
+"ActionViewTopHogsSubtext" = "Global energy consumption";
 
 "ActionUpgradeOS" = "Upgrade the Operating System";
 "ActionRestart" = "Restart ";
@@ -117,7 +122,7 @@
 
 "NoActionsMessage"="You have no actions.\n\nYou should open Carat regularly so it can take samples of your device state and communicate these to our servers.\nWe suggest opening Carat every day, or as often as you remember, especially for the first week after installing it.\nIt can take a week or more after you install Carat for it to collect enough data to begin generating personalized reports.\nMake sure you give Carat a chance to communicate with our servers (i.e., open it when you have internet connectivity).\nThe more often you open the app, the more quickly it will generate reports, the more information those reports will contain, and the more accurate the recommendations will be.\nCarat does not run as a background service, which is why it needs your help.\nThe app subscribes to battery level change notifications that let it take samples when it\'s not in the foreground, but Carat cannot reopen itself after it is closed (to free up resources) or after the device is restarted.";
 
-"KillAppDesc" = "From your home screen, press the home button twice. Now you should see a Process Manager. If necessary, swipe back and forth to locate the app you want to close. When you've found it, press and hold on the app icon until a red circle appears in the corner of the icon. Press this red circle. \n\nOnce you are done killing apps, press the home button to close the Process Manager. If you were trying to restart the app, now simply open it again, as usual.";
+"KillAppDesc" = "From your home screen, press the home button twice. Now you should see a Process Manager. If necessary, swipe back and forth to locate the app you want to close. When you've found it, press and hold on the app icon until a red circle appears in the corner of the icon. Press this red circle. \n\nOnce you are done closing apps, press the home button to close the Process Manager. If you were trying to restart the app, now simply open it again, as usual.";
 "KillAppDescModern" = "Press the home button two times quickly to see your recently used apps. If necessary, swipe those apps left or right until you find the one you want to close. Simply swipe up on that app's preview to close it.\n\nWhen you are ready, press your home button or tap an application to return. If you were trying to restart an app, you can simply open it again.";
 "UpgradeOSDesc" = "Plug your device into a computer with iTunes installed and with access to the internet. Your device should show up in the side bar under a Devices category.\n\nSelect it, and make sure the Summary tab is selected along the iTunes title bar. Under the Version section of this window, you should see a button \"Check for Update\"\n\nPre ss this button. iTunes will walk you through the rest of the upgrade process.";
 "CollectDataTitle" = "How to Help Carat Collect Data";
@@ -132,12 +137,11 @@
 "EmptyViewDesc" = "You should open Carat often (e.g., daily) so it can collect the data it needs to generate reports for you. If you just installed it, this can take a week or more. Meanwhile, we'll be hard at work trying to figure out what's going on with your battery life...";
 //Empty view ends
 // EXPLANATIONS
-"JScoreDesc"="The J-Score represents the percentile battery life you see relative to all other devices being measured by Carat. \n\nSo, if you have a J-Score of 50, that means your expected battery life is better than half of our users; a score of 99 means you have better battery life than 99 of our users. Of course, a single number does not provide a complete description of your battery life. \n\nA low J-Score could mean that your device is using a big battery inefficiently or a small battery with average efficiency. Similarly, a high J-Score could simply mean that you don\'t use your device heavily. Carat computes a huge variety of statistics, and the J-Score is just one of them.";
+"JScoreDesc"="The J-Score represents the percentile battery life you see relative to all other devices being measured by Carat. \n\nSo, if you have a J-Score of 50, that means your expected battery life is better than half of our users; a score of 99 means you have better battery life than 99%% of our users. Of course, a single number does not provide a complete description of your battery life. \n\nA low J-Score could mean that your device is using a big battery inefficiently or a small battery with average efficiency. Similarly, a high J-Score could simply mean that you don\'t use your device heavily. Carat computes a huge variety of statistics, and the J-Score is just one of them.";
 
 "MemoryDesc"="The operating system (OS) classifies your device\'s physical memory as either used or free. If memory is used, it means there is currently data there that belongs to some process (like one of your apps or the OS, itself). When the device runs out of free memory, it needs to make room so it can store new data, which means closing apps that might be running in the background or asking your apps to throw away data they aren\'t using. The OS then further subcategorizes used memory as being either active or inactive, depending on whether it was accessed recently or not, respectively. When the OS runs out of free memory, it starts reclaiming inactive memory. When you open a bunch of apps, the fraction of used memory may increase; when the apps you have running are working with lots of data (often an energy-intensive task), the fraction of active memory may increase. The OS also preloads often used applications into memory, shortening wait times.";
 "CpuUsageDesc"="CPU Usage shows a percentage of how much of your device's processing power is currently being used. High percentages mean that the device is fully loaded in terms of processing power, such as when playing games or installing new applications.";
-"WhatAreTheseNumbersDesc"="Expected benefit is the amount of battery life that fixing the hog/bug is expected to yield. Fixing hogs means killing the app and using it less, while fixing a bug may mean just...";
-"WellBehavedDesc"="Well-behaved apps use an appropriate amount of energy and don't usually require user intervention.";
+"WellBehavedDesc"="These apps use an appropriate amount of energy and don't usually require user intervention.";
 
 // MENU
 "Settings"="Settings";
@@ -160,11 +164,8 @@
 "ActionsSub"="How to use Carat";
 "ActionsMessage"="The Actions list tells you how to make your battery last longer and how much improvement to expect.";
 //Bugs
-"BugsSub"="See your bugs";
-//BugsMessage==BugsDesc
-//Hogs
-"HogsSub"="See your hogs";
-//HogsMessage == HogsDesc
+
+"PersonalSub"="See applications";
 "CollectData"="Collect Data";
 "CollectDataSub"="Info what and how Carat collects data";
 "CollectDataMessage"="Carat collects and reports generic usage statistics about your phone that allow it to do its job this process involves absolutely no personally identifying information. Period.";
@@ -192,8 +193,8 @@
 "CCDMReportUpdateStatusNotification" = "CCDMReportUpdateStatusNotification";
 //Progress updates
 "UpdatingMainReports" = "Updating main reports...";
-"UpdatingHogReports" = "Updating hog reports...";
-"UpdatingBugReports" = "Updating bug report...";
+"UpdatingHogReports" = "Updating global apps...";
+"UpdatingBugReports" = "Updating personal apps...";
 "UpdatingMainReports" = "Updating main reports...";
 "UpdatingMainReports" = "Updating main reports...";
 "UpdatingMainReports" = "Updating main reports...";
@@ -205,14 +206,14 @@
 "Updated" = "Updated ";
 "Ago" = "ago";
 "Samples" = "%i Samples sent";
-"SamplesLabel" = "Samples";
+"SamplesLabel" = "Samples:";
+"PreviouslyObservedApps" = "Previously observed apps";
 "None" = "None";
-
 
 //Flurry Logs
 "selectedProcessList" = "selectedProcessList";
-"selectedBugsView" = "selectedBugsView";
-"selectedHogsView" = "selectedHogsView";
+"selectedBugsView" = "selectedPersonalView";
+"selectedHogsView" = "selectedAppsView";
 "selectedActionsView" = "selectedActionsView";
 "selectedStatisticsView" = "selectedStatisticsView";
 "selectedMyDeviceView" = "selectedMyDeviceView";

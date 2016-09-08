@@ -48,37 +48,32 @@ static NSString * collapsedCell = @"AboutTableViewCell";
     
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     
-    AboutListItemData* d1 = [AboutListItemData new];
+    AboutListItemData* d1 = [[AboutListItemData new] autorelease];
     d1.title = [NSString stringWithFormat:@"%@ v%@", NSLocalizedString(@"AboutTittle", nil), version];
     d1.subTitle = NSLocalizedString(@"AboutSub", nil);
     d1.message = NSLocalizedString(@"AboutMessage", nil);
     
-    AboutListItemData* d2 = [AboutListItemData new];
+    AboutListItemData* d2 = [[AboutListItemData new] autorelease];
     d2.title = NSLocalizedString(@"Actions", nil);
     d2.subTitle = NSLocalizedString(@"ActionsSub", nil);
     d2.message = NSLocalizedString(@"ActionsMessage", nil);
     
-    AboutListItemData* d3 = [AboutListItemData new];
-    d3.title = NSLocalizedString(@"Bugs", nil);
-    d3.subTitle = NSLocalizedString(@"BugsSub", nil);
-    d3.message = NSLocalizedString(@"BugsDesc", nil);
+    AboutListItemData* d3 = [[AboutListItemData new] autorelease];
+    d3.title = NSLocalizedString(@"Apps", nil);
+    d3.subTitle = NSLocalizedString(@"PersonalSub", nil);
+    d3.message = NSLocalizedString(@"PersonalDesc", nil);
     
-    AboutListItemData* d4 = [AboutListItemData new];
-    d4.title = NSLocalizedString(@"Hogs", nil);
-    d4.subTitle = NSLocalizedString(@"HogsSub", nil);
-    d4.message = NSLocalizedString(@"HogsDesc", nil);
+    AboutListItemData* d4 = [[AboutListItemData new] autorelease];
+    d4.title = NSLocalizedString(@"CollectData", nil);
+    d4.subTitle = NSLocalizedString(@"CollectDataSub", nil);
+    d4.message = NSLocalizedString(@"CollectDataMessage", nil);
     
-    AboutListItemData* d5 = [AboutListItemData new];
-    d5.title = NSLocalizedString(@"CollectData", nil);
-    d5.subTitle = NSLocalizedString(@"CollectDataSub", nil);
-    d5.message = NSLocalizedString(@"CollectDataMessage", nil);
+    AboutListItemData* d5 = [[AboutListItemData new] autorelease];
+    d5.title = NSLocalizedString(@"ActiveBatteryLife", nil);
+    d5.subTitle = NSLocalizedString(@"ActiveBatteryLifeSub", nil);
+    d5.message = NSLocalizedString(@"ActiveBatteryLifeMessage", nil);
     
-    AboutListItemData* d6 = [AboutListItemData new];
-    d6.title = NSLocalizedString(@"ActiveBatteryLife", nil);
-    d6.subTitle = NSLocalizedString(@"ActiveBatteryLifeSub", nil);
-    d6.message = NSLocalizedString(@"ActiveBatteryLifeMessage", nil);
-    
-    _tableData = [[NSArray alloc] initWithObjects:d1, d2, d3, d4, d5, d6, nil];
+    _tableData = [[NSArray alloc] initWithObjects:d1, d2, d3, d4, d5, nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -102,14 +97,14 @@ static NSString * collapsedCell = @"AboutTableViewCell";
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     }
     
     AboutListItemData *rowData = [_tableData objectAtIndex:indexPath.row];
     AboutTableViewCell *viewCell = (AboutTableViewCell *)cell;
     viewCell.title.text = rowData.title;
     viewCell.subTitle.text = rowData.subTitle;
-    if([rowData.title isEqualToString: NSLocalizedString(@"Bugs", nil)]){
+    if([rowData.title isEqualToString: NSLocalizedString(@"Personal", nil)]){
         viewCell.subTitle.textColor = C_ORANGE;
 
         UITapGestureRecognizer *singleFingerTap =
@@ -118,7 +113,7 @@ static NSString * collapsedCell = @"AboutTableViewCell";
         [viewCell.subTabArea addGestureRecognizer:singleFingerTap];
         [singleFingerTap release];
     }
-    else if([rowData.title isEqualToString: NSLocalizedString(@"Hogs", nil)]){
+    else if([rowData.title isEqualToString: NSLocalizedString(@"Apps", nil)]){
         viewCell.subTitle.textColor = C_ORANGE;
 
         UITapGestureRecognizer *singleFingerTap =
@@ -217,32 +212,36 @@ static NSString * collapsedCell = @"AboutTableViewCell";
 #pragma mark - Navigation methods
 - (void)showBugs:(UITapGestureRecognizer *)recognizer {
     DLog(@"%s", __PRETTY_FUNCTION__);
-    BugsViewController *controler = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
+    BugsViewController *controller = [[BugsViewController alloc]initWithNibName:@"BugsViewController" bundle:nil];
    
     NSMutableArray *controllers=[[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers] ;
     
     //Remove the last view controller
     [controllers removeLastObject];
     [controllers removeLastObject];
-    [controllers addObject:controler];
+    [controllers addObject:controller];
+    [controller release];
     //set the new set of view controllers
     [[self retain] autorelease];
     [self.navigationController setViewControllers:controllers];
+    [controllers release];
 }
 
 - (void)showHogs:(UITapGestureRecognizer *)recognizer {
     DLog(@"%s", __PRETTY_FUNCTION__);
-    HogsViewController *controler = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
+    HogsViewController *controller = [[HogsViewController alloc]initWithNibName:@"HogsViewController" bundle:nil];
 
     NSMutableArray *controllers=[[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers] ;
     
     //Remove the last view controller
     [controllers removeLastObject];
     [controllers removeLastObject];
-    [controllers addObject:controler];
+    [controllers addObject:controller];
+    [controller release];
     //set the new set of view controllers
     [[self retain] autorelease];
     [self.navigationController setViewControllers:controllers];
+    [controllers release];
 }
 
 

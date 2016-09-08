@@ -6,6 +6,7 @@
 //  Copyright © 2015 University of Helsinki. All rights reserved.
 //
 
+#import "Preprocessor.h"
 #import "HogsViewController.h"
 #import "HogStatisticsViewController.h"
 
@@ -20,13 +21,23 @@
     // Do any additional setup after loading the view from its nib.
     _contentTitle.text = NSLocalizedString(@"NothingToReport",nil);
     _content.text = NSLocalizedString(@"EmptyViewDesc",nil);
+    _navBarTitle.title = [NSLocalizedString(@"Apps", nil) uppercaseString];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingFinished:)
                                                  name:@"EditingFinished" object:nil];
+    
+    // Process list is unavailable starting from iOS 9.3.3 so we want to
+    // show a warning on the bottom of the view stating that apps are no
+    // longer updating, but data is still being collected for settings.
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.3.3")){
+        _bottomWarning.hidden = false;
+    } else {
+        _bottomWarning.hidden = true;
+        _warningHeight.constant = 0;
+    }
     [self updateExtraAction];
     [self setBug:NO];
-    [self setHogBugReport:[[CoreDataManager instance] getHogs:NO withoutHidden:YES]];
-    
+    [self setHogBugReport:[self getHogBugReport]];
 }
 
 - (void) updateExtraAction {
@@ -49,7 +60,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setHogBugReport:[[CoreDataManager instance] getHogs:NO withoutHidden:YES]];
+    [self setHogBugReport:[self getHogBugReport]];
 }
 
 
@@ -66,6 +77,7 @@
 - (IBAction) showHogStatistics:(id)sender {
     HogStatisticsViewController *controller = [[HogStatisticsViewController alloc]initWithNibName:@"HogStatisticsViewController" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (void)updateView {
@@ -77,10 +89,28 @@
 }
 
 - (void)reloadReport {
-    HogBugReport * hogs = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
-    if (hogs != nil) {
-        [self setHogBugReport:hogs];
+    HogBugReport *all = [self getHogBugReport];
+    if (all != nil) {
+        [self setHogBugReport:all];
     }
+}
+
+- (HogBugReport *)getHogBugReport {
+    HogBugReport *bugs = [[CoreDataManager instance] getBugs:NO withoutHidden:YES];
+    HogBugReport *hogs = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
+    NSMutableArray *hbList = [NSMutableArray array];
+    for(HogsBugs* bug in bugs.hbList){
+        bug.samplesWithout = 1;
+        [hbList addObject:bug];
+    }
+    for(HogsBugs* hog in hogs.hbList){
+        hog.samplesWithout = 0;
+        [hbList addObject:hog];
+    }
+    
+    HogBugReport *all = [[HogBugReport new] autorelease];
+    all.hbList = hbList;
+    return all;
 }
 
 -(void)sampleCountUpdated:(NSNotification*)notification{
@@ -93,6 +123,9 @@
     [_content release];
     [_contentTitle release];
     [_extraButton release];
+    [_navBarTitle release];
+    [_bottomWarning release];
+    [_warningHeight release];
     [super dealloc];
 }
 @end

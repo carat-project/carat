@@ -12,6 +12,7 @@
 #import "NetworkBaseViewController.h"
 #import "ProcessViewController.h"
 #import "ProgressUpdateView.h"
+#import "LocalizedUIButton.h"
 
 @interface MyScoreViewController : NetworkBaseViewController {
     NSTimeInterval MAX_LIFE; // max battery life in seconds
@@ -27,6 +28,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
 @property (retain, nonatomic) IBOutlet ProgressUpdateView *progressUpdateView;
 @property (retain, nonatomic) IBOutlet UINavigationItem *navbarTitle;
+@property (retain, nonatomic) IBOutlet LocalizedUIButton *processListButton;
 
 - (IBAction)showJScoreExplanation:(id)sender;
 - (IBAction)showProcessList:(id)sender;

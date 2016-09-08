@@ -18,6 +18,7 @@
 #import "UIImageDoNotCache.h"
 #import "CaratConstants.h"
 #import "DeviceInformation.h"
+#import "Preprocessor.h"
 
 @interface MyScoreViewController ()
 
@@ -100,7 +101,7 @@ BOOL isUpdateProgressVisible;
     // UUID
     NSString *vUUID = [[Globals instance] getUUID];
     //Device Info
-    UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
+    UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
     NSString* vPlatform = [h platformString];
     NSString* vOSVersion = [UIDevice currentDevice].systemVersion;
     //Memory Info
@@ -129,12 +130,12 @@ BOOL isUpdateProgressVisible;
     // Change since last week
     //    [[self sinceLastWeekString] makeObjectsPerformSelector:@selector(setText:) withObject:[[[[CoreDataManager instance] getChangeSinceLastWeek] objectAtIndex:0] stringByAppendingString:[@" (" stringByAppendingString:[[[[CoreDataManager instance] getChangeSinceLastWeek] objectAtIndex:1] stringByAppendingString:@"%)"]]]];
     //OS
-    double vOS = MIN(MAX([[[CoreDataManager instance] getOSInfo:YES] score],0.0),1.0);
+    //double vOS = MIN(MAX([[[CoreDataManager instance] getOSInfo:YES] score],0.0),1.0);
     //MODEL
-    double vModel = [[[CoreDataManager instance] getModelInfo:YES] score];
+    //double vModel = [[[CoreDataManager instance] getModelInfo:YES] score];
     //APPS
-    double vApps = [[[CoreDataManager instance] getSimilarAppsInfo:YES] score];
-    DLog(@"uuid: %s, jscore: %d, os: %f, model: %f, apps: %f", [vUUID UTF8String], vScore, vOS, vModel, vApps);
+    //double vApps = [[[CoreDataManager instance] getSimilarAppsInfo:YES] score];
+    //DLog(@"uuid: %s, jscore: %d, os: %f, model: %f, apps: %f", [vUUID UTF8String], vScore, vOS, vModel, vApps);
     [self.view setNeedsDisplay];
 }
 
@@ -239,7 +240,7 @@ BOOL isUpdateProgressVisible;
         NSString *samplesWithoutTxt = [[NSNumber numberWithDouble:[dsr samplesWithout]] stringValue];
         NSString *samplesTxt = [[NSNumber numberWithDouble:[dsr samples]] stringValue];
         
-        NSMutableString *returnString = [[NSMutableString alloc]init];
+        NSMutableString *returnString = [[[NSMutableString alloc]init]autorelease];
         [returnString appendString:NSLocalizedString(@"Same Operating System", nil)];
         [returnString appendString:@"\n\n"];
         [returnString appendString:errorTxt];
@@ -261,9 +262,10 @@ BOOL isUpdateProgressVisible;
 }
 
 - (IBAction)showProcessList:(id)sender {
-    ProcessViewController *controler = [[ProcessViewController alloc]initWithNibName:@"ProcessViewController" bundle:nil];
-    [self.navigationController pushViewController:controler animated:YES];
+    ProcessViewController *controller = [[ProcessViewController alloc]initWithNibName:@"ProcessViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
     [Flurry logEvent:NSLocalizedString(@"selectedProcessList", nil)]; //
+    [controller release];
 }
 
 - (IBAction)showMemUsedInfo:(id)sender {
@@ -297,6 +299,7 @@ BOOL isUpdateProgressVisible;
     [_lastUpdatedLabel release];
     [_progressUpdateView release];
     [_navbarTitle release];
+    [_processListButton release];
     [super dealloc];
 }
 @end

@@ -13,7 +13,6 @@
 @synthesize expImpTimeLabel = _prepTimeLabel;
 @synthesize thumbnailAppImg = _thumbnailImageView;
 @synthesize samplesValueLabel = _samplesValueLabel;
-@synthesize samplesWithoutValueLabel = _samplesWithoutValueLabel;
 @synthesize errorValueLabel = _errorValueLabel;
 @synthesize helpLabel = _helpLabel;
 @synthesize expandBtn = _expandBtn;
@@ -37,13 +36,13 @@
     [_nameLabel release];
     [_prepTimeLabel release];
     [_thumbnailImageView release];
-    [_samplesValueLabel release];
-    [_samplesWithoutValueLabel release];
     [_errorValueLabel release];
     [_helpLabel release];
     [_expandBtn release];
     [_numerHelpTapArea release];
     [_hideButton release];
+    [_typeValueLabel release];
+    [_samplesValueLabel release];
     [super dealloc];
 }
 

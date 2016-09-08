@@ -122,6 +122,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 - (void) dealloc
 {
 	[self stopNotifier];
+    [self release];
 	if(reachabilityRef!= NULL)
 	{
 		CFRelease(reachabilityRef);
@@ -135,12 +136,14 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
 	if(reachability!= NULL)
 	{
-		retVal= [[self alloc] init];
+		retVal= [self new];
 		if(retVal!= NULL)
 		{
 			retVal->reachabilityRef = reachability;
 			retVal->localWiFiRef = NO;
-		}
+        } else {
+            CFRelease(reachability);
+        }
 	}
 	return retVal;
 }
@@ -151,12 +154,14 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	Reachability* retVal = NULL;
 	if(reachability!= NULL)
 	{
-		retVal= [[self alloc] init];
+		retVal= [self new];
 		if(retVal!= NULL)
 		{
 			retVal->reachabilityRef = reachability;
 			retVal->localWiFiRef = NO;
-		}
+        } else {
+            CFRelease(reachability);
+        }
 	}
 	return retVal;
 }

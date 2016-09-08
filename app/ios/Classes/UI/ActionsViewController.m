@@ -93,17 +93,16 @@
      // get Hogs, filter negative actionBenefits, fill mutable array
     NSMutableArray *myList = [[CoreDataManager instance] getHogsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionKill", nil) actType:ActionTypeKillApp];
     
-    DLog(@"Loading Hogs");
    // get Bugs, add to array
     NSMutableArray *bugsActionList = [[CoreDataManager instance] getBugsActionList:YES withoutHidden:YES actText:NSLocalizedString(@"ActionRestart", nil) actType:ActionTypeRestartApp];
     [myList addObjectsFromArray:bugsActionList];
-    DLog(@"Loading Bugs");
     
     // get OS
     ActionObject *tmpAction = [[CoreDataManager instance] createActionObjectFromDetailScreenReport:NSLocalizedString(@"ActionUpgradeOS", nil) actType:ActionTypeUpgradeOS];
     if(tmpAction != nil){
         [myList addObject:tmpAction];
-        [tmpAction release];
+        // Not owned by the caller, should not release
+        // [tmpAction release];
     }
     DLog(@"Loading OS");
 
@@ -146,7 +145,7 @@
                 NSInteger benefit = (int) (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
                 NSInteger benefit_max = (int) (100/([hb expectedValueWithout]-[hb errorWithout]) - 100/([hb expectedValue]+[hb error]));
                 NSInteger error = (int) (benefit_max-benefit);
-                DLog(@"Benefit is %d ± %d for bug '%@'", benefit, error, [hb appName]);
+                DLog(@"Benefit is %d ± %d for personal '%@'", benefit, error, [hb appName]);
                 if (benefit > 60) {
                     tmpAction = [[ActionObject alloc] init];
                     [tmpAction setActionText:[@"Restart " stringByAppendingString:[hb appName]]];
@@ -268,7 +267,7 @@
         cell.actionValue.text = @"+100 karma!";
         cell.actionType = ActionTypeSpreadTheWord;
     } else if (act.actionBenefit == -3) {
-        cell.actionValue.text = @"See top Hogs and devices";
+        cell.actionValue.text = @"See top apps and devices";
         cell.actionType = ActionTypeGlobalStats;
     }
     else {
