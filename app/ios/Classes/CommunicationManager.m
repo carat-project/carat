@@ -212,7 +212,7 @@ static NSString * networkStatusString;
                 UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
                 [feature2 setValue:[h platformString]];
                 [h release];
-                FeatureList featureList = [[NSArray alloc] initWithObjects:feature1, feature2, nil];
+                FeatureList featureList = [[NSMutableArray alloc] initWithObjects:feature1, feature2, nil];
                 return [self.service getReports:[[Globals instance] getUUID] features:featureList];
             }
             @catch (NSException *exception) {

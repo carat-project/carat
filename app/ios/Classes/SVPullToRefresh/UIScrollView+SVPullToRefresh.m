@@ -209,6 +209,16 @@ static char UIScrollViewPullToRefreshView;
     }
 }
 
+// TODO: FIXME: Move this to a common util class
+- (CGSize)getRectSize:(UILabel*)label withMaxWidth: (CGFloat) maxWidth {
+    CGRect textRect = [label.text boundingRectWithSize:CGSizeMake(maxWidth,label.font.lineHeight)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                            attributes:@{NSFontAttributeName:label.font}
+                                            context:nil];
+    
+    return textRect.size;
+}
+
 - (void)layoutSubviews {
     
     for(id otherView in self.viewForState) {
@@ -281,14 +291,10 @@ static char UIScrollViewPullToRefreshView;
         self.subtitleLabel.text = subtitle.length > 0 ? subtitle : nil;
         
         
-        CGSize titleSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font
-                                            constrainedToSize:CGSizeMake(labelMaxWidth,self.titleLabel.font.lineHeight)
-                                                lineBreakMode:self.titleLabel.lineBreakMode];
+        CGSize titleSize = [self getRectSize:self.titleLabel withMaxWidth:labelMaxWidth];
         
+        CGSize subtitleSize = [self getRectSize:self.subtitleLabel withMaxWidth:labelMaxWidth];
         
-        CGSize subtitleSize = [self.subtitleLabel.text sizeWithFont:self.subtitleLabel.font
-                                                  constrainedToSize:CGSizeMake(labelMaxWidth,self.subtitleLabel.font.lineHeight)
-                                                      lineBreakMode:self.subtitleLabel.lineBreakMode];
         NSLog(@"title: %@ and width: %f", self.titleLabel.text, titleSize.width);
         CGFloat maxLabelWidth = MAX(titleSize.width,subtitleSize.width);
         
@@ -329,6 +335,7 @@ static char UIScrollViewPullToRefreshView;
                                       self.arrow.bounds.size.height);
     }
 }
+
 
 #pragma mark - Scroll View
 
