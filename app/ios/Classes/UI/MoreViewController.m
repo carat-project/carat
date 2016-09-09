@@ -65,7 +65,9 @@
 
 -(void)actionSheet:(UIActionSheet *)dialog clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(dialog.tag == 1){
-        if(buttonIndex == 0){
+        if(buttonIndex == [dialog cancelButtonIndex]){
+            return;
+        } else if(buttonIndex == 0){
             [self openStorePage];
         } else {
             [self sendFeedback:[dialog buttonTitleAtIndex:buttonIndex] index:buttonIndex];
@@ -79,7 +81,7 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:storeUrl]];
 }
 
-- (void) sendFeedback:(NSString *)feedback index:(int)index{
+- (void) sendFeedback:(NSString *)feedback index:(NSInteger)index{
     // Device info
     UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
