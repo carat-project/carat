@@ -26,4 +26,5 @@
 + (NSDate *) getLastModified:(NSString *)path;
 + (NSInteger)daysSince:(NSDate*)date;
 + (BOOL)array:(NSArray *)arr containsIgnoreCase:(NSString *)str;
++ (CGSize)getRectSize:(UILabel*)xlabel withBoundingRect: (CGSize) maxWidth;
 @end

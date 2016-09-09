@@ -5,6 +5,7 @@
 //
 
 #import "MBProgressHUD.h"
+#import "Utilities.h"
 
 @interface MBProgressHUD ()
 
@@ -305,14 +306,6 @@
 #pragma mark -
 #pragma mark Layout
 
-// TODO: FIXME: Move this to a common util class
-- (CGSize)getRectSize:(UILabel*)xlabel withBoundingRect: (CGSize) maxWidth {
-    CGRect textRect = [xlabel.text boundingRectWithSize:maxWidth
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                            attributes:@{NSFontAttributeName:xlabel.font}
-                                               context:nil];
-    return textRect.size;
-}
 
 - (void)layoutSubviews {
     CGRect frame = self.bounds;
@@ -383,7 +376,7 @@
             detailsLabel.numberOfLines = 0;
 
 			CGFloat maxHeight = frame.size.height - self.height - 2*margin;
-            CGSize labelSize = [self getRectSize:detailsLabel withBoundingRect:CGSizeMake(frame.size.width - 4*margin, maxHeight)];
+            CGSize labelSize = [Utilities getRectSize:detailsLabel withBoundingRect:CGSizeMake(frame.size.width - 4*margin, maxHeight)];
             lHeight = labelSize.height;
             lWidth = labelSize.width;
 			
