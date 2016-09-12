@@ -332,10 +332,10 @@ BOOL isUpdateProgressVisible;
     HogBugReport *rep = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
     HogBugReport *bugs = [[CoreDataManager instance] getBugs:NO withoutHidden: YES];
     if (rep != nil && [rep hbListIsSet]) {
-        count = (int)[[rep hbList] count];
+        count += [self countFiltered:rep.hbList];
     }
     if(bugs != nil && [bugs hbListIsSet]){
-        count += (int)[[bugs hbList] count];
+        count += [self countFiltered:bugs.hbList];
     }
     return count;
 }
@@ -346,6 +346,19 @@ BOOL isUpdateProgressVisible;
     HogBugReport *rep = [[CoreDataManager instance] getHogs:NO withoutHidden:YES];
     if (rep != nil && [rep hbListIsSet]) {
         count = (int)[[rep hbList] count];
+    }
+    return count;
+}
+
+- (int) countFiltered:(NSMutableArray *)hbList {
+    int count = 0;
+    for(HogsBugs *hb in hbList)
+    {
+        float filterVal = [[Globals instance] getHideConsumptionLimit];
+        double benefit = (100/[hb expectedValueWithout] - 100/[hb expectedValue]);
+        if(benefit > filterVal){
+            count += 1;
+        }
     }
     return count;
 }
