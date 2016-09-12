@@ -37,6 +37,10 @@
 - (void) acknowledgeHiddenChanges;
 - (NSString *) getStringForKey:(NSString *)key;
 - (void) saveString:(NSString *)string forKey:(NSString *)key;
+- (BOOL) getBoolForKey:(NSString *)key;
+- (void) saveBool:(BOOL)boolean forKey:(NSString *)key;
+- (float) getFloatForKey:(NSString *)key;
+- (void) saveFloat:(float)flt forKey:(NSString *)key;
 
 @end
 #endif

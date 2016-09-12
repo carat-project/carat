@@ -20,6 +20,8 @@
     _navigationBar.title = [NSLocalizedString(@"Settings", nil) uppercaseString];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     _versionLabel.text = [NSString stringWithFormat:@"%@ v%@", NSLocalizedString(@"AboutTittle", nil), version];
+    BOOL selected = [[Globals instance] getBoolForKey:kUseWifiOnly];
+    [_wifiSwitch setOn:selected];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -40,9 +42,9 @@
 
 - (IBAction)wifiOnlySwitcherValueChanged:(id)sender {
     UISwitch* switchControl = sender;
-    BOOL useWifiOnly = switchControl.on ? YES: NO;
-    [[NSUserDefaults standardUserDefaults] setBool:useWifiOnly forKey:kUseWifiOnly];
-    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
+    BOOL useWifiOnly = switchControl.on;
+    [[Globals instance] saveBool:useWifiOnly forKey:kUseWifiOnly];
+    NSLog( @"The wifi-only switch is %@", switchControl.on ? @"ON" : @"OFF" );
 
 }
 
@@ -180,6 +182,7 @@
 - (void)dealloc {
     [_versionLabel release];
     [_navigationBar release];
+    [_wifiSwitch release];
     [super dealloc];
 }
 @end

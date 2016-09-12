@@ -49,11 +49,34 @@ static id instance = nil;
 - (void) saveString:(NSString *)string forKey:(NSString *)key{
     self.defaults = [self getDefaults];
     [defaults setObject:string forKey:key];
+    [defaults synchronize];
+}
+
+- (void) saveBool:(BOOL)boolean forKey:(NSString *)key{
+    self.defaults = [self getDefaults];
+    [defaults setBool:boolean forKey:key];
+    [defaults synchronize];
+}
+
+- (void) saveFloat:(float)flt forKey:(NSString *)key {
+    self.defaults = [self getDefaults];
+    [defaults setFloat:flt forKey:key];
+    [defaults synchronize];
+}
+
+- (BOOL) getBoolForKey:(NSString *)key{
+    self.defaults = [self getDefaults];
+    return [defaults boolForKey:key];
 }
 
 - (NSString *) getStringForKey:(NSString *)key{
     self.defaults = [self getDefaults];
-    return [defaults objectForKey:key];
+    return [defaults stringForKey:key];
+}
+
+- (float) getFloatForKey:(NSString *)key {
+    self.defaults = [self getDefaults];
+    return [defaults floatForKey:key];
 }
 
 //
@@ -86,6 +109,7 @@ static id instance = nil;
 - (void) setHideConsumptionLimit:(float) limit
 {
     [defaults setObject:[NSNumber numberWithFloat:limit] forKey:@"ConsumptionLimit"];
+    [defaults synchronize];
 }
 - (float) getHideConsumptionLimit
 {
