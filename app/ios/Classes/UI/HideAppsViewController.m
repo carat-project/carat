@@ -14,6 +14,7 @@
 
 @implementation HideAppsViewController{
     float selectedValue;
+    int selectedRow;
 }
 
 - (void)viewDidLoad {
@@ -22,7 +23,7 @@
     _hideChoises = [[NSArray alloc] initWithObjects:NSLocalizedString(@"ShowAll", nil), NSLocalizedString(@"Five", nil),
                   NSLocalizedString(@"Ten", nil), NSLocalizedString(@"Twenty", nil), NSLocalizedString(@"Hour", nil), nil];
     float limit = [[Globals instance] getHideConsumptionLimit];
-    int selectedRow;
+    selectedRow = 0;
     if(limit == 0.0f){
         selectedRow = 0;
     }
@@ -41,10 +42,13 @@
         selectedRow = 0;
     }
     
-    _pickerView = [UIPickerView new];
-    [_pickerView selectRow:selectedRow inComponent:0 animated:YES];
-
-    // Do any additional setup after loading the view from its nib.
+    // Why on earth would we do this here? This is essentially same
+    // as throwing away our IBOutlet for something that's not even
+    // visible on view..
+    //
+    // _pickerView = [UIPickerView new];
+    
+    [_pickerView selectRow:selectedRow inComponent:0 animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {

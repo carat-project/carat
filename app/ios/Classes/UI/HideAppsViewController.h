@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Globals.h"
 #import "BaseViewController.h"
+#import "CaratConstants.h"
 
 @interface HideAppsViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) NSArray *hideChoises;
