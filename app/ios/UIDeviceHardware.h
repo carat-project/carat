@@ -1,13 +1,36 @@
-//
-//  UIDeviceHardware.h
-//
-//  Used to determine EXACT version of device software is running on.
+/*
+ Erica Sadun, http://ericasadun.com
+ iPhone Developer's Cookbook, 6.x Edition
+ BSD License, Use at your own risk
 
-#import <Foundation/Foundation.h>
+ Modified by Eric Horacek for Monospace Ltd. on 2/4/13
+ */
 
-@interface UIDeviceHardware : NSObject 
+#import <UIKit/UIKit.h>
 
-- (NSString *) platform;
-- (NSString *) platformString;
+typedef NS_ENUM(NSUInteger, UIDeviceFamily) {
+    UIDeviceFamilyiPhone,
+    UIDeviceFamilyiPod,
+    UIDeviceFamilyiPad,
+    UIDeviceFamilyAppleTV,
+    UIDeviceFamilyUnknown,
+};
+
+@interface UIDevice (Hardware)
+
+/**
+ Returns a machine-readable model name in the format of "iPhone4,1"
+ */
+- (NSString *)modelIdentifier;
+
+/**
+ Returns a human-readable model name in the format of "iPhone 4S". Fallback of the the `modelIdentifier` value.
+ */
+- (NSString *)modelName;
+
+/**
+ Returns the device family as a `UIDeviceFamily`
+ */
+- (UIDeviceFamily)deviceFamily;
 
 @end
