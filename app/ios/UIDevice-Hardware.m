@@ -9,7 +9,7 @@
 #include <sys/sysctl.h>
 #import "UIDevice-Hardware.h"
 
-@interface UIDevice (Hardware)
+@interface UIDevice (Hardward)
 
 - (NSString *)modelNameForModelIdentifier:(NSString *)modelIdentifier;
 
