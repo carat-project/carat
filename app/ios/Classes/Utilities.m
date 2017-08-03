@@ -149,7 +149,7 @@
     return false;
 }
 
-- (CGSize)getRectSize:(UILabel*)xlabel withBoundingRect: (CGSize) maxWidth {
++ (CGSize)getRectSize:(UILabel*)xlabel withBoundingRect: (CGSize) maxWidth {
     CGRect textRect = [xlabel.text boundingRectWithSize:maxWidth
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName:xlabel.font}
