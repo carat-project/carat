@@ -179,7 +179,6 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		24112D261CEB219B008ABADE /* CaratProcessCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratProcessCache.h; sourceTree = "<group>"; };
 		24112D271CEB219B008ABADE /* CaratProcessCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaratProcessCache.m; sourceTree = "<group>"; };
-		2417658C1C60D896007EB0CD /* Icon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon144.png; path = ../Images.xcassets/AppIcon.appiconset/Icon144.png; sourceTree = "<group>"; };
 		2417658E1C60E64C007EB0CD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		2422EED91CE1EF5400637E06 /* Carat 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Carat 2.xcdatamodel"; sourceTree = "<group>"; };
 		245897431C9063F1001D3FE2 /* TopHogsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHogsTableViewCell.h; sourceTree = "<group>"; };
@@ -846,7 +845,6 @@
 			children = (
 				C7547F3819963CFD007A01CF /* 32-iphone.png */,
 				66D41BCA1A8F8EF800044C66 /* settings.png */,
-				2417658C1C60D896007EB0CD /* Icon144.png */,
 				C704AE531A03B90200E4F13C /* bug.png */,
 				C704AE571A03B90200E4F13C /* twologo.png */,
 				66EC15051A2A6A8E00153746 /* infoButton@2x.png */,
