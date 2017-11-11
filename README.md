@@ -2,6 +2,15 @@
 
 For details, visit http://carat.cs.helsinki.fi
 
+## Android APK Download for Devices Without Google Play
+
+[Android Releases](https://github.com/carat-project/carat-android/releases)
+
+## Install on iOS or Android
+
+[App Store Page for iOS](http://itunes.apple.com/us/app/carat/id504771500)
+[Google Play Page for Android](https://play.google.com/store/apps/details?id=edu.berkeley.cs.amplab.carat.android)
+
 ## Build instructions for Android
 
 1. Find Carat Android application at https://github.com/carat-project/carat-android
