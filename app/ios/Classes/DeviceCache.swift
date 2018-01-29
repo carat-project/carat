@@ -7,3 +7,61 @@
 //
 
 import Foundation
+import os.log
+
+class DeviceCache: NSObject, NSCoding {
+    
+    //MARK: Properties
+    
+    var deviceMap:[String: String]
+    var lastUpdated: UInt64
+    
+    //MARK: Types
+    
+    // Keys for persisted data.
+    struct PropertyKey{
+        static let lastUpdated = "lastupdated"
+        static let devices = "devices"
+    }
+    
+    //MARK: Archiving Paths
+    
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("devicecache")
+    
+    
+    
+    //MARK: Initialization
+    
+    init(deviceMap: [String: String], lastUpdated: UInt64) {
+        self.deviceMap = deviceMap
+        self.lastUpdated = lastUpdated
+    }
+    
+    //MARK: Core functionality
+    
+    func get(platform:String) -> String? {
+        return deviceMap[platform]
+    }
+    
+    //MARK: NSCoding
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(deviceMap, forKey: PropertyKey.devices)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        guard let deviceMap = aDecoder.decodeObject(forKey: PropertyKey.devices) as? [String: String] else {
+            os_log("Unable to decode stored device list.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
+        guard let lastUpdated = aDecoder.decodeObject(forKey: PropertyKey.lastUpdated) as? UInt64 else {
+            os_log("Unable to decode stored device list.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
+        self.init(deviceMap:deviceMap, lastUpdated:lastUpdated)
+    }
+
+}
