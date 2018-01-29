@@ -48,16 +48,17 @@ class DeviceCache: NSObject, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(deviceMap, forKey: PropertyKey.devices)
+        aCoder.encode(lastUpdated, forKey: PropertyKey.lastUpdated)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         guard let deviceMap = aDecoder.decodeObject(forKey: PropertyKey.devices) as? [String: String] else {
-            os_log("Unable to decode stored device list.", log: OSLog.default, type: .debug)
+            print("Unable to decode stored device list.")
             return nil
         }
         
         guard let lastUpdated = aDecoder.decodeObject(forKey: PropertyKey.lastUpdated) as? UInt64 else {
-            os_log("Unable to decode stored device list.", log: OSLog.default, type: .debug)
+            print("Unable to decode stored device list.")
             return nil
         }
         
