@@ -29,18 +29,14 @@ class IosDeviceNames: NSObject {
     override init() {
         super.init()
         self.cache = loadCache()
-        if let gotCache = self.cache {
-            // If it's too old, schedule a fetch
-            if gotCache.lastUpdated + IosDeviceNames.THRESH < UInt64(NSDate().timeIntervalSince1970) {
-                fetchDeviceListAsync()
-            }
-        }
+        // If it's too old, schedule a fetch
+        fetchDeviceListAsync()
     }
   
     // Fetch device list asynchronously to not block main thread.
     func fetchDeviceListAsync() {
         DispatchQueue.main.async {
-            self.fetchDeviceList()
+            self.fetchDeviceListIfNeeded()
         }
     }
   
@@ -64,17 +60,29 @@ class IosDeviceNames: NSObject {
         }
     }
     
-    // Get the device name matching the given platform.
-    
-    func getDeviceName(platform: String) -> String {
-        // If the list in cache is nil or empty, try to loadCache().
-        //TODO: Check how long it has been since last list update,
-        // And update the list if it has been too long.
-        if cache == nil {
+    // If the list in cache is nil,
+    // or too long since last list update,
+    // update the list.
+    private func fetchDeviceListIfNeeded() {
+        if let gotCache = self.cache {
+            // If it's too old, schedule a fetch
+            if gotCache.lastUpdated + IosDeviceNames.THRESH < UInt64(NSDate().timeIntervalSince1970) {
+                print("Cache updated more than",IosDeviceNames.THRESH,"seconds ago, fetching now.")
+                fetchDeviceList()
+            }
+            // else new enough, do nothing
+        } else {
+            // No cache at all, fetch
             print("Cache nil, fetching device list over the network.")
             fetchDeviceList()
         }
+    }
+    
+    // Get the device name matching the given platform.
+    
+    func getDeviceName(platform: String) -> String {
         print("Platform is ", platform)
+        fetchDeviceListIfNeeded()
         let deviceName = cache?.get(platform: platform)
         if let gotDevice = deviceName {
             return gotDevice
@@ -86,14 +94,14 @@ class IosDeviceNames: NSObject {
     //MARK: Private methods
     
     private func saveCache() {
-        if cache != nil {
-        // What is the right way here? Cache may be null, in which case save should not be called at all...
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(cache!, toFile: DeviceCache.ArchiveURL.path)
-        if isSuccessfulSave {
-            print("Cached Devices successfully saved.")
-        } else {
-            print("Failed to save cached devices.")
-        }
+        if let gotCache = cache {
+            // What is the right way here? Cache may be null, in which case save should not be called at all...
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(gotCache, toFile: DeviceCache.ArchiveURL.path)
+            if isSuccessfulSave {
+                print("Cached Devices successfully saved.")
+            } else {
+                print("Failed to save cached devices.")
+            }
         }
     }
     
