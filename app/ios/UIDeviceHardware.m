@@ -20,9 +20,10 @@
     return platform;
 }
 
+
+// Get the device name from IosDeviceNames, except if we are on the simulator.
 - (NSString *) platformString{
     NSString *modelIdentifier = [self platform];
-    NSString *deviceName = [IosDeviceNames.sharedInstance getDeviceName];
     
     // Simulator
     if ([modelIdentifier hasSuffix:@"86"] || [modelIdentifier isEqual:@"x86_64"])
@@ -31,7 +32,7 @@
         return (smallerScreen ? @"Simulator" : @"Simulator");
     }
     
-   return deviceName;
+    return [IosDeviceNames.sharedInstance getDeviceNameWithPlatform:modelIdentifier];
 }
 
 @end
