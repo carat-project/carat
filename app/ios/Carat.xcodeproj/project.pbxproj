@@ -454,8 +454,6 @@
 		C7547F1A19963CFD007A01CF /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		C7547F3819963CFD007A01CF /* 32-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "32-iphone.png"; sourceTree = "<group>"; };
 		C7547F4819963CFD007A01CF /* libFlurry_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_5.0.0.a; path = ../../libFlurry_5.0.0.a; sourceTree = "<group>"; };
-		C754886219963D03007A01CF /* UIDeviceHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDeviceHardware.h; sourceTree = "<group>"; };
-		C754886319963D03007A01CF /* UIDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDeviceHardware.m; sourceTree = "<group>"; };
 		C7E31C2D1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		C7E31C2E1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		E601D3EED0B997CE00282325 /* Pods-Carat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carat/Pods-Carat.release.xcconfig"; sourceTree = "<group>"; };
@@ -527,7 +525,6 @@
 				C7547EAB19963CFD007A01CF /* Globals.m */,
 				AB41CDFB144E3B990090CC09 /* Reachability.h */,
 				AB41CDFC144E3B990090CC09 /* Reachability.m */,
-				AB1E7AB814D0BF420010617A /* UIDeviceHardware */,
 				AB41CDF1144E1AF60090CC09 /* UIDeviceProc.h */,
 				AB41CDF2144E1AF60090CC09 /* UIDeviceProc.m */,
 				C7547F1719963CFD007A01CF /* UIImageDoNotCache.h */,
@@ -817,16 +814,6 @@
 				89FF8B631BDBAA3E00147943 /* BugHogListViewController.m */,
 			);
 			path = BaseViewControllers;
-			sourceTree = "<group>";
-		};
-		AB1E7AB814D0BF420010617A /* UIDeviceHardware */ = {
-			isa = PBXGroup;
-			children = (
-				C754886219963D03007A01CF /* UIDeviceHardware.h */,
-				C754886319963D03007A01CF /* UIDeviceHardware.m */,
-			);
-			name = UIDeviceHardware;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		AB41CE0A144F572D0090CC09 /* iPhone */ = {
