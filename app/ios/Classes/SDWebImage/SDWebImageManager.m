@@ -30,12 +30,12 @@ static SDWebImageManager *instance;
 
 - (void)dealloc
 {
-    [downloadDelegates release], downloadDelegates = nil;
-    [downloaders release], downloaders = nil;
-    [cacheDelegates release], cacheDelegates = nil;
-    [cacheURLs release], cacheURLs = nil;
-    [downloaderForURL release], downloaderForURL = nil;
-    [failedURLs release], failedURLs = nil;
+    [downloadDelegates release]; downloadDelegates = nil;
+    [downloaders release]; downloaders = nil;
+    [cacheDelegates release]; cacheDelegates = nil;
+    [cacheURLs release]; cacheURLs = nil;
+    [downloaderForURL release]; downloaderForURL = nil;
+    [failedURLs release]; failedURLs = nil;
     [super dealloc];
 }
 

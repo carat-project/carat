@@ -19,9 +19,6 @@
 - (void)handleGraceTimer:(NSTimer *)theTimer;
 - (void)handleMinShowTimer:(NSTimer *)theTimer;
 - (void)setTransformForCurrentOrientation:(BOOL)animated;
-- (void)cleanUp;
-- (void)deviceOrientationDidChange:(NSNotification*)notification;
-- (void)launchExecution;
 - (void)deviceOrientationDidChange:(NSNotification *)notification;
 - (void)hideDelayed:(NSNumber *)animated;
 - (void)launchExecution;

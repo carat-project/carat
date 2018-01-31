@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
-#import "DashboardViewController.h"
+#import "DashBoardViewController.h"
 #import "NetworkBaseViewController.h"
 #import "ProcessViewController.h"
 #import "ProgressUpdateView.h"

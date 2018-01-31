@@ -127,7 +127,7 @@
 
 + (NSInteger)daysSince:(NSDate*)date
 {
-    NSUInteger unitFlag = NSDayCalendarUnit;
+    NSUInteger unitFlag = NSCalendarUnitDay;
     NSDate *dateThen;
     NSDate *dateNow;
     NSCalendar *calendar = [NSCalendar currentCalendar];
