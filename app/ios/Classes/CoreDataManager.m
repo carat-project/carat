@@ -10,7 +10,7 @@
 
 #import "CoreDataManager.h"
 #import "Flurry.h"
-#import "UIDeviceHardware.h"
+#import "UIDevice-Hardware.h"
 #import "Utilities.h"
 #import "DeviceInformation.h"
 #import "CaratProcessCache.h"
@@ -821,8 +821,8 @@ static int previousSample = 0;
         
         Feature *feature2 = [[[Feature alloc] init] autorelease];
         [feature2 setKey:@"Model"];
-        UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
-        [feature2 setValue: [h platformString]];
+        UIDevice *h =[[[UIDevice alloc] init] autorelease];
+        [feature2 setValue: [h modelName]];
         
         FeatureList list = [[NSMutableArray alloc] initWithObjects:feature1,feature2, nil];
         HogBugReport *hogReport = [[CommunicationManager instance] getHogOrBugReport:list];
@@ -1501,8 +1501,8 @@ static id instance = nil;
     
     [cdataRegistration setTimestamp:[NSNumber numberWithDouble:[[Globals instance] utcSecondsSinceEpoch]]];
     
-    UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
-    [cdataRegistration setPlatformId:[h platformString]];
+    UIDevice *h =[[UIDevice alloc] init];
+    [cdataRegistration setPlatformId:[h modelName]];
     [h release];
     
     [cdataRegistration setSystemVersion:[UIDevice currentDevice].systemVersion];

@@ -11,7 +11,7 @@
 #import "CommunicationManager.h"
 #import "Reachability.h"
 #import "Utilities.h"
-#import "UIDeviceHardware.h"
+#import "UIDevice-Hardware.h"
 #import "CoreDataManager.h"
 #import "CaratConstants.h"
 
@@ -145,11 +145,11 @@ static NSString * networkStatusString;
         if ([self setupCaratService] == YES)
         {
             @try {
-                UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
+                UIDevice *h =[[UIDevice alloc] init];
                 Registration* registration = [[[Registration alloc] init] autorelease];
                 registration.uuId = [[Globals instance] getUUID ];
                 registration.timestamp = [[Globals instance] utcSecondsSinceEpoch];
-                registration.platformId = [h platformString];
+                registration.platformId = [h modelName];
                 registration.systemVersion = [UIDevice currentDevice].systemVersion;
                 [h release];
         
@@ -209,8 +209,8 @@ static NSString * networkStatusString;
                 [feature1 setKey:@"OS"];
                 [feature1 setValue:[UIDevice currentDevice].systemVersion];
                 [feature2 setKey:@"Model"];
-                UIDeviceHardware *h =[[UIDeviceHardware alloc] init];
-                [feature2 setValue:[h platformString]];
+                UIDevice *h =[[UIDevice alloc] init];
+                [feature2 setValue:[h modelName]];
                 [h release];
                 FeatureList featureList = [[NSMutableArray alloc] initWithObjects:feature1, feature2, nil];
                 return [self.service getReports:[[Globals instance] getUUID] features:featureList];

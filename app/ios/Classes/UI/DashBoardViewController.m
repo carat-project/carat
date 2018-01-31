@@ -11,7 +11,6 @@
 #import "Utilities.h"
 #import "CoreDataManager.h"
 #import "CommunicationManager.h"
-#import "UIDeviceHardware.h"
 #import "Globals.h"
 #import "Preprocessor.h"
 #import "CaratProcessCache.h"

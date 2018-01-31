@@ -11,7 +11,6 @@
 #import "Flurry.h"
 #import "CoreDataManager.h"
 #import "CaratConstants.h"
-#import "UIDeviceHardware.h"
 
 @interface NetworkBaseViewController ()
 

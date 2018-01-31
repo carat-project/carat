@@ -13,7 +13,7 @@
 #import "Flurry.h"
 #import "CoreDataManager.h"
 #import "CommunicationManager.h"
-#import "UIDeviceHardware.h"
+#import "UIDevice-Hardware.h"
 #import "Globals.h"
 #import "UIImageDoNotCache.h"
 #import "CaratConstants.h"
@@ -101,8 +101,8 @@ BOOL isScoreUpdateProgressVisible;
     // UUID
     NSString *vUUID = [[Globals instance] getUUID];
     //Device Info
-    UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
-    NSString* vPlatform = [h platformString];
+    UIDevice *h =[[[UIDevice alloc] init] autorelease];
+    NSString* vPlatform = [h modelName];
     NSString* vOSVersion = [UIDevice currentDevice].systemVersion;
     //Memory Info
     float memUsed = 0;

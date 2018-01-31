@@ -85,12 +85,12 @@
 
 - (void) sendFeedback:(NSString *)feedback index:(NSInteger)index{
     // Device info
-    UIDeviceHardware *h =[[[UIDeviceHardware alloc] init] autorelease];
+    UIDevice *h =[[[UIDevice alloc] init] autorelease];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     NSString *versionShort = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     
     /* create mail subject */
-    NSString *subject = [NSString stringWithFormat:@"[Carat][iOS] Feedback from %@ (%@), v%@", [h platformString], [UIDevice currentDevice].systemVersion, versionShort];
+    NSString *subject = [NSString stringWithFormat:@"[Carat][iOS] Feedback from %@ (%@), v%@", [h modelName], [UIDevice currentDevice].systemVersion, versionShort];
     
     /* define email address */
     NSString *mail = [NSString stringWithFormat:@"Carat Team <carat@cs.helsinki.fi>"];
@@ -117,7 +117,7 @@
         pleaseSpecify = @"\n\nPlease enter your feedback here";
     }
     NSString *messageBody = [NSString stringWithFormat:
-                             @"Carat %@\n Carat ID: %s\n Feedback: %@\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@%@", version, [[[Globals instance] getUUID] UTF8String], feedback, JscoreStr, [UIDevice currentDevice].systemVersion,[h platformString], memoryUsed, memoryActive, pleaseSpecify];
+                             @"Carat %@\n Carat ID: %s\n Feedback: %@\n JScore: %@\n OS Version: %@\n Device Model: %@\n Memory Used: %@\n Memory Active: %@%@", version, [[[Globals instance] getUUID] UTF8String], feedback, JscoreStr, [UIDevice currentDevice].systemVersion,[h modelName], memoryUsed, memoryActive, pleaseSpecify];
     
     if ([MFMailComposeViewController canSendMail])
     {

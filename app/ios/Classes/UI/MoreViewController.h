@@ -15,7 +15,7 @@
 #import "CoreDataManager.h"
 #import "CaratConstants.h"
 #import "Utilities.h"
-#import "UIDeviceHardware.h"
+#import "UIDevice-Hardware.h"
 #import "Flurry.h"
 
 #import <MessageUI/MessageUI.h>

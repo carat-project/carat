@@ -11,7 +11,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		24112D281CEB219B008ABADE /* CaratProcessCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 24112D271CEB219B008ABADE /* CaratProcessCache.m */; };
-		2417658D1C60D896007EB0CD /* Icon144.png in Resources */ = {isa = PBXBuildFile; fileRef = 2417658C1C60D896007EB0CD /* Icon144.png */; };
 		2417658F1C60E64C007EB0CD /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417658E1C60E64C007EB0CD /* CoreBluetooth.framework */; };
 		245897461C9063F1001D3FE2 /* TopHogsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 245897441C9063F1001D3FE2 /* TopHogsTableViewCell.m */; };
 		245897471C9063F1001D3FE2 /* TopHogsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245897451C9063F1001D3FE2 /* TopHogsTableViewCell.xib */; };
@@ -147,6 +146,7 @@
 		C74130C619EDC6EA00A1E8CE /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4014F1CA71005CE813 /* SDImageCache.m */; };
 		C74130CA19EDC6EA00A1E8CE /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B4714F1CA71005CE813 /* SDWebImageDecoder.m */; };
 		C74130D119EDC6EA00A1E8CE /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEC9B5114F1CA71005CE813 /* UIButton+WebCache.m */; };
+		C753443F1F2F74EC00A18FFB /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = C753443E1F2F74EC00A18FFB /* UIDevice-Hardware.m */; };
 		C7534EB71BF9F09600AA6F78 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7534EB61BF9F09600AA6F78 /* Launch Screen.storyboard */; };
 		C754887A19963D03007A01CF /* CaratProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C7547E3519963CFD007A01CF /* CaratProtocol.m */; };
 		C754887F19963D03007A01CF /* CoreDataAppReport.m in Sources */ = {isa = PBXBuildFile; fileRef = C7547E3F19963CFD007A01CF /* CoreDataAppReport.m */; };
@@ -168,7 +168,6 @@
 		C75488B919963D04007A01CF /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C7547F1A19963CFD007A01CF /* Utilities.m */; };
 		C75488D619963D04007A01CF /* 32-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = C7547F3819963CFD007A01CF /* 32-iphone.png */; };
 		C75488E619963D04007A01CF /* libFlurry_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7547F4819963CFD007A01CF /* libFlurry_5.0.0.a */; };
-		C7548C9F19963D04007A01CF /* UIDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = C754886319963D03007A01CF /* UIDeviceHardware.m */; };
 		C7E31C2F1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E31C2E1A66D9410007CC19 /* UIScrollView+SVPullToRefresh.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C7FC323D1BE7F15700EA48B8 /* PopularModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89ABF7D71BDF9B1900DC663A /* PopularModel.m */; };
 /* End PBXBuildFile section */
@@ -181,7 +180,6 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		24112D261CEB219B008ABADE /* CaratProcessCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratProcessCache.h; sourceTree = "<group>"; };
 		24112D271CEB219B008ABADE /* CaratProcessCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaratProcessCache.m; sourceTree = "<group>"; };
-		2417658C1C60D896007EB0CD /* Icon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon144.png; path = ../Images.xcassets/AppIcon.appiconset/Icon144.png; sourceTree = "<group>"; };
 		2417658E1C60E64C007EB0CD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		2422EED91CE1EF5400637E06 /* Carat 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Carat 2.xcdatamodel"; sourceTree = "<group>"; };
 		245897431C9063F1001D3FE2 /* TopHogsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHogsTableViewCell.h; sourceTree = "<group>"; };
@@ -414,6 +412,8 @@
 		C705F2FE201F52C200C4DC1C /* IosDeviceNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosDeviceNames.swift; sourceTree = "<group>"; };
 		C705F300201F534E00C4DC1C /* DeviceCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCache.swift; sourceTree = "<group>"; };
 		C70C03D0194E3F30008C8B01 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		C753443D1F2F74EC00A18FFB /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = SOURCE_ROOT; };
+		C753443E1F2F74EC00A18FFB /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = SOURCE_ROOT; };
 		C7534EB61BF9F09600AA6F78 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C7547E3419963CFD007A01CF /* CaratProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaratProtocol.h; sourceTree = "<group>"; };
 		C7547E3519963CFD007A01CF /* CaratProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaratProtocol.m; sourceTree = "<group>"; };
@@ -494,6 +494,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C753443D1F2F74EC00A18FFB /* UIDevice-Hardware.h */,
+				C753443E1F2F74EC00A18FFB /* UIDevice-Hardware.m */,
 				24AC388F1C6BA0CB00FA3572 /* Thrift */,
 				245A59881C564728003DC25C /* Device */,
 				894F09F91BBBBB2400B092BD /* Constants */,
@@ -850,7 +852,6 @@
 			children = (
 				C7547F3819963CFD007A01CF /* 32-iphone.png */,
 				66D41BCA1A8F8EF800044C66 /* settings.png */,
-				2417658C1C60D896007EB0CD /* Icon144.png */,
 				C704AE531A03B90200E4F13C /* bug.png */,
 				C704AE571A03B90200E4F13C /* twologo.png */,
 				66EC15051A2A6A8E00153746 /* infoButton@2x.png */,
@@ -1131,7 +1132,6 @@
 				894AF0651BCCD992003E7D76 /* AboutExpandedTableViewCell.xib in Resources */,
 				89FF8B8A1BDBAA3E00147943 /* HideAppsViewController.xib in Resources */,
 				89FF8B901BDBAA3E00147943 /* Main.storyboard in Resources */,
-				2417658D1C60D896007EB0CD /* Icon144.png in Resources */,
 				ABEC9B6814F1DA00005CE813 /* license.txt in Resources */,
 				89FF8B511BDBAA3300147943 /* ProcessViewController.xib in Resources */,
 				89FF8B8E1BDBAA3E00147943 /* InfoViewController.xib in Resources */,
@@ -1237,6 +1237,7 @@
 				C14F5C36145BDA9900087F74 /* AsyncUdpSocket.m in Sources */,
 				894C55891BDA5D5800B247F0 /* UIButton+BackgroundColor.m in Sources */,
 				24AC38B91C6BA0CB00FA3572 /* TBinaryProtocol.m in Sources */,
+				C753443F1F2F74EC00A18FFB /* UIDevice-Hardware.m in Sources */,
 				C754888119963D03007A01CF /* CoreDataMainReport.m in Sources */,
 				C754889319963D04007A01CF /* PGTableViewWithEmptyView.m in Sources */,
 				89FF8B831BDBAA3E00147943 /* BaseViewController.m in Sources */,
@@ -1248,7 +1249,6 @@
 				89DAB8B31BC2A7C60053647E /* LocalizedLabel.m in Sources */,
 				89FF8B501BDBAA3300147943 /* ProcessViewController.m in Sources */,
 				C754888B19963D03007A01CF /* Globals.m in Sources */,
-				C7548C9F19963D04007A01CF /* UIDeviceHardware.m in Sources */,
 				89FF8B841BDBAA3E00147943 /* BugHogListViewController.m in Sources */,
 				24AC38C11C6BA0CB00FA3572 /* THTTPClient.m in Sources */,
 				89FF8B911BDBAA3E00147943 /* MoreViewController.m in Sources */,
