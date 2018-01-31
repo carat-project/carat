@@ -42,9 +42,9 @@ class IosDeviceNames: NSObject {
   // Fetch and store device list on disk.
   private func fetchDeviceList() {
     let list = try? String(contentsOf: URL(string: IosDeviceNames.url)!)
-    print("Got list", list)
-    if list != nil {
-        let lines = list!.split(separator: "\n")
+    print("Got list", list ?? "nil")
+    if let gotList = list { // Compare with scala: val list = Some(Seq("a;c", "b;d")); list.map{gotList => ... }
+        let lines = gotList.split(separator: "\n")
         print("Got lines ",lines)
         var deviceMap = [String: String]()
         for line in lines {
@@ -92,7 +92,7 @@ class IosDeviceNames: NSObject {
     
     private func loadCache() -> DeviceCache?  {
         let c = NSKeyedUnarchiver.unarchiveObject(withFile: DeviceCache.ArchiveURL.path) as? DeviceCache
-        print("Loaded cache from disk: ", c)
+        print("Loaded cache from disk: ", c ?? "nil")
         return c
     }
   
