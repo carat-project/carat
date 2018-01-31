@@ -25,7 +25,7 @@
 @end
 
 @implementation MyScoreViewController
-BOOL isUpdateProgressVisible;
+BOOL isScoreUpdateProgressVisible;
 
 #pragma mark - View Life Cycle methods
 - (id) initWithNibName: (NSString *) nibNameOrNil
@@ -42,7 +42,7 @@ BOOL isUpdateProgressVisible;
 - (void)viewDidLoad {
     [super viewDidLoad];
     _navbarTitle.title = [NSLocalizedString(@"MyDevice", nil) uppercaseString];
-    isUpdateProgressVisible = false;
+    isScoreUpdateProgressVisible = false;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -193,11 +193,11 @@ BOOL isUpdateProgressVisible;
 
 - (void) setProgressUpdateViewHeight:(CGFloat) height
 {
-    if(isUpdateProgressVisible && height == 0){
-        isUpdateProgressVisible = false;
+    if(isScoreUpdateProgressVisible && height == 0){
+        isScoreUpdateProgressVisible = false;
     }
-    else if(!isUpdateProgressVisible && height > 0){
-        isUpdateProgressVisible = true;
+    else if(!isScoreUpdateProgressVisible && height > 0){
+        isScoreUpdateProgressVisible = true;
     }
     else {
         return;

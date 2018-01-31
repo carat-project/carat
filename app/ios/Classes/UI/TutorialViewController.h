@@ -13,8 +13,6 @@
 #import "UIButton+BackgroundColor.h"
 
 
-NSArray *pageDataContent;
-
 @interface TutorialViewController :BaseViewController{
     NSArray *consentWebView;
     id callbackDelegate;
